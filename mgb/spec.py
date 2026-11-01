@@ -18,6 +18,7 @@ from pathlib import Path
 import yaml
 
 MM_PER_IN = 25.4
+NM_PER_LBF_FT = 1.35582
 UNIT_TOL_MM = 0.01          # max disagreement between an inch figure and its metric twin
 LABELS = {"H", "F", "S", "M", "D"}
 
@@ -83,6 +84,9 @@ def _to_dim(key: str, raw: dict) -> Dim:
     deg = _rng(raw.get("deg"))
     if deg is not None:
         return Dim(key, deg[0], deg[1], "deg", raw)
+    tq = _rng(raw.get("lbf_ft"))
+    if tq is not None:
+        return Dim(key, tq[0], tq[1], "lbf ft", raw)
     if inch is not None:  # inch governs when present
         return Dim(key, inch[0] * MM_PER_IN, inch[1] * MM_PER_IN, "mm", raw)
     if mm is not None:
@@ -93,14 +97,38 @@ def _to_dim(key: str, raw: dict) -> Dim:
     return Dim(key, None, None, "mm", raw)
 
 
-def load(path: Path) -> Spec:
-    data = yaml.safe_load(Path(path).read_text())
+def _make(path: Path, data: dict) -> Spec:
     dims = {k: _to_dim(k, v) for k, v in (data.get("specs") or {}).items()}
     return Spec(Path(path), data, dims)
 
 
-def load_all(root: Path) -> list[Spec]:
-    return [load(p) for p in sorted(Path(root).rglob("*.yaml"))]
+def load_file(path: Path) -> list[Spec]:
+    """A spec file holds one part, or several under `parts:` with shared `defaults:`."""
+    data = yaml.safe_load(Path(path).read_text())
+    if "parts" not in data:
+        return [_make(path, data)]
+    base = data.get("defaults", {})
+    out = []
+    for item in data["parts"]:
+        merged = {**base, **item}
+        if "haynes" in base and "haynes" in item:
+            merged["haynes"] = {**base["haynes"], **item["haynes"]}
+        out.append(_make(path, merged))
+    return out
+
+
+def load(path: Path) -> Spec:
+    return load_file(path)[0]
+
+
+def load_all(root: Path) -> dict[str, Spec]:
+    out = {}
+    for p in sorted(Path(root).rglob("*.yaml")):
+        for sp in load_file(p):
+            if sp.id in out:
+                raise ValueError(f"duplicate part id {sp.id} in {p} and {out[sp.id].path}")
+            out[sp.id] = sp
+    return out
 
 
 # ---------------------------------------------------------------- checks
@@ -109,6 +137,9 @@ def check_units(spec: Spec) -> list[Finding]:
     """Every inch figure must match its metric twin to UNIT_TOL_MM."""
     out = []
     for key, raw in (spec.data.get("specs") or {}).items():
+        tq, nm = _rng(raw.get("lbf_ft")), _rng(raw.get("nm"))
+        if tq and nm and max(abs(tq[0] * NM_PER_LBF_FT - nm[0]), abs(tq[1] * NM_PER_LBF_FT - nm[1])) > 1.0:
+            out.append(Finding("error", spec.id, key, f"{tq} lbf ft is not {nm} Nm"))
         inch, mm = _rng(raw.get("in")), _rng(raw.get("mm"))
         printed = _rng(raw.get("printed_mm"))
         if inch is None:
@@ -118,8 +149,10 @@ def check_units(spec: Spec) -> list[Finding]:
             if pair is None:
                 continue
             worst = max(abs(conv[0] - pair[0]), abs(conv[1] - pair[1]))
-            # Haynes rounds metric figures to 2 dp; allow that rounding on top of tolerance
-            if worst > UNIT_TOL_MM + 0.005:
+            # allow half a unit of the last decimal place the source printed
+            vals = raw.get(label) if isinstance(raw.get(label), list) else [raw.get(label)]
+            dp = max(len(repr(float(v)).split(".")[1].rstrip("0") or "") for v in vals)
+            if worst > UNIT_TOL_MM + 0.5 * 10 ** -dp:
                 msg = (f"{inch[0]}-{inch[1]} in = {conv[0]:.3f}-{conv[1]:.3f} mm, "
                        f"but {label} says {pair[0]}-{pair[1]} mm")
                 if label == "printed_mm" and raw.get("erratum"):

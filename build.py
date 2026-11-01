@@ -33,30 +33,63 @@ def _load_module(path: Path):
     return mod
 
 
-def build_parts(findings):
-    parts, specs = {}, {}
+def _builders():
+    """part id -> (build function, probes) from every script under parts/.
+
+    A script declares either PARTS = {id: {"build": fn, "probes": {...}}}
+    or the single-part form SPEC / build / PROBES.
+    """
+    out = {}
     for script in sorted((ROOT / "parts").rglob("*.py")):
         mod = _load_module(script)
-        sp = S.load(ROOT / "specs" / mod.SPEC)
-        specs[sp.id] = sp
+        if hasattr(mod, "PARTS"):
+            for pid, d in mod.PARTS.items():
+                out[pid] = (d["build"], d.get("probes", {}))
+        else:
+            pid = S.load(ROOT / "specs" / mod.SPEC).id
+            out[pid] = (mod.build, getattr(mod, "PROBES", {}))
+    return out
+
+
+def build_parts(findings):
+    specs = S.load_all(ROOT / "specs")
+    builders = _builders()
+    parts = {}
+    for pid in sorted(set(specs) - set(builders)):
+        findings.append(S.Finding("error", pid, "build", "spec has no build script"))
+    for pid in sorted(set(builders) - set(specs)):
+        findings.append(S.Finding("error", pid, "spec", "build script has no spec"))
+    for pid, sp in specs.items():
+        if pid not in builders:
+            continue
+        build, prb = builders[pid]
         findings += S.check_units(sp) + S.check_provenance(sp)
-        part = mod.build(sp)
+        part = build(sp)
         if not part.is_valid:
-            findings.append(S.Finding("error", sp.id, "geometry", "solid is not valid"))
-        for key, fn in getattr(mod, "PROBES", {}).items():
+            findings.append(S.Finding("error", pid, "geometry", "solid is not valid"))
+        for key, fn in prb.items():
             d = sp[key]
             val = fn(part)
             if not probes.within(val, d.lo_mm, d.hi_mm):
-                findings.append(S.Finding("error", sp.id, key,
+                findings.append(S.Finding("error", pid, key,
                                           f"built {val:.4f}, spec {d.lo_mm:.4f}-{d.hi_mm:.4f}"))
-        unprobed = [k for k, d in sp.dims.items()
-                    if k not in getattr(mod, "PROBES", {}) and not d.raw.get("display_only")
-                    and d.source.get("label") in ("H", "F", "S")]
-        for k in unprobed:
-            findings.append(S.Finding("warning", sp.id, k, "published figure has no probe"))
-        parts[sp.id] = part
-        print(f"  part  {sp.id:<40} ok, {len(getattr(mod, 'PROBES', {}))} probes")
-    return parts, specs
+        for k, d in sp.dims.items():
+            if (k not in prb and not d.raw.get("display_only") and d.unit in ("mm", "deg")
+                    and d.source.get("label") in ("H", "F", "S")):
+                findings.append(S.Finding("warning", pid, k, "published figure has no probe"))
+        parts[pid] = part
+        print(f"  part  {pid:<44} {len(prb)} probes")
+    return parts, specs, builders
+
+
+def _variant(cache, builders, specs, pid, kwargs):
+    """Geometry for an instance built with extra arguments (e.g. a spring at fitted length)."""
+    key = (pid, tuple(sorted(kwargs.items())))
+    if key not in cache:
+        cache[key] = builders[pid][0](specs[pid], **kwargs)
+        if not cache[key].is_valid:
+            raise ValueError(f"{pid} variant {kwargs} is not a valid solid")
+    return cache[key]
 
 
 SKELETON = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
@@ -88,13 +121,25 @@ def main():
 
     findings: list[S.Finding] = []
     print("Building parts")
-    parts, specs = build_parts(findings)
+    parts, specs, builders = build_parts(findings)
     assemblies = [_load_module(p) for p in sorted((ROOT / "assemblies").glob("*.py"))]
 
     for a in assemblies:
-        for inst_id, part_id, _ in a.INSTANCES:
+        seen = set()
+        for inst in a.INSTANCES:
+            inst_id, part_id = inst[0], inst[1]
             if part_id not in parts:
                 findings.append(S.Finding("error", a.ID, inst_id, f"unknown part {part_id}"))
+            if inst_id in seen:
+                findings.append(S.Finding("error", a.ID, inst_id, "duplicate instance id"))
+            seen.add(inst_id)
+            for g in (inst[3] if len(inst) > 3 else {}).get("groups", []):
+                if g not in getattr(a, "GROUPS", {}):
+                    findings.append(S.Finding("error", a.ID, inst_id, f"unknown explode group {g}"))
+        used = {i[1] for i in a.INSTANCES}
+        for pid, sp in specs.items():
+            if sp.data.get("assembly") == a.ID and pid not in used:
+                findings.append(S.Finding("error", a.ID, pid, "part belongs here but is not placed"))
 
     findings += check_vendor_urls(ROOT)
 
@@ -105,8 +150,14 @@ def main():
         print("Exporting")
         for pid, part in parts.items():
             export.step(part, OUT / "step" / f"{pid}.step")
+        cache = {}
         for a in assemblies:
-            inst = [(i, parts[p], loc) for i, p, loc in a.INSTANCES]
+            inst = []
+            for i in a.INSTANCES:
+                opts = i[3] if len(i) > 3 else {}
+                geo = (_variant(cache, builders, specs, i[1], opts["build"]) if opts.get("build")
+                       else parts[i[1]])
+                inst.append((i[0], geo, i[2]))
             glb_path = OUT / "glb" / f"{a.ID}.glb"
             export.glb(inst, glb_path, "detail")
             sizes[a.ID] = export.glb_to_embedded_gltf(glb_path, OUT / "viewer" / "models" / f"{a.ID}.json")

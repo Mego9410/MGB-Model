@@ -1,0 +1,76 @@
+# Rocker cover and its fixings. Haynes Fig 1.6 items 54 to 60, Section 10.
+defaults:
+  system: engine
+  assembly: engine.head
+  haynes: { section: 10 }
+  variant: { factory_1963: true, as_fitted: true }
+
+parts:
+  - id: engine.head.rocker-cover
+    name: Rocker cover
+    haynes: { figures: [{ figure: "1.6", legend: 54 }] }
+    quantity: 1
+    finish: paint_engine
+    notes: Pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long studs.
+    specs:
+      length: { mm: 405.0, source: { label: D, method: "Covers the rocker gear with clearance; not published" } }
+      width: { mm: 122.0, source: { label: D, method: "Not published" } }
+      height: { mm: 95.0, source: { label: D, method: "Clears the rockers and adjusting screws" } }
+      sheet_thickness: { mm: 1.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.filler-cap
+    name: Oil filler cap
+    haynes: { figures: [{ figure: "1.6", legend: 55 }], section: 2 }
+    quantity: 1
+    finish: chrome
+    notes: Haynes item 55 is "Cap and cable"; the retaining cable is not modelled.
+    specs:
+      diameter: { mm: 50.0, source: { label: D, method: "Not published" } }
+      height: { mm: 22.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-cover-gasket
+    name: Rocker cover gasket
+    haynes: { figures: [{ figure: "1.6", legend: 56 }] }
+    quantity: 1
+    finish: cork
+    specs:
+      thickness: { mm: 5.0, source: { label: D, method: "Cork gasket; not published" } }
+      width: { mm: 10.0, source: { label: D, method: "Matches the cover flange" } }
+
+  - id: engine.head.rocker-cover-bush
+    name: Rocker cover sealing bush
+    haynes: { figures: [{ figure: "1.6", legend: 57 }] }
+    quantity: 2
+    finish: rubber
+    notes: Haynes Sec 10 - "noting the gasket, washers and rubber seals".
+    specs:
+      outside_diameter: { mm: 19.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "Fits the 1/4 in stud" } }
+      height: { mm: 9.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-cover-washer
+    name: Rocker cover cup washer
+    haynes: { figures: [{ figure: "1.6", legend: 58 }] }
+    quantity: 2
+    specs:
+      outside_diameter: { mm: 24.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 6.8, source: { label: D, method: "Fits the 1/4 in stud" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-cover-nut
+    name: Rocker cover nut
+    haynes: { figures: [{ figure: "1.6", legend: 59 }] }
+    quantity: 2
+    specs:
+      across_flats: { in: 0.4375, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 1/4 in" } }
+      thickness: { in: 0.21875, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 1/4 in" } }
+
+  - id: engine.head.rocker-cover-bracket
+    name: Rocker cover bracket
+    haynes: { figures: [{ figure: "1.6", legend: 60 }] }
+    quantity: 1
+    notes: Fitted under the rear cover nut; Haynes Sec 10 mentions pipes released from the rocker studs.
+    specs:
+      length: { mm: 55.0, source: { label: D, method: "Proportion from Fig 1.6" } }
+      width: { mm: 16.0, source: { label: D, method: "Proportion from Fig 1.6" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }

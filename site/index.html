@@ -169,11 +169,18 @@ new MutationObserver(applyTheme).observe(document.documentElement, { attributes:
 // finishes by material class (no textures; materials read by shading)
 const FINISH = {
   machined_steel: { color: 0x8d9195, metalness: 0.85, roughness: 0.34, envMapIntensity: 0.75 },
-  cast_iron:      { color: 0x5c5f63, metalness: 0.55, roughness: 0.7 },
+  cast_iron:      { color: 0x5c5f63, metalness: 0.55, roughness: 0.7, envMapIntensity: 0.6 },
   aluminium:      { color: 0xc9ccce, metalness: 0.8, roughness: 0.42 },
   chrome:         { color: 0xf2f3f4, metalness: 1.0, roughness: 0.08 },
   rubber:         { color: 0x1e1f21, metalness: 0.0, roughness: 0.92 },
   paint_red:      { color: 0xa3181a, metalness: 0.3, roughness: 0.35 },
+  bronze:         { color: 0xa9783f, metalness: 0.85, roughness: 0.35, envMapIntensity: 0.75 },
+  brass:          { color: 0xb8973e, metalness: 0.85, roughness: 0.32, envMapIntensity: 0.75 },
+  copper:         { color: 0xb06a45, metalness: 0.85, roughness: 0.3, envMapIntensity: 0.75 },
+  gasket:         { color: 0x6f6a5c, metalness: 0.1, roughness: 0.85 },
+  cork:           { color: 0x9a7a52, metalness: 0.0, roughness: 0.95 },
+  plug:           { color: 0xd9d6cc, metalness: 0.2, roughness: 0.5 },
+  paint_engine:   { color: 0x5a1e1d, metalness: 0.25, roughness: 0.45 },
   default:        { color: 0x8a8e93, metalness: 0.6, roughness: 0.45, envMapIntensity: 0.75 },
 };
 const matCache = {};
@@ -198,39 +205,66 @@ async function loadAssembly(aid){
     const part = N[inst.part];
     o.userData = { instId: iid, partId: inst.part };
     o.traverse(m => { if (m.isMesh){ m.material = finishMat(part.finish); m.userData.instId = iid; m.userData.partId = inst.part; } });
-    instances.push({ obj: o, instId: iid, partId: inst.part, base: o.position.clone() });
+    instances.push({ obj: o, instId: iid, partId: inst.part, base: o.position.clone(), centre: null });
   });
   const want = Object.values(reg.instances).filter(v => v.assembly === aid).length;
   const got = instances.filter(i => reg.instances[i.instId].assembly === aid).length;
   if (got !== want) say(`${a.name}: ${want - got} of ${want} parts did not load. Rebuild the model files.`);
   (window.mgbStatus ||= { matched: {}, expected: {} }).matched[aid] = got; window.mgbStatus.expected[aid] = want;
   scene.add(root);
+  root.updateMatrixWorld(true);
+  // cache each instance's centre relative to its origin (explode only translates)
+  for (const i of instances) if (!i.centre) {
+    const wc = new THREE.Box3().setFromObject(i.obj).getCenter(new THREE.Vector3());
+    i.centre = wc.sub(i.obj.getWorldPosition(new THREE.Vector3()));
+  }
   loaded[aid] = root;
   return root;
 }
 
 // ---------- framing
-function frame(obj, instant){
+function frame(obj, instant, dirArr, zoom){
+  obj.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(obj);
   if (box.isEmpty()) return;
   const c = box.getCenter(new THREE.Vector3()), r = box.getSize(new THREE.Vector3()).length() / 2;
-  const dist = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.1;
-  const dir = new THREE.Vector3(1, 0.55, 1.25).normalize();
+  const dist = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.1 / (zoom || 1);
+  const dir = new THREE.Vector3(...(dirArr || [1, 0.55, 1.25])).normalize();
   fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) };
   camera.near = r / 200; camera.far = r * 100 + 10; camera.updateProjectionMatrix();
   if (instant){ controls.target.copy(fly.to.target); camera.position.copy(fly.to.pos); fly.to = null; }
 }
 const fly = { to: null };
 
+// review hook: frame a part or the current assembly from a given direction (viewer Y-up)
+window.mgbCamera = ({ dir, part, zoom } = {}) => {
+  const target = part ? instances.filter(i => i.partId === part).map(i => i.obj) : null;
+  const g = new THREE.Group();
+  const obj = target && target.length ? target[0] : (current && loaded[current]) || scene;
+  frame(obj, true, dir, zoom);
+};
+
 // ---------- selection
 let current = null;   // node id in focus (assembly or part)
 let selected = null;  // part id
+// With a part selected, every other part is ghosted so the selection shows through.
+const ghostCache = {};
+function ghostMat(f){ const m = ghostCache[f] ||= Object.assign(finishMat(f).clone(), { transparent: true, opacity: 0.12, depthWrite: false }); return m; }
 function setSelected(pid){
   selected = pid;
   for (const i of instances){
-    const on = i.partId === pid;
-    i.obj.traverse(m => { if (m.isMesh){ m.material = on ? selMatFor(N[i.partId].finish) : finishMat(N[i.partId].finish); } });
+    const on = i.partId === pid, f = N[i.partId].finish;
+    i.obj.traverse(m => { if (m.isMesh){ m.material = !pid ? finishMat(f) : on ? selMatFor(f) : ghostMat(f); m.renderOrder = on ? 1 : 0; } });
   }
+}
+function frameObjs(objs){
+  if (!objs.length) return;
+  const g = new THREE.Box3();
+  for (const o of objs){ o.updateMatrixWorld(true); g.union(new THREE.Box3().setFromObject(o)); }
+  const c = g.getCenter(new THREE.Vector3()), r = Math.max(g.getSize(new THREE.Vector3()).length() / 2, 0.01);
+  const dist = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.25;
+  const dir = camera.position.clone().sub(controls.target).normalize();
+  fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) };
 }
 const selCache = {};
 function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color = finishMat(f).color.clone().lerp(themeColor('--sel'), 0.45); m.emissive = themeColor('--sel').multiplyScalar(0.18); return m; }
@@ -239,17 +273,21 @@ function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color =
 const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
 function applyExplode(){
   const t = ex.value / 100; exv.textContent = ex.value + '%';
-  const orders = [...new Set(instances.map(i => (N[i.partId].explode || {}).order || 1))].sort((a, b) => a - b);
-  const n = orders.length;
+  // Each instance has explode stages (an assembly group lifting off, then its own move).
+  // Stages run in Haynes removal order: lower order numbers move first.
+  const live = instances.filter(i => i.obj.parent && i.obj.parent.visible !== false);
+  const orders = [...new Set(live.flatMap(i => reg.instances[i.instId].stages.map(s => s.order)))].sort((a, b) => a - b);
+  const n = Math.max(1, orders.length);
   for (const i of instances){
-    const e = N[i.partId].explode || { axis: [0, 0, 1], distance_mm: 50, order: 1 };
-    const k = orders.indexOf(e.order || 1);
-    const local = THREE.MathUtils.clamp(t * n - k, 0, 1);
-    const s = local * local * (3 - 2 * local);
-    // instance nodes sit under the model root, which holds the Z-up to Y-up turn,
-    // so explode axes are applied in CAD coordinates (mm -> m)
-    const ax = new THREE.Vector3(...e.axis).normalize();
-    i.obj.position.copy(i.base).addScaledVector(ax, s * e.distance_mm / 1000);
+    i.obj.position.copy(i.base);
+    for (const st of reg.instances[i.instId].stages){
+      const k = orders.indexOf(st.order);
+      const local = THREE.MathUtils.clamp(t * n - k, 0, 1);
+      const s = local * local * (3 - 2 * local);
+      // instance nodes sit under the model root, which holds the Z-up to Y-up turn,
+      // so explode axes are applied in CAD coordinates (mm -> m)
+      i.obj.position.addScaledVector(new THREE.Vector3(...st.axis).normalize(), s * st.distance_mm / 1000);
+    }
   }
   drawLeaders();
 }
@@ -258,7 +296,9 @@ const leaderMat = new THREE.LineDashedMaterial({ color: 0x888888, dashSize: 0.00
 const leaders = new THREE.Group(); scene.add(leaders);
 function drawLeaders(){
   leaders.clear();
+  const seen = new Set();
   for (const i of instances){
+    if (seen.has(i.partId)) continue; seen.add(i.partId);
     if (i.obj.position.distanceTo(i.base) < 1e-5) continue;
     const g = new THREE.BufferGeometry().setFromPoints([i.base.clone().applyMatrix4(i.obj.parent.matrixWorld), i.obj.getWorldPosition(new THREE.Vector3())]);
     const l = new THREE.Line(g, leaderMat); l.computeLineDistances(); leaders.add(l);
@@ -271,16 +311,25 @@ function updateLabels(){
   labels.querySelectorAll('.leg').forEach(e => e.remove());
   if (ex.value == 0) return;
   const fig = (N[current] && N[current].haynes && N[current].haynes.figures || [])[0];
+  const shown = new Set(), legends = new Set(), placed = [];
+  const W = stage.clientWidth, H = stage.clientHeight;
   for (const i of instances){
+    if (shown.has(i.partId) || reg.instances[i.instId].label === false) continue;
+    shown.add(i.partId);
     const figs = (N[i.partId].haynes || {}).figures || [];
     const f = figs.find(x => fig && x.figure === fig.figure) || figs[0];
-    if (!f || f.legend == null) continue;
-    const p = new THREE.Box3().setFromObject(i.obj).getCenter(new THREE.Vector3()).project(camera);
+    if (!f || f.legend == null || legends.has(f.figure + ':' + f.legend)) continue;
+    const p = i.obj.getWorldPosition(new THREE.Vector3()).add(i.centre).project(camera);
     if (p.z > 1) continue;
+    let x = (p.x + 1) / 2 * W + 22, y = (1 - p.y) / 2 * H;
+    // step clear of labels already placed; give up after a few tries
+    let tries = 0;
+    while (placed.some(q => Math.abs(q[0] - x) < 30 && Math.abs(q[1] - y) < 18) && tries < 4){ y += 18; tries++; }
+    if (tries === 4) continue;
+    placed.push([x, y]); legends.add(f.figure + ':' + f.legend);
     const el = document.createElement('span'); el.className = 'leg';
-    el.textContent = f.legend; el.title = 'Haynes Fig ' + f.figure + ', item ' + f.legend;
-    el.style.left = ((p.x + 1) / 2 * stage.clientWidth + 22) + 'px';
-    el.style.top = ((1 - p.y) / 2 * stage.clientHeight) + 'px';
+    el.textContent = f.legend; el.title = 'Haynes Fig ' + f.figure + ', item ' + f.legend + ': ' + N[i.partId].name;
+    el.style.left = x + 'px'; el.style.top = y + 'px';
     labels.appendChild(el);
   }
 }
@@ -327,7 +376,7 @@ renderer.domElement.addEventListener('pointerup', e => {
   const hit = ray.intersectObjects(Object.values(loaded), true).find(h => h.object.isMesh && h.object.userData.partId);
   if (measuring){ if (hit) addMeasurePoint(hit.point); return; }
   const now = performance.now(), dbl = now - lastTap < 320; lastTap = now;
-  if (!hit){ return; }
+  if (!hit){ if (selected){ setSelected(null); markTree(); if (current) showCard(current); } return; }
   const pid = hit.object.userData.partId;
   if (dbl){ go(N[pid].parent); setSelected(pid); showCard(pid); }
   else { select(pid); }
@@ -368,7 +417,7 @@ function markTree(){ document.querySelectorAll('.tree .row').forEach(b => b.setA
 async function go(id){
   if (!N[id]) return;
   const n = N[id];
-  current = id; renderCrumbs(id); markTree();
+  current = id; if (selected) setSelected(null); renderCrumbs(id); markTree();
   if (n.kind === 'assembly'){
     say('Loading ' + n.name + '…');
     const g = await loadAssembly(id);
@@ -385,6 +434,7 @@ function select(pid){
   const n = N[pid];
   if (!loaded[n.parent]) { go(n.parent).then(() => select(pid)); return; }
   current = n.parent; renderCrumbs(pid); setSelected(pid); markTree(); showCard(pid); setHash(pid);
+  frameObjs(instances.filter(i => i.partId === pid).map(i => i.obj));
   sheet('card');
 }
 function setHash(id){ const h = '#' + toHash(id); if (location.hash !== h) history.replaceState(null, '', h); }
@@ -404,7 +454,7 @@ function showCard(id){
   const figs = (n.haynes.figures || []).map(f => 'Fig ' + f.figure + ' item ' + f.legend).join(' · ');
   const pn = (n.partNumbers || []).map(p => esc(p.number) + (p.by ? ' <span class="ref">(' + esc(p.by) + ')</span>' : '')).join('<br>');
   const rows = n.specs.map(r => '<tr><td>' + esc(r.label)
-      + (r.erratum ? '<span class="flag" title="Haynes printed ' + esc(r.printed_mm && r.printed_mm.join(' to ')) + ' mm">HAYNES MISPRINT</span>' : '')
+      + (r.erratum ? '<span class="flag" title="Haynes printed ' + esc([].concat(r.printed_mm ?? []).join(' to ')) + ' mm">HAYNES MISPRINT</span>' : '')
       + (r.note ? '<span class="note">' + esc(r.note) + '</span>' : '') + '</td>'
       + '<td class="v">' + esc(r.value) + '</td>'
       + '<td><span class="src ' + esc(r.source) + '" title="' + esc(r.sourceName + (r.ref ? ': ' + r.ref : '')) + '">' + esc(r.source) + '</span></td></tr>').join('');
@@ -434,7 +484,7 @@ document.getElementById('tab-card').onclick = () => sheet('card');
 document.getElementById('frame').onclick = () => frame(current && loaded[current] ? loaded[current] : scene);
 addEventListener('keydown', e => {
   if (e.target.closest('input,textarea')) return;
-  if (e.key === 'Escape' && current && N[current].parent) go(N[current].parent);
+  if (e.key === 'Escape'){ if (selected){ setSelected(null); markTree(); showCard(current); } else if (current && N[current].parent) go(N[current].parent); }
   if (e.key === 'e' || e.key === 'E'){ ex.value = ex.value > 0 ? 0 : 100; applyExplode(); }
   if (e.key === 'm' || e.key === 'M') mBtn.click();
 });

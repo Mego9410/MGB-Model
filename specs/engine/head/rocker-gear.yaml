@@ -1,0 +1,222 @@
+# Rocker shaft assembly. Haynes Fig 1.6 items 20 to 36, Sections 10, 11 and 59.
+# Removal (Sec 10): rocker cover, then the eight rocker bracket nuts, then the assembly lifts off.
+# Dismantling (Sec 11): locating screw, split pins, flat and spring washers, then the
+# pedestals, rockers and spacing springs slide off the shaft.
+defaults:
+  system: engine
+  assembly: engine.head
+  haynes: { section: 11, spec_page: 22 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.head.rocker-shaft
+    name: Valve rocker shaft
+    haynes: { figures: [{ figure: "1.6", legend: 20 }] }
+    quantity: 1
+    notes: Hollow oil-feed shaft carrying the eight rockers on four pedestals.
+    specs:
+      length:
+        in: 14.031
+        mm: 356.39
+        printed_mm: 356.0
+        erratum: true
+        source: { label: H, page: 22, note: "Haynes prints 356.0 mm; 14.031 in is 356.39 mm" }
+      diameter: { in: [0.624, 0.625], mm: [15.85, 15.87], source: { label: H, page: 22 } }
+      bore_diameter: { mm: 6.0, source: { label: D, method: "Oil gallery; not published" } }
+      split_pin_hole_from_end: { mm: 0.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-shaft-plug-plain
+    name: Rocker shaft plain plug
+    haynes: { figures: [{ figure: "1.6", legend: 21 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 6.0, source: { label: D, method: "Fits the derived shaft bore" } }
+      length: { mm: 6.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-shaft-plug-screwed
+    name: Rocker shaft screwed plug
+    haynes: { figures: [{ figure: "1.6", legend: 22 }] }
+    quantity: 1
+    notes: Haynes Sec 11 - "Undo the shaft end plug screw. Clean the shaft oilways."
+    specs:
+      diameter: { mm: 7.0, source: { label: D, method: "Not published" } }
+      length: { mm: 7.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-bracket-locating
+    name: Rocker shaft bracket (with locating screw)
+    haynes: { figures: [{ figure: "1.6", legend: 23 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: The one pedestal tapped for the shaft locating screw.
+    specs:
+      height_to_shaft_centre: { mm: 72.4, source: { label: D, method: "Head top face to rocker shaft centre: the rocker pad sits 0.015 in (Haynes p22) above the derived valve tip" } }
+      width: { mm: 20.0, source: { label: D, method: "Fits between a cylinder's two rockers (41.2 mm valve pitch less 17 mm hubs)" } }
+      base_length: { mm: 56.0, source: { label: D, method: "Spans the head stud and short stud, Fig 1.5" } }
+      bore: { in: 0.6255, mm: 15.888, source: { label: D, method: "Taken as the rocker bush bore" } }
+      head_stud_offset: { mm: 26.9, source: { label: D, method: "From Fig 1.5 with the Haynes 1.4:1 rocker ratio" } }
+      short_stud_offset: { mm: 12.8, source: { label: D, method: "From Fig 1.5" } }
+      rocker_bracket_nut_torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 25 } }
+
+  - id: engine.head.rocker-bracket
+    name: Rocker shaft bracket
+    haynes: { figures: [{ figure: "1.6", legend: 24 }] }
+    quantity: 3
+    finish: cast_iron
+    notes: Haynes Sec 10 - shims 0.005 in thick go under the two centre brackets on later engines, and should be fitted to early engines on reassembly.
+    specs:
+      height_to_shaft_centre: { mm: 72.4, source: { label: D, method: "As the locating bracket" } }
+      width: { mm: 20.0, source: { label: D, method: "As the locating bracket" } }
+      base_length: { mm: 56.0, source: { label: D, method: "As the locating bracket" } }
+      bore: { in: 0.6255, mm: 15.888, source: { label: D, method: "Taken as the rocker bush bore" } }
+      head_stud_offset: { mm: 26.9, source: { label: D, method: "From Fig 1.5 with the Haynes 1.4:1 rocker ratio" } }
+      short_stud_offset: { mm: 12.8, source: { label: D, method: "From Fig 1.5" } }
+      rocker_bracket_nut_torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 25 } }
+
+  - id: engine.head.rocker-spacing-spring
+    name: Rocker spacing spring
+    haynes: { figures: [{ figure: "1.6", legend: 25 }] }
+    quantity: 3
+    notes: Keeps adjacent cylinders' rockers apart on the shaft. Shown compressed to its fitted length.
+    specs:
+      free_length: { mm: 45.0, source: { label: D, method: "Not published" } }
+      fitted_length: { mm: 38.5, source: { label: D, method: "Gap between rocker hubs of adjacent cylinders" } }
+      wire_diameter: { mm: 1.6, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 22.0, source: { label: D, method: "Not published" } }
+      total_coils: { count: 7, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker
+    name: Valve rocker
+    haynes: { figures: [{ figure: "1.6", legend: 26 }] }
+    quantity: 8
+    notes: Forged steel rocker, bushed, with the adjusting screw over the pushrod.
+    specs:
+      rocker_ratio: { count: 1.4, source: { label: H, page: 22, note: "1.4 : 1" } }
+      valve_arm_length: { mm: 37.6, source: { label: D, method: "Pushrod-to-valve distance from Fig 1.5 split at the Haynes 1.4:1 ratio" } }
+      pushrod_arm_length: { mm: 26.9, source: { label: D, method: "Pushrod-to-valve distance from Fig 1.5 split at the Haynes 1.4:1 ratio" } }
+      hub_width: { mm: 17.0, source: { label: D, method: "Sized so the outer rockers, washers and split pins fit the 356.4 mm shaft" } }
+      hub_diameter: { mm: 26.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-bush
+    name: Rocker bush
+    haynes: { figures: [{ figure: "1.6", legend: 27 }] }
+    quantity: 8
+    finish: bronze
+    specs:
+      inside_diameter:
+        in: [0.6255, 0.6260]
+        mm: [15.888, 15.900]
+        printed_mm: [15.80, 15.90]
+        erratum: true
+        source: { label: H, page: 22, note: "Haynes prints 15.80 to 15.90 mm; 0.6255 in is 15.888 mm" }
+      outside_diameter: { mm: 19.0, source: { label: D, method: "Not published" } }
+      length: { mm: 17.0, source: { label: D, method: "Rocker hub width" } }
+
+  - id: engine.head.rocker-adjusting-screw
+    name: Rocker adjusting screw
+    haynes: { figures: [{ figure: "1.6", legend: 28 }], section: 60 }
+    quantity: 8
+    notes: Ball end sits in the pushrod cup (Haynes Sec 58). Thread size is not in Haynes.
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Taken as 5/16 in UNF; not published" } }
+      length: { mm: 32.0, source: { label: D, method: "Not published" } }
+      ball_diameter: { mm: 7.9, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-adjuster-locknut
+    name: Rocker adjusting screw locknut
+    haynes: { figures: [{ figure: "1.6", legend: 29 }], section: 60 }
+    quantity: 8
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      thickness: { in: 0.265625, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+
+  - id: engine.head.rocker-locating-screw
+    name: Rocker shaft locating screw
+    haynes: { figures: [{ figure: "1.6", legend: 30 }] }
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "Taken as 1/4 in UNF; not published" } }
+      length: { mm: 19.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-lockplate
+    name: Locating screw lockplate
+    haynes: { figures: [{ figure: "1.6", legend: 31 }] }
+    quantity: 1
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Not published" } }
+      width: { mm: 11.0, source: { label: D, method: "Not published" } }
+      thickness: { mm: 0.9, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-shaft-washer
+    name: Rocker shaft end washer (flat)
+    haynes: { figures: [{ figure: "1.6", legend: 32 }] }
+    quantity: 2
+    specs:
+      outside_diameter: { mm: 25.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 16.3, source: { label: D, method: "Clears the shaft" } }
+      thickness: { mm: 1.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-shaft-spring-washer
+    name: Rocker shaft end spring washer
+    haynes: { figures: [{ figure: "1.6", legend: 33 }] }
+    quantity: 2
+    specs:
+      outside_diameter: { mm: 23.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 16.3, source: { label: D, method: "Clears the shaft" } }
+      thickness: { mm: 1.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-shaft-split-pin
+    name: Rocker shaft split pin
+    haynes: { section: 11 }
+    quantity: 2
+    notes: Not numbered in Fig 1.6; Haynes Sec 11 lists split pins at each shaft end.
+    specs:
+      diameter: { in: 0.0625, source: { label: D, method: "Taken as 1/16 in; not published" } }
+      length: { mm: 22.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.rocker-bracket-washer
+    name: Rocker bracket washer
+    haynes: { figures: [{ figure: "1.6", legend: 34 }], section: 10 }
+    quantity: 4
+    specs:
+      outside_diameter: { in: 0.922, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+      inside_diameter: { in: 0.469, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+      thickness: { in: 0.065, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+
+  - id: engine.head.rocker-bracket-spring-washer
+    name: Rocker bracket spring washer
+    haynes: { figures: [{ figure: "1.6", legend: 35 }], section: 10 }
+    quantity: 4
+    specs:
+      outside_diameter: { mm: 18.5, source: { label: D, method: "Typical 7/16 in spring washer" } }
+      inside_diameter: { mm: 11.4, source: { label: D, method: "Typical 7/16 in spring washer" } }
+      thickness: { mm: 2.8, source: { label: D, method: "Typical 7/16 in spring washer" } }
+
+  - id: engine.head.rocker-bracket-nut
+    name: Rocker bracket nut (head stud)
+    haynes: { figures: [{ figure: "1.6", legend: 36 }], section: 10 }
+    quantity: 4
+    notes: On the four long head studs through the brackets. Thread taken as 7/16 in UNF (not in Haynes).
+    specs:
+      across_flats: { in: 0.6875, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 7/16 in" } }
+      thickness: { in: 0.375, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 7/16 in" } }
+      torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 25, note: "Rocker bracket nuts" } }
+
+  - id: engine.head.rocker-bracket-nut-small
+    name: Rocker bracket nut (short stud)
+    haynes: { figures: [{ figure: "1.6", legend: 36 }], section: 10 }
+    quantity: 4
+    notes: On the four short studs (Fig 1.6 item 5). Thread taken as 5/16 in UNF (not in Haynes).
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      thickness: { in: 0.265625, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 25, note: "Rocker bracket nuts" } }
+
+  - id: engine.head.rocker-bracket-washer-small
+    name: Rocker bracket washer (short stud)
+    haynes: { figures: [{ figure: "1.6", legend: 34 }], section: 10 }
+    quantity: 4
+    specs:
+      outside_diameter: { in: 0.688, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      inside_diameter: { in: 0.344, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      thickness: { in: 0.065, source: { label: S, ref: "SAE plain washer, 5/16 in" } }

@@ -1,0 +1,36 @@
+id: engine.head.casting
+name: Cylinder head
+system: engine
+assembly: engine.head
+haynes:
+  figures: [{ figure: "1.6", legend: 1 }, { figure: "1.5" }]
+  section: 12
+  spec_page: 22
+quantity: 1
+finish: cast_iron
+material: Cast iron (Haynes p25)
+notes: >
+  Layout from Haynes Fig 1.5 (plan of the head with nut order), scaled so the
+  eight valves fit the published 14.031 in rocker shaft. Bathtub chambers,
+  siamesed inlet ports (two inlet, three exhaust: FIA homologation 3016),
+  pushrods on the manifold side, plugs on the right-hand side. Water jacket,
+  oilways and core detail are not modelled, so the model is solid where the
+  real casting is hollow (about 4.5 litres of iron, heavier than the real head).
+variant: { factory_1963: true, as_fitted: true }
+specs:
+  head_nut_torque: { lbf_ft: [45, 50], nm: [61, 68], source: { label: H, page: 24, note: "Tighten half a turn at a time in the Fig 1.5 order" } }
+  combustion_chamber_volume: { count: 40, source: { label: S, ref: "https://bpnorthwest.com/mg/cylinder-head-mgb-63-to-67", note: "40 cc, 1963 to 1967 head" }, display_only: true }
+  inlet_ports: { count: 2, source: { label: S, ref: "FIA homologation form 3016 (MGB)" }, display_only: true }
+  exhaust_ports: { count: 3, source: { label: S, ref: "FIA homologation form 3016 (MGB)" }, display_only: true }
+  length: { mm: 468.0, source: { label: D, method: "Fig 1.5 scaled at 0.451 mm per 300-dpi pixel, set by fitting the eight valves to the 356.4 mm rocker shaft" } }
+  width: { mm: 167.0, source: { label: D, method: "Fig 1.5 at the same scale" } }
+  height: { mm: 71.0, source: { label: D, method: "Deck to top face, set by the valve, spring and guide stack (guide fitted height 0.625 in, Haynes p22)" } }
+  cylinder_pitch: { mm: 96.7, source: { label: D, method: "Spacing of the valve pairs in Fig 1.5 (evenly spaced in the figure)" } }
+  valve_pitch_in_cylinder: { mm: 41.2, source: { label: D, method: "Fig 1.5; leaves 4 mm between inlet and exhaust valve heads" } }
+  valve_row_offset: { mm: 6.0, source: { label: D, method: "Valves sit toward the manifold side of the bore centre; not published" } }
+  pushrod_row_offset: { mm: 64.5, source: { label: D, method: "Valve row to pushrod row, Fig 1.5" } }
+  chamber_depth: { mm: 10.0, source: { label: D, method: "Sized toward the 40 cc chamber volume" } }
+  bore_diameter: { in: 3.16, mm: 80.26, source: { label: H, page: 20 }, display_only: true }
+  guide_bore: { in: 0.5635, mm: 14.31, source: { label: D, method: "Equal to the guide outside diameter (interference fit not modelled)" } }
+  head_stud_hole: { mm: 11.6, source: { label: D, method: "Clearance for the 7/16 in studs" } }
+  pushrod_hole: { mm: 14.0, source: { label: D, method: "Not published" } }

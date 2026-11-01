@@ -50,7 +50,12 @@ def spec_rows(sp: Spec) -> list[dict]:
     for key, d in sp.dims.items():
         raw = d.raw
         src = raw.get("source", {})
-        if "deg" in raw:
+        if "lbf_ft" in raw:
+            tq = raw["lbf_ft"] if isinstance(raw["lbf_ft"], list) else [raw["lbf_ft"]] * 2
+            nm = raw.get("nm")
+            nm = nm if isinstance(nm, list) else [nm, nm] if nm else None
+            text = _range(tq[0], tq[-1], 0, "lbf ft") + (f" ({_range(nm[0], nm[-1], 0, 'Nm')})" if nm else "")
+        elif "deg" in raw:
             text = _range(d.lo_mm, d.hi_mm, 1, "").rstrip() + "°"
         elif "in" in raw:
             inch = raw["in"] if isinstance(raw["in"], list) else [raw["in"], raw["in"]]
@@ -81,7 +86,8 @@ def spec_rows(sp: Spec) -> list[dict]:
             "key": key, "label": _label(key), "value": text,
             "source": src.get("label"), "sourceName": SOURCE_TEXT.get(src.get("label"), "?"),
             "ref": ref, "note": src.get("note", ""), "erratum": bool(raw.get("erratum")),
-            "printed_mm": raw.get("printed_mm"),
+            "printed_mm": (raw["printed_mm"] if isinstance(raw.get("printed_mm"), list)
+                           else [raw["printed_mm"]] if raw.get("printed_mm") is not None else None),
         })
     return rows
 
@@ -99,8 +105,17 @@ def build_registry(specs: dict[str, Spec], assemblies, sizes: dict[str, int]) ->
                        "haynes": a.HAYNES, "children": [], "file": f"models/{a.ID}.json",
                        "bytes": sizes.get(a.ID)}
         nodes[a.PARENT]["children"].append(a.ID)
-        for inst_id, part_id, _loc in a.INSTANCES:
-            instances[inst_id] = {"part": part_id, "assembly": a.ID, "node": node_name(inst_id)}
+        groups = getattr(a, "GROUPS", {})
+        for inst in a.INSTANCES:
+            inst_id, part_id = inst[0], inst[1]
+            opts = inst[3] if len(inst) > 3 else {}
+            own = opts.get("explode", specs[part_id].data.get("explode"))
+            stages = [dict(groups[g], group=g) for g in opts.get("groups", [])]
+            if own:
+                stages.append(own)
+            instances[inst_id] = {"part": part_id, "assembly": a.ID, "node": node_name(inst_id),
+                                  "stages": stages, "label": opts.get("label", True),
+                                  "fitted": opts.get("fitted_note")}
             if part_id not in nodes[a.ID]["children"]:
                 nodes[a.ID]["children"].append(part_id)
     for pid, sp in specs.items():

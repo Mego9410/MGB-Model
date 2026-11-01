@@ -1,0 +1,246 @@
+# Head gasket, studs, nuts, plugs, thermostat housing and spark plugs.
+# Haynes Fig 1.6 items 4 to 7, 18, 19 and 37 to 53; head studs from Fig 1.8.
+# Fastener thread sizes are not given in Haynes; each size is stated as derived.
+defaults:
+  system: engine
+  assembly: engine.head
+  haynes: { section: 12 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.head.gasket
+    name: Cylinder head gasket
+    haynes: { figures: [{ figure: "1.6", legend: 37 }], section: 58 }
+    quantity: 1
+    finish: gasket
+    notes: Fit with the words FRONT and TOP positioned accordingly; no jointing compound (Haynes Sec 58).
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Typical compressed composite gasket; not published" } }
+      bore_hole: { mm: 84.0, source: { label: D, method: "80.26 mm bore plus fire-ring clearance" } }
+
+  - id: engine.head.head-stud
+    name: Cylinder head stud
+    haynes: { figures: [{ figure: "1.8" }], section: 58 }
+    quantity: 7
+    notes: Screwed into the block (Fig 1.8); shown here because the seven external head nuts sit on them. 7/16 in thread is derived.
+    specs:
+      thread_diameter: { in: 0.4375, source: { label: D, method: "7/16 in, typical for the B-series head; not in Haynes" } }
+      length: { mm: 105.0, source: { label: D, method: "20 mm into the block plus the head, washer and nut" } }
+
+  - id: engine.head.head-stud-long
+    name: Cylinder head stud (through rocker bracket)
+    haynes: { figures: [{ figure: "1.8" }], section: 58 }
+    quantity: 4
+    notes: The four studs that also hold the rocker brackets (Fig 1.5 nuts 2, 3, 6, 7).
+    specs:
+      thread_diameter: { in: 0.4375, source: { label: D, method: "7/16 in; not in Haynes" } }
+      length: { mm: 118.0, source: { label: D, method: "Reaches through the rocker bracket base and its nut" } }
+
+  - id: engine.head.head-nut
+    name: Cylinder head nut
+    haynes: { figures: [{ figure: "1.6", legend: 39 }], section: 58 }
+    quantity: 7
+    specs:
+      across_flats: { in: 0.6875, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 7/16 in" } }
+      thickness: { in: 0.375, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 7/16 in" } }
+      torque: { lbf_ft: [45, 50], nm: [61, 68], source: { label: H, page: 24 } }
+
+  - id: engine.head.head-washer
+    name: Cylinder head nut washer
+    haynes: { figures: [{ figure: "1.6", legend: 38 }], section: 58 }
+    quantity: 7
+    specs:
+      outside_diameter: { in: 0.922, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+      inside_diameter: { in: 0.469, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+      thickness: { in: 0.065, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+
+  - id: engine.head.rocker-stud-short
+    name: Rocker bracket short stud
+    haynes: { figures: [{ figure: "1.6", legend: 5 }] }
+    quantity: 4
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in; not in Haynes" } }
+      length: { mm: 34.0, source: { label: D, method: "12 mm into the head plus the bracket base, washer and nut" } }
+
+  - id: engine.head.cover-stud
+    name: Rocker cover stud
+    haynes: { figures: [{ figure: "1.6", legend: 6 }], section: 10 }
+    quantity: 2
+    notes: Haynes Sec 10 - "Remove the two nuts and then the rocker cover".
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "1/4 in; not in Haynes" } }
+      length: { mm: 128.0, source: { label: D, method: "12 mm into the head up through the cover top" } }
+
+  - id: engine.head.thermostat-stud
+    name: Thermostat housing stud
+    haynes: { figures: [{ figure: "1.6", legend: 7 }] }
+    quantity: 3
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in; not in Haynes" } }
+      length: { mm: 46.0, source: { label: D, method: "Through the distance piece and elbow flange" } }
+
+  - id: engine.head.manifold-stud-end
+    name: Manifold stud (end)
+    haynes: { figures: [{ figure: "1.6", legend: 18 }], section: 15 }
+    quantity: 2
+    notes: Haynes Sec 15 - two end nuts with small washers.
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in; manifold nut torque 15 to 16 lbf ft suits it" } }
+      length: { mm: 42.0, source: { label: D, method: "Not published" } }
+      manifold_nut_torque: { lbf_ft: [15, 16], nm: [20, 22], source: { label: H, page: 25 } }
+
+  - id: engine.head.manifold-stud
+    name: Manifold stud (centre)
+    haynes: { figures: [{ figure: "1.6", legend: 19 }], section: 15 }
+    quantity: 4
+    notes: Haynes Sec 15 - four centre nuts with large washers clamp both manifolds.
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in; not in Haynes" } }
+      length: { mm: 52.0, source: { label: D, method: "Not published" } }
+      manifold_nut_torque: { lbf_ft: [15, 16], nm: [20, 22], source: { label: H, page: 25 } }
+
+  - id: engine.head.core-plug
+    name: Core plug
+    haynes: { figures: [{ figure: "1.6", legend: 4 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 31.75, source: { label: D, method: "1 1/4 in cup plug; not published" } }
+      depth: { mm: 5.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.screwed-plug
+    name: Screwed plug
+    haynes: { figures: [{ figure: "1.6", legend: 44 }] }
+    quantity: 1
+    specs:
+      thread_diameter: { mm: 15.9, source: { label: D, method: "Not published" } }
+      hex_across_flats: { mm: 19.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.screwed-plug-washer
+    name: Screwed plug washer
+    haynes: { figures: [{ figure: "1.6", legend: 45 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 23.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 16.2, source: { label: D, method: "Not published" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.blanking-plate
+    name: Heater outlet blanking plate
+    haynes: { figures: [{ figure: "1.6", legend: 40 }] }
+    quantity: 1
+    notes: Covers the rear heater water outlet when no heater valve is fitted (the heater was optional in 1963).
+    specs:
+      length: { mm: 50.0, source: { label: D, method: "Not published" } }
+      width: { mm: 30.0, source: { label: D, method: "Not published" } }
+      thickness: { mm: 2.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.blanking-plate-gasket
+    name: Blanking plate gasket
+    haynes: { figures: [{ figure: "1.6", legend: 41 }] }
+    quantity: 1
+    finish: gasket
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.blanking-plate-screw
+    name: Blanking plate screw
+    haynes: { figures: [{ figure: "1.6", legend: 42 }] }
+    quantity: 2
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "1/4 in; not in Haynes" } }
+      length: { in: 0.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.blanking-plate-spring-washer
+    name: Blanking plate spring washer
+    haynes: { figures: [{ figure: "1.6", legend: 43 }] }
+    quantity: 2
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "Typical 1/4 in spring washer" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "Typical 1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Typical 1/4 in spring washer" } }
+
+  - id: engine.head.spark-plug
+    name: Spark plug, Champion N-9Y
+    haynes: { figures: [{ figure: "1.6", legend: 46 }], section: 12, spec_page: 95 }
+    quantity: 4
+    finish: plug
+    specs:
+      plug_gap:
+        in: [0.024, 0.026]
+        mm: [0.61, 0.66]
+        printed_mm: [0.625, 0.66]
+        erratum: true
+        source: { label: H, page: 95, note: "With the Lucas 25D4 distributor. Haynes prints 0.625 to 0.66 mm; 0.024 in is 0.61 mm" }
+        display_only: true
+      torque: { lbf_ft: 18, nm: 24, source: { label: H, page: 95 } }
+      thread_diameter: { mm: 14.0, source: { label: S, ref: "Champion N-series: 14 mm x 1.25 thread, 3/4 in reach, gasket seat" }, display_only: true }
+      reach: { in: 0.75, source: { label: S, ref: "Champion N-series: 3/4 in reach" }, display_only: true }
+      hex_across_flats: { in: 0.8125, source: { label: S, ref: "Champion N-series: 13/16 in hex" }, display_only: true }
+
+  - id: engine.head.spark-plug-gasket
+    name: Spark plug gasket
+    haynes: { figures: [{ figure: "1.6", legend: 47 }] }
+    quantity: 4
+    finish: copper
+    specs:
+      outside_diameter: { mm: 20.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 14.2, source: { label: D, method: "Fits the 14 mm thread" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.thermostat-distance-piece
+    name: Thermostat distance piece
+    haynes: { figures: [{ figure: "1.6", legend: 48 }], section: 12 }
+    quantity: 1
+    finish: aluminium
+    specs:
+      height: { mm: 12.0, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 66.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 46.0, source: { label: D, method: "Clears the thermostat" } }
+
+  - id: engine.head.water-outlet-elbow
+    name: Water outlet elbow (thermostat housing)
+    haynes: { figures: [{ figure: "1.6", legend: 49 }], section: 12 }
+    quantity: 1
+    finish: aluminium
+    notes: Top hose connects here (Haynes Sec 12).
+    specs:
+      hose_spigot_diameter: { mm: 38.0, source: { label: D, method: "1 1/2 in top hose; not published" } }
+      flange_thickness: { mm: 8.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.thermostat-gasket
+    name: Thermostat housing gasket
+    haynes: { figures: [{ figure: "1.6", legend: 50 }], section: 12 }
+    quantity: 2
+    finish: gasket
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.thermostat-washer
+    name: Thermostat housing plain washer
+    haynes: { figures: [{ figure: "1.6", legend: 51 }], section: 12 }
+    quantity: 3
+    specs:
+      outside_diameter: { in: 0.688, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      inside_diameter: { in: 0.344, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      thickness: { in: 0.065, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+
+  - id: engine.head.thermostat-nut
+    name: Thermostat housing nut
+    haynes: { figures: [{ figure: "1.6", legend: 52 }], section: 12 }
+    quantity: 3
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      thickness: { in: 0.265625, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+
+  - id: engine.head.thermostat
+    name: Thermostat
+    haynes: { figures: [{ figure: "1.6", legend: 53 }], section: 12, spec_page: 55 }
+    quantity: 1
+    finish: brass
+    specs:
+      opening_temperature_c: { count: 74, source: { label: H, page: 55, note: "Standard, early models: 74 C (165 F)" }, display_only: true }
+      flange_diameter: { mm: 54.0, source: { label: D, method: "Not published" } }
+      body_diameter: { mm: 34.0, source: { label: D, method: "Not published" } }
+      height: { mm: 42.0, source: { label: D, method: "Not published" } }

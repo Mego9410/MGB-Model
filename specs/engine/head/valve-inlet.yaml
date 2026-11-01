@@ -18,7 +18,7 @@ notes: >
   BP Northwest listing V3570). Material and overall length are not published in
   Haynes; length is derived and should be measured when a valve is to hand.
 variant: { factory_1963: true, as_fitted: true }
-explode: { axis: [0, 0, -1], order: 6, distance_mm: 140 }
+explode: { axis: [0, 0, -1], order: 20, distance_mm: 150 }
 fastened_by: [engine.head.valve-collet]
 specs:
   head_diameter:

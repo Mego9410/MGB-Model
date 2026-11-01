@@ -1,19 +1,15 @@
-"""Inlet valve, 18G engine. Haynes Fig 1.9 item 1 / Fig 1.6 item 8, specs p22.
+"""Inlet and exhaust valves, 18G engine. Haynes Fig 1.9 / Fig 1.6, specs p22.
 
-Built as a revolved profile about Z. z = 0 is the combustion face of the head;
-the stem runs up +Z to the tip.
+Revolved profile about Z. z = 0 is the combustion face; the stem runs up +Z.
 """
 import math
 
-from build123d import (Axis, BuildLine, BuildPart, BuildSketch, Line, Part, Plane,
-                       Polyline, Spline, make_face, revolve)
+from build123d import Axis, BuildLine, BuildPart, BuildSketch, Part, Plane, Polyline, Spline, make_face, revolve
 
 from mgb import probes
 
-SPEC = "engine/head/valve-inlet.yaml"
 
-
-def build(spec) -> Part:
+def build_valve(spec) -> Part:
     R = spec.nom("head_diameter") / 2
     r = spec.nom("stem_diameter") / 2
     L = spec.nom("overall_length")
@@ -34,7 +30,6 @@ def build(spec) -> Part:
         with BuildSketch(Plane.XZ):
             with BuildLine():
                 Polyline((0, 0), (R, 0), (R, m), face_top)
-                # concave tulip from the seat face into the stem
                 Spline(face_top, (r + 2.2, hh + 3.0), blend_end,
                        tangents=[(-math.cos(seat), math.sin(seat)), (0, 1)])
                 Polyline(blend_end, (r, g_bot), (r - gd, g_bot + 0.4),
@@ -47,19 +42,14 @@ def build(spec) -> Part:
     return part
 
 
-def _stem(part):
-    # the stem is the longest cylindrical face
-    return probes.longest_cylinder_diameter(part)
-
-
-def _seat(part):
-    # the seat face is the cone furthest from the axis
-    return probes.largest_cone_angle(part)
-
-
-PROBES = {
+VALVE_PROBES = {
     "head_diameter": lambda p: probes.bbox_size(p, "x"),
-    "stem_diameter": _stem,
-    "seat_angle": _seat,
+    "stem_diameter": probes.longest_cylinder_diameter,
+    "seat_angle": probes.largest_cone_angle,   # the seat face is the cone furthest from the axis
     "overall_length": lambda p: probes.bbox_size(p, "z"),
+}
+
+PARTS = {
+    "engine.head.valve-inlet": {"build": build_valve, "probes": VALVE_PROBES},
+    "engine.head.valve-exhaust": {"build": build_valve, "probes": VALVE_PROBES},
 }

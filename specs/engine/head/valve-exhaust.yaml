@@ -1,0 +1,64 @@
+id: engine.head.valve-exhaust
+name: Exhaust valve
+system: engine
+assembly: engine.head
+haynes:
+  figures:
+    - { figure: "1.6", legend: 9 }
+  section: 13
+  spec_page: 22
+quantity: 4
+finish: machined_steel
+notes: >
+  1963 18G engine, wide collet groove like the inlet valve. Overall length and
+  head profile are not published in Haynes and are derived.
+variant: { factory_1963: true, as_fitted: true }
+explode: { axis: [0, 0, -1], order: 20, distance_mm: 150 }
+specs:
+  head_diameter:
+    in: [1.343, 1.348]
+    mm: [34.11, 34.23]
+    source: { label: H, page: 22 }
+  stem_diameter:
+    in: [0.3417, 0.3422]
+    mm: [8.68, 8.69]
+    source: { label: H, page: 22 }
+  seat_angle:
+    deg: 45.5
+    source: { label: H, page: 22, note: "Printed as 45 1/2 deg" }
+  valve_lift:
+    in: 0.3645
+    mm: 9.25
+    source: { label: H, page: 22 }
+    display_only: true
+  stem_to_guide_clearance:
+    in: [0.002, 0.003]
+    mm: [0.0508, 0.0762]
+    source: { label: H, page: 22 }
+    display_only: true
+  stem_to_rocker_clearance_cold:
+    in: 0.015
+    mm: 0.38
+    source: { label: H, page: 22 }
+    display_only: true
+  overall_length:
+    mm: 115.0
+    source: { label: D, method: "Taken equal to the inlet valve; not published" }
+  margin_thickness:
+    mm: 1.4
+    source: { label: D, method: "Typical B-series exhaust valve proportion; not published" }
+  seat_face_radial_width:
+    mm: 1.6
+    source: { label: D, method: "Typical B-series exhaust valve proportion; not published" }
+  head_height:
+    mm: 10.0
+    source: { label: D, method: "As inlet valve" }
+  collet_groove_width:
+    mm: 3.2
+    source: { label: D, method: "As inlet valve" }
+  collet_groove_depth:
+    mm: 0.8
+    source: { label: D, method: "As inlet valve" }
+  collet_groove_from_tip:
+    mm: 4.0
+    source: { label: D, method: "As inlet valve" }

@@ -1,0 +1,150 @@
+# Valve guides, springs and retaining parts. Haynes Fig 1.6 and Fig 1.9, Section 13.
+defaults:
+  system: engine
+  assembly: engine.head
+  haynes: { section: 13, spec_page: 22 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.head.guide-inlet
+    name: Inlet valve guide
+    haynes: { figures: [{ figure: "1.6", legend: 2 }], section: 32 }
+    quantity: 4
+    finish: cast_iron
+    notes: Pressed into the head. Early-car length; later cars used a 1.875 in inlet guide.
+    explode: { axis: [0, 0, -1], order: 21, distance_mm: 70 }
+    specs:
+      length: { in: 1.625, mm: 41.275, source: { label: H, page: 22, note: "Early cars" } }
+      outside_diameter: { in: [0.5635, 0.5640], mm: [14.30, 14.32], source: { label: H, page: 22 } }
+      inside_diameter:
+        in: [0.3442, 0.3447]
+        mm: [8.743, 8.755]
+        printed_mm: [8.73, 8.74]
+        erratum: true
+        source: { label: H, page: 22, note: "Haynes prints 8.73 to 8.74 mm; 0.3447 in is 8.755 mm" }
+      fitted_height_above_head:
+        in: 0.625
+        mm: 15.875
+        source: { label: H, page: 22, note: "Measured from the spring seat surface (Fig 1.18)" }
+        display_only: true
+      top_chamfer: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.guide-exhaust
+    name: Exhaust valve guide
+    haynes: { figures: [{ figure: "1.6", legend: 3 }], section: 32 }
+    quantity: 4
+    finish: cast_iron
+    notes: Pressed into the head; longer than the inlet guide, reaching into the exhaust port.
+    explode: { axis: [0, 0, -1], order: 21, distance_mm: 70 }
+    specs:
+      length: { in: 2.203, mm: 55.95, source: { label: H, page: 22 } }
+      outside_diameter: { in: [0.5635, 0.5640], mm: [14.30, 14.32], source: { label: H, page: 22 } }
+      inside_diameter:
+        in: [0.3442, 0.3447]
+        mm: [8.743, 8.755]
+        printed_mm: [8.73, 8.74]
+        erratum: true
+        source: { label: H, page: 22, note: "Haynes prints 8.73 to 8.74 mm; 0.3447 in is 8.755 mm" }
+      fitted_height_above_head:
+        in: 0.625
+        mm: 15.875
+        source: { label: H, page: 22 }
+        display_only: true
+      top_chamfer: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.spring-outer
+    name: Outer valve spring
+    haynes: { figures: [{ figure: "1.6", legend: 10 }, { figure: "1.9", legend: 5 }] }
+    quantity: 8
+    notes: Double-coil valve springs (18G). Shown in the head compressed to its fitted length.
+    explode: { axis: [0, 0, 1], order: 20, distance_mm: 45 }
+    specs:
+      free_length: { in: 2.141, mm: 54.4, source: { label: H, page: 22 } }
+      fitted_length: { mm: 41.2, source: { label: D, method: "Set by the derived valve groove, collet, cap and collar positions" } }
+      wire_diameter: { mm: 4.0, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 33.3, source: { label: D, method: "Not published; sized to clear the inner spring" } }
+      total_coils: { count: 6.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.spring-inner
+    name: Inner valve spring
+    haynes: { figures: [{ figure: "1.6", legend: 11 }, { figure: "1.9", legend: 5 }] }
+    quantity: 8
+    notes: Sits inside the outer spring on the collar's inner step. Shown compressed to its fitted length.
+    explode: { axis: [0, 0, 1], order: 20, distance_mm: 65 }
+    specs:
+      free_length: { in: 1.969, mm: 50.0, source: { label: H, page: 22 } }
+      fitted_length: { mm: 39.7, source: { label: D, method: "Outer fitted length less the 1.5 mm collar step" } }
+      wire_diameter: { mm: 3.0, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 23.5, source: { label: D, method: "Not published; sized inside the outer spring" } }
+      total_coils: { count: 8.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.spring-collar
+    name: Valve spring bottom collar
+    haynes: { figures: [{ figure: "1.6", legend: 12 }, { figure: "1.9", legend: 4 }] }
+    quantity: 8
+    explode: { axis: [0, 0, 1], order: 20, distance_mm: 18 }
+    specs:
+      outside_diameter: { mm: 35.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 14.7, source: { label: D, method: "Clears the 14.32 mm guide" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+      inner_step_height: { mm: 1.5, source: { label: D, method: "Locates the inner spring" } }
+
+  - id: engine.head.valve-shroud
+    name: Valve guide shroud
+    haynes: { figures: [{ figure: "1.6", legend: 13 }, { figure: "1.9", legend: 6 }] }
+    quantity: 8
+    variant: { factory_1963: true, as_fitted: true }
+    notes: >
+      Haynes: fitted up to engine number 4385 (and L2815). Whether Oliver's 1963
+      engine has them depends on its number; shown here until that is confirmed.
+    explode: { axis: [0, 0, 1], order: 20, distance_mm: 85 }
+    specs:
+      outside_diameter: { mm: 16.5, source: { label: D, method: "Not published; fits inside the inner spring" } }
+      inside_diameter: { mm: 14.4, source: { label: D, method: "Clears the guide" } }
+      height: { mm: 14.0, source: { label: D, method: "Proportion from Fig 1.9" } }
+      flange_diameter: { mm: 19.5, source: { label: D, method: "Proportion from Fig 1.9" } }
+
+  - id: engine.head.packing-ring
+    name: Valve stem packing ring
+    haynes: { figures: [{ figure: "1.6", legend: 14 }, { figure: "1.9", legend: 7 }] }
+    quantity: 8
+    finish: rubber
+    notes: Oil seal ring. Haynes Sec 56 photo shows it fitted on the stem before the collets.
+    explode: { axis: [0, 0, 1], order: 20, distance_mm: 100 }
+    specs:
+      inside_diameter: { mm: 8.4, source: { label: D, method: "Stretched onto the 8.7 mm stem" } }
+      section_diameter: { mm: 1.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.head.spring-cap
+    name: Valve spring cap
+    haynes: { figures: [{ figure: "1.6", legend: 15 }, { figure: "1.9", legend: 8 }] }
+    quantity: 8
+    explode: { axis: [0, 0, 1], order: 20, distance_mm: 115 }
+    specs:
+      outside_diameter: { mm: 34.0, source: { label: D, method: "Not published" } }
+      height: { mm: 9.0, source: { label: D, method: "Not published" } }
+      bore_top_diameter: { mm: 13.6, source: { label: D, method: "Matches the collet taper" } }
+      bore_bottom_diameter: { mm: 11.2, source: { label: D, method: "Matches the collet taper" } }
+
+  - id: engine.head.collet
+    name: Valve collet (half)
+    haynes: { figures: [{ figure: "1.6", legend: 16 }, { figure: "1.9", legend: 2 }] }
+    quantity: 16
+    notes: Split taper collets, two per valve; wide-groove type for 18G engines.
+    explode: { axis: [0, 0, 1], order: 20, distance_mm: 135 }
+    specs:
+      length: { mm: 8.6, source: { label: D, method: "Not published" } }
+      top_diameter: { mm: 13.6, source: { label: D, method: "Not published" } }
+      bottom_diameter: { mm: 11.2, source: { label: D, method: "Not published" } }
+      bead_width: { mm: 3.0, source: { label: D, method: "Fits the 3.2 mm derived groove" } }
+
+  - id: engine.head.valve-clip
+    name: Collet retaining clip
+    haynes: { figures: [{ figure: "1.6", legend: 17 }, { figure: "1.9", legend: 3 }] }
+    quantity: 8
+    notes: Haynes Sec 13 says "remove the spring clips where fitted".
+    explode: { axis: [0, 0, 1], order: 19, distance_mm: 155 }
+    specs:
+      wire_diameter: { mm: 0.9, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 12.8, source: { label: D, method: "Sits over the collet tops" } }

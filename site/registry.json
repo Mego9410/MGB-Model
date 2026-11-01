@@ -155,15 +155,4446 @@
      },
      {
       "figure": "1.9"
+     },
+     {
+      "figure": "1.5"
      }
     ],
     "section": 12
    },
    "children": [
-    "engine.head.valve-inlet"
+    "engine.head.casting",
+    "engine.head.gasket",
+    "engine.head.head-stud-long",
+    "engine.head.head-stud",
+    "engine.head.head-washer",
+    "engine.head.head-nut",
+    "engine.head.valve-exhaust",
+    "engine.head.guide-exhaust",
+    "engine.head.spring-collar",
+    "engine.head.valve-shroud",
+    "engine.head.spring-outer",
+    "engine.head.spring-inner",
+    "engine.head.packing-ring",
+    "engine.head.spring-cap",
+    "engine.head.collet",
+    "engine.head.valve-clip",
+    "engine.head.valve-inlet",
+    "engine.head.guide-inlet",
+    "engine.head.rocker-shaft",
+    "engine.head.rocker-shaft-plug-plain",
+    "engine.head.rocker-shaft-plug-screwed",
+    "engine.head.rocker-bracket",
+    "engine.head.rocker-bracket-washer",
+    "engine.head.rocker-bracket-spring-washer",
+    "engine.head.rocker-bracket-nut",
+    "engine.head.rocker-stud-short",
+    "engine.head.rocker-bracket-washer-small",
+    "engine.head.rocker-bracket-nut-small",
+    "engine.head.rocker-bracket-locating",
+    "engine.head.rocker",
+    "engine.head.rocker-bush",
+    "engine.head.rocker-adjusting-screw",
+    "engine.head.rocker-adjuster-locknut",
+    "engine.head.rocker-spacing-spring",
+    "engine.head.rocker-lockplate",
+    "engine.head.rocker-locating-screw",
+    "engine.head.rocker-shaft-washer",
+    "engine.head.rocker-shaft-spring-washer",
+    "engine.head.rocker-shaft-split-pin",
+    "engine.head.rocker-cover-gasket",
+    "engine.head.rocker-cover",
+    "engine.head.filler-cap",
+    "engine.head.cover-stud",
+    "engine.head.rocker-cover-bush",
+    "engine.head.rocker-cover-washer",
+    "engine.head.rocker-cover-bracket",
+    "engine.head.rocker-cover-nut",
+    "engine.head.thermostat-gasket",
+    "engine.head.thermostat-distance-piece",
+    "engine.head.thermostat",
+    "engine.head.water-outlet-elbow",
+    "engine.head.thermostat-stud",
+    "engine.head.thermostat-washer",
+    "engine.head.thermostat-nut",
+    "engine.head.spark-plug-gasket",
+    "engine.head.spark-plug",
+    "engine.head.manifold-stud",
+    "engine.head.manifold-stud-end",
+    "engine.head.core-plug",
+    "engine.head.screwed-plug-washer",
+    "engine.head.screwed-plug",
+    "engine.head.blanking-plate-gasket",
+    "engine.head.blanking-plate",
+    "engine.head.blanking-plate-spring-washer",
+    "engine.head.blanking-plate-screw"
    ],
    "file": "models/engine.head.json",
-   "bytes": 108923
+   "bytes": 993377
+  },
+  "engine.head.casting": {
+   "id": "engine.head.casting",
+   "kind": "part",
+   "name": "Cylinder head",
+   "parent": "engine.head",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 1
+     },
+     {
+      "figure": "1.5"
+     }
+    ],
+    "section": 12,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": "Cast iron (Haynes p25)",
+   "finish": "cast_iron",
+   "notes": "Layout from Haynes Fig 1.5 (plan of the head with nut order), scaled so the eight valves fit the published 14.031 in rocker shaft. Bathtub chambers, siamesed inlet ports (two inlet, three exhaust: FIA homologation 3016), pushrods on the manifold side, plugs on the right-hand side. Water jacket, oilways and core detail are not modelled, so the model is solid where the real casting is hollow (about 4.5 litres of iron, heavier than the real head).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "head_nut_torque",
+     "label": "Head nut torque",
+     "value": "45 to 50 lbf ft (61 to 68 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Tighten half a turn at a time in the Fig 1.5 order",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "combustion_chamber_volume",
+     "label": "Combustion chamber volume",
+     "value": "40",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://bpnorthwest.com/mg/cylinder-head-mgb-63-to-67",
+     "note": "40 cc, 1963 to 1967 head",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inlet_ports",
+     "label": "Inlet ports",
+     "value": "2",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "FIA homologation form 3016 (MGB)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "exhaust_ports",
+     "label": "Exhaust ports",
+     "value": "3",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "FIA homologation form 3016 (MGB)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "468.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 1.5 scaled at 0.451 mm per 300-dpi pixel, set by fitting the eight valves to the 356.4 mm rocker shaft",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "167.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 1.5 at the same scale",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "71.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Deck to top face, set by the valve, spring and guide stack (guide fitted height 0.625 in, Haynes p22)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "cylinder_pitch",
+     "label": "Cylinder pitch",
+     "value": "96.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Spacing of the valve pairs in Fig 1.5 (evenly spaced in the figure)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "valve_pitch_in_cylinder",
+     "label": "Valve pitch in cylinder",
+     "value": "41.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 1.5; leaves 4 mm between inlet and exhaust valve heads",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "valve_row_offset",
+     "label": "Valve row offset",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Valves sit toward the manifold side of the bore centre; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pushrod_row_offset",
+     "label": "Pushrod row offset",
+     "value": "64.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Valve row to pushrod row, Fig 1.5",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "chamber_depth",
+     "label": "Chamber depth",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sized toward the 40 cc chamber volume",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore_diameter",
+     "label": "Bore diameter",
+     "value": "3.16 in (80.26 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p20",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "guide_bore",
+     "label": "Guide bore",
+     "value": "0.5635 in (14.31 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the guide outside diameter (interference fit not modelled)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "head_stud_hole",
+     "label": "Head stud hole",
+     "value": "11.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clearance for the 7/16 in studs",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pushrod_hole",
+     "label": "Pushrod hole",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.69
+  },
+  "engine.head.gasket": {
+   "id": "engine.head.gasket",
+   "kind": "part",
+   "name": "Cylinder head gasket",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 58,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 37
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Fit with the words FRONT and TOP positioned accordingly; no jointing compound (Haynes Sec 58).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical compressed composite gasket; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore_hole",
+     "label": "Bore hole",
+     "value": "84.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "80.26 mm bore plus fire-ring clearance",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.head-stud": {
+   "id": "engine.head.head-stud",
+   "kind": "part",
+   "name": "Cylinder head stud",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 58,
+    "figures": [
+     {
+      "figure": "1.8"
+     }
+    ]
+   },
+   "quantity": 7,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Screwed into the block (Fig 1.8); shown here because the seven external head nuts sit on them. 7/16 in thread is derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in, typical for the B-series head; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "105.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "20 mm into the block plus the head, washer and nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.head-stud-long": {
+   "id": "engine.head.head-stud-long",
+   "kind": "part",
+   "name": "Cylinder head stud (through rocker bracket)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 58,
+    "figures": [
+     {
+      "figure": "1.8"
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "The four studs that also hold the rocker brackets (Fig 1.5 nuts 2, 3, 6, 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "118.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Reaches through the rocker bracket base and its nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.head-nut": {
+   "id": "engine.head.head-nut",
+   "kind": "part",
+   "name": "Cylinder head nut",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 58,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 39
+     }
+    ]
+   },
+   "quantity": 7,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.6875 in (17.46 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "45 to 50 lbf ft (61 to 68 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.head-washer": {
+   "id": "engine.head.head-washer",
+   "kind": "part",
+   "name": "Cylinder head nut washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 58,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 38
+     }
+    ]
+   },
+   "quantity": 7,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.922 in (23.42 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.469 in (11.91 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.065 in (1.65 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.rocker-stud-short": {
+   "id": "engine.head.rocker-stud-short",
+   "kind": "part",
+   "name": "Rocker bracket short stud",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "12 mm into the head plus the bracket base, washer and nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.cover-stud": {
+   "id": "engine.head.cover-stud",
+   "kind": "part",
+   "name": "Rocker cover stud",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 10 - \"Remove the two nuts and then the rocker cover\".",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "128.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "12 mm into the head up through the cover top",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.thermostat-stud": {
+   "id": "engine.head.thermostat-stud",
+   "kind": "part",
+   "name": "Thermostat housing stud",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the distance piece and elbow flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.manifold-stud-end": {
+   "id": "engine.head.manifold-stud-end",
+   "kind": "part",
+   "name": "Manifold stud (end)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 15,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 18
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 15 - two end nuts with small washers.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in; manifold nut torque 15 to 16 lbf ft suits it",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "42.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "manifold_nut_torque",
+     "label": "Manifold nut torque",
+     "value": "15 to 16 lbf ft (20 to 22 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.head.manifold-stud": {
+   "id": "engine.head.manifold-stud",
+   "kind": "part",
+   "name": "Manifold stud (centre)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 15,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 19
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 15 - four centre nuts with large washers clamp both manifolds.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "52.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "manifold_nut_torque",
+     "label": "Manifold nut torque",
+     "value": "15 to 16 lbf ft (20 to 22 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.head.core-plug": {
+   "id": "engine.head.core-plug",
+   "kind": "part",
+   "name": "Core plug",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "31.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1 1/4 in cup plug; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "5.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.screwed-plug": {
+   "id": "engine.head.screwed-plug",
+   "kind": "part",
+   "name": "Screwed plug",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 44
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "15.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hex_across_flats",
+     "label": "Hex across flats",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.screwed-plug-washer": {
+   "id": "engine.head.screwed-plug-washer",
+   "kind": "part",
+   "name": "Screwed plug washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 45
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "23.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "16.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.blanking-plate": {
+   "id": "engine.head.blanking-plate",
+   "kind": "part",
+   "name": "Heater outlet blanking plate",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 40
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Covers the rear heater water outlet when no heater valve is fitted (the heater was optional in 1963).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "50.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.blanking-plate-gasket": {
+   "id": "engine.head.blanking-plate-gasket",
+   "kind": "part",
+   "name": "Blanking plate gasket",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 41
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.blanking-plate-screw": {
+   "id": "engine.head.blanking-plate-screw",
+   "kind": "part",
+   "name": "Blanking plate screw",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 42
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.50 in (12.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.blanking-plate-spring-washer": {
+   "id": "engine.head.blanking-plate-spring-washer",
+   "kind": "part",
+   "name": "Blanking plate spring washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 43
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.spark-plug": {
+   "id": "engine.head.spark-plug",
+   "kind": "part",
+   "name": "Spark plug, Champion N-9Y",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 46
+     }
+    ],
+    "spec_page": 95
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plug",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "plug_gap",
+     "label": "Plug gap",
+     "value": "0.024 to 0.026 in (0.610 to 0.660 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p95",
+     "note": "With the Lucas 25D4 distributor. Haynes prints 0.625 to 0.66 mm; 0.024 in is 0.61 mm",
+     "erratum": true,
+     "printed_mm": [
+      0.625,
+      0.66
+     ]
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "18 lbf ft (24 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p95",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "14.0 mm (0.551 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Champion N-series: 14 mm x 1.25 thread, 3/4 in reach, gasket seat",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "reach",
+     "label": "Reach",
+     "value": "0.75 in (19.05 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Champion N-series: 3/4 in reach",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hex_across_flats",
+     "label": "Hex across flats",
+     "value": "0.8125 in (20.64 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Champion N-series: 13/16 in hex",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.spark-plug-gasket": {
+   "id": "engine.head.spark-plug-gasket",
+   "kind": "part",
+   "name": "Spark plug gasket",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 47
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "14.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 14 mm thread",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.thermostat-distance-piece": {
+   "id": "engine.head.thermostat-distance-piece",
+   "kind": "part",
+   "name": "Thermostat distance piece",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 48
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "66.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the thermostat",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.water-outlet-elbow": {
+   "id": "engine.head.water-outlet-elbow",
+   "kind": "part",
+   "name": "Water outlet elbow (thermostat housing)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 49
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Top hose connects here (Haynes Sec 12).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "hose_spigot_diameter",
+     "label": "Hose spigot diameter",
+     "value": "38.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1 1/2 in top hose; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_thickness",
+     "label": "Flange thickness",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.thermostat-gasket": {
+   "id": "engine.head.thermostat-gasket",
+   "kind": "part",
+   "name": "Thermostat housing gasket",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 50
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.thermostat-washer": {
+   "id": "engine.head.thermostat-washer",
+   "kind": "part",
+   "name": "Thermostat housing plain washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 51
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.688 in (17.48 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.344 in (8.74 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.065 in (1.65 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.thermostat-nut": {
+   "id": "engine.head.thermostat-nut",
+   "kind": "part",
+   "name": "Thermostat housing nut",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 52
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.26562 in (6.75 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.thermostat": {
+   "id": "engine.head.thermostat",
+   "kind": "part",
+   "name": "Thermostat",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 12,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 53
+     }
+    ],
+    "spec_page": 55
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "opening_temperature_c",
+     "label": "Opening temperature c",
+     "value": "74",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p55",
+     "note": "Standard, early models: 74 C (165 F)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_diameter",
+     "label": "Flange diameter",
+     "value": "54.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "body_diameter",
+     "label": "Body diameter",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "42.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.75
+  },
+  "engine.head.rocker-cover": {
+   "id": "engine.head.rocker-cover",
+   "kind": "part",
+   "name": "Rocker cover",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 54
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_engine",
+   "notes": "Pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long studs.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "405.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Covers the rocker gear with clearance; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "122.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "95.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the rockers and adjusting screws",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "sheet_thickness",
+     "label": "Sheet thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.filler-cap": {
+   "id": "engine.head.filler-cap",
+   "kind": "part",
+   "name": "Oil filler cap",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 2,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 55
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "chrome",
+   "notes": "Haynes item 55 is \"Cap and cable\"; the retaining cable is not modelled.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "50.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-cover-gasket": {
+   "id": "engine.head.rocker-cover-gasket",
+   "kind": "part",
+   "name": "Rocker cover gasket",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 56
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cork",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "5.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Cork gasket; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matches the cover flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-cover-bush": {
+   "id": "engine.head.rocker-cover-bush",
+   "kind": "part",
+   "name": "Rocker cover sealing bush",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 57
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Haynes Sec 10 - \"noting the gasket, washers and rubber seals\".",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 1/4 in stud",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-cover-washer": {
+   "id": "engine.head.rocker-cover-washer",
+   "kind": "part",
+   "name": "Rocker cover cup washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 58
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "24.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 1/4 in stud",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-cover-nut": {
+   "id": "engine.head.rocker-cover-nut",
+   "kind": "part",
+   "name": "Rocker cover nut",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 59
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 1/4 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.21875 in (5.56 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 1/4 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.rocker-cover-bracket": {
+   "id": "engine.head.rocker-cover-bracket",
+   "kind": "part",
+   "name": "Rocker cover bracket",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 60
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "Fitted under the rear cover nut; Haynes Sec 10 mentions pipes released from the rocker studs.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "55.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.6",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.6",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-shaft": {
+   "id": "engine.head.rocker-shaft",
+   "kind": "part",
+   "name": "Valve rocker shaft",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 20
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Hollow oil-feed shaft carrying the eight rockers on four pedestals.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "14.031 in (356.39 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Haynes prints 356.0 mm; 14.031 in is 356.39 mm",
+     "erratum": true,
+     "printed_mm": [
+      356.0
+     ]
+    },
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.624 to 0.625 in (15.85 to 15.87 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore_diameter",
+     "label": "Bore diameter",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oil gallery; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "split_pin_hole_from_end",
+     "label": "Split pin hole from end",
+     "value": "0.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.head.rocker-shaft-plug-plain": {
+   "id": "engine.head.rocker-shaft-plug-plain",
+   "kind": "part",
+   "name": "Rocker shaft plain plug",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 21
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the derived shaft bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-shaft-plug-screwed": {
+   "id": "engine.head.rocker-shaft-plug-screwed",
+   "kind": "part",
+   "name": "Rocker shaft screwed plug",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 22
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 11 - \"Undo the shaft end plug screw. Clean the shaft oilways.\"",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-bracket-locating": {
+   "id": "engine.head.rocker-bracket-locating",
+   "kind": "part",
+   "name": "Rocker shaft bracket (with locating screw)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 23
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "The one pedestal tapped for the shaft locating screw.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height_to_shaft_centre",
+     "label": "Height to shaft centre",
+     "value": "72.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Head top face to rocker shaft centre: the rocker pad sits 0.015 in (Haynes p22) above the derived valve tip",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits between a cylinder's two rockers (41.2 mm valve pitch less 17 mm hubs)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "base_length",
+     "label": "Base length",
+     "value": "56.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Spans the head stud and short stud, Fig 1.5",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "0.6255 in (15.888 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Taken as the rocker bush bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "head_stud_offset",
+     "label": "Head stud offset",
+     "value": "26.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From Fig 1.5 with the Haynes 1.4:1 rocker ratio",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "short_stud_offset",
+     "label": "Short stud offset",
+     "value": "12.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From Fig 1.5",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "rocker_bracket_nut_torque",
+     "label": "Rocker bracket nut torque",
+     "value": "25 lbf ft (34 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.86
+  },
+  "engine.head.rocker-bracket": {
+   "id": "engine.head.rocker-bracket",
+   "kind": "part",
+   "name": "Rocker shaft bracket",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 24
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Haynes Sec 10 - shims 0.005 in thick go under the two centre brackets on later engines, and should be fitted to early engines on reassembly.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height_to_shaft_centre",
+     "label": "Height to shaft centre",
+     "value": "72.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the locating bracket",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the locating bracket",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "base_length",
+     "label": "Base length",
+     "value": "56.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the locating bracket",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "0.6255 in (15.888 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Taken as the rocker bush bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "head_stud_offset",
+     "label": "Head stud offset",
+     "value": "26.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From Fig 1.5 with the Haynes 1.4:1 rocker ratio",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "short_stud_offset",
+     "label": "Short stud offset",
+     "value": "12.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From Fig 1.5",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "rocker_bracket_nut_torque",
+     "label": "Rocker bracket nut torque",
+     "value": "25 lbf ft (34 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.86
+  },
+  "engine.head.rocker-spacing-spring": {
+   "id": "engine.head.rocker-spacing-spring",
+   "kind": "part",
+   "name": "Rocker spacing spring",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 25
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Keeps adjacent cylinders' rockers apart on the shaft. Shown compressed to its fitted length.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "free_length",
+     "label": "Free length",
+     "value": "45.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "fitted_length",
+     "label": "Fitted length",
+     "value": "38.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Gap between rocker hubs of adjacent cylinders",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "total_coils",
+     "label": "Total coils",
+     "value": "7",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker": {
+   "id": "engine.head.rocker",
+   "kind": "part",
+   "name": "Valve rocker",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 26
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Forged steel rocker, bushed, with the adjusting screw over the pushrod.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "rocker_ratio",
+     "label": "Rocker ratio",
+     "value": "1",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "1.4 : 1",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "valve_arm_length",
+     "label": "Valve arm length",
+     "value": "37.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pushrod-to-valve distance from Fig 1.5 split at the Haynes 1.4:1 ratio",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pushrod_arm_length",
+     "label": "Pushrod arm length",
+     "value": "26.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pushrod-to-valve distance from Fig 1.5 split at the Haynes 1.4:1 ratio",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hub_width",
+     "label": "Hub width",
+     "value": "17.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sized so the outer rockers, washers and split pins fit the 356.4 mm shaft",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hub_diameter",
+     "label": "Hub diameter",
+     "value": "26.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.8
+  },
+  "engine.head.rocker-bush": {
+   "id": "engine.head.rocker-bush",
+   "kind": "part",
+   "name": "Rocker bush",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 27
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bronze",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.6255 to 0.6260 in (15.89 to 15.90 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Haynes prints 15.80 to 15.90 mm; 0.6255 in is 15.888 mm",
+     "erratum": true,
+     "printed_mm": [
+      15.8,
+      15.9
+     ]
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "17.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Rocker hub width",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.head.rocker-adjusting-screw": {
+   "id": "engine.head.rocker-adjusting-screw",
+   "kind": "part",
+   "name": "Rocker adjusting screw",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 60,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 28
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Ball end sits in the pushrod cup (Haynes Sec 58). Thread size is not in Haynes.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Taken as 5/16 in UNF; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "32.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "ball_diameter",
+     "label": "Ball diameter",
+     "value": "7.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-adjuster-locknut": {
+   "id": "engine.head.rocker-adjuster-locknut",
+   "kind": "part",
+   "name": "Rocker adjusting screw locknut",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 60,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 29
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.26562 in (6.75 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.rocker-locating-screw": {
+   "id": "engine.head.rocker-locating-screw",
+   "kind": "part",
+   "name": "Rocker shaft locating screw",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 30
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Taken as 1/4 in UNF; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-lockplate": {
+   "id": "engine.head.rocker-lockplate",
+   "kind": "part",
+   "name": "Locating screw lockplate",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 31
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-shaft-washer": {
+   "id": "engine.head.rocker-shaft-washer",
+   "kind": "part",
+   "name": "Rocker shaft end washer (flat)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 32
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "25.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "16.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the shaft",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-shaft-spring-washer": {
+   "id": "engine.head.rocker-shaft-spring-washer",
+   "kind": "part",
+   "name": "Rocker shaft end spring washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 33
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "23.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "16.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the shaft",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-shaft-split-pin": {
+   "id": "engine.head.rocker-shaft-split-pin",
+   "kind": "part",
+   "name": "Rocker shaft split pin",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 11,
+    "spec_page": 22
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Not numbered in Fig 1.6; Haynes Sec 11 lists split pins at each shaft end.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.0625 in (1.59 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Taken as 1/16 in; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-bracket-washer": {
+   "id": "engine.head.rocker-bracket-washer",
+   "kind": "part",
+   "name": "Rocker bracket washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 34
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.922 in (23.42 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.469 in (11.91 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.065 in (1.65 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.rocker-bracket-spring-washer": {
+   "id": "engine.head.rocker-bracket-spring-washer",
+   "kind": "part",
+   "name": "Rocker bracket spring washer",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 35
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "18.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 7/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "11.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 7/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 7/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.rocker-bracket-nut": {
+   "id": "engine.head.rocker-bracket-nut",
+   "kind": "part",
+   "name": "Rocker bracket nut (head stud)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 36
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "On the four long head studs through the brackets. Thread taken as 7/16 in UNF (not in Haynes).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.6875 in (17.46 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "25 lbf ft (34 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Rocker bracket nuts",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.rocker-bracket-nut-small": {
+   "id": "engine.head.rocker-bracket-nut-small",
+   "kind": "part",
+   "name": "Rocker bracket nut (short stud)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 36
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "On the four short studs (Fig 1.6 item 5). Thread taken as 5/16 in UNF (not in Haynes).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.26562 in (6.75 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "25 lbf ft (34 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Rocker bracket nuts",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.rocker-bracket-washer-small": {
+   "id": "engine.head.rocker-bracket-washer-small",
+   "kind": "part",
+   "name": "Rocker bracket washer (short stud)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 10,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 34
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.688 in (17.48 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.344 in (8.74 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.065 in (1.65 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.head.valve-exhaust": {
+   "id": "engine.head.valve-exhaust",
+   "kind": "part",
+   "name": "Exhaust valve",
+   "parent": "engine.head",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 9
+     }
+    ],
+    "section": 13,
+    "spec_page": 22
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "1963 18G engine, wide collet groove like the inlet valve. Overall length and head profile are not published in Haynes and are derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     -1
+    ],
+    "order": 20,
+    "distance_mm": 150
+   },
+   "specs": [
+    {
+     "key": "head_diameter",
+     "label": "Head diameter",
+     "value": "1.343 to 1.348 in (34.11 to 34.23 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stem_diameter",
+     "label": "Stem diameter",
+     "value": "0.3417 to 0.3422 in (8.68 to 8.69 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "seat_angle",
+     "label": "Seat angle",
+     "value": "45.5\u00b0",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Printed as 45 1/2 deg",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "valve_lift",
+     "label": "Valve lift",
+     "value": "0.3645 in (9.25 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stem_to_guide_clearance",
+     "label": "Stem to guide clearance",
+     "value": "0.002 to 0.003 in (0.0508 to 0.0762 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stem_to_rocker_clearance_cold",
+     "label": "Stem to rocker clearance cold",
+     "value": "0.015 in (0.38 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "overall_length",
+     "label": "Overall length",
+     "value": "115.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Taken equal to the inlet valve; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "margin_thickness",
+     "label": "Margin thickness",
+     "value": "1.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical B-series exhaust valve proportion; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "seat_face_radial_width",
+     "label": "Seat face radial width",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical B-series exhaust valve proportion; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "head_height",
+     "label": "Head height",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As inlet valve",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "collet_groove_width",
+     "label": "Collet groove width",
+     "value": "3.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As inlet valve",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "collet_groove_depth",
+     "label": "Collet groove depth",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As inlet valve",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "collet_groove_from_tip",
+     "label": "Collet groove from tip",
+     "value": "4.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As inlet valve",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.54
+  },
+  "engine.head.guide-inlet": {
+   "id": "engine.head.guide-inlet",
+   "kind": "part",
+   "name": "Inlet valve guide",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 32,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Pressed into the head. Early-car length; later cars used a 1.875 in inlet guide.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     -1
+    ],
+    "order": 21,
+    "distance_mm": 70
+   },
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.625 in (41.275 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Early cars",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.5635 to 0.5640 in (14.30 to 14.32 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.3442 to 0.3447 in (8.74 to 8.76 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Haynes prints 8.73 to 8.74 mm; 0.3447 in is 8.755 mm",
+     "erratum": true,
+     "printed_mm": [
+      8.73,
+      8.74
+     ]
+    },
+    {
+     "key": "fitted_height_above_head",
+     "label": "Fitted height above head",
+     "value": "0.625 in (15.875 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Measured from the spring seat surface (Fig 1.18)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "top_chamfer",
+     "label": "Top chamfer",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.2
+  },
+  "engine.head.guide-exhaust": {
+   "id": "engine.head.guide-exhaust",
+   "kind": "part",
+   "name": "Exhaust valve guide",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 32,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Pressed into the head; longer than the inlet guide, reaching into the exhaust port.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     -1
+    ],
+    "order": 21,
+    "distance_mm": 70
+   },
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "2.203 in (55.95 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.5635 to 0.5640 in (14.30 to 14.32 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.3442 to 0.3447 in (8.74 to 8.76 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Haynes prints 8.73 to 8.74 mm; 0.3447 in is 8.755 mm",
+     "erratum": true,
+     "printed_mm": [
+      8.73,
+      8.74
+     ]
+    },
+    {
+     "key": "fitted_height_above_head",
+     "label": "Fitted height above head",
+     "value": "0.625 in (15.875 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "top_chamfer",
+     "label": "Top chamfer",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.2
+  },
+  "engine.head.spring-outer": {
+   "id": "engine.head.spring-outer",
+   "kind": "part",
+   "name": "Outer valve spring",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 10
+     },
+     {
+      "figure": "1.9",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Double-coil valve springs (18G). Shown in the head compressed to its fitted length.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 20,
+    "distance_mm": 45
+   },
+   "specs": [
+    {
+     "key": "free_length",
+     "label": "Free length",
+     "value": "2.141 in (54.40 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "fitted_length",
+     "label": "Fitted length",
+     "value": "41.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Set by the derived valve groove, collet, cap and collar positions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "4.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "33.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published; sized to clear the inner spring",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "total_coils",
+     "label": "Total coils",
+     "value": "6",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.8
+  },
+  "engine.head.spring-inner": {
+   "id": "engine.head.spring-inner",
+   "kind": "part",
+   "name": "Inner valve spring",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 11
+     },
+     {
+      "figure": "1.9",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Sits inside the outer spring on the collar's inner step. Shown compressed to its fitted length.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 20,
+    "distance_mm": 65
+   },
+   "specs": [
+    {
+     "key": "free_length",
+     "label": "Free length",
+     "value": "1.969 in (50.00 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "fitted_length",
+     "label": "Fitted length",
+     "value": "39.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Outer fitted length less the 1.5 mm collar step",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "23.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published; sized inside the outer spring",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "total_coils",
+     "label": "Total coils",
+     "value": "8",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.8
+  },
+  "engine.head.spring-collar": {
+   "id": "engine.head.spring-collar",
+   "kind": "part",
+   "name": "Valve spring bottom collar",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 12
+     },
+     {
+      "figure": "1.9",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 20,
+    "distance_mm": 18
+   },
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "35.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "14.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the 14.32 mm guide",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inner_step_height",
+     "label": "Inner step height",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Locates the inner spring",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.valve-shroud": {
+   "id": "engine.head.valve-shroud",
+   "kind": "part",
+   "name": "Valve guide shroud",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 13
+     },
+     {
+      "figure": "1.9",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes: fitted up to engine number 4385 (and L2815). Whether Oliver's 1963 engine has them depends on its number; shown here until that is confirmed.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 20,
+    "distance_mm": 85
+   },
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "16.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published; fits inside the inner spring",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "14.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the guide",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.9",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_diameter",
+     "label": "Flange diameter",
+     "value": "19.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.9",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.packing-ring": {
+   "id": "engine.head.packing-ring",
+   "kind": "part",
+   "name": "Valve stem packing ring",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 14
+     },
+     {
+      "figure": "1.9",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Oil seal ring. Haynes Sec 56 photo shows it fitted on the stem before the collets.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 20,
+    "distance_mm": 100
+   },
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Stretched onto the 8.7 mm stem",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "section_diameter",
+     "label": "Section diameter",
+     "value": "1.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.spring-cap": {
+   "id": "engine.head.spring-cap",
+   "kind": "part",
+   "name": "Valve spring cap",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 15
+     },
+     {
+      "figure": "1.9",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 20,
+    "distance_mm": 115
+   },
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore_top_diameter",
+     "label": "Bore top diameter",
+     "value": "13.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matches the collet taper",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore_bottom_diameter",
+     "label": "Bore bottom diameter",
+     "value": "11.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matches the collet taper",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.collet": {
+   "id": "engine.head.collet",
+   "kind": "part",
+   "name": "Valve collet (half)",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 16
+     },
+     {
+      "figure": "1.9",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 16,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Split taper collets, two per valve; wide-groove type for 18G engines.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 20,
+    "distance_mm": 135
+   },
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "8.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "top_diameter",
+     "label": "Top diameter",
+     "value": "13.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bottom_diameter",
+     "label": "Bottom diameter",
+     "value": "11.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bead_width",
+     "label": "Bead width",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 3.2 mm derived groove",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.head.valve-clip": {
+   "id": "engine.head.valve-clip",
+   "kind": "part",
+   "name": "Collet retaining clip",
+   "parent": "engine.head",
+   "haynes": {
+    "section": 13,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.6",
+      "legend": 17
+     },
+     {
+      "figure": "1.9",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 13 says \"remove the spring clips where fitted\".",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "order": 19,
+    "distance_mm": 155
+   },
+   "specs": [
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "0.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "12.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sits over the collet tops",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
   },
   "engine.head.valve-inlet": {
    "id": "engine.head.valve-inlet",
@@ -208,8 +4639,8 @@
      0,
      -1
     ],
-    "order": 6,
-    "distance_mm": 140
+    "order": 20,
+    "distance_mm": 150
    },
    "specs": [
     {
@@ -363,11 +4794,4812 @@
   }
  },
  "instances": {
+  "engine.head.casting#1": {
+   "part": "engine.head.casting",
+   "assembly": "engine.head",
+   "node": "engine--head--casting__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.gasket#1": {
+   "part": "engine.head.gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#1": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud-long__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#2": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud-long__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#3": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud-long__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#4": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud-long__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#1": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-washer#1": {
+   "part": "engine.head.head-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--head-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-nut#1": {
+   "part": "engine.head.head-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--head-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#2": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-washer#2": {
+   "part": "engine.head.head-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--head-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-nut#2": {
+   "part": "engine.head.head-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--head-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#3": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-washer#3": {
+   "part": "engine.head.head-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--head-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-nut#3": {
+   "part": "engine.head.head-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--head-nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#4": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-washer#4": {
+   "part": "engine.head.head-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--head-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-nut#4": {
+   "part": "engine.head.head-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--head-nut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#5": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-washer#5": {
+   "part": "engine.head.head-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--head-washer__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-nut#5": {
+   "part": "engine.head.head-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--head-nut__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#6": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-washer#6": {
+   "part": "engine.head.head-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--head-washer__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-nut#6": {
+   "part": "engine.head.head-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--head-nut__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#7": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--head-stud__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-washer#7": {
+   "part": "engine.head.head-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--head-washer__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-nut#7": {
+   "part": "engine.head.head-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--head-nut__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-exhaust#1": {
+   "part": "engine.head.valve-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-exhaust__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-exhaust#1": {
+   "part": "engine.head.guide-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-exhaust__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#1": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#1": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#1": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#1": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#1": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#1": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#1": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#2": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#1": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "engine.head.valve-inlet#1": {
    "part": "engine.head.valve-inlet",
    "assembly": "engine.head",
-   "node": "engine--head--valve-inlet__1"
+   "node": "engine--head--valve-inlet__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-inlet#1": {
+   "part": "engine.head.guide-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-inlet__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#2": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#2": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#2": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#2": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#2": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#2": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#3": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#4": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#2": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-inlet#2": {
+   "part": "engine.head.valve-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-inlet__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-inlet#2": {
+   "part": "engine.head.guide-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-inlet__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#3": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#3": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#3": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#3": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#3": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#3": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#5": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#6": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#3": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-exhaust#2": {
+   "part": "engine.head.valve-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-exhaust__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-exhaust#2": {
+   "part": "engine.head.guide-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-exhaust__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#4": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#4": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#4": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#4": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#4": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#4": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#7": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#8": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#4": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-exhaust#3": {
+   "part": "engine.head.valve-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-exhaust__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-exhaust#3": {
+   "part": "engine.head.guide-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-exhaust__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#5": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#5": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#5": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#5": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#5": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#5": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#9": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__9",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#10": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__10",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#5": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-inlet#3": {
+   "part": "engine.head.valve-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-inlet__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-inlet#3": {
+   "part": "engine.head.guide-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-inlet__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#6": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#6": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#6": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#6": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#6": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#6": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#11": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__11",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#12": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__12",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#6": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-inlet#4": {
+   "part": "engine.head.valve-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-inlet__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-inlet#4": {
+   "part": "engine.head.guide-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-inlet__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#7": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#7": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#7": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#7": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#7": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#7": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#13": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__13",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#14": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__14",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#7": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-exhaust#4": {
+   "part": "engine.head.valve-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-exhaust__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 20,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.guide-exhaust#4": {
+   "part": "engine.head.guide-exhaust",
+   "assembly": "engine.head",
+   "node": "engine--head--guide-exhaust__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 21,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-collar#8": {
+   "part": "engine.head.spring-collar",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-collar__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 18
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.valve-shroud#8": {
+   "part": "engine.head.valve-shroud",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-shroud__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-outer#8": {
+   "part": "engine.head.spring-outer",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-outer__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-inner#8": {
+   "part": "engine.head.spring-inner",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-inner__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 65
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.packing-ring#8": {
+   "part": "engine.head.packing-ring",
+   "assembly": "engine.head",
+   "node": "engine--head--packing-ring__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spring-cap#8": {
+   "part": "engine.head.spring-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--spring-cap__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 115
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#15": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__15",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.collet#16": {
+   "part": "engine.head.collet",
+   "assembly": "engine.head",
+   "node": "engine--head--collet__16",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 20,
+     "distance_mm": 135
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.valve-clip#8": {
+   "part": "engine.head.valve-clip",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-clip__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 19,
+     "distance_mm": 155
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft#1": {
+   "part": "engine.head.rocker-shaft",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-plug-plain#1": {
+   "part": "engine.head.rocker-shaft-plug-plain",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-plug-plain__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 110.18716500000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-plug-screwed#1": {
+   "part": "engine.head.rocker-shaft-plug-screwed",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-plug-screwed__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 110.18716500000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket#1": {
+   "part": "engine.head.rocker-bracket",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 80.27250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer#1": {
+   "part": "engine.head.rocker-bracket-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-spring-washer#1": {
+   "part": "engine.head.rocker-bracket-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 92
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut#1": {
+   "part": "engine.head.rocker-bracket-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 105
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-stud-short#1": {
+   "part": "engine.head.rocker-stud-short",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-stud-short__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer-small#1": {
+   "part": "engine.head.rocker-bracket-washer-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer-small__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut-small#1": {
+   "part": "engine.head.rocker-bracket-nut-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut-small__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-locating#1": {
+   "part": "engine.head.rocker-bracket-locating",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-locating__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 36.7575
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer#2": {
+   "part": "engine.head.rocker-bracket-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-spring-washer#2": {
+   "part": "engine.head.rocker-bracket-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 92
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut#2": {
+   "part": "engine.head.rocker-bracket-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 105
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-stud-short#2": {
+   "part": "engine.head.rocker-stud-short",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-stud-short__2",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer-small#2": {
+   "part": "engine.head.rocker-bracket-washer-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer-small__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut-small#2": {
+   "part": "engine.head.rocker-bracket-nut-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut-small__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket#2": {
+   "part": "engine.head.rocker-bracket",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 36.7575
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer#3": {
+   "part": "engine.head.rocker-bracket-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-spring-washer#3": {
+   "part": "engine.head.rocker-bracket-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-spring-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 92
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut#3": {
+   "part": "engine.head.rocker-bracket-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 105
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-stud-short#3": {
+   "part": "engine.head.rocker-stud-short",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-stud-short__3",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer-small#3": {
+   "part": "engine.head.rocker-bracket-washer-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer-small__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut-small#3": {
+   "part": "engine.head.rocker-bracket-nut-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut-small__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket#3": {
+   "part": "engine.head.rocker-bracket",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 80.27250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer#4": {
+   "part": "engine.head.rocker-bracket-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-spring-washer#4": {
+   "part": "engine.head.rocker-bracket-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-spring-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 92
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut#4": {
+   "part": "engine.head.rocker-bracket-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 105
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-stud-short#4": {
+   "part": "engine.head.rocker-stud-short",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-stud-short__4",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-washer-small#4": {
+   "part": "engine.head.rocker-bracket-washer-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-washer-small__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bracket-nut-small#4": {
+   "part": "engine.head.rocker-bracket-nut-small",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bracket-nut-small__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#1": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#1": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#1": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#1": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#2": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#2": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#2": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#2": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#3": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#3": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#3": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#3": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#4": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#4": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#4": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#4": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#5": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#5": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#5": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#5": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 27.4875
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#6": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#6": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#6": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#6": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 46.0275
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#7": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#7": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#7": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#7": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 71.00250000000001
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker#8": {
+   "part": "engine.head.rocker",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-bush#8": {
+   "part": "engine.head.rocker-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-bush__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjusting-screw#8": {
+   "part": "engine.head.rocker-adjusting-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjusting-screw__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-adjuster-locknut#8": {
+   "part": "engine.head.rocker-adjuster-locknut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-adjuster-locknut__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 89.5425
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-spacing-spring#1": {
+   "part": "engine.head.rocker-spacing-spring",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-spacing-spring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 68.515
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-spacing-spring#2": {
+   "part": "engine.head.rocker-spacing-spring",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-spacing-spring__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 25.0
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-spacing-spring#3": {
+   "part": "engine.head.rocker-spacing-spring",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-spacing-spring__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 68.515
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-lockplate#1": {
+   "part": "engine.head.rocker-lockplate",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-lockplate__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-locating-screw#1": {
+   "part": "engine.head.rocker-locating-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-locating-screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5.5,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-washer#1": {
+   "part": "engine.head.rocker-shaft-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 118.3675
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-spring-washer#1": {
+   "part": "engine.head.rocker-shaft-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 128.3675
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-split-pin#1": {
+   "part": "engine.head.rocker-shaft-split-pin",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-split-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 143.3675
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-washer#2": {
+   "part": "engine.head.rocker-shaft-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 118.3675
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-spring-washer#2": {
+   "part": "engine.head.rocker-shaft-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 128.3675
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-shaft-split-pin#2": {
+   "part": "engine.head.rocker-shaft-split-pin",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-shaft-split-pin__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.85,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 270,
+     "group": "rocker-gear"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 143.3675
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-gasket#1": {
+   "part": "engine.head.rocker-cover-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 3,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover#1": {
+   "part": "engine.head.rocker-cover",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.filler-cap#1": {
+   "part": "engine.head.filler-cap",
+   "assembly": "engine.head",
+   "node": "engine--head--filler-cap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 3.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.cover-stud#1": {
+   "part": "engine.head.cover-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--cover-stud__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-bush#1": {
+   "part": "engine.head.rocker-cover-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-bush__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-washer#1": {
+   "part": "engine.head.rocker-cover-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-bracket#1": {
+   "part": "engine.head.rocker-cover-bracket",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-bracket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-nut#1": {
+   "part": "engine.head.rocker-cover-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.cover-stud#2": {
+   "part": "engine.head.cover-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--cover-stud__2",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-bush#2": {
+   "part": "engine.head.rocker-cover-bush",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-bush__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-washer#2": {
+   "part": "engine.head.rocker-cover-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.rocker-cover-nut#2": {
+   "part": "engine.head.rocker-cover-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--rocker-cover-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 360,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-gasket#1": {
+   "part": "engine.head.thermostat-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0.6,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 60,
+     "group": "thermostat"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.2,
+     "distance_mm": 10
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-distance-piece#1": {
+   "part": "engine.head.thermostat-distance-piece",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-distance-piece__1",
+   "stages": [
+    {
+     "axis": [
+      0.6,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 60,
+     "group": "thermostat"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.2,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat#1": {
+   "part": "engine.head.thermostat",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat__1",
+   "stages": [
+    {
+     "axis": [
+      0.6,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 60,
+     "group": "thermostat"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.2,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-gasket#2": {
+   "part": "engine.head.thermostat-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-gasket__2",
+   "stages": [
+    {
+     "axis": [
+      0.6,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 60,
+     "group": "thermostat"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.2,
+     "distance_mm": 75
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.head.water-outlet-elbow#1": {
+   "part": "engine.head.water-outlet-elbow",
+   "assembly": "engine.head",
+   "node": "engine--head--water-outlet-elbow__1",
+   "stages": [
+    {
+     "axis": [
+      0.6,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 60,
+     "group": "thermostat"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.2,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-stud#1": {
+   "part": "engine.head.thermostat-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-stud__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-washer#1": {
+   "part": "engine.head.thermostat-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-nut#1": {
+   "part": "engine.head.thermostat-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-stud#2": {
+   "part": "engine.head.thermostat-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-stud__2",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-washer#2": {
+   "part": "engine.head.thermostat-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-nut#2": {
+   "part": "engine.head.thermostat-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-stud#3": {
+   "part": "engine.head.thermostat-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-stud__3",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-washer#3": {
+   "part": "engine.head.thermostat-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.thermostat-nut#3": {
+   "part": "engine.head.thermostat-nut",
+   "assembly": "engine.head",
+   "node": "engine--head--thermostat-nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug-gasket#1": {
+   "part": "engine.head.spark-plug-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug#1": {
+   "part": "engine.head.spark-plug",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug-gasket#2": {
+   "part": "engine.head.spark-plug-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug-gasket__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug#2": {
+   "part": "engine.head.spark-plug",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug-gasket#3": {
+   "part": "engine.head.spark-plug-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug-gasket__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug#3": {
+   "part": "engine.head.spark-plug",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug-gasket#4": {
+   "part": "engine.head.spark-plug-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug-gasket__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.spark-plug#4": {
+   "part": "engine.head.spark-plug",
+   "assembly": "engine.head",
+   "node": "engine--head--spark-plug__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.manifold-stud#1": {
+   "part": "engine.head.manifold-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--manifold-stud__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.manifold-stud#2": {
+   "part": "engine.head.manifold-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--manifold-stud__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.manifold-stud#3": {
+   "part": "engine.head.manifold-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--manifold-stud__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.manifold-stud#4": {
+   "part": "engine.head.manifold-stud",
+   "assembly": "engine.head",
+   "node": "engine--head--manifold-stud__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.manifold-stud-end#1": {
+   "part": "engine.head.manifold-stud-end",
+   "assembly": "engine.head",
+   "node": "engine--head--manifold-stud-end__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.manifold-stud-end#2": {
+   "part": "engine.head.manifold-stud-end",
+   "assembly": "engine.head",
+   "node": "engine--head--manifold-stud-end__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.core-plug#1": {
+   "part": "engine.head.core-plug",
+   "assembly": "engine.head",
+   "node": "engine--head--core-plug__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.screwed-plug-washer#1": {
+   "part": "engine.head.screwed-plug-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--screwed-plug-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.screwed-plug#1": {
+   "part": "engine.head.screwed-plug",
+   "assembly": "engine.head",
+   "node": "engine--head--screwed-plug__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.blanking-plate-gasket#1": {
+   "part": "engine.head.blanking-plate-gasket",
+   "assembly": "engine.head",
+   "node": "engine--head--blanking-plate-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 15
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.blanking-plate#1": {
+   "part": "engine.head.blanking-plate",
+   "assembly": "engine.head",
+   "node": "engine--head--blanking-plate__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.blanking-plate-spring-washer#1": {
+   "part": "engine.head.blanking-plate-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--blanking-plate-spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.blanking-plate-screw#1": {
+   "part": "engine.head.blanking-plate-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--blanking-plate-screw__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 62
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.blanking-plate-spring-washer#2": {
+   "part": "engine.head.blanking-plate-spring-washer",
+   "assembly": "engine.head",
+   "node": "engine--head--blanking-plate-spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.blanking-plate-screw#2": {
+   "part": "engine.head.blanking-plate-screw",
+   "assembly": "engine.head",
+   "node": "engine--head--blanking-plate-screw__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 62
+    }
+   ],
+   "label": true,
+   "fitted": null
   }
  },
- "built": "2026-11-01T14:48:09+00:00"
+ "built": "2026-11-01T15:51:36+00:00"
 }

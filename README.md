@@ -51,5 +51,9 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
 
 ## Status
 
-P0 (foundations) complete: pipeline, checks, fastener library, viewer shell,
-inlet valve end to end. Next: P1, the full cylinder head (Haynes Fig 1.6 and 1.9).
+- P0 (foundations) complete: pipeline, checks, fastener library, viewer shell.
+- P1 (cylinder head) built for review: every Haynes Fig 1.6 legend item plus the
+  Fig 1.9 valve gear, 65 unique parts and about 240 placed instances, laid out from
+  Fig 1.5 and exploded in the Haynes removal order. Awaiting sign-off (Gate A).
+
+Next: P2, the rest of the engine and the cooling system.
