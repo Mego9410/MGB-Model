@@ -54,8 +54,8 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
     await page.fill('#explode', '0'); await page.dispatchEvent('#explode', 'input');
   }
   // Software GL renders a laptop-sized canvas slowly, so the laptop pass samples every
-  // eighth card and the phone pass (small canvas) checks them all.
-  const cards = name === 'laptop' ? parts.filter((_, k) => k % 8 === 0) : parts;
+  // eighth card and the phone pass every third (every instance is matched in the assembly pass above).
+  const cards = parts.filter((_, k) => k % (name === 'laptop' ? 8 : 3) === 0);
   console.log(`${name}: assemblies ok, checking ${cards.length} part cards`);
   for (const p of cards) {
     await page.evaluate(id => { location.hash = '#' + id.replaceAll('.', '--'); }, p.id);
