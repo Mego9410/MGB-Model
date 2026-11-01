@@ -59,7 +59,8 @@
     "chapter": 3
    },
    "children": [
-    "fuel.carbs"
+    "fuel.carbs",
+    "fuel.pipes"
    ]
   },
   "ignition": {
@@ -374,7 +375,7 @@
     "engine.head.blanking-plate-screw"
    ],
    "file": "models/engine.head.json",
-   "bytes": 1015892
+   "bytes": 1021465
   },
   "engine.lube": {
    "id": "engine.lube",
@@ -449,7 +450,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 161925
+   "bytes": 161973
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -557,7 +558,29 @@
     "fuel.carbs.cleaner-case-rear"
    ],
    "file": "models/fuel.carbs.json",
-   "bytes": 830581
+   "bytes": 835730
+  },
+  "fuel.pipes": {
+   "id": "fuel.pipes",
+   "kind": "assembly",
+   "name": "Fuel hoses and breather pipe",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [],
+    "section": 18
+   },
+   "children": [
+    "fuel.pipes.breather-hose",
+    "fuel.pipes.breather-clip",
+    "fuel.pipes.float-hose-front",
+    "fuel.pipes.fuel-clip",
+    "fuel.pipes.float-hose-rear",
+    "fuel.pipes.tee",
+    "fuel.pipes.feed-hose",
+    "fuel.pipes.feed-union"
+   ],
+   "file": "models/fuel.pipes.json",
+   "bytes": 139354
   },
   "ignition.distributor": {
    "id": "ignition.distributor",
@@ -599,7 +622,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494278
+   "bytes": 494170
   },
   "cooling.pump-body": {
    "id": "cooling.pump-body",
@@ -6682,7 +6705,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_engine",
-   "notes": "Pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long studs.",
+   "notes": "Pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long studs. The front breather spigot on the manifold side takes the hose to the front air cleaner (Ch 1 Sec 10 para 4, \"release the rocker cover front breather pipe\"; Ch 3 Sec 3 para 1). Spigot position and size derived (D).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -14873,6 +14896,344 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Through the case and baseplate into the intake flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.float-hose-front": {
+   "id": "fuel.pipes.float-hose-front",
+   "kind": "part",
+   "name": "Fuel hose, front float chamber",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 18,
+    "spec_page": 74
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "From the inlet union on the front float chamber lid down under the instruments to the tee (\"disconnect the fuel pipe hose(s) from the float chamber(s)\", Sec 18 para 1). Run kept below the jets and throttle return springs (D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in bore fuel hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in fuel hose, standard for SU HS4 float chamber unions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.float-hose-rear": {
+   "id": "fuel.pipes.float-hose-rear",
+   "kind": "part",
+   "name": "Fuel hose, rear float chamber",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 18,
+    "spec_page": 74
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in bore fuel hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in fuel hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.tee": {
+   "id": "fuel.pipes.tee",
+   "kind": "part",
+   "name": "Fuel tee",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 18,
+    "spec_page": 74
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "Joins the two float chamber hoses to the feed from the pump (D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "36.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Two hose spigots and the body",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.feed-hose": {
+   "id": "fuel.pipes.feed-hose",
+   "kind": "part",
+   "name": "Fuel feed hose (engine end)",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 18,
+    "spec_page": 74
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "From the tee toward the bulkhead; the rigid pipe to the pump at the rear of the car joins at the union and is added with the body.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in bore fuel hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in fuel hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.feed-union": {
+   "id": "fuel.pipes.feed-union",
+   "kind": "part",
+   "name": "Feed pipe union",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 18,
+    "spec_page": 74
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Union nut for 5/16 in pipe",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.fuel-clip": {
+   "id": "fuel.pipes.fuel-clip",
+   "kind": "part",
+   "name": "Fuel hose clip",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 18,
+    "spec_page": 74
+   },
+   "quantity": 5,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 18 para 1, \"undo the clips (if fitted)\".",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the 11 mm hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Small worm-drive clip",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.breather-hose": {
+   "id": "fuel.pipes.breather-hose",
+   "kind": "part",
+   "name": "Rocker cover breather pipe",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 3,
+    "spec_page": 67
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "From the spigot at the front of the rocker cover to the spigot on the front air cleaner; disconnected first when the air cleaners come off (Ch 3 Sec 3 para 1) and renewed if perished. Routed over the front float chamber (D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "17.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the 11 mm spigots",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the rocker cover spigot",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pipes.breather-clip": {
+   "id": "fuel.pipes.breather-clip",
+   "kind": "part",
+   "name": "Breather pipe clip",
+   "parent": "fuel.pipes",
+   "haynes": {
+    "section": 3,
+    "spec_page": 74
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "17.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the breather hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Small worm-drive clip",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -29169,6 +29530,240 @@
    "label": false,
    "fitted": null
   },
+  "fuel.pipes.breather-hose#1": {
+   "part": "fuel.pipes.breather-hose",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--breather-hose__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pipes.breather-clip#1": {
+   "part": "fuel.pipes.breather-clip",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--breather-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 0.5,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pipes.breather-clip#2": {
+   "part": "fuel.pipes.breather-clip",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--breather-clip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 0.5,
+     "distance_mm": 150
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pipes.float-hose-front#1": {
+   "part": "fuel.pipes.float-hose-front",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--float-hose-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pipes.fuel-clip#1": {
+   "part": "fuel.pipes.fuel-clip",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--fuel-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pipes.fuel-clip#2": {
+   "part": "fuel.pipes.fuel-clip",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--fuel-clip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pipes.float-hose-rear#1": {
+   "part": "fuel.pipes.float-hose-rear",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--float-hose-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pipes.fuel-clip#3": {
+   "part": "fuel.pipes.fuel-clip",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--fuel-clip__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pipes.fuel-clip#4": {
+   "part": "fuel.pipes.fuel-clip",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--fuel-clip__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pipes.tee#1": {
+   "part": "fuel.pipes.tee",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--tee__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pipes.feed-hose#1": {
+   "part": "fuel.pipes.feed-hose",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--feed-hose__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 140
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pipes.fuel-clip#5": {
+   "part": "fuel.pipes.fuel-clip",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--fuel-clip__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 160
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pipes.feed-union#1": {
+   "part": "fuel.pipes.feed-union",
+   "assembly": "fuel.pipes",
+   "node": "fuel--pipes--feed-union__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "ignition.distributor.housing#1": {
    "part": "ignition.distributor.housing",
    "assembly": "ignition.distributor",
@@ -29702,5 +30297,5 @@
    "fitted": null
   }
  },
- "built": "2026-11-01T22:06:50+00:00"
+ "built": "2026-11-01T22:34:49+00:00"
 }

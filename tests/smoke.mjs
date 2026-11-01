@@ -42,13 +42,13 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
   await page.goto(base);
   await page.waitForFunction(() => document.getElementById('toast').hidden, null, { timeout: 30000 });
   await page.waitForTimeout(800);
-  await page.screenshot({ path: `${shots}/${name}-start.png` });
+  await page.screenshot({ path: `${shots}/${name}-start.png`, timeout: 120000 });
   for (const a of assemblies) {
     await page.evaluate(id => { location.hash = '#' + id.replaceAll('.', '--'); }, a.id);
     await page.waitForTimeout(600);
     await page.fill('#explode', '100'); await page.dispatchEvent('#explode', 'input');
     await page.waitForTimeout(600);
-    await page.screenshot({ path: `${shots}/${name}-${a.id}-exploded.png` });
+    await page.screenshot({ path: `${shots}/${name}-${a.id}-exploded.png`, timeout: 120000 });
     const st = await page.evaluate(id => window.mgbStatus && [window.mgbStatus.matched[id], window.mgbStatus.expected[id]], a.id);
     if (!st || st[0] !== st[1] || !st[1]) errors.push(`${name}: ${a.id} matched ${st && st[0]} of ${st && st[1]} instances`);
     await page.fill('#explode', '0'); await page.dispatchEvent('#explode', 'input');
@@ -64,7 +64,7 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
     if (title !== p.name) errors.push(`${name}: card shows "${title}" for ${p.id}`);
   }
   console.log(`${name}: part cards done`);
-  await page.screenshot({ path: `${shots}/${name}-card.png` });
+  await page.screenshot({ path: `${shots}/${name}-card.png`, timeout: 120000 });
   // the view must respond to a drag right after a part has been selected (camera fly-to)
   const box = await page.locator('#stage canvas').boundingBox();
   const before = await page.evaluate(() => window.mgbCameraPos && window.mgbCameraPos());

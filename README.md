@@ -69,8 +69,11 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
 
 - P3 (in progress): twin SU HS4 carburettors and air cleaners (Haynes Ch 3, Figs 3.1,
   3.10-3.12); Lucas 25D4 distributor with its housing and driveshaft, side-entry cap, HT
-  leads and plug caps (Ch 4 Fig 4.3; Ch 1 Sec 16 and 63).
+  leads and plug caps (Ch 4 Fig 4.3; Ch 1 Sec 16 and 63); the rocker cover breather pipe to
+  the front air cleaner and the float chamber fuel hoses (Ch 3 Sec 3 and 18).
 
-Next: the rest of P3 (exhaust system, breather and fuel pipes). The engine mountings (Fig 1.29) go in with the
+Next: the exhaust. The early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
+pump, tank and the rigid pipe from the pump to the feed union. The engine mountings (Fig 1.29) go in with the
 front crossmember, and the 18ACR alternator with the electrical system. The working standard is in
 `CLAUDE.md`.

@@ -1,0 +1,89 @@
+# Engine-bay fuel hoses and the rocker cover breather pipe, 18G twin SU HS4.
+# Haynes Ch 3 Sec 3 para 1 (printed p67) and Sec 18 para 1 (printed p74).
+# Routing is derived (D): Haynes gives no drawing of the pipe runs for the early cars.
+defaults:
+  system: fuel
+  assembly: fuel.pipes
+  haynes: { section: 18, spec_page: 74 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: rubber
+
+parts:
+  - id: fuel.pipes.float-hose-front
+    name: Fuel hose, front float chamber
+    haynes: { section: 18 }
+    quantity: 1
+    notes: >
+      From the inlet union on the front float chamber lid down under the instruments to
+      the tee ("disconnect the fuel pipe hose(s) from the float chamber(s)", Sec 18 para 1).
+      Run kept below the jets and throttle return springs (D).
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "5/16 in bore fuel hose" } }
+      bore: { in: 0.3125, mm: 7.94, source: { label: D, method: "5/16 in fuel hose, standard for SU HS4 float chamber unions" } }
+
+  - id: fuel.pipes.float-hose-rear
+    name: Fuel hose, rear float chamber
+    haynes: { section: 18 }
+    quantity: 1
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "5/16 in bore fuel hose" } }
+      bore: { in: 0.3125, mm: 7.94, source: { label: D, method: "5/16 in fuel hose" } }
+
+  - id: fuel.pipes.tee
+    name: Fuel tee
+    haynes: { section: 18 }
+    quantity: 1
+    finish: brass
+    notes: Joins the two float chamber hoses to the feed from the pump (D).
+    specs:
+      length: { mm: 36.0, source: { label: D, method: "Two hose spigots and the body" } }
+
+  - id: fuel.pipes.feed-hose
+    name: Fuel feed hose (engine end)
+    haynes: { section: 18 }
+    quantity: 1
+    notes: >
+      From the tee toward the bulkhead; the rigid pipe to the pump at the rear of the car
+      joins at the union and is added with the body.
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "5/16 in bore fuel hose" } }
+      bore: { in: 0.3125, mm: 7.94, source: { label: D, method: "5/16 in fuel hose" } }
+
+  - id: fuel.pipes.feed-union
+    name: Feed pipe union
+    haynes: { section: 18 }
+    quantity: 1
+    finish: brass
+    specs:
+      length: { mm: 14.0, source: { label: D, method: "Union nut for 5/16 in pipe" } }
+
+  - id: fuel.pipes.fuel-clip
+    name: Fuel hose clip
+    haynes: { section: 18 }
+    quantity: 5
+    finish: zinc_steel
+    notes: Sec 18 para 1, "undo the clips (if fitted)".
+    specs:
+      diameter: { mm: 11.0, source: { label: D, method: "Over the 11 mm hose" } }
+      width: { mm: 6.0, source: { label: D, method: "Small worm-drive clip" } }
+
+  - id: fuel.pipes.breather-hose
+    name: Rocker cover breather pipe
+    haynes: { section: 3, spec_page: 67 }
+    quantity: 1
+    notes: >
+      From the spigot at the front of the rocker cover to the spigot on the front air
+      cleaner; disconnected first when the air cleaners come off (Ch 3 Sec 3 para 1) and
+      renewed if perished. Routed over the front float chamber (D).
+    specs:
+      outside_diameter: { mm: 17.0, source: { label: D, method: "Over the 11 mm spigots" } }
+      bore: { mm: 11.0, source: { label: D, method: "Fits the rocker cover spigot" } }
+
+  - id: fuel.pipes.breather-clip
+    name: Breather pipe clip
+    haynes: { section: 3 }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      diameter: { mm: 17.0, source: { label: D, method: "Over the breather hose" } }
+      width: { mm: 7.0, source: { label: D, method: "Small worm-drive clip" } }

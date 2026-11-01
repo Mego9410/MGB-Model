@@ -216,7 +216,7 @@ def float_lid(x):
         top = K.AXIS_Z - 50 + spec.nom("chamber_height") * 0.5
         lid = _zcyl(d / 2 + 1.5, cx, cy, top, top + 7)
         lid = lid + _zcyl(9, cx, cy, top + 7, top + 16)                              # inlet union boss
-        lid = lid + _xcyl(4.5, cy, top + 12, cx, cx - s * 22)                         # fuel inlet spigot
+        lid = lid + _ycyl(4.5, cx, top + 12, cy - K.FUEL_SPIGOT, cy)                  # fuel inlet spigot, toward the engine
         lid = lid + _rod([(cx + s * 12, cy, top + 7), (cx + s * 12, cy, top + 18), (cx + s * 12, cy + 30, top + 18)],
                          2.2, 6.0)                                                    # overflow pipe
         for k in range(3):
@@ -348,6 +348,10 @@ def cleaner_case(x):
         c = c + tube
         for dx in (-K.CLEANER_BOLT_DX, K.CLEANER_BOLT_DX):
             c = c + _ycyl(7, dx, 0, depth - 3, depth + 1) - _ycyl(3.4, dx, 0, depth - 4, depth + 2)
+        if x > 0:                                    # rocker cover breather spigot on the front case (Sec 3 para 1)
+            bx, by = K.BREATHER_SPIGOT
+            c = c + _zcyl(9, bx, by, d / 2 - 8, d / 2 + 2) + _zcyl(7, bx, by, d / 2 - 2, d / 2 + 16)
+            c = c - _zcyl(5, bx, by, d / 2 - 10, d / 2 + 17)
         return _l(c, spec)
     return build
 

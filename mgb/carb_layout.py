@@ -32,8 +32,22 @@ INTAKE_Y = BODY_Y + BODY_LEN               # air intake flange face
 CLEANER_BOLT_DX = 28.0                     # air cleaner bolts either side of the intake (horizontal pair)
 CHAMBER_SCREW_R = 37.0
 FLOAT_DX = 58.0                            # float chamber axis outboard of the jet
+FUEL_SPIGOT = 22.0                         # float lid inlet spigot, toward the engine (-Y) from the lid axis
+BREATHER_SPIGOT = (0.0, 30.0)              # on top of the front air cleaner case, case-local (x, y)
 
 
 def side(x):
     """Outboard direction along X for the instrument at x (front +1, rear -1)."""
     return 1.0 if x > 0 else -1.0
+
+
+def float_inlet(x, chamber_height):
+    """End of the float chamber lid inlet spigot for the instrument at x (engine frame)."""
+    cx = x + side(x) * FLOAT_DX
+    return (cx, PISTON_Y - FUEL_SPIGOT, AXIS_Z - 50 + chamber_height * 0.5 + 12)
+
+
+def breather_spigot_top(depth_offset=4.8, case_d=150.0):
+    """Top of the breather spigot on the front air cleaner case (engine frame)."""
+    bx, by = BREATHER_SPIGOT
+    return (CARB_X[0] + bx, INTAKE_Y + depth_offset + by, AXIS_Z + case_d / 2 + 16)
