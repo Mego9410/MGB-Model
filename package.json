@@ -1,0 +1,24 @@
+{
+  "name": "mgb-model",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mego9410/mgb-model.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mego9410/mgb-model/issues"
+  },
+  "homepage": "https://github.com/Mego9410/mgb-model#readme",
+  "devDependencies": {
+    "gltfpack": "^0.21.0",
+    "three": "^0.160.0"
+  }
+}

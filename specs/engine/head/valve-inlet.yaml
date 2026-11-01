@@ -1,0 +1,72 @@
+id: engine.head.valve-inlet
+name: Inlet valve
+system: engine
+assembly: engine.head
+haynes:
+  figures:
+    - { figure: "1.9", legend: 1 }
+    - { figure: "1.6", legend: 8 }
+  section: 13
+  spec_page: 22
+quantity: 4
+finish: machined_steel
+part_numbers:
+  - { number: 12H435, by: "BMC (via Rimmer Bros listing)", source: { label: S, ref: "https://rimmerbros.com/Item--i-12H435" } }
+  - { number: 423-140, by: "Moss Motors", source: { label: S, ref: "https://mossmotors.com/423-140-intake-valve-1-563-diameter" } }
+notes: >
+  1963 18G engine, wide collet groove (large keepers, 18G to 18GF engines per
+  BP Northwest listing V3570). Material and overall length are not published in
+  Haynes; length is derived and should be measured when a valve is to hand.
+variant: { factory_1963: true, as_fitted: true }
+explode: { axis: [0, 0, -1], order: 6, distance_mm: 140 }
+fastened_by: [engine.head.valve-collet]
+specs:
+  head_diameter:
+    in: [1.562, 1.567]
+    mm: [39.67, 39.80]
+    printed_mm: [38.67, 38.80]
+    erratum: true
+    source: { label: H, page: 22, note: "Haynes prints 38.67-38.80 mm; 1.562 in = 39.67 mm, so the inch figure governs" }
+  stem_diameter:
+    in: [0.3422, 0.3427]
+    mm: [8.69, 8.71]
+    source: { label: H, page: 22 }
+  seat_angle:
+    deg: 45.5
+    source: { label: H, page: 22, note: "Printed as 45 1/2 deg" }
+  valve_lift:
+    in: 0.3645
+    mm: 9.25
+    source: { label: H, page: 22 }
+    display_only: true
+  stem_to_guide_clearance:
+    in: [0.0015, 0.0025]
+    mm: [0.0381, 0.0635]
+    source: { label: H, page: 22 }
+    display_only: true
+  stem_to_rocker_clearance_cold:
+    in: 0.015
+    mm: 0.38
+    source: { label: H, page: 22 }
+    display_only: true
+  overall_length:
+    mm: 115.0
+    source: { label: D, method: "Scaled from Fig 1.9 using the head diameter. The drawing is not to scale (its head-to-stem ratio is 8% off), so treat as +/-10% until measured" }
+  margin_thickness:
+    mm: 1.3
+    source: { label: D, method: "Typical B-series inlet valve proportion; not published" }
+  seat_face_radial_width:
+    mm: 1.8
+    source: { label: D, method: "Typical B-series inlet valve proportion; not published" }
+  head_height:
+    mm: 10.0
+    source: { label: D, method: "Margin to start of stem, proportion from Fig 1.9" }
+  collet_groove_width:
+    mm: 3.2
+    source: { label: D, method: "Wide-groove keeper type per supplier listing; width not published" }
+  collet_groove_depth:
+    mm: 0.8
+    source: { label: D, method: "Not published" }
+  collet_groove_from_tip:
+    mm: 4.0
+    source: { label: D, method: "Proportion from Fig 1.9" }

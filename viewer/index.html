@@ -1,0 +1,452 @@
+<title>MGB Workshop</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: parts-catalogue workbench. Tree | 3D stage | spec card on laptop; stage + bottom sheet on phone. */
+:root{
+  --bg:#e9e6e0; --stage:#d9d5cd; --panel:#f6f4ef; --edge:#cfc9be; --fg:#1d1e20; --muted:#625f58;
+  --accent:#a8261f; --accent-ink:#fff; --chip:#e3dfd6; --sel:#a8261f;
+  --src-h:#1f5f8b; --src-s:#5a6b2e; --src-d:#9a6512; --src-f:#4b3d8f; --src-m:#2d7a6b;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17181a; --stage:#202225; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#17181a; --stage:#202225; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark }
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 var(--body);overflow:hidden}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{height:100%;display:grid;grid-template-columns:minmax(220px,260px) 1fr minmax(300px,360px);grid-template-rows:auto 1fr auto;grid-template-areas:"top top top" "tree stage card" "tree bar card"}
+header{grid-area:top;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--edge);background:var(--panel);padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header h1{font:600 22px/1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:0}
+header .reg{font:500 11px var(--mono);color:var(--muted);letter-spacing:.06em}
+.crumbs{display:flex;gap:6px;flex-wrap:wrap;font-size:13px;color:var(--muted);min-width:0}
+.crumbs button{background:none;border:0;padding:2px 0;cursor:pointer;color:var(--muted)}
+.crumbs button:hover{color:var(--fg);text-decoration:underline}
+.crumbs .here{color:var(--fg);font-weight:600}
+nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);background:var(--panel);padding:10px 8px 16px max(8px,env(safe-area-inset-left,0px))}
+.tree h2,.card h2.k{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 8px 8px}
+.tree ul{list-style:none;margin:0;padding:0}
+.tree li ul{padding-left:14px}
+.tree .row{display:flex;align-items:center;gap:6px;width:100%;text-align:left;background:none;border:0;border-radius:4px;padding:5px 8px;cursor:pointer}
+.tree .row:hover{background:var(--chip)}
+.tree .row[aria-current="true"]{background:var(--chip);box-shadow:inset 3px 0 0 var(--accent)}
+.tree .row .n{flex:1;min-width:0}
+.tree .row .c{font:11px var(--mono);color:var(--muted)}
+.tree .row.empty{color:var(--muted)}
+.tree .tw{width:12px;color:var(--muted);font-size:10px}
+main.stage{grid-area:stage;position:relative;background:var(--stage);min-width:0;min-height:0}
+main.stage canvas{display:block;width:100%;height:100%;touch-action:none}
+.labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.leg{position:absolute;transform:translate(-50%,-50%);font:600 11px var(--mono);background:var(--panel);border:1px solid var(--edge);border-radius:999px;padding:1px 6px;color:var(--fg)}
+.measure-tag{position:absolute;transform:translate(-50%,-130%);font:600 12px var(--mono);background:var(--accent);color:var(--accent-ink);border-radius:4px;padding:2px 6px;white-space:nowrap}
+.toast{position:absolute;left:50%;top:12px;transform:translateX(-50%);background:var(--panel);border:1px solid var(--edge);border-radius:6px;padding:6px 12px;font-size:13px;max-width:calc(100% - 32px)}
+.bar{grid-area:bar;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--edge);background:var(--panel);padding-block:8px;padding-left:16px;padding-right:16px}
+.bar label{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bar input[type=range]{flex:1 1 160px;min-width:0;accent-color:var(--accent)}
+.bar .val{font:500 12px var(--mono);width:40px;text-align:right;font-variant-numeric:tabular-nums}
+.tool{background:var(--chip);border:1px solid var(--edge);border-radius:6px;padding:6px 10px;cursor:pointer;font:600 12px var(--display);letter-spacing:.08em;text-transform:uppercase}
+.tool[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);background:var(--panel);padding:14px max(16px,env(safe-area-inset-right,0px)) 24px 16px}
+.card .empty{color:var(--muted);margin:24px 4px}
+.card .kind{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card h3{font:600 26px/1.05 var(--display);margin:4px 0 6px;text-wrap:balance}
+.card .ref{font:12px var(--mono);color:var(--muted)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:14px 0;font-size:13px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;min-width:0}
+.dims{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+.dims th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 4px;border-bottom:1px solid var(--edge)}
+.dims td{padding:7px 4px;border-bottom:1px solid var(--edge);vertical-align:top}
+.dims td.v{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums}
+.dims .note{display:block;color:var(--muted);font:12px var(--body);margin-top:3px}
+.src{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:4px;font:600 11px var(--mono);color:#fff;cursor:help}
+.src.H{background:var(--src-h)}.src.S{background:var(--src-s)}.src.D{background:var(--src-d)}.src.F{background:var(--src-f)}.src.M{background:var(--src-m)}
+:root[data-theme="dark"] .src, :root:not([data-theme="light"]) .src{color:#fff}
+.flag{display:inline-block;margin-left:4px;font:600 10px var(--mono);color:var(--accent);letter-spacing:.04em}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:16px 0 0}
+.legend span{display:flex;align-items:center;gap:5px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{background:var(--chip);border:1px solid var(--edge);border-radius:6px;padding:7px 12px;cursor:pointer;font-weight:600;font-size:13px}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.derived{margin-top:10px;font-size:12px;color:var(--src-d)}
+.tabs{display:none}
+#err{white-space:pre-wrap}
+@media (max-width: 820px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto auto;grid-template-areas:"top" "stage" "bar" "sheet"}
+  nav.tree,aside.card{grid-area:sheet;border:0;border-top:1px solid var(--edge);max-height:42vh}
+  .tabs{display:flex;grid-area:sheet;align-self:start;gap:4px;background:var(--panel);padding:6px 16px 0;position:relative;z-index:2}
+  .tabs button{flex:1;background:none;border:0;border-bottom:2px solid transparent;padding:8px;font:600 13px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+  .tabs button[aria-selected="true"]{color:var(--fg);border-color:var(--accent)}
+  nav.tree,aside.card{padding-top:48px}
+  .app[data-sheet="tree"] aside.card{display:none}
+  .app[data-sheet="card"] nav.tree{display:none}
+  header h1{font-size:19px}
+  .bar{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+</style>
+
+<div class="app" id="app" data-sheet="tree">
+  <header>
+    <h1>MGB Workshop</h1>
+    <span class="reg">1963 ROADSTER · RHD · 18G · OVERDRIVE · 18ACR</span>
+    <div class="crumbs" id="crumbs" aria-label="Location"></div>
+  </header>
+  <div class="tabs" role="tablist">
+    <button role="tab" id="tab-tree" aria-selected="true">Parts</button>
+    <button role="tab" id="tab-card" aria-selected="false">Spec</button>
+  </div>
+  <nav class="tree" id="tree" aria-label="Parts"><h2>Parts</h2><ul id="tree-root"></ul></nav>
+  <main class="stage" id="stage">
+    <div class="labels" id="labels"></div>
+    <div class="toast" id="toast" hidden></div>
+  </main>
+  <div class="bar">
+    <label for="explode">Explode</label>
+    <input id="explode" type="range" min="0" max="100" value="0">
+    <span class="val" id="explode-val">0%</span>
+    <button class="tool" id="measure" type="button" aria-pressed="false">Measure</button>
+    <button class="tool" id="frame" type="button">Frame</button>
+  </div>
+  <aside class="card" id="card" aria-live="polite"><p class="empty">Select a part to see its specification.</p></aside>
+</div>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/loaders/GLTFLoader.js":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+  "three/addons/controls/OrbitControls.js":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js",
+  "three/addons/libs/meshopt_decoder.module.js":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/meshopt_decoder.module.js",
+  "three/addons/environments/RoomEnvironment.js":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/environments/RoomEnvironment.js"
+}}
+</script>
+<script type="module">
+const toast = document.getElementById('toast');
+function say(msg, ms){ toast.textContent = msg; toast.hidden = false; clearTimeout(say.t); if (ms) say.t = setTimeout(() => toast.hidden = true, ms); }
+window.addEventListener('error', e => say('Something failed while loading: ' + (e.message || e)));
+window.addEventListener('unhandledrejection', e => say('Something failed while loading: ' + (e.reason && e.reason.message || e.reason)));
+say('Loading the workshop…');
+
+const THREE = await import('three');
+const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
+const { MeshoptDecoder } = await import('three/addons/libs/meshopt_decoder.module.js');
+const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+
+const reg = await (await fetch('registry.json')).json();
+const N = reg.nodes;
+
+// ---------- ids <-> hash (hash allows letters, digits, hyphens only)
+const toHash = id => id.replaceAll('.', '--');
+const fromHash = h => h.replaceAll('--', '.');
+
+// ---------- scene
+const stage = document.getElementById('stage');
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.85;
+stage.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+const camera = new THREE.PerspectiveCamera(35, 1, 0.001, 50);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.dampingFactor = 0.09; controls.zoomToCursor = true;
+const key = new THREE.DirectionalLight(0xffffff, 0.8); key.position.set(1, 2, 1.5); scene.add(key);
+
+function themeColor(v){ return new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue(v).trim()); }
+function applyTheme(){ scene.background = themeColor('--stage'); selMat && selMat.emissive.copy(themeColor('--sel')).multiplyScalar(0.35); }
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+// finishes by material class (no textures; materials read by shading)
+const FINISH = {
+  machined_steel: { color: 0x8d9195, metalness: 0.85, roughness: 0.34, envMapIntensity: 0.75 },
+  cast_iron:      { color: 0x5c5f63, metalness: 0.55, roughness: 0.7 },
+  aluminium:      { color: 0xc9ccce, metalness: 0.8, roughness: 0.42 },
+  chrome:         { color: 0xf2f3f4, metalness: 1.0, roughness: 0.08 },
+  rubber:         { color: 0x1e1f21, metalness: 0.0, roughness: 0.92 },
+  paint_red:      { color: 0xa3181a, metalness: 0.3, roughness: 0.35 },
+  default:        { color: 0x8a8e93, metalness: 0.6, roughness: 0.45, envMapIntensity: 0.75 },
+};
+const matCache = {};
+function finishMat(f){ f = FINISH[f] ? f : 'default'; return matCache[f] ||= new THREE.MeshStandardMaterial(FINISH[f]); }
+let selMat = new THREE.MeshStandardMaterial({ ...FINISH.machined_steel, emissive: 0x000000 });
+
+// ---------- loading assemblies
+const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+const loaded = {};          // assembly id -> THREE.Group
+const instances = [];       // { obj, instId, partId, base: Vector3 }
+async function loadAssembly(aid){
+  if (loaded[aid]) return loaded[aid];
+  const a = N[aid];
+  const gltf = await loader.loadAsync(a.file);
+  const root = gltf.scene; root.name = aid;
+  // glTF export is in metres, Y up. Each named node is one instance.
+  const byNode = {}; for (const [iid, v] of Object.entries(reg.instances)) byNode[v.node] = iid;
+  root.traverse(o => {
+    const iid = byNode[o.name];
+    if (!iid) return;
+    const inst = reg.instances[iid];
+    const part = N[inst.part];
+    o.userData = { instId: iid, partId: inst.part };
+    o.traverse(m => { if (m.isMesh){ m.material = finishMat(part.finish); m.userData.instId = iid; m.userData.partId = inst.part; } });
+    instances.push({ obj: o, instId: iid, partId: inst.part, base: o.position.clone() });
+  });
+  const want = Object.values(reg.instances).filter(v => v.assembly === aid).length;
+  const got = instances.filter(i => reg.instances[i.instId].assembly === aid).length;
+  if (got !== want) say(`${a.name}: ${want - got} of ${want} parts did not load. Rebuild the model files.`);
+  (window.mgbStatus ||= { matched: {}, expected: {} }).matched[aid] = got; window.mgbStatus.expected[aid] = want;
+  scene.add(root);
+  loaded[aid] = root;
+  return root;
+}
+
+// ---------- framing
+function frame(obj, instant){
+  const box = new THREE.Box3().setFromObject(obj);
+  if (box.isEmpty()) return;
+  const c = box.getCenter(new THREE.Vector3()), r = box.getSize(new THREE.Vector3()).length() / 2;
+  const dist = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.1;
+  const dir = new THREE.Vector3(1, 0.55, 1.25).normalize();
+  fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) };
+  camera.near = r / 200; camera.far = r * 100 + 10; camera.updateProjectionMatrix();
+  if (instant){ controls.target.copy(fly.to.target); camera.position.copy(fly.to.pos); fly.to = null; }
+}
+const fly = { to: null };
+
+// ---------- selection
+let current = null;   // node id in focus (assembly or part)
+let selected = null;  // part id
+function setSelected(pid){
+  selected = pid;
+  for (const i of instances){
+    const on = i.partId === pid;
+    i.obj.traverse(m => { if (m.isMesh){ m.material = on ? selMatFor(N[i.partId].finish) : finishMat(N[i.partId].finish); } });
+  }
+}
+const selCache = {};
+function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color = finishMat(f).color.clone().lerp(themeColor('--sel'), 0.45); m.emissive = themeColor('--sel').multiplyScalar(0.18); return m; }
+
+// ---------- explode: parts leave along their removal axis, in Haynes removal order
+const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
+function applyExplode(){
+  const t = ex.value / 100; exv.textContent = ex.value + '%';
+  const orders = [...new Set(instances.map(i => (N[i.partId].explode || {}).order || 1))].sort((a, b) => a - b);
+  const n = orders.length;
+  for (const i of instances){
+    const e = N[i.partId].explode || { axis: [0, 0, 1], distance_mm: 50, order: 1 };
+    const k = orders.indexOf(e.order || 1);
+    const local = THREE.MathUtils.clamp(t * n - k, 0, 1);
+    const s = local * local * (3 - 2 * local);
+    // instance nodes sit under the model root, which holds the Z-up to Y-up turn,
+    // so explode axes are applied in CAD coordinates (mm -> m)
+    const ax = new THREE.Vector3(...e.axis).normalize();
+    i.obj.position.copy(i.base).addScaledVector(ax, s * e.distance_mm / 1000);
+  }
+  drawLeaders();
+}
+ex.addEventListener('input', applyExplode);
+const leaderMat = new THREE.LineDashedMaterial({ color: 0x888888, dashSize: 0.003, gapSize: 0.002 });
+const leaders = new THREE.Group(); scene.add(leaders);
+function drawLeaders(){
+  leaders.clear();
+  for (const i of instances){
+    if (i.obj.position.distanceTo(i.base) < 1e-5) continue;
+    const g = new THREE.BufferGeometry().setFromPoints([i.base.clone().applyMatrix4(i.obj.parent.matrixWorld), i.obj.getWorldPosition(new THREE.Vector3())]);
+    const l = new THREE.Line(g, leaderMat); l.computeLineDistances(); leaders.add(l);
+  }
+}
+
+// ---------- labels: Haynes legend numbers beside exploded parts
+const labels = document.getElementById('labels');
+function updateLabels(){
+  labels.querySelectorAll('.leg').forEach(e => e.remove());
+  if (ex.value == 0) return;
+  const fig = (N[current] && N[current].haynes && N[current].haynes.figures || [])[0];
+  for (const i of instances){
+    const figs = (N[i.partId].haynes || {}).figures || [];
+    const f = figs.find(x => fig && x.figure === fig.figure) || figs[0];
+    if (!f || f.legend == null) continue;
+    const p = new THREE.Box3().setFromObject(i.obj).getCenter(new THREE.Vector3()).project(camera);
+    if (p.z > 1) continue;
+    const el = document.createElement('span'); el.className = 'leg';
+    el.textContent = f.legend; el.title = 'Haynes Fig ' + f.figure + ', item ' + f.legend;
+    el.style.left = ((p.x + 1) / 2 * stage.clientWidth + 22) + 'px';
+    el.style.top = ((1 - p.y) / 2 * stage.clientHeight) + 'px';
+    labels.appendChild(el);
+  }
+}
+
+// ---------- measure
+const mBtn = document.getElementById('measure');
+let measuring = false, mPts = [];
+const mGroup = new THREE.Group(); scene.add(mGroup);
+const mTag = document.createElement('span'); mTag.className = 'measure-tag'; mTag.hidden = true; labels.appendChild(mTag);
+mBtn.addEventListener('click', () => {
+  measuring = !measuring; mBtn.setAttribute('aria-pressed', measuring);
+  mPts = []; mGroup.clear(); mTag.hidden = true;
+  say(measuring ? 'Measure: tap two points on a part.' : '', measuring ? 0 : 1);
+});
+function addMeasurePoint(p){
+  mPts.push(p);
+  const r = camera.position.distanceTo(controls.target) / 220;
+  const dot = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 12), new THREE.MeshBasicMaterial({ color: themeColor('--accent') }));
+  dot.position.copy(p); mGroup.add(dot);
+  if (mPts.length === 2){
+    const g = new THREE.BufferGeometry().setFromPoints(mPts);
+    mGroup.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color: themeColor('--accent') })));
+    const mm = mPts[0].distanceTo(mPts[1]) * 1000;
+    mTag.textContent = mm.toFixed(2) + ' mm · ' + (mm / 25.4).toFixed(4) + ' in';
+    mTag.hidden = false; say('Distance measured on the model surface. Tap Measure to clear.', 4000);
+  } else if (mPts.length > 2){ mPts = []; mGroup.clear(); mTag.hidden = true; addMeasurePoint(p); }
+}
+function placeMeasureTag(){
+  if (mTag.hidden || mPts.length < 2) return;
+  const mid = mPts[0].clone().add(mPts[1]).multiplyScalar(0.5).project(camera);
+  mTag.style.left = ((mid.x + 1) / 2 * stage.clientWidth) + 'px';
+  mTag.style.top = ((1 - mid.y) / 2 * stage.clientHeight) + 'px';
+}
+
+// ---------- picking
+const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+let down = null, lastTap = 0;
+renderer.domElement.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY }; });
+renderer.domElement.addEventListener('pointerup', e => {
+  if (!down || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6) return;
+  const r = renderer.domElement.getBoundingClientRect();
+  ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+  ray.setFromCamera(ptr, camera);
+  const hit = ray.intersectObjects(Object.values(loaded), true).find(h => h.object.isMesh && h.object.userData.partId);
+  if (measuring){ if (hit) addMeasurePoint(hit.point); return; }
+  const now = performance.now(), dbl = now - lastTap < 320; lastTap = now;
+  if (!hit){ return; }
+  const pid = hit.object.userData.partId;
+  if (dbl){ go(N[pid].parent); setSelected(pid); showCard(pid); }
+  else { select(pid); }
+});
+
+// ---------- navigation
+function pathTo(id){ const p = []; for (let n = N[id]; n; n = N[n.parent]) p.unshift(n); return p; }
+function renderCrumbs(id){
+  const c = document.getElementById('crumbs'); c.innerHTML = '';
+  pathTo(id).forEach((n, k, arr) => {
+    if (k) c.append(Object.assign(document.createElement('span'), { textContent: '›' }));
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = n.name;
+    if (k === arr.length - 1) b.className = 'here';
+    b.addEventListener('click', () => go(n.id));
+    c.append(b);
+  });
+}
+function partCount(id){ const n = N[id]; if (!n) return 0; if (n.kind === 'part') return 1; return (n.children || []).reduce((s, c) => s + partCount(c), 0); }
+function renderTree(){
+  const root = document.getElementById('tree-root'); root.innerHTML = '';
+  const make = id => {
+    const n = N[id], li = document.createElement('li');
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'row'; b.dataset.id = id;
+    const cnt = partCount(id), kids = (n.children || []).filter(c => N[c]);
+    if (n.kind !== 'part' && cnt === 0) b.classList.add('empty');
+    b.innerHTML = '<span class="tw">' + (kids.length ? '▾' : '') + '</span><span class="n"></span><span class="c"></span>';
+    b.querySelector('.n').textContent = n.name;
+    b.querySelector('.c').textContent = n.kind === 'part' ? (n.quantity ? '×' + n.quantity : '') : (n.kind === 'system' && !cnt ? 'to build' : cnt ? cnt + ' part' + (cnt > 1 ? 's' : '') : '');
+    b.addEventListener('click', () => n.kind === 'part' ? select(id) : go(id));
+    li.append(b);
+    if (kids.length){ const ul = document.createElement('ul'); kids.forEach(k => ul.append(make(k))); li.append(ul); }
+    return li;
+  };
+  N.car.children.forEach(s => root.append(make(s)));
+}
+function markTree(){ document.querySelectorAll('.tree .row').forEach(b => b.setAttribute('aria-current', b.dataset.id === (selected || current))); }
+
+async function go(id){
+  if (!N[id]) return;
+  const n = N[id];
+  current = id; renderCrumbs(id); markTree();
+  if (n.kind === 'assembly'){
+    say('Loading ' + n.name + '…');
+    const g = await loadAssembly(id);
+    toast.hidden = true; frame(g); showCard(id);
+  } else if (n.kind === 'system' || n.kind === 'car'){
+    const built = (n.children || []).filter(c => N[c] && N[c].kind === 'assembly');
+    if (n.kind === 'system' && !built.length){ showCard(id); say(n.name + ' is not built yet. The cylinder head is the first assembly.', 3500); return; }
+    for (const a of built) await loadAssembly(a);
+    frame(scene); showCard(id);
+  }
+  setHash(id);
+}
+function select(pid){
+  const n = N[pid];
+  if (!loaded[n.parent]) { go(n.parent).then(() => select(pid)); return; }
+  current = n.parent; renderCrumbs(pid); setSelected(pid); markTree(); showCard(pid); setHash(pid);
+  sheet('card');
+}
+function setHash(id){ const h = '#' + toHash(id); if (location.hash !== h) history.replaceState(null, '', h); }
+
+// ---------- spec card
+const card = document.getElementById('card');
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function showCard(id){
+  const n = N[id];
+  if (n.kind !== 'part'){
+    const figs = (n.haynes && n.haynes.figures || []).map(f => 'Fig ' + f.figure).join(', ');
+    card.innerHTML = '<div class="kind">' + esc(n.kind) + '</div><h3>' + esc(n.name) + '</h3>'
+      + (figs ? '<div class="ref">Haynes ' + esc(figs) + (n.haynes.section ? ' · Section ' + n.haynes.section : '') + '</div>' : n.haynes && n.haynes.chapter ? '<div class="ref">Haynes Chapter ' + n.haynes.chapter + '</div>' : '')
+      + '<p>' + (partCount(id) ? partCount(id) + ' modelled part' + (partCount(id) > 1 ? 's' : '') + '. Select one in the list or on the model.' : 'Not built yet.') + '</p>';
+    return;
+  }
+  const figs = (n.haynes.figures || []).map(f => 'Fig ' + f.figure + ' item ' + f.legend).join(' · ');
+  const pn = (n.partNumbers || []).map(p => esc(p.number) + (p.by ? ' <span class="ref">(' + esc(p.by) + ')</span>' : '')).join('<br>');
+  const rows = n.specs.map(r => '<tr><td>' + esc(r.label)
+      + (r.erratum ? '<span class="flag" title="Haynes printed ' + esc(r.printed_mm && r.printed_mm.join(' to ')) + ' mm">HAYNES MISPRINT</span>' : '')
+      + (r.note ? '<span class="note">' + esc(r.note) + '</span>' : '') + '</td>'
+      + '<td class="v">' + esc(r.value) + '</td>'
+      + '<td><span class="src ' + esc(r.source) + '" title="' + esc(r.sourceName + (r.ref ? ': ' + r.ref : '')) + '">' + esc(r.source) + '</span></td></tr>').join('');
+  card.innerHTML = '<div class="kind">Part</div><h3>' + esc(n.name) + '</h3>'
+    + '<div class="ref">Haynes ' + esc(figs) + ' · Section ' + esc(n.haynes.section) + ' · specs p' + esc(n.haynes.spec_page) + '</div>'
+    + '<dl class="facts"><dt>Quantity</dt><dd>' + esc(n.quantity) + '</dd>'
+    + (pn ? '<dt>Part no.</dt><dd>' + pn + '</dd>' : '')
+    + '<dt>Material</dt><dd>' + esc(n.material || 'Not recorded in sources') + '</dd>'
+    + '<dt>Fitted</dt><dd>' + (n.variant.factory_1963 && n.variant.as_fitted ? 'Factory 1963 and on this car' : n.variant.as_fitted ? 'This car only' : 'Factory 1963 only') + '</dd></dl>'
+    + '<h2 class="k">Dimensions</h2><table class="dims"><thead><tr><th>Feature</th><th>Value</th><th>Src</th></tr></thead><tbody>' + rows + '</tbody></table>'
+    + (n.derivedShare > 0.3 ? '<p class="derived">' + Math.round(n.derivedShare * 100) + '% of this part\'s figures are derived, not published. Treat those as close, not exact.</p>' : '')
+    + (n.notes ? '<p class="ref" style="margin-top:12px">' + esc(n.notes) + '</p>' : '')
+    + '<div class="legend"><span><i class="src H">H</i>Haynes</span><span><i class="src S">S</i>Supplier</span><span><i class="src D">D</i>Derived</span><span><i class="src M">M</i>Measured</span></div>'
+    + '<div class="btnrow"><button class="btn primary" id="open-asm" type="button">Open its assembly</button><button class="btn" id="copy-link" type="button">Copy link</button></div>';
+  card.querySelector('#open-asm').onclick = () => { go(n.parent); setSelected(id); showCard(id); };
+  card.querySelector('#copy-link').onclick = async () => {
+    try { await navigator.clipboard.writeText(location.href); say('Link copied.', 2000); }
+    catch { say('Copy failed. The link is in the address bar: ' + location.href, 5000); }
+  };
+}
+
+// ---------- phone sheet tabs
+const app = document.getElementById('app');
+function sheet(which){ app.dataset.sheet = which; document.getElementById('tab-tree').setAttribute('aria-selected', which === 'tree'); document.getElementById('tab-card').setAttribute('aria-selected', which === 'card'); }
+document.getElementById('tab-tree').onclick = () => sheet('tree');
+document.getElementById('tab-card').onclick = () => sheet('card');
+document.getElementById('frame').onclick = () => frame(current && loaded[current] ? loaded[current] : scene);
+addEventListener('keydown', e => {
+  if (e.target.closest('input,textarea')) return;
+  if (e.key === 'Escape' && current && N[current].parent) go(N[current].parent);
+  if (e.key === 'e' || e.key === 'E'){ ex.value = ex.value > 0 ? 0 : 100; applyExplode(); }
+  if (e.key === 'm' || e.key === 'M') mBtn.click();
+});
+
+// ---------- resize + loop
+function resize(){ const w = stage.clientWidth, h = stage.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe(stage); resize();
+applyTheme();
+renderer.setAnimationLoop(() => {
+  if (fly.to){ controls.target.lerp(fly.to.target, 0.12); camera.position.lerp(fly.to.pos, 0.12); if (camera.position.distanceTo(fly.to.pos) < 1e-5) fly.to = null; }
+  controls.update(); renderer.render(scene, camera); updateLabels(); placeMeasureTag();
+});
+
+// ---------- start
+renderTree();
+const firstAsm = Object.values(N).find(n => n.kind === 'assembly');
+const start = location.hash ? fromHash(location.hash.slice(1)) : null;
+await loadAssembly(firstAsm.id); frame(loaded[firstAsm.id], true);
+if (start && N[start]) { N[start].kind === 'part' ? select(start) : go(start); } else { go(firstAsm.id); }
+toast.hidden = true;
+addEventListener('hashchange', () => { const id = fromHash(location.hash.slice(1)); if (N[id] && id !== selected && id !== current) N[id].kind === 'part' ? select(id) : go(id); });
+</script>
