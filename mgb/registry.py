@@ -96,7 +96,7 @@ def build_registry(specs: dict[str, Spec], assemblies, sizes: dict[str, int]) ->
     instances = {}
     for a in assemblies:
         nodes[a.ID] = {"id": a.ID, "kind": "assembly", "name": a.NAME, "parent": a.PARENT,
-                       "haynes": a.HAYNES, "children": [], "file": f"models/{a.ID}.glb",
+                       "haynes": a.HAYNES, "children": [], "file": f"models/{a.ID}.json",
                        "bytes": sizes.get(a.ID)}
         nodes[a.PARENT]["children"].append(a.ID)
         for inst_id, part_id, _loc in a.INSTANCES:

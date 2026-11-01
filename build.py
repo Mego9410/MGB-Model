@@ -84,7 +84,9 @@ def main():
             export.step(part, OUT / "step" / f"{pid}.step")
         for a in assemblies:
             inst = [(i, parts[p], loc) for i, p, loc in a.INSTANCES]
-            sizes[a.ID] = export.glb(inst, OUT / "viewer" / "models" / f"{a.ID}.glb", "detail")
+            glb_path = OUT / "glb" / f"{a.ID}.glb"
+            export.glb(inst, glb_path, "detail")
+            sizes[a.ID] = export.glb_to_embedded_gltf(glb_path, OUT / "viewer" / "models" / f"{a.ID}.json")
             print(f"  glb   {a.ID:<40} {sizes[a.ID] / 1024:.0f} KB")
         reg = build_registry(specs, assemblies, sizes)
         reg["built"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")

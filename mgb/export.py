@@ -50,3 +50,25 @@ def glb(instances: list[tuple[str, Part, Location]], path: Path, lod: str) -> in
                    stdout=subprocess.DEVNULL)
     raw.unlink()
     return path.stat().st_size
+
+
+def glb_to_embedded_gltf(src: Path, dst: Path) -> int:
+    """Rewrite a GLB as glTF JSON with its binary buffer embedded as base64.
+
+    Claude artifacts serve .json but not .glb; three.js loads either the same way.
+    """
+    import base64
+    import json
+    import struct
+    b = src.read_bytes()
+    jlen = struct.unpack("<I", b[12:16])[0]
+    doc = json.loads(b[20:20 + jlen])
+    off = 20 + jlen
+    blen = struct.unpack("<I", b[off:off + 4])[0]
+    binchunk = b[off + 8:off + 8 + blen]
+    doc["buffers"][0]["uri"] = "data:application/octet-stream;base64," + base64.b64encode(binchunk).decode()
+    for buf in doc["buffers"][1:]:
+        buf.setdefault("uri", "data:application/octet-stream;base64,")
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    dst.write_text(json.dumps(doc, separators=(",", ":")))
+    return dst.stat().st_size
