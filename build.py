@@ -23,6 +23,7 @@ from mgb.registry import build_registry  # noqa: E402
 from mgb.vendor import check_vendor_urls  # noqa: E402
 
 OUT = ROOT / "build"
+SITE = ROOT / "site"   # committed static site, served by Vercel as-is
 
 
 def _load_module(path: Path):
@@ -56,6 +57,28 @@ def build_parts(findings):
         parts[sp.id] = part
         print(f"  part  {sp.id:<40} ok, {len(getattr(mod, 'PROBES', {}))} probes")
     return parts, specs
+
+
+SKELETON = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+            '</head>\n<body>\n')
+
+
+def write_site():
+    """Copy the viewer bundle to site/ as a standalone static site.
+
+    The artifact host wraps the page in a doctype skeleton; a plain static host
+    does not, so site/index.html gets one here.
+    """
+    if SITE.exists():
+        shutil.rmtree(SITE)
+    shutil.copytree(OUT / "viewer", SITE)
+    lines = (ROOT / "viewer" / "index.html").read_text().splitlines()
+    head = [ln for ln in lines if ln.startswith(("<title", "<meta", "<link"))]
+    body = [ln for ln in lines if ln not in head]
+    html = SKELETON.replace("</head>", "\n".join(head) + "\n</head>") + "\n".join(body)
+    (SITE / "index.html").write_text(html + "\n</body>\n</html>\n")
+    print(f"  site  {SITE.relative_to(ROOT)}/ written")
 
 
 def main():
@@ -92,6 +115,7 @@ def main():
         reg["built"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
         (OUT / "viewer" / "registry.json").write_text(json.dumps(reg, indent=1))
         shutil.copy(ROOT / "viewer" / "index.html", OUT / "viewer" / "index.html")
+        write_site()
 
     errors = [f for f in findings if f.level == "error"]
     warns = [f for f in findings if f.level == "warning"]

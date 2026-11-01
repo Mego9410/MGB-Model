@@ -17,7 +17,8 @@ each solid against its spec and fails if a published dimension is out of range.
 | `mgb/` | Spec loading and checks, probes, fastener library, export, registry |
 | `viewer/` | The web viewer (single page, three.js) |
 | `tests/` | Check tests (`pytest`) and the viewer smoke test (Playwright) |
-| `build/` | Generated: STEP files, compressed GLB, `registry.json`, the viewer bundle |
+| `build/` | Generated, not committed: STEP files, GLB, the viewer bundle |
+| `site/` | Generated and committed: the static site Vercel serves. Rebuild with `python build.py` before pushing |
 
 ## Source labels
 
@@ -35,13 +36,18 @@ figure governs and the spec records the misprint (`printed_mm`, `erratum: true`)
 ## Build
 
 ```bash
-pip install build123d pyyaml pytest
+pip install -r requirements-dev.txt
 npm install
 python build.py            # build, check, export to build/
 python build.py --check    # checks only
 python -m pytest tests -q
 node tests/smoke.mjs       # viewer smoke test (needs playwright)
 ```
+
+## Deploy
+
+Vercel serves `site/` as a static site (see `vercel.json`); it runs no Python and no build.
+The CAD build needs OpenCascade, so it runs locally and its output is committed.
 
 ## Status
 

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'No install: site/ is prebuilt by python build.py'",
+  "buildCommand": "echo 'No build: site/ is prebuilt by python build.py'",
+  "outputDirectory": "site",
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/models/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }] }
+  ]
+}

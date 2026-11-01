@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
   if (!fs.existsSync(f)) { res.writeHead(404); return res.end(); }
   let body = fs.readFileSync(f);
   // the artifact host wraps the page in a doctype skeleton; mimic it
-  if (p === '/index.html') body = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>' + body + '</body></html>';
+  if (p === '/index.html' && !body.toString().trimStart().toLowerCase().startsWith('<!doctype')) body = '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>' + body + '</body></html>';
   res.writeHead(200, { 'content-type': types[path.extname(f)] || 'application/octet-stream' }); res.end(body);
 }).listen(0);
 const base = `http://127.0.0.1:${server.address().port}/`;

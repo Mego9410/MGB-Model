@@ -1,0 +1,373 @@
+{
+ "schema": 1,
+ "nodes": {
+  "car": {
+   "id": "car",
+   "kind": "car",
+   "name": "1963 MGB roadster",
+   "parent": null,
+   "children": [
+    "engine",
+    "cooling",
+    "fuel",
+    "ignition",
+    "clutch",
+    "gearbox",
+    "propshaft",
+    "axle",
+    "brakes",
+    "electrical",
+    "chassis",
+    "body"
+   ]
+  },
+  "engine": {
+   "id": "engine",
+   "kind": "system",
+   "name": "Engine",
+   "parent": "car",
+   "haynes": {
+    "chapter": 1
+   },
+   "children": [
+    "engine.head"
+   ]
+  },
+  "cooling": {
+   "id": "cooling",
+   "kind": "system",
+   "name": "Cooling",
+   "parent": "car",
+   "haynes": {
+    "chapter": 2
+   },
+   "children": []
+  },
+  "fuel": {
+   "id": "fuel",
+   "kind": "system",
+   "name": "Fuel and exhaust",
+   "parent": "car",
+   "haynes": {
+    "chapter": 3
+   },
+   "children": []
+  },
+  "ignition": {
+   "id": "ignition",
+   "kind": "system",
+   "name": "Ignition",
+   "parent": "car",
+   "haynes": {
+    "chapter": 4
+   },
+   "children": []
+  },
+  "clutch": {
+   "id": "clutch",
+   "kind": "system",
+   "name": "Clutch",
+   "parent": "car",
+   "haynes": {
+    "chapter": 5
+   },
+   "children": []
+  },
+  "gearbox": {
+   "id": "gearbox",
+   "kind": "system",
+   "name": "Gearbox and overdrive",
+   "parent": "car",
+   "haynes": {
+    "chapter": 6
+   },
+   "children": []
+  },
+  "propshaft": {
+   "id": "propshaft",
+   "kind": "system",
+   "name": "Propeller shaft",
+   "parent": "car",
+   "haynes": {
+    "chapter": 7
+   },
+   "children": []
+  },
+  "axle": {
+   "id": "axle",
+   "kind": "system",
+   "name": "Rear axle",
+   "parent": "car",
+   "haynes": {
+    "chapter": 8
+   },
+   "children": []
+  },
+  "brakes": {
+   "id": "brakes",
+   "kind": "system",
+   "name": "Brakes",
+   "parent": "car",
+   "haynes": {
+    "chapter": 9
+   },
+   "children": []
+  },
+  "electrical": {
+   "id": "electrical",
+   "kind": "system",
+   "name": "Electrical",
+   "parent": "car",
+   "haynes": {
+    "chapter": 10
+   },
+   "children": []
+  },
+  "chassis": {
+   "id": "chassis",
+   "kind": "system",
+   "name": "Suspension and steering",
+   "parent": "car",
+   "haynes": {
+    "chapter": 11
+   },
+   "children": []
+  },
+  "body": {
+   "id": "body",
+   "kind": "system",
+   "name": "Body and fittings",
+   "parent": "car",
+   "haynes": {
+    "chapter": 12
+   },
+   "children": []
+  },
+  "engine.head": {
+   "id": "engine.head",
+   "kind": "assembly",
+   "name": "Cylinder head",
+   "parent": "engine",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "1.6"
+     },
+     {
+      "figure": "1.9"
+     }
+    ],
+    "section": 12
+   },
+   "children": [
+    "engine.head.valve-inlet"
+   ],
+   "file": "models/engine.head.json",
+   "bytes": 108923
+  },
+  "engine.head.valve-inlet": {
+   "id": "engine.head.valve-inlet",
+   "kind": "part",
+   "name": "Inlet valve",
+   "parent": "engine.head",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "1.9",
+      "legend": 1
+     },
+     {
+      "figure": "1.6",
+      "legend": 8
+     }
+    ],
+    "section": 13,
+    "spec_page": 22
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "12H435",
+     "by": "BMC (via Rimmer Bros listing)"
+    },
+    {
+     "number": "423-140",
+     "by": "Moss Motors"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "1963 18G engine, wide collet groove (large keepers, 18G to 18GF engines per BP Northwest listing V3570). Material and overall length are not published in Haynes; length is derived and should be measured when a valve is to hand.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": {
+    "axis": [
+     0,
+     0,
+     -1
+    ],
+    "order": 6,
+    "distance_mm": 140
+   },
+   "specs": [
+    {
+     "key": "head_diameter",
+     "label": "Head diameter",
+     "value": "1.562 to 1.567 in (39.67 to 39.80 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Haynes prints 38.67-38.80 mm; 1.562 in = 39.67 mm, so the inch figure governs",
+     "erratum": true,
+     "printed_mm": [
+      38.67,
+      38.8
+     ]
+    },
+    {
+     "key": "stem_diameter",
+     "label": "Stem diameter",
+     "value": "0.3422 to 0.3427 in (8.69 to 8.71 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "seat_angle",
+     "label": "Seat angle",
+     "value": "45.5\u00b0",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Printed as 45 1/2 deg",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "valve_lift",
+     "label": "Valve lift",
+     "value": "0.3645 in (9.25 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stem_to_guide_clearance",
+     "label": "Stem to guide clearance",
+     "value": "0.0015 to 0.0025 in (0.0381 to 0.0635 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stem_to_rocker_clearance_cold",
+     "label": "Stem to rocker clearance cold",
+     "value": "0.015 in (0.38 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "overall_length",
+     "label": "Overall length",
+     "value": "115.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Scaled from Fig 1.9 using the head diameter. The drawing is not to scale (its head-to-stem ratio is 8% off), so treat as +/-10% until measured",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "margin_thickness",
+     "label": "Margin thickness",
+     "value": "1.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical B-series inlet valve proportion; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "seat_face_radial_width",
+     "label": "Seat face radial width",
+     "value": "1.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical B-series inlet valve proportion; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "head_height",
+     "label": "Head height",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Margin to start of stem, proportion from Fig 1.9",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "collet_groove_width",
+     "label": "Collet groove width",
+     "value": "3.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Wide-groove keeper type per supplier listing; width not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "collet_groove_depth",
+     "label": "Collet groove depth",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "collet_groove_from_tip",
+     "label": "Collet groove from tip",
+     "value": "4.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.9",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.54
+  }
+ },
+ "instances": {
+  "engine.head.valve-inlet#1": {
+   "part": "engine.head.valve-inlet",
+   "assembly": "engine.head",
+   "node": "engine--head--valve-inlet__1"
+  }
+ },
+ "built": "2026-11-01T14:48:09+00:00"
+}
