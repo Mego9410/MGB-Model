@@ -64,6 +64,9 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   and 120-tooth ring gear, inlet and exhaust manifolds. The camshaft height now comes
   from the 52-pitch timing chain on 20/40-tooth wheels.
 
-Next: P2c (cooling: radiator, water pump, fan, hoses). The engine mountings (Fig 1.29)
-go in with the front crossmember, since they bolt to it. The working standard is in
+- P2c built: water pump, three-blade fan, pulley, fan belt, radiator with cap and drain
+  tap, top and bottom hoses (Haynes Ch 2, Figs 2.4 and 2.6).
+
+Next: P3 (fuel and exhaust, ignition). The engine mountings (Fig 1.29) go in with the
+front crossmember, and the 18ACR alternator with the electrical system. The working standard is in
 `CLAUDE.md`.

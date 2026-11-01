@@ -1,0 +1,162 @@
+# Cooling system, early cars (no expansion tank). Haynes Ch 2: specs p55, Figs 2.2, 2.4,
+# 2.6, photos 7.6, 9.3, 9.5. Fan type from MG Owners' Club Spares.
+defaults:
+  system: cooling
+  assembly: cooling.pump-radiator
+  haynes: { section: 9, spec_page: 55 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: paint_engine
+
+parts:
+  - id: cooling.pump-body
+    name: Water pump body
+    haynes: { figures: [{ figure: "2.6", legend: 1 }], section: 9 }
+    quantity: 1
+    notes: >
+      Centrifugal pump driven by the fan belt (Haynes p55). Held by four bolts with
+      gaskets (Sec 9 para 5); the top plug takes grease on early cars (Sec 2 para 3). It
+      bolts to the block in the notch at the top of the front plate.
+    specs:
+      inlet_diameter: { mm: 38.0, source: { label: D, method: "Takes the bottom hose; not published" } }
+      gasket_allowance: { mm: 0.8, source: { label: D, method: "Gasket thickness" } }
+
+  - id: cooling.pump-spindle
+    name: Water pump spindle, bearing and vane
+    haynes: { figures: [{ figure: "2.6", legend: 3 }], section: 9 }
+    quantity: 1
+    finish: machined_steel
+    notes: Bearing assembly (item 3) located by the bearing wire (item 4); the vane (item 2) is pressed on the inner end.
+    specs:
+      length: { mm: 96.0, source: { label: D, method: "From the vane to the pulley hub" } }
+
+  - id: cooling.pump-gasket
+    name: Water pump gasket
+    haynes: { figures: [{ figure: "2.6", legend: 10 }], section: 9 }
+    quantity: 1
+    finish: gasket
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: cooling.pump-bolt
+    name: Water pump bolt
+    haynes: { figures: [{ figure: "2.6", legend: 12 }], section: 9 }
+    quantity: 4
+    finish: machined_steel
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 1.0, source: { label: D, method: "Through the flange into the block" } }
+      torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 25, note: "Water pump to crankcase, early models" } }
+
+  - id: cooling.pump-bolt-washer
+    name: Water pump bolt spring washer
+    haynes: { figures: [{ figure: "2.6", legend: 11 }], section: 9 }
+    quantity: 4
+    finish: machined_steel
+    specs:
+      outside_diameter: { mm: 13.5, source: { label: D, method: "Typical 5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "Typical 5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "Typical 5/16 in spring washer" } }
+
+  - id: cooling.pump-pulley
+    name: Water pump pulley
+    haynes: { figures: [{ figure: "2.6", legend: 9 }], section: 9 }
+    quantity: 1
+    notes: MG part 12B174A for the 18G (MG Owners' Club Spares listing). In line with the crankshaft pulley groove.
+    specs:
+      outside_diameter: { mm: 112.0, source: { label: D, method: "Not published" } }
+
+  - id: cooling.fan
+    name: Cooling fan (three blade)
+    haynes: { figures: [{ figure: "2.6", legend: 37 }], section: 9 }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Three-blade metal fan, 12H1058, fitted from the earliest MGBs in 1962 (MG Owners'
+      Club Spares, mechanical cooling fan listing). Belt-driven on the water pump pulley on
+      early models (Haynes p55).
+    specs:
+      blades: { count: 3, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/cooling/cooling-fan-mechanical" }, display_only: true }
+      diameter: { mm: 330.0, source: { label: D, method: "Inside the radiator core; not published" } }
+      pitch_deg: { deg: 28.0, source: { label: D, method: "Not published" } }
+
+  - id: cooling.fan-screw
+    name: Fan screw
+    haynes: { figures: [{ figure: "2.6", legend: 38 }], section: 9 }
+    quantity: 4
+    finish: machined_steel
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 0.625, source: { label: D, method: "Not published" } }
+
+  - id: cooling.fan-belt
+    name: Fan belt
+    haynes: { figures: [{ figure: "2.6", legend: 40 }], section: 3 }
+    quantity: 1
+    finish: rubber
+    notes: Runs on the crankshaft, water pump and alternator pulleys; tension 1/2 in deflection at the middle of the longest run (Haynes p55).
+    specs:
+      width: { in: 0.375, mm: 9.5, source: { label: H, page: 55, note: "Belt width, early models" } }
+      deflection: { in: 0.5, mm: 12.7, printed_mm: 12.8, erratum: true, source: { label: H, page: 55, note: "Haynes prints 12.8 mm for 1/2 in; the inch figure governs" }, display_only: true }
+
+  - id: cooling.radiator
+    name: Radiator
+    haynes: { figures: [{ figure: "2.4", legend: 1 }], section: 7 }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Vertical-flow radiator with top and bottom tanks, a tube-and-fin core, side channels
+      for its mounting, filler neck with overflow pipe and a drain tap boss (Figs 2.2, 2.4;
+      photo 7.6(b)). System capacity 9.5 Imp pints on early models (Haynes p55).
+    specs:
+      core_width: { mm: 430.0, source: { label: D, method: "Proportion from Fig 2.4; not published" } }
+      core_height: { mm: 320.0, source: { label: D, method: "Proportion from Fig 2.4; not published" } }
+      core_thickness: { mm: 62.0, source: { label: D, method: "Not published" } }
+      inlet_diameter: { mm: 38.0, source: { label: D, method: "Takes the top hose" } }
+      outlet_diameter: { mm: 38.0, source: { label: D, method: "Takes the bottom hose" } }
+      capacity: { count: 9.5, source: { label: H, page: 55, note: "9.5 Imp pints (5.4 litres), early models" }, display_only: true }
+
+  - id: cooling.pressure-cap
+    name: Radiator pressure cap
+    haynes: { section: 4 }
+    quantity: 1
+    finish: chrome
+    notes: Rated at 7 lbf/in2 on early models (Haynes p55).
+    specs:
+      diameter: { mm: 52.0, source: { label: D, method: "Not published" } }
+      rating: { count: 7, source: { label: H, page: 55, note: "7 lbf/in2 (0.492 kgf/cm2), early models" }, display_only: true }
+
+  - id: cooling.drain-tap
+    name: Radiator drain tap
+    haynes: { figures: [{ figure: "2.2" }], section: 4 }
+    quantity: 1
+    finish: brass
+    notes: Haynes Sec 4 para 3 - on early cars open the drain taps on the base of the radiator and on the block.
+    specs:
+      body_diameter: { mm: 16.0, source: { label: D, method: "Not published" } }
+      length: { mm: 38.0, source: { label: D, method: "Not published" } }
+
+  - id: cooling.top-hose
+    name: Top hose
+    haynes: { figures: [{ figure: "2.4" }], section: 7 }
+    quantity: 1
+    finish: rubber
+    specs:
+      outside_diameter: { mm: 48.0, source: { label: D, method: "1 1/2 in bore hose" } }
+      wall: { mm: 5.0, source: { label: D, method: "Not published" } }
+
+  - id: cooling.bottom-hose
+    name: Bottom hose
+    haynes: { figures: [{ figure: "2.4" }], section: 7 }
+    quantity: 1
+    finish: rubber
+    specs:
+      outside_diameter: { mm: 48.0, source: { label: D, method: "1 1/2 in bore hose" } }
+      wall: { mm: 5.0, source: { label: D, method: "Not published" } }
+
+  - id: cooling.hose-clip
+    name: Hose clip
+    haynes: { figures: [{ figure: "2.4", legend: 25 }], section: 7 }
+    quantity: 4
+    finish: machined_steel
+    specs:
+      diameter: { mm: 49.0, source: { label: D, method: "Fits the 48 mm hoses" } }

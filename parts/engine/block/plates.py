@@ -23,14 +23,15 @@ CZ, SZ, DECK = EL.crank_z, EL.sump_z, EL.deck_z
 
 # ---- front plate ------------------------------------------------------------------------
 # Outline traced from Fig 1.8 item 28, scaled so its camshaft hole lands on the camshaft:
-# a wide right-hand wing for the engine mounting bracket, a notch in the top edge, and a
+# a wide right-hand wing for the engine mounting bracket, a notch in the top edge that the
+# water pump flange sits in (it bolts straight to the block), and a
 # scalloped left-hand edge round the timing cover joint.
-FRONT_OUTLINE = [(-150, -16), (-40, -16), (-8, -50), (40, -38), (100, -52), (122, -70), (116, -108), (128, -150),
+FRONT_OUTLINE = [(-150, -16), (-60, -16), (-56, -84), (40, -84), (44, -38), (100, -52), (122, -70), (116, -108), (128, -150),
                  (119, -196), (130, -240), (121, -280), (110, -306), (60, -312), (-120, -312), (-136, -298),
                  (-150, -298)]
 # raised (pressed) panel the timing cover seats against, and the cover's scalloped edge
 TIMING_PANEL = TL.cover_outline(16.0)
-FRONT_SCREWS = [(-50.0, -40.0), (88.0, -44.0), (-95.0, -290.0), (95.0, -290.0)]   # items 30/31, into the block
+FRONT_SCREWS = [(-82.0, -40.0), (88.0, -44.0), (-95.0, -290.0), (95.0, -290.0)]   # items 30/31, into the block
 FRONT_BOLT = (-136.0, -30.0)                                                      # item 32 with nut 33 behind
 TIMING_COVER_HOLES = TL.COVER_SCREWS
 MOUNT_HOLES = [(-136, -150), (-136, -190), (-116, -150), (-116, -190)]
