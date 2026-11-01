@@ -70,7 +70,9 @@
    "haynes": {
     "chapter": 4
    },
-   "children": []
+   "children": [
+    "ignition.distributor"
+   ]
   },
   "clutch": {
    "id": "clutch",
@@ -186,7 +188,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 147727
+   "bytes": 147679
   },
   "engine.block": {
    "id": "engine.block",
@@ -266,7 +268,7 @@
     "engine.block.stud-rear"
    ],
    "file": "models/engine.block.json",
-   "bytes": 634778
+   "bytes": 635886
   },
   "engine.flywheel": {
    "id": "engine.flywheel",
@@ -447,7 +449,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 162049
+   "bytes": 161925
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -556,6 +558,48 @@
    ],
    "file": "models/fuel.carbs.json",
    "bytes": 830581
+  },
+  "ignition.distributor": {
+   "id": "ignition.distributor",
+   "kind": "assembly",
+   "name": "Distributor, drive and HT leads",
+   "parent": "ignition",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "4.3"
+     },
+     {
+      "figure": "1.26"
+     }
+    ],
+    "section": 6
+   },
+   "children": [
+    "ignition.distributor.housing",
+    "ignition.distributor.drive-shaft",
+    "ignition.distributor.housing-washer",
+    "ignition.distributor.housing-bolt",
+    "ignition.distributor.clamp-plate",
+    "ignition.distributor.pinch-bolt",
+    "ignition.distributor.clamp-bolt",
+    "ignition.distributor.body",
+    "ignition.distributor.vacuum-unit",
+    "ignition.distributor.shaft",
+    "ignition.distributor.baseplate",
+    "ignition.distributor.capacitor",
+    "ignition.distributor.rotor",
+    "ignition.distributor.cap-clip",
+    "ignition.distributor.cap",
+    "ignition.distributor.brush",
+    "ignition.distributor.ht-lead-1",
+    "ignition.distributor.ht-lead-2",
+    "ignition.distributor.ht-lead-3",
+    "ignition.distributor.ht-lead-4",
+    "ignition.distributor.plug-cap"
+   ],
+   "file": "models/ignition.distributor.json",
+   "bytes": 494278
   },
   "cooling.pump-body": {
    "id": "cooling.pump-body",
@@ -14835,6 +14879,887 @@
     }
    ],
    "derivedShare": 1.0
+  },
+  "ignition.distributor.housing": {
+   "id": "ignition.distributor.housing",
+   "kind": "part",
+   "name": "Distributor housing",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 16,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "1.26"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Cast housing pushed into the leaning boss on the right-hand side of the block and held by a single bolt and washer (Ch 1 Sec 16 para 2, Sec 63 para 5). The distributor clamping plate bolts to its flange. Haynes gives no drawing of the housing itself: the spigot, flange and bolt tab are proportioned to the block boss and the 25D4 shank (D). The skew gear path inside the block is approximated: the drive shaft is modelled coaxial with the housing.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "27.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Running clearance over the 25D4 shank, 26.8 mm",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.drive-shaft": {
+   "id": "ignition.distributor.drive-shaft",
+   "kind": "part",
+   "name": "Distributor driveshaft",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 16,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "1.26"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Skew-geared shaft driven from the camshaft; the offset slot at its top takes the distributor driving dog, set just below horizontal with the large segment uppermost at TDC on No 1 (Ch 1 Sec 63 paras 2-4, Fig 1.26). A 5/16 in UNF bolt - a tappet cover bolt - screws into its head to lift it out (Sec 16 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "96.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From the housing face down to the camshaft gear line in the block section",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "withdrawal_thread",
+     "label": "Withdrawal thread",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p35",
+     "note": "5/16 in UNF bolt into the drive head (Sec 16 para 3)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "ignition.distributor.housing-bolt": {
+   "id": "ignition.distributor.housing-bolt",
+   "kind": "part",
+   "name": "Housing retaining bolt",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 63,
+    "spec_page": 94
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "The single retaining bolt for the housing (Sec 16 para 2; Sec 63 para 5 'secure with the bolt and washer').",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.625 in (15.88 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the housing tab into the block lug",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.housing-washer": {
+   "id": "ignition.distributor.housing-washer",
+   "kind": "part",
+   "name": "Housing bolt washer",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 63,
+    "spec_page": 94
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.clamp-plate": {
+   "id": "ignition.distributor.clamp-plate",
+   "kind": "part",
+   "name": "Clamping plate",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Split ring round the distributor shank with its pinch bolt, and a tongue with two bolt holes onto the housing flange. Removing the plate bolts and leaving the pinch bolt alone keeps the timing (Sec 6 para 7). Shape from Fig 4.3.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 4.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.pinch-bolt": {
+   "id": "ignition.distributor.pinch-bolt",
+   "kind": "part",
+   "name": "Clamping plate pinch bolt and nut",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Across the split lug in Fig 4.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.clamp-bolt": {
+   "id": "ignition.distributor.clamp-bolt",
+   "kind": "part",
+   "name": "Clamping plate bolt",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 6 para 7, \"remove the distributor body clamp plate bolts\".",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.50 in (12.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Plate and housing flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.body": {
+   "id": "ignition.distributor.body",
+   "kind": "part",
+   "name": "Distributor body (Lucas 25D4)",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3"
+     },
+     {
+      "figure": "4.2"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Lucas 25D4, serial 40897 for 18G high compression. Die-cast body: plain shank in the housing, a waist carrying the vacuum spindle bracket, and a conical bowl with the two clip pivots, the low tension terminal block (item 7) and a lug at the rim (Fig 4.3). Rotor turns anticlockwise seen from above (p95). Shape from Fig 4.3 and Fig 4.2; sizes proportioned from the 66 mm cap.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "serial",
+     "label": "Serial",
+     "value": "40897",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p94",
+     "note": "Engine Nos 18G, 18GA, 18GB, 18GD, 18GG; high compression",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "static_timing",
+     "label": "Static timing",
+     "value": "10.0\u00b0",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p94",
+     "note": "Static ignition timing, BTDC",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "dwell",
+     "label": "Dwell",
+     "value": "57.0 to 63.0\u00b0",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p95",
+     "note": "Dwell angle 60 +/- 3 deg",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "shank_diameter",
+     "label": "Shank diameter",
+     "value": "26.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 4.3 against the cap",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.25
+  },
+  "ignition.distributor.vacuum-unit": {
+   "id": "ignition.distributor.vacuum-unit",
+   "kind": "part",
+   "name": "Vacuum unit",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 16
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Diaphragm housing with the pipe union, the threaded spindle through the body bracket and the knurled micrometer adjusting nut held by a small circlip (Sec 6 para 13). Shape from Fig 4.3.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "36.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 4.3: a little over half the bowl",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.cap-clip": {
+   "id": "ignition.distributor.cap-clip",
+   "kind": "part",
+   "name": "Cap retaining clip",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 15
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Pull away the two clips to lift off the cap (Sec 3 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 4.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.cap": {
+   "id": "ignition.distributor.cap",
+   "kind": "part",
+   "name": "Distributor cap",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 2,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_brown",
+   "notes": "Moulded side-entry cap: the four plug leads enter bosses on the upper wall and are held by pointed screws on the shoulder; the coil lead enters the centre tower. Leads fitted in the order 1-3-4-2 anticlockwise (Sec 2, p95). Four metal segments inside; renew if cracked or the segments are badly burnt (Sec 3 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "66.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 4.3 and the 25D4 body",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.brush": {
+   "id": "ignition.distributor.brush",
+   "kind": "part",
+   "name": "Carbon brush and spring",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 4.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.rotor": {
+   "id": "ignition.distributor.rotor",
+   "kind": "part",
+   "name": "Rotor arm",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_brown",
+   "notes": "Rotation anticlockwise seen from above (p95).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "24.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Reaches the cap segments",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.baseplate": {
+   "id": "ignition.distributor.baseplate",
+   "kind": "part",
+   "name": "Contact breaker baseplate and contacts",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 9
+     },
+     {
+      "figure": "4.3",
+      "legend": 8
+     },
+     {
+      "figure": "4.3",
+      "legend": 5
+     },
+     {
+      "figure": "4.2"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Baseplate held by two screws with the earth lead (item 10); the moving plate carries the contact set on its pivot post (Sec 3, Sec 6 para 9).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "contact_gap",
+     "label": "Contact gap",
+     "value": "0.014 to 0.016 in (0.35 to 0.40 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p95",
+     "note": "Contact breaker gap, 25D4",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "ignition.distributor.capacitor": {
+   "id": "ignition.distributor.capacitor",
+   "kind": "part",
+   "name": "Capacitor",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 5,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Capacity 0.18 to 0.24 microfarad (p95). Suppresses arcing at the contacts (Sec 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 4.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.shaft": {
+   "id": "ignition.distributor.shaft",
+   "kind": "part",
+   "name": "Shaft, action plate, weights, cam and driving dog",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 6,
+    "spec_page": 94,
+    "figures": [
+     {
+      "figure": "4.3",
+      "legend": 14
+     },
+     {
+      "figure": "4.3",
+      "legend": 13
+     },
+     {
+      "figure": "4.3",
+      "legend": 11
+     },
+     {
+      "figure": "4.3",
+      "legend": 19
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Centrifugal advance weights on the action plate turn the four-lobe cam ahead of the shaft as speed rises (Sec 1). The offset driving dog is pinned to the lower end (item 20) and engages the slot in the driveshaft.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "dynamic_timing",
+     "label": "Dynamic timing",
+     "value": "14.0\u00b0",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p94",
+     "note": "Stroboscopic timing at 600 rpm, BTDC, vacuum pipe off",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "ignition.distributor.ht-lead-1": {
+   "id": "ignition.distributor.ht-lead-1",
+   "kind": "part",
+   "name": "HT lead, No 1 cylinder",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 2,
+    "spec_page": 94
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "No 1 is the cylinder nearest the radiator (p94).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Standard 7 mm HT cable",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.ht-lead-2": {
+   "id": "ignition.distributor.ht-lead-2",
+   "kind": "part",
+   "name": "HT lead, No 2 cylinder",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 2,
+    "spec_page": 94
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Standard 7 mm HT cable",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.ht-lead-3": {
+   "id": "ignition.distributor.ht-lead-3",
+   "kind": "part",
+   "name": "HT lead, No 3 cylinder",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 2,
+    "spec_page": 94
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Standard 7 mm HT cable",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.ht-lead-4": {
+   "id": "ignition.distributor.ht-lead-4",
+   "kind": "part",
+   "name": "HT lead, No 4 cylinder",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 2,
+    "spec_page": 94
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Standard 7 mm HT cable",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "ignition.distributor.plug-cap": {
+   "id": "ignition.distributor.plug-cap",
+   "kind": "part",
+   "name": "Plug cap",
+   "parent": "ignition.distributor",
+   "haynes": {
+    "section": 2,
+    "spec_page": 94
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "Moulded cap pushed over the plug terminal (Sec 2 para 4 for the leads).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical moulded plug cap",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
   }
  },
  "instances": {
@@ -28243,7 +29168,539 @@
    ],
    "label": false,
    "fitted": null
+  },
+  "ignition.distributor.housing#1": {
+   "part": "ignition.distributor.housing",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--housing__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 12,
+     "distance_mm": 110,
+     "group": "housing"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.drive-shaft#1": {
+   "part": "ignition.distributor.drive-shaft",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--drive-shaft__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 13,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.housing-washer#1": {
+   "part": "ignition.distributor.housing-washer",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--housing-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 11,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.housing-bolt#1": {
+   "part": "ignition.distributor.housing-bolt",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--housing-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 11,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.clamp-plate#1": {
+   "part": "ignition.distributor.clamp-plate",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--clamp-plate__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.pinch-bolt#1": {
+   "part": "ignition.distributor.pinch-bolt",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--pinch-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.clamp-bolt#1": {
+   "part": "ignition.distributor.clamp-bolt",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--clamp-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.clamp-bolt#2": {
+   "part": "ignition.distributor.clamp-bolt",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--clamp-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "ignition.distributor.body#1": {
+   "part": "ignition.distributor.body",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--body__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.vacuum-unit#1": {
+   "part": "ignition.distributor.vacuum-unit",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--vacuum-unit__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.shaft#1": {
+   "part": "ignition.distributor.shaft",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--shaft__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    },
+    {
+     "axis": [
+      -0.0,
+      0.374606593415912,
+      -0.9271838545667874
+     ],
+     "order": 10,
+     "distance_mm": 130
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.baseplate#1": {
+   "part": "ignition.distributor.baseplate",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--baseplate__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 8,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.capacitor#1": {
+   "part": "ignition.distributor.capacitor",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--capacitor__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 7.5,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.rotor#1": {
+   "part": "ignition.distributor.rotor",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--rotor__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 4,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.cap-clip#1": {
+   "part": "ignition.distributor.cap-clip",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--cap-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 2,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.cap-clip#2": {
+   "part": "ignition.distributor.cap-clip",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--cap-clip__2",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 6,
+     "distance_mm": 150,
+     "group": "distributor"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 2,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "ignition.distributor.cap#1": {
+   "part": "ignition.distributor.cap",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--cap__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 3,
+     "distance_mm": 240
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.brush#1": {
+   "part": "ignition.distributor.brush",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--brush__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.374606593415912,
+      0.9271838545667874
+     ],
+     "order": 3,
+     "distance_mm": 240
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.ht-lead-1#1": {
+   "part": "ignition.distributor.ht-lead-1",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--ht-lead-1__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.ht-lead-2#1": {
+   "part": "ignition.distributor.ht-lead-2",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--ht-lead-2__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.ht-lead-3#1": {
+   "part": "ignition.distributor.ht-lead-3",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--ht-lead-3__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.ht-lead-4#1": {
+   "part": "ignition.distributor.ht-lead-4",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--ht-lead-4__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.plug-cap#1": {
+   "part": "ignition.distributor.plug-cap",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--plug-cap__1",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "ignition.distributor.plug-cap#2": {
+   "part": "ignition.distributor.plug-cap",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--plug-cap__2",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "ignition.distributor.plug-cap#3": {
+   "part": "ignition.distributor.plug-cap",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--plug-cap__3",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "ignition.distributor.plug-cap#4": {
+   "part": "ignition.distributor.plug-cap",
+   "assembly": "ignition.distributor",
+   "node": "ignition--distributor--plug-cap__4",
+   "stages": [
+    {
+     "axis": [
+      0.0,
+      -0.839,
+      0.544
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
   }
  },
- "built": "2026-11-01T21:01:41+00:00"
+ "built": "2026-11-01T22:06:50+00:00"
 }

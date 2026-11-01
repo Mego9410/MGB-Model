@@ -67,6 +67,10 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
 - P2c built: water pump, three-blade fan, pulley, fan belt, radiator with cap and drain
   tap, top and bottom hoses (Haynes Ch 2, Figs 2.4 and 2.6).
 
-Next: P3 (fuel and exhaust, ignition). The engine mountings (Fig 1.29) go in with the
+- P3 (in progress): twin SU HS4 carburettors and air cleaners (Haynes Ch 3, Figs 3.1,
+  3.10-3.12); Lucas 25D4 distributor with its housing and driveshaft, side-entry cap, HT
+  leads and plug caps (Ch 4 Fig 4.3; Ch 1 Sec 16 and 63).
+
+Next: the rest of P3 (exhaust system, breather and fuel pipes). The engine mountings (Fig 1.29) go in with the
 front crossmember, and the 18ACR alternator with the electrical system. The working standard is in
 `CLAUDE.md`.

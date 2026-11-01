@@ -8,7 +8,7 @@ from pathlib import Path
 
 from build123d import Align, Axis, Box, Cylinder, Location, Part, Plane, RegularPolygon, Rot, extrude, fillet
 
-from mgb import engine_layout as E, fasteners as F, probes, shapes as Sh, spec as S
+from mgb import engine_layout as E, fasteners as F, ignition_layout as IG, probes, shapes as Sh, spec as S
 from mgb.head_layout import layout as head_layout
 
 BASE = (Align.CENTER, Align.CENTER, Align.MIN)
@@ -149,7 +149,9 @@ def casting(spec) -> Part:
         blk = blk + _yboss(11.0, px, -44, YR + 2, YR - 7)
     # distributor housing boss on the ledge, leaning out like the distributor it carries
     dist = Location((EL.drive_x, YR - 15, LEDGE_Z + 10)) * Rot(22, 0, 0) * Cylinder(21, 64)
-    blk = blk + dist + _rounded_box(EL.drive_x + 22, EL.drive_x + 44, YR - 10, YR + 1, -108, -86, 5.0)
+    lug = Location(IG.BOSS_TOP) * Rot(22, 0, 0) * Location((IG.LUG_X - 3, 0, -IG.LUG_DEPTH / 2)) * \
+        Box(26, 18, IG.LUG_DEPTH)                                         # housing bolt lug, face flush with the boss
+    blk = blk + dist + lug
     # oil filter pad below the ledge, dipstick boss ahead of it
     fz = -185.0
     blk = blk + _rounded_box(-62, 2, wall_y(fz, -1) - 9, wall_y(fz, -1) + 6, fz - 24, fz + 24, 8.0)
@@ -192,6 +194,7 @@ def casting(spec) -> Part:
     for px in (67.0, 124.0):
         cut.append(_yboss(5.0, px, -44, YR + 4, YR - 9))
     cut.append(Location((EL.drive_x, YR - 15, LEDGE_Z + 10)) * Rot(22, 0, 0) * Cylinder(14.3, 70))   # distributor bore
+    cut.append(Location(IG.BOSS_TOP) * Rot(22, 0, 0) * Location((IG.LUG_X, 0, -9)) * Cylinder(3.3, 20))   # housing bolt
     cut.append(dpl * Cylinder(3.4, 60))                                                          # dipstick hole
     cut.append(_yboss(5.5, -205, -232, wall_y(-232, -1) + 6, wall_y(-232, -1) - 12))             # oil pipe union
     for x, y in LL.sump_bolts():                                                                 # tapped sump bolt holes

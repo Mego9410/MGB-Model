@@ -216,6 +216,9 @@ const FINISH = {
   paint_engine:   { color: 0x5a1e1d, metalness: 0.25, roughness: 0.45 },
   paint_black:    { color: 0x1d1e20, metalness: 0.3, roughness: 0.5 },
   plastic_black:  { color: 0x232323, metalness: 0.0, roughness: 0.6 },
+  plastic_brown:  { color: 0x4a2618, metalness: 0.0, roughness: 0.45 },
+  zinc_steel:     { color: 0xa9a796, metalness: 0.8, roughness: 0.4, envMapIntensity: 0.75 },
+  spring_steel:   { color: 0x4b4d50, metalness: 0.8, roughness: 0.45 },
   paper:          { color: 0xe8dcb8, metalness: 0.0, roughness: 0.95 },
   default:        { color: 0x8a8e93, metalness: 0.6, roughness: 0.45, envMapIntensity: 0.75 },
 };
@@ -313,7 +316,7 @@ function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color =
 // ---------- explode: parts leave along their removal axis, in Haynes removal order
 const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
 // at system level (e.g. the whole engine) assemblies separate along these directions (CAD axes, mm)
-const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420], 'engine.timing': [260, 0, 0], 'engine.lube': [0, 0, -260], 'engine.flywheel': [-260, 0, 0], 'engine.manifolds': [0, 260, 0], 'cooling.pump-radiator': [300, 0, 0], 'fuel.carbs': [0, 320, 120] };
+const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420], 'engine.timing': [260, 0, 0], 'engine.lube': [0, 0, -260], 'engine.flywheel': [-260, 0, 0], 'engine.manifolds': [0, 260, 0], 'cooling.pump-radiator': [300, 0, 0], 'fuel.carbs': [0, 320, 120], 'ignition.distributor': [0, -300, 80] };
 function focusAssembly(){ return current && N[current] && N[current].kind === 'assembly' ? current : null; }
 function applyExplode(){
   const t = ex.value / 100; exv.textContent = ex.value + '%';

@@ -1,0 +1,226 @@
+# Distributor drive and housing, Lucas 25D4 distributor, HT leads and plug caps, 18G.
+# Haynes Ch 1 Sec 16 and 63 (drive), Ch 4: specs printed p94-95, Sec 2 (leads), Sec 3
+# (contacts), Sec 6 (25D4, printed p98-100) and Fig 4.3 (printed p99). Item numbers are Fig 4.3.
+# PDF page = printed page + 4.
+defaults:
+  system: ignition
+  assembly: ignition.distributor
+  haynes: { section: 6, spec_page: 94 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: aluminium
+
+parts:
+  - id: ignition.distributor.housing
+    name: Distributor housing
+    haynes: { section: 16, figures: [{ figure: "1.26" }] }
+    quantity: 1
+    finish: cast_iron
+    notes: >
+      Cast housing pushed into the leaning boss on the right-hand side of the block and
+      held by a single bolt and washer (Ch 1 Sec 16 para 2, Sec 63 para 5). The
+      distributor clamping plate bolts to its flange. Haynes gives no drawing of the
+      housing itself: the spigot, flange and bolt tab are proportioned to the block boss
+      and the 25D4 shank (D). The skew gear path inside the block is approximated: the
+      drive shaft is modelled coaxial with the housing.
+    specs:
+      bore: { mm: 27.2, source: { label: D, method: "Running clearance over the 25D4 shank, 26.8 mm" } }
+
+  - id: ignition.distributor.drive-shaft
+    name: Distributor driveshaft
+    haynes: { section: 16, figures: [{ figure: "1.26" }] }
+    quantity: 1
+    finish: machined_steel
+    notes: >
+      Skew-geared shaft driven from the camshaft; the offset slot at its top takes the
+      distributor driving dog, set just below horizontal with the large segment uppermost
+      at TDC on No 1 (Ch 1 Sec 63 paras 2-4, Fig 1.26). A 5/16 in UNF bolt - a tappet
+      cover bolt - screws into its head to lift it out (Sec 16 para 3).
+    specs:
+      length: { mm: 96.0, source: { label: D, method: "From the housing face down to the camshaft gear line in the block section" } }
+      withdrawal_thread: { in: 0.3125, mm: 7.94, source: { label: H, page: 35, note: "5/16 in UNF bolt into the drive head (Sec 16 para 3)" }, display_only: true }
+
+  - id: ignition.distributor.housing-bolt
+    name: Housing retaining bolt
+    haynes: { section: 63 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "The single retaining bolt for the housing (Sec 16 para 2; Sec 63 para 5 'secure with the bolt and washer')."
+    specs:
+      length: { in: 0.625, mm: 15.88, source: { label: D, method: "Through the housing tab into the block lug" } }
+
+  - id: ignition.distributor.housing-washer
+    name: Housing bolt washer
+    haynes: { section: 63 }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 14.0, source: { label: D, method: "5/16 in plain washer" } }
+      inside_diameter: { mm: 8.4, source: { label: D, method: "5/16 in plain washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "5/16 in plain washer" } }
+
+  - id: ignition.distributor.clamp-plate
+    name: Clamping plate
+    haynes: { figures: [{ figure: "4.3", legend: 1 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Split ring round the distributor shank with its pinch bolt, and a tongue with two
+      bolt holes onto the housing flange. Removing the plate bolts and leaving the pinch
+      bolt alone keeps the timing (Sec 6 para 7). Shape from Fig 4.3.
+    specs:
+      thickness: { mm: 3.2, source: { label: D, method: "Proportion from Fig 4.3" } }
+
+  - id: ignition.distributor.pinch-bolt
+    name: Clamping plate pinch bolt and nut
+    haynes: { figures: [{ figure: "4.3", legend: 1 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Across the split lug in Fig 4.3" } }
+
+  - id: ignition.distributor.clamp-bolt
+    name: Clamping plate bolt
+    haynes: { section: 6 }
+    quantity: 2
+    finish: zinc_steel
+    notes: Sec 6 para 7, "remove the distributor body clamp plate bolts".
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: D, method: "Plate and housing flange" } }
+
+  - id: ignition.distributor.body
+    name: Distributor body (Lucas 25D4)
+    haynes: { figures: [{ figure: "4.3" }, { figure: "4.2" }] }
+    quantity: 1
+    notes: >
+      Lucas 25D4, serial 40897 for 18G high compression. Die-cast body: plain shank in
+      the housing, a waist carrying the vacuum spindle bracket, and a conical bowl with
+      the two clip pivots, the low tension terminal block (item 7) and a lug at the rim
+      (Fig 4.3). Rotor turns anticlockwise seen from above (p95). Shape from Fig 4.3 and
+      Fig 4.2; sizes proportioned from the 66 mm cap.
+    specs:
+      serial: { count: 40897, source: { label: H, page: 94, note: "Engine Nos 18G, 18GA, 18GB, 18GD, 18GG; high compression" }, display_only: true }
+      static_timing: { deg: 10.0, source: { label: H, page: 94, note: "Static ignition timing, BTDC" }, display_only: true }
+      dwell: { deg: [57.0, 63.0], source: { label: H, page: 95, note: "Dwell angle 60 +/- 3 deg" }, display_only: true }
+      shank_diameter: { mm: 26.8, source: { label: D, method: "Proportion from Fig 4.3 against the cap" } }
+
+  - id: ignition.distributor.vacuum-unit
+    name: Vacuum unit
+    haynes: { figures: [{ figure: "4.3", legend: 16 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Diaphragm housing with the pipe union, the threaded spindle through the body bracket
+      and the knurled micrometer adjusting nut held by a small circlip (Sec 6 para 13).
+      Shape from Fig 4.3.
+    specs:
+      diameter: { mm: 36.0, source: { label: D, method: "Proportion from Fig 4.3: a little over half the bowl" } }
+
+  - id: ignition.distributor.cap-clip
+    name: Cap retaining clip
+    haynes: { figures: [{ figure: "4.3", legend: 15 }] }
+    quantity: 2
+    finish: spring_steel
+    notes: Pull away the two clips to lift off the cap (Sec 3 para 1).
+    specs:
+      width: { mm: 7.0, source: { label: D, method: "Proportion from Fig 4.3" } }
+
+  - id: ignition.distributor.cap
+    name: Distributor cap
+    haynes: { figures: [{ figure: "4.3", legend: 2 }], section: 2 }
+    quantity: 1
+    finish: plastic_brown
+    notes: >
+      Moulded side-entry cap: the four plug leads enter bosses on the upper wall and are
+      held by pointed screws on the shoulder; the coil lead enters the centre tower.
+      Leads fitted in the order 1-3-4-2 anticlockwise (Sec 2, p95). Four metal segments
+      inside; renew if cracked or the segments are badly burnt (Sec 3 para 1).
+    specs:
+      diameter: { mm: 66.0, source: { label: D, method: "Proportion from Fig 4.3 and the 25D4 body" } }
+
+  - id: ignition.distributor.brush
+    name: Carbon brush and spring
+    haynes: { figures: [{ figure: "4.3", legend: 3 }] }
+    quantity: 1
+    finish: plastic_black
+    specs:
+      length: { mm: 12.0, source: { label: D, method: "Proportion from Fig 4.3" } }
+
+  - id: ignition.distributor.rotor
+    name: Rotor arm
+    haynes: { figures: [{ figure: "4.3", legend: 4 }] }
+    quantity: 1
+    finish: plastic_brown
+    notes: Rotation anticlockwise seen from above (p95).
+    specs:
+      length: { mm: 24.0, source: { label: D, method: "Reaches the cap segments" } }
+
+  - id: ignition.distributor.baseplate
+    name: Contact breaker baseplate and contacts
+    haynes: { figures: [{ figure: "4.3", legend: 9 }, { figure: "4.3", legend: 8 }, { figure: "4.3", legend: 5 }, { figure: "4.2" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Baseplate held by two screws with the earth lead (item 10); the moving plate carries
+      the contact set on its pivot post (Sec 3, Sec 6 para 9).
+    specs:
+      contact_gap: { in: [0.014, 0.016], mm: [0.35, 0.40], source: { label: H, page: 95, note: "Contact breaker gap, 25D4" }, display_only: true }
+
+  - id: ignition.distributor.capacitor
+    name: Capacitor
+    haynes: { figures: [{ figure: "4.3", legend: 6 }], section: 5 }
+    quantity: 1
+    finish: zinc_steel
+    notes: Capacity 0.18 to 0.24 microfarad (p95). Suppresses arcing at the contacts (Sec 5).
+    specs:
+      diameter: { mm: 11.0, source: { label: D, method: "Proportion from Fig 4.3" } }
+
+  - id: ignition.distributor.shaft
+    name: Shaft, action plate, weights, cam and driving dog
+    haynes: { figures: [{ figure: "4.3", legend: 14 }, { figure: "4.3", legend: 13 }, { figure: "4.3", legend: 11 }, { figure: "4.3", legend: 19 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: >
+      Centrifugal advance weights on the action plate turn the four-lobe cam ahead of
+      the shaft as speed rises (Sec 1). The offset driving dog is pinned to the lower end
+      (item 20) and engages the slot in the driveshaft.
+    specs:
+      dynamic_timing: { deg: 14.0, source: { label: H, page: 94, note: "Stroboscopic timing at 600 rpm, BTDC, vacuum pipe off" }, display_only: true }
+
+  - id: ignition.distributor.ht-lead-1
+    name: HT lead, No 1 cylinder
+    haynes: { section: 2 }
+    quantity: 1
+    finish: plastic_black
+    notes: No 1 is the cylinder nearest the radiator (p94).
+    specs:
+      diameter: { mm: 7.0, source: { label: D, method: "Standard 7 mm HT cable" } }
+  - id: ignition.distributor.ht-lead-2
+    name: HT lead, No 2 cylinder
+    haynes: { section: 2 }
+    quantity: 1
+    finish: plastic_black
+    specs:
+      diameter: { mm: 7.0, source: { label: D, method: "Standard 7 mm HT cable" } }
+  - id: ignition.distributor.ht-lead-3
+    name: HT lead, No 3 cylinder
+    haynes: { section: 2 }
+    quantity: 1
+    finish: plastic_black
+    specs:
+      diameter: { mm: 7.0, source: { label: D, method: "Standard 7 mm HT cable" } }
+  - id: ignition.distributor.ht-lead-4
+    name: HT lead, No 4 cylinder
+    haynes: { section: 2 }
+    quantity: 1
+    finish: plastic_black
+    specs:
+      diameter: { mm: 7.0, source: { label: D, method: "Standard 7 mm HT cable" } }
+
+  - id: ignition.distributor.plug-cap
+    name: Plug cap
+    haynes: { section: 2 }
+    quantity: 4
+    finish: plastic_black
+    notes: Moulded cap pushed over the plug terminal (Sec 2 para 4 for the leads).
+    specs:
+      length: { mm: 34.0, source: { label: D, method: "Typical moulded plug cap" } }
