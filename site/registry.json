@@ -58,7 +58,9 @@
    "haynes": {
     "chapter": 3
    },
-   "children": []
+   "children": [
+    "fuel.carbs"
+   ]
   },
   "ignition": {
    "id": "ignition",
@@ -184,7 +186,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 147727
+   "bytes": 147679
   },
   "engine.block": {
    "id": "engine.block",
@@ -445,7 +447,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 161977
+   "bytes": 161953
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -494,6 +496,66 @@
    ],
    "file": "models/engine.timing.json",
    "bytes": 682779
+  },
+  "fuel.carbs": {
+   "id": "fuel.carbs",
+   "kind": "assembly",
+   "name": "Twin SU HS4 carburettors and air cleaners",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "3.10"
+     },
+     {
+      "figure": "3.11"
+     },
+     {
+      "figure": "3.1"
+     }
+    ],
+    "section": 18
+   },
+   "children": [
+    "fuel.carbs.heat-shield",
+    "fuel.carbs.coupling-shaft",
+    "fuel.carbs.jet-rod",
+    "fuel.carbs.flange-gasket",
+    "fuel.carbs.distance-piece",
+    "fuel.carbs.stud",
+    "fuel.carbs.washer",
+    "fuel.carbs.nut",
+    "fuel.carbs.body-front",
+    "fuel.carbs.throttle-disc-front",
+    "fuel.carbs.throttle-spindle",
+    "fuel.carbs.throttle-lever",
+    "fuel.carbs.return-spring",
+    "fuel.carbs.suction-chamber",
+    "fuel.carbs.damper",
+    "fuel.carbs.piston-spring",
+    "fuel.carbs.piston",
+    "fuel.carbs.float-lid-front",
+    "fuel.carbs.float",
+    "fuel.carbs.float-chamber-front",
+    "fuel.carbs.float-bolt",
+    "fuel.carbs.jet-front",
+    "fuel.carbs.jet-locking-nut",
+    "fuel.carbs.jet-adjusting-nut",
+    "fuel.carbs.cleaner-adaptor",
+    "fuel.carbs.cleaner-gasket",
+    "fuel.carbs.cleaner-baseplate",
+    "fuel.carbs.cleaner-element",
+    "fuel.carbs.cleaner-case-front",
+    "fuel.carbs.cleaner-bolt",
+    "fuel.carbs.body-rear",
+    "fuel.carbs.throttle-disc-rear",
+    "fuel.carbs.float-lid-rear",
+    "fuel.carbs.float-chamber-rear",
+    "fuel.carbs.jet-rear",
+    "fuel.carbs.cleaner-case-rear"
+   ],
+   "file": "models/fuel.carbs.json",
+   "bytes": 830581
   },
   "cooling.pump-body": {
    "id": "cooling.pump-body",
@@ -12984,6 +13046,1795 @@
     }
    ],
    "derivedShare": 1.0
+  },
+  "fuel.carbs.body-front": {
+   "id": "fuel.carbs.body-front",
+   "kind": "part",
+   "name": "Carburettor body (front)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 1
+     },
+     {
+      "figure": "3.12"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "SU HS4 die-cast body: engine flange, barrel, intake flange for the air cleaner, the tower the suction chamber screws to, the jet housing below and the lug for the float chamber bolt. Float chambers sit outboard of each instrument; the front and rear bodies are handed (Fig 3.10 items 1 and 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "choke_diameter",
+     "label": "Choke diameter",
+     "value": "1.50 in (38.10 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p65",
+     "note": "Choke diameter (all models)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "jet_size",
+     "label": "Jet size",
+     "value": "0.09 in (2.29 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p65",
+     "note": "Haynes prints 2.2 mm for 0.090 in; the inch figure governs",
+     "erratum": true,
+     "printed_mm": [
+      2.2
+     ]
+    },
+    {
+     "key": "needle",
+     "label": "Needle",
+     "value": "5",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p66",
+     "note": "18G and 18GA: No 5 standard, No 6 rich, No 21 weak",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "idle_speed",
+     "label": "Idle speed",
+     "value": "500",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p66",
+     "note": "Idling speed, engine Nos 18G and 18GA (rpm)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.carbs.body-rear": {
+   "id": "fuel.carbs.body-rear",
+   "kind": "part",
+   "name": "Carburettor body (rear)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Handed to the front body.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "choke_diameter",
+     "label": "Choke diameter",
+     "value": "1.50 in (38.10 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p65",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.carbs.throttle-disc-front": {
+   "id": "fuel.carbs.throttle-disc-front",
+   "kind": "part",
+   "name": "Throttle disc (front)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 36
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "37.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Just under the 1.5 in bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "closed_angle_deg",
+     "label": "Closed angle deg",
+     "value": "12.0\u00b0",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.throttle-disc-rear": {
+   "id": "fuel.carbs.throttle-disc-rear",
+   "kind": "part",
+   "name": "Throttle disc (rear)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 36
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "37.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Just under the 1.5 in bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "closed_angle_deg",
+     "label": "Closed angle deg",
+     "value": "12.0\u00b0",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.throttle-spindle": {
+   "id": "fuel.carbs.throttle-spindle",
+   "kind": "part",
+   "name": "Throttle spindle",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 35
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "100.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the body and out to the coupling",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.throttle-lever": {
+   "id": "fuel.carbs.throttle-lever",
+   "kind": "part",
+   "name": "Throttle lever",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 38
+     },
+     {
+      "figure": "3.12",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Carries the throttle (idle speed) adjusting screw (Fig 3.12 item 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.12",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.suction-chamber": {
+   "id": "fuel.carbs.suction-chamber",
+   "kind": "part",
+   "name": "Suction chamber",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 6
+     },
+     {
+      "figure": "3.11"
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Supplied with its piston as one assembly (item 6); held by three screws (item 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "76.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.11",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "64.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.11",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.piston": {
+   "id": "fuel.carbs.piston",
+   "kind": "part",
+   "name": "Suction piston and needle",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 6
+     },
+     {
+      "figure": "3.10",
+      "legend": 19
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "The tapered needle (item 19) is held in the piston by its screw (Fig 3.11 item 2); No 5 needle on the 18G (Haynes p66).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "67.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Slides in the chamber",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.piston-spring": {
+   "id": "fuel.carbs.piston-spring",
+   "kind": "part",
+   "name": "Piston spring",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 10
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Light spring (Haynes Sec 17 para 3)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "48.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fitted length",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.damper": {
+   "id": "fuel.carbs.damper",
+   "kind": "part",
+   "name": "Cap and damper",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 8
+     },
+     {
+      "figure": "3.11",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "Top up the hollow piston rod with engine oil to 1/2 in above the rod (Haynes Sec 17 para 7, photo 17.7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 17.7",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "rod_length",
+     "label": "Rod length",
+     "value": "58.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Into the piston rod",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "oil_level",
+     "label": "Oil level",
+     "value": "0.50 in (12.70 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p72",
+     "note": "Above the top of the hollow rod",
+     "erratum": true,
+     "printed_mm": [
+      12.5
+     ]
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "fuel.carbs.jet-front": {
+   "id": "fuel.carbs.jet-front",
+   "kind": "part",
+   "name": "Jet assembly (front)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 12
+     },
+     {
+      "figure": "3.11",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "Jet with its head and the feed tube from the float chamber (Fig 3.11 items 6 and 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "jet_diameter",
+     "label": "Jet diameter",
+     "value": "0.09 in (2.29 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p65",
+     "note": "",
+     "erratum": true,
+     "printed_mm": [
+      2.2
+     ]
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.carbs.jet-rear": {
+   "id": "fuel.carbs.jet-rear",
+   "kind": "part",
+   "name": "Jet assembly (rear)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 13
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "jet_diameter",
+     "label": "Jet diameter",
+     "value": "0.09 in (2.29 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p65",
+     "note": "",
+     "erratum": true,
+     "printed_mm": [
+      2.2
+     ]
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.carbs.jet-adjusting-nut": {
+   "id": "fuel.carbs.jet-adjusting-nut",
+   "kind": "part",
+   "name": "Jet adjusting nut",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.11",
+      "legend": 5
+     },
+     {
+      "figure": "3.12",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "14.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "5.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "On the jet",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.jet-locking-nut": {
+   "id": "fuel.carbs.jet-locking-nut",
+   "kind": "part",
+   "name": "Jet locking nut",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.11",
+      "legend": 4
+     },
+     {
+      "figure": "3.12",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "17.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "On the jet bearing",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.float-chamber-front": {
+   "id": "fuel.carbs.float-chamber-front",
+   "kind": "part",
+   "name": "Float chamber (front)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 20
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Held to the body by a bolt through rubber grommets (items 22-26).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "54.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "72.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.float-chamber-rear": {
+   "id": "fuel.carbs.float-chamber-rear",
+   "kind": "part",
+   "name": "Float chamber (rear)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 20
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "54.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "72.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.float-lid-front": {
+   "id": "fuel.carbs.float-lid-front",
+   "kind": "part",
+   "name": "Float chamber lid (front)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 29
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Fuel inlet union and overflow pipe (Haynes Sec 18 para 1); needle and seat inside (item 32).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "54.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the chamber",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "chamber_height",
+     "label": "Chamber height",
+     "value": "72.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the chamber",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.float-lid-rear": {
+   "id": "fuel.carbs.float-lid-rear",
+   "kind": "part",
+   "name": "Float chamber lid (rear)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 30
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "54.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the chamber",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "chamber_height",
+     "label": "Chamber height",
+     "value": "72.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the chamber",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.float": {
+   "id": "fuel.carbs.float",
+   "kind": "part",
+   "name": "Float",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 27
+     },
+     {
+      "figure": "3.14"
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Inside the chamber",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.float-bolt": {
+   "id": "fuel.carbs.float-bolt",
+   "kind": "part",
+   "name": "Float chamber bolt",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 17,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 26
+     },
+     {
+      "figure": "3.12",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.25 in (31.75 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the chamber lug into the body",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.heat-shield": {
+   "id": "fuel.carbs.heat-shield",
+   "kind": "part",
+   "name": "Heat shield",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "One shield between the manifold flanges and both instruments (Haynes Sec 18 para 5, photo 18.5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.distance-piece": {
+   "id": "fuel.carbs.distance-piece",
+   "kind": "part",
+   "name": "Distance piece",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Composition insulating blocks between the heat shield and each carburettor (Haynes Sec 18 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.50 in (12.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 18.5",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.flange-gasket": {
+   "id": "fuel.carbs.flange-gasket",
+   "kind": "part",
+   "name": "Carburettor flange gasket",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Two gaskets either side of each distance piece, plus one at each manifold flange (Sec 18 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.stud": {
+   "id": "fuel.carbs.stud",
+   "kind": "part",
+   "name": "Carburettor stud",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the stack-up",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.nut": {
+   "id": "fuel.carbs.nut",
+   "kind": "part",
+   "name": "Carburettor flange nut",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.26562 in (6.75 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "15 lbf ft (20 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p66",
+     "note": "Carburettor stud nuts",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.carbs.washer": {
+   "id": "fuel.carbs.washer",
+   "kind": "part",
+   "name": "Carburettor flange washer",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "17.5 mm (0.689 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.7 mm (0.343 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm (0.065 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.carbs.coupling-shaft": {
+   "id": "fuel.carbs.coupling-shaft",
+   "kind": "part",
+   "name": "Throttle interconnecting shaft",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 21,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 60
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Folded clamps with pinch bolts at each end; loosen them to adjust the instruments separately (Haynes Sec 21 para 2, photo 17.1(b)).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.jet-rod": {
+   "id": "fuel.carbs.jet-rod",
+   "kind": "part",
+   "name": "Jet (choke) linkage rod",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 21,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 63
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "6.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.return-spring": {
+   "id": "fuel.carbs.return-spring",
+   "kind": "part",
+   "name": "Throttle return spring",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 18,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 56
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 17.1(b)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "52.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From the lever to the heat shield",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.cleaner-adaptor": {
+   "id": "fuel.carbs.cleaner-adaptor",
+   "kind": "part",
+   "name": "Air cleaner adaptor",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 3,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.1",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.cleaner-gasket": {
+   "id": "fuel.carbs.cleaner-gasket",
+   "kind": "part",
+   "name": "Air cleaner gasket",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 3,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.1",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.cleaner-baseplate": {
+   "id": "fuel.carbs.cleaner-baseplate",
+   "kind": "part",
+   "name": "Air cleaner baseplate",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 3,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.1",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "150.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.cleaner-element": {
+   "id": "fuel.carbs.cleaner-element",
+   "kind": "part",
+   "name": "Air cleaner element",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 3,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.1",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "134.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Inside the case",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "70.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.cleaner-case-front": {
+   "id": "fuel.carbs.cleaner-case-front",
+   "kind": "part",
+   "name": "Air cleaner case (front)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 3,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.1",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "The rocker cover breather pipe connects to the front air cleaner (Haynes Sec 3 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "150.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "84.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.cleaner-case-rear": {
+   "id": "fuel.carbs.cleaner-case-rear",
+   "kind": "part",
+   "name": "Air cleaner case (rear)",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 3,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.1",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "150.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "84.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 3.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.carbs.cleaner-bolt": {
+   "id": "fuel.carbs.cleaner-bolt",
+   "kind": "part",
+   "name": "Air cleaner bolt",
+   "parent": "fuel.carbs",
+   "haynes": {
+    "section": 3,
+    "spec_page": 65,
+    "figures": [
+     {
+      "figure": "3.1"
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Two bolts secure each air cleaner to its carburettor flange (Haynes Sec 3 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "4.25 in (107.95 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the case and baseplate into the intake flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
   }
  },
  "instances": {
@@ -24788,7 +26639,1611 @@
    ],
    "label": true,
    "fitted": null
+  },
+  "fuel.carbs.heat-shield#1": {
+   "part": "fuel.carbs.heat-shield",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--heat-shield__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.coupling-shaft#1": {
+   "part": "fuel.carbs.coupling-shaft",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--coupling-shaft__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.jet-rod#1": {
+   "part": "fuel.carbs.jet-rod",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--jet-rod__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.flange-gasket#1": {
+   "part": "fuel.carbs.flange-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--flange-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 8.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.flange-gasket#2": {
+   "part": "fuel.carbs.flange-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--flange-gasket__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.distance-piece#1": {
+   "part": "fuel.carbs.distance-piece",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--distance-piece__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.flange-gasket#3": {
+   "part": "fuel.carbs.flange-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--flange-gasket__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.stud#1": {
+   "part": "fuel.carbs.stud",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--stud__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.washer#1": {
+   "part": "fuel.carbs.washer",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.nut#1": {
+   "part": "fuel.carbs.nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.stud#2": {
+   "part": "fuel.carbs.stud",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--stud__2",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.washer#2": {
+   "part": "fuel.carbs.washer",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.nut#2": {
+   "part": "fuel.carbs.nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.body-front#1": {
+   "part": "fuel.carbs.body-front",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--body-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.throttle-disc-front#1": {
+   "part": "fuel.carbs.throttle-disc-front",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--throttle-disc-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 12,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.throttle-spindle#1": {
+   "part": "fuel.carbs.throttle-spindle",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--throttle-spindle__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      -1.0,
+      0,
+      0
+     ],
+     "order": 12,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.throttle-lever#1": {
+   "part": "fuel.carbs.throttle-lever",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--throttle-lever__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      -1.0,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.return-spring#1": {
+   "part": "fuel.carbs.return-spring",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--return-spring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.suction-chamber#1": {
+   "part": "fuel.carbs.suction-chamber",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--suction-chamber__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.damper#1": {
+   "part": "fuel.carbs.damper",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--damper__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 8,
+     "distance_mm": 220
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.piston-spring#1": {
+   "part": "fuel.carbs.piston-spring",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--piston-spring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9.5,
+     "distance_mm": 190
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.piston#1": {
+   "part": "fuel.carbs.piston",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--piston__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.float-lid-front#1": {
+   "part": "fuel.carbs.float-lid-front",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float-lid-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.float#1": {
+   "part": "fuel.carbs.float",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9.5,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.float-chamber-front#1": {
+   "part": "fuel.carbs.float-chamber-front",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float-chamber-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      1.0,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.float-bolt#1": {
+   "part": "fuel.carbs.float-bolt",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      1.0,
+      0,
+      0
+     ],
+     "order": 9.8,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.jet-front#1": {
+   "part": "fuel.carbs.jet-front",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--jet-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 11,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.jet-locking-nut#1": {
+   "part": "fuel.carbs.jet-locking-nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--jet-locking-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.jet-adjusting-nut#1": {
+   "part": "fuel.carbs.jet-adjusting-nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--jet-adjusting-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-front"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10.6,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-adaptor#1": {
+   "part": "fuel.carbs.cleaner-adaptor",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-adaptor__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-gasket#1": {
+   "part": "fuel.carbs.cleaner-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-front"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.9,
+     "distance_mm": 10
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-baseplate#1": {
+   "part": "fuel.carbs.cleaner-baseplate",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-baseplate__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-front"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.8,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-element#1": {
+   "part": "fuel.carbs.cleaner-element",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-element__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-front"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.6,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-case-front#1": {
+   "part": "fuel.carbs.cleaner-case-front",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-case-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-front"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.4,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-bolt#1": {
+   "part": "fuel.carbs.cleaner-bolt",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-front"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-bolt#2": {
+   "part": "fuel.carbs.cleaner-bolt",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-front"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.flange-gasket#4": {
+   "part": "fuel.carbs.flange-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--flange-gasket__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 8.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.flange-gasket#5": {
+   "part": "fuel.carbs.flange-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--flange-gasket__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.distance-piece#2": {
+   "part": "fuel.carbs.distance-piece",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--distance-piece__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.flange-gasket#6": {
+   "part": "fuel.carbs.flange-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--flange-gasket__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.stud#3": {
+   "part": "fuel.carbs.stud",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--stud__3",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.washer#3": {
+   "part": "fuel.carbs.washer",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.nut#3": {
+   "part": "fuel.carbs.nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.stud#4": {
+   "part": "fuel.carbs.stud",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--stud__4",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.washer#4": {
+   "part": "fuel.carbs.washer",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.nut#4": {
+   "part": "fuel.carbs.nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--nut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.body-rear#1": {
+   "part": "fuel.carbs.body-rear",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--body-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.throttle-disc-rear#1": {
+   "part": "fuel.carbs.throttle-disc-rear",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--throttle-disc-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 12,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.throttle-spindle#2": {
+   "part": "fuel.carbs.throttle-spindle",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--throttle-spindle__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      1.0,
+      0,
+      0
+     ],
+     "order": 12,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.throttle-lever#2": {
+   "part": "fuel.carbs.throttle-lever",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--throttle-lever__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      1.0,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.return-spring#2": {
+   "part": "fuel.carbs.return-spring",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--return-spring__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.suction-chamber#2": {
+   "part": "fuel.carbs.suction-chamber",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--suction-chamber__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.damper#2": {
+   "part": "fuel.carbs.damper",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--damper__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 8,
+     "distance_mm": 220
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.piston-spring#2": {
+   "part": "fuel.carbs.piston-spring",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--piston-spring__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9.5,
+     "distance_mm": 190
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.piston#2": {
+   "part": "fuel.carbs.piston",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--piston__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10,
+     "distance_mm": 150
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.float-lid-rear#1": {
+   "part": "fuel.carbs.float-lid-rear",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float-lid-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.float#2": {
+   "part": "fuel.carbs.float",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9.5,
+     "distance_mm": 110
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.float-chamber-rear#1": {
+   "part": "fuel.carbs.float-chamber-rear",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float-chamber-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      -1.0,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.float-bolt#2": {
+   "part": "fuel.carbs.float-bolt",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--float-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      -1.0,
+      0,
+      0
+     ],
+     "order": 9.8,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.jet-rear#1": {
+   "part": "fuel.carbs.jet-rear",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--jet-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 11,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.jet-locking-nut#2": {
+   "part": "fuel.carbs.jet-locking-nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--jet-locking-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.jet-adjusting-nut#2": {
+   "part": "fuel.carbs.jet-adjusting-nut",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--jet-adjusting-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 140,
+     "group": "carb-rear"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10.6,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-adaptor#2": {
+   "part": "fuel.carbs.cleaner-adaptor",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-adaptor__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-gasket#2": {
+   "part": "fuel.carbs.cleaner-gasket",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-gasket__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-rear"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.9,
+     "distance_mm": 10
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-baseplate#2": {
+   "part": "fuel.carbs.cleaner-baseplate",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-baseplate__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-rear"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.8,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-element#2": {
+   "part": "fuel.carbs.cleaner-element",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-element__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-rear"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.6,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-case-rear#1": {
+   "part": "fuel.carbs.cleaner-case-rear",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-case-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-rear"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2.4,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-bolt#3": {
+   "part": "fuel.carbs.cleaner-bolt",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-rear"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.carbs.cleaner-bolt#4": {
+   "part": "fuel.carbs.cleaner-bolt",
+   "assembly": "fuel.carbs",
+   "node": "fuel--carbs--cleaner-bolt__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 160,
+     "group": "cleaner-rear"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
   }
  },
- "built": "2026-11-01T19:41:46+00:00"
+ "built": "2026-11-01T20:49:05+00:00"
 }

@@ -1,0 +1,338 @@
+# Twin SU HS4 carburettors and air cleaners, 18G. Haynes Ch 3: specs p65-66, Figs 3.1,
+# 3.10, 3.11, 3.12; photos 17.1(a)/(b), 17.7, 18.2-18.5. Item numbers are Fig 3.10.
+defaults:
+  system: fuel
+  assembly: fuel.carbs
+  haynes: { section: 17, spec_page: 65 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: aluminium
+
+parts:
+  - id: fuel.carbs.body-front
+    name: Carburettor body (front)
+    haynes: { figures: [{ figure: "3.10", legend: 1 }, { figure: "3.12" }] }
+    quantity: 1
+    notes: >
+      SU HS4 die-cast body: engine flange, barrel, intake flange for the air cleaner, the
+      tower the suction chamber screws to, the jet housing below and the lug for the float
+      chamber bolt. Float chambers sit outboard of each instrument; the front and rear
+      bodies are handed (Fig 3.10 items 1 and 2).
+    specs:
+      choke_diameter: { in: 1.5, mm: 38.1, source: { label: H, page: 65, note: "Choke diameter (all models)" } }
+      jet_size: { in: 0.090, mm: 2.29, printed_mm: 2.2, erratum: true, source: { label: H, page: 65, note: "Haynes prints 2.2 mm for 0.090 in; the inch figure governs" }, display_only: true }
+      needle: { count: 5, source: { label: H, page: 66, note: "18G and 18GA: No 5 standard, No 6 rich, No 21 weak" }, display_only: true }
+      idle_speed: { count: 500, source: { label: H, page: 66, note: "Idling speed, engine Nos 18G and 18GA (rpm)" }, display_only: true }
+
+  - id: fuel.carbs.body-rear
+    name: Carburettor body (rear)
+    haynes: { figures: [{ figure: "3.10", legend: 2 }] }
+    quantity: 1
+    notes: Handed to the front body.
+    specs:
+      choke_diameter: { in: 1.5, mm: 38.1, source: { label: H, page: 65 } }
+
+  - id: fuel.carbs.throttle-disc-front
+    name: Throttle disc (front)
+    haynes: { figures: [{ figure: "3.10", legend: 36 }] }
+    quantity: 1
+    finish: brass
+    specs:
+      diameter: { mm: 37.6, source: { label: D, method: "Just under the 1.5 in bore" } }
+      closed_angle_deg: { deg: 12.0, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.throttle-disc-rear
+    name: Throttle disc (rear)
+    haynes: { figures: [{ figure: "3.10", legend: 36 }] }
+    quantity: 1
+    finish: brass
+    specs:
+      diameter: { mm: 37.6, source: { label: D, method: "Just under the 1.5 in bore" } }
+      closed_angle_deg: { deg: 12.0, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.throttle-spindle
+    name: Throttle spindle
+    haynes: { figures: [{ figure: "3.10", legend: 35 }], section: 18 }
+    quantity: 2
+    finish: machined_steel
+    specs:
+      length: { mm: 100.0, source: { label: D, method: "Through the body and out to the coupling" } }
+
+  - id: fuel.carbs.throttle-lever
+    name: Throttle lever
+    haynes: { figures: [{ figure: "3.10", legend: 38 }, { figure: "3.12", legend: 1 }] }
+    quantity: 2
+    finish: machined_steel
+    notes: Carries the throttle (idle speed) adjusting screw (Fig 3.12 item 1).
+    specs:
+      length: { mm: 34.0, source: { label: D, method: "Proportion from Fig 3.12" } }
+
+  - id: fuel.carbs.suction-chamber
+    name: Suction chamber
+    haynes: { figures: [{ figure: "3.10", legend: 6 }, { figure: "3.11" }] }
+    quantity: 2
+    notes: Supplied with its piston as one assembly (item 6); held by three screws (item 7).
+    specs:
+      diameter: { mm: 76.0, source: { label: D, method: "Proportion from Fig 3.11" } }
+      height: { mm: 64.0, source: { label: D, method: "Proportion from Fig 3.11" } }
+
+  - id: fuel.carbs.piston
+    name: Suction piston and needle
+    haynes: { figures: [{ figure: "3.10", legend: 6 }, { figure: "3.10", legend: 19 }] }
+    quantity: 2
+    notes: The tapered needle (item 19) is held in the piston by its screw (Fig 3.11 item 2); No 5 needle on the 18G (Haynes p66).
+    specs:
+      diameter: { mm: 67.0, source: { label: D, method: "Slides in the chamber" } }
+
+  - id: fuel.carbs.piston-spring
+    name: Piston spring
+    haynes: { figures: [{ figure: "3.10", legend: 10 }] }
+    quantity: 2
+    finish: machined_steel
+    specs:
+      wire_diameter: { mm: 1.0, source: { label: D, method: "Light spring (Haynes Sec 17 para 3)" } }
+      outside_diameter: { mm: 30.0, source: { label: D, method: "Not published" } }
+      length: { mm: 48.0, source: { label: D, method: "Fitted length" } }
+
+  - id: fuel.carbs.damper
+    name: Cap and damper
+    haynes: { figures: [{ figure: "3.10", legend: 8 }, { figure: "3.11", legend: 1 }] }
+    quantity: 2
+    finish: brass
+    notes: Top up the hollow piston rod with engine oil to 1/2 in above the rod (Haynes Sec 17 para 7, photo 17.7).
+    specs:
+      diameter: { mm: 22.0, source: { label: D, method: "Proportion from photo 17.7" } }
+      rod_length: { mm: 58.0, source: { label: D, method: "Into the piston rod" } }
+      oil_level: { in: 0.5, mm: 12.7, printed_mm: 12.5, erratum: true, source: { label: H, page: 72, note: "Above the top of the hollow rod" }, display_only: true }
+
+  - id: fuel.carbs.jet-front
+    name: Jet assembly (front)
+    haynes: { figures: [{ figure: "3.10", legend: 12 }, { figure: "3.11", legend: 6 }] }
+    quantity: 1
+    finish: brass
+    notes: Jet with its head and the feed tube from the float chamber (Fig 3.11 items 6 and 7).
+    specs:
+      jet_diameter: { in: 0.090, mm: 2.29, printed_mm: 2.2, erratum: true, source: { label: H, page: 65 } }
+
+  - id: fuel.carbs.jet-rear
+    name: Jet assembly (rear)
+    haynes: { figures: [{ figure: "3.10", legend: 13 }] }
+    quantity: 1
+    finish: brass
+    specs:
+      jet_diameter: { in: 0.090, mm: 2.29, printed_mm: 2.2, erratum: true, source: { label: H, page: 65 } }
+
+  - id: fuel.carbs.jet-adjusting-nut
+    name: Jet adjusting nut
+    haynes: { figures: [{ figure: "3.11", legend: 5 }, { figure: "3.12", legend: 5 }] }
+    quantity: 2
+    finish: brass
+    specs:
+      across_flats: { mm: 14.3, source: { label: D, method: "Not published" } }
+      thickness: { mm: 9.0, source: { label: D, method: "Not published" } }
+      bore: { mm: 5.4, source: { label: D, method: "On the jet" } }
+
+  - id: fuel.carbs.jet-locking-nut
+    name: Jet locking nut
+    haynes: { figures: [{ figure: "3.11", legend: 4 }, { figure: "3.12", legend: 6 }] }
+    quantity: 2
+    finish: brass
+    specs:
+      across_flats: { mm: 17.5, source: { label: D, method: "Not published" } }
+      thickness: { mm: 7.0, source: { label: D, method: "Not published" } }
+      bore: { mm: 10.0, source: { label: D, method: "On the jet bearing" } }
+
+  - id: fuel.carbs.float-chamber-front
+    name: Float chamber (front)
+    haynes: { figures: [{ figure: "3.10", legend: 20 }] }
+    quantity: 1
+    notes: Held to the body by a bolt through rubber grommets (items 22-26).
+    specs:
+      diameter: { mm: 54.0, source: { label: D, method: "Proportion from Fig 3.10" } }
+      height: { mm: 72.0, source: { label: D, method: "Proportion from Fig 3.10" } }
+
+  - id: fuel.carbs.float-chamber-rear
+    name: Float chamber (rear)
+    haynes: { figures: [{ figure: "3.10", legend: 20 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 54.0, source: { label: D, method: "Proportion from Fig 3.10" } }
+      height: { mm: 72.0, source: { label: D, method: "Proportion from Fig 3.10" } }
+
+  - id: fuel.carbs.float-lid-front
+    name: Float chamber lid (front)
+    haynes: { figures: [{ figure: "3.10", legend: 29 }] }
+    quantity: 1
+    notes: Fuel inlet union and overflow pipe (Haynes Sec 18 para 1); needle and seat inside (item 32).
+    specs:
+      diameter: { mm: 54.0, source: { label: D, method: "Fits the chamber" } }
+      chamber_height: { mm: 72.0, source: { label: D, method: "Equal to the chamber" } }
+
+  - id: fuel.carbs.float-lid-rear
+    name: Float chamber lid (rear)
+    haynes: { figures: [{ figure: "3.10", legend: 30 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 54.0, source: { label: D, method: "Fits the chamber" } }
+      chamber_height: { mm: 72.0, source: { label: D, method: "Equal to the chamber" } }
+
+  - id: fuel.carbs.float
+    name: Float
+    haynes: { figures: [{ figure: "3.10", legend: 27 }, { figure: "3.14" }] }
+    quantity: 2
+    finish: plastic_black
+    specs:
+      diameter: { mm: 46.0, source: { label: D, method: "Inside the chamber" } }
+      height: { mm: 34.0, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.float-bolt
+    name: Float chamber bolt
+    haynes: { figures: [{ figure: "3.10", legend: 26 }, { figure: "3.12", legend: 3 }] }
+    quantity: 2
+    finish: machined_steel
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 1.25, source: { label: D, method: "Through the chamber lug into the body" } }
+
+  - id: fuel.carbs.heat-shield
+    name: Heat shield
+    haynes: { section: 18 }
+    quantity: 1
+    finish: machined_steel
+    notes: One shield between the manifold flanges and both instruments (Haynes Sec 18 para 5, photo 18.5).
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.distance-piece
+    name: Distance piece
+    haynes: { section: 18 }
+    quantity: 2
+    finish: gasket
+    notes: Composition insulating blocks between the heat shield and each carburettor (Haynes Sec 18 para 5).
+    specs:
+      thickness: { in: 0.5, mm: 12.7, source: { label: D, method: "Proportion from photo 18.5" } }
+
+  - id: fuel.carbs.flange-gasket
+    name: Carburettor flange gasket
+    haynes: { section: 18 }
+    quantity: 6
+    finish: gasket
+    notes: Two gaskets either side of each distance piece, plus one at each manifold flange (Sec 18 para 5).
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.stud
+    name: Carburettor stud
+    haynes: { section: 18 }
+    quantity: 4
+    finish: machined_steel
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { mm: 46.0, source: { label: D, method: "Through the stack-up" } }
+
+  - id: fuel.carbs.nut
+    name: Carburettor flange nut
+    haynes: { section: 18 }
+    quantity: 4
+    finish: machined_steel
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      thickness: { in: 0.265625, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      torque: { lbf_ft: 15, nm: 20, source: { label: H, page: 66, note: "Carburettor stud nuts" } }
+
+  - id: fuel.carbs.washer
+    name: Carburettor flange washer
+    haynes: { section: 18 }
+    quantity: 4
+    finish: machined_steel
+    specs:
+      outside_diameter: { mm: 17.5, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      inside_diameter: { mm: 8.7, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      thickness: { mm: 1.65, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+
+  - id: fuel.carbs.coupling-shaft
+    name: Throttle interconnecting shaft
+    haynes: { figures: [{ figure: "3.10", legend: 60 }], section: 21 }
+    quantity: 1
+    finish: machined_steel
+    notes: Folded clamps with pinch bolts at each end; loosen them to adjust the instruments separately (Haynes Sec 21 para 2, photo 17.1(b)).
+    specs:
+      diameter: { mm: 9.5, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.jet-rod
+    name: Jet (choke) linkage rod
+    haynes: { figures: [{ figure: "3.10", legend: 63 }], section: 21 }
+    quantity: 1
+    finish: machined_steel
+    specs:
+      diameter: { mm: 6.4, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.return-spring
+    name: Throttle return spring
+    haynes: { figures: [{ figure: "3.10", legend: 56 }], section: 18 }
+    quantity: 2
+    finish: machined_steel
+    specs:
+      wire_diameter: { mm: 1.2, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Proportion from photo 17.1(b)" } }
+      length: { mm: 52.0, source: { label: D, method: "From the lever to the heat shield" } }
+
+  - id: fuel.carbs.cleaner-adaptor
+    name: Air cleaner adaptor
+    haynes: { figures: [{ figure: "3.1", legend: 1 }], section: 3 }
+    quantity: 2
+    specs:
+      length: { mm: 12.0, source: { label: D, method: "Proportion from Fig 3.1" } }
+
+  - id: fuel.carbs.cleaner-gasket
+    name: Air cleaner gasket
+    haynes: { figures: [{ figure: "3.1", legend: 2 }], section: 3 }
+    quantity: 2
+    finish: gasket
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: fuel.carbs.cleaner-baseplate
+    name: Air cleaner baseplate
+    haynes: { figures: [{ figure: "3.1", legend: 3 }], section: 3 }
+    quantity: 2
+    finish: paint_black
+    specs:
+      diameter: { mm: 150.0, source: { label: D, method: "Proportion from Fig 3.1" } }
+
+  - id: fuel.carbs.cleaner-element
+    name: Air cleaner element
+    haynes: { figures: [{ figure: "3.1", legend: 4 }], section: 3 }
+    quantity: 2
+    finish: paper
+    specs:
+      diameter: { mm: 134.0, source: { label: D, method: "Inside the case" } }
+      length: { mm: 70.0, source: { label: D, method: "Proportion from Fig 3.1" } }
+
+  - id: fuel.carbs.cleaner-case-front
+    name: Air cleaner case (front)
+    haynes: { figures: [{ figure: "3.1", legend: 5 }], section: 3 }
+    quantity: 1
+    finish: paint_black
+    notes: The rocker cover breather pipe connects to the front air cleaner (Haynes Sec 3 para 1).
+    specs:
+      diameter: { mm: 150.0, source: { label: D, method: "Proportion from Fig 3.1" } }
+      depth: { mm: 84.0, source: { label: D, method: "Proportion from Fig 3.1" } }
+
+  - id: fuel.carbs.cleaner-case-rear
+    name: Air cleaner case (rear)
+    haynes: { figures: [{ figure: "3.1", legend: 5 }], section: 3 }
+    quantity: 1
+    finish: paint_black
+    specs:
+      diameter: { mm: 150.0, source: { label: D, method: "Proportion from Fig 3.1" } }
+      depth: { mm: 84.0, source: { label: D, method: "Proportion from Fig 3.1" } }
+
+  - id: fuel.carbs.cleaner-bolt
+    name: Air cleaner bolt
+    haynes: { figures: [{ figure: "3.1" }], section: 3 }
+    quantity: 4
+    finish: machined_steel
+    notes: Two bolts secure each air cleaner to its carburettor flange (Haynes Sec 3 para 1).
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 4.25, source: { label: D, method: "Through the case and baseplate into the intake flange" } }

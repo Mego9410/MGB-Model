@@ -35,8 +35,13 @@ def _mesh_part(part: Part, linear: float, angular: float):
     import numpy as np
     pos, nrm, idx = [], [], []
     base = 0
+    skipped = 0
     for face in part.faces():
-        verts, tris = face.tessellate(linear, angular)
+        try:
+            verts, tris = face.tessellate(linear, angular)
+        except AttributeError:          # a degenerate face the mesher cannot triangulate
+            skipped += 1
+            continue
         if not tris:
             continue
         v = np.array([(p.X, p.Y, p.Z) for p in verts], dtype=np.float64) / 1000.0
