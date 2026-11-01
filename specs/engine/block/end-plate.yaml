@@ -1,0 +1,82 @@
+# Engine rear end plate, between the block and the gearbox bellhousing.
+# Haynes Sec 22 (removal), 42 (examination), 53 (refitting); photos 42.6(b), 53.3.
+defaults:
+  system: engine
+  assembly: engine.block
+  haynes: { section: 53 }
+  variant: { factory_1963: true, as_fitted: true }
+
+parts:
+  - id: engine.block.rear-plate
+    name: Engine rear end plate
+    quantity: 1
+    finish: paint_engine
+    notes: >
+      Steel plate the gearbox bellhousing bolts to. Arched top, lower edge round the
+      flywheel, a starter motor aperture on the right-hand side (Haynes Sec 22: the
+      flywheel can be held "via the starter motor hole in the end plate"), pressed
+      dimples round the block screws, and on early engines an oil seal retaining plate
+      over the centre (Sec 53, photo 53.3). The fixings are of varying sizes (Sec 22).
+    specs:
+      thickness: { mm: 4.8, source: { label: D, method: "3/16 in plate; not published" } }
+      lower_edge_radius: { mm: 182.0, source: { label: D, method: "Clears the flywheel and bellhousing bolt circle; proportion from photo 42.6(b)" } }
+      starter_aperture_diameter: { mm: 88.0, source: { label: D, method: "Starter nose clearance; proportion from photo 42.6(b)" } }
+      screw_torque_5_16: { lbf_ft: 20, nm: 27, source: { label: H, page: 25, note: "Rear plate, 5/16 in screws" } }
+      screw_torque_3_8: { lbf_ft: 30, nm: 41, source: { label: H, page: 25, note: "Rear plate, 3/8 in screws" } }
+
+  - id: engine.block.rear-plate-gasket
+    name: Rear end plate gasket
+    quantity: 1
+    finish: gasket
+    notes: Haynes Sec 53 - fit a new endplate paper gasket, retaining it with jointing compound.
+    specs:
+      thickness: { mm: 0.4, source: { label: D, method: "Paper gasket; not published" } }
+
+  - id: engine.block.rear-seal-retainer
+    name: Rear oil seal retaining plate
+    quantity: 1
+    notes: Early engines (Haynes Sec 53 para 3, photo 53.3); later engines have a seal in the end plate instead.
+    specs:
+      outside_diameter: { mm: 104.0, source: { label: D, method: "Proportion from photo 53.3" } }
+      inside_diameter: { mm: 60.0, source: { label: D, method: "Seal housing; not published" } }
+      thickness: { mm: 3.0, source: { label: D, method: "Not published" } }
+      collar_length: { mm: 8.0, source: { label: D, method: "Proportion from photo 53.3" } }
+
+  - id: engine.block.rear-seal-retainer-bolt
+    name: Seal retaining plate bolt
+    quantity: 6
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 0.625, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.rear-plate-screw-small
+    name: Rear plate screw, 5/16 in
+    quantity: 4
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: H, page: 25, note: "Rear plate 5/16 in screws" } }
+      length: { in: 0.75, source: { label: D, method: "Not published" } }
+      torque: { lbf_ft: 20, nm: 27, source: { label: H, page: 25 } }
+
+  - id: engine.block.rear-plate-screw-large
+    name: Rear plate screw, 3/8 in
+    quantity: 4
+    specs:
+      thread_diameter: { in: 0.375, source: { label: H, page: 25, note: "Rear plate 3/8 in screws" } }
+      length: { in: 0.875, source: { label: D, method: "Not published" } }
+      torque: { lbf_ft: 30, nm: 41, source: { label: H, page: 25 } }
+
+  - id: engine.block.rear-plate-washer-small
+    name: Rear plate spring washer, 5/16 in
+    quantity: 4
+    specs:
+      outside_diameter: { mm: 13.5, source: { label: D, method: "Typical 5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "Typical 5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "Typical 5/16 in spring washer" } }
+
+  - id: engine.block.rear-plate-washer-large
+    name: Rear plate spring washer, 3/8 in
+    quantity: 4
+    specs:
+      outside_diameter: { mm: 15.9, source: { label: D, method: "Typical 3/8 in spring washer" } }
+      inside_diameter: { mm: 9.7, source: { label: D, method: "Typical 3/8 in spring washer" } }
+      thickness: { mm: 2.4, source: { label: D, method: "Typical 3/8 in spring washer" } }

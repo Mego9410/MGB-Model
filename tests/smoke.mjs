@@ -53,13 +53,23 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
     if (!st || st[0] !== st[1] || !st[1]) errors.push(`${name}: ${a.id} matched ${st && st[0]} of ${st && st[1]} instances`);
     await page.fill('#explode', '0'); await page.dispatchEvent('#explode', 'input');
   }
+  console.log(`${name}: assemblies ok, checking ${parts.length} part cards`);
   for (const p of parts) {
     await page.evaluate(id => { location.hash = '#' + id.replaceAll('.', '--'); }, p.id);
     await page.waitForTimeout(500);
     const title = await page.textContent('#card h3');
     if (title !== p.name) errors.push(`${name}: card shows "${title}" for ${p.id}`);
   }
+  console.log(`${name}: part cards done`);
   await page.screenshot({ path: `${shots}/${name}-card.png` });
+  // the view must respond to a drag right after a part has been selected (camera fly-to)
+  const box = await page.locator('#stage canvas').boundingBox();
+  const before = await page.evaluate(() => window.mgbCameraPos && window.mgbCameraPos());
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.down(); await page.mouse.move(box.x + box.width / 2 + 120, box.y + box.height / 2 + 40, { steps: 8 }); await page.mouse.up();
+  await page.waitForTimeout(1500);
+  const after = await page.evaluate(() => window.mgbCameraPos && window.mgbCameraPos());
+  if (!before || !after || Math.hypot(...before.map((v, k) => v - after[k])) < 1e-4) errors.push(`${name}: dragging did not move the view`);
   await page.close();
 }
 await browser.close(); server.close();

@@ -8,7 +8,7 @@ from build123d import Align, Axis, Box, Location, Part, fillet
 from mgb import fasteners as F, probes, shapes as Sh
 
 BASE = (Align.CENTER, Align.CENTER, Align.MIN)
-STUD_DX = (99.2, -94.2)     # head-frame studs at +/-96.7 less the cover centre x of -2.5
+STUD_DX = (99.2, -94.2)     # head-frame studs at +/-96.7 less the cover centre x of -2.5 (unchanged)
 STUD_DY = -15.0             # head-frame y 20 less the cover centre y of 35
 FILLER_X = 140.0
 
@@ -46,7 +46,7 @@ def filler_cap(spec) -> Part:
 
 def cover_gasket(spec) -> Part:
     t, w = spec.nom("thickness"), spec.nom("width")
-    L, W = 405.0, 122.0
+    L, W = 395.0, 122.0
     outer = fillet(Box(L + w, W + w, t, align=BASE).edges().filter_by(Axis.Z), 22)
     inner = fillet(Box(L - w, W - w, t + 2, align=BASE).edges().filter_by(Axis.Z), 14).moved(Location((0, 0, -1)))
     return _l(outer - inner, spec)

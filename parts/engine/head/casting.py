@@ -12,6 +12,12 @@ from mgb import probes
 from mgb.head_layout import layout
 
 BASE = (Align.CENTER, Align.CENTER, Align.MIN)
+# rocker cover rail and top valley (derived; see casting.yaml notes)
+RAIL_X = (-199.0, 194.0)
+RAIL_Y = (-27.0, 97.0)
+RAIL_H = 4.0
+VALLEY = 3.0
+HEATER_BOSS = 4.0
 
 
 def _rod(a, b, r) -> Part:
@@ -28,7 +34,37 @@ def build(spec) -> Part:
     cx, cy = (lay.x_max + lay.x_min) / 2, (lay.y_max + lay.y_min) / 2
     head = Box(L, W, top, align=BASE).moved(Location((cx, cy, 0)))
     head = fillet(head.edges().filter_by(Axis.Z), 7.0)
+    head = fillet(head.edges().group_by(Axis.Z)[0], 1.5)       # machined joint face edge
     head = fillet(head.edges().group_by(Axis.Z)[-1], 3.0)
+
+    # raised rail for the rocker cover gasket, valley inside it (Fig 1.6 shows the
+    # spring seats and rocker pads standing up from a recessed top)
+    rx0, rx1, ry0, ry1 = RAIL_X[0], RAIL_X[1], RAIL_Y[0], RAIL_Y[1]
+    rail_out = fillet(Box(rx1 - rx0, ry1 - ry0, RAIL_H, align=BASE).edges().filter_by(Axis.Z), 16.0)
+    rail_in = fillet(Box(rx1 - rx0 - 18, ry1 - ry0 - 18, RAIL_H + 2, align=BASE).edges().filter_by(Axis.Z), 8.0)
+    rc = Location(((rx0 + rx1) / 2, (ry0 + ry1) / 2, top))
+    head = head + (rail_out - rail_in.moved(Location((0, 0, -1)))).moved(rc)
+    valley = fillet(Box(rx1 - rx0 - 18, ry1 - ry0 - 18, VALLEY + 1, align=BASE).edges().filter_by(Axis.Z), 8.0)
+    valley = valley.moved(Location(((rx0 + rx1) / 2, (ry0 + ry1) / 2, top - VALLEY)))
+    keep = []
+    for v in lay.valves:
+        keep.append(Cylinder(18.5, VALLEY + 2, align=BASE).moved(Location((v.x, v.y, top - VALLEY - 1))))    # spring seats
+        keep.append(Cylinder(10.0, VALLEY + 2, align=BASE).moved(Location((v.x, lay.pushrod_y, top - VALLEY - 1))))
+    for x in lay.cyl_x:                                                  # rocker pedestal pads
+        keep.append(Box(26, 64, VALLEY + 2, align=BASE).moved(Location((x, (lay.short_stud_y + lay.pushrod_y) / 2, top - VALLEY - 1))))
+    for x, y in lay.cover_studs:
+        keep.append(Cylinder(8.0, VALLEY + 2, align=BASE).moved(Location((x, y, top - VALLEY - 1))))
+    for k in keep:
+        valley = valley - k
+    head = head - valley
+    # manifold face: the port band stands proud of the side
+    for z0, z1 in ((-1, 7), (65, top + 0.5)):
+        head = head - Box(L + 2, 4, z1 - z0, align=BASE).moved(Location((cx, lay.y_max - 1.0, z0)))
+    # plug side: recessed panels between the plug bosses
+    for x, w in ((0.0, 44), (lay.pitch, 44), (-lay.pitch, 44), (192.0, 36), (-192.0, 36)):
+        head = head - Box(w, 6, 46, align=BASE).moved(Location((x, lay.y_min, 12)))
+    # heater water outlet boss on the rear end (blanked off when no heater valve is fitted)
+    head = head + Cylinder(17, HEATER_BOSS + 2, rotation=(0, 90, 0)).moved(Location((lay.x_min - HEATER_BOSS / 2 + 1, -25, 45)))
 
     # thermostat outlet boss on the front of the top face
     tx, ty = lay.thermostat
@@ -79,6 +115,7 @@ def build(spec) -> Part:
     for x in lay.cyl_x:
         for dx in (-30, 30):
             cut.append(Cylinder(5, 22, align=BASE).moved(Location((x + dx, -50, -1))))
+    cut.append(Cylinder(9, 30, rotation=(0, 90, 0)).moved(Location((lay.x_min, -25, 45))))
     # thermostat stud holes
     for k in range(3):
         a = math.radians(90 + 120 * k)

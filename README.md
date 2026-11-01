@@ -52,8 +52,12 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
 ## Status
 
 - P0 (foundations) complete: pipeline, checks, fastener library, viewer shell.
-- P1 (cylinder head) built for review: every Haynes Fig 1.6 legend item plus the
-  Fig 1.9 valve gear, 65 unique parts and about 240 placed instances, laid out from
-  Fig 1.5 and exploded in the Haynes removal order. Awaiting sign-off (Gate A).
+- P1 (cylinder head) signed off: every Haynes Fig 1.6 legend item plus the
+  Fig 1.9 valve gear, laid out from Fig 1.5 and exploded in the Haynes removal order.
+- P2a (block and crank train) built: Fig 1.8 block with its full exterior form,
+  crankshaft, main and big-end bearings, pistons and rods, camshaft, tappets,
+  pushrods, tappet covers, front plate (Fig 1.8 outline) and the rear end plate
+  with its early-type oil seal retaining plate (Sec 22/53).
 
-Next: P2, the rest of the engine and the cooling system.
+Next: P2b (timing gear, oil pump, sump, flywheel, oil filter, manifolds, mountings),
+then P2c (cooling). The working standard is in `CLAUDE.md`.

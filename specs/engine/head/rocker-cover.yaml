@@ -13,7 +13,7 @@ parts:
     finish: paint_engine
     notes: Pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long studs.
     specs:
-      length: { mm: 405.0, source: { label: D, method: "Covers the rocker gear with clearance; not published" } }
+      length: { mm: 395.0, source: { label: D, method: "Sits on the head rail between the end head studs; not published" } }
       width: { mm: 122.0, source: { label: D, method: "Not published" } }
       height: { mm: 95.0, source: { label: D, method: "Clears the rockers and adjusting screws" } }
       sheet_thickness: { mm: 1.0, source: { label: D, method: "Not published" } }

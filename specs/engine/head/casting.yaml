@@ -7,8 +7,8 @@ haynes:
   section: 12
   spec_page: 22
 quantity: 1
-finish: cast_iron
-material: Cast iron (Haynes p25)
+finish: paint_engine
+material: Cast iron (Haynes p25), painted with the engine
 notes: >
   Layout from Haynes Fig 1.5 (plan of the head with nut order), scaled so the
   eight valves fit the published 14.031 in rocker shaft. Bathtub chambers,
@@ -16,6 +16,10 @@ notes: >
   pushrods on the manifold side, plugs on the right-hand side. Water jacket,
   oilways and core detail are not modelled, so the model is solid where the
   real casting is hollow (about 4.5 litres of iron, heavier than the real head).
+  External form (derived): raised rocker cover rail, recessed valley with spring
+  seats and rocker pedestal pads standing proud, a proud port band on the
+  manifold side, recessed panels between the plug bosses, and a heater outlet
+  boss on the rear end.
 variant: { factory_1963: true, as_fitted: true }
 specs:
   head_nut_torque: { lbf_ft: [45, 50], nm: [61, 68], source: { label: H, page: 24, note: "Tighten half a turn at a time in the Fig 1.5 order" } }
@@ -34,3 +38,6 @@ specs:
   guide_bore: { in: 0.5635, mm: 14.31, source: { label: D, method: "Equal to the guide outside diameter (interference fit not modelled)" } }
   head_stud_hole: { mm: 11.6, source: { label: D, method: "Clearance for the 7/16 in studs" } }
   pushrod_hole: { mm: 14.0, source: { label: D, method: "Not published" } }
+  rocker_cover_rail_height: { mm: 4.0, source: { label: D, method: "Not published; proportion from Fig 1.6 and photos 10.7 and 10.8" } }
+  top_valley_depth: { mm: 3.0, source: { label: D, method: "Not published" } }
+  port_band_relief: { mm: 3.0, source: { label: D, method: "Not published" } }

@@ -1,0 +1,64 @@
+# Crankshaft and main bearings, 18G three-bearing crank. Haynes Sections 25, 35, 37, 46; specs p20-21.
+defaults:
+  system: engine
+  assembly: engine.block
+  haynes: { section: 25, spec_page: 20 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.block.crankshaft
+    name: Crankshaft
+    quantity: 1
+    notes: >
+      Three main bearings; throws of 1 and 4 opposite 2 and 3 (firing order 1-3-4-2).
+      Shown with No 1 at top dead centre. Web and counterweight shapes are derived.
+    specs:
+      main_journal_diameter: { in: [2.1262, 2.1270], mm: [54.01, 54.02], source: { label: H, page: 20 } }
+      crankpin_diameter:
+        in: [1.8759, 1.8764]
+        mm: [47.648, 47.661]
+        erratum: true
+        source: { label: H, page: 20, note: "Haynes prints 1.8579 to 1.8764 in; the metric figure shows the lower bound is a misprint for 1.8759" }
+      throw: { in: 1.75, mm: 44.45, source: { label: H, page: 20, note: "Half the 3.50 in stroke" } }
+      endfloat: { in: [0.004, 0.005], mm: [0.10, 0.13], source: { label: H, page: 21, note: "Taken on thrust washers at the centre main bearing" }, display_only: true }
+      web_thickness: { mm: 18.0, source: { label: D, method: "Not published" } }
+      crankpin_length: { mm: 26.0, source: { label: D, method: "Big-end bearing length plus endfloat" } }
+      snout_diameter: { mm: 31.75, source: { label: D, method: "Not published" } }
+      flange_diameter: { mm: 95.0, source: { label: D, method: "Flywheel flange; not published" } }
+
+  - id: engine.block.main-bearing-shell
+    name: Main bearing shell
+    haynes: { section: 37 }
+    quantity: 6
+    finish: bearing
+    notes: Upper and lower halves at each of the three main bearings.
+    specs:
+      length:
+        in: 1.125
+        mm: 28.575
+        printed_mm: 28.5
+        erratum: true
+        source: { label: H, page: 21, note: "Haynes prints 28.5 mm; 1.125 in is 28.575 mm" }
+      diametrical_clearance: { in: [0.001, 0.0027], mm: [0.0254, 0.068], source: { label: H, page: 21 }, display_only: true }
+      wall_thickness: { mm: 1.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.thrust-washer
+    name: Crankshaft thrust washer (half)
+    haynes: { section: 25 }
+    quantity: 4
+    finish: bearing
+    notes: Upper and lower halves either side of the centre main bearing (Haynes p21, Sec 25).
+    specs:
+      thickness: { mm: 2.4, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 82.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.main-cap
+    name: Main bearing cap
+    haynes: { section: 25 }
+    quantity: 3
+    finish: cast_iron
+    specs:
+      width_along_crank: { mm: 30.0, source: { label: D, method: "Bearing length plus land; not published" } }
+      stud_spacing: { mm: 96.0, source: { label: D, method: "Not published" } }
+      height: { mm: 42.0, source: { label: D, method: "Not published" } }

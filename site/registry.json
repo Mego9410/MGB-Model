@@ -30,6 +30,7 @@
     "chapter": 1
    },
    "children": [
+    "engine.block",
     "engine.head"
    ]
   },
@@ -143,6 +144,86 @@
    },
    "children": []
   },
+  "engine.block": {
+   "id": "engine.block",
+   "kind": "assembly",
+   "name": "Cylinder block and crank train",
+   "parent": "engine",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "1.8"
+     },
+     {
+      "figure": "1.13"
+     }
+    ],
+    "section": 25
+   },
+   "children": [
+    "engine.block.casting",
+    "engine.head.head-stud-long",
+    "engine.head.head-stud",
+    "engine.block.crankshaft",
+    "engine.block.main-bearing-shell",
+    "engine.block.main-cap",
+    "engine.block.main-cap-stud",
+    "engine.block.main-cap-washer",
+    "engine.block.main-cap-nut",
+    "engine.block.main-cap-seal",
+    "engine.block.main-cap-stud-rear",
+    "engine.block.thrust-washer",
+    "engine.block.connecting-rod",
+    "engine.block.big-end-shell",
+    "engine.block.connecting-rod-cap",
+    "engine.block.big-end-lockwasher",
+    "engine.block.big-end-bolt",
+    "engine.block.piston",
+    "engine.block.gudgeon-pin",
+    "engine.block.gudgeon-clamp-bolt",
+    "engine.block.piston-ring-top",
+    "engine.block.piston-ring-taper",
+    "engine.block.piston-ring-scraper",
+    "engine.block.camshaft",
+    "engine.block.cam-bearing-front",
+    "engine.block.cam-bearing-centre",
+    "engine.block.cam-bearing-rear",
+    "engine.block.tappet",
+    "engine.block.pushrod",
+    "engine.block.tappet-cover-gasket",
+    "engine.block.tappet-cover",
+    "engine.block.tappet-cover-bolt",
+    "engine.block.front-plate-gasket",
+    "engine.block.front-plate",
+    "engine.block.front-plate-spring-washer",
+    "engine.block.front-plate-screw",
+    "engine.block.front-plate-bolt",
+    "engine.block.front-plate-nut",
+    "engine.block.rear-plate-gasket",
+    "engine.block.rear-plate",
+    "engine.block.rear-plate-washer-small",
+    "engine.block.rear-plate-screw-small",
+    "engine.block.rear-plate-washer-large",
+    "engine.block.rear-plate-screw-large",
+    "engine.block.rear-seal-retainer",
+    "engine.block.rear-seal-retainer-bolt",
+    "engine.block.core-plug-rear",
+    "engine.block.plug-gallery",
+    "engine.block.plug-small",
+    "engine.block.plug-rear-lower",
+    "engine.block.plug-front",
+    "engine.block.plug-side-washer",
+    "engine.block.plug-side",
+    "engine.block.dowel-rear",
+    "engine.block.dowel-front",
+    "engine.block.drain-tap-washer",
+    "engine.block.drain-tap",
+    "engine.block.stud-side",
+    "engine.block.stud-rear"
+   ],
+   "file": "models/engine.block.json",
+   "bytes": 581790
+  },
   "engine.head": {
    "id": "engine.head",
    "kind": "assembly",
@@ -165,8 +246,6 @@
    "children": [
     "engine.head.casting",
     "engine.head.gasket",
-    "engine.head.head-stud-long",
-    "engine.head.head-stud",
     "engine.head.head-washer",
     "engine.head.head-nut",
     "engine.head.valve-exhaust",
@@ -230,7 +309,3327 @@
     "engine.head.blanking-plate-screw"
    ],
    "file": "models/engine.head.json",
-   "bytes": 993377
+   "bytes": 1015892
+  },
+  "engine.block.casting": {
+   "id": "engine.block.casting",
+   "kind": "part",
+   "name": "Cylinder block",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 1
+     }
+    ],
+    "spec_page": 20
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": "Cast iron, integral cylinders and waterways (Haynes p25)",
+   "finish": "paint_engine",
+   "notes": "18G block with three main bearings. Bore and stroke are published; the outer form is derived. The crank centre height comes from the published stroke, rod length and piston compression height. Water jacket and oilways are not modelled, so the model is solid where the real block is hollow. Firing order 1-3-4-2, No 1 cylinder next to the radiator (Haynes p20). External form (derived from Haynes Fig 1.8, Haynes photos 58.4, 61.1(a) and 55.4, and owners' photos of bare 18G blocks). Left side: a proud tappet chest panel with two openings and gasket faces, the camshaft tunnel showing as a shelf below it, the oil pump drive pillar under the skew gear, the blanked fuel pump flange (stud 12), the cast \"1800\" panel, the relief valve boss at the left rear (Haynes Sec 17) with plug 7 beside it, and the drain tap boss at the front. Right side: a straight water-jacket wall with the engine number plate pad below the deck (Haynes p7: plate on the right-hand side), two side core plugs, a ledge carrying the main oil gallery and the leaning distributor housing boss, then the crankcase wall with the oil filter pad and dipstick boss. Both sides: main web ribs and a pocketed sump flange.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "3.16 in (80.26 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p20",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stroke",
+     "label": "Stroke",
+     "value": "3.50 in (88.90 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p20",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "capacity_cc",
+     "label": "Capacity cc",
+     "value": "1798",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p20",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "main_bearings",
+     "label": "Main bearings",
+     "value": "3",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "deck_to_crank_centre",
+     "label": "Deck to crank centre",
+     "value": "251.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Half stroke 44.45 (H p20) + rod centres 165.1 (H p21) + compression height 42.06 (FIA 3016)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "452.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matched to the head length less the thermostat boss; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "crankcase_width",
+     "label": "Crankcase width",
+     "value": "224.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Outside the walls at the sump flange (flange itself 240); clears the crank throw and big ends; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "sump_flange_below_crank",
+     "label": "Sump flange below crank",
+     "value": "50.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "main_bearing_nut_torque",
+     "label": "Main bearing nut torque",
+     "value": "70 lbf ft (95 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.44
+  },
+  "engine.block.core-plug-rear": {
+   "id": "engine.block.core-plug-rear",
+   "kind": "part",
+   "name": "Core plug (rear)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "41.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1 5/8 in cup plug; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "5.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.plug-gallery": {
+   "id": "engine.block.plug-gallery",
+   "kind": "part",
+   "name": "Oil gallery plug",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "11.1 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.plug-small": {
+   "id": "engine.block.plug-small",
+   "kind": "part",
+   "name": "Plug",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.plug-rear-lower": {
+   "id": "engine.block.plug-rear-lower",
+   "kind": "part",
+   "name": "Plug (rear, lower)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.plug-front": {
+   "id": "engine.block.plug-front",
+   "kind": "part",
+   "name": "Plug (front)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.plug-side": {
+   "id": "engine.block.plug-side",
+   "kind": "part",
+   "name": "Side plug (hexagon)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "At the left rear beside the relief valve boss, where Fig 1.8 draws it.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "12.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hex_across_flats",
+     "label": "Hex across flats",
+     "value": "17.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.plug-side-washer": {
+   "id": "engine.block.plug-side-washer",
+   "kind": "part",
+   "name": "Side plug washer",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "12.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.main-cap-stud-rear": {
+   "id": "engine.block.main-cap-stud-rear",
+   "kind": "part",
+   "name": "Main bearing cap stud (rear)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Fig 1.8 shows these long studs below the rear of the block; their exact use is not stated.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "95.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the rear cap and seal housing",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.stud-side": {
+   "id": "engine.block.stud-side",
+   "kind": "part",
+   "name": "Stud (side flange)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 12
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "In the flange low on the left side (Fig 1.8). On B-series blocks this is the mechanical fuel pump position (magnette.org B-series fitting notes); the MGB uses an electric pump, so the flange is blanked.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "32.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.stud-rear": {
+   "id": "engine.block.stud-rear",
+   "kind": "part",
+   "name": "Stud (left rear pad)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 13
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "In the small pad at the left rear, under the tappet chest (Fig 1.8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "40.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.main-cap-stud": {
+   "id": "engine.block.main-cap-stud",
+   "kind": "part",
+   "name": "Main bearing cap stud",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 14
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "80.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.main-cap-washer": {
+   "id": "engine.block.main-cap-washer",
+   "kind": "part",
+   "name": "Main bearing cap washer",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 15
+     }
+    ]
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.922 in (23.42 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.469 in (11.91 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.065 in (1.65 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.block.main-cap-nut": {
+   "id": "engine.block.main-cap-nut",
+   "kind": "part",
+   "name": "Main bearing cap nut",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 16
+     }
+    ]
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.6875 in (17.46 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 7/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "70 lbf ft (95 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Main bearing nuts",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.block.cam-bearing-front": {
+   "id": "engine.block.cam-bearing-front",
+   "kind": "part",
+   "name": "Camshaft bearing liner (front)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 39,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 17
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bronze",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "1.79025 to 1.79075 in (45.472 to 45.485 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "After reaming in position",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "49.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.cam-bearing-centre": {
+   "id": "engine.block.cam-bearing-centre",
+   "kind": "part",
+   "name": "Camshaft bearing liner (centre)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 39,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 17
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bronze",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "1.73025 to 1.73075 in (43.948 to 43.961 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "After reaming in position",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "48.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "25.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.cam-bearing-rear": {
+   "id": "engine.block.cam-bearing-rear",
+   "kind": "part",
+   "name": "Camshaft bearing liner (rear)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 39,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 17
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bronze",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "1.62425 to 1.62475 in (41.256 to 41.269 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "After reaming in position",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "45.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "25.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.main-cap-seal": {
+   "id": "engine.block.main-cap-seal",
+   "kind": "part",
+   "name": "Main bearing cap seal (gasket)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 55,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 18
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cork",
+   "notes": "Haynes Sec 55 photo shows a front main bearing cap seal being fitted.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "section",
+     "label": "Section",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.dowel-rear": {
+   "id": "engine.block.dowel-rear",
+   "kind": "part",
+   "name": "Dowel (rear face)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 19
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.dowel-front": {
+   "id": "engine.block.dowel-front",
+   "kind": "part",
+   "name": "Dowel (front face)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 20
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.drain-tap": {
+   "id": "engine.block.drain-tap",
+   "kind": "part",
+   "name": "Cylinder block drain tap",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 4,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 21
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "body_diameter",
+     "label": "Body diameter",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "38.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.drain-tap-washer": {
+   "id": "engine.block.drain-tap-washer",
+   "kind": "part",
+   "name": "Drain tap washer",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 22
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.front-plate": {
+   "id": "engine.block.front-plate",
+   "kind": "part",
+   "name": "Engine front plate",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 28
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_engine",
+   "notes": "Outline traced from Fig 1.8 and scaled so the camshaft hole lands on the camshaft: a wide right-hand wing drilled for the front engine mounting bracket (Fig 1.29), a notch in the top edge, a pressed panel and scalloped edge where the timing cover seats, the camshaft hole and an oval opening round the crank nose. Painted with the engine, as in owners' photos of restored 18G engines.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "screw_torque_5_16",
+     "label": "Screw torque 5 16",
+     "value": "20 lbf ft (27 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Front plate, 5/16 in screws",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.block.front-plate-gasket": {
+   "id": "engine.block.front-plate-gasket",
+   "kind": "part",
+   "name": "Front plate gasket",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 29
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.front-plate-screw": {
+   "id": "engine.block.front-plate-screw",
+   "kind": "part",
+   "name": "Front plate screw",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 30
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Front plate 5/16 in screws",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "20 lbf ft (27 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "engine.block.front-plate-spring-washer": {
+   "id": "engine.block.front-plate-spring-washer",
+   "kind": "part",
+   "name": "Front plate spring washer",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 31
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.front-plate-bolt": {
+   "id": "engine.block.front-plate-bolt",
+   "kind": "part",
+   "name": "Front plate bolt (right-hand top)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 32
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.25 in (31.75 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.front-plate-nut": {
+   "id": "engine.block.front-plate-nut",
+   "kind": "part",
+   "name": "Front plate nut",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 38,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 33
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.26562 in (6.75 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.block.camshaft": {
+   "id": "engine.block.camshaft",
+   "kind": "part",
+   "name": "Camshaft",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 23,
+    "spec_page": 21
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Chain driven from the crankshaft; also drives the distributor and oil pump (Haynes p25). Lobe lift is derived from the published valve lift and rocker ratio. Valve timing (Haynes p22): inlet opens 16 BTDC, closes 56 ABDC; exhaust opens 51 BBDC, closes 21 ATDC. Lobes are phased from these figures and shown at No 1 TDC.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "front_journal_diameter",
+     "label": "Front journal diameter",
+     "value": "1.78875 to 1.78925 in (45.424 to 45.437 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "centre_journal_diameter",
+     "label": "Centre journal diameter",
+     "value": "1.72875 to 1.72925 in (43.910 to 43.923 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "rear_journal_diameter",
+     "label": "Rear journal diameter",
+     "value": "1.62275 to 1.62325 in (41.218 to 41.230 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "endfloat",
+     "label": "Endfloat",
+     "value": "0.003 to 0.007 in (0.076 to 0.178 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "lobe_lift",
+     "label": "Lobe lift",
+     "value": "6.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Valve lift 0.3645 in (H p22) divided by the 1.4:1 rocker ratio (H p22)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "base_circle_diameter",
+     "label": "Base circle diameter",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published; lobes pass through the rear bearing",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "lobe_width",
+     "label": "Lobe width",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.43
+  },
+  "engine.block.tappet": {
+   "id": "engine.block.tappet",
+   "kind": "part",
+   "name": "Tappet",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 14,
+    "spec_page": 21
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Barrel type with flat base (Haynes p22).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.812 in (20.62 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "Haynes prints 20.64 mm; 0.812 in is 20.625 mm",
+     "erratum": true,
+     "printed_mm": [
+      20.64
+     ]
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "2.293 to 2.303 in (58.25 to 58.50 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wall_thickness",
+     "label": "Wall thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "engine.block.pushrod": {
+   "id": "engine.block.pushrod",
+   "kind": "part",
+   "name": "Pushrod",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 10,
+    "spec_page": 21
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Ball end in the tappet, cup at the top for the rocker adjusting screw (Haynes Sec 58).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "252.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Tappet seat to rocker adjusting-screw ball in the derived layout",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "7.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.tappet-cover": {
+   "id": "engine.block.tappet-cover",
+   "kind": "part",
+   "name": "Tappet side cover",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 14,
+    "spec_page": 21
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_engine",
+   "notes": "Haynes Sec 14 - remove the breather pipe and tappet covers (if fitted). The front cover carries the breather on early cars. Pressed steel with a raised panel and two stiffening beads, held by a single central bolt on a cork gasket (Haynes photo 61.1(a); magnette.org B-series fitting notes).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "160.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Laps the 144 mm chest opening (Fig 1.8 proportions) by 8 mm each side",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "78.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Laps the 62 mm chest opening by 8 mm each side",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.tappet-cover-gasket": {
+   "id": "engine.block.tappet-cover-gasket",
+   "kind": "part",
+   "name": "Tappet cover gasket",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 14,
+    "spec_page": 21
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cork",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.tappet-cover-bolt": {
+   "id": "engine.block.tappet-cover-bolt",
+   "kind": "part",
+   "name": "Tappet cover bolt",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 14,
+    "spec_page": 21
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p34",
+     "note": "Sec 16: 'a 5/16 in UNF bolt (a tappet cover bolt will do)'",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.block.crankshaft": {
+   "id": "engine.block.crankshaft",
+   "kind": "part",
+   "name": "Crankshaft",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "spec_page": 20
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Three main bearings; throws of 1 and 4 opposite 2 and 3 (firing order 1-3-4-2). Shown with No 1 at top dead centre. Web and counterweight shapes are derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "main_journal_diameter",
+     "label": "Main journal diameter",
+     "value": "2.1262 to 2.1270 in (54.01 to 54.02 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p20",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "crankpin_diameter",
+     "label": "Crankpin diameter",
+     "value": "1.8759 to 1.8764 in (47.65 to 47.66 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p20",
+     "note": "Haynes prints 1.8579 to 1.8764 in; the metric figure shows the lower bound is a misprint for 1.8759",
+     "erratum": true,
+     "printed_mm": null
+    },
+    {
+     "key": "throw",
+     "label": "Throw",
+     "value": "1.75 in (44.45 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p20",
+     "note": "Half the 3.50 in stroke",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "endfloat",
+     "label": "Endfloat",
+     "value": "0.004 to 0.005 in (0.10 to 0.13 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "Taken on thrust washers at the centre main bearing",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "web_thickness",
+     "label": "Web thickness",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "crankpin_length",
+     "label": "Crankpin length",
+     "value": "26.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Big-end bearing length plus endfloat",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "snout_diameter",
+     "label": "Snout diameter",
+     "value": "31.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_diameter",
+     "label": "Flange diameter",
+     "value": "95.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flywheel flange; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.block.main-bearing-shell": {
+   "id": "engine.block.main-bearing-shell",
+   "kind": "part",
+   "name": "Main bearing shell",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 37,
+    "spec_page": 20
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bearing",
+   "notes": "Upper and lower halves at each of the three main bearings.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.125 in (28.57 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "Haynes prints 28.5 mm; 1.125 in is 28.575 mm",
+     "erratum": true,
+     "printed_mm": [
+      28.5
+     ]
+    },
+    {
+     "key": "diametrical_clearance",
+     "label": "Diametrical clearance",
+     "value": "0.0010 to 0.0027 in (0.0254 to 0.0680 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wall_thickness",
+     "label": "Wall thickness",
+     "value": "1.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "engine.block.thrust-washer": {
+   "id": "engine.block.thrust-washer",
+   "kind": "part",
+   "name": "Crankshaft thrust washer (half)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "spec_page": 20
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bearing",
+   "notes": "Upper and lower halves either side of the centre main bearing (Haynes p21, Sec 25).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "82.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.main-cap": {
+   "id": "engine.block.main-cap",
+   "kind": "part",
+   "name": "Main bearing cap",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 25,
+    "spec_page": 20
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width_along_crank",
+     "label": "Width along crank",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bearing length plus land; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stud_spacing",
+     "label": "Stud spacing",
+     "value": "96.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "42.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.rear-plate": {
+   "id": "engine.block.rear-plate",
+   "kind": "part",
+   "name": "Engine rear end plate",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_engine",
+   "notes": "Steel plate the gearbox bellhousing bolts to. Arched top, lower edge round the flywheel, a starter motor aperture on the right-hand side (Haynes Sec 22: the flywheel can be held \"via the starter motor hole in the end plate\"), pressed dimples round the block screws, and on early engines an oil seal retaining plate over the centre (Sec 53, photo 53.3). The fixings are of varying sizes (Sec 22).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "4.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in plate; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "lower_edge_radius",
+     "label": "Lower edge radius",
+     "value": "182.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the flywheel and bellhousing bolt circle; proportion from photo 42.6(b)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "starter_aperture_diameter",
+     "label": "Starter aperture diameter",
+     "value": "88.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Starter nose clearance; proportion from photo 42.6(b)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "screw_torque_5_16",
+     "label": "Screw torque 5 16",
+     "value": "20 lbf ft (27 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Rear plate, 5/16 in screws",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "screw_torque_3_8",
+     "label": "Screw torque 3 8",
+     "value": "30 lbf ft (41 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Rear plate, 3/8 in screws",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.6
+  },
+  "engine.block.rear-plate-gasket": {
+   "id": "engine.block.rear-plate-gasket",
+   "kind": "part",
+   "name": "Rear end plate gasket",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Haynes Sec 53 - fit a new endplate paper gasket, retaining it with jointing compound.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Paper gasket; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.rear-seal-retainer": {
+   "id": "engine.block.rear-seal-retainer",
+   "kind": "part",
+   "name": "Rear oil seal retaining plate",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "Early engines (Haynes Sec 53 para 3, photo 53.3); later engines have a seal in the end plate instead.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "104.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 53.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Seal housing; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "collar_length",
+     "label": "Collar length",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 53.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.rear-seal-retainer-bolt": {
+   "id": "engine.block.rear-seal-retainer-bolt",
+   "kind": "part",
+   "name": "Seal retaining plate bolt",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.625 in (15.88 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.rear-plate-screw-small": {
+   "id": "engine.block.rear-plate-screw-small",
+   "kind": "part",
+   "name": "Rear plate screw, 5/16 in",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Rear plate 5/16 in screws",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "20 lbf ft (27 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "engine.block.rear-plate-screw-large": {
+   "id": "engine.block.rear-plate-screw-large",
+   "kind": "part",
+   "name": "Rear plate screw, 3/8 in",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.375 in (9.52 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Rear plate 3/8 in screws",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.875 in (22.22 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "30 lbf ft (41 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "engine.block.rear-plate-washer-small": {
+   "id": "engine.block.rear-plate-washer-small",
+   "kind": "part",
+   "name": "Rear plate spring washer, 5/16 in",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.rear-plate-washer-large": {
+   "id": "engine.block.rear-plate-washer-large",
+   "kind": "part",
+   "name": "Rear plate spring washer, 3/8 in",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 53
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": null,
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "15.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 3/8 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "9.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 3/8 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 3/8 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.piston": {
+   "id": "engine.block.piston",
+   "kind": "part",
+   "name": "Piston (standard, high compression)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 24,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 23
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Aluminium with solid skirt (Haynes p21). Crown and skirt form are derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "80.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "80.26 mm bore (H p20) less the 0.0036 in top clearance (H p21)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "clearance_top",
+     "label": "Clearance top",
+     "value": "0.0036 to 0.0045 in (0.091 to 0.121 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "clearance_bottom",
+     "label": "Clearance bottom",
+     "value": "0.0018 to 0.0024 in (0.045 to 0.060 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "compression_height",
+     "label": "Compression height",
+     "value": "42.0 to 42.1 mm (1.654 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "FIA homologation form 3016: gudgeon pin centre to highest point of piston",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "overall_height",
+     "label": "Overall height",
+     "value": "82.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "gudgeon_bore",
+     "label": "Gudgeon bore",
+     "value": "0.7499 to 0.7501 in (19.04 to 19.05 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "Free push fit at 20 C",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "engine.block.piston-ring-top": {
+   "id": "engine.block.piston-ring-top",
+   "kind": "part",
+   "name": "Piston ring, top (parallel)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 24,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 24
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Parallel, cast iron, molybdenum filled (Haynes p21).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "fitted_gap",
+     "label": "Fitted gap",
+     "value": "0.012 to 0.017 in (0.304 to 0.431 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "radial_width",
+     "label": "Radial width",
+     "value": "3.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.piston-ring-taper": {
+   "id": "engine.block.piston-ring-taper",
+   "kind": "part",
+   "name": "Piston ring, 2nd and 3rd (taper)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 24,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 25
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Tapered, cast iron, molybdenum filled (Haynes p21).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "fitted_gap",
+     "label": "Fitted gap",
+     "value": "0.012 to 0.017 in (0.304 to 0.431 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "radial_width",
+     "label": "Radial width",
+     "value": "3.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.piston-ring-scraper": {
+   "id": "engine.block.piston-ring-scraper",
+   "kind": "part",
+   "name": "Piston ring, oil control (slotted scraper)",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 24,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 26
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "fitted_gap",
+     "label": "Fitted gap",
+     "value": "0.0015 to 0.0035 in (0.038 to 0.088 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "As printed for the oil control ring",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "radial_width",
+     "label": "Radial width",
+     "value": "3.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "4.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.gudgeon-pin": {
+   "id": "engine.block.gudgeon-pin",
+   "kind": "part",
+   "name": "Gudgeon pin",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 27,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.8",
+      "legend": 27
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Semi-floating, clamped in the small end by a pinch bolt (Haynes p21).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.7499 to 0.7501 in (19.04 to 19.05 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "66.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Just under the piston diameter; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "clamp_groove_width",
+     "label": "Clamp groove width",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.connecting-rod": {
+   "id": "engine.block.connecting-rod",
+   "kind": "part",
+   "name": "Connecting rod",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 27,
+    "spec_page": 21
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Angular split big end, split clamp small end (Haynes p21). H-section forged steel (p25).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "centres",
+     "label": "Centres",
+     "value": "6.50 in (165.10 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "endfloat_on_crankpin",
+     "label": "Endfloat on crankpin",
+     "value": "0.008 to 0.012 in (0.20 to 0.30 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "big_end_width",
+     "label": "Big end width",
+     "value": "25.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bearing length; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "small_end_width",
+     "label": "Small end width",
+     "value": "24.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "split_angle",
+     "label": "Split angle",
+     "value": "45.0\u00b0",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Angular split; angle not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "gudgeon_clamp_bolt_torque",
+     "label": "Gudgeon clamp bolt torque",
+     "value": "25 lbf ft (34 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Gudgeon pin clamp bolts (early models only)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "big_end_bolt_torque",
+     "label": "Big end bolt torque",
+     "value": "35 to 40 lbf ft (48 to 54 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Big-end bolts (early models)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.43
+  },
+  "engine.block.connecting-rod-cap": {
+   "id": "engine.block.connecting-rod-cap",
+   "kind": "part",
+   "name": "Connecting rod cap",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 49,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.13",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Matched to its rod; keep caps with their rods (Haynes Sec 24).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "big_end_width",
+     "label": "Big end width",
+     "value": "25.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the rod",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.big-end-shell": {
+   "id": "engine.block.big-end-shell",
+   "kind": "part",
+   "name": "Big-end bearing shell",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 37,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.13",
+      "legend": 14
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bearing",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.995 to 1.005 in (25.27 to 25.53 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "Haynes prints 25.20 to 25.52 mm; 0.995 in is 25.27 mm",
+     "erratum": true,
+     "printed_mm": [
+      25.2,
+      25.52
+     ]
+    },
+    {
+     "key": "clearance",
+     "label": "Clearance",
+     "value": "0.0010 to 0.0027 in (0.0254 to 0.0680 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wall_thickness",
+     "label": "Wall thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "engine.block.big-end-bolt": {
+   "id": "engine.block.big-end-bolt",
+   "kind": "part",
+   "name": "Big-end bolt",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 49,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.13",
+      "legend": 13
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "50.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "35 to 40 lbf ft (48 to 54 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Big-end bolts (early models)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.block.big-end-lockwasher": {
+   "id": "engine.block.big-end-lockwasher",
+   "kind": "part",
+   "name": "Big-end bolt lockwasher",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 49,
+    "spec_page": 21,
+    "figures": [
+     {
+      "figure": "1.13",
+      "legend": 12
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.block.gudgeon-clamp-bolt": {
+   "id": "engine.block.gudgeon-clamp-bolt",
+   "kind": "part",
+   "name": "Gudgeon pin clamp bolt",
+   "parent": "engine.block",
+   "haynes": {
+    "section": 27,
+    "spec_page": 21
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Early (18G) rods only. Not numbered in a Haynes figure.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "38.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "25 lbf ft (34 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
   },
   "engine.head.casting": {
    "id": "engine.head.casting",
@@ -252,9 +3651,9 @@
    },
    "quantity": 1,
    "partNumbers": [],
-   "material": "Cast iron (Haynes p25)",
-   "finish": "cast_iron",
-   "notes": "Layout from Haynes Fig 1.5 (plan of the head with nut order), scaled so the eight valves fit the published 14.031 in rocker shaft. Bathtub chambers, siamesed inlet ports (two inlet, three exhaust: FIA homologation 3016), pushrods on the manifold side, plugs on the right-hand side. Water jacket, oilways and core detail are not modelled, so the model is solid where the real casting is hollow (about 4.5 litres of iron, heavier than the real head).",
+   "material": "Cast iron (Haynes p25), painted with the engine",
+   "finish": "paint_engine",
+   "notes": "Layout from Haynes Fig 1.5 (plan of the head with nut order), scaled so the eight valves fit the published 14.031 in rocker shaft. Bathtub chambers, siamesed inlet ports (two inlet, three exhaust: FIA homologation 3016), pushrods on the manifold side, plugs on the right-hand side. Water jacket, oilways and core detail are not modelled, so the model is solid where the real casting is hollow (about 4.5 litres of iron, heavier than the real head). External form (derived): raised rocker cover rail, recessed valley with spring seats and rocker pedestal pads standing proud, a proud port band on the manifold side, recessed panels between the plug bosses, and a heater outlet boss on the rear end.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -436,9 +3835,42 @@
      "note": "",
      "erratum": false,
      "printed_mm": null
+    },
+    {
+     "key": "rocker_cover_rail_height",
+     "label": "Rocker cover rail height",
+     "value": "4.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published; proportion from Fig 1.6 and photos 10.7 and 10.8",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "top_valley_depth",
+     "label": "Top valley depth",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "port_band_relief",
+     "label": "Port band relief",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
     }
    ],
-   "derivedShare": 0.69
+   "derivedShare": 0.74
   },
   "engine.head.gasket": {
    "id": "engine.head.gasket",
@@ -494,12 +3926,13 @@
    "id": "engine.head.head-stud",
    "kind": "part",
    "name": "Cylinder head stud",
-   "parent": "engine.head",
+   "parent": "engine.block",
    "haynes": {
     "section": 58,
     "figures": [
      {
-      "figure": "1.8"
+      "figure": "1.8",
+      "legend": 10
      }
     ]
    },
@@ -507,7 +3940,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "machined_steel",
-   "notes": "Screwed into the block (Fig 1.8); shown here because the seven external head nuts sit on them. 7/16 in thread is derived.",
+   "notes": "Screwed into the block (Fig 1.8 item 10); the seven external head nuts sit on them. 7/16 in thread is derived.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -543,12 +3976,13 @@
    "id": "engine.head.head-stud-long",
    "kind": "part",
    "name": "Cylinder head stud (through rocker bracket)",
-   "parent": "engine.head",
+   "parent": "engine.block",
    "haynes": {
     "section": 58,
     "figures": [
      {
-      "figure": "1.8"
+      "figure": "1.8",
+      "legend": 9
      }
     ]
    },
@@ -799,7 +4233,7 @@
     {
      "key": "length",
      "label": "Length",
-     "value": "128.0 mm",
+     "value": "134.0 mm",
      "source": "D",
      "sourceName": "Derived",
      "ref": "12 mm into the head up through the cover top",
@@ -1864,10 +5298,10 @@
     {
      "key": "length",
      "label": "Length",
-     "value": "405.0 mm",
+     "value": "395.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Covers the rocker gear with clearance; not published",
+     "ref": "Sits on the head rail between the end head studs; not published",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -4794,6 +8228,3895 @@
   }
  },
  "instances": {
+  "engine.block.casting#1": {
+   "part": "engine.block.casting",
+   "assembly": "engine.block",
+   "node": "engine--block--casting__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#1": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud-long__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#2": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud-long__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#3": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud-long__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud-long#4": {
+   "part": "engine.head.head-stud-long",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud-long__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#1": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#2": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#3": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#4": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#5": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#6": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.head.head-stud#7": {
+   "part": "engine.head.head-stud",
+   "assembly": "engine.block",
+   "node": "engine--head--head-stud__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.crankshaft#1": {
+   "part": "engine.block.crankshaft",
+   "assembly": "engine.block",
+   "node": "engine--block--crankshaft__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 330,
+     "group": "crank"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-bearing-shell#1": {
+   "part": "engine.block.main-bearing-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--main-bearing-shell__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-0"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-bearing-shell#2": {
+   "part": "engine.block.main-bearing-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--main-bearing-shell__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 330,
+     "group": "crank"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 8.5,
+     "distance_mm": 0.01
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.main-cap#1": {
+   "part": "engine.block.main-cap",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-0"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-stud#1": {
+   "part": "engine.block.main-cap-stud",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-stud__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 230
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-washer#1": {
+   "part": "engine.block.main-cap-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-nut#1": {
+   "part": "engine.block.main-cap-nut",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-stud#2": {
+   "part": "engine.block.main-cap-stud",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-stud__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 230
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-washer#2": {
+   "part": "engine.block.main-cap-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-nut#2": {
+   "part": "engine.block.main-cap-nut",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-seal#1": {
+   "part": "engine.block.main-cap-seal",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-seal__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-0"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-bearing-shell#3": {
+   "part": "engine.block.main-bearing-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--main-bearing-shell__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-bearing-shell#4": {
+   "part": "engine.block.main-bearing-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--main-bearing-shell__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 330,
+     "group": "crank"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 8.5,
+     "distance_mm": 0.01
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.main-cap#2": {
+   "part": "engine.block.main-cap",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-1"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-stud#3": {
+   "part": "engine.block.main-cap-stud",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-stud__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 230
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-washer#3": {
+   "part": "engine.block.main-cap-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-nut#3": {
+   "part": "engine.block.main-cap-nut",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-stud#4": {
+   "part": "engine.block.main-cap-stud",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-stud__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 230
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-washer#4": {
+   "part": "engine.block.main-cap-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-nut#4": {
+   "part": "engine.block.main-cap-nut",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-nut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-bearing-shell#5": {
+   "part": "engine.block.main-bearing-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--main-bearing-shell__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-bearing-shell#6": {
+   "part": "engine.block.main-bearing-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--main-bearing-shell__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 330,
+     "group": "crank"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 8.5,
+     "distance_mm": 0.01
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.main-cap#3": {
+   "part": "engine.block.main-cap",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-2"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-stud-rear#1": {
+   "part": "engine.block.main-cap-stud-rear",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-stud-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 230
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-washer#5": {
+   "part": "engine.block.main-cap-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-washer__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-nut#5": {
+   "part": "engine.block.main-cap-nut",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-nut__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-stud-rear#2": {
+   "part": "engine.block.main-cap-stud-rear",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-stud-rear__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 230
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-washer#6": {
+   "part": "engine.block.main-cap-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-washer__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-nut#6": {
+   "part": "engine.block.main-cap-nut",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-nut__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.main-cap-seal#2": {
+   "part": "engine.block.main-cap-seal",
+   "assembly": "engine.block",
+   "node": "engine--block--main-cap-seal__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-2"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.thrust-washer#1": {
+   "part": "engine.block.thrust-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--thrust-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-1"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.thrust-washer#2": {
+   "part": "engine.block.thrust-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--thrust-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 330,
+     "group": "crank"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.thrust-washer#3": {
+   "part": "engine.block.thrust-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--thrust-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 150,
+     "group": "main-1"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.thrust-washer#4": {
+   "part": "engine.block.thrust-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--thrust-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 330,
+     "group": "crank"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.connecting-rod#1": {
+   "part": "engine.block.connecting-rod",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#1": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.connecting-rod-cap#1": {
+   "part": "engine.block.connecting-rod-cap",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod-cap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-1"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#2": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3.5,
+     "distance_mm": 22
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.big-end-lockwasher#1": {
+   "part": "engine.block.big-end-lockwasher",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-lockwasher__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#1": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#2": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston#1": {
+   "part": "engine.block.piston",
+   "assembly": "engine.block",
+   "node": "engine--block--piston__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-pin#1": {
+   "part": "engine.block.gudgeon-pin",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 75
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-clamp-bolt#1": {
+   "part": "engine.block.gudgeon-clamp-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-clamp-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4.5,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston-ring-top#1": {
+   "part": "engine.block.piston-ring-top",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-top__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#1": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#2": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston-ring-scraper#1": {
+   "part": "engine.block.piston-ring-scraper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-scraper__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.connecting-rod#2": {
+   "part": "engine.block.connecting-rod",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#3": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.connecting-rod-cap#2": {
+   "part": "engine.block.connecting-rod-cap",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod-cap__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-2"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#4": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3.5,
+     "distance_mm": 22
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.big-end-lockwasher#2": {
+   "part": "engine.block.big-end-lockwasher",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-lockwasher__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#3": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#4": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston#2": {
+   "part": "engine.block.piston",
+   "assembly": "engine.block",
+   "node": "engine--block--piston__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-pin#2": {
+   "part": "engine.block.gudgeon-pin",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-pin__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 75
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-clamp-bolt#2": {
+   "part": "engine.block.gudgeon-clamp-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-clamp-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4.5,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston-ring-top#2": {
+   "part": "engine.block.piston-ring-top",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-top__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#3": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 55
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#4": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-scraper#2": {
+   "part": "engine.block.piston-ring-scraper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-scraper__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-2"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.connecting-rod#3": {
+   "part": "engine.block.connecting-rod",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#5": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.connecting-rod-cap#3": {
+   "part": "engine.block.connecting-rod-cap",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod-cap__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-3"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#6": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3.5,
+     "distance_mm": 22
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.big-end-lockwasher#3": {
+   "part": "engine.block.big-end-lockwasher",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-lockwasher__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#5": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#6": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston#3": {
+   "part": "engine.block.piston",
+   "assembly": "engine.block",
+   "node": "engine--block--piston__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-pin#3": {
+   "part": "engine.block.gudgeon-pin",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-pin__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 75
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-clamp-bolt#3": {
+   "part": "engine.block.gudgeon-clamp-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-clamp-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4.5,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston-ring-top#3": {
+   "part": "engine.block.piston-ring-top",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-top__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#5": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 55
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#6": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-scraper#3": {
+   "part": "engine.block.piston-ring-scraper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-scraper__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-3"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.connecting-rod#4": {
+   "part": "engine.block.connecting-rod",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#7": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.connecting-rod-cap#4": {
+   "part": "engine.block.connecting-rod-cap",
+   "assembly": "engine.block",
+   "node": "engine--block--connecting-rod-cap__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-4"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-shell#8": {
+   "part": "engine.block.big-end-shell",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-shell__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3.5,
+     "distance_mm": 22
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.big-end-lockwasher#4": {
+   "part": "engine.block.big-end-lockwasher",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-lockwasher__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#7": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.big-end-bolt#8": {
+   "part": "engine.block.big-end-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--big-end-bolt__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 95,
+     "group": "cap-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.5,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston#4": {
+   "part": "engine.block.piston",
+   "assembly": "engine.block",
+   "node": "engine--block--piston__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-pin#4": {
+   "part": "engine.block.gudgeon-pin",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-pin__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 75
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.gudgeon-clamp-bolt#4": {
+   "part": "engine.block.gudgeon-clamp-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--gudgeon-clamp-bolt__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4.5,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.piston-ring-top#4": {
+   "part": "engine.block.piston-ring-top",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-top__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#7": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 55
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-taper#8": {
+   "part": "engine.block.piston-ring-taper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-taper__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.piston-ring-scraper#4": {
+   "part": "engine.block.piston-ring-scraper",
+   "assembly": "engine.block",
+   "node": "engine--block--piston-ring-scraper__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 330,
+     "group": "piston-4"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.camshaft#1": {
+   "part": "engine.block.camshaft",
+   "assembly": "engine.block",
+   "node": "engine--block--camshaft__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 330
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.cam-bearing-front#1": {
+   "part": "engine.block.cam-bearing-front",
+   "assembly": "engine.block",
+   "node": "engine--block--cam-bearing-front__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 130
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.cam-bearing-centre#1": {
+   "part": "engine.block.cam-bearing-centre",
+   "assembly": "engine.block",
+   "node": "engine--block--cam-bearing-centre__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 130
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.cam-bearing-rear#1": {
+   "part": "engine.block.cam-bearing-rear",
+   "assembly": "engine.block",
+   "node": "engine--block--cam-bearing-rear__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 130
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#1": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#1": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#2": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#2": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#3": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#3": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#4": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#4": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#5": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#5": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#6": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#6": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#7": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#7": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet#8": {
+   "part": "engine.block.tappet",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.pushrod#8": {
+   "part": "engine.block.pushrod",
+   "assembly": "engine.block",
+   "node": "engine--block--pushrod__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet-cover-gasket#1": {
+   "part": "engine.block.tappet-cover-gasket",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet-cover-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet-cover#1": {
+   "part": "engine.block.tappet-cover",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet-cover__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet-cover-bolt#1": {
+   "part": "engine.block.tappet-cover-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet-cover-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet-cover-gasket#2": {
+   "part": "engine.block.tappet-cover-gasket",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet-cover-gasket__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet-cover#2": {
+   "part": "engine.block.tappet-cover",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet-cover__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.tappet-cover-bolt#2": {
+   "part": "engine.block.tappet-cover-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--tappet-cover-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-gasket#1": {
+   "part": "engine.block.front-plate-gasket",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate#1": {
+   "part": "engine.block.front-plate",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-spring-washer#1": {
+   "part": "engine.block.front-plate-spring-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-screw#1": {
+   "part": "engine.block.front-plate-screw",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-screw__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-spring-washer#2": {
+   "part": "engine.block.front-plate-spring-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-screw#2": {
+   "part": "engine.block.front-plate-screw",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-screw__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-spring-washer#3": {
+   "part": "engine.block.front-plate-spring-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-spring-washer__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-screw#3": {
+   "part": "engine.block.front-plate-screw",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-screw__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-spring-washer#4": {
+   "part": "engine.block.front-plate-spring-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-spring-washer__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-screw#4": {
+   "part": "engine.block.front-plate-screw",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-screw__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-bolt#1": {
+   "part": "engine.block.front-plate-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.front-plate-nut#1": {
+   "part": "engine.block.front-plate-nut",
+   "assembly": "engine.block",
+   "node": "engine--block--front-plate-nut__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-gasket#1": {
+   "part": "engine.block.rear-plate-gasket",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.6,
+     "distance_mm": 150,
+     "group": "rear-plate"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.8,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate#1": {
+   "part": "engine.block.rear-plate",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.6,
+     "distance_mm": 150,
+     "group": "rear-plate"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-small#1": {
+   "part": "engine.block.rear-plate-washer-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-small__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-small#1": {
+   "part": "engine.block.rear-plate-screw-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-small__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-small#2": {
+   "part": "engine.block.rear-plate-washer-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-small__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-small#2": {
+   "part": "engine.block.rear-plate-screw-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-small__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-small#3": {
+   "part": "engine.block.rear-plate-washer-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-small__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-small#3": {
+   "part": "engine.block.rear-plate-screw-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-small__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-small#4": {
+   "part": "engine.block.rear-plate-washer-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-small__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-small#4": {
+   "part": "engine.block.rear-plate-screw-small",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-small__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-large#1": {
+   "part": "engine.block.rear-plate-washer-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-large__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-large#1": {
+   "part": "engine.block.rear-plate-screw-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-large__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-large#2": {
+   "part": "engine.block.rear-plate-washer-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-large__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-large#2": {
+   "part": "engine.block.rear-plate-screw-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-large__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-large#3": {
+   "part": "engine.block.rear-plate-washer-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-large__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-large#3": {
+   "part": "engine.block.rear-plate-screw-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-large__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-washer-large#4": {
+   "part": "engine.block.rear-plate-washer-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-washer-large__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-plate-screw-large#4": {
+   "part": "engine.block.rear-plate-screw-large",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-plate-screw-large__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-seal-retainer#1": {
+   "part": "engine.block.rear-seal-retainer",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-seal-retainer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.4,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-seal-retainer-bolt#1": {
+   "part": "engine.block.rear-seal-retainer-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-seal-retainer-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.3,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.rear-seal-retainer-bolt#2": {
+   "part": "engine.block.rear-seal-retainer-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-seal-retainer-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.rear-seal-retainer-bolt#3": {
+   "part": "engine.block.rear-seal-retainer-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-seal-retainer-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.rear-seal-retainer-bolt#4": {
+   "part": "engine.block.rear-seal-retainer-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-seal-retainer-bolt__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.rear-seal-retainer-bolt#5": {
+   "part": "engine.block.rear-seal-retainer-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-seal-retainer-bolt__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.rear-seal-retainer-bolt#6": {
+   "part": "engine.block.rear-seal-retainer-bolt",
+   "assembly": "engine.block",
+   "node": "engine--block--rear-seal-retainer-bolt__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.block.core-plug-rear#1": {
+   "part": "engine.block.core-plug-rear",
+   "assembly": "engine.block",
+   "node": "engine--block--core-plug-rear__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-gallery#1": {
+   "part": "engine.block.plug-gallery",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-gallery__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-small#1": {
+   "part": "engine.block.plug-small",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-small__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-small#2": {
+   "part": "engine.block.plug-small",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-small__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-rear-lower#1": {
+   "part": "engine.block.plug-rear-lower",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-rear-lower__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-rear-lower#2": {
+   "part": "engine.block.plug-rear-lower",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-rear-lower__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-front#1": {
+   "part": "engine.block.plug-front",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-front__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-side-washer#1": {
+   "part": "engine.block.plug-side-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-side-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.plug-side#1": {
+   "part": "engine.block.plug-side",
+   "assembly": "engine.block",
+   "node": "engine--block--plug-side__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.dowel-rear#1": {
+   "part": "engine.block.dowel-rear",
+   "assembly": "engine.block",
+   "node": "engine--block--dowel-rear__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.dowel-rear#2": {
+   "part": "engine.block.dowel-rear",
+   "assembly": "engine.block",
+   "node": "engine--block--dowel-rear__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.dowel-front#1": {
+   "part": "engine.block.dowel-front",
+   "assembly": "engine.block",
+   "node": "engine--block--dowel-front__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.dowel-front#2": {
+   "part": "engine.block.dowel-front",
+   "assembly": "engine.block",
+   "node": "engine--block--dowel-front__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.drain-tap-washer#1": {
+   "part": "engine.block.drain-tap-washer",
+   "assembly": "engine.block",
+   "node": "engine--block--drain-tap-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.drain-tap#1": {
+   "part": "engine.block.drain-tap",
+   "assembly": "engine.block",
+   "node": "engine--block--drain-tap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.stud-side#1": {
+   "part": "engine.block.stud-side",
+   "assembly": "engine.block",
+   "node": "engine--block--stud-side__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.block.stud-rear#1": {
+   "part": "engine.block.stud-rear",
+   "assembly": "engine.block",
+   "node": "engine--block--stud-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "engine.head.casting#1": {
    "part": "engine.head.casting",
    "assembly": "engine.head",
@@ -4815,96 +12138,6 @@
      ],
      "order": 9,
      "distance_mm": 60
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud-long#1": {
-   "part": "engine.head.head-stud-long",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud-long__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud-long#2": {
-   "part": "engine.head.head-stud-long",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud-long__2",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud-long#3": {
-   "part": "engine.head.head-stud-long",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud-long__3",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud-long#4": {
-   "part": "engine.head.head-stud-long",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud-long__4",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud#1": {
-   "part": "engine.head.head-stud",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
     }
    ],
    "label": true,
@@ -4946,24 +12179,6 @@
    "label": true,
    "fitted": null
   },
-  "engine.head.head-stud#2": {
-   "part": "engine.head.head-stud",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud__2",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
   "engine.head.head-washer#2": {
    "part": "engine.head.head-washer",
    "assembly": "engine.head",
@@ -4995,24 +12210,6 @@
      ],
      "order": 7,
      "distance_mm": 60
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud#3": {
-   "part": "engine.head.head-stud",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud__3",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
     }
    ],
    "label": true,
@@ -5054,24 +12251,6 @@
    "label": true,
    "fitted": null
   },
-  "engine.head.head-stud#4": {
-   "part": "engine.head.head-stud",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud__4",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
   "engine.head.head-washer#4": {
    "part": "engine.head.head-washer",
    "assembly": "engine.head",
@@ -5103,24 +12282,6 @@
      ],
      "order": 7,
      "distance_mm": 60
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud#5": {
-   "part": "engine.head.head-stud",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud__5",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
     }
    ],
    "label": true,
@@ -5162,24 +12323,6 @@
    "label": true,
    "fitted": null
   },
-  "engine.head.head-stud#6": {
-   "part": "engine.head.head-stud",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud__6",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
   "engine.head.head-washer#6": {
    "part": "engine.head.head-washer",
    "assembly": "engine.head",
@@ -5211,24 +12354,6 @@
      ],
      "order": 7,
      "distance_mm": 60
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "engine.head.head-stud#7": {
-   "part": "engine.head.head-stud",
-   "assembly": "engine.head",
-   "node": "engine--head--head-stud__7",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 9,
-     "distance_mm": 170
     }
    ],
    "label": true,
@@ -9601,5 +16726,5 @@
    "fitted": null
   }
  },
- "built": "2026-11-01T15:51:36+00:00"
+ "built": "2026-11-01T17:10:48+00:00"
 }

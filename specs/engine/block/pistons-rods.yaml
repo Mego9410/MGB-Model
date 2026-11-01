@@ -1,0 +1,130 @@
+# Pistons, rings, gudgeon pins and connecting rods, 18G. Haynes Fig 1.8 items 23-27,
+# Fig 1.13 (big-end parts), Sections 24, 27, 36, 47-49; specs p21.
+# The 1963 rod has a split-clamp small end with a pinch bolt (semi-floating pin);
+# Fig 1.13 shows the later fully floating rod, so only its big-end items are cited.
+defaults:
+  system: engine
+  assembly: engine.block
+  haynes: { section: 24, spec_page: 21 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.block.piston
+    name: Piston (standard, high compression)
+    haynes: { figures: [{ figure: "1.8", legend: 23 }] }
+    quantity: 4
+    finish: aluminium
+    notes: Aluminium with solid skirt (Haynes p21). Crown and skirt form are derived.
+    specs:
+      diameter: { mm: 80.17, source: { label: D, method: "80.26 mm bore (H p20) less the 0.0036 in top clearance (H p21)" } }
+      clearance_top: { in: [0.0036, 0.0045], mm: [0.091, 0.121], source: { label: H, page: 21 }, display_only: true }
+      clearance_bottom: { in: [0.0018, 0.0024], mm: [0.045, 0.060], source: { label: H, page: 21 }, display_only: true }
+      compression_height: { mm: [42.01, 42.11], source: { label: S, ref: "FIA homologation form 3016: gudgeon pin centre to highest point of piston" } }
+      overall_height: { mm: 82.0, source: { label: D, method: "Not published" } }
+      gudgeon_bore: { in: [0.7499, 0.7501], mm: [19.04, 19.05], source: { label: H, page: 21, note: "Free push fit at 20 C" } }
+
+  - id: engine.block.piston-ring-top
+    name: Piston ring, top (parallel)
+    haynes: { figures: [{ figure: "1.8", legend: 24 }] }
+    quantity: 4
+    finish: cast_iron
+    notes: Parallel, cast iron, molybdenum filled (Haynes p21).
+    specs:
+      fitted_gap: { in: [0.012, 0.017], mm: [0.304, 0.431], source: { label: H, page: 21 }, display_only: true }
+      radial_width: { mm: 3.4, source: { label: D, method: "Not published" } }
+      height: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.piston-ring-taper
+    name: Piston ring, 2nd and 3rd (taper)
+    haynes: { figures: [{ figure: "1.8", legend: 25 }] }
+    quantity: 8
+    finish: cast_iron
+    notes: Tapered, cast iron, molybdenum filled (Haynes p21).
+    specs:
+      fitted_gap: { in: [0.012, 0.017], mm: [0.304, 0.431], source: { label: H, page: 21 }, display_only: true }
+      radial_width: { mm: 3.4, source: { label: D, method: "Not published" } }
+      height: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.piston-ring-scraper
+    name: Piston ring, oil control (slotted scraper)
+    haynes: { figures: [{ figure: "1.8", legend: 26 }] }
+    quantity: 4
+    finish: cast_iron
+    specs:
+      fitted_gap: { in: [0.0015, 0.0035], mm: [0.038, 0.088], source: { label: H, page: 21, note: "As printed for the oil control ring" }, display_only: true }
+      radial_width: { mm: 3.4, source: { label: D, method: "Not published" } }
+      height: { mm: 4.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.gudgeon-pin
+    name: Gudgeon pin
+    haynes: { figures: [{ figure: "1.8", legend: 27 }], section: 27 }
+    quantity: 4
+    notes: Semi-floating, clamped in the small end by a pinch bolt (Haynes p21).
+    specs:
+      outside_diameter: { in: [0.7499, 0.7501], mm: [19.04, 19.05], source: { label: H, page: 21 } }
+      length: { mm: 66.0, source: { label: D, method: "Just under the piston diameter; not published" } }
+      clamp_groove_width: { mm: 8.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.connecting-rod
+    name: Connecting rod
+    haynes: { section: 27 }
+    quantity: 4
+    notes: Angular split big end, split clamp small end (Haynes p21). H-section forged steel (p25).
+    specs:
+      centres: { in: 6.5, mm: 165.1, source: { label: H, page: 21 } }
+      endfloat_on_crankpin: { in: [0.008, 0.012], mm: [0.2, 0.3], source: { label: H, page: 21 }, display_only: true }
+      big_end_width: { mm: 25.4, source: { label: D, method: "Bearing length; not published" } }
+      small_end_width: { mm: 24.0, source: { label: D, method: "Not published" } }
+      split_angle: { deg: 45, source: { label: D, method: "Angular split; angle not published" } }
+      gudgeon_clamp_bolt_torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 25, note: "Gudgeon pin clamp bolts (early models only)" } }
+      big_end_bolt_torque: { lbf_ft: [35, 40], nm: [48, 54], source: { label: H, page: 24, note: "Big-end bolts (early models)" } }
+
+  - id: engine.block.connecting-rod-cap
+    name: Connecting rod cap
+    haynes: { figures: [{ figure: "1.13", legend: 11 }], section: 49 }
+    quantity: 4
+    notes: Matched to its rod; keep caps with their rods (Haynes Sec 24).
+    specs:
+      big_end_width: { mm: 25.4, source: { label: D, method: "As the rod" } }
+
+  - id: engine.block.big-end-shell
+    name: Big-end bearing shell
+    haynes: { figures: [{ figure: "1.13", legend: 14 }], section: 37 }
+    quantity: 8
+    finish: bearing
+    specs:
+      length:
+        in: [0.995, 1.005]
+        mm: [25.27, 25.52]
+        printed_mm: [25.20, 25.52]
+        erratum: true
+        source: { label: H, page: 21, note: "Haynes prints 25.20 to 25.52 mm; 0.995 in is 25.27 mm" }
+      clearance: { in: [0.001, 0.0027], mm: [0.0254, 0.068], source: { label: H, page: 21 }, display_only: true }
+      wall_thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.big-end-bolt
+    name: Big-end bolt
+    haynes: { figures: [{ figure: "1.13", legend: 13 }], section: 49 }
+    quantity: 8
+    specs:
+      thread_diameter: { in: 0.375, source: { label: D, method: "3/8 in; not in Haynes" } }
+      length: { mm: 50.0, source: { label: D, method: "Not published" } }
+      torque: { lbf_ft: [35, 40], nm: [48, 54], source: { label: H, page: 24, note: "Big-end bolts (early models)" } }
+
+  - id: engine.block.big-end-lockwasher
+    name: Big-end bolt lockwasher
+    haynes: { figures: [{ figure: "1.13", legend: 12 }], section: 49 }
+    quantity: 4
+    specs:
+      thickness: { mm: 0.9, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.gudgeon-clamp-bolt
+    name: Gudgeon pin clamp bolt
+    haynes: { section: 27 }
+    quantity: 4
+    notes: Early (18G) rods only. Not numbered in a Haynes figure.
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in; not in Haynes" } }
+      length: { mm: 38.0, source: { label: D, method: "Not published" } }
+      torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 25 } }

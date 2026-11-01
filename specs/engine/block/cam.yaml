@@ -1,0 +1,80 @@
+# Camshaft, tappets and pushrods. Haynes Sections 14, 23, 33, 39, 50; specs p21-22.
+defaults:
+  system: engine
+  assembly: engine.block
+  haynes: { section: 23, spec_page: 21 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.block.camshaft
+    name: Camshaft
+    quantity: 1
+    notes: >
+      Chain driven from the crankshaft; also drives the distributor and oil pump
+      (Haynes p25). Lobe lift is derived from the published valve lift and rocker ratio.
+      Valve timing (Haynes p22): inlet opens 16 BTDC, closes 56 ABDC; exhaust opens
+      51 BBDC, closes 21 ATDC. Lobes are phased from these figures and shown at No 1 TDC.
+    specs:
+      front_journal_diameter: { in: [1.78875, 1.78925], mm: [45.424, 45.437], source: { label: H, page: 21 } }
+      centre_journal_diameter: { in: [1.72875, 1.72925], mm: [43.910, 43.923], source: { label: H, page: 21 } }
+      rear_journal_diameter: { in: [1.62275, 1.62325], mm: [41.218, 41.230], source: { label: H, page: 21 } }
+      endfloat: { in: [0.003, 0.007], mm: [0.076, 0.178], source: { label: H, page: 21 }, display_only: true }
+      lobe_lift: { mm: 6.61, source: { label: D, method: "Valve lift 0.3645 in (H p22) divided by the 1.4:1 rocker ratio (H p22)" } }
+      base_circle_diameter: { mm: 30.0, source: { label: D, method: "Not published; lobes pass through the rear bearing" } }
+      lobe_width: { mm: 13.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.tappet
+    name: Tappet
+    haynes: { section: 14 }
+    quantity: 8
+    notes: Barrel type with flat base (Haynes p22).
+    specs:
+      outside_diameter:
+        in: 0.812
+        mm: 20.625
+        printed_mm: 20.64
+        erratum: true
+        source: { label: H, page: 22, note: "Haynes prints 20.64 mm; 0.812 in is 20.625 mm" }
+      length: { in: [2.293, 2.303], mm: [58.25, 58.50], source: { label: H, page: 22 } }
+      wall_thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.pushrod
+    name: Pushrod
+    haynes: { section: 10 }
+    quantity: 8
+    notes: Ball end in the tappet, cup at the top for the rocker adjusting screw (Haynes Sec 58).
+    specs:
+      length: { mm: 252.4, source: { label: D, method: "Tappet seat to rocker adjusting-screw ball in the derived layout" } }
+      diameter: { mm: 7.9, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.tappet-cover
+    name: Tappet side cover
+    haynes: { section: 14 }
+    quantity: 2
+    finish: paint_engine
+    notes: >
+      Haynes Sec 14 - remove the breather pipe and tappet covers (if fitted). The front cover
+      carries the breather on early cars. Pressed steel with a raised panel and two stiffening
+      beads, held by a single central bolt on a cork gasket (Haynes photo 61.1(a); magnette.org
+      B-series fitting notes).
+    specs:
+      length: { mm: 160.0, source: { label: D, method: "Laps the 144 mm chest opening (Fig 1.8 proportions) by 8 mm each side" } }
+      height: { mm: 78.0, source: { label: D, method: "Laps the 62 mm chest opening by 8 mm each side" } }
+      depth: { mm: 14.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.tappet-cover-gasket
+    name: Tappet cover gasket
+    haynes: { section: 14 }
+    quantity: 2
+    finish: cork
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.tappet-cover-bolt
+    name: Tappet cover bolt
+    haynes: { section: 14 }
+    quantity: 2
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: H, page: 34, note: "Sec 16: 'a 5/16 in UNF bolt (a tappet cover bolt will do)'" } }
+      length: { mm: 30.0, source: { label: D, method: "Not published" } }

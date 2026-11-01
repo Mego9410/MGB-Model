@@ -64,9 +64,9 @@ add("casting", at(0, 0, 0), **HEAD)
 add("gasket", at(0, 0, -1.6), explode={"axis": DOWN, "order": 9, "distance_mm": 60})
 for num, x, y, kind in LAY.head_studs:
     if kind == "pedestal":
-        add("head-stud-long", at(x, y, -20), explode={"axis": DOWN, "order": 9, "distance_mm": 170})
+        pass  # head studs belong to the block (Fig 1.8 items 9, 10)
     else:
-        add("head-stud", at(x, y, -20), explode={"axis": DOWN, "order": 9, "distance_mm": 170})
+        pass
         add("head-washer", at(x, y, TOP), explode=up(7, 45))
         add("head-nut", at(x, y, TOP + 1.65), explode=up(7, 60))
 
@@ -141,10 +141,11 @@ for s in (1, -1):
 
 # ---- rocker cover (Sec 10) ----------------------------------------------------
 ccx, ccy = -2.5, 35.0
-add("rocker-cover-gasket", at(ccx, ccy, TOP), explode=up(3, 260))
-add("rocker-cover", at(ccx, ccy, TOP + 5.0), groups=["cover"], explode=None)
-add("filler-cap", at(ccx + 140.0, ccy, TOP + 5.0 + 95.0 + 2.0), groups=["cover"], explode=up(3.5, 40))
-cover_top = TOP + 5.0 + 95.0
+RAIL = 4.0   # rocker cover rail on the head top (parts/engine/head/casting.py)
+add("rocker-cover-gasket", at(ccx, ccy, TOP + RAIL), explode=up(3, 260))
+add("rocker-cover", at(ccx, ccy, TOP + RAIL + 5.0), groups=["cover"], explode=None)
+add("filler-cap", at(ccx + 140.0, ccy, TOP + RAIL + 5.0 + 95.0 + 2.0), groups=["cover"], explode=up(3.5, 40))
+cover_top = TOP + RAIL + 5.0 + 95.0
 for x, y in LAY.cover_studs:
     add("cover-stud", at(x, y, TOP - 12), **HEAD)
     add("rocker-cover-bush", at(x, y, cover_top - 6), groups=["cover"], explode=up(1, 25))
@@ -187,12 +188,12 @@ RX, FX = [-1, 0, 0], [1, 0, 0]
 add("core-plug", at(LAY.x_min + 4.0, 10.0, 35.0, ry=-90), explode={"axis": RX, "order": 7, "distance_mm": 35})
 add("screwed-plug-washer", at(LAY.x_max, 55.0, 35.0, ry=90), explode={"axis": FX, "order": 7, "distance_mm": 25})
 add("screwed-plug", at(LAY.x_max + 1.5, 55.0, 35.0, ry=90), explode={"axis": FX, "order": 7, "distance_mm": 45})
-add("blanking-plate-gasket", at(LAY.x_min, -25.0, 45.0, ry=-90), explode={"axis": RX, "order": 7, "distance_mm": 15})
-add("blanking-plate", at(LAY.x_min - 0.8, -25.0, 45.0, ry=-90), explode={"axis": RX, "order": 7, "distance_mm": 30})
+add("blanking-plate-gasket", at(LAY.x_min - 4.0, -25.0, 45.0, ry=-90), explode={"axis": RX, "order": 7, "distance_mm": 15})
+add("blanking-plate", at(LAY.x_min - 4.8, -25.0, 45.0, ry=-90), explode={"axis": RX, "order": 7, "distance_mm": 30})
 for dz in (-10.0, 10.0):
-    add("blanking-plate-spring-washer", at(LAY.x_min - 2.8, -25.0, 45.0 + dz, ry=-90),
+    add("blanking-plate-spring-washer", at(LAY.x_min - 6.8, -25.0, 45.0 + dz, ry=-90),
         explode={"axis": RX, "order": 7, "distance_mm": 45})
-    add("blanking-plate-screw", at(LAY.x_min - 4.4, -25.0, 45.0 + dz, ry=90),
+    add("blanking-plate-screw", at(LAY.x_min - 8.4, -25.0, 45.0 + dz, ry=90),
         explode={"axis": RX, "order": 7, "distance_mm": 62})
 
 INSTANCES = I

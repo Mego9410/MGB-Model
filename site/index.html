@@ -178,6 +178,7 @@ const FINISH = {
   brass:          { color: 0xb8973e, metalness: 0.85, roughness: 0.32, envMapIntensity: 0.75 },
   copper:         { color: 0xb06a45, metalness: 0.85, roughness: 0.3, envMapIntensity: 0.75 },
   gasket:         { color: 0x6f6a5c, metalness: 0.1, roughness: 0.85 },
+  bearing:        { color: 0xc9c2b0, metalness: 0.75, roughness: 0.38, envMapIntensity: 0.75 },
   cork:           { color: 0x9a7a52, metalness: 0.0, roughness: 0.95 },
   plug:           { color: 0xd9d6cc, metalness: 0.2, roughness: 0.5 },
   paint_engine:   { color: 0x5a1e1d, metalness: 0.25, roughness: 0.45 },
@@ -230,12 +231,15 @@ function frame(obj, instant, dirArr, zoom){
   const c = box.getCenter(new THREE.Vector3()), r = box.getSize(new THREE.Vector3()).length() / 2;
   const dist = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.1 / (zoom || 1);
   const dir = new THREE.Vector3(...(dirArr || [1, 0.55, 1.25])).normalize();
-  fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) };
+  fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) }; fly.frames = 0;
   camera.near = r / 200; camera.far = r * 100 + 10; camera.updateProjectionMatrix();
   if (instant){ controls.target.copy(fly.to.target); camera.position.copy(fly.to.pos); fly.to = null; }
 }
-const fly = { to: null };
+const fly = { to: null, frames: 0 };
+// any touch, drag or wheel on the model cancels a camera fly-to so the view never locks
+controls.addEventListener('start', () => { fly.to = null; });
 
+window.mgbCameraPos = () => camera.position.toArray();
 // review hook: frame a part or the current assembly from a given direction (viewer Y-up)
 window.mgbCamera = ({ dir, part, zoom } = {}) => {
   const target = part ? instances.filter(i => i.partId === part).map(i => i.obj) : null;
@@ -252,9 +256,11 @@ const ghostCache = {};
 function ghostMat(f){ const m = ghostCache[f] ||= Object.assign(finishMat(f).clone(), { transparent: true, opacity: 0.12, depthWrite: false }); return m; }
 function setSelected(pid){
   selected = pid;
+  const focus = focusAssembly();
   for (const i of instances){
     const on = i.partId === pid, f = N[i.partId].finish;
-    i.obj.traverse(m => { if (m.isMesh){ m.material = !pid ? finishMat(f) : on ? selMatFor(f) : ghostMat(f); m.renderOrder = on ? 1 : 0; } });
+    const outside = focus && reg.instances[i.instId].assembly !== focus;
+    i.obj.traverse(m => { if (m.isMesh){ m.material = pid ? (on ? selMatFor(f) : ghostMat(f)) : outside ? ghostMat(f) : finishMat(f); m.renderOrder = on ? 1 : 0; } });
   }
 }
 function frameObjs(objs){
@@ -264,22 +270,33 @@ function frameObjs(objs){
   const c = g.getCenter(new THREE.Vector3()), r = Math.max(g.getSize(new THREE.Vector3()).length() / 2, 0.01);
   const dist = r / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.25;
   const dir = camera.position.clone().sub(controls.target).normalize();
-  fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) };
+  fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) }; fly.frames = 0;
 }
 const selCache = {};
 function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color = finishMat(f).color.clone().lerp(themeColor('--sel'), 0.45); m.emissive = themeColor('--sel').multiplyScalar(0.18); return m; }
 
 // ---------- explode: parts leave along their removal axis, in Haynes removal order
 const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
+// at system level (e.g. the whole engine) assemblies separate along these directions (CAD axes, mm)
+const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420] };
+function focusAssembly(){ return current && N[current] && N[current].kind === 'assembly' ? current : null; }
 function applyExplode(){
   const t = ex.value / 100; exv.textContent = ex.value + '%';
+  const focus = focusAssembly();
+  for (const [aid, root] of Object.entries(loaded)){
+    const v = !focus && SYSTEM_EXPLODE[aid];
+    root.position.set(0, 0, 0);
+    if (v){ const s = t * t * (3 - 2 * t); root.position.set(v[0] * s / 1000, v[2] * s / 1000, -v[1] * s / 1000); }
+  }
+  if (!focus){ for (const i of instances) i.obj.position.copy(i.base); drawLeaders(); return; }
   // Each instance has explode stages (an assembly group lifting off, then its own move).
   // Stages run in Haynes removal order: lower order numbers move first.
-  const live = instances.filter(i => i.obj.parent && i.obj.parent.visible !== false);
+  const live = instances.filter(i => reg.instances[i.instId].assembly === focus);
   const orders = [...new Set(live.flatMap(i => reg.instances[i.instId].stages.map(s => s.order)))].sort((a, b) => a - b);
   const n = Math.max(1, orders.length);
   for (const i of instances){
     i.obj.position.copy(i.base);
+    if (reg.instances[i.instId].assembly !== focus) continue;
     for (const st of reg.instances[i.instId].stages){
       const k = orders.indexOf(st.order);
       const local = THREE.MathUtils.clamp(t * n - k, 0, 1);
@@ -315,6 +332,7 @@ function updateLabels(){
   const W = stage.clientWidth, H = stage.clientHeight;
   for (const i of instances){
     if (shown.has(i.partId) || reg.instances[i.instId].label === false) continue;
+    if (reg.instances[i.instId].assembly !== focusAssembly()) continue;
     shown.add(i.partId);
     const figs = (N[i.partId].haynes || {}).figures || [];
     const f = figs.find(x => fig && x.figure === fig.figure) || figs[0];
@@ -328,7 +346,9 @@ function updateLabels(){
     if (tries === 4) continue;
     placed.push([x, y]); legends.add(f.figure + ':' + f.legend);
     const el = document.createElement('span'); el.className = 'leg';
-    el.textContent = f.legend; el.title = 'Haynes Fig ' + f.figure + ', item ' + f.legend + ': ' + N[i.partId].name;
+    // items from a secondary figure carry its number so they can't be confused with the main figure's
+    el.textContent = fig && f.figure !== fig.figure ? f.figure + '/' + f.legend : f.legend;
+    el.title = 'Haynes Fig ' + f.figure + ', item ' + f.legend + ': ' + N[i.partId].name;
     el.style.left = x + 'px'; el.style.top = y + 'px';
     labels.appendChild(el);
   }
@@ -417,15 +437,17 @@ function markTree(){ document.querySelectorAll('.tree .row').forEach(b => b.setA
 async function go(id){
   if (!N[id]) return;
   const n = N[id];
-  current = id; if (selected) setSelected(null); renderCrumbs(id); markTree();
+  current = id; setSelected(null); renderCrumbs(id); markTree();
   if (n.kind === 'assembly'){
     say('Loading ' + n.name + '…');
     const g = await loadAssembly(id);
+    setSelected(null); applyExplode();
     toast.hidden = true; frame(g); showCard(id);
   } else if (n.kind === 'system' || n.kind === 'car'){
     const built = (n.children || []).filter(c => N[c] && N[c].kind === 'assembly');
     if (n.kind === 'system' && !built.length){ showCard(id); say(n.name + ' is not built yet. The cylinder head is the first assembly.', 3500); return; }
     for (const a of built) await loadAssembly(a);
+    setSelected(null); applyExplode();
     frame(scene); showCard(id);
   }
   setHash(id);
@@ -433,7 +455,7 @@ async function go(id){
 function select(pid){
   const n = N[pid];
   if (!loaded[n.parent]) { go(n.parent).then(() => select(pid)); return; }
-  current = n.parent; renderCrumbs(pid); setSelected(pid); markTree(); showCard(pid); setHash(pid);
+  current = n.parent; renderCrumbs(pid); setSelected(pid); applyExplode(); markTree(); showCard(pid); setHash(pid);
   frameObjs(instances.filter(i => i.partId === pid).map(i => i.obj));
   sheet('card');
 }
@@ -494,7 +516,13 @@ function resize(){ const w = stage.clientWidth, h = stage.clientHeight; renderer
 new ResizeObserver(resize).observe(stage); resize();
 applyTheme();
 renderer.setAnimationLoop(() => {
-  if (fly.to){ controls.target.lerp(fly.to.target, 0.12); camera.position.lerp(fly.to.pos, 0.12); if (camera.position.distanceTo(fly.to.pos) < 1e-5) fly.to = null; }
+  if (fly.to){
+    controls.target.lerp(fly.to.target, 0.15); camera.position.lerp(fly.to.pos, 0.15);
+    // finish after ~0.75 s or once close; never hold the camera longer than that
+    if (++fly.frames > 45 || camera.position.distanceTo(fly.to.pos) < 1e-3 * (1 + fly.to.pos.length())){
+      controls.target.copy(fly.to.target); camera.position.copy(fly.to.pos); fly.to = null;
+    }
+  }
   controls.update(); renderer.render(scene, camera); updateLabels(); placeMeasureTag();
 });
 

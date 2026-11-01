@@ -21,16 +21,18 @@ parts:
 
   - id: engine.head.head-stud
     name: Cylinder head stud
-    haynes: { figures: [{ figure: "1.8" }], section: 58 }
+    assembly: engine.block
+    haynes: { figures: [{ figure: "1.8", legend: 10 }], section: 58 }
     quantity: 7
-    notes: Screwed into the block (Fig 1.8); shown here because the seven external head nuts sit on them. 7/16 in thread is derived.
+    notes: Screwed into the block (Fig 1.8 item 10); the seven external head nuts sit on them. 7/16 in thread is derived.
     specs:
       thread_diameter: { in: 0.4375, source: { label: D, method: "7/16 in, typical for the B-series head; not in Haynes" } }
       length: { mm: 105.0, source: { label: D, method: "20 mm into the block plus the head, washer and nut" } }
 
   - id: engine.head.head-stud-long
     name: Cylinder head stud (through rocker bracket)
-    haynes: { figures: [{ figure: "1.8" }], section: 58 }
+    assembly: engine.block
+    haynes: { figures: [{ figure: "1.8", legend: 9 }], section: 58 }
     quantity: 4
     notes: The four studs that also hold the rocker brackets (Fig 1.5 nuts 2, 3, 6, 7).
     specs:
@@ -70,7 +72,7 @@ parts:
     notes: Haynes Sec 10 - "Remove the two nuts and then the rocker cover".
     specs:
       thread_diameter: { in: 0.25, source: { label: D, method: "1/4 in; not in Haynes" } }
-      length: { mm: 128.0, source: { label: D, method: "12 mm into the head up through the cover top" } }
+      length: { mm: 134.0, source: { label: D, method: "12 mm into the head up through the cover top" } }
 
   - id: engine.head.thermostat-stud
     name: Thermostat housing stud

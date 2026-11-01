@@ -1,0 +1,289 @@
+# Cylinder block and its fittings. Haynes Fig 1.8 (printed p33), 18G three-main-bearing block.
+defaults:
+  system: engine
+  assembly: engine.block
+  haynes: { section: 38 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.block.casting
+    name: Cylinder block
+    haynes: { figures: [{ figure: "1.8", legend: 1 }], spec_page: 20 }
+    quantity: 1
+    finish: paint_engine
+    material: Cast iron, integral cylinders and waterways (Haynes p25)
+    notes: >
+      18G block with three main bearings. Bore and stroke are published; the
+      outer form is derived. The crank centre height comes from the published
+      stroke, rod length and piston compression height. Water jacket and
+      oilways are not modelled, so the model is solid where the real block is hollow.
+      Firing order 1-3-4-2, No 1 cylinder next to the radiator (Haynes p20).
+      External form (derived from Haynes Fig 1.8, Haynes photos 58.4, 61.1(a) and
+      55.4, and owners' photos of bare 18G blocks). Left side: a proud tappet chest
+      panel with two openings and gasket faces, the camshaft tunnel showing as a
+      shelf below it, the oil pump drive pillar under the skew gear, the blanked
+      fuel pump flange (stud 12), the cast "1800" panel, the relief valve boss at
+      the left rear (Haynes Sec 17) with plug 7 beside it, and the drain tap boss
+      at the front. Right side: a straight water-jacket wall with the engine
+      number plate pad below the deck (Haynes p7: plate on the right-hand side),
+      two side core plugs, a ledge carrying the main oil gallery and the leaning
+      distributor housing boss, then the crankcase wall with the oil filter pad
+      and dipstick boss. Both sides: main web ribs and a pocketed sump flange.
+    specs:
+      bore: { in: 3.16, mm: 80.26, source: { label: H, page: 20 } }
+      stroke: { in: 3.50, mm: 88.9, source: { label: H, page: 20 }, display_only: true }
+      capacity_cc: { count: 1798, source: { label: H, page: 20 }, display_only: true }
+      main_bearings: { count: 3, source: { label: H, page: 21 }, display_only: true }
+      deck_to_crank_centre: { mm: 251.61, source: { label: D, method: "Half stroke 44.45 (H p20) + rod centres 165.1 (H p21) + compression height 42.06 (FIA 3016)" } }
+      length: { mm: 452.0, source: { label: D, method: "Matched to the head length less the thermostat boss; not published" } }
+      crankcase_width: { mm: 224.0, source: { label: D, method: "Outside the walls at the sump flange (flange itself 240); clears the crank throw and big ends; not published" } }
+      sump_flange_below_crank: { mm: 50.0, source: { label: D, method: "Not published" } }
+      main_bearing_nut_torque: { lbf_ft: 70, nm: 95, source: { label: H, page: 25 } }
+
+  - id: engine.block.core-plug-rear
+    name: Core plug (rear)
+    haynes: { figures: [{ figure: "1.8", legend: 2 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 41.3, source: { label: D, method: "1 5/8 in cup plug; not published" } }
+      depth: { mm: 5.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.plug-gallery
+    name: Oil gallery plug
+    haynes: { figures: [{ figure: "1.8", legend: 3 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 11.1, source: { label: D, method: "Not published" } }
+      length: { mm: 10.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.plug-small
+    name: Plug
+    haynes: { figures: [{ figure: "1.8", legend: 4 }] }
+    quantity: 2
+    specs:
+      diameter: { mm: 9.5, source: { label: D, method: "Not published" } }
+      length: { mm: 8.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.plug-rear-lower
+    name: Plug (rear, lower)
+    haynes: { figures: [{ figure: "1.8", legend: 5 }] }
+    quantity: 2
+    specs:
+      diameter: { mm: 9.5, source: { label: D, method: "Not published" } }
+      length: { mm: 8.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.plug-front
+    name: Plug (front)
+    haynes: { figures: [{ figure: "1.8", legend: 6 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 9.5, source: { label: D, method: "Not published" } }
+      length: { mm: 8.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.plug-side
+    name: Side plug (hexagon)
+    haynes: { figures: [{ figure: "1.8", legend: 7 }] }
+    notes: At the left rear beside the relief valve boss, where Fig 1.8 draws it.
+    quantity: 1
+    specs:
+      thread_diameter: { mm: 12.7, source: { label: D, method: "Not published" } }
+      hex_across_flats: { mm: 17.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.plug-side-washer
+    name: Side plug washer
+    haynes: { figures: [{ figure: "1.8", legend: 8 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 19.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 12.9, source: { label: D, method: "Not published" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.main-cap-stud-rear
+    name: Main bearing cap stud (rear)
+    haynes: { figures: [{ figure: "1.8", legend: 11 }], section: 25 }
+    quantity: 2
+    notes: Fig 1.8 shows these long studs below the rear of the block; their exact use is not stated.
+    specs:
+      thread_diameter: { in: 0.4375, source: { label: D, method: "7/16 in; not in Haynes" } }
+      length: { mm: 95.0, source: { label: D, method: "Through the rear cap and seal housing" } }
+
+  - id: engine.block.stud-side
+    name: Stud (side flange)
+    haynes: { figures: [{ figure: "1.8", legend: 12 }] }
+    notes: >
+      In the flange low on the left side (Fig 1.8). On B-series blocks this is the
+      mechanical fuel pump position (magnette.org B-series fitting notes); the MGB uses
+      an electric pump, so the flange is blanked.
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "Not in Haynes" } }
+      length: { mm: 32.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.stud-rear
+    name: Stud (left rear pad)
+    haynes: { figures: [{ figure: "1.8", legend: 13 }] }
+    notes: In the small pad at the left rear, under the tappet chest (Fig 1.8).
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { mm: 40.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.main-cap-stud
+    name: Main bearing cap stud
+    haynes: { figures: [{ figure: "1.8", legend: 14 }], section: 25 }
+    quantity: 4
+    specs:
+      thread_diameter: { in: 0.4375, source: { label: D, method: "7/16 in; not in Haynes" } }
+      length: { mm: 80.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.main-cap-washer
+    name: Main bearing cap washer
+    haynes: { figures: [{ figure: "1.8", legend: 15 }], section: 25 }
+    quantity: 6
+    specs:
+      outside_diameter: { in: 0.922, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+      inside_diameter: { in: 0.469, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+      thickness: { in: 0.065, source: { label: S, ref: "SAE plain washer, 7/16 in" } }
+
+  - id: engine.block.main-cap-nut
+    name: Main bearing cap nut
+    haynes: { figures: [{ figure: "1.8", legend: 16 }], section: 25 }
+    quantity: 6
+    specs:
+      across_flats: { in: 0.6875, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 7/16 in" } }
+      thickness: { in: 0.375, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 7/16 in" } }
+      torque: { lbf_ft: 70, nm: 95, source: { label: H, page: 25, note: "Main bearing nuts" } }
+
+  - id: engine.block.cam-bearing-front
+    name: Camshaft bearing liner (front)
+    haynes: { figures: [{ figure: "1.8", legend: 17 }], section: 39 }
+    quantity: 1
+    finish: bronze
+    specs:
+      inside_diameter: { in: [1.79025, 1.79075], mm: [45.472, 45.485], source: { label: H, page: 21, note: "After reaming in position" } }
+      outside_diameter: { mm: 49.5, source: { label: D, method: "Not published" } }
+      length: { mm: 30.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.cam-bearing-centre
+    name: Camshaft bearing liner (centre)
+    haynes: { figures: [{ figure: "1.8", legend: 17 }], section: 39 }
+    quantity: 1
+    finish: bronze
+    specs:
+      inside_diameter: { in: [1.73025, 1.73075], mm: [43.948, 43.961], source: { label: H, page: 21, note: "After reaming in position" } }
+      outside_diameter: { mm: 48.0, source: { label: D, method: "Not published" } }
+      length: { mm: 25.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.cam-bearing-rear
+    name: Camshaft bearing liner (rear)
+    haynes: { figures: [{ figure: "1.8", legend: 17 }], section: 39 }
+    quantity: 1
+    finish: bronze
+    specs:
+      inside_diameter: { in: [1.62425, 1.62475], mm: [41.256, 41.269], source: { label: H, page: 21, note: "After reaming in position" } }
+      outside_diameter: { mm: 45.0, source: { label: D, method: "Not published" } }
+      length: { mm: 25.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.main-cap-seal
+    name: Main bearing cap seal (gasket)
+    haynes: { figures: [{ figure: "1.8", legend: 18 }], section: 55 }
+    quantity: 2
+    finish: cork
+    notes: Haynes Sec 55 photo shows a front main bearing cap seal being fitted.
+    specs:
+      length: { mm: 60.0, source: { label: D, method: "Not published" } }
+      section: { mm: 6.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.dowel-rear
+    name: Dowel (rear face)
+    haynes: { figures: [{ figure: "1.8", legend: 19 }] }
+    quantity: 2
+    specs:
+      diameter: { mm: 9.5, source: { label: D, method: "Not published" } }
+      length: { mm: 19.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.dowel-front
+    name: Dowel (front face)
+    haynes: { figures: [{ figure: "1.8", legend: 20 }] }
+    quantity: 2
+    specs:
+      diameter: { mm: 9.5, source: { label: D, method: "Not published" } }
+      length: { mm: 16.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.drain-tap
+    name: Cylinder block drain tap
+    haynes: { figures: [{ figure: "1.8", legend: 21 }], section: 4 }
+    quantity: 1
+    finish: brass
+    specs:
+      body_diameter: { mm: 16.0, source: { label: D, method: "Not published" } }
+      length: { mm: 38.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.drain-tap-washer
+    name: Drain tap washer
+    haynes: { figures: [{ figure: "1.8", legend: 22 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 20.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 13.0, source: { label: D, method: "Not published" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.front-plate
+    name: Engine front plate
+    haynes: { figures: [{ figure: "1.8", legend: 28 }], section: 25 }
+    quantity: 1
+    finish: paint_engine
+    notes: >
+      Outline traced from Fig 1.8 and scaled so the camshaft hole lands on the camshaft:
+      a wide right-hand wing drilled for the front engine mounting bracket (Fig 1.29), a
+      notch in the top edge, a pressed panel and scalloped edge where the timing cover
+      seats, the camshaft hole and an oval opening round the crank nose. Painted with the
+      engine, as in owners' photos of restored 18G engines.
+    specs:
+      thickness: { mm: 3.2, source: { label: D, method: "Not published" } }
+      screw_torque_5_16: { lbf_ft: 20, nm: 27, source: { label: H, page: 24, note: "Front plate, 5/16 in screws" } }
+
+  - id: engine.block.front-plate-gasket
+    name: Front plate gasket
+    haynes: { figures: [{ figure: "1.8", legend: 29 }] }
+    quantity: 1
+    finish: gasket
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.front-plate-screw
+    name: Front plate screw
+    haynes: { figures: [{ figure: "1.8", legend: 30 }] }
+    quantity: 4
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: H, page: 24, note: "Front plate 5/16 in screws" } }
+      length: { in: 0.75, source: { label: D, method: "Not published" } }
+      torque: { lbf_ft: 20, nm: 27, source: { label: H, page: 24 } }
+
+  - id: engine.block.front-plate-spring-washer
+    name: Front plate spring washer
+    haynes: { figures: [{ figure: "1.8", legend: 31 }] }
+    quantity: 4
+    specs:
+      outside_diameter: { mm: 13.5, source: { label: D, method: "Typical 5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "Typical 5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "Typical 5/16 in spring washer" } }
+
+  - id: engine.block.front-plate-bolt
+    name: Front plate bolt (right-hand top)
+    haynes: { figures: [{ figure: "1.8", legend: 32 }] }
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 1.25, source: { label: D, method: "Not published" } }
+
+  - id: engine.block.front-plate-nut
+    name: Front plate nut
+    haynes: { figures: [{ figure: "1.8", legend: 33 }] }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      thickness: { in: 0.265625, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
