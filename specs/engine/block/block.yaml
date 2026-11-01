@@ -244,7 +244,7 @@ parts:
       engine, as in owners' photos of restored 18G engines.
     specs:
       thickness: { mm: 3.2, source: { label: D, method: "Not published" } }
-      screw_torque_5_16: { lbf_ft: 20, nm: 27, source: { label: H, page: 24, note: "Front plate, 5/16 in screws" } }
+      screw_torque: { lbf_ft: 20, nm: 27, source: { label: H, page: 24, note: "Front plate, 5/16 in screws" } }
 
   - id: engine.block.front-plate-gasket
     name: Front plate gasket

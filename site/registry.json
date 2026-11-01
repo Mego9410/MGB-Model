@@ -1603,8 +1603,8 @@
      "printed_mm": null
     },
     {
-     "key": "screw_torque_5_16",
-     "label": "Screw torque 5 16",
+     "key": "screw_torque",
+     "label": "Screw torque",
      "value": "20 lbf ft (27 Nm)",
      "source": "H",
      "sourceName": "Haynes",
@@ -2495,7 +2495,7 @@
    },
    "quantity": 1,
    "partNumbers": [],
-   "material": null,
+   "material": "Steel plate (Haynes photo 42.6(b))",
    "finish": "paint_engine",
    "notes": "Steel plate the gearbox bellhousing bolts to. Arched top, lower edge round the flywheel, a starter motor aperture on the right-hand side (Haynes Sec 22: the flywheel can be held \"via the starter motor hole in the end plate\"), pressed dimples round the block screws, and on early engines an oil seal retaining plate over the centre (Sec 53, photo 53.3). The fixings are of varying sizes (Sec 22).",
    "variant": {
@@ -2538,8 +2538,8 @@
      "printed_mm": null
     },
     {
-     "key": "screw_torque_5_16",
-     "label": "Screw torque 5 16",
+     "key": "small_screw_torque",
+     "label": "Small screw torque",
      "value": "20 lbf ft (27 Nm)",
      "source": "H",
      "sourceName": "Haynes",
@@ -2549,8 +2549,8 @@
      "printed_mm": null
     },
     {
-     "key": "screw_torque_3_8",
-     "label": "Screw torque 3 8",
+     "key": "large_screw_torque",
+     "label": "Large screw torque",
      "value": "30 lbf ft (41 Nm)",
      "source": "H",
      "sourceName": "Haynes",
@@ -16726,5 +16726,5 @@
    "fitted": null
   }
  },
- "built": "2026-11-01T17:10:48+00:00"
+ "built": "2026-11-01T18:04:50+00:00"
 }

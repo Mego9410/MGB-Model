@@ -11,6 +11,7 @@ parts:
     name: Engine rear end plate
     quantity: 1
     finish: paint_engine
+    material: Steel plate (Haynes photo 42.6(b))
     notes: >
       Steel plate the gearbox bellhousing bolts to. Arched top, lower edge round the
       flywheel, a starter motor aperture on the right-hand side (Haynes Sec 22: the
@@ -21,8 +22,8 @@ parts:
       thickness: { mm: 4.8, source: { label: D, method: "3/16 in plate; not published" } }
       lower_edge_radius: { mm: 182.0, source: { label: D, method: "Clears the flywheel and bellhousing bolt circle; proportion from photo 42.6(b)" } }
       starter_aperture_diameter: { mm: 88.0, source: { label: D, method: "Starter nose clearance; proportion from photo 42.6(b)" } }
-      screw_torque_5_16: { lbf_ft: 20, nm: 27, source: { label: H, page: 25, note: "Rear plate, 5/16 in screws" } }
-      screw_torque_3_8: { lbf_ft: 30, nm: 41, source: { label: H, page: 25, note: "Rear plate, 3/8 in screws" } }
+      small_screw_torque: { lbf_ft: 20, nm: 27, source: { label: H, page: 25, note: "Rear plate, 5/16 in screws" } }
+      large_screw_torque: { lbf_ft: 30, nm: 41, source: { label: H, page: 25, note: "Rear plate, 3/8 in screws" } }
 
   - id: engine.block.rear-plate-gasket
     name: Rear end plate gasket

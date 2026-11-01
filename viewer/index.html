@@ -33,7 +33,18 @@ nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);backgro
 .tree .row .n{flex:1;min-width:0}
 .tree .row .c{font:11px var(--mono);color:var(--muted)}
 .tree .row.empty{color:var(--muted)}
-.tree .tw{width:12px;color:var(--muted);font-size:10px}
+.tree .line{display:flex;align-items:center;gap:2px}
+.tree .tw{flex:none;width:22px;min-height:28px;border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer;border-radius:4px;padding:0}
+.tree .tw:hover{background:var(--chip);color:var(--fg)}
+.tree .tw.leaf{visibility:hidden;cursor:default}
+.tree .tw::before{content:'▾'}
+.tree li.closed>.line>.tw::before{content:'▸'}
+.tree li.closed>ul{display:none}
+.tree .head{display:flex;align-items:center;justify-content:space-between;margin:6px 8px 8px}
+.tree .head h2{margin:0}
+.tree .all{display:flex;gap:4px}
+.tree .all button{font:11px var(--mono);color:var(--muted);background:none;border:1px solid var(--edge);border-radius:4px;padding:2px 6px;cursor:pointer}
+.tree .all button:hover{background:var(--chip)}
 main.stage{grid-area:stage;position:relative;background:var(--stage);min-width:0;min-height:0}
 main.stage canvas{display:block;width:100%;height:100%;touch-action:none}
 .labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
@@ -96,7 +107,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
     <button role="tab" id="tab-tree" aria-selected="true">Parts</button>
     <button role="tab" id="tab-card" aria-selected="false">Spec</button>
   </div>
-  <nav class="tree" id="tree" aria-label="Parts"><h2>Parts</h2><ul id="tree-root"></ul></nav>
+  <nav class="tree" id="tree" aria-label="Parts"><div class="head"><h2>Parts</h2><div class="all"><button type="button" id="tree-expand" title="Expand every group">Expand</button><button type="button" id="tree-collapse" title="Collapse every group">Collapse</button></div></div><ul id="tree-root"></ul></nav>
   <main class="stage" id="stage">
     <div class="labels" id="labels"></div>
     <div class="toast" id="toast" hidden></div>
@@ -408,24 +419,56 @@ function renderCrumbs(id){
   });
 }
 function partCount(id){ const n = N[id]; if (!n) return 0; if (n.kind === 'part') return 1; return (n.children || []).reduce((s, c) => s + partCount(c), 0); }
+// Collapsible groups. Systems start open and assemblies closed; each viewer's choices are
+// remembered in this browser only (a convenience, so storage failures are ignored).
+const TREE_KEY = 'mgb-tree-open';
+let treeOpen = {};
+try { treeOpen = JSON.parse(localStorage.getItem(TREE_KEY)) || {}; } catch (e) { treeOpen = {}; }
+const treeParent = {};
+const isOpen = id => id in treeOpen ? treeOpen[id] : N[id].kind !== 'assembly';
+function setOpen(id, open){
+  treeOpen[id] = open;
+  const li = document.querySelector(`.tree li[data-id="${CSS.escape(id)}"]`);
+  if (li){ li.classList.toggle('closed', !open); const t = li.querySelector(':scope>.line>.tw'); if (t) t.setAttribute('aria-expanded', open); }
+  try { localStorage.setItem(TREE_KEY, JSON.stringify(treeOpen)); } catch (e) { /* not stored */ }
+}
+function setAllOpen(open){ document.querySelectorAll('.tree li.group').forEach(li => setOpen(li.dataset.id, open)); if (!open) revealInTree(); }
+function revealInTree(){
+  const id = selected || current; if (!id) return;
+  for (let p = treeParent[id]; p && p !== 'car'; p = treeParent[p]) if (!isOpen(p)) setOpen(p, true);
+}
+document.getElementById('tree-expand').onclick = () => setAllOpen(true);
+document.getElementById('tree-collapse').onclick = () => setAllOpen(false);
 function renderTree(){
   const root = document.getElementById('tree-root'); root.innerHTML = '';
   const make = id => {
-    const n = N[id], li = document.createElement('li');
+    const n = N[id], li = document.createElement('li'); li.dataset.id = id;
     const b = document.createElement('button'); b.type = 'button'; b.className = 'row'; b.dataset.id = id;
     const cnt = partCount(id), kids = (n.children || []).filter(c => N[c]);
     if (n.kind !== 'part' && cnt === 0) b.classList.add('empty');
-    b.innerHTML = '<span class="tw">' + (kids.length ? '▾' : '') + '</span><span class="n"></span><span class="c"></span>';
+    const tw = document.createElement('button'); tw.type = 'button'; tw.className = 'tw';
+    if (kids.length){
+      li.classList.add('group'); if (!isOpen(id)) li.classList.add('closed');
+      tw.setAttribute('aria-label', 'Show or hide ' + n.name); tw.setAttribute('aria-expanded', isOpen(id));
+      tw.addEventListener('click', () => setOpen(id, li.classList.contains('closed')));
+    } else { tw.classList.add('leaf'); tw.tabIndex = -1; tw.setAttribute('aria-hidden', 'true'); }
+    b.innerHTML = '<span class="n"></span><span class="c"></span>';
     b.querySelector('.n').textContent = n.name;
     b.querySelector('.c').textContent = n.kind === 'part' ? (n.quantity ? '×' + n.quantity : '') : (n.kind === 'system' && !cnt ? 'to build' : cnt ? cnt + ' part' + (cnt > 1 ? 's' : '') : '');
-    b.addEventListener('click', () => n.kind === 'part' ? select(id) : go(id));
-    li.append(b);
-    if (kids.length){ const ul = document.createElement('ul'); kids.forEach(k => ul.append(make(k))); li.append(ul); }
+    b.addEventListener('click', () => { if (kids.length && !isOpen(id)) setOpen(id, true); n.kind === 'part' ? select(id) : go(id); });
+    const line = document.createElement('div'); line.className = 'line'; line.append(tw, b); li.append(line);
+    if (kids.length){ const ul = document.createElement('ul'); kids.forEach(k => { treeParent[k] = id; ul.append(make(k)); }); li.append(ul); }
     return li;
   };
-  N.car.children.forEach(s => root.append(make(s)));
+  N.car.children.forEach(s => { treeParent[s] = 'car'; root.append(make(s)); });
 }
-function markTree(){ document.querySelectorAll('.tree .row').forEach(b => b.setAttribute('aria-current', b.dataset.id === (selected || current))); }
+function markTree(){
+  revealInTree();
+  document.querySelectorAll('.tree .row').forEach(b => {
+    const on = b.dataset.id === (selected || current); b.setAttribute('aria-current', on);
+    if (on) b.scrollIntoView({ block: 'nearest' });
+  });
+}
 
 async function go(id){
   if (!N[id]) return;
