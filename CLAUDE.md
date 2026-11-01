@@ -49,7 +49,7 @@ without being asked:
   Review renders: `SELECT=<node id> VIEWS='[{"name":"a","explode":0,"camera":{"dir":[x,y,z],"part":"<part id>","zoom":1}}]' node tests/shots.mjs <assembly id>`
   writes PNGs to `build/review/`. The viewer is Y-up, so a camera `dir` is [CAD x, CAD z, -CAD y]:
   +z in `dir` looks from the car's right (off side). Use SELECT=car to see an assembly in
-  place. Swiftshader is slow: never run two builds, or a build and the smoke test, at once.
+  place; at car level `dir` only takes effect when a `part` is given to frame on. Swiftshader is slow: never run two builds, or a build and the smoke test, at once.
 - **Haynes.** `/home/claude/haynes/haynes.pdf`; printed page = PDF page - 4. Chapter
   starts (PDF): Ch5 110, Ch6 115, Ch7 142, Ch8 146, Ch9 150, Ch10 165, Ch11 206, Ch12 219.
   Render with `pdftoppm -r 110 -f N -l N -png`, crop and zoom with Python PIL, and read
