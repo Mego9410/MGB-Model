@@ -15,6 +15,11 @@ LEFT_KNEE_Z = -175.0                # left wall turns outward below the camshaft
 FLANGE_HW = 120.0                   # sump flange half width
 CHEST_Z0, CHEST_Z1 = -14.0, -128.0  # tappet chest panel top and bottom
 OPEN_L, OPEN_H = 144.0, 62.0        # each tappet chest opening
+# left-side features below the camshaft shelf (Fig 1.8 order: "1800" panel and fuel pump
+# flange just under the shelf, the oil pump drive pillar, then plug 7 and the relief valve)
+FUEL_PUMP_Z = -240.0
+LETTER_Z = (-234.0, -204.0)
+PLUG7_Z, RELIEF_Z = -232.0, -264.0
 
 def _sump_z():
     from pathlib import Path

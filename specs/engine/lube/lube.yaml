@@ -1,0 +1,310 @@
+# Lubrication: sump, oil pump, strainer, early full-flow filter, external pipe, relief
+# valve and dipstick. Haynes Sec 2, 17, 20, 21, 28, 54, 55; Figs 1.1, 1.16, 1.20;
+# photos 2.4, 54.3, 55.2, 55.4. Specs Haynes p22, torques p25.
+defaults:
+  system: engine
+  assembly: engine.lube
+  haynes: { section: 28, spec_page: 22 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.lube.sump
+    name: Sump
+    haynes: { figures: [{ figure: "1.16", legend: 15 }], section: 20 }
+    quantity: 1
+    finish: paint_engine
+    notes: >
+      Pressed steel: flange on the cork gasket, a deep well under the crankshaft, a
+      shallow tail over the bellhousing, a stiffening swage and the drain plug boss in the
+      floor (photo 55.4). The big ends swing below the block face, so the well is sized
+      to clear them.
+    specs:
+      capacity: { count: 7.5, source: { label: H, page: 22, note: "7.5 Imp pt (4.26 litres, 9 US pt)" }, display_only: true }
+      depth: { mm: 118.0, source: { label: D, method: "Flange to the floor of the deep well; proportion from owners' photos" } }
+      sheet_thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+      drain_x: { mm: 60.0, source: { label: D, method: "Plug position along the floor; not published" } }
+      bolt_torque: { lbf_ft: 6, nm: 8, source: { label: H, page: 25, note: "Sump bolts" } }
+
+  - id: engine.lube.sump-gasket
+    name: Sump gasket
+    haynes: { section: 55 }
+    quantity: 1
+    finish: cork
+    notes: Haynes Sec 55 para 4 - grease the crankcase flange and position the new gasket.
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Cork gasket; not published" } }
+
+  - id: engine.lube.sump-bolt
+    name: Sump bolt
+    haynes: { section: 55 }
+    quantity: 22
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 0.625, source: { label: D, method: "Not published" } }
+      torque: { lbf_ft: 6, nm: 8, source: { label: H, page: 25 } }
+
+  - id: engine.lube.sump-bolt-washer
+    name: Sump bolt washer
+    haynes: { section: 55 }
+    quantity: 22
+    specs:
+      outside_diameter: { mm: 17.5, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      inside_diameter: { mm: 8.7, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      thickness: { mm: 1.65, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+
+  - id: engine.lube.drain-plug
+    name: Sump drain plug
+    haynes: { section: 2 }
+    quantity: 1
+    specs:
+      across_flats: { mm: 22.2, source: { label: D, method: "7/8 in hexagon; not published" } }
+      thread_diameter: { mm: 15.9, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.drain-plug-washer
+    name: Drain plug washer
+    haynes: { section: 2 }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 26.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 16.2, source: { label: D, method: "Not published" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.pump-body
+    name: Oil pump body
+    haynes: { figures: [{ figure: "1.16", legend: 11 }, { figure: "1.20" }], section: 21 }
+    quantity: 1
+    finish: cast_iron
+    notes: Hobourn-Eaton rotor pump (Haynes p22) held to the crankcase by three nuts (Sec 21 para 2), driven by a shaft from the camshaft skew gear.
+    specs:
+      body_height: { mm: 46.0, source: { label: D, method: "Not published" } }
+      rotor_pocket_diameter: { mm: 39.0, source: { label: D, method: "Clears the outer rotor" } }
+      delivery: { count: 3.25, source: { label: H, page: 22, note: "3.25 gal/minute at 2000 rpm" }, display_only: true }
+      nut_torque: { lbf_ft: 14, nm: 19, source: { label: H, page: 25, note: "Oil pump to crankcase" } }
+
+  - id: engine.lube.pump-cover
+    name: Oil pump cover
+    haynes: { section: 34 }
+    quantity: 1
+    finish: cast_iron
+    specs:
+      diameter: { mm: 52.0, source: { label: D, method: "Not published" } }
+      thickness: { mm: 6.0, source: { label: D, method: "Not published" } }
+      body_bottom: { mm: 46.0, source: { label: D, method: "Equal to the body height" } }
+
+  - id: engine.lube.pump-inner-rotor
+    name: Oil pump inner rotor
+    haynes: { figures: [{ figure: "1.20" }], section: 34 }
+    quantity: 1
+    notes: Four lobes; lobe clearance to be no more than 0.006 in (Haynes Sec 34 para 4).
+    specs:
+      thickness: { mm: 12.7, source: { label: D, method: "Not published" } }
+      lobe_clearance_max: { in: 0.006, mm: 0.152, source: { label: H, page: 41, note: "Sec 34 para 4" }, display_only: true }
+
+  - id: engine.lube.pump-outer-rotor
+    name: Oil pump outer rotor
+    haynes: { figures: [{ figure: "1.20" }], section: 34 }
+    quantity: 1
+    notes: Five lobes, chamfered end toward the driving end of the pocket (Sec 34 para 7).
+    specs:
+      outside_diameter: { mm: 38.0, source: { label: D, method: "Not published" } }
+      thickness: { mm: 12.7, source: { label: D, method: "Equal to the inner rotor" } }
+      body_clearance_max: { in: 0.010, mm: 0.254, source: { label: H, page: 41, note: "Sec 34 para 5" }, display_only: true }
+
+  - id: engine.lube.pump-spindle
+    name: Oil pump drive shaft
+    haynes: { section: 21 }
+    quantity: 1
+    notes: Driven by the camshaft skew gear; lifted out with the pump (Sec 21 para 2).
+    specs:
+      diameter: { mm: 12.7, source: { label: D, method: "Not published" } }
+      length: { mm: 140.0, source: { label: D, method: "From the pump rotors up to the camshaft skew gear" } }
+
+  - id: engine.lube.pump-gasket
+    name: Oil pump gasket
+    haynes: { section: 54 }
+    quantity: 1
+    finish: gasket
+    specs:
+      outside_diameter: { mm: 56.0, source: { label: D, method: "Matches the flange" } }
+      inside_diameter: { mm: 14.0, source: { label: D, method: "Clears the drive shaft" } }
+      thickness: { mm: 0.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.pump-stud
+    name: Oil pump stud
+    haynes: { section: 21 }
+    quantity: 3
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { mm: 30.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.pump-nut
+    name: Oil pump nut
+    haynes: { section: 21 }
+    quantity: 3
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      thickness: { in: 0.265625, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      torque: { lbf_ft: 14, nm: 19, source: { label: H, page: 25 } }
+
+  - id: engine.lube.strainer
+    name: Oil strainer and pick-up pipe
+    haynes: { figures: [{ figure: "1.16", legend: 15 }], section: 20 }
+    quantity: 1
+    notes: Gauze bowl on the sump floor with a centre nut and bolt and a flanged pipe to the pump (Haynes Sec 20 para 7, photo 55.2).
+    specs:
+      diameter: { mm: 110.0, source: { label: D, method: "Proportion from photo 55.2" } }
+      pump_inlet_drop: { mm: 34.0, source: { label: D, method: "Inlet boss below the pump flange" } }
+
+  - id: engine.lube.filter-head
+    name: Oil filter head
+    haynes: { figures: [{ figure: "1.1", legend: 2 }], section: 2 }
+    quantity: 1
+    finish: cast_iron
+    notes: Early type with the bowl hanging below the head and the centre bolt entering from underneath (Fig 1.1).
+    specs:
+      seat_diameter: { mm: 96.0, source: { label: D, method: "Takes the bowl lip; not published" } }
+
+  - id: engine.lube.filter-case
+    name: Oil filter bowl
+    haynes: { figures: [{ figure: "1.1", legend: 1 }], section: 2 }
+    quantity: 1
+    finish: paint_engine
+    specs:
+      diameter: { mm: 90.0, source: { label: D, method: "Proportion from Fig 1.1 and owners' photos" } }
+      height: { mm: 125.0, source: { label: D, method: "Proportion from Fig 1.1" } }
+      capacity: { count: 1.0, source: { label: H, page: 22, note: "1.0 pt (0.57 litres)" }, display_only: true }
+
+  - id: engine.lube.filter-element
+    name: Oil filter element
+    haynes: { figures: [{ figure: "1.1", legend: 4 }], section: 2 }
+    quantity: 1
+    finish: gasket
+    notes: Renewable felt element, full flow (Haynes p22).
+    specs:
+      diameter: { mm: 80.0, source: { label: D, method: "Fits the bowl" } }
+      height: { mm: 100.0, source: { label: D, method: "Proportion from Fig 1.1" } }
+
+  - id: engine.lube.filter-centre-bolt
+    name: Oil filter centre bolt
+    haynes: { figures: [{ figure: "1.1", legend: 5 }], section: 2 }
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 5.75, source: { label: D, method: "Through the bowl into the head" } }
+      case_height: { mm: 125.0, source: { label: D, method: "Equal to the bowl height" } }
+      torque: { lbf_ft: 15, nm: 20, source: { label: H, page: 25, note: "Oil filter centre bolt (early models only)" } }
+
+  - id: engine.lube.filter-head-seal
+    name: Bowl sealing ring
+    haynes: { figures: [{ figure: "1.1", legend: 12 }], section: 2 }
+    quantity: 1
+    finish: rubber
+    notes: Haynes Sec 2 para 8 - remove the old sealing ring from the groove in the filter head; fit a new one.
+    specs:
+      outside_diameter: { mm: 94.0, source: { label: D, method: "Fits the head groove" } }
+      inside_diameter: { mm: 86.0, source: { label: D, method: "Not published" } }
+      thickness: { mm: 3.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.filter-bolt-seal
+    name: Centre bolt seal
+    haynes: { figures: [{ figure: "1.1", legend: 6 }], section: 2 }
+    quantity: 1
+    finish: rubber
+    specs:
+      outside_diameter: { mm: 16.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "Fits the bolt" } }
+      thickness: { mm: 2.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.filter-steel-washer
+    name: Centre bolt steel washer
+    haynes: { figures: [{ figure: "1.1", legend: 7 }], section: 2 }
+    quantity: 1
+    specs:
+      outside_diameter: { mm: 18.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "Fits the bolt" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.filter-spring
+    name: Element spring
+    haynes: { figures: [{ figure: "1.1", legend: 9 }], section: 2 }
+    quantity: 1
+    specs:
+      wire_diameter: { mm: 1.6, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 18.0, source: { label: D, method: "Not published" } }
+      length: { mm: 22.0, source: { label: D, method: "Fitted length; not published" } }
+
+  - id: engine.lube.filter-plate
+    name: Element pressure plate
+    haynes: { figures: [{ figure: "1.1", legend: 10 }], section: 2 }
+    quantity: 1
+    specs:
+      diameter: { mm: 60.0, source: { label: D, method: "Not published" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.filter-head-bolt
+    name: Filter head bolt
+    haynes: { section: 2 }
+    quantity: 2
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 1.25, source: { label: D, method: "Through the head flange" } }
+
+  - id: engine.lube.oil-pipe
+    name: External oil pipe
+    haynes: { figures: [{ figure: "1.16", legend: 6 }], section: 28 }
+    quantity: 1
+    notes: From the pump delivery at the right rear of the crankcase forward to the filter head, banjo unions at each end (Fig 1.16 item 6; owners' photos).
+    specs:
+      outside_diameter: { mm: 9.5, source: { label: D, method: "3/8 in pipe; not published" } }
+      union_torque: { lbf_ft: 37, nm: 50, source: { label: H, page: 25, note: "Oil pipe banjo unions (max)" } }
+
+  - id: engine.lube.relief-nut
+    name: Relief valve domed nut
+    haynes: { figures: [{ figure: "1.16", legend: 8 }], section: 17 }
+    quantity: 1
+    notes: The large domed hexagon nut at the left-hand rear of the engine (Haynes Sec 17 para 1).
+    specs:
+      across_flats: { mm: 22.2, source: { label: D, method: "7/8 in hexagon; not published" } }
+      torque: { lbf_ft: 43, nm: 58, source: { label: H, page: 25, note: "Early models (pre-1978)" } }
+
+  - id: engine.lube.relief-washer
+    name: Relief valve sealing washer
+    haynes: { section: 17 }
+    quantity: 2
+    finish: gasket
+    notes: Two fibre washers or one copper (Sec 17 para 2); fibre shown.
+    specs:
+      outside_diameter: { mm: 24.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 14.5, source: { label: D, method: "Not published" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.relief-spring
+    name: Relief valve spring
+    haynes: { section: 17 }
+    quantity: 1
+    notes: Opens at 70 lbf/in2 (Haynes p22). Shown at its fitted length in the bore.
+    specs:
+      free_length: { in: 3.0, mm: 76.2, source: { label: H, page: 22 } }
+      fitted_length: { mm: 60.0, source: { label: D, method: "In the bore with the nut home" } }
+      wire_diameter: { mm: 1.6, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 11.5, source: { label: D, method: "Fits the 12.8 mm bore" } }
+      opening_pressure: { count: 70, source: { label: H, page: 22, note: "70 lbf/in2 (4.9 kgf/cm2)" }, display_only: true }
+
+  - id: engine.lube.relief-cup
+    name: Relief valve cup
+    haynes: { section: 17 }
+    quantity: 1
+    notes: Renew it if the seat appears flawed (Sec 17 para 5).
+    specs:
+      diameter: { mm: 12.4, source: { label: D, method: "Fits the bore" } }
+      length: { mm: 16.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.lube.dipstick
+    name: Dipstick
+    haynes: { section: 2 }
+    quantity: 1
+    notes: On the right-hand side of the engine, marked for the correct oil level (Haynes Sec 2 para 1).
+    specs:
+      length: { mm: 330.0, source: { label: D, method: "From the handle to the sump floor in this layout" } }

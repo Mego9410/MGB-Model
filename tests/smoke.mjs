@@ -29,7 +29,7 @@ const assemblies = Object.values(reg.nodes).filter(n => n.kind === 'assembly');
 const parts = Object.values(reg.nodes).filter(n => n.kind === 'part');
 
 for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { width: 390, height: 844 }]]) {
-  const page = await browser.newPage({ viewport: vp });
+  const page = await browser.newPage({ viewport: vp, reducedMotion: 'reduce' });   // camera snaps instead of flying
   page.on('console', m => { if (m.type() === 'error') errors.push(`${name}: ${m.text()}`); });
   page.on('pageerror', e => errors.push(`${name}: ${e.message}`));
   await page.route('https://cdn.jsdelivr.net/npm/**', route => {
@@ -53,10 +53,13 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
     if (!st || st[0] !== st[1] || !st[1]) errors.push(`${name}: ${a.id} matched ${st && st[0]} of ${st && st[1]} instances`);
     await page.fill('#explode', '0'); await page.dispatchEvent('#explode', 'input');
   }
-  console.log(`${name}: assemblies ok, checking ${parts.length} part cards`);
-  for (const p of parts) {
+  // Software GL renders a laptop-sized canvas slowly, so the laptop pass samples every
+  // eighth card and the phone pass (small canvas) checks them all.
+  const cards = name === 'laptop' ? parts.filter((_, k) => k % 8 === 0) : parts;
+  console.log(`${name}: assemblies ok, checking ${cards.length} part cards`);
+  for (const p of cards) {
     await page.evaluate(id => { location.hash = '#' + id.replaceAll('.', '--'); }, p.id);
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(150);
     const title = await page.textContent('#card h3');
     if (title !== p.name) errors.push(`${name}: card shows "${title}" for ${p.id}`);
   }

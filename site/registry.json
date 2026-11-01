@@ -31,7 +31,9 @@
    },
    "children": [
     "engine.block",
-    "engine.head"
+    "engine.head",
+    "engine.lube",
+    "engine.timing"
    ]
   },
   "cooling": {
@@ -222,7 +224,7 @@
     "engine.block.stud-rear"
    ],
    "file": "models/engine.block.json",
-   "bytes": 581790
+   "bytes": 626129
   },
   "engine.head": {
    "id": "engine.head",
@@ -310,6 +312,109 @@
    ],
    "file": "models/engine.head.json",
    "bytes": 1015892
+  },
+  "engine.lube": {
+   "id": "engine.lube",
+   "kind": "assembly",
+   "name": "Lubrication: sump, oil pump and filter",
+   "parent": "engine",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "1.16"
+     },
+     {
+      "figure": "1.1"
+     },
+     {
+      "figure": "1.20"
+     }
+    ],
+    "section": 28
+   },
+   "children": [
+    "engine.lube.sump-gasket",
+    "engine.lube.sump",
+    "engine.lube.sump-bolt-washer",
+    "engine.lube.sump-bolt",
+    "engine.lube.drain-plug-washer",
+    "engine.lube.drain-plug",
+    "engine.lube.strainer",
+    "engine.lube.pump-gasket",
+    "engine.lube.pump-body",
+    "engine.lube.pump-cover",
+    "engine.lube.pump-inner-rotor",
+    "engine.lube.pump-outer-rotor",
+    "engine.lube.pump-spindle",
+    "engine.lube.pump-stud",
+    "engine.lube.pump-nut",
+    "engine.lube.filter-head",
+    "engine.lube.filter-head-bolt",
+    "engine.lube.filter-head-seal",
+    "engine.lube.filter-case",
+    "engine.lube.filter-element",
+    "engine.lube.filter-spring",
+    "engine.lube.filter-plate",
+    "engine.lube.filter-steel-washer",
+    "engine.lube.filter-bolt-seal",
+    "engine.lube.filter-centre-bolt",
+    "engine.lube.oil-pipe",
+    "engine.lube.relief-washer",
+    "engine.lube.relief-nut",
+    "engine.lube.relief-spring",
+    "engine.lube.relief-cup",
+    "engine.lube.dipstick"
+   ],
+   "file": "models/engine.lube.json",
+   "bytes": 515880
+  },
+  "engine.timing": {
+   "id": "engine.timing",
+   "kind": "assembly",
+   "name": "Timing gear and cover",
+   "parent": "engine",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "1.25"
+     },
+     {
+      "figure": "1.11"
+     }
+    ],
+    "section": 19
+   },
+   "children": [
+    "engine.timing.locating-plate",
+    "engine.timing.locating-plate-washer",
+    "engine.timing.locating-plate-screw",
+    "engine.timing.cam-wheel",
+    "engine.timing.crank-wheel",
+    "engine.timing.chain",
+    "engine.timing.cam-key",
+    "engine.timing.crank-key",
+    "engine.timing.packing-washer",
+    "engine.timing.cam-lockwasher",
+    "engine.timing.cam-nut",
+    "engine.timing.tensioner-backplate",
+    "engine.timing.tensioner-body",
+    "engine.timing.tensioner-slipper",
+    "engine.timing.tensioner-spring",
+    "engine.timing.tensioner-cylinder",
+    "engine.timing.tensioner-plug",
+    "engine.timing.tensioner-lockwasher",
+    "engine.timing.tensioner-bolt",
+    "engine.timing.oil-thrower",
+    "engine.timing.cover-gasket",
+    "engine.timing.cover",
+    "engine.timing.cover-seal",
+    "engine.timing.cover-screw",
+    "engine.timing.crank-pulley",
+    "engine.timing.pulley-lockwasher",
+    "engine.timing.pulley-bolt"
+   ],
+   "file": "models/engine.timing.json",
+   "bytes": 682779
   },
   "engine.block.casting": {
    "id": "engine.block.casting",
@@ -2058,10 +2163,10 @@
     {
      "key": "length",
      "label": "Length",
-     "value": "252.4 mm",
+     "value": "284.4 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Tappet seat to rocker adjusting-screw ball in the derived layout",
+     "ref": "Tappet seat to rocker adjusting-screw ball, with the camshaft at the height the 52-pitch timing chain sets (mgb.engine_layout)",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -8225,6 +8330,3152 @@
     }
    ],
    "derivedShare": 0.54
+  },
+  "engine.lube.sump": {
+   "id": "engine.lube.sump",
+   "kind": "part",
+   "name": "Sump",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 20,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.16",
+      "legend": 15
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_engine",
+   "notes": "Pressed steel: flange on the cork gasket, a deep well under the crankshaft, a shallow tail over the bellhousing, a stiffening swage and the drain plug boss in the floor (photo 55.4). The big ends swing below the block face, so the well is sized to clear them.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "capacity",
+     "label": "Capacity",
+     "value": "8",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "7.5 Imp pt (4.26 litres, 9 US pt)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "118.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flange to the floor of the deep well; proportion from owners' photos",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "sheet_thickness",
+     "label": "Sheet thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "drain_x",
+     "label": "Drain x",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Plug position along the floor; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bolt_torque",
+     "label": "Bolt torque",
+     "value": "6 lbf ft (8 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Sump bolts",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.6
+  },
+  "engine.lube.sump-gasket": {
+   "id": "engine.lube.sump-gasket",
+   "kind": "part",
+   "name": "Sump gasket",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 55,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cork",
+   "notes": "Haynes Sec 55 para 4 - grease the crankcase flange and position the new gasket.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Cork gasket; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.sump-bolt": {
+   "id": "engine.lube.sump-bolt",
+   "kind": "part",
+   "name": "Sump bolt",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 55,
+    "spec_page": 22
+   },
+   "quantity": 22,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.625 in (15.88 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "6 lbf ft (8 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.lube.sump-bolt-washer": {
+   "id": "engine.lube.sump-bolt-washer",
+   "kind": "part",
+   "name": "Sump bolt washer",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 55,
+    "spec_page": 22
+   },
+   "quantity": 22,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "17.5 mm (0.689 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.7 mm (0.343 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm (0.065 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.lube.drain-plug": {
+   "id": "engine.lube.drain-plug",
+   "kind": "part",
+   "name": "Sump drain plug",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "22.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/8 in hexagon; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "15.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.drain-plug-washer": {
+   "id": "engine.lube.drain-plug-washer",
+   "kind": "part",
+   "name": "Drain plug washer",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "26.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "16.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.pump-body": {
+   "id": "engine.lube.pump-body",
+   "kind": "part",
+   "name": "Oil pump body",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 21,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.16",
+      "legend": 11
+     },
+     {
+      "figure": "1.20"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Hobourn-Eaton rotor pump (Haynes p22) held to the crankcase by three nuts (Sec 21 para 2), driven by a shaft from the camshaft skew gear.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "body_height",
+     "label": "Body height",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "rotor_pocket_diameter",
+     "label": "Rotor pocket diameter",
+     "value": "39.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the outer rotor",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "delivery",
+     "label": "Delivery",
+     "value": "3",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "3.25 gal/minute at 2000 rpm",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "nut_torque",
+     "label": "Nut torque",
+     "value": "14 lbf ft (19 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Oil pump to crankcase",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.lube.pump-cover": {
+   "id": "engine.lube.pump-cover",
+   "kind": "part",
+   "name": "Oil pump cover",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 34,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "52.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "body_bottom",
+     "label": "Body bottom",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the body height",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.pump-inner-rotor": {
+   "id": "engine.lube.pump-inner-rotor",
+   "kind": "part",
+   "name": "Oil pump inner rotor",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 34,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.20"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Four lobes; lobe clearance to be no more than 0.006 in (Haynes Sec 34 para 4).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "12.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "lobe_clearance_max",
+     "label": "Lobe clearance max",
+     "value": "0.006 in (0.152 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p41",
+     "note": "Sec 34 para 4",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.lube.pump-outer-rotor": {
+   "id": "engine.lube.pump-outer-rotor",
+   "kind": "part",
+   "name": "Oil pump outer rotor",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 34,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.20"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Five lobes, chamfered end toward the driving end of the pocket (Sec 34 para 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "38.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "12.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the inner rotor",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "body_clearance_max",
+     "label": "Body clearance max",
+     "value": "0.01 in (0.254 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p41",
+     "note": "Sec 34 para 5",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.lube.pump-spindle": {
+   "id": "engine.lube.pump-spindle",
+   "kind": "part",
+   "name": "Oil pump drive shaft",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 21,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Driven by the camshaft skew gear; lifted out with the pump (Sec 21 para 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "12.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "140.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From the pump rotors up to the camshaft skew gear",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.pump-gasket": {
+   "id": "engine.lube.pump-gasket",
+   "kind": "part",
+   "name": "Oil pump gasket",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 54,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "56.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matches the flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the drive shaft",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.pump-stud": {
+   "id": "engine.lube.pump-stud",
+   "kind": "part",
+   "name": "Oil pump stud",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 21,
+    "spec_page": 22
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.pump-nut": {
+   "id": "engine.lube.pump-nut",
+   "kind": "part",
+   "name": "Oil pump nut",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 21,
+    "spec_page": 22
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.26562 in (6.75 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "14 lbf ft (19 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.lube.strainer": {
+   "id": "engine.lube.strainer",
+   "kind": "part",
+   "name": "Oil strainer and pick-up pipe",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 20,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.16",
+      "legend": 15
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Gauze bowl on the sump floor with a centre nut and bolt and a flanged pipe to the pump (Haynes Sec 20 para 7, photo 55.2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "110.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 55.2",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pump_inlet_drop",
+     "label": "Pump inlet drop",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Inlet boss below the pump flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-head": {
+   "id": "engine.lube.filter-head",
+   "kind": "part",
+   "name": "Oil filter head",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Early type with the bowl hanging below the head and the centre bolt entering from underneath (Fig 1.1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "seat_diameter",
+     "label": "Seat diameter",
+     "value": "96.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Takes the bowl lip; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-case": {
+   "id": "engine.lube.filter-case",
+   "kind": "part",
+   "name": "Oil filter bowl",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_engine",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "90.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.1 and owners' photos",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "125.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "capacity",
+     "label": "Capacity",
+     "value": "1",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "1.0 pt (0.57 litres)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.lube.filter-element": {
+   "id": "engine.lube.filter-element",
+   "kind": "part",
+   "name": "Oil filter element",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Renewable felt element, full flow (Haynes p22).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "80.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the bowl",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "100.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-centre-bolt": {
+   "id": "engine.lube.filter-centre-bolt",
+   "kind": "part",
+   "name": "Oil filter centre bolt",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "5.75 in (146.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the bowl into the head",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "case_height",
+     "label": "Case height",
+     "value": "125.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the bowl height",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "15 lbf ft (20 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Oil filter centre bolt (early models only)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.75
+  },
+  "engine.lube.filter-head-seal": {
+   "id": "engine.lube.filter-head-seal",
+   "kind": "part",
+   "name": "Bowl sealing ring",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 12
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Haynes Sec 2 para 8 - remove the old sealing ring from the groove in the filter head; fit a new one.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "94.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the head groove",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "86.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-bolt-seal": {
+   "id": "engine.lube.filter-bolt-seal",
+   "kind": "part",
+   "name": "Centre bolt seal",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-steel-washer": {
+   "id": "engine.lube.filter-steel-washer",
+   "kind": "part",
+   "name": "Centre bolt steel washer",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-spring": {
+   "id": "engine.lube.filter-spring",
+   "kind": "part",
+   "name": "Element spring",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 9
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fitted length; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-plate": {
+   "id": "engine.lube.filter-plate",
+   "kind": "part",
+   "name": "Element pressure plate",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.1",
+      "legend": 10
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.filter-head-bolt": {
+   "id": "engine.lube.filter-head-bolt",
+   "kind": "part",
+   "name": "Filter head bolt",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.25 in (31.75 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the head flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.oil-pipe": {
+   "id": "engine.lube.oil-pipe",
+   "kind": "part",
+   "name": "External oil pipe",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 28,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.16",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "From the pump delivery at the right rear of the crankcase forward to the filter head, banjo unions at each end (Fig 1.16 item 6; owners' photos).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in pipe; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "union_torque",
+     "label": "Union torque",
+     "value": "37 lbf ft (50 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Oil pipe banjo unions (max)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.lube.relief-nut": {
+   "id": "engine.lube.relief-nut",
+   "kind": "part",
+   "name": "Relief valve domed nut",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 17,
+    "spec_page": 22,
+    "figures": [
+     {
+      "figure": "1.16",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "The large domed hexagon nut at the left-hand rear of the engine (Haynes Sec 17 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "22.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/8 in hexagon; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "43 lbf ft (58 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Early models (pre-1978)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.lube.relief-washer": {
+   "id": "engine.lube.relief-washer",
+   "kind": "part",
+   "name": "Relief valve sealing washer",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 17,
+    "spec_page": 22
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Two fibre washers or one copper (Sec 17 para 2); fibre shown.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "24.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "14.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.relief-spring": {
+   "id": "engine.lube.relief-spring",
+   "kind": "part",
+   "name": "Relief valve spring",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 17,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Opens at 70 lbf/in2 (Haynes p22). Shown at its fitted length in the bore.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "free_length",
+     "label": "Free length",
+     "value": "3.00 in (76.20 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "fitted_length",
+     "label": "Fitted length",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "In the bore with the nut home",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "11.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 12.8 mm bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "opening_pressure",
+     "label": "Opening pressure",
+     "value": "70",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p22",
+     "note": "70 lbf/in2 (4.9 kgf/cm2)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.6
+  },
+  "engine.lube.relief-cup": {
+   "id": "engine.lube.relief-cup",
+   "kind": "part",
+   "name": "Relief valve cup",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 17,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Renew it if the seat appears flawed (Sec 17 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "12.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.lube.dipstick": {
+   "id": "engine.lube.dipstick",
+   "kind": "part",
+   "name": "Dipstick",
+   "parent": "engine.lube",
+   "haynes": {
+    "section": 2,
+    "spec_page": 22
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "On the right-hand side of the engine, marked for the correct oil level (Haynes Sec 2 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "330.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From the handle to the sump floor in this layout",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.cam-wheel": {
+   "id": "engine.timing.cam-wheel",
+   "kind": "part",
+   "name": "Camshaft chainwheel",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.25"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Duplex wheel with a dished web and two lightening holes (photo 51.3). The timing dimple lines up with the one on the crankshaft wheel (Fig 1.25 item 2). Its 40 teeth against the crankshaft's 20 and the 52-pitch chain set the camshaft height in this model.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "teeth",
+     "label": "Teeth",
+     "value": "40",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Steve Strange, Tuning the B-Series Engine",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pitch_diameter",
+     "label": "Pitch diameter",
+     "value": "121.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in pitch on 40 teeth: p / sin(180/40)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the camshaft nose; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hub_length",
+     "label": "Hub length",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 51.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "nut_torque",
+     "label": "Nut torque",
+     "value": "60 to 70 lbf ft (81 to 95 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Camshaft sprocket nut",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.6
+  },
+  "engine.timing.crank-wheel": {
+   "id": "engine.timing.crank-wheel",
+   "kind": "part",
+   "name": "Crankshaft chainwheel",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.25"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Duplex wheel on a long hub, keyed to the crankshaft; packing washers behind it set the alignment with the camshaft wheel (Haynes Sec 51 para 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "teeth",
+     "label": "Teeth",
+     "value": "20",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Steve Strange, Tuning the B-Series Engine",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pitch_diameter",
+     "label": "Pitch diameter",
+     "value": "60.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in pitch on 20 teeth: p / sin(180/20)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "31.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the crankshaft snout; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hub_length",
+     "label": "Hub length",
+     "value": "32.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 51.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.75
+  },
+  "engine.timing.chain": {
+   "id": "engine.timing.chain",
+   "kind": "part",
+   "name": "Timing chain (duplex)",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.25"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Double roller chain on the 18G (Haynes Sec 19, \"double-roller chain type\"). Rollers, pins and side plates are modelled link by link round the real path.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "pitches",
+     "label": "Pitches",
+     "value": "52",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Steve Strange, Tuning the B-Series Engine; British Parts Northwest 52-link dual row chain",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pitch",
+     "label": "Pitch",
+     "value": "0.375 in (9.525 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Steve Strange, Tuning the B-Series Engine",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "roller_diameter",
+     "label": "Roller diameter",
+     "value": "6.3 mm (0.250 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ISO 606 chain 06B",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "transverse_pitch",
+     "label": "Transverse pitch",
+     "value": "10.2 mm (0.403 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ISO 606 chain 06B-2",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inner_width",
+     "label": "Inner width",
+     "value": "5.7 mm (0.225 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ISO 606 chain 06B",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.timing.tensioner-body": {
+   "id": "engine.timing.tensioner-body",
+   "kind": "part",
+   "name": "Chain tensioner body",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 18,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.11"
+     },
+     {
+      "figure": "1.25"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Bolted to the block through the front plate with two bolts and a tab washer (Sec 18 para 3). The bottom plug gives access for a 1/8 in Allen key (Sec 19 para 10).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bolt_spacing",
+     "label": "Bolt spacing",
+     "value": "48.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.11",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "allen_key",
+     "label": "Allen key",
+     "value": "0.125 in (3.18 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p35",
+     "note": "Sec 19 para 10",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "engine.timing.tensioner-slipper": {
+   "id": "engine.timing.tensioner-slipper",
+   "kind": "part",
+   "name": "Tensioner slipper head and plunger",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 18,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.11"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Rubber slipper on the plunger; it presses on the run on the right-hand side (Fig 1.25).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "pad_length",
+     "label": "Pad length",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.11",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.tensioner-spring": {
+   "id": "engine.timing.tensioner-spring",
+   "kind": "part",
+   "name": "Tensioner spring",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 52,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.11"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits inside the plunger",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "26.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fitted length; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.tensioner-cylinder": {
+   "id": "engine.timing.tensioner-cylinder",
+   "kind": "part",
+   "name": "Tensioner inner cylinder",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 52,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.11"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Helical slot engages the peg in the plunger (Sec 52 para 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from Fig 1.11",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.tensioner-backplate": {
+   "id": "engine.timing.tensioner-backplate",
+   "kind": "part",
+   "name": "Tensioner backplate",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 52,
+    "spec_page": 24,
+    "figures": [
+     {
+      "figure": "1.11"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.tensioner-plug": {
+   "id": "engine.timing.tensioner-plug",
+   "kind": "part",
+   "name": "Tensioner bottom plug",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.5625 in (14.29 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in hexagon; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.tensioner-bolt": {
+   "id": "engine.timing.tensioner-bolt",
+   "kind": "part",
+   "name": "Tensioner bolt",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 18,
+    "spec_page": 24
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the flange, backplate and front plate",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.tensioner-lockwasher": {
+   "id": "engine.timing.tensioner-lockwasher",
+   "kind": "part",
+   "name": "Tensioner tab washer",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 18,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 18 para 3 - knock back the lockwasher tabs.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.locating-plate": {
+   "id": "engine.timing.locating-plate",
+   "kind": "part",
+   "name": "Camshaft locating plate",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 50,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Three-lobed plate held by three bolts with spring washers (Haynes Sec 23 para 10, photo 50.5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "54.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 50.5",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "23.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clears the camshaft nose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bolts",
+     "label": "Bolts",
+     "value": "3",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p36",
+     "note": "Sec 23 para 10",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.75
+  },
+  "engine.timing.locating-plate-screw": {
+   "id": "engine.timing.locating-plate-screw",
+   "kind": "part",
+   "name": "Locating plate bolt",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 23,
+    "spec_page": 24
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.50 in (12.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.locating-plate-washer": {
+   "id": "engine.timing.locating-plate-washer",
+   "kind": "part",
+   "name": "Locating plate spring washer",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 23,
+    "spec_page": 24
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical 1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.cam-nut": {
+   "id": "engine.timing.cam-nut",
+   "kind": "part",
+   "name": "Camshaft wheel nut",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.9375 in (23.81 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/8 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.54688 in (13.89 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/8 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "60 to 70 lbf ft (81 to 95 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.timing.cam-lockwasher": {
+   "id": "engine.timing.cam-lockwasher",
+   "kind": "part",
+   "name": "Camshaft nut lockwasher",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 19 para 11 - bend back the lockwasher tag on the camshaft nut.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "16.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 5/8 in nose thread",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.packing-washer": {
+   "id": "engine.timing.packing-washer",
+   "kind": "part",
+   "name": "Crankshaft wheel packing washer",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 51 para 7 - add or remove packing washers behind the crankshaft wheel to line the two wheels up.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "44.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "32.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the crankshaft snout",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.oil-thrower": {
+   "id": "engine.timing.oil-thrower",
+   "kind": "part",
+   "name": "Oil thrower",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Dished disc in front of the crankshaft wheel; concave side facing forward on early engines (Haynes Sec 51 para 9).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "80.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Inside the cover seal housing; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "32.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the crankshaft snout",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.cover": {
+   "id": "engine.timing.cover",
+   "kind": "part",
+   "name": "Timing cover",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_engine",
+   "notes": "Pressed steel cover round both wheels and the tensioner, scalloped flange, oil seal housing for the pulley hub and ignition timing pointers below the crankshaft (photos 51.12, 51.15). The cover bolts are of different sizes (Sec 19 para 8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "sheet_thickness",
+     "label": "Sheet thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "seal_housing_diameter",
+     "label": "Seal housing diameter",
+     "value": "66.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.cover-gasket": {
+   "id": "engine.timing.cover-gasket",
+   "kind": "part",
+   "name": "Timing cover gasket",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.cover-seal": {
+   "id": "engine.timing.cover-seal",
+   "kind": "part",
+   "name": "Timing cover oil seal",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the seal housing",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "43.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Runs on the pulley hub",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.cover-screw": {
+   "id": "engine.timing.cover-screw",
+   "kind": "part",
+   "name": "Timing cover screw",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 15,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes; Haynes notes the sizes vary",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.625 in (15.88 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.crank-pulley": {
+   "id": "engine.timing.crank-pulley",
+   "kind": "part",
+   "name": "Crankshaft pulley",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Single groove for the fan belt; its hub runs in the timing cover seal (photo 51.15).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "133.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 51.15; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "31.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the crankshaft snout",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hub_length",
+     "label": "Hub length",
+     "value": "41.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "From the oil thrower to the snout end",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "groove_top_width",
+     "label": "Groove top width",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fan belt width; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bolt_torque",
+     "label": "Bolt torque",
+     "value": "70 lbf ft (95 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Crankshaft pulley nut",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.8
+  },
+  "engine.timing.pulley-bolt": {
+   "id": "engine.timing.pulley-bolt",
+   "kind": "part",
+   "name": "Crankshaft pulley bolt",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.625 in (15.88 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.75 in (44.45 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "70 lbf ft (95 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.timing.pulley-lockwasher": {
+   "id": "engine.timing.pulley-lockwasher",
+   "kind": "part",
+   "name": "Crankshaft pulley lockwasher",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 19 para 5 - bend back the locking tab on the crankshaft pulley bolt.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "38.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "16.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 5/8 in bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.crank-key": {
+   "id": "engine.timing.crank-key",
+   "kind": "part",
+   "name": "Crankshaft Woodruff key",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 19,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "4.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in key; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.timing.cam-key": {
+   "id": "engine.timing.cam-key",
+   "kind": "part",
+   "name": "Camshaft Woodruff key",
+   "parent": "engine.timing",
+   "haynes": {
+    "section": 51,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "4.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in key; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
   }
  },
  "instances": {
@@ -16724,7 +19975,2342 @@
    ],
    "label": true,
    "fitted": null
+  },
+  "engine.lube.sump-gasket#1": {
+   "part": "engine.lube.sump-gasket",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.sump#1": {
+   "part": "engine.lube.sump",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 260,
+     "group": "sump"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#1": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#1": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#2": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#2": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#3": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#3": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#4": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#4": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#5": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#5": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#6": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#6": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#7": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#7": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#8": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#8": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#9": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__9",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#9": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__9",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#10": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__10",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#10": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__10",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#11": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__11",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#11": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__11",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#12": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__12",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#12": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__12",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#13": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__13",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#13": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__13",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#14": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__14",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#14": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__14",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#15": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__15",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#15": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__15",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#16": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__16",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#16": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__16",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#17": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__17",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#17": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__17",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#18": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__18",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#18": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__18",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#19": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__19",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#19": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__19",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#20": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__20",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#20": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__20",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#21": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__21",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#21": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__21",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt-washer#22": {
+   "part": "engine.lube.sump-bolt-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt-washer__22",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.sump-bolt#22": {
+   "part": "engine.lube.sump-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--sump-bolt__22",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 5,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.drain-plug-washer#1": {
+   "part": "engine.lube.drain-plug-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--drain-plug-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.drain-plug#1": {
+   "part": "engine.lube.drain-plug",
+   "assembly": "engine.lube",
+   "node": "engine--lube--drain-plug__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.strainer#1": {
+   "part": "engine.lube.strainer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--strainer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 260,
+     "group": "sump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-gasket#1": {
+   "part": "engine.lube.pump-gasket",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10,
+     "distance_mm": 150,
+     "group": "pump"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-body#1": {
+   "part": "engine.lube.pump-body",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-body__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10,
+     "distance_mm": 150,
+     "group": "pump"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-cover#1": {
+   "part": "engine.lube.pump-cover",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-cover__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10,
+     "distance_mm": 150,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 11,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-inner-rotor#1": {
+   "part": "engine.lube.pump-inner-rotor",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-inner-rotor__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10,
+     "distance_mm": 150,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 11.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-outer-rotor#1": {
+   "part": "engine.lube.pump-outer-rotor",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-outer-rotor__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10,
+     "distance_mm": 150,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 11.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-spindle#1": {
+   "part": "engine.lube.pump-spindle",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-spindle__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 10,
+     "distance_mm": 150,
+     "group": "pump"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-stud#1": {
+   "part": "engine.lube.pump-stud",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-stud__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-nut#1": {
+   "part": "engine.lube.pump-nut",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.pump-stud#2": {
+   "part": "engine.lube.pump-stud",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-stud__2",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.pump-nut#2": {
+   "part": "engine.lube.pump-nut",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.pump-stud#3": {
+   "part": "engine.lube.pump-stud",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-stud__3",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.pump-nut#3": {
+   "part": "engine.lube.pump-nut",
+   "assembly": "engine.lube",
+   "node": "engine--lube--pump-nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.filter-head#1": {
+   "part": "engine.lube.filter-head",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-head__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-head-bolt#1": {
+   "part": "engine.lube.filter-head-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-head-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2.5,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-head-bolt#2": {
+   "part": "engine.lube.filter-head-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-head-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2.5,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.filter-head-seal#1": {
+   "part": "engine.lube.filter-head-seal",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-head-seal__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "filter-bowl"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2.4,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-case#1": {
+   "part": "engine.lube.filter-case",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-case__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "filter-bowl"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-element#1": {
+   "part": "engine.lube.filter-element",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-element__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "filter-bowl"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.6,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-spring#1": {
+   "part": "engine.lube.filter-spring",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-spring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "filter-bowl"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.7,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-plate#1": {
+   "part": "engine.lube.filter-plate",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-plate__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "filter-bowl"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.8,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-steel-washer#1": {
+   "part": "engine.lube.filter-steel-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-steel-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "filter-bowl"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-bolt-seal#1": {
+   "part": "engine.lube.filter-bolt-seal",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-bolt-seal__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "filter-bowl"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.filter-centre-bolt#1": {
+   "part": "engine.lube.filter-centre-bolt",
+   "assembly": "engine.lube",
+   "node": "engine--lube--filter-centre-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 220
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.oil-pipe#1": {
+   "part": "engine.lube.oil-pipe",
+   "assembly": "engine.lube",
+   "node": "engine--lube--oil-pipe__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.relief-washer#1": {
+   "part": "engine.lube.relief-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--relief-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 12.2,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.relief-washer#2": {
+   "part": "engine.lube.relief-washer",
+   "assembly": "engine.lube",
+   "node": "engine--lube--relief-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 12.3,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.lube.relief-nut#1": {
+   "part": "engine.lube.relief-nut",
+   "assembly": "engine.lube",
+   "node": "engine--lube--relief-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 12,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.relief-spring#1": {
+   "part": "engine.lube.relief-spring",
+   "assembly": "engine.lube",
+   "node": "engine--lube--relief-spring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 12.4,
+     "distance_mm": 160
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.relief-cup#1": {
+   "part": "engine.lube.relief-cup",
+   "assembly": "engine.lube",
+   "node": "engine--lube--relief-cup__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 12.5,
+     "distance_mm": 220
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.lube.dipstick#1": {
+   "part": "engine.lube.dipstick",
+   "assembly": "engine.lube",
+   "node": "engine--lube--dipstick__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.34893735911823875,
+      0.9371460502032698
+     ],
+     "order": 1,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.locating-plate#1": {
+   "part": "engine.timing.locating-plate",
+   "assembly": "engine.timing",
+   "node": "engine--timing--locating-plate__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 15,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.locating-plate-washer#1": {
+   "part": "engine.timing.locating-plate-washer",
+   "assembly": "engine.timing",
+   "node": "engine--timing--locating-plate-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 14,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.locating-plate-screw#1": {
+   "part": "engine.timing.locating-plate-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--locating-plate-screw__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 14,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.locating-plate-washer#2": {
+   "part": "engine.timing.locating-plate-washer",
+   "assembly": "engine.timing",
+   "node": "engine--timing--locating-plate-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 14,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.locating-plate-screw#2": {
+   "part": "engine.timing.locating-plate-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--locating-plate-screw__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 14,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.locating-plate-washer#3": {
+   "part": "engine.timing.locating-plate-washer",
+   "assembly": "engine.timing",
+   "node": "engine--timing--locating-plate-washer__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 14,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.locating-plate-screw#3": {
+   "part": "engine.timing.locating-plate-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--locating-plate-screw__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 14,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cam-wheel#1": {
+   "part": "engine.timing.cam-wheel",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cam-wheel__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 12,
+     "distance_mm": 150,
+     "group": "wheels"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.crank-wheel#1": {
+   "part": "engine.timing.crank-wheel",
+   "assembly": "engine.timing",
+   "node": "engine--timing--crank-wheel__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 12,
+     "distance_mm": 150,
+     "group": "wheels"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.chain#1": {
+   "part": "engine.timing.chain",
+   "assembly": "engine.timing",
+   "node": "engine--timing--chain__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 12,
+     "distance_mm": 150,
+     "group": "wheels"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cam-key#1": {
+   "part": "engine.timing.cam-key",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cam-key__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 13,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.crank-key#1": {
+   "part": "engine.timing.crank-key",
+   "assembly": "engine.timing",
+   "node": "engine--timing--crank-key__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 13,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.packing-washer#1": {
+   "part": "engine.timing.packing-washer",
+   "assembly": "engine.timing",
+   "node": "engine--timing--packing-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 13,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cam-lockwasher#1": {
+   "part": "engine.timing.cam-lockwasher",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cam-lockwasher__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cam-nut#1": {
+   "part": "engine.timing.cam-nut",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cam-nut__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-backplate#1": {
+   "part": "engine.timing.tensioner-backplate",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-backplate__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 120,
+     "group": "tensioner"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-body#1": {
+   "part": "engine.timing.tensioner-body",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-body__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 120,
+     "group": "tensioner"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-slipper#1": {
+   "part": "engine.timing.tensioner-slipper",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-slipper__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 120,
+     "group": "tensioner"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-spring#1": {
+   "part": "engine.timing.tensioner-spring",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-spring__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 120,
+     "group": "tensioner"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-cylinder#1": {
+   "part": "engine.timing.tensioner-cylinder",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-cylinder__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 120,
+     "group": "tensioner"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-plug#1": {
+   "part": "engine.timing.tensioner-plug",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-plug__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -0.8898508734206442,
+      0.4562514910359381
+     ],
+     "order": 8,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-lockwasher#1": {
+   "part": "engine.timing.tensioner-lockwasher",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-lockwasher__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-bolt#1": {
+   "part": "engine.timing.tensioner-bolt",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.tensioner-bolt#2": {
+   "part": "engine.timing.tensioner-bolt",
+   "assembly": "engine.timing",
+   "node": "engine--timing--tensioner-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.oil-thrower#1": {
+   "part": "engine.timing.oil-thrower",
+   "assembly": "engine.timing",
+   "node": "engine--timing--oil-thrower__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cover-gasket#1": {
+   "part": "engine.timing.cover-gasket",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cover#1": {
+   "part": "engine.timing.cover",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 230,
+     "group": "cover"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cover-seal#1": {
+   "part": "engine.timing.cover-seal",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-seal__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 230,
+     "group": "cover"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#1": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#2": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#3": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#4": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#5": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__5",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#6": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__6",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#7": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__7",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#8": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__8",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#9": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__9",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#10": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__10",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#11": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__11",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#12": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__12",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#13": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__13",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#14": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__14",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.cover-screw#15": {
+   "part": "engine.timing.cover-screw",
+   "assembly": "engine.timing",
+   "node": "engine--timing--cover-screw__15",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.timing.crank-pulley#1": {
+   "part": "engine.timing.crank-pulley",
+   "assembly": "engine.timing",
+   "node": "engine--timing--crank-pulley__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.pulley-lockwasher#1": {
+   "part": "engine.timing.pulley-lockwasher",
+   "assembly": "engine.timing",
+   "node": "engine--timing--pulley-lockwasher__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 330
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.timing.pulley-bolt#1": {
+   "part": "engine.timing.pulley-bolt",
+   "assembly": "engine.timing",
+   "node": "engine--timing--pulley-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 380
+    }
+   ],
+   "label": true,
+   "fitted": null
   }
  },
- "built": "2026-11-01T18:04:50+00:00"
+ "built": "2026-11-01T18:47:44+00:00"
 }

@@ -6,7 +6,7 @@ deck at z = -1.6, front +X, manifold/camshaft side +Y.
 import math
 from pathlib import Path
 
-from build123d import Align, Axis, Box, Cylinder, Location, Part, RegularPolygon, Rot, extrude, fillet
+from build123d import Align, Axis, Box, Cylinder, Location, Part, Plane, RegularPolygon, Rot, extrude, fillet
 
 from mgb import engine_layout as E, fasteners as F, probes, shapes as Sh, spec as S
 from mgb.head_layout import layout as head_layout
@@ -39,8 +39,8 @@ def _text(label, size, depth):
         return None
 
 
-from mgb.block_section import (CHEST_Z0, CHEST_Z1, FLANGE_HW, LEDGE_Z, LEFT_KNEE_Z, OPEN_H, OPEN_L,  # noqa: E402
-                                YL, YR, YR_LOW, YW, section, wall_y)
+from mgb.block_section import (CHEST_Z0, CHEST_Z1, FLANGE_HW, FUEL_PUMP_Z, LEDGE_Z, LEFT_KNEE_Z,  # noqa: E402
+                                LETTER_Z, OPEN_H, OPEN_L, PLUG7_Z, RELIEF_Z, YL, YR, YR_LOW, YW, section, wall_y)
 
 
 def _section(d=0.0):
@@ -124,18 +124,18 @@ def casting(spec) -> Part:
         blk = blk + face
     blk = blk + xcyl(32.0, x0 + 16, x1 - 16, EL.cam_y, EL.cam_z)   # cam tunnel shelf under the chest
     # oil pump drive pillar under the skew gear
-    py = wall_y(-230, 1)
-    pillar = Cylinder(17, 60, align=BASE).moved(Location((EL.drive_x, py - 6, -242)))
-    blk = blk + pillar + box(EL.drive_x - 17, EL.drive_x + 17, py - 14, py + 4, -250, -232)
+    py = wall_y(-250, 1)
+    pillar = Cylinder(17, EL.cam_z + 4 - (-262), align=BASE).moved(Location((EL.drive_x, py - 6, -262)))
+    blk = blk + pillar + box(EL.drive_x - 17, EL.drive_x + 17, py - 14, py + 4, -272, -254)
     # fuel pump flange (blanked on the MGB) and its stud, Fig 1.8 item 12
-    fp = _rounded_box(60, 108, wall_y(-205, 1) - 4, wall_y(-205, 1) + 9, -222, -188, 9.0)
+    fp = _rounded_box(60, 108, wall_y(FUEL_PUMP_Z, 1) - 4, wall_y(FUEL_PUMP_Z, 1) + 9, FUEL_PUMP_Z - 17, FUEL_PUMP_Z + 17, 9.0)
     blk = blk + fp
     # "1800" panel near the front
-    lz = (-198.0, -168.0)
+    lz = LETTER_Z
     blk = blk + box(118, 188, YL - 4, wall_y(lz[0], 1) + 3, *lz)
     # relief valve boss at the left rear (Haynes Sec 17), and the rear flange pad with stud 13
-    blk = blk + _yboss(15.0, -178, -222, 92, wall_y(-222, 1) + 12)
-    blk = blk + _yboss(11.0, -178, -188, 92, wall_y(-188, 1) + 8)      # plug 7 boss, beside the relief valve
+    blk = blk + _yboss(15.0, -178, RELIEF_Z, 92, wall_y(RELIEF_Z, 1) + 12)
+    blk = blk + _yboss(11.0, -178, PLUG7_Z, 92, wall_y(PLUG7_Z, 1) + 8)      # plug 7 boss, beside the relief valve
     blk = blk + _rounded_box(-216, -186, YL - 4, YL + 7, -170, -140, 6.0)
     # drain tap boss at the front of the left side, Fig 1.8 item 21
     blk = blk + _yboss(11.0, x1 - 18, -48, YL - 4, YL + 6)
@@ -153,14 +153,16 @@ def casting(spec) -> Part:
     # oil filter pad below the ledge, dipstick boss ahead of it
     fz = -185.0
     blk = blk + _rounded_box(-62, 2, wall_y(fz, -1) - 9, wall_y(fz, -1) + 6, fz - 24, fz + 24, 8.0)
-    blk = blk + _yboss(9.0, 60, -172, wall_y(-172, -1) + 4, wall_y(-172, -1) - 8)
+    from mgb import lube_layout as LL
+    dpl = Plane(origin=LL.DIPSTICK_ENTRY, z_dir=LL.DIPSTICK_DIR).location     # dipstick boss along the stick
+    blk = blk + dpl * Cylinder(9.0, 22).moved(Location((0, 0, -4)))
+    blk = blk + _yboss(10.0, -205, -232, wall_y(-232, -1) + 4, wall_y(-232, -1) - 10)   # oil pipe union boss
     blk = blk + box(x1 - 24, x1, YR - 22, YR, -75, -40)                  # alternator bracket lug
 
     lettering = _text("1800", 22, 1.6)
     if lettering is not None:   # reads front to back from the left side, raised outward
         lx = wall_y(lz[0], 1) + 3
-        from build123d import Plane
-        blk = blk + (Plane(origin=(153, lx, -183), x_dir=(-1, 0, 0), z_dir=(0, 1, 0)).location * lettering)
+        blk = blk + (Plane(origin=(153, lx, (lz[0] + lz[1]) / 2), x_dir=(-1, 0, 0), z_dir=(0, 1, 0)).location * lettering)
 
     cut = []
     bore = spec.nom("bore")
@@ -190,22 +192,32 @@ def casting(spec) -> Part:
     for px in (67.0, 124.0):
         cut.append(_yboss(5.0, px, -44, YR + 4, YR - 9))
     cut.append(Location((EL.drive_x, YR - 15, LEDGE_Z + 10)) * Rot(22, 0, 0) * Cylinder(14.3, 70))   # distributor bore
-    cut.append(_yboss(4.0, 60, -172, wall_y(-172, -1) + 10, wall_y(-172, -1) - 10))             # dipstick hole
-    cut.append(_yboss(6.4, -178, -222, 92, 130))
-    cut.append(_yboss(5.6, -178, -188, 92, 130))                                                 # relief valve bore
+    cut.append(dpl * Cylinder(3.4, 60))                                                          # dipstick hole
+    cut.append(_yboss(5.5, -205, -232, wall_y(-232, -1) + 6, wall_y(-232, -1) - 12))             # oil pipe union
+    for x, y in LL.sump_bolts():                                                                 # tapped sump bolt holes
+        cut.append(Cylinder(3.6, 14, align=BASE).moved(Location((x, y, sz - 1))))
+    cut.append(_yboss(6.4, -178, RELIEF_Z, 92, 130))
+    cut.append(_yboss(5.6, -178, PLUG7_Z, 92, 130))                                                 # relief valve bore
     cut.append(_yboss(6.4, x1 - 18, -48, YL - 10, YL + 8))                                       # drain tap thread
     cut.append(Cylinder(5, 30, rotation=(0, 90, 0)).moved(Location((x1 - 12, YR - 11, -57))))   # bracket lug hole
     cut.append(Cylinder(14, 30, rotation=(90, 0, 0)).moved(Location((-30, wall_y(fz, -1), fz)))) # oil filter feed
     for dz in (-15, 15):
         cut.append(_yboss(3.9, -30 + dz * 1.4, fz + dz * 0.3, wall_y(fz, -1) + 2, wall_y(fz, -1) - 12))
-    fy = wall_y(-205, 1)
+    fy = wall_y(FUEL_PUMP_Z, 1)
     for sx in (70, 98):                                          # fuel pump flange stud holes
-        cut.append(_yboss(3.2, sx, -205, fy - 6, fy + 12))
-    cut.append(_yboss(14.0, 84, -205, fy - 8, fy + 12))          # pump arm aperture (blanked)
+        cut.append(_yboss(3.2, sx, FUEL_PUMP_Z, fy - 6, fy + 12))
+    cut.append(_yboss(14.0, 84, FUEL_PUMP_Z, fy - 8, fy + 12))          # pump arm aperture (blanked)
     cut.append(_yboss(3.9, -201, -155, YL - 6, YL + 10))          # stud 13 hole
     cut.append(_yboss(3.9, EL.drive_x + 33, -97, YR - 12, YR + 4))  # distributor housing clamp bolt
     for c in cut:
         blk = blk - c
+    # oil pump pad inside the crankcase at the foot of the drive pillar, with the drive bore
+    fx, fy = LL.PUMP_FLANGE
+    pad = _rounded_box(fx - 34, fx + 30, fy - 30, YW - 2, sz, LL.PUMP_PAD_Z, 10.0, Axis.Z)
+    blk = blk + pad
+    blk = blk - Cylinder(7.0, EL.cam_z - sz, align=BASE).moved(Location((LL.DRIVE_X, LL.DRIVE_Y, sz - 1)))
+    for px_, py_ in LL.pump_studs():
+        blk = blk - Cylinder(3.6, 16, align=BASE).moved(Location((px_, py_, sz - 1)))
     for cx in (HL.pitch, -HL.pitch):                              # cover bolt bosses inside the chest
         blk = blk + _yboss(8.0, cx, EL.chest_z, 50, cy - 8)
         blk = blk - _yboss(3.9, cx, EL.chest_z, 84, cy)

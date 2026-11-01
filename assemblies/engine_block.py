@@ -168,16 +168,16 @@ for y in (-60, 60):
     add("plug-rear-lower", at(X0 + 6, y, -280, ry=-90), explode=ex(BACK, 1, 40))
 add("plug-front", at(X1 - 6, 70, -200, ry=90), explode=ex(FWD, 1, 40))
 # left rear, beside the relief valve boss (Fig 1.8 items 7 and 8); faces from the casting
-py = BLK.wall_y(-188, 1) + 8
-add("plug-side-washer", at(-178, py, -188, rx=-90), explode=ex(LEFT, 1, 25))
-add("plug-side", at(-178, py + 1.5, -188, rx=-90), explode=ex(LEFT, 1, 45))
+py = BLK.wall_y(BLK.PLUG7_Z, 1) + 8
+add("plug-side-washer", at(-178, py, BLK.PLUG7_Z, rx=-90), explode=ex(LEFT, 1, 25))
+add("plug-side", at(-178, py + 1.5, BLK.PLUG7_Z, rx=-90), explode=ex(LEFT, 1, 45))
 for y in (-90, 90):
     add("dowel-rear", at(X0 + 8, y, cz, ry=-90), explode=ex(BACK, 1, 35))
 for y in (-80, 80):
     add("dowel-front", at(X1 - 8, y, -40, ry=90), explode=ex(FWD, 1, 35))
 add("drain-tap-washer", at(X1 - 18, BLK.YL + 6, -48, rx=-90), explode=ex(LEFT, 1, 25))
 add("drain-tap", at(X1 - 18, BLK.YL + 7.5, -48, rx=-90), explode=ex(LEFT, 1, 50))
-add("stud-side", at(70, BLK.wall_y(-205, 1) + 3, -205, rx=-90), explode=ex(LEFT, 1, 50))
+add("stud-side", at(70, BLK.wall_y(BLK.FUEL_PUMP_Z, 1) + 3, BLK.FUEL_PUMP_Z, rx=-90), explode=ex(LEFT, 1, 50))
 add("stud-rear", at(-201, BLK.YL + 1, -155, rx=-90), explode=ex(LEFT, 1, 50))
 
 INSTANCES = I

@@ -11,9 +11,9 @@ screw sizes and torques are published.
 import math
 from pathlib import Path
 
-from build123d import Cylinder, Ellipse, Location, Part, Plane, Polygon, Pos, extrude
+from build123d import Circle, Cylinder, Ellipse, Location, Part, Plane, Polygon, Pos, extrude
 
-from mgb import block_section as B, engine_layout as E, fasteners as F, probes, shapes as Sh, spec as S
+from mgb import block_section as B, engine_layout as E, fasteners as F, probes, shapes as Sh, spec as S, timing_layout as TL
 from mgb.head_layout import layout as head_layout
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -28,12 +28,11 @@ CZ, SZ, DECK = EL.crank_z, EL.sump_z, EL.deck_z
 FRONT_OUTLINE = [(-150, -16), (-40, -16), (-8, -50), (40, -38), (100, -52), (122, -70), (116, -108), (128, -150),
                  (119, -196), (130, -240), (121, -280), (110, -306), (60, -312), (-120, -312), (-136, -298),
                  (-150, -298)]
-# raised (pressed) panel the timing cover seats against
-TIMING_PANEL = [(12, -78), (108, -84), (120, -150), (112, -222), (84, -294), (-36, -298), (-62, -250), (-44, -176)]
+# raised (pressed) panel the timing cover seats against, and the cover's scalloped edge
+TIMING_PANEL = TL.cover_outline(16.0)
 FRONT_SCREWS = [(-50.0, -40.0), (88.0, -44.0), (-95.0, -290.0), (95.0, -290.0)]   # items 30/31, into the block
 FRONT_BOLT = (-136.0, -30.0)                                                      # item 32 with nut 33 behind
-TIMING_COVER_HOLES = [(117, -112), (122, -152), (114, -200), (108, -252), (78, -288), (18, -292), (-44, -288),
-                      (-56, -240), (-46, -186), (-12, -118)]
+TIMING_COVER_HOLES = TL.COVER_SCREWS
 MOUNT_HOLES = [(-136, -150), (-136, -190), (-116, -150), (-116, -190)]
 CRANK_OPENING = (-8.0, -245.0, 42.0, 58.0)    # centre y, z and half axes of the oval round the crank nose
 
@@ -75,7 +74,9 @@ def _bell_points():
 
 def front_plate(spec) -> Part:
     t = spec.nom("thickness")
-    p = _plate(FRONT_OUTLINE, t)
+    p = _plate(FRONT_OUTLINE, t) + _plate(TL.cover_outline(22.0), t)
+    for y, z in TIMING_COVER_HOLES:                                      # scallops round the cover screws
+        p = p + extrude(Plane.YZ * Pos(y, z) * Circle(10.0), t, dir=(1, 0, 0))
     p = p + _plate(TIMING_PANEL, 1.6, t - 0.01)                          # pressed timing cover seat
     p = p - _xhole(27.0, EL.cam_y, EL.cam_z)                             # camshaft
     p = p - extrude(Plane.YZ.offset(-5) * Pos(CRANK_OPENING[0], CRANK_OPENING[1])
@@ -87,6 +88,13 @@ def front_plate(spec) -> Part:
         p = p - _xhole(3.3, y, z)
     for y, z in MOUNT_HOLES:
         p = p - _xhole(5.2, y, z)
+    for k in range(3):                                                   # camshaft locating plate bolts
+        a = math.radians(90 + 120 * k)
+        p = p - _xhole(3.6, EL.cam_y + 34 * math.cos(a), EL.cam_z + 34 * math.sin(a))
+    (sy, sz), m = TL.tensioner_point()                                   # tensioner bolts
+    v = TL.ROLLER_D / 2 + 1.0 + 44
+    for u in (-24, 24):
+        p = p - _xhole(4.2, sy - m[1] * u + m[0] * v, sz + m[0] * u + m[1] * v)
     return _l(p, spec)
 
 
@@ -104,7 +112,7 @@ def front_plate_gasket(spec) -> Part:
 
 
 def _rear_outline(t, x0=0.0):
-    from build123d import Circle
+
     disc = extrude(Plane.YZ.offset(x0) * Pos(0, CZ) * Circle(REAR_R), t, dir=(1, 0, 0))
     lobe = extrude(Plane.YZ.offset(x0) * Pos(STARTER[0], STARTER[1]) * Circle(STARTER[2] + 18), t, dir=(1, 0, 0))
     return disc + lobe + _plate(REAR_UPPER, t, x0)
@@ -150,7 +158,7 @@ def rear_plate_gasket(spec) -> Part:
 def seal_retainer(spec) -> Part:
     """Early-engine oil seal retaining plate (Haynes photo 53.3): a lobed plate on the
     gearbox side of the end plate with a collar round the crankshaft tail."""
-    from build123d import Circle
+
     t, od, id_ = spec.nom("thickness"), spec.nom("outside_diameter"), spec.nom("inside_diameter")
     p = extrude(Plane.YZ * Circle(od / 2), t, dir=(-1, 0, 0))
     for k in range(6):

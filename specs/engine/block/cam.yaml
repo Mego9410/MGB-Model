@@ -45,7 +45,7 @@ parts:
     quantity: 8
     notes: Ball end in the tappet, cup at the top for the rocker adjusting screw (Haynes Sec 58).
     specs:
-      length: { mm: 252.4, source: { label: D, method: "Tappet seat to rocker adjusting-screw ball in the derived layout" } }
+      length: { mm: 284.4, source: { label: D, method: "Tappet seat to rocker adjusting-screw ball, with the camshaft at the height the 52-pitch timing chain sets (mgb.engine_layout)" } }
       diameter: { mm: 7.9, source: { label: D, method: "Not published" } }
 
   - id: engine.block.tappet-cover

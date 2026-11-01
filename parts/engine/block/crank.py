@@ -83,7 +83,7 @@ def crankshaft(spec) -> Part:
                  (EL.main_x[2] + 15, EL.cyl_x[3] - pl / 2 - wt + 1)):
         c = c + xcyl(rm, min(a, b), max(a, b))
     front = EL.main_x[0] + 16
-    c = c + xcyl(spec.nom("snout_diameter") / 2, front, front + 72)          # snout: sprocket, pulley
+    c = c + xcyl(spec.nom("snout_diameter") / 2, front, front + 80)          # snout: sprocket, pulley
     rear = EL.main_x[2] - 16
     c = c + xcyl(rm - 2, rear - 22, rear) + xcyl(spec.nom("flange_diameter") / 2, rear - 34, rear - 22)
     return _l(c, spec)

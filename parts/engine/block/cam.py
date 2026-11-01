@@ -73,12 +73,12 @@ def camshaft(spec) -> Part:
         c = c + xcyl(r, x - L / 2, x + L / 2)
     for v in HL.valves:
         c = c + _lobe(v.x, w, base_r, lift, lobe_angle(v.kind, v.cyl))
-    gear = xcyl(15.0, EL.drive_x - 9, EL.drive_x + 9)    # skew gear for distributor and oil pump drive
+    gear = xcyl(11.0, EL.drive_x - 9, EL.drive_x + 9)    # skew gear for distributor and oil pump drive
     for k in range(14):
         a = 360 * k / 14
-        gear = gear - Rot(a, 0, 0) * (Location((EL.drive_x, 0, 15.0)) * Rot(0, 0, 30) * Box(22, 2.0, 4.0))
+        gear = gear - Rot(a, 0, 0) * (Location((EL.drive_x, 0, 11.0)) * Rot(0, 0, 30) * Box(22, 2.0, 4.0))
     c = c + gear
-    c = c + xcyl(11.0, xs[0] + 15, xs[0] + 42)                    # nose for the timing sprocket
+    c = c + xcyl(11.0, xs[0] + 15, xs[0] + 66)                    # nose: locating plate, timing wheel and nut
     return _l(c, spec)
 
 

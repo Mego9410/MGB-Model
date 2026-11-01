@@ -1,0 +1,271 @@
+# Timing gear, 18G double-roller chain type. Haynes Sec 18, 19, 23, 50, 51, 52;
+# Figs 1.11 and 1.25; photos 18.2, 50.5, 51.3, 51.8, 51.12, 51.15.
+# Wheel teeth and chain length: Steve Strange, "Tuning the B-Series Engine"
+# (Renold duplex chain, 52 pitches of 3/8 in, 20 and 40 teeth).
+defaults:
+  system: engine
+  assembly: engine.timing
+  haynes: { section: 19, spec_page: 24 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: engine.timing.cam-wheel
+    name: Camshaft chainwheel
+    haynes: { figures: [{ figure: "1.25" }], section: 51 }
+    quantity: 1
+    notes: >
+      Duplex wheel with a dished web and two lightening holes (photo 51.3). The timing
+      dimple lines up with the one on the crankshaft wheel (Fig 1.25 item 2). Its 40 teeth
+      against the crankshaft's 20 and the 52-pitch chain set the camshaft height in this model.
+    specs:
+      teeth: { count: 40, source: { label: S, ref: "Steve Strange, Tuning the B-Series Engine" } }
+      pitch_diameter: { mm: 121.40, source: { label: D, method: "3/8 in pitch on 40 teeth: p / sin(180/40)" } }
+      bore: { mm: 22.0, source: { label: D, method: "Fits the camshaft nose; not published" } }
+      hub_length: { mm: 20.0, source: { label: D, method: "Proportion from photo 51.3" } }
+      nut_torque: { lbf_ft: [60, 70], nm: [81, 95], source: { label: H, page: 24, note: "Camshaft sprocket nut" } }
+
+  - id: engine.timing.crank-wheel
+    name: Crankshaft chainwheel
+    haynes: { figures: [{ figure: "1.25" }], section: 51 }
+    quantity: 1
+    notes: Duplex wheel on a long hub, keyed to the crankshaft; packing washers behind it set the alignment with the camshaft wheel (Haynes Sec 51 para 7).
+    specs:
+      teeth: { count: 20, source: { label: S, ref: "Steve Strange, Tuning the B-Series Engine" } }
+      pitch_diameter: { mm: 60.89, source: { label: D, method: "3/8 in pitch on 20 teeth: p / sin(180/20)" } }
+      bore: { mm: 31.75, source: { label: D, method: "Fits the crankshaft snout; not published" } }
+      hub_length: { mm: 32.0, source: { label: D, method: "Proportion from photo 51.3" } }
+
+  - id: engine.timing.chain
+    name: Timing chain (duplex)
+    haynes: { figures: [{ figure: "1.25" }], section: 51 }
+    quantity: 1
+    notes: >
+      Double roller chain on the 18G (Haynes Sec 19, "double-roller chain type"). Rollers,
+      pins and side plates are modelled link by link round the real path.
+    specs:
+      pitches: { count: 52, source: { label: S, ref: "Steve Strange, Tuning the B-Series Engine; British Parts Northwest 52-link dual row chain" } }
+      pitch: { in: 0.375, mm: 9.525, source: { label: S, ref: "Steve Strange, Tuning the B-Series Engine" } }
+      roller_diameter: { mm: 6.35, source: { label: S, ref: "ISO 606 chain 06B" } }
+      transverse_pitch: { mm: 10.24, source: { label: S, ref: "ISO 606 chain 06B-2" } }
+      inner_width: { mm: 5.72, source: { label: S, ref: "ISO 606 chain 06B" } }
+
+  - id: engine.timing.tensioner-body
+    name: Chain tensioner body
+    haynes: { figures: [{ figure: "1.11" }, { figure: "1.25" }], section: 18 }
+    quantity: 1
+    finish: cast_iron
+    notes: Bolted to the block through the front plate with two bolts and a tab washer (Sec 18 para 3). The bottom plug gives access for a 1/8 in Allen key (Sec 19 para 10).
+    specs:
+      bolt_spacing: { mm: 48.0, source: { label: D, method: "Proportion from Fig 1.11" } }
+      allen_key: { in: 0.125, mm: 3.18, source: { label: H, page: 35, note: "Sec 19 para 10" }, display_only: true }
+
+  - id: engine.timing.tensioner-slipper
+    name: Tensioner slipper head and plunger
+    haynes: { figures: [{ figure: "1.11" }], section: 18 }
+    quantity: 1
+    finish: rubber
+    notes: Rubber slipper on the plunger; it presses on the run on the right-hand side (Fig 1.25).
+    specs:
+      pad_length: { mm: 46.0, source: { label: D, method: "Proportion from Fig 1.11" } }
+
+  - id: engine.timing.tensioner-spring
+    name: Tensioner spring
+    haynes: { figures: [{ figure: "1.11" }], section: 52 }
+    quantity: 1
+    specs:
+      wire_diameter: { mm: 1.2, source: { label: D, method: "Not published" } }
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Fits inside the plunger" } }
+      length: { mm: 26.0, source: { label: D, method: "Fitted length; not published" } }
+
+  - id: engine.timing.tensioner-cylinder
+    name: Tensioner inner cylinder
+    haynes: { figures: [{ figure: "1.11" }], section: 52 }
+    quantity: 1
+    notes: Helical slot engages the peg in the plunger (Sec 52 para 2).
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Proportion from Fig 1.11" } }
+
+  - id: engine.timing.tensioner-backplate
+    name: Tensioner backplate
+    haynes: { figures: [{ figure: "1.11" }], section: 52 }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.tensioner-plug
+    name: Tensioner bottom plug
+    haynes: { section: 19 }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.5625, source: { label: D, method: "3/8 in hexagon; not published" } }
+
+  - id: engine.timing.tensioner-bolt
+    name: Tensioner bolt
+    haynes: { section: 18 }
+    quantity: 2
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 1.0, source: { label: D, method: "Through the flange, backplate and front plate" } }
+
+  - id: engine.timing.tensioner-lockwasher
+    name: Tensioner tab washer
+    haynes: { section: 18 }
+    quantity: 1
+    notes: Haynes Sec 18 para 3 - knock back the lockwasher tabs.
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.locating-plate
+    name: Camshaft locating plate
+    haynes: { section: 50 }
+    quantity: 1
+    notes: Three-lobed plate held by three bolts with spring washers (Haynes Sec 23 para 10, photo 50.5).
+    specs:
+      outside_diameter: { mm: 54.0, source: { label: D, method: "Proportion from photo 50.5" } }
+      inside_diameter: { mm: 23.0, source: { label: D, method: "Clears the camshaft nose" } }
+      thickness: { mm: 3.0, source: { label: D, method: "Not published" } }
+      bolts: { count: 3, source: { label: H, page: 36, note: "Sec 23 para 10" }, display_only: true }
+
+  - id: engine.timing.locating-plate-screw
+    name: Locating plate bolt
+    haynes: { section: 23 }
+    quantity: 3
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 0.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.locating-plate-washer
+    name: Locating plate spring washer
+    haynes: { section: 23 }
+    quantity: 3
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "Typical 1/4 in spring washer" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "Typical 1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Typical 1/4 in spring washer" } }
+
+  - id: engine.timing.cam-nut
+    name: Camshaft wheel nut
+    haynes: { section: 19 }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.9375, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/8 in" } }
+      thickness: { in: 0.546875, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/8 in" } }
+      torque: { lbf_ft: [60, 70], nm: [81, 95], source: { label: H, page: 24 } }
+
+  - id: engine.timing.cam-lockwasher
+    name: Camshaft nut lockwasher
+    haynes: { section: 19 }
+    quantity: 1
+    notes: Haynes Sec 19 para 11 - bend back the lockwasher tag on the camshaft nut.
+    specs:
+      outside_diameter: { mm: 34.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 16.2, source: { label: D, method: "Fits the 5/8 in nose thread" } }
+      thickness: { mm: 1.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.packing-washer
+    name: Crankshaft wheel packing washer
+    haynes: { section: 51 }
+    quantity: 1
+    notes: Haynes Sec 51 para 7 - add or remove packing washers behind the crankshaft wheel to line the two wheels up.
+    specs:
+      outside_diameter: { mm: 44.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 32.0, source: { label: D, method: "Fits the crankshaft snout" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.oil-thrower
+    name: Oil thrower
+    haynes: { section: 51 }
+    quantity: 1
+    notes: Dished disc in front of the crankshaft wheel; concave side facing forward on early engines (Haynes Sec 51 para 9).
+    specs:
+      outside_diameter: { mm: 80.0, source: { label: D, method: "Inside the cover seal housing; not published" } }
+      inside_diameter: { mm: 32.0, source: { label: D, method: "Fits the crankshaft snout" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.cover
+    name: Timing cover
+    haynes: { section: 51 }
+    quantity: 1
+    finish: paint_engine
+    notes: >
+      Pressed steel cover round both wheels and the tensioner, scalloped flange, oil seal
+      housing for the pulley hub and ignition timing pointers below the crankshaft
+      (photos 51.12, 51.15). The cover bolts are of different sizes (Sec 19 para 8).
+    specs:
+      sheet_thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+      seal_housing_diameter: { mm: 66.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.cover-gasket
+    name: Timing cover gasket
+    haynes: { section: 51 }
+    quantity: 1
+    finish: gasket
+    specs:
+      thickness: { mm: 0.4, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.cover-seal
+    name: Timing cover oil seal
+    haynes: { section: 51 }
+    quantity: 1
+    finish: rubber
+    specs:
+      outside_diameter: { mm: 60.0, source: { label: D, method: "Fits the seal housing" } }
+      inside_diameter: { mm: 43.0, source: { label: D, method: "Runs on the pulley hub" } }
+      width: { mm: 8.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.cover-screw
+    name: Timing cover screw
+    haynes: { section: 19 }
+    quantity: 15
+    specs:
+      thread_diameter: { in: 0.25, source: { label: D, method: "Not in Haynes; Haynes notes the sizes vary" } }
+      length: { in: 0.625, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.crank-pulley
+    name: Crankshaft pulley
+    haynes: { section: 19 }
+    quantity: 1
+    finish: cast_iron
+    notes: Single groove for the fan belt; its hub runs in the timing cover seal (photo 51.15).
+    specs:
+      outside_diameter: { mm: 133.0, source: { label: D, method: "Proportion from photo 51.15; not published" } }
+      bore: { mm: 31.75, source: { label: D, method: "Fits the crankshaft snout" } }
+      hub_length: { mm: 41.0, source: { label: D, method: "From the oil thrower to the snout end" } }
+      groove_top_width: { mm: 13.0, source: { label: D, method: "Fan belt width; not published" } }
+      bolt_torque: { lbf_ft: 70, nm: 95, source: { label: H, page: 24, note: "Crankshaft pulley nut" } }
+
+  - id: engine.timing.pulley-bolt
+    name: Crankshaft pulley bolt
+    haynes: { section: 19 }
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.625, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 1.75, source: { label: D, method: "Not published" } }
+      torque: { lbf_ft: 70, nm: 95, source: { label: H, page: 24 } }
+
+  - id: engine.timing.pulley-lockwasher
+    name: Crankshaft pulley lockwasher
+    haynes: { section: 19 }
+    quantity: 1
+    notes: Haynes Sec 19 para 5 - bend back the locking tab on the crankshaft pulley bolt.
+    specs:
+      outside_diameter: { mm: 38.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 16.2, source: { label: D, method: "Fits the 5/8 in bolt" } }
+      thickness: { mm: 1.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.timing.crank-key
+    name: Crankshaft Woodruff key
+    haynes: { section: 19 }
+    quantity: 1
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Not published" } }
+      width: { mm: 4.76, source: { label: D, method: "3/16 in key; not published" } }
+
+  - id: engine.timing.cam-key
+    name: Camshaft Woodruff key
+    haynes: { section: 51 }
+    quantity: 1
+    specs:
+      length: { mm: 16.0, source: { label: D, method: "Not published" } }
+      width: { mm: 4.76, source: { label: D, method: "3/16 in key; not published" } }

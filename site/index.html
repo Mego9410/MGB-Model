@@ -22,7 +22,7 @@ html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 var(--body);overflow:hidden}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.app{height:100%;display:grid;grid-template-columns:minmax(220px,260px) 1fr minmax(300px,360px);grid-template-rows:auto 1fr auto;grid-template-areas:"top top top" "tree stage card" "tree bar card"}
+.app{height:100%;display:grid;grid-template-columns:minmax(220px,260px) 1fr minmax(300px,360px);grid-template-rows:auto auto 1fr;grid-template-areas:"top top top" "tree bar card" "tree stage card"}
 header{grid-area:top;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--edge);background:var(--panel);padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 header h1{font:600 22px/1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:0}
 header .reg{font:500 11px var(--mono);color:var(--muted);letter-spacing:.06em}
@@ -30,7 +30,7 @@ header .reg{font:500 11px var(--mono);color:var(--muted);letter-spacing:.06em}
 .crumbs button{background:none;border:0;padding:2px 0;cursor:pointer;color:var(--muted)}
 .crumbs button:hover{color:var(--fg);text-decoration:underline}
 .crumbs .here{color:var(--fg);font-weight:600}
-nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);background:var(--panel);padding:10px 8px 16px max(8px,env(safe-area-inset-left,0px))}
+nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);background:var(--panel);padding:10px 8px max(24px,env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
 .tree h2,.card h2.k{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 8px 8px}
 .tree ul{list-style:none;margin:0;padding:0}
 .tree li ul{padding-left:14px}
@@ -58,13 +58,13 @@ main.stage canvas{display:block;width:100%;height:100%;touch-action:none}
 .leg{position:absolute;transform:translate(-50%,-50%);font:600 11px var(--mono);background:var(--panel);border:1px solid var(--edge);border-radius:999px;padding:1px 6px;color:var(--fg)}
 .measure-tag{position:absolute;transform:translate(-50%,-130%);font:600 12px var(--mono);background:var(--accent);color:var(--accent-ink);border-radius:4px;padding:2px 6px;white-space:nowrap}
 .toast{position:absolute;left:50%;top:12px;transform:translateX(-50%);background:var(--panel);border:1px solid var(--edge);border-radius:6px;padding:6px 12px;font-size:13px;max-width:calc(100% - 32px)}
-.bar{grid-area:bar;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--edge);background:var(--panel);padding-block:8px;padding-left:16px;padding-right:16px}
+.bar{grid-area:bar;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--edge);background:var(--panel);padding-block:8px;padding-left:16px;padding-right:16px}
 .bar label{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .bar input[type=range]{flex:1 1 160px;min-width:0;accent-color:var(--accent)}
 .bar .val{font:500 12px var(--mono);width:40px;text-align:right;font-variant-numeric:tabular-nums}
 .tool{background:var(--chip);border:1px solid var(--edge);border-radius:6px;padding:6px 10px;cursor:pointer;font:600 12px var(--display);letter-spacing:.08em;text-transform:uppercase}
 .tool[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);background:var(--panel);padding:14px max(16px,env(safe-area-inset-right,0px)) 24px 16px}
+aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);background:var(--panel);padding:14px max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) 16px}
 .card .empty{color:var(--muted);margin:24px 4px}
 .card .kind{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .card h3{font:600 26px/1.05 var(--display);margin:4px 0 6px;text-wrap:balance}
@@ -90,7 +90,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
 .tabs{display:none}
 #err{white-space:pre-wrap}
 @media (max-width: 820px){
-  .app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto auto;grid-template-areas:"top" "stage" "bar" "sheet"}
+  .app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr auto;grid-template-areas:"top" "bar" "stage" "sheet"}
   nav.tree,aside.card{grid-area:sheet;border:0;border-top:1px solid var(--edge);max-height:42vh}
   .tabs{display:flex;grid-area:sheet;align-self:start;gap:4px;background:var(--panel);padding:6px 16px 0;position:relative;z-index:2}
   .tabs button{flex:1;background:none;border:0;border-bottom:2px solid transparent;padding:8px;font:600 13px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer}
@@ -289,7 +289,7 @@ function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color =
 // ---------- explode: parts leave along their removal axis, in Haynes removal order
 const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
 // at system level (e.g. the whole engine) assemblies separate along these directions (CAD axes, mm)
-const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420] };
+const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420], 'engine.timing': [260, 0, 0], 'engine.lube': [0, 0, -260] };
 function focusAssembly(){ return current && N[current] && N[current].kind === 'assembly' ? current : null; }
 function applyExplode(){
   const t = ex.value / 100; exv.textContent = ex.value + '%';
@@ -462,7 +462,12 @@ function renderTree(){
     b.innerHTML = '<span class="n"></span><span class="c"></span>';
     b.querySelector('.n').textContent = n.name;
     b.querySelector('.c').textContent = n.kind === 'part' ? (n.quantity ? '×' + n.quantity : '') : (n.kind === 'system' && !cnt ? 'to build' : cnt ? cnt + ' part' + (cnt > 1 ? 's' : '') : '');
-    b.addEventListener('click', () => { if (kids.length && !isOpen(id)) setOpen(id, true); n.kind === 'part' ? select(id) : go(id); });
+    // a group's first tap shows it; tapping it again while it is shown opens or closes it
+    b.addEventListener('click', () => {
+      if (n.kind === 'part') return select(id);
+      if (kids.length && current === id && !selected) return setOpen(id, li.classList.contains('closed'));
+      go(id);
+    });
     const line = document.createElement('div'); line.className = 'line'; line.append(tw, b); li.append(line);
     if (kids.length){ const ul = document.createElement('ul'); kids.forEach(k => { treeParent[k] = id; ul.append(make(k)); }); li.append(ul); }
     return li;
@@ -558,7 +563,18 @@ addEventListener('keydown', e => {
 function resize(){ const w = stage.clientWidth, h = stage.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
 new ResizeObserver(resize).observe(stage); resize();
 applyTheme();
+// Render at full rate while something is moving; once the view has been still for a second,
+// drop to 4 frames a second so an idle page costs little (and software-GL tests stay quick).
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let lastActive = performance.now(), lastRender = 0;
+const wake = () => { lastActive = performance.now(); };
+controls.addEventListener('change', wake);
+for (const ev of ['pointerdown', 'pointermove', 'wheel', 'keydown', 'input', 'hashchange']) addEventListener(ev, wake, { passive: true });
 renderer.setAnimationLoop(() => {
+  const now = performance.now();
+  if (!fly.to && now - lastActive > 1000 && now - lastRender < 250) return;
+  lastRender = now;
+  if (fly.to && reduceMotion.matches){ controls.target.copy(fly.to.target); camera.position.copy(fly.to.pos); fly.to = null; }
   if (fly.to){
     controls.target.lerp(fly.to.target, 0.15); camera.position.lerp(fly.to.pos, 0.15);
     // finish after ~0.75 s or once close; never hold the camera longer than that

@@ -17,6 +17,24 @@ STROKE = 88.9            # Haynes p20
 ROD_CENTRES = 165.1      # Haynes p21
 COMPRESSION_HEIGHT = 42.06  # FIA homologation 3016: gudgeon centre to crown, 42.01/42.11 mm
 GASKET = 1.6             # derived head gasket thickness
+# Timing drive: Renold duplex chain of 52 pitches at 3/8 in, 20-tooth crankshaft and
+# 40-tooth camshaft sprockets (Steve Strange, "Tuning the B-Series Engine").
+CHAIN_PITCH = 9.525
+CHAIN_PITCHES = 52
+CRANK_TEETH, CAM_TEETH = 20, 40
+
+
+def pitch_radius(teeth):
+    import math
+    return CHAIN_PITCH / (2 * math.sin(math.pi / teeth))
+
+
+def sprocket_centres():
+    """Crank-to-cam centre distance that a 52-pitch chain sets on 20/40 sprockets."""
+    import math
+    p, n1, n2, L = CHAIN_PITCH, CAM_TEETH, CRANK_TEETH, CHAIN_PITCHES
+    a = L - (n1 + n2) / 2
+    return p / 4 * (a + math.sqrt(a * a - 2 * ((n1 - n2) / math.pi) ** 2))
 
 
 @dataclass
@@ -46,11 +64,14 @@ def layout(head_layout) -> EngineLayout:
         deck_z=deck, crank_z=crank_z, throw=STROKE / 2, cyl_x=list(head_layout.cyl_x),
         pin_angle={1: 0.0, 2: 180.0, 3: 180.0, 4: 0.0},
         main_x=[205.0, 0.0, -205.0],
-        cam_y=head_layout.pushrod_y, cam_z=-150.0,
+        cam_y=head_layout.pushrod_y, cam_z=0.0,
         cam_journal_x=[200.0, 0.0, -200.0],
         sump_z=crank_z - 50.0,
     )
-    lay.chest_z = lay.cam_z + 72.0
+    # camshaft directly below the pushrods, at the centre distance the timing chain sets
+    import math
+    lay.cam_z = crank_z + math.sqrt(sprocket_centres() ** 2 - lay.cam_y ** 2)
+    lay.chest_z = -78.0          # tappet chest openings just below the manifolds (photo 61.1(a))
     lay.tappet_xy = [(v.x, head_layout.pushrod_y) for v in head_layout.valves]
     return lay
 
