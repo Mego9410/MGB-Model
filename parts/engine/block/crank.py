@@ -86,7 +86,14 @@ def crankshaft(spec) -> Part:
     c = c + xcyl(spec.nom("snout_diameter") / 2, front, front + 80)          # snout: sprocket, pulley
     rear = EL.main_x[2] - 16
     c = c + xcyl(rm - 2, rear - 22, rear) + xcyl(spec.nom("flange_diameter") / 2, rear - 34, rear - 22)
+    for k in range(6):                                            # flywheel bolt holes (mgaguru: six bolts)
+        a = math.radians(30 + 60 * k)
+        c = c - xcyl(4.4, rear - 35, rear - 21, y=FLYWHEEL_BOLT_R * math.cos(a), z=FLYWHEEL_BOLT_R * math.sin(a))
+    c = c - xcyl(10.0, rear - 35, rear - 20)                      # spigot bush bore
     return _l(c, spec)
+
+
+FLYWHEEL_BOLT_R = 37.0
 
 
 def shell(spec, journal_d=None) -> Part:

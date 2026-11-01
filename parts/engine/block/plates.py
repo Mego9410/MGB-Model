@@ -38,7 +38,7 @@ CRANK_OPENING = (-8.0, -245.0, 42.0, 58.0)    # centre y, z and half axes of the
 
 # ---- rear end plate -----------------------------------------------------------------------
 REAR_R = 182.0                                   # lower edge radius about the crank (flywheel housing)
-STARTER = (-140.0, CZ - 66.0, 44.0)              # starter motor aperture, right-hand side (centre y, z, radius)
+STARTER = (-148.3, CZ - 70.0, 44.0)              # starter aperture, right-hand side: pinion on the 120-tooth ring (centre y, z, radius)
 REAR_UPPER = [(-176, CZ + 40), (-150, -110), (-118, -40), (-60, -12), (0, -6), (60, -12), (118, -40), (150, -110),
               (176, CZ + 40), (0, CZ)]
 REAR_SCREWS_5_16 = [(-58.0, -22.0), (92.0, -22.0), (-60.0, -110.0), (100.0, -110.0)]

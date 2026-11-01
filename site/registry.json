@@ -31,8 +31,10 @@
    },
    "children": [
     "engine.block",
+    "engine.flywheel",
     "engine.head",
     "engine.lube",
+    "engine.manifolds",
     "engine.timing"
    ]
   },
@@ -224,7 +226,26 @@
     "engine.block.stud-rear"
    ],
    "file": "models/engine.block.json",
-   "bytes": 626129
+   "bytes": 635904
+  },
+  "engine.flywheel": {
+   "id": "engine.flywheel",
+   "kind": "assembly",
+   "name": "Flywheel and ring gear",
+   "parent": "engine",
+   "haynes": {
+    "figures": [],
+    "section": 22
+   },
+   "children": [
+    "engine.flywheel.spigot-bush",
+    "engine.flywheel.flywheel",
+    "engine.flywheel.ring-gear",
+    "engine.flywheel.lock-plate",
+    "engine.flywheel.bolt"
+   ],
+   "file": "models/engine.flywheel.json",
+   "bytes": 97829
   },
   "engine.head": {
    "id": "engine.head",
@@ -367,6 +388,26 @@
    ],
    "file": "models/engine.lube.json",
    "bytes": 515880
+  },
+  "engine.manifolds": {
+   "id": "engine.manifolds",
+   "kind": "assembly",
+   "name": "Inlet and exhaust manifolds",
+   "parent": "engine",
+   "haynes": {
+    "figures": [],
+    "section": 15
+   },
+   "children": [
+    "engine.manifolds.gasket",
+    "engine.manifolds.exhaust",
+    "engine.manifolds.inlet",
+    "engine.manifolds.washer-large",
+    "engine.manifolds.nut",
+    "engine.manifolds.washer-small"
+   ],
+   "file": "models/engine.manifolds.json",
+   "bytes": 162081
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -3729,6 +3770,319 @@
      "source": "H",
      "sourceName": "Haynes",
      "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.flywheel.flywheel": {
+   "id": "engine.flywheel.flywheel",
+   "kind": "part",
+   "name": "Flywheel",
+   "parent": "engine.flywheel",
+   "haynes": {
+    "section": 22,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "The 20 lb flywheel used on 1962-64 MGBs, six bolts to the crankshaft and three dowels for the MGB clutch (mgaguru.com). The 1/4 timing mark lines up with TDC on Nos 1 and 4 (Haynes Sec 53 para 4).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "weight_lb",
+     "label": "Weight lb",
+     "value": "20",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/clutch/fw_201a.htm",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "ring_seat_diameter",
+     "label": "Ring seat diameter",
+     "value": "10.75 in (273.05 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.britishcarforum.com/community/threads/can-someone-measure-a-3-main-flywheel.23924",
+     "note": "Owner measurement, 3-main flywheel",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "rim_thickness",
+     "label": "Rim thickness",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sized toward the 20 lb weight; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "hub_thickness",
+     "label": "Hub thickness",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "clutch_bolt_circle",
+     "label": "Clutch bolt circle",
+     "value": "238.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clutch cover bolts; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bolts",
+     "label": "Bolts",
+     "value": "6",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/clutch/fw_201a.htm",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bolt_torque",
+     "label": "Bolt torque",
+     "value": "40 lbf ft (54 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
+     "note": "Haynes prints 54 Nm; the lbf ft figure is missing from the table",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.43
+  },
+  "engine.flywheel.ring-gear": {
+   "id": "engine.flywheel.ring-gear",
+   "kind": "part",
+   "name": "Starter ring gear",
+   "parent": "engine.flywheel",
+   "haynes": {
+    "section": 22,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Heated to 300-400 C and fitted with the front of the teeth facing the flywheel register (Haynes Sec 42 para 3-5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "teeth",
+     "label": "Teeth",
+     "value": "120",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/clutch/fw_201a.htm",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "12.125 in (307.98 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.britishcarforum.com/community/threads/can-someone-measure-a-3-main-flywheel.23924",
+     "note": "Over the teeth",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "10.75 in (273.05 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.britishcarforum.com/community/threads/can-someone-measure-a-3-main-flywheel.23924",
+     "note": "Equal to the flywheel seat",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.25
+  },
+  "engine.flywheel.spigot-bush": {
+   "id": "engine.flywheel.spigot-bush",
+   "kind": "part",
+   "name": "First motion shaft spigot bush",
+   "parent": "engine.flywheel",
+   "haynes": {
+    "section": 22,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bronze",
+   "notes": "The bush in the end of the crankshaft that carries the gearbox first motion shaft (Haynes Sec 35 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the crankshaft bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "15.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.flywheel.lock-plate": {
+   "id": "engine.flywheel.lock-plate",
+   "kind": "part",
+   "name": "Flywheel bolt lock ring",
+   "parent": "engine.flywheel",
+   "haynes": {
+    "section": 22,
+    "spec_page": 24
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 22 para 3 - bend back the locking tabs on the nuts or bolts securing the flywheel (photo 22.4).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.flywheel.bolt": {
+   "id": "engine.flywheel.bolt",
+   "kind": "part",
+   "name": "Flywheel bolt",
+   "parent": "engine.flywheel",
+   "haynes": {
+    "section": 22,
+    "spec_page": 24
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.50 in (38.10 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the hub into the crankshaft flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "40 lbf ft (54 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p24",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -10043,6 +10397,331 @@
    ],
    "derivedShare": 1.0
   },
+  "engine.manifolds.exhaust": {
+   "id": "engine.manifolds.exhaust",
+   "kind": "part",
+   "name": "Exhaust manifold",
+   "parent": "engine.manifolds",
+   "haynes": {
+    "section": 15,
+    "spec_page": 25
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Cast iron. Three ports matching the head (the centre one siamesed for Nos 2 and 3), branches sweeping down past the tappet covers to one outlet with a two-stud flange for the down pipe (photo 61.1(a)).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "branch_bore",
+     "label": "Branch bore",
+     "value": "32.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matches the head exhaust ports; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_thickness",
+     "label": "Flange thickness",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "nut_torque",
+     "label": "Nut torque",
+     "value": "15 to 16 lbf ft (20 to 22 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Manifold nuts",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "engine.manifolds.inlet": {
+   "id": "engine.manifolds.inlet",
+   "kind": "part",
+   "name": "Inlet manifold",
+   "parent": "engine.manifolds",
+   "haynes": {
+    "section": 15,
+    "spec_page": 25
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Two runners from the siamesed inlet ports to the twin SU carburettor flanges, joined by a balance pipe (photo 61.1(b)).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "runner_bore",
+     "label": "Runner bore",
+     "value": "1.50 in (38.10 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the SU HS4 bore (1.5 in); runner bore not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_thickness",
+     "label": "Flange thickness",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "balance_pipe_diameter",
+     "label": "Balance pipe diameter",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion from photo 61.1(b)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "nut_torque",
+     "label": "Nut torque",
+     "value": "15 to 16 lbf ft (20 to 22 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "Manifold nuts",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.75
+  },
+  "engine.manifolds.gasket": {
+   "id": "engine.manifolds.gasket",
+   "kind": "part",
+   "name": "Manifold gasket",
+   "parent": "engine.manifolds",
+   "haynes": {
+    "section": 15,
+    "spec_page": 25
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "One gasket for all five ports (owners' photos); Haynes Sec 61 - use a new gasket.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.manifolds.washer-large": {
+   "id": "engine.manifolds.washer-large",
+   "kind": "part",
+   "name": "Manifold washer (large)",
+   "parent": "engine.manifolds",
+   "haynes": {
+    "section": 15,
+    "spec_page": 25
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 15 - the four centre nuts have large washers.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "32.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 5/16 in stud",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "engine.manifolds.washer-small": {
+   "id": "engine.manifolds.washer-small",
+   "kind": "part",
+   "name": "Manifold washer (small)",
+   "parent": "engine.manifolds",
+   "haynes": {
+    "section": 15,
+    "spec_page": 25
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Haynes Sec 15 - the two end nuts have small washers.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "17.5 mm (0.689 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.7 mm (0.343 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm (0.065 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "engine.manifolds.nut": {
+   "id": "engine.manifolds.nut",
+   "kind": "part",
+   "name": "Manifold nut",
+   "parent": "engine.manifolds",
+   "haynes": {
+    "section": 15,
+    "spec_page": 25
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.26562 in (6.75 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 5/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "15 to 16 lbf ft (20 to 22 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p25",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
   "engine.timing.cam-wheel": {
    "id": "engine.timing.cam-wheel",
    "kind": "part",
@@ -15366,6 +16045,188 @@
     }
    ],
    "label": true,
+   "fitted": null
+  },
+  "engine.flywheel.spigot-bush#1": {
+   "part": "engine.flywheel.spigot-bush",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--spigot-bush__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 260
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.flywheel.flywheel#1": {
+   "part": "engine.flywheel.flywheel",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--flywheel__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 220,
+     "group": "flywheel"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.flywheel.ring-gear#1": {
+   "part": "engine.flywheel.ring-gear",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--ring-gear__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 220,
+     "group": "flywheel"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.flywheel.lock-plate#1": {
+   "part": "engine.flywheel.lock-plate",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--lock-plate__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.flywheel.bolt#1": {
+   "part": "engine.flywheel.bolt",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--bolt__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.flywheel.bolt#2": {
+   "part": "engine.flywheel.bolt",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--bolt__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.flywheel.bolt#3": {
+   "part": "engine.flywheel.bolt",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--bolt__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.flywheel.bolt#4": {
+   "part": "engine.flywheel.bolt",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--bolt__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.flywheel.bolt#5": {
+   "part": "engine.flywheel.bolt",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--bolt__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.flywheel.bolt#6": {
+   "part": "engine.flywheel.bolt",
+   "assembly": "engine.flywheel",
+   "node": "engine--flywheel--bolt__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 100
+    }
+   ],
+   "label": false,
    "fitted": null
   },
   "engine.head.casting#1": {
@@ -21473,6 +22334,276 @@
    "label": true,
    "fitted": null
   },
+  "engine.manifolds.gasket#1": {
+   "part": "engine.manifolds.gasket",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.manifolds.exhaust#1": {
+   "part": "engine.manifolds.exhaust",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--exhaust__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.55,
+      -0.85
+     ],
+     "order": 3,
+     "distance_mm": 200
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.manifolds.inlet#1": {
+   "part": "engine.manifolds.inlet",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--inlet__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0.8,
+      0.6
+     ],
+     "order": 2,
+     "distance_mm": 220
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.manifolds.washer-large#1": {
+   "part": "engine.manifolds.washer-large",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--washer-large__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.manifolds.nut#1": {
+   "part": "engine.manifolds.nut",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.manifolds.washer-large#2": {
+   "part": "engine.manifolds.washer-large",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--washer-large__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.nut#2": {
+   "part": "engine.manifolds.nut",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.washer-large#3": {
+   "part": "engine.manifolds.washer-large",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--washer-large__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.nut#3": {
+   "part": "engine.manifolds.nut",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.washer-large#4": {
+   "part": "engine.manifolds.washer-large",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--washer-large__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.nut#4": {
+   "part": "engine.manifolds.nut",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--nut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.washer-small#1": {
+   "part": "engine.manifolds.washer-small",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--washer-small__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "engine.manifolds.nut#5": {
+   "part": "engine.manifolds.nut",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--nut__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.washer-small#2": {
+   "part": "engine.manifolds.washer-small",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--washer-small__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "engine.manifolds.nut#6": {
+   "part": "engine.manifolds.nut",
+   "assembly": "engine.manifolds",
+   "node": "engine--manifolds--nut__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
   "engine.timing.locating-plate#1": {
    "part": "engine.timing.locating-plate",
    "assembly": "engine.timing",
@@ -22312,5 +23443,5 @@
    "fitted": null
   }
  },
- "built": "2026-11-01T18:47:44+00:00"
+ "built": "2026-11-01T19:07:51+00:00"
 }

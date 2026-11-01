@@ -1,0 +1,69 @@
+# Inlet and exhaust manifolds. Haynes Sec 15 (removal) and 61 (refitting); photos
+# 61.1(a), 61.1(b); torque p25. Shapes from the photos and owners' photos (derived).
+defaults:
+  system: engine
+  assembly: engine.manifolds
+  haynes: { section: 15, spec_page: 25 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: cast_iron
+
+parts:
+  - id: engine.manifolds.exhaust
+    name: Exhaust manifold
+    quantity: 1
+    notes: >
+      Cast iron. Three ports matching the head (the centre one siamesed for Nos 2 and 3),
+      branches sweeping down past the tappet covers to one outlet with a two-stud flange
+      for the down pipe (photo 61.1(a)).
+    specs:
+      branch_bore: { mm: 32.0, source: { label: D, method: "Matches the head exhaust ports; not published" } }
+      flange_thickness: { mm: 12.0, source: { label: D, method: "Not published" } }
+      nut_torque: { lbf_ft: [15, 16], nm: [20, 22], source: { label: H, page: 25, note: "Manifold nuts" } }
+
+  - id: engine.manifolds.inlet
+    name: Inlet manifold
+    quantity: 1
+    finish: aluminium
+    notes: Two runners from the siamesed inlet ports to the twin SU carburettor flanges, joined by a balance pipe (photo 61.1(b)).
+    specs:
+      runner_bore: { in: 1.5, mm: 38.1, source: { label: D, method: "Equal to the SU HS4 bore (1.5 in); runner bore not published" } }
+      flange_thickness: { mm: 12.0, source: { label: D, method: "Not published" } }
+      balance_pipe_diameter: { mm: 22.0, source: { label: D, method: "Proportion from photo 61.1(b)" } }
+      nut_torque: { lbf_ft: [15, 16], nm: [20, 22], source: { label: H, page: 25, note: "Manifold nuts" } }
+
+  - id: engine.manifolds.gasket
+    name: Manifold gasket
+    quantity: 1
+    finish: gasket
+    notes: One gasket for all five ports (owners' photos); Haynes Sec 61 - use a new gasket.
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Not published" } }
+
+  - id: engine.manifolds.washer-large
+    name: Manifold washer (large)
+    quantity: 4
+    notes: Haynes Sec 15 - the four centre nuts have large washers.
+    finish: machined_steel
+    specs:
+      outside_diameter: { mm: 32.0, source: { label: D, method: "Not published" } }
+      inside_diameter: { mm: 8.7, source: { label: D, method: "Fits the 5/16 in stud" } }
+      thickness: { mm: 2.5, source: { label: D, method: "Not published" } }
+
+  - id: engine.manifolds.washer-small
+    name: Manifold washer (small)
+    quantity: 2
+    notes: Haynes Sec 15 - the two end nuts have small washers.
+    finish: machined_steel
+    specs:
+      outside_diameter: { mm: 17.5, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      inside_diameter: { mm: 8.7, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+      thickness: { mm: 1.65, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
+
+  - id: engine.manifolds.nut
+    name: Manifold nut
+    quantity: 6
+    finish: machined_steel
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      thickness: { in: 0.265625, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" } }
+      torque: { lbf_ft: [15, 16], nm: [20, 22], source: { label: H, page: 25 } }

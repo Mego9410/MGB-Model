@@ -59,5 +59,11 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   pushrods, tappet covers, front plate (Fig 1.8 outline) and the rear end plate
   with its early-type oil seal retaining plate (Sec 22/53).
 
-Next: P2b (timing gear, oil pump, sump, flywheel, oil filter, manifolds, mountings),
-then P2c (cooling). The working standard is in `CLAUDE.md`.
+- P2b built: timing gear and cover (Fig 1.25, 1.11), lubrication (Fig 1.16, 1.1,
+  1.20: sump, pump, strainer, early filter, oil pipe, relief valve, dipstick), flywheel
+  and 120-tooth ring gear, inlet and exhaust manifolds. The camshaft height now comes
+  from the 52-pitch timing chain on 20/40-tooth wheels.
+
+Next: P2c (cooling: radiator, water pump, fan, hoses). The engine mountings (Fig 1.29)
+go in with the front crossmember, since they bolt to it. The working standard is in
+`CLAUDE.md`.

@@ -282,7 +282,7 @@ function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color =
 // ---------- explode: parts leave along their removal axis, in Haynes removal order
 const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
 // at system level (e.g. the whole engine) assemblies separate along these directions (CAD axes, mm)
-const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420], 'engine.timing': [260, 0, 0], 'engine.lube': [0, 0, -260] };
+const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420], 'engine.timing': [260, 0, 0], 'engine.lube': [0, 0, -260], 'engine.flywheel': [-260, 0, 0], 'engine.manifolds': [0, 260, 0] };
 function focusAssembly(){ return current && N[current] && N[current].kind === 'assembly' ? current : null; }
 function applyExplode(){
   const t = ex.value / 100; exv.textContent = ex.value + '%';

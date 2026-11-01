@@ -1,0 +1,63 @@
+# Flywheel and ring gear, three-main-bearing 18G. Haynes Sec 22, 42, 53; photos 22.4, 53.4.
+# Outside sizes: mgaguru.com (Barney Gaylord) and britishcarforum.com owner measurements.
+defaults:
+  system: engine
+  assembly: engine.flywheel
+  haynes: { section: 22, spec_page: 24 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: cast_iron
+
+parts:
+  - id: engine.flywheel.flywheel
+    name: Flywheel
+    quantity: 1
+    notes: >
+      The 20 lb flywheel used on 1962-64 MGBs, six bolts to the crankshaft and three dowels
+      for the MGB clutch (mgaguru.com). The 1/4 timing mark lines up with TDC on Nos 1
+      and 4 (Haynes Sec 53 para 4).
+    specs:
+      weight_lb: { count: 20, source: { label: S, ref: "https://mgaguru.com/mgtech/clutch/fw_201a.htm" }, display_only: true }
+      ring_seat_diameter: { in: 10.75, mm: 273.05, source: { label: S, ref: "https://www.britishcarforum.com/community/threads/can-someone-measure-a-3-main-flywheel.23924", note: "Owner measurement, 3-main flywheel" } }
+      rim_thickness: { mm: 34.0, source: { label: D, method: "Sized toward the 20 lb weight; not published" } }
+      hub_thickness: { mm: 22.0, source: { label: D, method: "Not published" } }
+      clutch_bolt_circle: { mm: 238.0, source: { label: D, method: "Clutch cover bolts; not published" } }
+      bolts: { count: 6, source: { label: S, ref: "https://mgaguru.com/mgtech/clutch/fw_201a.htm" }, display_only: true }
+      bolt_torque: { lbf_ft: 40, nm: 54, source: { label: H, page: 24, note: "Haynes prints 54 Nm; the lbf ft figure is missing from the table" } }
+
+  - id: engine.flywheel.ring-gear
+    name: Starter ring gear
+    quantity: 1
+    finish: machined_steel
+    notes: Heated to 300-400 C and fitted with the front of the teeth facing the flywheel register (Haynes Sec 42 para 3-5).
+    specs:
+      teeth: { count: 120, source: { label: S, ref: "https://mgaguru.com/mgtech/clutch/fw_201a.htm" } }
+      outside_diameter: { in: 12.125, mm: 307.98, source: { label: S, ref: "https://www.britishcarforum.com/community/threads/can-someone-measure-a-3-main-flywheel.23924", note: "Over the teeth" } }
+      inside_diameter: { in: 10.75, mm: 273.05, source: { label: S, ref: "https://www.britishcarforum.com/community/threads/can-someone-measure-a-3-main-flywheel.23924", note: "Equal to the flywheel seat" } }
+      width: { mm: 12.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.flywheel.spigot-bush
+    name: First motion shaft spigot bush
+    quantity: 1
+    finish: bronze
+    notes: The bush in the end of the crankshaft that carries the gearbox first motion shaft (Haynes Sec 35 para 5).
+    specs:
+      outside_diameter: { mm: 20.0, source: { label: D, method: "Fits the crankshaft bore" } }
+      inside_diameter: { mm: 15.9, source: { label: D, method: "Not published" } }
+      length: { mm: 14.0, source: { label: D, method: "Not published" } }
+
+  - id: engine.flywheel.lock-plate
+    name: Flywheel bolt lock ring
+    quantity: 1
+    finish: machined_steel
+    notes: Haynes Sec 22 para 3 - bend back the locking tabs on the nuts or bolts securing the flywheel (photo 22.4).
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Not published" } }
+
+  - id: engine.flywheel.bolt
+    name: Flywheel bolt
+    quantity: 6
+    finish: machined_steel
+    specs:
+      thread_diameter: { in: 0.375, source: { label: D, method: "Not in Haynes" } }
+      length: { in: 1.5, source: { label: D, method: "Through the hub into the crankshaft flange" } }
+      torque: { lbf_ft: 40, nm: 54, source: { label: H, page: 24 } }
