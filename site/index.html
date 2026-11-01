@@ -434,7 +434,7 @@ renderer.domElement.addEventListener('pointerup', e => {
   if (!hit){ if (selected){ setSelected(null); markTree(); if (current) showCard(current); } return; }
   const pid = hit.object.userData.partId;
   if (dbl){ go(N[pid].parent); setSelected(pid); showCard(pid); }
-  else { select(pid); }
+  else { pick(pid); }
 });
 
 // ---------- navigation
@@ -489,7 +489,7 @@ function renderTree(){
     b.querySelector('.c').textContent = n.kind === 'part' ? (n.quantity ? '×' + n.quantity : '') : (n.kind === 'system' && !cnt ? 'to build' : cnt ? cnt + ' part' + (cnt > 1 ? 's' : '') : '');
     // a group's first tap shows it; tapping it again while it is shown opens or closes it
     b.addEventListener('click', () => {
-      if (n.kind === 'part') return select(id);
+      if (n.kind === 'part') return pick(id);
       if (kids.length && current === id && !selected) return setOpen(id, li.classList.contains('closed'));
       go(id);
     });
@@ -535,8 +535,9 @@ function select(pid){
   if (!loaded[n.parent]) { go(n.parent).then(() => select(pid)); return; }
   current = n.parent; renderCrumbs(pid); setSelected(pid); applyExplode(); markTree(); showCard(pid); setHash(pid);
   frameObjs(instances.filter(i => i.partId === pid).map(i => i.obj));
-  sheet('card');
 }
+// First tap on a part selects it; a second tap on the same part (or the Spec tab) opens its spec.
+function pick(pid){ if (pid === selected) sheet('card'); else select(pid); }
 function setHash(id){ const h = '#' + toHash(id); if (location.hash !== h) history.replaceState(null, '', h); }
 
 // ---------- spec card

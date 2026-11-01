@@ -53,7 +53,7 @@ cy, cz = T.CAM
 ky, kz = T.CRANK
 
 # ---- camshaft locating plate (on the front plate, photo 50.5) ---------------------------------
-add("locating-plate", at(T.PANEL_FACE, cy, cz, ry=90), explode=ex(15, 60))
+add("locating-plate", at(T.PANEL_FACE, cy, cz), explode=ex(15, 60))     # built in the YZ plane, bolts along X
 lw_t = SP["engine.timing.locating-plate-washer"].nom("thickness")
 for k in range(3):
     a = math.radians(90 + 120 * k)
