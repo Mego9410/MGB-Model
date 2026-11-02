@@ -40,6 +40,14 @@ nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);backgro
 .tree .row .n{flex:1;min-width:0}
 .tree .row .c{font:11px var(--mono);color:var(--muted)}
 .tree .row.empty{color:var(--muted)}
+.tree .row .spin{flex:none;width:10px;height:10px;border-radius:50%;border:2px solid var(--edge);border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* background load of every assembly: a pill at the foot of the stage */
+.loadbar{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--edge);
+  border-radius:999px;padding:6px 12px;font:500 12px var(--mono);color:var(--muted);box-shadow:0 2px 10px rgba(0,0,0,.08);max-width:calc(100% - 32px);white-space:nowrap;pointer-events:none;transition:opacity .5s}
+.loadbar .track{width:120px;max-width:30vw;height:4px;border-radius:2px;background:var(--chip);overflow:hidden;flex:none}
+.loadbar .fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.loadbar.done{opacity:0}
 .tree .line{display:flex;align-items:center;gap:2px}
 .tree .tw{flex:none;width:22px;min-height:28px;border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer;border-radius:4px;padding:0}
 .tree .tw:hover{background:var(--chip);color:var(--fg)}
@@ -52,8 +60,14 @@ nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);backgro
 .tree .all{display:flex;gap:4px}
 .tree .all button{font:11px var(--mono);color:var(--muted);background:none;border:1px solid var(--edge);border-radius:4px;padding:2px 6px;cursor:pointer}
 .tree .all button:hover{background:var(--chip)}
-main.stage{grid-area:stage;position:relative;background:var(--stage);min-width:0;min-height:0}
-main.stage canvas{display:block;width:100%;height:100%;touch-action:none}
+/* No text selection, blue tap flash or iOS long-press callout while orbiting, dragging the slider or tapping
+   the tree; only the part card's text stays selectable so specs can still be copied. */
+html{-webkit-tap-highlight-color:transparent}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+aside.card{-webkit-user-select:text;user-select:text}
+aside.card button,aside.card img,aside.card a{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+main.stage{grid-area:stage;position:relative;background:var(--stage);min-width:0;min-height:0;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+main.stage canvas{display:block;width:100%;height:100%;touch-action:none;outline:none}
 .labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .leg{position:absolute;transform:translate(-50%,-50%);font:600 11px var(--mono);background:var(--panel);border:1px solid var(--edge);border-radius:999px;padding:1px 6px;color:var(--fg)}
 .measure-tag{position:absolute;transform:translate(-50%,-130%);font:600 12px var(--mono);background:var(--accent);color:var(--accent-ink);border-radius:4px;padding:2px 6px;white-space:nowrap}
@@ -139,6 +153,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
   <main class="stage" id="stage">
     <div class="labels" id="labels"></div>
     <div class="toast" id="toast" hidden></div>
+    <div class="loadbar" id="loadbar" role="status" aria-live="polite"><span id="loadbar-text">Loading the car…</span><span class="track"><span class="fill" id="loadbar-fill"></span></span></div>
   </main>
   <div class="bar">
     <label for="explode">Explode</label>
@@ -232,8 +247,12 @@ let selMat = new THREE.MeshStandardMaterial({ ...FINISH.machined_steel, emissive
 const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
 const loaded = {};          // assembly id -> THREE.Group
 const instances = [];       // { obj, instId, partId, base: Vector3 }
-async function loadAssembly(aid){
-  if (loaded[aid]) return loaded[aid];
+const pending = {};         // assembly id -> Promise while it loads (one fetch per assembly, however many callers)
+function loadAssembly(aid){
+  if (loaded[aid]) return Promise.resolve(loaded[aid]);
+  return pending[aid] ||= loadAssemblyNow(aid).finally(() => { delete pending[aid]; afterLoad(); });
+}
+async function loadAssemblyNow(aid){
   const a = N[aid];
   const gltf = await loader.loadAsync(a.file);
   const root = gltf.scene; root.name = aid;
@@ -318,7 +337,7 @@ function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color =
 // ---------- explode: parts leave along their removal axis, in Haynes removal order
 const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
 // at system level (e.g. the whole engine) assemblies separate along these directions (CAD axes, mm)
-const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420], 'engine.timing': [260, 0, 0], 'engine.lube': [0, 0, -260], 'engine.flywheel': [-260, 0, 0], 'engine.manifolds': [0, 260, 0], 'cooling.pump-radiator': [300, 0, 0], 'fuel.carbs': [0, 320, 120], 'ignition.distributor': [0, -300, 80], 'fuel.pipes': [0, 320, 120], 'clutch.unit': [-430, 0, 0], 'clutch.release': [-600, 0, 0], 'clutch.hydraulics': [0, -340, 80], 'clutch.pedal': [-260, -340, 0], 'gearbox.casing': [-900, 0, 0], 'gearbox.shafts': [-900, 0, -420], 'gearbox.selectors': [-900, 380, 0], 'gearbox.remote': [-900, 0, 420], 'gearbox.overdrive-casing': [-1400, 0, 0], 'gearbox.overdrive-internals': [-1400, 0, -420], 'gearbox.overdrive-hydraulics': [-1400, -380, 0], 'gearbox.mounting': [-1100, 0, -700], 'propshaft.shaft': [-1700, 0, -380], 'axle.casing': [-2200, 0, 0], 'axle.carrier': [-1900, 0, -520], 'axle.hubs': [-2200, 0, 520] };
+const SYSTEM_EXPLODE = { 'engine.head': [0, 0, 420], 'engine.timing': [260, 0, 0], 'engine.lube': [0, 0, -260], 'engine.flywheel': [-260, 0, 0], 'engine.manifolds': [0, 260, 0], 'cooling.pump-radiator': [300, 0, 0], 'fuel.carbs': [0, 320, 120], 'ignition.distributor': [0, -300, 80], 'fuel.pipes': [0, 320, 120], 'clutch.unit': [-430, 0, 0], 'clutch.release': [-600, 0, 0], 'clutch.hydraulics': [0, -340, 80], 'clutch.pedal': [-260, -340, 0], 'gearbox.casing': [-900, 0, 0], 'gearbox.shafts': [-900, 0, -420], 'gearbox.selectors': [-900, 380, 0], 'gearbox.remote': [-900, 0, 420], 'gearbox.overdrive-casing': [-1400, 0, 0], 'gearbox.overdrive-internals': [-1400, 0, -420], 'gearbox.overdrive-hydraulics': [-1400, -380, 0], 'gearbox.mounting': [-1100, 0, -700], 'propshaft.shaft': [-1700, 0, -380], 'axle.casing': [-2200, 0, 0], 'axle.carrier': [-1900, 0, -520], 'axle.hubs': [-2200, 0, 520], 'brakes.front': [450, 0, 250], 'brakes.rear': [-2200, 0, 260], 'brakes.master': [250, -450, 350], 'brakes.pedal': [-250, -450, 0], 'brakes.lines': [0, 0, -520], 'brakes.handbrake': [-1500, 0, 450] };
 function focusAssembly(){ return current && N[current] && N[current].kind === 'assembly' ? current : null; }
 function applyExplode(){
   const t = ex.value / 100; exv.textContent = ex.value + '%';
@@ -426,10 +445,25 @@ function placeMeasureTag(){
 
 // ---------- picking
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
-let down = null, lastTap = 0;
-renderer.domElement.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY }; });
+let down = null, lastTap = 0, multi = false;
+const fingers = new Set();
+// A drag that starts on the model never starts a text selection (mouse), and any selection left over is cleared.
+renderer.domElement.addEventListener('mousedown', e => e.preventDefault());
+document.getElementById('stage').addEventListener('selectstart', e => e.preventDefault());
+document.getElementById('stage').addEventListener('contextmenu', e => e.preventDefault());
+renderer.domElement.addEventListener('pointerdown', e => {
+  fingers.add(e.pointerId); if (fingers.size > 1) multi = true;
+  try { const s = getSelection(); if (s && s.rangeCount) s.removeAllRanges(); } catch (_) {}
+  down = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId };
+});
+renderer.domElement.addEventListener('pointercancel', e => { fingers.delete(e.pointerId); if (!fingers.size) multi = false; down = null; });
 renderer.domElement.addEventListener('pointerup', e => {
-  if (!down || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6) return;
+  // Only a short, still, single-pointer tap picks a part: orbiting, pinching and long presses never select.
+  const wasMulti = multi; fingers.delete(e.pointerId); if (!fingers.size) multi = false;
+  const d = down; down = null;
+  if (wasMulti || !d || d.id !== e.pointerId) return;
+  if (Math.hypot(e.clientX - d.x, e.clientY - d.y) > (e.pointerType === 'mouse' ? 5 : 10)) return;
+  if (performance.now() - d.t > 500) return;
   const r = renderer.domElement.getBoundingClientRect();
   ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
   ray.setFromCamera(ptr, camera);
@@ -489,7 +523,7 @@ function renderTree(){
       tw.setAttribute('aria-label', 'Show or hide ' + n.name); tw.setAttribute('aria-expanded', isOpen(id));
       tw.addEventListener('click', () => setOpen(id, li.classList.contains('closed')));
     } else { tw.classList.add('leaf'); tw.tabIndex = -1; tw.setAttribute('aria-hidden', 'true'); }
-    b.innerHTML = '<span class="n"></span><span class="c"></span>';
+    b.innerHTML = '<span class="n"></span>' + (n.kind !== 'part' && cnt ? '<span class="spin" aria-label="loading" hidden></span>' : '') + '<span class="c"></span>';
     b.querySelector('.n').textContent = n.name;
     b.querySelector('.c').textContent = n.kind === 'part' ? (n.quantity ? '×' + n.quantity : '') : (n.kind === 'system' && !cnt ? 'to build' : cnt ? cnt + ' part' + (cnt > 1 ? 's' : '') : '');
     // a group's first tap shows it; tapping it again while it is shown opens or closes it
@@ -529,9 +563,14 @@ async function go(id){
     const built = [], walk = id => (N[id].children || []).forEach(c => { if (!N[c]) return; N[c].kind === 'assembly' ? built.push(c) : walk(c); });
     walk(id);
     if (n.kind === 'system' && !built.length){ showCard(id); say(n.name + ' is not built yet.', 3500); return; }
-    for (const a of built) await loadAssembly(a);
-    setSelected(null); applyExplode();
-    frame(scene); showCard(id);
+    // show what is already here at once; the rest arrives in the background and is framed when complete
+    const t0 = performance.now();
+    setSelected(null); applyExplode(); frame(scene); showCard(id); setHash(id);
+    if (built.some(a => !loaded[a])){
+      await Promise.all(built.map(a => loadAssembly(a).catch(() => null)));
+      if (current === id && lastUserMove < t0){ setSelected(null); applyExplode(); frame(scene); }
+    }
+    return;
   }
   setHash(id);
 }
@@ -637,12 +676,53 @@ renderer.setAnimationLoop(() => {
   controls.update(); renderer.render(scene, camera); updateLabels(); placeMeasureTag();
 });
 
+// ---------- background loading: every assembly loads from the start, with a progress pill and tree spinners
+const allAsm = [];
+(function walk(id){ (N[id].children || []).forEach(c => { if (!N[c]) return; N[c].kind === 'assembly' ? allAsm.push(c) : walk(c); }); })('car');
+const lb = document.getElementById('loadbar'), lbText = document.getElementById('loadbar-text'), lbFill = document.getElementById('loadbar-fill');
+const failed = new Set();
+let lastUserMove = 0;
+controls.addEventListener('start', () => { lastUserMove = performance.now(); });
+function underLoaded(id){
+  // every assembly under a tree row is loaded (or has given up)
+  const n = N[id]; if (!n) return true;
+  if (n.kind === 'assembly') return !!loaded[id] || failed.has(id);
+  return (n.children || []).every(c => !N[c] || N[c].kind === 'part' || underLoaded(c));
+}
+function markLoading(){
+  document.querySelectorAll('.tree .row .spin').forEach(s => { s.hidden = underLoaded(s.parentElement.dataset.id); });
+}
+function updateProgress(){
+  const done = allAsm.filter(a => loaded[a]).length, total = allAsm.length;
+  lbFill.style.width = (total ? 100 * done / total : 100) + '%';
+  if (done + failed.size < total){ lbText.textContent = `Loading the car · ${done} of ${total}`; lb.hidden = false; lb.classList.remove('done'); return; }
+  lbText.textContent = failed.size ? `${done} of ${total} loaded · ${failed.size} failed` : `All ${total} assemblies loaded`;
+  clearTimeout(updateProgress.t); updateProgress.t = setTimeout(() => { lb.classList.add('done'); setTimeout(() => { if (lb.classList.contains('done')) lb.hidden = true; }, 600); }, failed.size ? 6000 : 1500);
+}
+function afterLoad(){
+  // a newly arrived assembly takes the current view's state: exploded, ghosted outside the focus, selection shown
+  applyExplode(); setSelected(selected); markLoading(); updateProgress(); wake();
+}
+async function preloadAll(){
+  const queue = allAsm.filter(a => !loaded[a]);
+  const worker = async () => {
+    while (queue.length){
+      const a = queue.shift();
+      try { await loadAssembly(a); }
+      catch (e){ failed.add(a); console.warn('Could not load', a, e); markLoading(); updateProgress(); }
+    }
+  };
+  await Promise.all([worker(), worker(), worker(), worker()]);
+}
+
 // ---------- start
-renderTree();
-const firstAsm = Object.values(N).find(n => n.kind === 'assembly');
+renderTree(); markLoading(); updateProgress();
 const start = location.hash ? fromHash(location.hash.slice(1)) : null;
-await loadAssembly(firstAsm.id); frame(loaded[firstAsm.id], true);
-if (start && N[start]) { N[start].kind === 'part' ? select(start) : go(start); } else { go(firstAsm.id); }
+const startAsm = start && N[start] ? (N[start].kind === 'part' ? N[start].parent : N[start].kind === 'assembly' ? start : null) : null;
+const firstAsm = startAsm || allAsm[0];
+await loadAssembly(firstAsm); frame(loaded[firstAsm], true);
+preloadAll();
+if (start && N[start]) { N[start].kind === 'part' ? select(start) : go(start); } else { go('car'); }
 toast.hidden = true;
 addEventListener('hashchange', () => { const id = fromHash(location.hash.slice(1)); if (N[id] && id !== selected && id !== current) N[id].kind === 'part' ? select(id) : go(id); });
 </script>

@@ -59,6 +59,11 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   front pad pins sit just over the clip (front.py `PIN_U`, not the layout's `PIN_U`); the stop lamp switch is drawn
   as a generic Lucas hydraulic switch; every pipe, hose and cable route is derived; the compensator is a scissor pair
   on P7's pin with the cable across their tabs, its proportions derived from Fig 9.10.
+  Interference check (brakes against each other, the axle and the clutch hydraulics and pedal): what remains is
+  thread engagement (bolts in tapped holes, nuts on studs and bolts, tube nuts in ports, about 50-700 mm3 each),
+  rubber against metal where boots and seals grip (under 150 mm3), the springs' hooks in their holes, and the
+  handbrake cable's ferrule on the compensator tab (48 mm3). The wheel cylinder boot is trimmed flat on the
+  backplate side because the cylinder axis sits only 10.6 mm off the raised face.
 - Rear springs, dampers and straps (P9): spring seats welded under the tubes, flat face at z `SEAT_FACE_Z`
   (48 mm below the axle centre), centred at |y| `SPRING_Y` 420, 100 mm fore and aft, 11 mm hole for the
   locating plate's peg (Fig 11.4 items 18-19); U-bolt legs (`UBOLT_LEGS`) 45 mm fore and aft of the tube, 30 mm
