@@ -1,0 +1,119 @@
+# Clutch release bearing and withdrawal lever, early (three-synchro) gearbox, 1963.
+# Haynes Ch 5: specifications printed p106, Sec 7 (p109), Fig 5.1 items 8-9 (p107),
+# Fig 5.2 item 6 (p108), photos 7.1a, 7.1b and 7.3 (p110). PDF page = printed page + 4.
+# Part names and fixings from the MGOC Spares MGB clutch system page
+# (https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/clutch/clutch-system).
+# Positions on the bellhousing: mgb/gearbox_layout.py (all D).
+defaults:
+  system: clutch
+  assembly: clutch.release
+  haynes: { section: 7, spec_page: 106 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: clutch.release.carbon
+    name: Release bearing (graphite ring)
+    haynes: { section: 7, figures: [{ figure: "5.1", legend: 8 }, { figure: "5.2", legend: 6 }] }
+    quantity: 1
+    finish: graphite
+    material: Graphite, MY3D (p106)
+    notes: >
+      Graphite ring pressed into its cup; it runs against the release plate (Fig 5.2).
+      Renew it at every clutch overhaul unless nearly new (Sec 4 para 4, Sec 7 para 1;
+      photo 7.1a worn, 7.1b unworn). Radii and length from Fig 5.2, scaled.
+    specs:
+      type: { count: 1, source: { label: H, page: 106, note: "Graphite MY3D" }, display_only: true }
+      outside_diameter: { mm: 82.0, source: { label: D, method: "Fig 5.2, scaled: 41 mm radius" } }
+      inside_diameter: { mm: 48.0, source: { label: D, method: "Fig 5.2, scaled: 24 mm radius" } }
+      length: { mm: 15.0, source: { label: D, method: "Fig 5.2, scaled" } }
+
+  - id: clutch.release.cup
+    name: Release bearing cup
+    haynes: { section: 7, figures: [{ figure: "5.1", legend: 8 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Pressed cup holding the graphite ring, with a lug and trunnion pin at 12 and 6
+      o'clock that the lever fork sits on (Fig 5.1 item 8 draws the lug and pin; photo 7.1b
+      shows the cup in the fork with the clips either side).
+    specs:
+      outside_diameter: { mm: 92.0, source: { label: D, method: "Fig 5.2, scaled" } }
+
+  - id: clutch.release.clip
+    name: Bearing retainer clip
+    haynes: { section: 7, figures: [{ figure: "5.1", legend: 9 }] }
+    quantity: 2
+    finish: spring_steel
+    notes: "Turn the clips through 90 degrees and remove them to free the bearing (Sec 4 para 5, Sec 7 para 2). MGOC Spares 22B66."
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Fig 5.1 item 9" } }
+
+  - id: clutch.release.lever
+    name: Clutch withdrawal lever
+    haynes: { section: 7 }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Forged lever pivoted on a bolt in the gearbox front cover (photo 7.3; mgaguru.com
+      gt110). A half-ring fork carries the bearing on its two trunnions; the outer arm
+      passes out through the bellhousing wall under the dust cover to the slave cylinder
+      pushrod. Check for play and have the bushes renewed if necessary (Sec 7 para 3). The
+      early three-synchro lever differs from the four-synchro one (MGOC Spares 22B57). Shape
+      and lever ratio derived: Haynes has no drawing of the lever; positions from
+      mgb/gearbox_layout.py.
+    specs:
+      fork_thickness: { mm: 10.0, source: { label: D, method: "In proportion to the 3/8 in pivot bolt" } }
+      bush_bore: { mm: 19.2, source: { label: D, method: "Fits the pivot bush" } }
+      ratio: { count: 2.3, source: { label: D, method: "Pivot to pushrod line 130 mm over pivot to trunnions 75 mm" }, display_only: true }
+
+  - id: clutch.release.bush
+    name: Withdrawal lever pivot bush
+    haynes: { section: 7 }
+    quantity: 1
+    finish: bronze
+    notes: "Sec 7 para 3; MGOC Spares 11G3195."
+    specs:
+      outside_diameter: { mm: 19.0, source: { label: D, method: "Bronze bush over the 3/8 in bolt" } }
+      inside_diameter: { in: 0.38, mm: 9.65, source: { label: D, method: "Running fit on the 3/8 in pivot bolt" } }
+
+  - id: clutch.release.pivot-bolt
+    name: Withdrawal lever pivot bolt
+    haynes: { section: 7 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Sec 7 para 3: remove the locknut, washer and bolt (photo 7.3). MGOC Spares 11G3196."
+    specs:
+      length: { in: 2.5, mm: 63.5, source: { label: D, method: "Through both lugs and the lever boss, washer and locknut" } }
+      thread_diameter: { in: 0.375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/clutch/clutch-system", note: "Lever fittings: GHF223 nyloc nut, 3/8 in UNF" }, display_only: true }
+
+  - id: clutch.release.pivot-washer
+    name: Pivot bolt washer
+    haynes: { section: 7 }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 20.6, source: { label: D, method: "3/8 in SAE plain washer" } }
+      inside_diameter: { mm: 10.3, source: { label: D, method: "3/8 in SAE plain washer" } }
+      thickness: { mm: 1.65, source: { label: D, method: "3/8 in SAE plain washer" } }
+
+  - id: clutch.release.locknut
+    name: Pivot bolt locknut
+    haynes: { section: 7 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Self-locking nut, 3/8 in UNF (MGOC Spares GHF223)."
+    specs:
+      thread_diameter: { in: 0.375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/clutch/clutch-system", note: "GHF223 nyloc nut, 3/8 in UNF" }, display_only: true }
+
+  - id: clutch.release.dust-cover
+    name: Withdrawal lever dust cover
+    haynes: { section: 7 }
+    quantity: 1
+    finish: rubber
+    notes: >
+      Rubber gaiter over the lever's opening in the bellhousing (Sec 7 para 3, "disengage
+      the dust cover"). Oval section on chrome bumper cars (MGOC Spares 22H1337). Shape
+      derived: flange, two convolutions and a neck on the lever.
+    specs:
+      length: { mm: 30.0, source: { label: D, method: "Wall to the neck on the lever" } }

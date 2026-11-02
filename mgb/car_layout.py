@@ -64,3 +64,10 @@ def rear_wheel(side):
 
 
 SUMP_BOTTOM_Z = _EL.sump_z - 118.0     # lowest point of the sump (specs/engine/lube)
+
+# Engine-side face of the bulkhead (dash panel) behind the engine (D). Not published. Set
+# 550 mm behind the front wheel axis, 170 mm behind the engine rear plate: room for the
+# pedal box and the master cylinders behind the right-hand rear of the cylinder head (Haynes
+# Fig 5.3; Ch 5 Sec 5 reaches them from the engine bay), with the gearbox bellhousing
+# running back under it into the tunnel. The body phase (P11) builds the bulkhead on it.
+BULKHEAD_X = FRONT_AXLE_X - 550.0

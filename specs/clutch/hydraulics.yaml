@@ -1,0 +1,399 @@
+# Clutch hydraulics, early RHD car (1963): master cylinder and reservoir, metal pipe, hose,
+# slave cylinder. Haynes Ch 5 Sec 3 (bleeding, p106-107), Sec 5 (master cylinder, p108-109),
+# Sec 6 (slave cylinder, p109) and Fig 5.3 (clutch control gear, p109). Item numbers are
+# Fig 5.3 (items 20-23, 25, 45, 46 and 48 are not on this car or not in the legend; 25 is
+# the LHD pipe). PDF page = printed page + 4.
+# Positions: mgb/clutch_layout.py (master cylinder on the pedal box, hose bracket) and
+# mgb/gearbox_layout.py (slave cylinder pad), all D.
+defaults:
+  system: clutch
+  assembly: clutch.hydraulics
+  haynes: { section: 5, spec_page: 106 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true }
+  finish: machined_steel
+
+parts:
+  # ---- master cylinder (Sec 5, early cars) --------------------------------------------------
+  - id: clutch.hydraulics.mc-body
+    name: Master cylinder and reservoir
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 8 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: >
+      Cast iron body (Moss Motors 180-697) with an integral round reservoir beside the
+      two-bolt flange, bolted to the front of the pedal box on the right-hand side of the
+      bulkhead beside the brake master cylinder; a cover over both is held by four screws
+      (Sec 5 para 1). The outlet at the front takes the banjo and banjo bolt (items 32-33).
+      Feed and by-pass ports drilled from the reservoir well (Sec 5 para 6: probe the by-pass
+      ports). Shape from Fig 5.3; sizes in proportion to the published bore.
+    specs:
+      bore: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://mossmotors.com/180-697-clutch-master-cylinder-replacement-3-4-bore", note: "MGB 1962-80 clutch master cylinder, 3/4 in bore" } }
+      length: { mm: 140.0, source: { label: D, method: "Fig 5.3, in proportion to the bore" } }
+
+  - id: clutch.hydraulics.mc-cap
+    name: Master cylinder cap
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 9 }] }
+    quantity: 1
+    finish: paint_black
+    notes: Fluted filler cap with a breather hole. Refit after topping up (Sec 3 para 5); do not overfill (Sec 2).
+    specs:
+      diameter: { mm: 38.0, source: { label: D, method: "Fig 5.3, in proportion to the reservoir" } }
+
+  - id: clutch.hydraulics.mc-seal
+    name: Cap seal
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 10 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.mc-boot
+    name: Master cylinder boot
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 11 }] }
+    quantity: 1
+    finish: rubber
+    notes: Pull off to dismantle (Sec 5 para 5). Fluid in the boot means a leaking seal (Sec 9 para 14).
+    specs:
+      length: { mm: 30.0, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.mc-circlip
+    name: Master cylinder circlip
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 12 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: Press the pushrod in and remove the circlip to withdraw the internals (Sec 5 para 5).
+    specs:
+      outside_diameter: { mm: 25.6, source: { label: D, method: "Internal circlip in the bore mouth" } }
+
+  - id: clutch.hydraulics.mc-pushrod
+    name: Master cylinder pushrod
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 13 }] }
+    quantity: 1
+    notes: >
+      Pushrod with its stop washer, threaded into the clevis fork with a locknut; the fork
+      takes the clevis pin through the pedal (Sec 5 para 3).
+    specs:
+      diameter: { in: 0.3125, mm: 7.94, source: { label: D, method: "Fig 5.3, in proportion to the bore" } }
+
+  - id: clutch.hydraulics.mc-secondary-cup
+    name: Secondary cup
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 14 }] }
+    quantity: 1
+    finish: rubber
+    notes: Fitted over the piston, fully home in its groove, lip toward the cylinder bore (Sec 5 para 8).
+    specs:
+      outside_diameter: { in: 0.75, mm: 19.05, source: { label: D, method: "Equal to the bore" } }
+
+  - id: clutch.hydraulics.mc-piston
+    name: Master cylinder piston
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 15 }] }
+    quantity: 1
+    finish: aluminium
+    specs:
+      diameter: { in: 0.75, mm: 19.05, source: { label: D, method: "Running fit in the 3/4 in bore" } }
+
+  - id: clutch.hydraulics.mc-piston-washer
+    name: Piston washer
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 16 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: Between the piston head and the main cup (Sec 5 para 9).
+    specs:
+      thickness: { mm: 0.6, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.mc-main-cup
+    name: Main cup
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 17 }] }
+    quantity: 1
+    finish: rubber
+    notes: Fitted lip edge first, after the spring (Sec 5 para 9).
+    specs:
+      outside_diameter: { in: 0.75, mm: 19.05, source: { label: D, method: "Equal to the bore" } }
+
+  - id: clutch.hydraulics.mc-spring-retainer
+    name: Spring retainer
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 18 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: Fitted in the small end of the spring (Sec 5 para 8).
+    specs:
+      diameter: { mm: 17.2, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.mc-spring
+    name: Master cylinder spring
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 19 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: Fitted large end first (Sec 5 para 9). Modelled as a parallel coil.
+    specs:
+      outside_diameter: { mm: 15.0, source: { label: D, method: "Clear in the 3/4 in bore" } }
+      wire_diameter: { mm: 1.4, source: { label: D, method: "In proportion" } }
+
+  - id: clutch.hydraulics.mc-bolt-long
+    name: Master cylinder securing bolt (top, long)
+    haynes: { section: 5 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "The longer bolt goes in the top hole, which also carries the stiffener plate (Sec 5 para 11)."
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: D, method: "Flange, box wall, stiffener, washer and nut" } }
+
+  - id: clutch.hydraulics.mc-bolt
+    name: Master cylinder securing bolt (bottom)
+    haynes: { section: 5 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Sec 5 para 4: two securing bolts, nuts and washers."
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: D, method: "Flange, box wall, washer and nut" } }
+
+  - id: clutch.hydraulics.mc-nut
+    name: Master cylinder bolt nut
+    haynes: { section: 5 }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in UNF, matching the flange holes" }, display_only: true }
+
+  - id: clutch.hydraulics.mc-washer
+    name: Master cylinder bolt washer
+    haynes: { section: 5 }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 17.5, source: { label: D, method: "5/16 in SAE plain washer" } }
+      inside_diameter: { mm: 8.7, source: { label: D, method: "5/16 in SAE plain washer" } }
+      thickness: { mm: 1.65, source: { label: D, method: "5/16 in SAE plain washer" } }
+
+  - id: clutch.hydraulics.mc-stiffener
+    name: Master cylinder stiffener plate
+    haynes: { section: 5 }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Carried by the top bolt (Sec 5 para 11). Fitted inside the pedal box under the nut;
+      Haynes does not draw it, so its shape is derived.
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Not published" } }
+
+  # ---- outlet, pipe and hose ----------------------------------------------------------------
+  - id: clutch.hydraulics.banjo
+    name: Banjo connection
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 32 }] }
+    quantity: 1
+    finish: brass
+    notes: Banjo eye on the master cylinder outlet with the metal pipe brazed in. Undo the union at the master cylinder to remove it (Sec 5 para 3).
+    specs:
+      thickness: { mm: 10.0, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.banjo-bolt
+    name: Banjo bolt
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 33 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: D, method: "Through two washers and the banjo into the outlet boss" } }
+
+  - id: clutch.hydraulics.sealing-washer-inner
+    name: Banjo sealing washer (cylinder side)
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 35 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.sealing-washer-outer
+    name: Banjo sealing washer (bolt side)
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 34 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.metal-pipe
+    name: Metal pipe (RHD)
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 24 }] }
+    quantity: 1
+    finish: copper
+    notes: >
+      RHD pipe from the master cylinder banjo down the bulkhead to the hose at its bracket
+      (Fig 5.3 inset), with its union nut. Run derived: Fig 5.3 shows it dropping from the
+      master cylinder to the bracket; the bracket position is in mgb/clutch_layout.py.
+    specs:
+      outside_diameter: { in: 0.1875, mm: 4.76, source: { label: D, method: "3/16 in brake pipe, the usual size for these systems; not in Haynes" } }
+
+  - id: clutch.hydraulics.pipe-clip
+    name: Pipe clip
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 30 }, { figure: "5.3", legend: 31 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: Two P-clips holding the pipe (items 30 and 31 are the same clip in two places).
+    specs:
+      width: { mm: 8.0, source: { label: D, method: "Fig 5.3 inset" } }
+
+  - id: clutch.hydraulics.hose
+    name: Flexible hose
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 26 }] }
+    quantity: 1
+    finish: rubber
+    notes: >
+      From the bracket, where its top end is held by a locknut and lockwasher and the pipe
+      screws into it, to the slave cylinder union. Disconnect at the cylinder to remove the
+      slave cylinder (Sec 6 para 1). End fittings are crimped on.
+    specs:
+      outside_diameter: { mm: 10.5, source: { label: D, method: "Typical Lockheed 3/16 in bore hose" } }
+
+  - id: clutch.hydraulics.hose-locknut
+    name: Hose locknut
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 27 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      across_flats: { in: 0.625, mm: 15.88, source: { label: D, method: "Fig 5.3, to the hose end thread" } }
+
+  - id: clutch.hydraulics.hose-lockwasher
+    name: Hose lockwasher
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 28 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.copper-washer
+    name: Hose copper washer
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 29 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 14.0, source: { label: D, method: "Under the hose end hex" } }
+      inside_diameter: { mm: 9.8, source: { label: D, method: "Over the hose end thread" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 5.3" } }
+
+  # ---- slave cylinder (Sec 6) ----------------------------------------------------------------
+  - id: clutch.hydraulics.slave-body
+    name: Slave cylinder body
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 36 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: >
+      On the right-hand side of the bellhousing, held by two bolts and spring washers (Sec 6
+      para 1). Domed closed end with the hose union and the bleed screw boss; the two-ear
+      flange is at the open end, on the rear face of the bellhousing pad, and the body passes
+      forward through the pad (mgb/gearbox_layout.py). Lockheed type, MGB 1962-80 (Moss
+      Motors 180-720, GSY106). Shape from Fig 5.3.
+    specs:
+      bore: { in: 1.0, mm: 25.4, source: { label: D, method: "1 in, as commonly quoted for the GSY106 cylinder; no published figure could be confirmed" } }
+      length: { mm: 82.0, source: { label: D, method: "Fig 5.3, in proportion to the bore" } }
+
+  - id: clutch.hydraulics.slave-spring
+    name: Slave cylinder spring
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 37 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      outside_diameter: { mm: 18.0, source: { label: D, method: "Fig 5.3" } }
+      wire_diameter: { mm: 1.2, source: { label: D, method: "In proportion" } }
+
+  - id: clutch.hydraulics.slave-cup-filler
+    name: Piston cup filler
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 38 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      diameter: { mm: 21.0, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.slave-cup
+    name: Slave piston cup
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 39 }] }
+    quantity: 1
+    finish: rubber
+    notes: Fitted lip first (Sec 6 para 4).
+    specs:
+      outside_diameter: { in: 1.0, mm: 25.4, source: { label: D, method: "Equal to the bore" } }
+
+  - id: clutch.hydraulics.slave-piston
+    name: Slave piston
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 40 }] }
+    quantity: 1
+    finish: aluminium
+    specs:
+      diameter: { in: 1.0, mm: 25.4, source: { label: D, method: "Running fit in the bore" } }
+
+  - id: clutch.hydraulics.slave-boot
+    name: Slave cylinder boot
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 42 }] }
+    quantity: 1
+    finish: rubber
+    notes: Remove the boot and shake out the internals to dismantle (Sec 6 para 2).
+    specs:
+      length: { mm: 31.0, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.boot-clip-small
+    name: Boot clip, small
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 41 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      inside_diameter: { mm: 12.0, source: { label: D, method: "On the boot's neck" } }
+
+  - id: clutch.hydraulics.boot-clip-large
+    name: Boot clip, large
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 43 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      inside_diameter: { mm: 39.2, source: { label: D, method: "On the cylinder's lip" } }
+
+  - id: clutch.hydraulics.slave-pushrod
+    name: Slave cylinder pushrod
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 44 }] }
+    quantity: 1
+    notes: Stays on the clutch release fork when the cylinder is pulled off (Sec 6 para 1).
+    specs:
+      diameter: { in: 0.3125, mm: 7.94, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.slave-clevis-pin
+    name: Slave pushrod clevis pin
+    haynes: { section: 6, figures: [{ figure: "5.3", legend: 47 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { mm: 24.0, source: { label: D, method: "Through the lever fork and the pushrod eye" } }
+
+  - id: clutch.hydraulics.bleed-screw
+    name: Bleed screw
+    haynes: { section: 3, figures: [{ figure: "5.3", legend: 49 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: Open one turn with a 9 in tube over it into a jar to bleed; tighten at the end of a downstroke (Sec 3 paras 2-4).
+    specs:
+      across_flats: { in: 0.3125, mm: 7.94, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.hydraulics.bleed-cap
+    name: Bleed screw dust cap
+    haynes: { section: 3 }
+    quantity: 1
+    finish: rubber
+    notes: "Sec 3 para 3: remove the dust cap before opening the bleed screw."
+    specs:
+      length: { mm: 10.0, source: { label: D, method: "Over the nipple" } }
+
+  - id: clutch.hydraulics.slave-bolt
+    name: Slave cylinder bolt
+    haynes: { section: 6 }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Sec 6 para 1: two bolts and spring washers. MGOC Spares SH605071, 5/16 in UNF x 7/8 in."
+    specs:
+      length: { in: 0.875, mm: 22.23, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/clutch/clutch-system", note: "SH605071 screw, hex head, 5/16 in UNF x 7/8 in" } }
+
+  - id: clutch.hydraulics.slave-spring-washer
+    name: Slave cylinder bolt spring washer
+    haynes: { section: 6 }
+    quantity: 2
+    finish: zinc_steel
+    notes: "MGOC Spares GHF332, 5/16 in spring washer."
+    specs:
+      outside_diameter: { mm: 13.2, source: { label: D, method: "5/16 in single-coil spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in single-coil spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in single-coil spring washer" } }

@@ -83,7 +83,12 @@
    "haynes": {
     "chapter": 5
    },
-   "children": []
+   "children": [
+    "clutch.hydraulics",
+    "clutch.pedal",
+    "clutch.release",
+    "clutch.unit"
+   ]
   },
   "gearbox": {
    "id": "gearbox",
@@ -155,6 +160,155 @@
    },
    "children": []
   },
+  "clutch.hydraulics": {
+   "id": "clutch.hydraulics",
+   "kind": "assembly",
+   "name": "Clutch master cylinder, pipe, hose and slave cylinder",
+   "parent": "clutch",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "5.3"
+     }
+    ],
+    "section": 5
+   },
+   "children": [
+    "clutch.hydraulics.hose",
+    "clutch.hydraulics.copper-washer",
+    "clutch.hydraulics.slave-spring-washer",
+    "clutch.hydraulics.slave-bolt",
+    "clutch.hydraulics.slave-body",
+    "clutch.hydraulics.bleed-screw",
+    "clutch.hydraulics.bleed-cap",
+    "clutch.hydraulics.boot-clip-large",
+    "clutch.hydraulics.boot-clip-small",
+    "clutch.hydraulics.slave-boot",
+    "clutch.hydraulics.slave-piston",
+    "clutch.hydraulics.slave-cup",
+    "clutch.hydraulics.slave-cup-filler",
+    "clutch.hydraulics.slave-spring",
+    "clutch.hydraulics.slave-pushrod",
+    "clutch.hydraulics.slave-clevis-pin",
+    "clutch.hydraulics.mc-cap",
+    "clutch.hydraulics.mc-seal",
+    "clutch.hydraulics.banjo-bolt",
+    "clutch.hydraulics.sealing-washer-outer",
+    "clutch.hydraulics.banjo",
+    "clutch.hydraulics.sealing-washer-inner",
+    "clutch.hydraulics.metal-pipe",
+    "clutch.hydraulics.pipe-clip",
+    "clutch.hydraulics.hose-locknut",
+    "clutch.hydraulics.hose-lockwasher",
+    "clutch.hydraulics.mc-body",
+    "clutch.hydraulics.mc-stiffener",
+    "clutch.hydraulics.mc-washer",
+    "clutch.hydraulics.mc-nut",
+    "clutch.hydraulics.mc-bolt-long",
+    "clutch.hydraulics.mc-bolt",
+    "clutch.hydraulics.mc-boot",
+    "clutch.hydraulics.mc-circlip",
+    "clutch.hydraulics.mc-pushrod",
+    "clutch.hydraulics.mc-secondary-cup",
+    "clutch.hydraulics.mc-piston",
+    "clutch.hydraulics.mc-piston-washer",
+    "clutch.hydraulics.mc-main-cup",
+    "clutch.hydraulics.mc-spring-retainer",
+    "clutch.hydraulics.mc-spring"
+   ],
+   "file": "models/clutch.hydraulics.json",
+   "bytes": 591217
+  },
+  "clutch.pedal": {
+   "id": "clutch.pedal",
+   "kind": "assembly",
+   "name": "Clutch pedal",
+   "parent": "clutch",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "5.3"
+     }
+    ],
+    "section": 8
+   },
+   "children": [
+    "clutch.pedal.clevis-pin",
+    "clutch.pedal.return-spring",
+    "clutch.pedal.pedal",
+    "clutch.pedal.distance-tube",
+    "clutch.pedal.bush",
+    "clutch.pedal.pad"
+   ],
+   "file": "models/clutch.pedal.json",
+   "bytes": 191185
+  },
+  "clutch.release": {
+   "id": "clutch.release",
+   "kind": "assembly",
+   "name": "Release bearing and withdrawal lever",
+   "parent": "clutch",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "5.1"
+     },
+     {
+      "figure": "5.2"
+     }
+    ],
+    "section": 7
+   },
+   "children": [
+    "clutch.release.clip",
+    "clutch.release.cup",
+    "clutch.release.carbon",
+    "clutch.release.locknut",
+    "clutch.release.pivot-washer",
+    "clutch.release.pivot-bolt",
+    "clutch.release.lever",
+    "clutch.release.bush",
+    "clutch.release.dust-cover"
+   ],
+   "file": "models/clutch.release.json",
+   "bytes": 64463
+  },
+  "clutch.unit": {
+   "id": "clutch.unit",
+   "kind": "assembly",
+   "name": "Clutch cover assembly and driven plate",
+   "parent": "clutch",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "5.1"
+     },
+     {
+      "figure": "5.2"
+     }
+    ],
+    "section": 4
+   },
+   "children": [
+    "clutch.unit.spring-washer",
+    "clutch.unit.cover-screw",
+    "clutch.unit.cover",
+    "clutch.unit.diaphragm-spring",
+    "clutch.unit.release-plate",
+    "clutch.unit.release-plate-circlip",
+    "clutch.unit.release-plate-strap",
+    "clutch.unit.pressure-plate",
+    "clutch.unit.pressure-plate-clip",
+    "clutch.unit.tab-washer",
+    "clutch.unit.strap-bolt",
+    "clutch.unit.hub",
+    "clutch.unit.carrier",
+    "clutch.unit.damper-spring",
+    "clutch.unit.facing"
+   ],
+   "file": "models/clutch.unit.json",
+   "bytes": 592412
+  },
   "cooling.pump-radiator": {
    "id": "cooling.pump-radiator",
    "kind": "assembly",
@@ -189,7 +343,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 147679
+   "bytes": 147727
   },
   "engine.block": {
    "id": "engine.block",
@@ -288,7 +442,7 @@
     "engine.flywheel.bolt"
    ],
    "file": "models/engine.flywheel.json",
-   "bytes": 97829
+   "bytes": 97797
   },
   "engine.head": {
    "id": "engine.head",
@@ -450,7 +604,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 161973
+   "bytes": 162049
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -622,7 +776,3336 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494170
+   "bytes": 493974
+  },
+  "clutch.hydraulics.mc-body": {
+   "id": "clutch.hydraulics.mc-body",
+   "kind": "part",
+   "name": "Master cylinder and reservoir",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Cast iron body (Moss Motors 180-697) with an integral round reservoir beside the two-bolt flange, bolted to the front of the pedal box on the right-hand side of the bulkhead beside the brake master cylinder; a cover over both is held by four screws (Sec 5 para 1). The outlet at the front takes the banjo and banjo bolt (items 32-33). Feed and by-pass ports drilled from the reservoir well (Sec 5 para 6: probe the by-pass ports). Shape from Fig 5.3; sizes in proportion to the published bore.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "0.75 in (19.05 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mossmotors.com/180-697-clutch-master-cylinder-replacement-3-4-bore",
+     "note": "MGB 1962-80 clutch master cylinder, 3/4 in bore",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "140.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3, in proportion to the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "clutch.hydraulics.mc-cap": {
+   "id": "clutch.hydraulics.mc-cap",
+   "kind": "part",
+   "name": "Master cylinder cap",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 9
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Fluted filler cap with a breather hole. Refit after topping up (Sec 3 para 5); do not overfill (Sec 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "38.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3, in proportion to the reservoir",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-seal": {
+   "id": "clutch.hydraulics.mc-seal",
+   "kind": "part",
+   "name": "Cap seal",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 10
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-boot": {
+   "id": "clutch.hydraulics.mc-boot",
+   "kind": "part",
+   "name": "Master cylinder boot",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Pull off to dismantle (Sec 5 para 5). Fluid in the boot means a leaking seal (Sec 9 para 14).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-circlip": {
+   "id": "clutch.hydraulics.mc-circlip",
+   "kind": "part",
+   "name": "Master cylinder circlip",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 12
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Press the pushrod in and remove the circlip to withdraw the internals (Sec 5 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "25.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Internal circlip in the bore mouth",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-pushrod": {
+   "id": "clutch.hydraulics.mc-pushrod",
+   "kind": "part",
+   "name": "Master cylinder pushrod",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 13
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Pushrod with its stop washer, threaded into the clevis fork with a locknut; the fork takes the clevis pin through the pedal (Sec 5 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3, in proportion to the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-secondary-cup": {
+   "id": "clutch.hydraulics.mc-secondary-cup",
+   "kind": "part",
+   "name": "Secondary cup",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 14
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Fitted over the piston, fully home in its groove, lip toward the cylinder bore (Sec 5 para 8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-piston": {
+   "id": "clutch.hydraulics.mc-piston",
+   "kind": "part",
+   "name": "Master cylinder piston",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 15
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Running fit in the 3/4 in bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-piston-washer": {
+   "id": "clutch.hydraulics.mc-piston-washer",
+   "kind": "part",
+   "name": "Piston washer",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 16
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Between the piston head and the main cup (Sec 5 para 9).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-main-cup": {
+   "id": "clutch.hydraulics.mc-main-cup",
+   "kind": "part",
+   "name": "Main cup",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 17
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Fitted lip edge first, after the spring (Sec 5 para 9).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-spring-retainer": {
+   "id": "clutch.hydraulics.mc-spring-retainer",
+   "kind": "part",
+   "name": "Spring retainer",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 18
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fitted in the small end of the spring (Sec 5 para 8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "17.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-spring": {
+   "id": "clutch.hydraulics.mc-spring",
+   "kind": "part",
+   "name": "Master cylinder spring",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 19
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Fitted large end first (Sec 5 para 9). Modelled as a parallel coil.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "15.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Clear in the 3/4 in bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "In proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-bolt-long": {
+   "id": "clutch.hydraulics.mc-bolt-long",
+   "kind": "part",
+   "name": "Master cylinder securing bolt (top, long)",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "The longer bolt goes in the top hole, which also carries the stiffener plate (Sec 5 para 11).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flange, box wall, stiffener, washer and nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-bolt": {
+   "id": "clutch.hydraulics.mc-bolt",
+   "kind": "part",
+   "name": "Master cylinder securing bolt (bottom)",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 5 para 4: two securing bolts, nuts and washers.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flange, box wall, washer and nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-nut": {
+   "id": "clutch.hydraulics.mc-nut",
+   "kind": "part",
+   "name": "Master cylinder bolt nut",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in UNF, matching the flange holes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-washer": {
+   "id": "clutch.hydraulics.mc-washer",
+   "kind": "part",
+   "name": "Master cylinder bolt washer",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "17.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in SAE plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in SAE plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in SAE plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.mc-stiffener": {
+   "id": "clutch.hydraulics.mc-stiffener",
+   "kind": "part",
+   "name": "Master cylinder stiffener plate",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Carried by the top bolt (Sec 5 para 11). Fitted inside the pedal box under the nut; Haynes does not draw it, so its shape is derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.banjo": {
+   "id": "clutch.hydraulics.banjo",
+   "kind": "part",
+   "name": "Banjo connection",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 32
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "Banjo eye on the master cylinder outlet with the metal pipe brazed in. Undo the union at the master cylinder to remove it (Sec 5 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.banjo-bolt": {
+   "id": "clutch.hydraulics.banjo-bolt",
+   "kind": "part",
+   "name": "Banjo bolt",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 33
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through two washers and the banjo into the outlet boss",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.sealing-washer-inner": {
+   "id": "clutch.hydraulics.sealing-washer-inner",
+   "kind": "part",
+   "name": "Banjo sealing washer (cylinder side)",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 35
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.sealing-washer-outer": {
+   "id": "clutch.hydraulics.sealing-washer-outer",
+   "kind": "part",
+   "name": "Banjo sealing washer (bolt side)",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 34
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.metal-pipe": {
+   "id": "clutch.hydraulics.metal-pipe",
+   "kind": "part",
+   "name": "Metal pipe (RHD)",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 24
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "RHD pipe from the master cylinder banjo down the bulkhead to the hose at its bracket (Fig 5.3 inset), with its union nut. Run derived: Fig 5.3 shows it dropping from the master cylinder to the bracket; the bracket position is in mgb/clutch_layout.py.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in brake pipe, the usual size for these systems; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.pipe-clip": {
+   "id": "clutch.hydraulics.pipe-clip",
+   "kind": "part",
+   "name": "Pipe clip",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 30
+     },
+     {
+      "figure": "5.3",
+      "legend": 31
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Two P-clips holding the pipe (items 30 and 31 are the same clip in two places).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3 inset",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.hose": {
+   "id": "clutch.hydraulics.hose",
+   "kind": "part",
+   "name": "Flexible hose",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 26
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "From the bracket, where its top end is held by a locknut and lockwasher and the pipe screws into it, to the slave cylinder union. Disconnect at the cylinder to remove the slave cylinder (Sec 6 para 1). End fittings are crimped on.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "10.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical Lockheed 3/16 in bore hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.hose-locknut": {
+   "id": "clutch.hydraulics.hose-locknut",
+   "kind": "part",
+   "name": "Hose locknut",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 27
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.625 in (15.88 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3, to the hose end thread",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.hose-lockwasher": {
+   "id": "clutch.hydraulics.hose-lockwasher",
+   "kind": "part",
+   "name": "Hose lockwasher",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 28
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.copper-washer": {
+   "id": "clutch.hydraulics.copper-washer",
+   "kind": "part",
+   "name": "Hose copper washer",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 29
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Under the hose end hex",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "9.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the hose end thread",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-body": {
+   "id": "clutch.hydraulics.slave-body",
+   "kind": "part",
+   "name": "Slave cylinder body",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 36
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "On the right-hand side of the bellhousing, held by two bolts and spring washers (Sec 6 para 1). Domed closed end with the hose union and the bleed screw boss; the two-ear flange is at the open end, on the rear face of the bellhousing pad, and the body passes forward through the pad (mgb/gearbox_layout.py). Lockheed type, MGB 1962-80 (Moss Motors 180-720, GSY106). Shape from Fig 5.3.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1 in, as commonly quoted for the GSY106 cylinder; no published figure could be confirmed",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "82.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3, in proportion to the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-spring": {
+   "id": "clutch.hydraulics.slave-spring",
+   "kind": "part",
+   "name": "Slave cylinder spring",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 37
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "In proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-cup-filler": {
+   "id": "clutch.hydraulics.slave-cup-filler",
+   "kind": "part",
+   "name": "Piston cup filler",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 38
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "21.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-cup": {
+   "id": "clutch.hydraulics.slave-cup",
+   "kind": "part",
+   "name": "Slave piston cup",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 39
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Fitted lip first (Sec 6 para 4).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Equal to the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-piston": {
+   "id": "clutch.hydraulics.slave-piston",
+   "kind": "part",
+   "name": "Slave piston",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 40
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Running fit in the bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-boot": {
+   "id": "clutch.hydraulics.slave-boot",
+   "kind": "part",
+   "name": "Slave cylinder boot",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 42
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Remove the boot and shake out the internals to dismantle (Sec 6 para 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "31.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.boot-clip-small": {
+   "id": "clutch.hydraulics.boot-clip-small",
+   "kind": "part",
+   "name": "Boot clip, small",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 41
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "On the boot's neck",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.boot-clip-large": {
+   "id": "clutch.hydraulics.boot-clip-large",
+   "kind": "part",
+   "name": "Boot clip, large",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 43
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "39.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "On the cylinder's lip",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-pushrod": {
+   "id": "clutch.hydraulics.slave-pushrod",
+   "kind": "part",
+   "name": "Slave cylinder pushrod",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 44
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Stays on the clutch release fork when the cylinder is pulled off (Sec 6 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-clevis-pin": {
+   "id": "clutch.hydraulics.slave-clevis-pin",
+   "kind": "part",
+   "name": "Slave pushrod clevis pin",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 47
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "24.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the lever fork and the pushrod eye",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.bleed-screw": {
+   "id": "clutch.hydraulics.bleed-screw",
+   "kind": "part",
+   "name": "Bleed screw",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 3,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 49
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Open one turn with a 9 in tube over it into a jar to bleed; tighten at the end of a downstroke (Sec 3 paras 2-4).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.bleed-cap": {
+   "id": "clutch.hydraulics.bleed-cap",
+   "kind": "part",
+   "name": "Bleed screw dust cap",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 3,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Sec 3 para 3: remove the dust cap before opening the bleed screw.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the nipple",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.hydraulics.slave-bolt": {
+   "id": "clutch.hydraulics.slave-bolt",
+   "kind": "part",
+   "name": "Slave cylinder bolt",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 6 para 1: two bolts and spring washers. MGOC Spares SH605071, 5/16 in UNF x 7/8 in.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.875 in (22.23 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/clutch/clutch-system",
+     "note": "SH605071 screw, hex head, 5/16 in UNF x 7/8 in",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "clutch.hydraulics.slave-spring-washer": {
+   "id": "clutch.hydraulics.slave-spring-washer",
+   "kind": "part",
+   "name": "Slave cylinder bolt spring washer",
+   "parent": "clutch.hydraulics",
+   "haynes": {
+    "section": 6,
+    "spec_page": 106
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "MGOC Spares GHF332, 5/16 in spring washer.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in single-coil spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in single-coil spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in single-coil spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.pedal.pedal": {
+   "id": "clutch.pedal.pedal",
+   "kind": "part",
+   "name": "Clutch pedal",
+   "parent": "clutch.pedal",
+   "haynes": {
+    "section": 8,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Pressed-steel pedal hung from the pivot in the pedal box, the master cylinder pushrod clevis just below the pivot, the arm cranked back through the bulkhead to the foot plate (Fig 5.3). RHD: the clutch pedal is the inboard of the two. Shape from Fig 5.3; lengths and the pad position derived (mgb/clutch_layout.py).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bush_bore",
+     "label": "Bush bore",
+     "value": "19.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the bush",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pivot_to_pad",
+     "label": "Pivot to pad",
+     "value": "287.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pivot to pad centre in the layout",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.pedal.bush": {
+   "id": "clutch.pedal.bush",
+   "kind": "part",
+   "name": "Pedal bush",
+   "parent": "clutch.pedal",
+   "haynes": {
+    "section": 8,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bronze",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "15.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the distance tube",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.pedal.pad": {
+   "id": "clutch.pedal.pad",
+   "kind": "part",
+   "name": "Pedal rubber pad",
+   "parent": "clutch.pedal",
+   "haynes": {
+    "section": 8,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Ribbed rubber pad stretched over the foot plate (Fig 5.3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.pedal.distance-tube": {
+   "id": "clutch.pedal.distance-tube",
+   "kind": "part",
+   "name": "Distance tube",
+   "parent": "clutch.pedal",
+   "haynes": {
+    "section": 8,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Runs on the pivot bolt inside the bush (Sec 8 para 5 calls it the spacer).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "15.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.50 in (12.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over a 1/2 in pivot bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "26.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bush length plus clearance",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.pedal.return-spring": {
+   "id": "clutch.pedal.return-spring",
+   "kind": "part",
+   "name": "Pedal return spring",
+   "parent": "clutch.pedal",
+   "haynes": {
+    "section": 8,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Hooked from the pedal arm to the pedal box (Sec 8 para 4, \"free the spring\"). Anchor point derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.3",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.pedal.clevis-pin": {
+   "id": "clutch.pedal.clevis-pin",
+   "kind": "part",
+   "name": "Pedal clevis pin",
+   "parent": "clutch.pedal",
+   "haynes": {
+    "section": 5,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.3",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Joins the master cylinder pushrod fork to the pedal; free it by removing the split pin (Sec 5 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the fork and the pedal",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.release.carbon": {
+   "id": "clutch.release.carbon",
+   "kind": "part",
+   "name": "Release bearing (graphite ring)",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 8
+     },
+     {
+      "figure": "5.2",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": "Graphite, MY3D (p106)",
+   "finish": "graphite",
+   "notes": "Graphite ring pressed into its cup; it runs against the release plate (Fig 5.2). Renew it at every clutch overhaul unless nearly new (Sec 4 para 4, Sec 7 para 1; photo 7.1a worn, 7.1b unworn). Radii and length from Fig 5.2, scaled.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "type",
+     "label": "Type",
+     "value": "1",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p106",
+     "note": "Graphite MY3D",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "82.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled: 41 mm radius",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "48.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled: 24 mm radius",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "15.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.75
+  },
+  "clutch.release.cup": {
+   "id": "clutch.release.cup",
+   "kind": "part",
+   "name": "Release bearing cup",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Pressed cup holding the graphite ring, with a lug and trunnion pin at 12 and 6 o'clock that the lever fork sits on (Fig 5.1 item 8 draws the lug and pin; photo 7.1b shows the cup in the fork with the clips either side).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "92.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.release.clip": {
+   "id": "clutch.release.clip",
+   "kind": "part",
+   "name": "Bearing retainer clip",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 9
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Turn the clips through 90 degrees and remove them to free the bearing (Sec 4 para 5, Sec 7 para 2). MGOC Spares 22B66.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.1 item 9",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.release.lever": {
+   "id": "clutch.release.lever",
+   "kind": "part",
+   "name": "Clutch withdrawal lever",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Forged lever pivoted on a bolt in the gearbox front cover (photo 7.3; mgaguru.com gt110). A half-ring fork carries the bearing on its two trunnions; the outer arm passes out through the bellhousing wall under the dust cover to the slave cylinder pushrod. Check for play and have the bushes renewed if necessary (Sec 7 para 3). The early three-synchro lever differs from the four-synchro one (MGOC Spares 22B57). Shape and lever ratio derived: Haynes has no drawing of the lever; positions from mgb/gearbox_layout.py.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "fork_thickness",
+     "label": "Fork thickness",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "In proportion to the 3/8 in pivot bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bush_bore",
+     "label": "Bush bore",
+     "value": "19.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the pivot bush",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "ratio",
+     "label": "Ratio",
+     "value": "2",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pivot to pushrod line 130 mm over pivot to trunnions 75 mm",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.release.bush": {
+   "id": "clutch.release.bush",
+   "kind": "part",
+   "name": "Withdrawal lever pivot bush",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bronze",
+   "notes": "Sec 7 para 3; MGOC Spares 11G3195.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bronze bush over the 3/8 in bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.38 in (9.65 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Running fit on the 3/8 in pivot bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.release.pivot-bolt": {
+   "id": "clutch.release.pivot-bolt",
+   "kind": "part",
+   "name": "Withdrawal lever pivot bolt",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 7 para 3: remove the locknut, washer and bolt (photo 7.3). MGOC Spares 11G3196.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "2.50 in (63.50 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through both lugs and the lever boss, washer and locknut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/clutch/clutch-system",
+     "note": "Lever fittings: GHF223 nyloc nut, 3/8 in UNF",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "clutch.release.pivot-washer": {
+   "id": "clutch.release.pivot-washer",
+   "kind": "part",
+   "name": "Pivot bolt washer",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "20.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in SAE plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "10.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in SAE plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in SAE plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.release.locknut": {
+   "id": "clutch.release.locknut",
+   "kind": "part",
+   "name": "Pivot bolt locknut",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Self-locking nut, 3/8 in UNF (MGOC Spares GHF223).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/clutch/clutch-system",
+     "note": "GHF223 nyloc nut, 3/8 in UNF",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "clutch.release.dust-cover": {
+   "id": "clutch.release.dust-cover",
+   "kind": "part",
+   "name": "Withdrawal lever dust cover",
+   "parent": "clutch.release",
+   "haynes": {
+    "section": 7,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Rubber gaiter over the lever's opening in the bellhousing (Sec 7 para 3, \"disengage the dust cover\"). Oval section on chrome bumper cars (MGOC Spares 22H1337). Shape derived: flange, two convolutions and a neck on the lever.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "30.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Wall to the neck on the lever",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.cover": {
+   "id": "clutch.unit.cover",
+   "kind": "part",
+   "name": "Clutch cover with straps and fulcrum rivets",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 2
+     },
+     {
+      "figure": "5.2",
+      "legend": 1
+     },
+     {
+      "figure": "5.2",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": "Pressed steel",
+   "finish": "paint_black",
+   "notes": "Deep pressed dish with three bolting lobes, each carrying two of the six cover screws and one of the three locating dowels (Sec 4 paras 2-3 and 11; photo 4.11 shows the dowel beside a screw on a lobe). The skirt has windows the pressure plate lugs pass through; the three drive straps are riveted outside on raised pads and bolted to the lugs (Fig 5.1 shows them on the outside of the cover; Sec 4 para 5 reaches the strap bolts \"through the holes in the cover\"). A pressed bead in the back wall carries the nine shouldered fulcrum rivets (the round buttons drawn in Fig 5.1) and the two wire fulcrum rings either side of the diaphragm (Fig 5.2). Balance holes in the back wall (Fig 5.1). Mark the cover and flywheel before removal (Sec 4 para 2). Shape from Figs 5.1 and 5.2 and photo 4.11; depths from Fig 5.2. No photograph of a bare early cover could be viewed from the sandbox.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bolting_diameter",
+     "label": "Bolting diameter",
+     "value": "238.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "The flywheel's clutch bolt circle (specs/engine/flywheel)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "46.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2: flywheel face to the back of the cover, scaled to the 8 in plate",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_diameter",
+     "label": "Flange diameter",
+     "value": "276.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2: lobe tips at 137-138 mm radius, scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "screws",
+     "label": "Screws",
+     "value": "6",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p106",
+     "note": "Sec 4 para 2: six bolts holding the cover to the flywheel",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.75
+  },
+  "clutch.unit.diaphragm-spring": {
+   "id": "clutch.unit.diaphragm-spring",
+   "kind": "part",
+   "name": "Diaphragm spring",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.2",
+      "legend": 9
+     },
+     {
+      "figure": "5.1",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Dished spring steel diaphragm: its rim bears on the pressure plate's fulcrum ridge, it pivots between the two wire rings on the cover rivets, and the eighteen fingers carry the release plate (Fig 5.2). The finger slots end in round holes on the pivot circle, every other one taking a rivet. Finger count from Fig 5.1; radii from Fig 5.2.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "184.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled: rim just outside the fulcrum ridge",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "fingers",
+     "label": "Fingers",
+     "value": "18",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Counted in Fig 5.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.release-plate": {
+   "id": "clutch.unit.release-plate",
+   "kind": "part",
+   "name": "Release plate",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.2",
+      "legend": 7
+     },
+     {
+      "figure": "5.1",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Early models only (Sec 4 para 5): a cast plate on the diaphragm finger tips that the graphite release bearing runs against. Its spigot passes through the diaphragm and is held by a circlip; three spring straps hold it to the cover (Fig 5.2 item 8). Shape from Fig 5.2.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "84.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled: on the finger tips inside the cover opening",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.release-plate-circlip": {
+   "id": "clutch.unit.release-plate-circlip",
+   "kind": "part",
+   "name": "Release plate circlip",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Sec 4 para 5: remove the circlip holding the release plate in position (early models only).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "36.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sprung into the groove on the release plate spigot",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.release-plate-strap": {
+   "id": "clutch.unit.release-plate-strap",
+   "kind": "part",
+   "name": "Strap, release plate to cover",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.2",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Thin spring strap riveted between an ear of the release plate and the cover bead (Fig 5.2 item 8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.pressure-plate": {
+   "id": "clutch.unit.pressure-plate",
+   "kind": "part",
+   "name": "Pressure plate",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 3
+     },
+     {
+      "figure": "5.2",
+      "legend": 10
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cast_iron",
+   "notes": "Cast iron ring with the machined friction face, the fulcrum ridge on its back for the diaphragm rim, three drilled lugs for the strap bolts and a ring of cast balance lugs round the back (Fig 5.1). Check the face for grooves and cracks (Sec 4 para 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "208.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled, then held inside the cover skirt so the cover screw heads clear it",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "140.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matched to the facing bore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "15.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled, without the ridge",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.pressure-plate-clip": {
+   "id": "clutch.unit.pressure-plate-clip",
+   "kind": "part",
+   "name": "Pressure plate clip",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 5
+     },
+     {
+      "figure": "5.2",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Under each strap bolt; its hooked end goes over the diaphragm rim so the pressure plate is drawn back with it when the clutch is released (Fig 5.2 item 4). Shape from Fig 5.1 item 5.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.1, in proportion to the strap bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.strap-bolt": {
+   "id": "clutch.unit.strap-bolt",
+   "kind": "part",
+   "name": "Strap bolt",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 4
+     },
+     {
+      "figure": "5.2",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 4 para 5: undo the three strap bolts a turn at a time through the holes in the cover.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.50 in (12.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the tab washer, strap and clip into the lug",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.tab-washer": {
+   "id": "clutch.unit.tab-washer",
+   "kind": "part",
+   "name": "Strap bolt tab washer",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 6
+     },
+     {
+      "figure": "5.2",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.cover-screw": {
+   "id": "clutch.unit.cover-screw",
+   "kind": "part",
+   "name": "Cover assembly retaining screw",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 10
+     }
+    ]
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Unscrew diagonally half a turn at a time to avoid distorting the cover flange (Sec 4 para 2); tighten to the specified torque in a diagonal sequence (para 13).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "25 to 30 lbf ft (34 to 41 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p106",
+     "note": "Clutch-to-flywheel bolts",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in, to the flywheel's tapped holes; not in Haynes",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.6875 in (17.46 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Lobe, spring washer and thread into the flywheel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "clutch.unit.spring-washer": {
+   "id": "clutch.unit.spring-washer",
+   "kind": "part",
+   "name": "Cover screw spring washer",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in single-coil spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in single-coil spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in single-coil spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.hub": {
+   "id": "clutch.unit.hub",
+   "kind": "part",
+   "name": "Driven plate hub",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 7
+     },
+     {
+      "figure": "5.2",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Splined hub and flange of the driven plate. The shorter end faces the flywheel; the plate is marked FLYWHEEL SIDE (Sec 4 para 10). Centralise it on an old first motion shaft (photo 4.12). Lengths each side of the plate from Fig 5.2.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "splines",
+     "label": "Splines",
+     "value": "23",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://rimmerbros.com/Item--i-RP1447EARLY",
+     "note": "Clutch alignment tool GAC5057 for MGA 1600 and MGB to 1965 (three-bearing): 23 splines",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "spline_major_diameter",
+     "label": "Spline major diameter",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1 in nominal, in proportion to the hub in Fig 5.2; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "33.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled: 9 mm ahead of the plate, 24 mm behind",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.67
+  },
+  "clutch.unit.carrier": {
+   "id": "clutch.unit.carrier",
+   "kind": "part",
+   "name": "Driven plate centre (side plates, cushion segments, rivets)",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Front side plate carrying twelve waved cushion segments, the rear retainer plate, six stop pins through notches in the hub flange, and the facing rivets. Pressed louvres over the six spring windows (Fig 5.1, photo 4.3). Inspect for loose rivets, distortion and cracks (Sec 4 para 6).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "segments",
+     "label": "Segments",
+     "value": "12",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Typical Borg & Beck 8 in plate; Fig 5.1 shows the rivet pattern but not the segments",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "clutch.unit.damper-spring": {
+   "id": "clutch.unit.damper-spring",
+   "kind": "part",
+   "name": "Driven plate damper spring",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Six damper springs, colour black/light green (p106). Seen in the cut-away of Fig 5.1 and in photo 4.3.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "count",
+     "label": "Count",
+     "value": "6",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p106",
+     "note": "No of damper springs",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "colour_code",
+     "label": "Colour code",
+     "value": "1",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p106",
+     "note": "Damper spring colour black/light green",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "25.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.1, in proportion to the hub",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "2.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "In proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.6
+  },
+  "clutch.unit.facing": {
+   "id": "clutch.unit.facing",
+   "kind": "part",
+   "name": "Driven plate facing",
+   "parent": "clutch.unit",
+   "haynes": {
+    "section": 4,
+    "spec_page": 106,
+    "figures": [
+     {
+      "figure": "5.1",
+      "legend": 7
+     },
+     {
+      "figure": "5.2",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": "Wound yarn friction material (p106)",
+   "finish": "friction",
+   "notes": "Two riveted facings, counterbored so the rivet heads sit below the friction face. Rivet pattern from Fig 5.1: an outer ring and an inner ring of holes. Renew the plate complete rather than refacing it (Sec 4 para 6).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "8.00 in (203.00 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p106",
+     "note": "Driven plate diameter",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "friction_material",
+     "label": "Friction material",
+     "value": "1",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p106",
+     "note": "Wound yarn",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "5.50 in (139.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.1: inner edge at 0.70 of the outer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 5.2, scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
   },
   "cooling.pump-body": {
    "id": "cooling.pump-body",
@@ -16124,6 +19607,2281 @@
   }
  },
  "instances": {
+  "clutch.hydraulics.hose#1": {
+   "part": "clutch.hydraulics.hose",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--hose__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.copper-washer#1": {
+   "part": "clutch.hydraulics.copper-washer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--copper-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-spring-washer#1": {
+   "part": "clutch.hydraulics.slave-spring-washer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-bolt#1": {
+   "part": "clutch.hydraulics.slave-bolt",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-spring-washer#2": {
+   "part": "clutch.hydraulics.slave-spring-washer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 35
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-bolt#2": {
+   "part": "clutch.hydraulics.slave-bolt",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-body#1": {
+   "part": "clutch.hydraulics.slave-body",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-body__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.bleed-screw#1": {
+   "part": "clutch.hydraulics.bleed-screw",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--bleed-screw__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.bleed-cap#1": {
+   "part": "clutch.hydraulics.bleed-cap",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--bleed-cap__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4.5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.boot-clip-large#1": {
+   "part": "clutch.hydraulics.boot-clip-large",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--boot-clip-large__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.boot-clip-small#1": {
+   "part": "clutch.hydraulics.boot-clip-small",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--boot-clip-small__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-boot#1": {
+   "part": "clutch.hydraulics.slave-boot",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-boot__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4.2,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-piston#1": {
+   "part": "clutch.hydraulics.slave-piston",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-piston__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4.4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-cup#1": {
+   "part": "clutch.hydraulics.slave-cup",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-cup__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4.6,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-cup-filler#1": {
+   "part": "clutch.hydraulics.slave-cup-filler",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-cup-filler__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4.8,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-spring#1": {
+   "part": "clutch.hydraulics.slave-spring",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-spring__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "slave"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-pushrod#1": {
+   "part": "clutch.hydraulics.slave-pushrod",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-pushrod__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.slave-clevis-pin#1": {
+   "part": "clutch.hydraulics.slave-clevis-pin",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--slave-clevis-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-cap#1": {
+   "part": "clutch.hydraulics.mc-cap",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-cap__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 6,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-seal#1": {
+   "part": "clutch.hydraulics.mc-seal",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-seal__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 6,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.banjo-bolt#1": {
+   "part": "clutch.hydraulics.banjo-bolt",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--banjo-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.sealing-washer-outer#1": {
+   "part": "clutch.hydraulics.sealing-washer-outer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--sealing-washer-outer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.banjo#1": {
+   "part": "clutch.hydraulics.banjo",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--banjo__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 70,
+     "group": "pipe"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.sealing-washer-inner#1": {
+   "part": "clutch.hydraulics.sealing-washer-inner",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--sealing-washer-inner__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 70,
+     "group": "pipe"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.metal-pipe#1": {
+   "part": "clutch.hydraulics.metal-pipe",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--metal-pipe__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 70,
+     "group": "pipe"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.pipe-clip#1": {
+   "part": "clutch.hydraulics.pipe-clip",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--pipe-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 70,
+     "group": "pipe"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.pipe-clip#2": {
+   "part": "clutch.hydraulics.pipe-clip",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--pipe-clip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 70,
+     "group": "pipe"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.hydraulics.hose-locknut#1": {
+   "part": "clutch.hydraulics.hose-locknut",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--hose-locknut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.hose-lockwasher#1": {
+   "part": "clutch.hydraulics.hose-lockwasher",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--hose-lockwasher__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-body#1": {
+   "part": "clutch.hydraulics.mc-body",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-body__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-stiffener#1": {
+   "part": "clutch.hydraulics.mc-stiffener",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-stiffener__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-washer#1": {
+   "part": "clutch.hydraulics.mc-washer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-nut#1": {
+   "part": "clutch.hydraulics.mc-nut",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-nut__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-bolt-long#1": {
+   "part": "clutch.hydraulics.mc-bolt-long",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-bolt-long__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-washer#2": {
+   "part": "clutch.hydraulics.mc-washer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-nut#2": {
+   "part": "clutch.hydraulics.mc-nut",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-nut__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 85
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-bolt#1": {
+   "part": "clutch.hydraulics.mc-bolt",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-boot#1": {
+   "part": "clutch.hydraulics.mc-boot",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-boot__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-circlip#1": {
+   "part": "clutch.hydraulics.mc-circlip",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-circlip__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10.2,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-pushrod#1": {
+   "part": "clutch.hydraulics.mc-pushrod",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-pushrod__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10.4,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-secondary-cup#1": {
+   "part": "clutch.hydraulics.mc-secondary-cup",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-secondary-cup__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10.6,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-piston#1": {
+   "part": "clutch.hydraulics.mc-piston",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-piston__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10.6,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-piston-washer#1": {
+   "part": "clutch.hydraulics.mc-piston-washer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-piston-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10.8,
+     "distance_mm": 105
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-main-cup#1": {
+   "part": "clutch.hydraulics.mc-main-cup",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-main-cup__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10.8,
+     "distance_mm": 95
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-spring-retainer#1": {
+   "part": "clutch.hydraulics.mc-spring-retainer",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-spring-retainer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 85
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.hydraulics.mc-spring#1": {
+   "part": "clutch.hydraulics.mc-spring",
+   "assembly": "clutch.hydraulics",
+   "node": "clutch--hydraulics--mc-spring__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 130,
+     "group": "master"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.pedal.clevis-pin#1": {
+   "part": "clutch.pedal.clevis-pin",
+   "assembly": "clutch.pedal",
+   "node": "clutch--pedal--clevis-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.pedal.return-spring#1": {
+   "part": "clutch.pedal.return-spring",
+   "assembly": "clutch.pedal",
+   "node": "clutch--pedal--return-spring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.pedal.pedal#1": {
+   "part": "clutch.pedal.pedal",
+   "assembly": "clutch.pedal",
+   "node": "clutch--pedal--pedal__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "pedal"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.pedal.distance-tube#1": {
+   "part": "clutch.pedal.distance-tube",
+   "assembly": "clutch.pedal",
+   "node": "clutch--pedal--distance-tube__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "pedal"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.pedal.bush#1": {
+   "part": "clutch.pedal.bush",
+   "assembly": "clutch.pedal",
+   "node": "clutch--pedal--bush__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "pedal"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.pedal.pad#1": {
+   "part": "clutch.pedal.pad",
+   "assembly": "clutch.pedal",
+   "node": "clutch--pedal--pad__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90,
+     "group": "pedal"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.clip#1": {
+   "part": "clutch.release.clip",
+   "assembly": "clutch.release",
+   "node": "clutch--release--clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.clip#2": {
+   "part": "clutch.release.clip",
+   "assembly": "clutch.release",
+   "node": "clutch--release--clip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.release.cup#1": {
+   "part": "clutch.release.cup",
+   "assembly": "clutch.release",
+   "node": "clutch--release--cup__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "bearing"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.carbon#1": {
+   "part": "clutch.release.carbon",
+   "assembly": "clutch.release",
+   "node": "clutch--release--carbon__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "bearing"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.locknut#1": {
+   "part": "clutch.release.locknut",
+   "assembly": "clutch.release",
+   "node": "clutch--release--locknut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.pivot-washer#1": {
+   "part": "clutch.release.pivot-washer",
+   "assembly": "clutch.release",
+   "node": "clutch--release--pivot-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.pivot-bolt#1": {
+   "part": "clutch.release.pivot-bolt",
+   "assembly": "clutch.release",
+   "node": "clutch--release--pivot-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.lever#1": {
+   "part": "clutch.release.lever",
+   "assembly": "clutch.release",
+   "node": "clutch--release--lever__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 60,
+     "group": "lever"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.bush#1": {
+   "part": "clutch.release.bush",
+   "assembly": "clutch.release",
+   "node": "clutch--release--bush__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 60,
+     "group": "lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.release.dust-cover#1": {
+   "part": "clutch.release.dust-cover",
+   "assembly": "clutch.release",
+   "node": "clutch--release--dust-cover__1",
+   "stages": [
+    {
+     "axis": [
+      -0.26687908298132373,
+      -0.9637300218770024,
+      0.0
+     ],
+     "order": 7,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.spring-washer#1": {
+   "part": "clutch.unit.spring-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.cover-screw#1": {
+   "part": "clutch.unit.cover-screw",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--cover-screw__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.spring-washer#2": {
+   "part": "clutch.unit.spring-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.cover-screw#2": {
+   "part": "clutch.unit.cover-screw",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--cover-screw__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.spring-washer#3": {
+   "part": "clutch.unit.spring-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--spring-washer__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.cover-screw#3": {
+   "part": "clutch.unit.cover-screw",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--cover-screw__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.spring-washer#4": {
+   "part": "clutch.unit.spring-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--spring-washer__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.cover-screw#4": {
+   "part": "clutch.unit.cover-screw",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--cover-screw__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.spring-washer#5": {
+   "part": "clutch.unit.spring-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--spring-washer__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.cover-screw#5": {
+   "part": "clutch.unit.cover-screw",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--cover-screw__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.spring-washer#6": {
+   "part": "clutch.unit.spring-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--spring-washer__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.cover-screw#6": {
+   "part": "clutch.unit.cover-screw",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--cover-screw__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.cover#1": {
+   "part": "clutch.unit.cover",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--cover__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.diaphragm-spring#1": {
+   "part": "clutch.unit.diaphragm-spring",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--diaphragm-spring__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.release-plate#1": {
+   "part": "clutch.unit.release-plate",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--release-plate__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.release-plate-circlip#1": {
+   "part": "clutch.unit.release-plate-circlip",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--release-plate-circlip__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.release-plate-strap#1": {
+   "part": "clutch.unit.release-plate-strap",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--release-plate-strap__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.release-plate-strap#2": {
+   "part": "clutch.unit.release-plate-strap",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--release-plate-strap__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.release-plate-strap#3": {
+   "part": "clutch.unit.release-plate-strap",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--release-plate-strap__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.pressure-plate#1": {
+   "part": "clutch.unit.pressure-plate",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--pressure-plate__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.pressure-plate-clip#1": {
+   "part": "clutch.unit.pressure-plate-clip",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--pressure-plate-clip__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0.0,
+      6.123233995736766e-17,
+      1.0
+     ],
+     "order": 6,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.tab-washer#1": {
+   "part": "clutch.unit.tab-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--tab-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.strap-bolt#1": {
+   "part": "clutch.unit.strap-bolt",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--strap-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.pressure-plate-clip#2": {
+   "part": "clutch.unit.pressure-plate-clip",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--pressure-plate-clip__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.8660254037844386,
+      -0.5000000000000001
+     ],
+     "order": 6,
+     "distance_mm": 35
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.tab-washer#2": {
+   "part": "clutch.unit.tab-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--tab-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.strap-bolt#2": {
+   "part": "clutch.unit.strap-bolt",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--strap-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.pressure-plate-clip#3": {
+   "part": "clutch.unit.pressure-plate-clip",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--pressure-plate-clip__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      0.0,
+      0.8660254037844384,
+      -0.5000000000000004
+     ],
+     "order": 6,
+     "distance_mm": 35
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.tab-washer#3": {
+   "part": "clutch.unit.tab-washer",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--tab-washer__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 45
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.strap-bolt#3": {
+   "part": "clutch.unit.strap-bolt",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--strap-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 170,
+     "group": "cover"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.hub#1": {
+   "part": "clutch.unit.hub",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--hub__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.carrier#1": {
+   "part": "clutch.unit.carrier",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--carrier__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.damper-spring#1": {
+   "part": "clutch.unit.damper-spring",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--damper-spring__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 8,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.damper-spring#2": {
+   "part": "clutch.unit.damper-spring",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--damper-spring__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      0.0,
+      0.5000000000000001,
+      0.8660254037844386
+     ],
+     "order": 8,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.damper-spring#3": {
+   "part": "clutch.unit.damper-spring",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--damper-spring__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.4999999999999998,
+      0.8660254037844387
+     ],
+     "order": 8,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.damper-spring#4": {
+   "part": "clutch.unit.damper-spring",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--damper-spring__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      1.2246467991473532e-16
+     ],
+     "order": 8,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.damper-spring#5": {
+   "part": "clutch.unit.damper-spring",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--damper-spring__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.5000000000000004,
+      -0.8660254037844384
+     ],
+     "order": 8,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.damper-spring#6": {
+   "part": "clutch.unit.damper-spring",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--damper-spring__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      0.0,
+      0.5000000000000001,
+      -0.8660254037844386
+     ],
+     "order": 8,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "clutch.unit.facing#1": {
+   "part": "clutch.unit.facing",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--facing__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "clutch.unit.facing#2": {
+   "part": "clutch.unit.facing",
+   "assembly": "clutch.unit",
+   "node": "clutch--unit--facing__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 80,
+     "group": "plate"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
   "cooling.radiator#1": {
    "part": "cooling.radiator",
    "assembly": "cooling.pump-radiator",
@@ -30297,5 +36055,5 @@
    "fitted": null
   }
  },
- "built": "2026-11-01T22:34:49+00:00"
+ "built": "2026-11-01T23:37:20+00:00"
 }

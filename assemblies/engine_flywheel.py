@@ -6,7 +6,7 @@ from build123d import Location, Rot
 
 from pathlib import Path
 
-from mgb import engine_layout as E, spec as S
+from mgb import clutch_layout as K, engine_layout as E, spec as S
 from mgb.head_layout import layout as head_layout
 
 ID = "engine.flywheel"
@@ -19,7 +19,7 @@ EL = E.layout(head_layout(S.load(ROOT / "specs" / "engine" / "head" / "casting.y
 SP = {s.id: s for s in S.load_file(ROOT / "specs" / "engine" / "flywheel" / "flywheel.yaml")}
 BACK = [-1, 0, 0]
 GROUPS = {"flywheel": {"axis": BACK, "order": 3, "distance_mm": 220}}
-FLANGE_REAR = EL.main_x[2] - 16 - 34          # rear face of the crankshaft flange (crank model)
+FLANGE_REAR = K.FLANGE_REAR                  # rear face of the crankshaft flange (crank model)
 BOLT_R = 37.0
 
 
@@ -31,7 +31,7 @@ I = []
 add = lambda part, loc, **o: I.append((f"engine.flywheel.{part}#{sum(1 for i in I if i[1].endswith(part)) + 1}",  # noqa: E731
                                         f"engine.flywheel.{part}", loc, o))
 cz = EL.crank_z
-FW_X = FLANGE_REAR + 4.5                      # crankshaft flange sits 4.5 mm into the flywheel register
+FW_X = K.FW_X                                 # crankshaft flange sits 4.5 mm into the flywheel register
 add("spigot-bush", Location((FLANGE_REAR + 15, 0, cz)) * Rot(0, -90, 0), explode=ex(4, 260))
 add("flywheel", Location((FW_X, 0, cz)), groups=["flywheel"])
 add("ring-gear", Location((FW_X, 0, cz)), groups=["flywheel"])

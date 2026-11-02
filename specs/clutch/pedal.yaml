@@ -1,0 +1,72 @@
+# Clutch pedal, early cars (1963). Haynes Ch 5 Sec 8 (p110: as for the brake pedal, Ch 9)
+# and Fig 5.3 items 1-6 (p109). PDF page = printed page + 4.
+# The pedal box, its cover and the pedal pivot bolt go in with the body (P11). Positions:
+# mgb/clutch_layout.py (pivot, clevis and pad, all D).
+defaults:
+  system: clutch
+  assembly: clutch.pedal
+  haynes: { section: 8, spec_page: 106 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true }
+  finish: paint_black
+
+parts:
+  - id: clutch.pedal.pedal
+    name: Clutch pedal
+    haynes: { section: 8, figures: [{ figure: "5.3", legend: 1 }] }
+    quantity: 1
+    notes: >
+      Pressed-steel pedal hung from the pivot in the pedal box, the master cylinder pushrod
+      clevis just below the pivot, the arm cranked back through the bulkhead to the foot
+      plate (Fig 5.3). RHD: the clutch pedal is the inboard of the two. Shape from Fig 5.3;
+      lengths and the pad position derived (mgb/clutch_layout.py).
+    specs:
+      bush_bore: { mm: 19.2, source: { label: D, method: "Fits the bush" } }
+      pivot_to_pad: { mm: 287.0, source: { label: D, method: "Pivot to pad centre in the layout" }, display_only: true }
+
+  - id: clutch.pedal.bush
+    name: Pedal bush
+    haynes: { section: 8, figures: [{ figure: "5.3", legend: 2 }] }
+    quantity: 1
+    finish: bronze
+    specs:
+      outside_diameter: { mm: 19.0, source: { label: D, method: "Fig 5.3" } }
+      inside_diameter: { mm: 15.9, source: { label: D, method: "Over the distance tube" } }
+
+  - id: clutch.pedal.pad
+    name: Pedal rubber pad
+    haynes: { section: 8, figures: [{ figure: "5.3", legend: 3 }] }
+    quantity: 1
+    finish: rubber
+    notes: Ribbed rubber pad stretched over the foot plate (Fig 5.3).
+    specs:
+      thickness: { mm: 8.0, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.pedal.distance-tube
+    name: Distance tube
+    haynes: { section: 8, figures: [{ figure: "5.3", legend: 4 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: Runs on the pivot bolt inside the bush (Sec 8 para 5 calls it the spacer).
+    specs:
+      outside_diameter: { mm: 15.8, source: { label: D, method: "Fig 5.3" } }
+      inside_diameter: { in: 0.5, mm: 12.7, source: { label: D, method: "Over a 1/2 in pivot bolt" } }
+      length: { mm: 26.0, source: { label: D, method: "Bush length plus clearance" } }
+
+  - id: clutch.pedal.return-spring
+    name: Pedal return spring
+    haynes: { section: 8, figures: [{ figure: "5.3", legend: 5 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: Hooked from the pedal arm to the pedal box (Sec 8 para 4, "free the spring"). Anchor point derived.
+    specs:
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Fig 5.3" } }
+      wire_diameter: { mm: 1.4, source: { label: D, method: "Fig 5.3" } }
+
+  - id: clutch.pedal.clevis-pin
+    name: Pedal clevis pin
+    haynes: { section: 5, figures: [{ figure: "5.3", legend: 6 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: Joins the master cylinder pushrod fork to the pedal; free it by removing the split pin (Sec 5 para 3).
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Through the fork and the pedal" } }

@@ -1,0 +1,212 @@
+# Clutch cover assembly, pressure plate, driven plate and fixings, 18G (1963).
+# Haynes Ch 5: specifications printed p106, Sec 4 (p106-108), Fig 5.1 (exploded view, early
+# models, p107), Fig 5.2 (sectional view, p108), photos 4.3 (p107), 4.11 and 4.12 (p108).
+# Fig 5.1 item numbers unless stated. PDF page = printed page + 4.
+#
+# Type: Haynes gives Borg and Beck, dry single plate, diaphragm spring (p106) and draws the
+# early diaphragm cover with straps and a release plate on a graphite bearing (Fig 5.1, 5.2).
+# The coil-spring Borg & Beck clutch is the MGA's: owners' sources agree the MGB used the
+# diaphragm cover from the start (britishcarforum.com thread 32511, "the MGA clutch cover is
+# a spring type and the MGB cover is a diaphragm type"; MGOC Spares MGB clutch page), so the
+# diaphragm type is modelled.
+#
+# Sizes not printed by Haynes are taken from Fig 5.2 scaled to the 8 in plate (see
+# mgb/clutch_layout.py: 0.1645 mm per pixel at 300 dpi) and labelled D.
+defaults:
+  system: clutch
+  assembly: clutch.unit
+  haynes: { section: 4, spec_page: 106 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: machined_steel
+
+parts:
+  - id: clutch.unit.cover
+    name: Clutch cover with straps and fulcrum rivets
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 2 }, { figure: "5.2", legend: 1 }, { figure: "5.2", legend: 5 }] }
+    quantity: 1
+    finish: paint_black
+    material: Pressed steel
+    notes: >
+      Deep pressed dish with three bolting lobes, each carrying two of the six cover screws
+      and one of the three locating dowels (Sec 4 paras 2-3 and 11; photo 4.11 shows the
+      dowel beside a screw on a lobe). The skirt has windows the pressure plate lugs pass
+      through; the three drive straps are riveted outside on raised pads and bolted to the
+      lugs (Fig 5.1 shows them on the outside of the cover; Sec 4 para 5 reaches the strap
+      bolts "through the holes in the cover"). A pressed bead in the back wall carries the
+      nine shouldered fulcrum rivets (the round buttons drawn in Fig 5.1) and the two wire
+      fulcrum rings either side of the diaphragm (Fig 5.2). Balance holes in the back wall
+      (Fig 5.1). Mark the cover and flywheel before removal (Sec 4 para 2). Shape from
+      Figs 5.1 and 5.2 and photo 4.11; depths from Fig 5.2. No photograph of a bare early
+      cover could be viewed from the sandbox.
+    specs:
+      bolting_diameter: { mm: 238.0, source: { label: D, method: "The flywheel's clutch bolt circle (specs/engine/flywheel)" } }
+      depth: { mm: 46.0, source: { label: D, method: "Fig 5.2: flywheel face to the back of the cover, scaled to the 8 in plate" } }
+      flange_diameter: { mm: 276.0, source: { label: D, method: "Fig 5.2: lobe tips at 137-138 mm radius, scaled" } }
+      screws: { count: 6, source: { label: H, page: 106, note: "Sec 4 para 2: six bolts holding the cover to the flywheel" }, display_only: true }
+
+  - id: clutch.unit.diaphragm-spring
+    name: Diaphragm spring
+    haynes: { section: 4, figures: [{ figure: "5.2", legend: 9 }, { figure: "5.1", legend: 2 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: >
+      Dished spring steel diaphragm: its rim bears on the pressure plate's fulcrum ridge, it
+      pivots between the two wire rings on the cover rivets, and the eighteen fingers carry
+      the release plate (Fig 5.2). The finger slots end in round holes on the pivot circle,
+      every other one taking a rivet. Finger count from Fig 5.1; radii from Fig 5.2.
+    specs:
+      outside_diameter: { mm: 184.0, source: { label: D, method: "Fig 5.2, scaled: rim just outside the fulcrum ridge" } }
+      thickness: { mm: 2.4, source: { label: D, method: "Fig 5.2, scaled" } }
+      fingers: { count: 18, source: { label: D, method: "Counted in Fig 5.1" } }
+
+  - id: clutch.unit.release-plate
+    name: Release plate
+    haynes: { section: 4, figures: [{ figure: "5.2", legend: 7 }, { figure: "5.1", legend: 2 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: >
+      Early models only (Sec 4 para 5): a cast plate on the diaphragm finger tips that the
+      graphite release bearing runs against. Its spigot passes through the diaphragm and is
+      held by a circlip; three spring straps hold it to the cover (Fig 5.2 item 8). Shape
+      from Fig 5.2.
+    specs:
+      diameter: { mm: 84.0, source: { label: D, method: "Fig 5.2, scaled: on the finger tips inside the cover opening" } }
+
+  - id: clutch.unit.release-plate-circlip
+    name: Release plate circlip
+    haynes: { section: 4 }
+    quantity: 1
+    finish: spring_steel
+    notes: "Sec 4 para 5: remove the circlip holding the release plate in position (early models only)."
+    specs:
+      inside_diameter: { mm: 36.4, source: { label: D, method: "Sprung into the groove on the release plate spigot" } }
+
+  - id: clutch.unit.release-plate-strap
+    name: Strap, release plate to cover
+    haynes: { section: 4, figures: [{ figure: "5.2", legend: 8 }] }
+    quantity: 3
+    finish: spring_steel
+    notes: Thin spring strap riveted between an ear of the release plate and the cover bead (Fig 5.2 item 8).
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Fig 5.2, scaled" } }
+
+  - id: clutch.unit.pressure-plate
+    name: Pressure plate
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 3 }, { figure: "5.2", legend: 10 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: >
+      Cast iron ring with the machined friction face, the fulcrum ridge on its back for the
+      diaphragm rim, three drilled lugs for the strap bolts and a ring of cast balance lugs
+      round the back (Fig 5.1). Check the face for grooves and cracks (Sec 4 para 7).
+    specs:
+      outside_diameter: { mm: 208.0, source: { label: D, method: "Fig 5.2, scaled, then held inside the cover skirt so the cover screw heads clear it" } }
+      inside_diameter: { mm: 140.0, source: { label: D, method: "Matched to the facing bore" } }
+      thickness: { mm: 15.5, source: { label: D, method: "Fig 5.2, scaled, without the ridge" } }
+
+  - id: clutch.unit.pressure-plate-clip
+    name: Pressure plate clip
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 5 }, { figure: "5.2", legend: 4 }] }
+    quantity: 3
+    finish: spring_steel
+    notes: >
+      Under each strap bolt; its hooked end goes over the diaphragm rim so the pressure
+      plate is drawn back with it when the clutch is released (Fig 5.2 item 4). Shape from
+      Fig 5.1 item 5.
+    specs:
+      width: { mm: 12.0, source: { label: D, method: "Fig 5.1, in proportion to the strap bolt" } }
+
+  - id: clutch.unit.strap-bolt
+    name: Strap bolt
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 4 }, { figure: "5.2", legend: 2 }] }
+    quantity: 3
+    finish: zinc_steel
+    notes: "Sec 4 para 5: undo the three strap bolts a turn at a time through the holes in the cover."
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: D, method: "Through the tab washer, strap and clip into the lug" } }
+
+  - id: clutch.unit.tab-washer
+    name: Strap bolt tab washer
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 6 }, { figure: "5.2", legend: 3 }] }
+    quantity: 3
+    finish: zinc_steel
+    specs:
+      thickness: { mm: 1.0, source: { label: D, method: "Fig 5.1" } }
+
+  - id: clutch.unit.cover-screw
+    name: Cover assembly retaining screw
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 10 }] }
+    quantity: 6
+    finish: zinc_steel
+    notes: >
+      Unscrew diagonally half a turn at a time to avoid distorting the cover flange (Sec 4
+      para 2); tighten to the specified torque in a diagonal sequence (para 13).
+    specs:
+      torque: { lbf_ft: [25, 30], nm: [34, 41], source: { label: H, page: 106, note: "Clutch-to-flywheel bolts" } }
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in, to the flywheel's tapped holes; not in Haynes" }, display_only: true }
+      length: { in: 0.6875, mm: 17.46, source: { label: D, method: "Lobe, spring washer and thread into the flywheel" } }
+
+  - id: clutch.unit.spring-washer
+    name: Cover screw spring washer
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 11 }] }
+    quantity: 6
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.2, source: { label: D, method: "5/16 in single-coil spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in single-coil spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in single-coil spring washer" } }
+
+  - id: clutch.unit.hub
+    name: Driven plate hub
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 7 }, { figure: "5.2", legend: 11 }] }
+    quantity: 1
+    notes: >
+      Splined hub and flange of the driven plate. The shorter end faces the flywheel; the
+      plate is marked FLYWHEEL SIDE (Sec 4 para 10). Centralise it on an old first motion
+      shaft (photo 4.12). Lengths each side of the plate from Fig 5.2.
+    specs:
+      splines: { count: 23, source: { label: S, ref: "https://rimmerbros.com/Item--i-RP1447EARLY", note: "Clutch alignment tool GAC5057 for MGA 1600 and MGB to 1965 (three-bearing): 23 splines" } }
+      spline_major_diameter: { in: 1.0, mm: 25.4, source: { label: D, method: "1 in nominal, in proportion to the hub in Fig 5.2; not published" } }
+      length: { mm: 33.0, source: { label: D, method: "Fig 5.2, scaled: 9 mm ahead of the plate, 24 mm behind" } }
+
+  - id: clutch.unit.carrier
+    name: Driven plate centre (side plates, cushion segments, rivets)
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 7 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: >
+      Front side plate carrying twelve waved cushion segments, the rear retainer plate, six
+      stop pins through notches in the hub flange, and the facing rivets. Pressed louvres
+      over the six spring windows (Fig 5.1, photo 4.3). Inspect for loose rivets, distortion
+      and cracks (Sec 4 para 6).
+    specs:
+      segments: { count: 12, source: { label: D, method: "Typical Borg & Beck 8 in plate; Fig 5.1 shows the rivet pattern but not the segments" } }
+
+  - id: clutch.unit.damper-spring
+    name: Driven plate damper spring
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 7 }] }
+    quantity: 6
+    finish: paint_black
+    notes: Six damper springs, colour black/light green (p106). Seen in the cut-away of Fig 5.1 and in photo 4.3.
+    specs:
+      count: { count: 6, source: { label: H, page: 106, note: "No of damper springs" }, display_only: true }
+      colour_code: { count: 1, source: { label: H, page: 106, note: "Damper spring colour black/light green" }, display_only: true }
+      outside_diameter: { mm: 13.0, source: { label: D, method: "Fig 5.2, scaled" } }
+      length: { mm: 25.0, source: { label: D, method: "Fig 5.1, in proportion to the hub" } }
+      wire_diameter: { mm: 2.5, source: { label: D, method: "In proportion" } }
+
+  - id: clutch.unit.facing
+    name: Driven plate facing
+    haynes: { section: 4, figures: [{ figure: "5.1", legend: 7 }, { figure: "5.2", legend: 11 }] }
+    quantity: 2
+    finish: friction
+    material: Wound yarn friction material (p106)
+    notes: >
+      Two riveted facings, counterbored so the rivet heads sit below the friction face.
+      Rivet pattern from Fig 5.1: an outer ring and an inner ring of holes. Renew the plate
+      complete rather than refacing it (Sec 4 para 6).
+    specs:
+      outside_diameter: { in: 8.0, mm: 203, source: { label: H, page: 106, note: "Driven plate diameter" } }
+      friction_material: { count: 1, source: { label: H, page: 106, note: "Wound yarn" }, display_only: true }
+      inside_diameter: { in: 5.5, mm: 139.7, source: { label: D, method: "Fig 5.1: inner edge at 0.70 of the outer" } }
+      thickness: { mm: 3.2, source: { label: D, method: "Fig 5.2, scaled" } }

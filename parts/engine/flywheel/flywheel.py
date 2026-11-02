@@ -41,7 +41,7 @@ def flywheel(spec) -> Part:
     cb = spec.nom("clutch_bolt_circle") / 2
     for k in range(6):                                              # clutch cover bolts
         a = math.radians(60 * k)
-        f = f - _xdisc(3.6, -t_rim + 14, -t_rim - 1, cb * math.cos(a), cb * math.sin(a))
+        f = f - _xdisc(4.0, -t_rim + 14, -t_rim - 1, cb * math.cos(a), cb * math.sin(a))   # 5/16 in tapped, at the major diameter
     for k in range(3):                                              # MGB clutch dowels (mgaguru: three)
         a = math.radians(30 + 120 * k)
         f = f + _xdisc(3.2, -t_rim, -t_rim - 6, cb * math.cos(a), cb * math.sin(a))

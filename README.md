@@ -72,7 +72,15 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   leads and plug caps (Ch 4 Fig 4.3; Ch 1 Sec 16 and 63); the rocker cover breather pipe to
   the front air cleaner and the float chamber fuel hoses (Ch 3 Sec 3 and 18).
 
-Next: the exhaust. The early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+- P4 (clutch) built: Borg & Beck 8 in diaphragm spring clutch, early type with the release
+  plate and graphite bearing (Haynes Ch 5, Figs 5.1 and 5.2): cover with its drive straps and
+  fulcrum rivets, diaphragm, release plate, pressure plate, driven plate (hub, centre, six
+  damper springs, facings) and fixings; the release bearing, withdrawal lever and its pivot
+  on the bellhousing datums of `mgb/gearbox_layout.py`; the master cylinder on the pedal box,
+  RHD pipe, hose and slave cylinder with every Fig 5.3 item; and the clutch pedal.
+
+Next: P5, the gearbox and overdrive, with the bellhousing built on the datums in
+`mgb/gearbox_layout.py`. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
 from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
 pump, tank and the rigid pipe from the pump to the feed union. The engine mountings (Fig 1.29) go in with the
 front crossmember, and the 18ACR alternator with the electrical system. The working standard is in
