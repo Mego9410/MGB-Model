@@ -20,6 +20,7 @@ const server = http.createServer((req, res) => {
 }).listen(0);
 const browser = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] });
 const page = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+page.setDefaultTimeout(300000);   // the viewer now loads every assembly at start; software GL keeps the page busy
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
 page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
