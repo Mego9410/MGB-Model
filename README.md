@@ -166,6 +166,21 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   under the right-hand floor and up and across the bulkhead to P3's feed union, with union nuts and P-clips. Body
   datums for P11b: `mgb/underbody_layout.py`.
 
-Next: P9 (suspension, steering, wheels, engine mountings) on `mgb/front_suspension_layout.py` and the axle datums;
-P11b the body shell, built round `mgb/body_layout.py`, `mgb/underbody_layout.py` and the exhaust and fuel parts that
-hang from it. The working standard is in `CLAUDE.md`.
+- P9 (suspension, steering, wheels and tyres; engine mountings) built (Haynes Ch 11 Figs 11.1-11.8; Ch 1 Fig 1.29):
+  the front crossmember with its rubber body mountings, spring towers, engine and rack brackets (and the RHD column
+  tube); lever-arm dampers whose arms are the upper wishbones, top trunnions and fulcrum pins, swivel pins with their dust
+  excluders, cork rings, bushes and thrust washers, LH and RH swivel axles with the stub axles, P8's caliper flange and
+  dust cover pads; pressed lower wishbone arms on their pivots and bushes, coil springs and pans, steering levers; the
+  wire wheel front hubs (12 tpi, handed) with their taper bearings, spacer, shim, seal, collar, nut and grease retainer;
+  the rear leaf springs (five leaves and a bottom plate, clips, centre bolt), locating plates and pads, U-bolts, bump
+  rubber pedestals, damper brackets, eyebolts and bushes, shackles, rear lever dampers and links, rebound straps; the
+  rack and pinion (RHD) with its brackets and shims, tie-rods, ball housings, gaiters and outer ball joints, the column
+  with its universal joint, bearings, clamp and toe board fittings, the 16 1/2 in banjo steering wheel and horn push;
+  four 60-spoke 4 1/2J x 14 wire wheels with 5.60-14 crossply tyres, valves and handed two-eared spinners; the front
+  engine mountings (brackets, rubbers, packing plates) and the gearbox stay rod. Datums: `mgb/front_suspension_layout.py`
+  (with P8's hub and brake datums), `mgb/rear_suspension_layout.py`, `mgb/steering_layout.py`, `mgb/wheel_layout.py`,
+  `mgb/engine_mount_layout.py`, `mgb/chassis_layout.py` (stay rod); body mounting datums for P11 are listed in PLAN.md.
+
+Next: P11b, the body shell, built round `mgb/body_layout.py`, `mgb/underbody_layout.py`, the chassis datums P9
+left (body mountings for the crossmember, springs, dampers, straps, bump rubbers and the steering column, listed
+in PLAN.md) and the exhaust and fuel parts that hang from it. The working standard is in `CLAUDE.md`.

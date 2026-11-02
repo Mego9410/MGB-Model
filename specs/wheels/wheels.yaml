@@ -1,0 +1,78 @@
+# Road wheels, 1963: 4 1/2J x 14 60-spoke centre-lock wire wheels, painted; 5.60-14 tubed crossply tyres; two-eared
+# knock-on spinners, 12 tpi. Haynes Ch 11 specifications (printed p203: wire wheels 4 1/2J x 14; early tyres 5.60 x 14
+# tubed crossply; pressures), Sec 30 (p214: wheels and tyres maintenance; wire wheels cleaned with a grease solvent; hub
+# splines checked). Outside references: MGOC Spares "MGB OE steel & wire wheels" (60-spoke centre-lock wheels normally
+# painted aluminium; chrome generally available from October 1965; original 4.5 x 14 in specification; 70-spoke
+# competition, 72-spoke later); MGOC "wheel spinners" and "stub axles & hubs" (12 tpi to GHN3-30850, left-hand threads on
+# the right-hand side); mgaguru.com WL-113 (42 mm series). The spare wheel is in the boot (P11). Positions in
+# mgb/wheel_layout.py.
+defaults:
+  system: wheels
+  assembly: wheels.road-wheels
+  haynes: { section: 30, spec_page: 203 }
+  variant: { factory_1963: true, as_fitted: true, wire_wheels: true, spinner_tpi: 12 }
+  finish: wheel_silver
+
+parts:
+  - id: wheels.road-wheels.wheel
+    name: Wire wheel, 4 1/2J x 14, 60 spokes
+    haynes: { section: 30 }
+    quantity: 4
+    notes: >
+      Well-base rim with the valve hole, the hub shell (inner cone onto the hub, 42 mm series splines, two spoke
+      flanges, outer cone for the spinner) and 60 spokes laced tangentially - inner flange to the rim's outer row,
+      outer flange to the inner row, alternately leading and trailing - with their nipples in the well. Painted
+      aluminium as on early cars (chrome from October 1965, MGOC). Spokes can be re-tensioned at the rim nipples
+      (Sec 30 para 4). Rim contour from the standard J rim; shell and lacing derived.
+    specs:
+      rim_diameter: { in: 14.0, mm: 355.6, source: { label: H, page: 203, note: "Wire wheels 4 1/2J x 14" }, display_only: true }
+      rim_width: { in: 4.5, mm: 114.3, source: { label: H, page: 203, note: "Wire wheels 4 1/2J x 14" }, display_only: true }
+      spokes: { count: 60, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/road-wheels/oe-steel-wire-wheels", note: "Centre-lock 60-spoke wire wheels, normally painted aluminium" } }
+      flange_height: { mm: 17.5, source: { label: D, method: "Standard J rim flange contour (17.5 mm)" } }
+
+  - id: wheels.road-wheels.tyre
+    name: Tyre, 5.60-14 crossply (tubed)
+    haynes: { section: 30 }
+    quantity: 4
+    finish: tyre
+    notes: >
+      Early models: 5.60 x 14 tubed crossply (H p203). Section 5.60 in; overall diameter from a 92 % profile
+      (car_layout TYRE_D, D); shoulders, sidewall with a rim guard rib, five zig-zag tread ribs with sipes in the
+      manner of the period crossply pattern (D). Pressures: front 18-19, rear 18-22 lbf/in2 (H p203); do not mix
+      crossply and radial (Sec 31). Drawn unladen; the car stands on its laden rolling radius.
+    specs:
+      section_width: { in: 5.6, mm: 142.24, source: { label: H, page: 203, note: "5.60 x 14 tubed crossply" } }
+      overall_diameter: { mm: [617.0, 618.0], source: { label: D, method: "14 in rim + 2 x 0.92 x 5.60 in (car_layout TYRE_D), tread blocks to it" } }
+      pressure_front: { count: [18, 19], source: { label: H, page: 203, note: "lbf/in2, tubed crossply, front" } }
+      pressure_rear: { count: [18, 22], source: { label: H, page: 203, note: "lbf/in2, tubed crossply, rear" } }
+
+  - id: wheels.road-wheels.valve
+    name: Tube valve
+    haynes: { section: 30 }
+    quantity: 4
+    finish: rubber
+    notes: "Valve stem of the inner tube (tubed crossply) through the rim's valve hole, with its cap. The tube inside the tyre is not drawn."
+    specs:
+      length: { mm: 34.0, source: { label: D, method: "Through the well to inside the shell's flange" } }
+
+  - id: wheels.road-wheels.spinner-lh
+    name: Knock-on spinner, left-hand side (right-hand thread)
+    haynes: { section: 30 }
+    quantity: 2
+    finish: chrome
+    notes: >
+      Two-eared knock-on spinner (D: two-eared type with the side and UNDO lettered on its face and an arrow showing the
+      way to undo it). On the left-hand hubs: right-hand 12 tpi thread, so forward rotation tightens it (MGOC; P7
+      SPINNER_HAND); tightened with a copper mallet. Span and boss size derived.
+    specs:
+      thread_tpi: { count: 12, source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html", note: "12 tpi to GHN3-30850" } }
+      span: { in: 7.0, mm: 177.8, source: { label: D, method: "Ear tip to ear tip, against the 14 in wheel" } }
+
+  - id: wheels.road-wheels.spinner-rh
+    name: Knock-on spinner, right-hand side (left-hand thread)
+    haynes: { section: 30 }
+    quantity: 2
+    finish: chrome
+    notes: "As the left-hand spinner with a left-hand thread and the arrow the other way (right-hand side of the car)."
+    specs:
+      thread_tpi: { count: 12, source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html", note: "12 tpi to GHN3-30850" } }

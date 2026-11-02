@@ -1,0 +1,346 @@
+# Rear suspension, 1963: semi-elliptic leaf springs (five leaves plus a bottom plate), rubber mounted, lever dampers.
+# Haynes Ch 11: specifications (printed p202), Sec 8 (p207-208), Sec 10 (p208), Fig 11.4 (p207), Fig 11.5 (p208),
+# photo 2.4 (p204). Fig 11.4 item numbers unless stated.
+# Outside references: MGOC Spares "rear suspension" (the original roadster spring had six leaves without interleaving
+# - five plus the bottom plate - the GT seven from 1965; spring locating plates, pads, U-bolts, bump rubbers and
+# pedestals, "axle check straps", damper link assemblies and gaskets); British Parts Northwest GSV1006 rear leaf spring
+# (MGB chrome bumper 63-74, cross reference AHH7080). No outside photographs could be opened from the build machine;
+# forms are from Figs 11.4 and 11.5. Positions in mgb/rear_suspension_layout.py (on P7's axle datums).
+defaults:
+  system: chassis
+  assembly: chassis.rear
+  haynes: { section: 8, spec_page: 202 }
+  variant: { factory_1963: true, as_fitted: true, banjo_axle: true, spring_leaves: 5 }
+  finish: paint_black
+
+parts:
+  - id: chassis.rear.main-leaf
+    name: Main leaf
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 1 }] }
+    quantity: 2
+    finish: spring_steel
+    part_numbers:
+      - { number: GSV1006, by: "British Parts Northwest (rear leaf spring assembly, MGB 63-74)", source: { label: S, ref: "https://bpnorthwest.com/mg/leaf-spring-rear-mgb-63-to-74" } }
+    notes: >
+      Rolled into an eye at each end for the bushes (front on the eyebolt, rear on the shackle). Eye centres 22.5 in
+      ahead of and 24 in behind the centre bolt (D), about 25 mm of camber laden (D). Leaves painted with Shell Ensis
+      260 fluid on reassembly (Sec 8 para 4).
+    specs:
+      width: { in: 1.75, mm: 44.45, source: { label: S, ref: "https://classiccarparts.co.nz/superflex-polyurethane-rear-spring-rear-kit-of-8-bushes-1.75inch-leaf-spring-mgb-c-oem-2a5176-sf0014k", note: "MGB rear spring 1.75 in leaf width (bush kit for 1.75 in spring)" } }
+      leaf_thickness: { in: 0.21875, mm: 5.556, source: { label: D, method: "7/32 in leaves, Fig 11.4 proportions" } }
+      leaves: { count: [5, 5], source: { label: H, page: 202, note: "Early models 5 plus bottom plate" } }
+
+  - id: chassis.rear.second-leaf
+    name: Second leaf
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 3 }] }
+    quantity: 2
+    finish: spring_steel
+    notes: "Its front end turned part way round the main leaf's eye (Fig 11.4 shows it reaching the eye); length derived."
+    specs: {}
+
+  - id: chassis.rear.third-leaf
+    name: Third leaf
+    haynes: { section: 8 }
+    quantity: 2
+    finish: spring_steel
+    notes: "Carries the clips (8) riveted near its ends (Sec 8 para 4). Length derived (graduated)."
+    specs: {}
+
+  - id: chassis.rear.fourth-leaf
+    name: Fourth leaf
+    haynes: { section: 8 }
+    quantity: 2
+    finish: spring_steel
+    notes: "Carries the clips (9). Length derived."
+    specs: {}
+
+  - id: chassis.rear.fifth-leaf
+    name: Fifth leaf
+    haynes: { section: 8 }
+    quantity: 2
+    finish: spring_steel
+    specs: {}
+
+  - id: chassis.rear.bottom-plate
+    name: Bottom plate
+    haynes: { section: 8 }
+    quantity: 2
+    finish: spring_steel
+    notes: "Early springs: five leaves plus a bottom plate (H p202). Thickness derived."
+    specs:
+      thickness: { in: 0.25, mm: 6.35, source: { label: D, method: "Fig 11.4 proportions" } }
+
+  - id: chassis.rear.clip-third
+    name: Clip, third leaf
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 8 }] }
+    quantity: 4
+    notes: "Riveted under the third leaf near each end, the arms bent over the leaves above (Sec 8 paras 2, 4); renew the clips on reassembly."
+    specs: {}
+
+  - id: chassis.rear.clip-fourth
+    name: Clip, fourth leaf
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 9 }] }
+    quantity: 4
+    specs: {}
+
+  - id: chassis.rear.centre-bolt
+    name: Centre bolt
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 4 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Through all the leaves; its head under the upper locating plate. 5/16 in (D)."
+    specs: {}
+
+  - id: chassis.rear.centre-nut
+    name: Centre bolt nut
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 6 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "The locknut (7) is not drawn: the stack under the spring leaves no room for it in the model (derived positions)."
+    specs: {}
+
+  - id: chassis.rear.locating-plate
+    name: Locating plate
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 18 }] }
+    quantity: 4
+    notes: "One above the spring with its peg up into the axle seat's hole (P7) and one below, sides turned down over the spring; fit them and the pads the correct way round (Sec 8 para 4)."
+    specs:
+      length: { mm: 100.0, source: { label: D, method: "As the axle's spring seat (P7 SEAT_X)" } }
+
+  - id: chassis.rear.seating-pad
+    name: Spring seating pad (rubber)
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 19 }] }
+    quantity: 4
+    finish: rubber
+    notes: "Ribbed rubber pad each side of the spring under the locating plates (MGOC: spring pads in rubber)."
+    specs:
+      length: { mm: 96.0, source: { label: D, method: "Inside the locating plate" } }
+
+  - id: chassis.rear.u-bolt
+    name: U-bolt
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 15 }] }
+    quantity: 4
+    finish: zinc_steel
+    notes: "Over the pedestal on the axle tube, either side of the spring, legs through the bracket (20). Check the nuts regularly (Sec 2 para 2). 7/16 in UNF (D); legs 34 mm either side of the spring centre to clear the axle seat's sides."
+    specs: {}
+
+  - id: chassis.rear.u-bolt-nut
+    name: U-bolt nut
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 16 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.u-bolt-locknut
+    name: U-bolt locknut
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 16 }] }
+    quantity: 8
+    finish: zinc_steel
+    notes: "Eight locknuts and nuts per spring (Sec 8 para 1): a thin locknut under each nut."
+    specs: {}
+
+  - id: chassis.rear.pedestal
+    name: Bump rubber pedestal
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 17 }] }
+    quantity: 2
+    notes: "Pressed saddle on the tube top (P7 PEDESTAL_SEAT) clamped by the U-bolts, two arched webs up to the platform for the bump rubber."
+    specs: {}
+
+  - id: chassis.rear.bump-rubber
+    name: Bump rubber
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 32 }] }
+    quantity: 2
+    finish: rubber
+    notes: "Strikes the body above (P11: rear_suspension_layout BUMP_STRIKE). Static gap derived."
+    specs:
+      height: { mm: 44.0, source: { label: D, method: "Fig 11.4 proportions" } }
+      diameter: { mm: 47.0, source: { label: D, method: "Fig 11.4 proportions, inside the pedestal's lip" } }
+
+  - id: chassis.rear.bump-nut
+    name: Bump rubber nut
+    haynes: { section: 8 }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.damper-bracket
+    name: Hydraulic shock absorber attachment bracket
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 20 }] }
+    quantity: 2
+    notes: "Plate under the lower locating plate on the U-bolts, its inboard web carrying the stud for the damper link (Sec 8 para 1, Sec 10 para 1). Form derived from Fig 11.4."
+    specs: {}
+
+  - id: chassis.rear.eye-bush
+    name: Bush (front eye)
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 2 }] }
+    quantity: 2
+    finish: rubber
+    notes: "Pressed into the front eye (Sec 8 para 3); steel inner sleeve on the eyebolt. Eye bore 1 1/8 in (D)."
+    specs: {}
+
+  - id: chassis.rear.eyebolt
+    name: Eyebolt
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 21 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Through the front hanger (P11: rear_suspension_layout FRONT_HANGER) and the eye bush. 1/2 UNF (D)."
+    specs:
+      length: { in: 3.0, mm: 76.2, source: { label: D, method: "Spring width, bush flanges, hanger plates, washer and nut" } }
+
+  - id: chassis.rear.eyebolt-nut
+    name: Eyebolt nut
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 22 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.eyebolt-washer
+    name: Eyebolt spring washer
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 23 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.shackle-pin-plate
+    name: Shackle and pin plate
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 10 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Inner plate with two pins welded in, through the spring's rear eye and the body bracket (P11: SHACKLE_BRACKET); tap each pin out in turn (Sec 8 para 1). Shackle length 3 1/2 in (D)."
+    specs: {}
+
+  - id: chassis.rear.shackle-plate
+    name: Shackle plate
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 11 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.shackle-bush
+    name: Shackle rubber bush
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 12 }] }
+    quantity: 8
+    finish: rubber
+    notes: "Top-hat halves, one from each side of the spring eye and of the body bracket's eye."
+    specs: {}
+
+  - id: chassis.rear.shackle-nut
+    name: Shackle nut
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 13 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.shackle-washer
+    name: Shackle spring washer
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 14 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.damper
+    name: Rear hydraulic damper (lever arm)
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 1 }] }
+    quantity: 2
+    notes: >
+      Armstrong lever-arm unit on the body side member ahead of the axle (Sec 10 para 1; filler topped up through the
+      access grommet behind the seats, photo 2.4): the cast body, the piston bore across it with hexagon end caps, the
+      lid and filler plug, the mounting flange with two bolt lugs, the arm on its shaft pointing rearward to the link.
+      Keep upright off the car. Body size from Fig 11.5 proportions. P11 builds the side member face (DAMPER_MOUNT).
+    specs:
+      arm_centres: { in: 5.25, mm: 133.35, printed_mm: 133.0, source: { label: H, page: 202, note: "Shock absorber arm centres, rear 5 1/4 in (133 mm)" }, display_only: true }
+      bolt_torque: { lbf_ft: [55, 60], nm: [75, 81], source: { label: H, page: 203, note: "Rear shock absorber bolts" } }
+
+  - id: chassis.rear.link
+    name: Damper link
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 2 }] }
+    quantity: 2
+    notes: "Rod with rubber-bushed eyes from the damper arm to the bracket's stud (Fig 11.5); MGOC: chrome and rubber bumper links are not interchangeable."
+    specs: {}
+
+  - id: chassis.rear.link-nut
+    name: Link nut
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 3 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.link-washer
+    name: Link washer
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 4 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.damper-bolt
+    name: Damper retaining bolt
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 5 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Flange, side member, washers and nut" } }
+
+  - id: chassis.rear.damper-nut
+    name: Damper retaining nut
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 6 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.damper-spring-washer
+    name: Damper spring washer
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 7 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.damper-plain-washer
+    name: Damper plain washer
+    haynes: { section: 10, figures: [{ figure: "11.5", legend: 8 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.rebound-strap
+    name: Rebound strap
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 24 }] }
+    quantity: 2
+    finish: rubber
+    notes: "Check strap from the body bolt (P11: REBOUND_BOLT) to the axle's spindle (P7 REBOUND_EYE), leaning back so it clears the tube; the spindle nut (item 26) is the axle's. Section derived."
+    specs: {}
+
+  - id: chassis.rear.strap-tube
+    name: Tube for rebound strap
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 25 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.strap-bolt
+    name: Bolt, rebound strap
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 29 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Tube, body bracket, washers and nut" } }
+
+  - id: chassis.rear.strap-nut
+    name: Rebound strap bolt nut
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 30 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.strap-spring-washer
+    name: Rebound strap spring washer
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 28 }, { figure: "11.4", legend: 31 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.rear.strap-plain-washer
+    name: Rebound strap plain washer
+    haynes: { section: 8, figures: [{ figure: "11.4", legend: 27 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}

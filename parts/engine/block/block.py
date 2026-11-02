@@ -133,6 +133,9 @@ def casting(spec) -> Part:
     # "1800" panel near the front
     lz = LETTER_Z
     blk = blk + box(118, 188, YL - 4, wall_y(lz[0], 1) + 3, *lz)
+    # front engine mounting pad on the left wall for the left-hand bracket (Fig 1.29 item 2; P9 mgb/engine_mount_layout)
+    from mgb import engine_mount_layout as EM
+    blk = blk + _rounded_box(190, 216, YL - 4, EM.PLATE_Y, EM.LH_PAD_Z[0], EM.LH_PAD_Z[1], 5.0)
     # relief valve boss at the left rear (Haynes Sec 17), and the rear flange pad with stud 13
     blk = blk + _yboss(15.0, -178, RELIEF_Z, 92, wall_y(RELIEF_Z, 1) + 12)
     blk = blk + _yboss(11.0, -178, PLUG7_Z, 92, wall_y(PLUG7_Z, 1) + 8)      # plug 7 boss, beside the relief valve
@@ -211,6 +214,8 @@ def casting(spec) -> Part:
         cut.append(_yboss(3.2, sx, FUEL_PUMP_Z, fy - 6, fy + 12))
     cut.append(_yboss(14.0, 84, FUEL_PUMP_Z, fy - 8, fy + 12))          # pump arm aperture (blanked)
     cut.append(_yboss(3.9, -201, -155, YL - 6, YL + 10))          # stud 13 hole
+    for mx, mz in EM.LH_SCREWS:                                    # tapped holes for the engine mounting bracket (P9)
+        cut.append(_yboss(4.0, mx, mz, EM.PLATE_Y - 20, EM.PLATE_Y + 1))
     cut.append(_yboss(3.9, EL.drive_x + 33, -97, YR - 12, YR + 4))  # distributor housing clamp bolt
     for c in cut:
         blk = blk - c

@@ -1,0 +1,380 @@
+# Steering, 1963 RHD: rack and pinion, column with one universal joint, 16 1/2 in banjo wheel. Haynes Ch 11:
+# specifications (printed p202-203), Secs 12, 17-19, 20 (alignment), 23, 26, 29 (p208-214), Fig 11.6 (p209), Fig 11.8
+# (p212). Fig 11.6 item numbers.
+# Outside references: MGOC Spares "OE steering wheel" (the 1962-69 wheel is a 16 1/2 in three-spoke banjo wheel, hub
+# and rim black, the rim acetate to March 1969; central horn push with the MG badge - silver letters and octagon on red
+# wavy lines). No outside photographs could be opened from the build machine; forms are from Fig 11.6. Positions in
+# mgb/steering_layout.py; the rack bosses on the crossmember in mgb/front_suspension_layout.py.
+defaults:
+  system: chassis
+  assembly: chassis.steering
+  haynes: { section: 23, spec_page: 202 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true, steering: rack_and_pinion_early }
+  finish: paint_black
+
+parts:
+  - id: chassis.steering.rack-housing
+    name: Rack housing
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 1 }] }
+    quantity: 1
+    finish: aluminium
+    notes: >
+      Tube with the pinion housing cast on its right-hand end at the column's angle (RHD), the damper (yoke) boss
+      under it opposite the pinion with its cover, the pinion end cover flange, the lubricator boss (Sec 2 para 3:
+      ten strokes of the gun) and two flat pads the mounting brackets clamp on. Bare casting (D). Rack bush (75) and
+      its screw (74) inside the left-hand end are not drawn.
+    specs:
+      turns_lock_to_lock: { count: 2.93, source: { label: H, page: 202, note: "Early models" } }
+      turning_circle: { mm: 9750.0, source: { label: H, page: 202, note: "32 ft (9.75 m)" }, display_only: true }
+      fixing_torque: { lbf_ft: 30, nm: 41, source: { label: H, page: 203, note: "Steering rack fixings" } }
+
+  - id: chassis.steering.rack
+    name: Rack
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 4 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Bar with its teeth on top under the pinion; pulled out from the pinion end (Sec 26 para 2). Diameter and tooth pitch derived."
+    specs:
+      diameter: { mm: 22.2, source: { label: D, method: "7/8 in bar" } }
+
+  - id: chassis.steering.pinion
+    name: Pinion
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 13 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Helical teeth meshing on the rack's top; splined top with the cut-out the joint's pinch bolt passes through (Sec 17 para 3). On one axis with the column (Sec 20, Fig 11.8). Tooth count derived."
+    specs:
+      end_float: { in: [0.002, 0.005], mm: [0.05, 0.12], source: { label: H, page: 202, note: "Pinion end float" }, display_only: true }
+
+  - id: chassis.steering.pinion-bearing
+    name: Pinion bearing
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 15 }] }
+    quantity: 1
+    finish: bearing
+    specs:
+      nut_torque: { lbf_ft: 40, nm: 54, source: { label: H, page: 203, note: "Steering rack and pinion bearing nut" } }
+
+  - id: chassis.steering.end-cover
+    name: Pinion end cover
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 18 }] }
+    quantity: 1
+    finish: aluminium
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "Fig 11.6 proportions" } }
+
+  - id: chassis.steering.end-cover-bolt
+    name: End cover bolt
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 20 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: D, method: "Into the housing flange" } }
+
+  - id: chassis.steering.end-cover-washer
+    name: End cover spring washer
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 21 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.damper-cover
+    name: Damper cover
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 10 }] }
+    quantity: 1
+    finish: aluminium
+    notes: "Closes the yoke boss; shims (8) and joint (9) under it set the yoke's clearance (Sec 26)."
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "Fig 11.6 proportions" } }
+
+  - id: chassis.steering.damper-cover-bolt
+    name: Damper cover bolt
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 11 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      length: { in: 0.625, mm: 15.875, source: { label: D, method: "Into the yoke boss" } }
+
+  - id: chassis.steering.damper-cover-washer
+    name: Damper cover spring washer
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 12 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.yoke
+    name: Yoke
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 5 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Presses the rack against the pinion; its pad (6) and spring (7) are inside it (not drawn)."
+    specs: {}
+
+  - id: chassis.steering.lubricator
+    name: Lubricator nipple
+    haynes: { section: 2, figures: [{ figure: "11.6", legend: 14 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.bracket
+    name: Rack mounting bracket
+    haynes: { section: 20, figures: [{ figure: "11.8" }] }
+    quantity: 2
+    notes: "Strap over the housing's pad, a foot each side bolted down into the crossmember boss (Sec 20 para 6)."
+    specs: {}
+
+  - id: chassis.steering.shim
+    name: Rack shim
+    haynes: { section: 20, figures: [{ figure: "11.8", legend: 1 }, { figure: "11.6", legend: 72 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Between the bracket and the crossmember boss to line the pinion up with the column, riveted to the boss when right (Sec 20 para 6 b-f). One drawn each side."
+    specs:
+      thickness: { in: 0.020, mm: 0.508, source: { label: H, page: 211, note: "Shim thickness 0.020 in (Sec 20 para 6b)" } }
+
+  - id: chassis.steering.rack-bolt
+    name: Rack fixing bolt
+    haynes: { section: 20 }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: D, method: "Bracket foot, shim and the boss's tapped hole" } }
+
+  - id: chassis.steering.rack-bolt-washer
+    name: Rack fixing bolt spring washer
+    haynes: { section: 20 }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.ball-housing
+    name: Ball housing
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 25 }] }
+    quantity: 2
+    finish: machined_steel
+    notes: "Screws on the rack end over the tie-rod's ball, ball seat (23) and spring (24); locked by the special locknut (26) whose tabs are punched into the rack's slots (Sec 26 para 2)."
+    specs: {}
+
+  - id: chassis.steering.ball-locknut
+    name: Ball housing special locknut
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 26 }] }
+    quantity: 2
+    finish: machined_steel
+    specs: {}
+
+  - id: chassis.steering.tie-rod
+    name: Tie-rod
+    haynes: { section: 26, figures: [{ figure: "11.6", legend: 22 }] }
+    quantity: 2
+    finish: machined_steel
+    notes: "Inner ball in the ball housing, the outer end threaded for the ball joint; toe-in is set by turning both rods equally (Sec 11)."
+    specs:
+      locknut_torque: { lbf_ft: [33, 38], nm: [45, 52], source: { label: H, page: 203, note: "Steering tie-rod lock nut" } }
+
+  - id: chassis.steering.outer-joint
+    name: Outer balljoint assembly
+    haynes: { section: 12, figures: [{ figure: "11.6", legend: 30 }] }
+    quantity: 2
+    notes: "Forged body with its socket under the steering lever, the ball pin up through the lever's taper, the boot (31) with its retainer (32) and garter spring (33); cannot be repaired (Sec 12 para 1)."
+    specs:
+      nut_torque: { lbf_ft: [34, 35], nm: [46, 48], source: { label: H, page: 203, note: "Steering lever balljoint nut" } }
+
+  - id: chassis.steering.joint-nut
+    name: Balljoint nut (self-locking)
+    haynes: { section: 12, figures: [{ figure: "11.6", legend: 35 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Use a new self-locking nut (Sec 12 para 2)."
+    specs: {}
+
+  - id: chassis.steering.joint-washer
+    name: Balljoint plain washer (early levers)
+    haynes: { section: 12 }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Early production cars have a plain washer under the balljoint nut (Sec 12 para 2)."
+    specs: {}
+
+  - id: chassis.steering.tie-rod-locknut
+    name: Tie-rod locknut
+    haynes: { section: 12, figures: [{ figure: "11.6", legend: 36 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.gaiter
+    name: Gaiter
+    haynes: { section: 29, figures: [{ figure: "11.6", legend: 27 }] }
+    quantity: 2
+    finish: rubber
+    specs:
+      length: { mm: 125.0, source: { label: D, method: "Housing collar to the tie-rod" } }
+
+  - id: chassis.steering.inner-clip
+    name: Gaiter inner clip
+    haynes: { section: 29, figures: [{ figure: "11.6", legend: 28 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.outer-clip
+    name: Gaiter outer clip
+    haynes: { section: 29, figures: [{ figure: "11.6", legend: 29 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.uj-yoke
+    name: Universal joint yoke
+    haynes: { section: 17, figures: [{ figure: "11.6", legend: 41 }] }
+    quantity: 2
+    finish: machined_steel
+    notes: "Split splined boss with a pinch bolt across it; the bolt passes through the cut-out in the shaft's splines (Sec 17 para 3). Early joint overhauled like the propeller shaft joints (Sec 17 para 2)."
+    specs:
+      bolt_torque: { lbf_ft: [20, 22], nm: [27, 30], source: { label: H, page: 203, note: "Steering column universal joint bolt" } }
+
+  - id: chassis.steering.uj-spider
+    name: Journal assembly
+    haynes: { section: 17, figures: [{ figure: "11.6", legend: 42 }] }
+    quantity: 1
+    finish: machined_steel
+    specs: {}
+
+  - id: chassis.steering.uj-bolt
+    name: Joint clamp bolt
+    haynes: { section: 17, figures: [{ figure: "11.6", legend: 46 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Across the yoke's lug" } }
+
+  - id: chassis.steering.uj-nut
+    name: Joint clamp bolt nut
+    haynes: { section: 17, figures: [{ figure: "11.6", legend: 47 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.uj-washer
+    name: Joint clamp bolt spring washer
+    haynes: { section: 17, figures: [{ figure: "11.6", legend: 48 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.inner-column
+    name: Inner column assembly, RHD
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 50 }] }
+    quantity: 1
+    finish: machined_steel
+    specs:
+      diameter: { mm: 19.05, source: { label: D, method: "3/4 in shaft" } }
+
+  - id: chassis.steering.outer-tube
+    name: Column outer tube, RHD
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 52 }] }
+    quantity: 1
+    notes: "Through the toe board and the RHD crossmember's column tube (D) to under the wheel."
+    specs:
+      diameter: { in: 1.5, mm: 38.1, source: { label: D, method: "Fig 11.6 proportions against the wheel" } }
+
+  - id: chassis.steering.upper-bearing
+    name: Column upper bearing
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 53 }] }
+    quantity: 1
+    finish: plastic_black
+    notes: "Nylon bush between the columns (Sec 19 para 2); the felt bush (55) is used with a steering lock and is not fitted."
+    specs: {}
+
+  - id: chassis.steering.lower-bearing
+    name: Column lower bearing
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 54 }] }
+    quantity: 1
+    finish: plastic_black
+    specs: {}
+
+  - id: chassis.steering.column-clamp
+    name: Steering column clamp
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 59 }] }
+    quantity: 1
+    notes: "Round the outer tube, its top plate to the body bracket under the facia with packing washers (P11: steering_layout COLUMN_TOP_CLAMP; Sec 20 paras 5-7)."
+    specs: {}
+
+  - id: chassis.steering.clamp-bolt
+    name: Column clamp bolt
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 61 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { in: 1.75, mm: 44.45, source: { label: D, method: "Across the clamp's flanges" } }
+
+  - id: chassis.steering.clamp-nut
+    name: Column clamp nut
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 64 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.clamp-washer
+    name: Column clamp spring washer
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 63 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.bottom-bracket
+    name: Steering column bottom bracket
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 65 }] }
+    quantity: 1
+    notes: "On the toe board round the tube (P11: steering_layout COLUMN_TOE_PLATE), with the blanking plate (66), nuts and washers."
+    specs: {}
+
+  - id: chassis.steering.blanking-plate
+    name: Bracket blanking plate
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 66 }] }
+    quantity: 1
+    specs: {}
+
+  - id: chassis.steering.bracket-nut
+    name: Bottom bracket nut
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 67 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.steering.draught-excluder
+    name: Draught excluder
+    haynes: { section: 19, figures: [{ figure: "11.6", legend: 69 }] }
+    quantity: 1
+    finish: rubber
+    specs: {}
+
+  - id: chassis.steering.wheel
+    name: Steering wheel (16 1/2 in banjo)
+    haynes: { section: 18, figures: [{ figure: "11.6", legend: 57 }] }
+    quantity: 1
+    finish: steering_wheel
+    notes: >
+      Early wheel with an integral boss (Sec 18 para 2): acetate rim with finger grips, three banjo spokes of four
+      spring-steel wires each (MGOC: three-spoke banjo wheel; four wires per spoke D from the banjo pattern), the black
+      hub boss. Spokes set in a T with the wheels straight ahead (D). Dish derived.
+    specs:
+      diameter: { in: 16.5, mm: 419.1, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/interior/steering-wheels/oe-steering-wheel", note: "16 1/2 in three-spoke banjo wheel, 1962-69" } }
+
+  - id: chassis.steering.wheel-nut
+    name: Steering wheel nut
+    haynes: { section: 18, figures: [{ figure: "11.6", legend: 58 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "9/16 in UNF (D)."
+    specs:
+      torque: { lbf_ft: [41, 43], nm: [56, 58], source: { label: H, page: 203, note: "Steering wheel nut" } }
+
+  - id: chassis.steering.horn-push
+    name: Horn push with MG badge
+    haynes: { section: 18 }
+    quantity: 1
+    finish: plastic_black
+    notes: "Central horn push carrying the MG badge - silver letters and octagon on red wavy lines (MGOC); drawn with the octagon bezel and the letters as raised blocks. The horn contact is P10."
+    specs:
+      diameter: { mm: 60.0, source: { label: D, method: "Inside the hub boss" } }
