@@ -97,6 +97,12 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
 .facts{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:14px 0;font-size:13px}
 .facts dt{color:var(--muted)}
 .facts dd{margin:0;min-width:0}
+.sw{display:inline-block;flex:none;width:30px;height:10px;border-radius:5px;border:1px solid var(--edge);vertical-align:middle;margin-right:6px;
+  background:repeating-linear-gradient(115deg,var(--a) 0 7px,var(--b) 7px 11px)}
+.lnk{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-align:left;font:inherit;text-decoration:underline;text-underline-offset:2px}
+.wires{list-style:none;padding:0;margin:4px 0 14px;display:grid;gap:8px;font-size:13px}
+.wires li{display:flex;align-items:baseline;gap:4px;min-width:0}
+.wires .to{color:var(--muted)}
 .dims{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
 .dims th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 4px;border-bottom:1px solid var(--edge)}
 .dims td{padding:7px 4px;border-bottom:1px solid var(--edge);vertical-align:top}
@@ -277,8 +283,32 @@ const FINISH = {
   loom:           { color: 0x2b2a27, metalness: 0.0, roughness: 0.85 },
   default:        { color: 0x8a8e93, metalness: 0.6, roughness: 0.45, envMapIntensity: 0.75 },
 };
+// Lucas cable colours (code letters as printed on the wiring diagram). A wire's finish is wire_<main>[_<tracer>],
+// e.g. wire_G_R = green with a red tracer; the tracer is drawn as a stripe that repeats along the cable.
+const LUCAS = { B: ['black', 0x1b1b1b], U: ['blue', 0x1f4fa8], N: ['brown', 0x6b3f1f], G: ['green', 0x2e7d32], LG: ['light green', 0x8bc34a],
+  P: ['purple', 0x6a2c91], R: ['red', 0xc62828], W: ['white', 0xeeeeea], Y: ['yellow', 0xf2c418], S: ['slate', 0x6d7b86], K: ['pink', 0xe58fb0], O: ['orange', 0xe67e22] };
+function wireColours(f){ const m = /^wire_([A-Z]{1,2})(?:_([A-Z]{1,2}))?$/.exec(f || ''); return m && LUCAS[m[1]] ? [m[1], LUCAS[m[2]] ? m[2] : null] : null; }
+function stripe(mat, tracer){
+  // tracer stripe from the fragment's world position: about 4 mm of tracer in every 11 mm, slanted like a spiral
+  mat.userData.tracer = { value: new THREE.Color(tracer) };
+  mat.onBeforeCompile = sh => {
+    sh.uniforms.uTracer = mat.userData.tracer;
+    sh.vertexShader = 'varying vec3 vWPos;\n' + sh.vertexShader.replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWPos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = 'uniform vec3 uTracer;\nvarying vec3 vWPos;\n' + sh.fragmentShader.replace('#include <color_fragment>',
+      '#include <color_fragment>\nif (fract(dot(vWPos, vec3(61.0, 47.0, 73.0))) < 0.36) diffuseColor.rgb = uTracer;');
+  };
+  mat.customProgramCacheKey = () => 'wire-tracer';
+  return mat;
+}
+function makeMat(f){
+  const w = wireColours(f);
+  if (!w) return new THREE.MeshStandardMaterial(FINISH[f] || FINISH.default);
+  const m = new THREE.MeshStandardMaterial({ color: LUCAS[w[0]][1], metalness: 0.0, roughness: 0.55 });
+  return w[1] ? stripe(m, LUCAS[w[1]][1]) : m;
+}
+function cloneMat(f, extra){ const m = Object.assign(makeMat(f), extra || {}); return m; }
 const matCache = {};
-function finishMat(f){ f = FINISH[f] ? f : 'default'; return matCache[f] ||= new THREE.MeshStandardMaterial(FINISH[f]); }
+function finishMat(f){ f = FINISH[f] || wireColours(f) ? f : 'default'; return matCache[f] ||= makeMat(f); }
 let selMat = new THREE.MeshStandardMaterial({ ...FINISH.machined_steel, emissive: 0x000000 });
 
 // ---------- viewer preferences (per viewer, in this browser only)
@@ -353,7 +383,7 @@ const viewBtn = document.getElementById('view-btn'), viewMenu = document.getElem
 function openMenu(on){ viewMenu.hidden = !on; viewBtn.setAttribute('aria-expanded', on); }
 viewBtn.addEventListener('click', e => { e.stopPropagation(); openMenu(viewMenu.hidden); });
 addEventListener('pointerdown', e => { if (!viewMenu.hidden && !e.target.closest('.tools')) openMenu(false); });
-addEventListener('keydown', e => { if (e.key === 'Escape' && !viewMenu.hidden){ openMenu(false); viewBtn.focus(); } });
+addEventListener('keydown', e => { if (e.key === 'Escape' && !viewMenu.hidden){ e.stopImmediatePropagation(); openMenu(false); viewBtn.focus(); } });
 function markMenu(){
   const val = { theme: prefs.theme || 'auto', garage: prefs.garage === 'off' ? 'off' : 'on', outside: outsideMode };
   viewMenu.querySelectorAll('.seg').forEach(seg => seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === val[seg.dataset.opt])));
@@ -534,7 +564,7 @@ let current = null;   // node id in focus (assembly or part)
 let selected = null;  // part id
 // With a part selected, every other part is ghosted so the selection shows through.
 const ghostCache = {};
-function ghostMat(f){ const m = ghostCache[f] ||= Object.assign(finishMat(f).clone(), { transparent: true, opacity: 0.12, depthWrite: false }); return m; }
+function ghostMat(f){ const m = ghostCache[f] ||= cloneMat(FINISH[f] || wireColours(f) ? f : 'default', { transparent: true, opacity: 0.12, depthWrite: false }); return m; }
 function setSelected(pid){
   selected = pid;
   const focus = focusAssembly();
@@ -555,7 +585,12 @@ function frameObjs(objs){
   fly.to = { target: c, pos: c.clone().add(dir.multiplyScalar(dist)) }; fly.frames = 0;
 }
 const selCache = {};
-function selMatFor(f){ const m = selCache[f] ||= finishMat(f).clone(); m.color = finishMat(f).color.clone().lerp(themeColor('--sel'), 0.45); m.emissive = themeColor('--sel').multiplyScalar(0.18); return m; }
+function selMatFor(f){
+  const m = selCache[f] ||= cloneMat(FINISH[f] || wireColours(f) ? f : 'default');
+  // a selected wire keeps its true colours (they are what you are tracing) and glows instead
+  m.color = wireColours(f) ? finishMat(f).color.clone() : finishMat(f).color.clone().lerp(themeColor('--sel'), 0.45);
+  m.emissive = themeColor('--sel').multiplyScalar(wireColours(f) ? 0.35 : 0.18); return m;
+}
 
 // ---------- explode: parts leave along their removal axis, in Haynes removal order
 const ex = document.getElementById('explode'), exv = document.getElementById('explode-val');
@@ -820,6 +855,42 @@ function setHash(id){ const h = '#' + toHash(id); if (location.hash !== h) histo
 // ---------- spec card
 const card = document.getElementById('card');
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+// wires by the parts they join, so every component's card can list its wires
+const wiresAt = {};
+for (const [wid, w] of Object.entries(N)) if (w.wire) for (const end of [w.wire.from, w.wire.to, ...(w.wire.via_parts || []).map(p => ({ part: p }))])
+  if (end && end.part) (wiresAt[end.part] ||= []).includes(wid) || wiresAt[end.part].push(wid);
+function hex(c){ return '#' + c.toString(16).padStart(6, '0'); }
+function swatchHtml(f){ const w = wireColours(f); if (!w) return ''; const a = hex(LUCAS[w[0]][1]), b = hex(LUCAS[w[1] || w[0]][1]); return '<span class="sw" style="--a:' + a + ';--b:' + b + '" aria-hidden="true"></span>'; }
+function wireColourText(n){ const w = wireColours(n.finish); if (!w) return ''; return (n.wire.code || w.join('')) + ' · ' + LUCAS[w[0]][0] + (w[1] ? ' with ' + LUCAS[w[1]][0] + ' tracer' : ''); }
+function endHtml(e){
+  if (!e) return '—';
+  const label = esc(e.label || (N[e.part] ? N[e.part].name : e.part || '')) + (e.terminal ? ', terminal ' + esc(e.terminal) : '');
+  return N[e.part] ? '<button class="lnk" type="button" data-go="' + esc(e.part) + '">' + label + '</button>' : label;
+}
+function wireCardHtml(n){
+  const w = n.wire;
+  return '<h2 class="k">Wire</h2><dl class="facts">'
+    + '<dt>Colour</dt><dd>' + swatchHtml(n.finish) + esc(wireColourText(n)) + '</dd>'
+    + (w.size ? '<dt>Size</dt><dd>' + esc(w.size) + '</dd>' : '')
+    + (w.circuit ? '<dt>Circuit</dt><dd>' + esc(w.circuit) + '</dd>' : '')
+    + '<dt>From</dt><dd>' + endHtml(w.from) + '</dd><dt>To</dt><dd>' + endHtml(w.to) + '</dd>'
+    + (w.via && w.via.length ? '<dt>Via</dt><dd>' + w.via.map(esc).join(' → ') + '</dd>' : '')
+    + (w.fuse ? '<dt>Fuse</dt><dd>' + esc(w.fuse) + '</dd>' : '')
+    + '</dl>';
+}
+function wiresAtHtml(id){
+  const ws = wiresAt[id]; if (!ws || !ws.length) return '';
+  return '<h2 class="k">Wires at this part (' + ws.length + ')</h2><ul class="wires">' + ws.map(wid => {
+    const w = N[wid], other = w.wire.from && w.wire.from.part === id ? w.wire.to : w.wire.from, here = w.wire.from && w.wire.from.part === id ? w.wire.from : w.wire.to;
+    return '<li>' + swatchHtml(w.finish) + '<span><button class="lnk" type="button" data-go="' + esc(wid) + '">' + esc((w.wire.code || '') + ' ' + (w.wire.circuit || w.name)) + '</button>'
+      + ' <span class="to">' + (here && here.terminal ? esc(here.terminal) + ' → ' : '→ ') + esc(other ? (other.label || (N[other.part] || {}).name || '') : '') + '</span></span></li>';
+  }).join('') + '</ul>';
+}
+document.getElementById('card').addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (!b) return;
+  const id = b.dataset.go; if (!N[id]) return;
+  N[id].kind === 'part' ? select(id) : go(id);
+});
 function showCard(id){
   const n = N[id];
   if (n.kind !== 'part'){
@@ -842,6 +913,7 @@ function showCard(id){
     + (pn ? '<dt>Part no.</dt><dd>' + pn + '</dd>' : '')
     + '<dt>Material</dt><dd>' + esc(n.material || 'Not recorded in sources') + '</dd>'
     + '<dt>Fitted</dt><dd>' + (n.variant.factory_1963 && n.variant.as_fitted ? 'Factory 1963 and on this car' : n.variant.as_fitted ? 'This car only' : 'Factory 1963 only') + '</dd></dl>'
+    + (n.wire ? wireCardHtml(n) : '') + wiresAtHtml(id)
     + '<h2 class="k">Dimensions</h2><table class="dims"><thead><tr><th>Feature</th><th>Value</th><th>Src</th></tr></thead><tbody>' + rows + '</tbody></table>'
     + (n.derivedShare > 0.3 ? '<p class="derived">' + Math.round(n.derivedShare * 100) + '% of this part\'s figures are derived, not published. Treat those as close, not exact.</p>' : '')
     + (n.notes ? '<p class="ref" style="margin-top:12px">' + esc(n.notes) + '</p>' : '')

@@ -130,5 +130,8 @@ def build_registry(specs: dict[str, Spec], assemblies, sizes: dict[str, int]) ->
             "variant": d.get("variant", {}), "explode": d.get("explode"),
             "specs": spec_rows(sp), "derivedShare": round(derived / max(1, len(sp.dims)), 2),
         }
+        if d.get("wire"):
+            # a wire: Lucas colour code, circuit and the two terminals it joins (shown on the card, traced in the viewer)
+            nodes[pid]["wire"] = d["wire"]
     # prune empty systems from the tree so the viewer shows only what exists
     return {"schema": 1, "nodes": nodes, "instances": instances}
