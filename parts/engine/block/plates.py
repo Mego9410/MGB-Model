@@ -43,7 +43,7 @@ STARTER = (-148.3, CZ - 70.0, 44.0)              # starter aperture, right-hand 
 REAR_UPPER = [(-176, CZ + 40), (-150, -110), (-118, -40), (-60, -12), (0, -6), (60, -12), (118, -40), (150, -110),
               (176, CZ + 40), (0, CZ)]
 REAR_SCREWS_5_16 = [(-58.0, -22.0), (92.0, -22.0), (-60.0, -110.0), (100.0, -110.0)]
-REAR_SCREWS_3_8 = [(-100.0, -230.0), (100.0, -230.0), (-106.0, -290.0), (106.0, -290.0)]
+REAR_SCREWS_3_8 = [(-100.0, -230.0), (100.0, -230.0), (-98.0, -287.0), (106.0, -290.0)]   # P10: lower right one moved in, clear of the starter recess
 BELL_HOLES = [(REAR_R - 10, a) for a in (150, 238, 270, 302, 335, 20)] + [(None, (-136, -96)), (None, (136, -96))]
 DOWELS = [(-90.0, CZ), (90.0, CZ)]
 SEAL_R = 40.0                                    # centre hole for the oil seal retaining plate
@@ -89,6 +89,10 @@ def front_plate(spec) -> Part:
         p = p - _xhole(3.3, y, z)
     for y, z in MOUNT_HOLES:
         p = p - _xhole(5.2, y, z)
+    # P10: notch in the right-hand wing for the alternator body, hole for its adjusting link stud
+    from mgb import electrical_layout as EZ
+    p = p - _xhole(EZ.FRONT_PLATE_NOTCH_R, EZ.ALT_AXIS[0], EZ.ALT_AXIS[1])
+    p = p - _xhole(4.2, *EZ.LINK_STUD)
     for k in range(3):                                                   # camshaft locating plate bolts
         a = math.radians(90 + 120 * k)
         p = p - _xhole(3.6, EL.cam_y + 34 * math.cos(a), EL.cam_z + 34 * math.sin(a))
@@ -135,6 +139,9 @@ def rear_plate(spec) -> Part:
         p = p - _xhole(5.0, y, z)
     for y, z in _bell_points():                                          # gearbox bellhousing bolts
         p = p - _xhole(5.2, y, z)
+    from mgb import electrical_layout as EZ
+    for y, z in EZ.starter_bolt_points():                               # P10: the starter's two bolts
+        p = p - _xhole(5.0, y, z)
     for y, z in DOWELS:
         p = p - _xhole(5.6, y, z)
     for k in range(6):                                                   # seal retaining plate bolts
@@ -153,6 +160,8 @@ def rear_plate_gasket(spec) -> Part:
         g = g - _xhole(5.0, y, z)
     for y, z in DOWELS:
         g = g - _xhole(5.6, y, z)
+    from mgb import electrical_layout as EZ                              # P10: relieved with the block skirt for the starter
+    g = g - _xhole(EZ.STARTER_RECESS_R, *EZ.STARTER_YZ)
     return _l(g, spec)
 
 

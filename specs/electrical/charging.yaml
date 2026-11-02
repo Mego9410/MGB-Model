@@ -1,0 +1,208 @@
+# Lucas 18ACR alternator (a later conversion on Oliver's car; the 1963 car had a Lucas C40/1
+# dynamo and RB340 control box) on the dynamo's mountings: Haynes Ch 10 Sec 11, 20-22, Fig 10.3
+# (printed p167, the 16AC: the same construction), specs printed p162; Ch 2 Sec 3, Fig 2.1
+# (printed p56) and Fig 2.6 (printed p61). Positions: mgb/electrical_layout.py.
+# PDF page = printed page + 4.
+defaults:
+  system: electrical
+  assembly: electrical.charging
+  haynes: { section: 20, spec_page: 162 }
+  variant: { factory_1963: false, as_fitted: true }
+  finish: aluminium
+
+parts:
+  - id: electrical.charging.drive-end-bracket
+    name: Alternator drive end bracket
+    haynes: { figures: [{ figure: "10.3", legend: 13 }] }
+    quantity: 1
+    notes: >
+      Die-cast front bracket carrying the sealed drive end bearing (item 10, circlip 11, O
+      ring 12). Shape from Fig 10.3 and photo 3.3 (Ch 2): a front wall with spokes and large
+      cooling openings round the bearing boss, a skirt back to the stator, a pivot lug on the
+      engine side and the tapped adjusting lug below, and ears for the three through-bolts.
+      The 18ACR replaced the dynamo on the same mountings: two pivot bolts above and the link
+      below (Ch 10 Sec 6 para 1, Sec 15 para 2, Sec 20 para 2). Lug positions are derived from
+      the pivot line and link (mgb/electrical_layout.py). Outside reference for the form: the
+      MGOC Spares and Rimmer Bros 16/17/18ACR listings (photographs could not be opened from
+      the build machine).
+    specs:
+      outside_diameter: { mm: 120.0, source: { label: D, method: "Stator diameter less the bracket step (Fig 10.3 proportion)" } }
+      mounting_bolt_torque: { lbf_ft: 20, nm: 27, source: { label: H, page: 162 }, display_only: true }
+
+  - id: electrical.charging.stator
+    name: Alternator stator
+    haynes: { figures: [{ figure: "10.3", legend: 5 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Laminated stator clamped between the brackets; the lamination stack shows round the outside (Fig 10.3)."
+    specs:
+      outside_diameter: { mm: 126.0, source: { label: D, method: "Scaled from Fig 10.3 against the 2 3/4 in pulley (stator about 1.8 x the pulley)" } }
+      output: { count: 43, source: { label: H, page: 162, note: "43 amps at 6000 rpm (18ACR)" }, display_only: true }
+
+  - id: electrical.charging.slip-ring-bracket
+    name: Alternator slip ring end bracket
+    haynes: { figures: [{ figure: "10.3", legend: 4 }] }
+    quantity: 1
+    notes: >
+      Rear bracket with the slip ring end bearing (item 7), cooling slots round its back and
+      the rear pivot lug (Fig 10.3: the lug at the top of item 4). The brush box, rectifier and
+      regulator sit on it under the end cover (Sec 21 para 1).
+    specs:
+      length: { mm: 50.0, source: { label: D, method: "Fig 10.3 proportion" } }
+
+  - id: electrical.charging.end-cover
+    name: Alternator end cover
+    haynes: { figures: [{ figure: "10.3", legend: 1 }] }
+    quantity: 1
+    finish: plastic_black
+    notes: "Moulded cover held by two screws (Sec 21 para 1), slotted for cooling air, with the opening for the terminal block."
+    specs:
+      length: { mm: 30.0, source: { label: D, method: "Fig 10.3 proportion" } }
+
+  - id: electrical.charging.rotor
+    name: Alternator rotor, shaft and slip rings
+    haynes: { figures: [{ figure: "10.3", legend: 8 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Claw-pole rotor (items 8, 9) on its shaft with the slip rings (6) at the back; seen through the bracket openings."
+    specs:
+      length: { mm: 150.0, source: { label: D, method: "Shaft from the slip ring bearing to the pulley nut" } }
+
+  - id: electrical.charging.fan
+    name: Alternator cooling fan
+    haynes: { section: 20 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Pressed fan between the pulley and the drive end bracket (photo 3.3, Ch 2). MGOC Spares lists the AC/ACR fan C37222."
+    specs:
+      diameter: { mm: 112.0, source: { label: D, method: "Photo 3.3 (Ch 2): the fan a little smaller than the drive end bracket" } }
+      blades: { count: 11, source: { label: D, method: "Counted in photo 3.3 (Ch 2), about 11 blades" } }
+
+  - id: electrical.charging.pulley
+    name: Alternator pulley
+    haynes: { figures: [{ figure: "2.6", legend: 23 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Single-groove pulley in line with the crankshaft and water pump pulleys (mgb/cooling_layout.py BELT_X)."
+    part_numbers: [{ number: 12G1054, by: MGOC Spares }]
+    specs:
+      outside_diameter: { in: 2.75, mm: 69.85, source: { label: S, ref: "MGOC Spares 12G1054, alternator pulley 2 3/4 in" } }
+      nut_torque: { lbf_ft: 25, nm: 34, source: { label: H, page: 162 }, display_only: true }
+
+  - id: electrical.charging.shaft-nut
+    name: Alternator shaft nut and spring washer
+    haynes: { figures: [{ figure: "10.3", legend: 14 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      across_flats: { mm: 22.0, source: { label: D, method: "Over the 15 mm shaft thread" } }
+      torque: { lbf_ft: [25, 30], nm: [34, 41], source: { label: H, page: 162, note: "Alternator shaft nut" }, display_only: true }
+
+  - id: electrical.charging.through-bolt
+    name: Alternator through-bolt
+    haynes: { figures: [{ figure: "10.3", legend: 3 }] }
+    quantity: 3
+    finish: zinc_steel
+    specs:
+      length: { mm: 52.0, source: { label: D, method: "Slip ring end bracket ear to the drive end bracket ear" } }
+
+  - id: electrical.charging.terminal-plug
+    name: Alternator terminal plug and leads
+    haynes: { section: 15 }
+    quantity: 1
+    finish: plastic_black
+    notes: "The terminal block pulled off first on removal (Sec 15 para 2). Two brown output leads and the brown/yellow warning lamp lead (Fig 10.27 colour code)."
+    part_numbers: [{ number: GEU250, by: "MGOC Spares (alternator plug kit)" }]
+    specs:
+      width: { mm: 18.0, source: { label: D, method: "Three blades side by side" } }
+
+  - id: electrical.charging.rear-bracket
+    name: Alternator rear mounting bracket
+    haynes: { figures: [{ figure: "2.6", legend: 14 }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Bracket 14 of Fig 2.6, held by screw 16 and spring washer 15 to the threaded boss on the
+      right of the block (P2 block, x 124), its ear carrying the rear pivot bolt 31 with spring
+      washer 32 and nut 33. MGOC lists 12A526 (dynamo, 18G/GA/GB) and 12G1053 (alternator); the
+      ALT1 kit adapts a dynamo car. Shape derived from Fig 2.6.
+    part_numbers: [{ number: 12A526, by: MGOC Spares }]
+    specs:
+      thickness: { mm: 5.0, source: { label: D, method: "Fig 2.6 proportion, against the 5/16 in screw" } }
+
+  - id: electrical.charging.link
+    name: Alternator adjusting link
+    haynes: { figures: [{ figure: "2.6", legend: 25 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Slotted link on the stud (17) with washer 26, spring washer 27 and nut 28; the link screw 29 and spring washer 30 into the alternator's adjusting lug. The slot is struck about the pivot line so the alternator swings to tension the belt (1/2 in deflection, Ch 2 p55)."
+    part_numbers: [{ number: 12H67, by: MGOC Spares }]
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "Fig 2.6 proportion" } }
+      width: { mm: 18.0, source: { label: D, method: "Fig 2.6 proportion" } }
+
+  - id: electrical.charging.link-stud
+    name: Adjusting link stud (pillar)
+    haynes: { figures: [{ figure: "2.6", legend: 17 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Stud 17 with its spring washer and nut (18, 19), screwed into the engine front through the front plate just outboard of the timing cover."
+    part_numbers: [{ number: 2A128, by: "MGOC Spares (adjusting pillar)" }]
+    specs:
+      collar_af: { mm: 14.3, source: { label: D, method: "9/16 in hexagon over the 5/16 in thread" } }
+
+  - id: electrical.charging.pivot-bolt
+    name: Alternator pivot bolt
+    haynes: { figures: [{ figure: "2.6", legend: 34 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Bolts 34 (front, through the water pump ear) and 31 (rear, through the bracket). MGOC: 5/16 UNF x 1 1/2 GHF104."
+    part_numbers: [{ number: GHF104, by: MGOC Spares }]
+    specs:
+      thread: { in: 0.3125, mm: 7.94, source: { label: S, ref: "MGOC Spares GHF104 bolt 5/16 UNF x 1 1/2" }, display_only: true }
+
+  - id: electrical.charging.link-screw
+    name: Link screw
+    haynes: { figures: [{ figure: "2.6", legend: 29 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers: [{ number: GHF120, by: MGOC Spares }]
+    specs:
+      thread: { in: 0.3125, mm: 7.94, source: { label: S, ref: "MGOC Spares GHF120 screw 5/16 UNF x 3/4" }, display_only: true }
+
+  - id: electrical.charging.bracket-screw
+    name: Rear bracket screw
+    haynes: { figures: [{ figure: "2.6", legend: 16 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.3125, mm: 7.94, source: { label: D, method: "5/16 UNF, as the other generator fixings" }, display_only: true }
+
+  - id: electrical.charging.nut
+    name: Pivot and stud nut
+    haynes: { figures: [{ figure: "2.6", legend: 36 }] }
+    quantity: 3
+    finish: zinc_steel
+    part_numbers: [{ number: GHF201, by: MGOC Spares }]
+    specs:
+      across_flats: { in: 0.5, mm: 12.7, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 5/16 in" }, display_only: true }
+
+  - id: electrical.charging.spring-washer
+    name: Spring washer, 5/16 in
+    haynes: { figures: [{ figure: "2.6", legend: 35 }] }
+    quantity: 5
+    finish: zinc_steel
+    part_numbers: [{ number: GHF332, by: MGOC Spares }]
+    specs:
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      outside_diameter: { mm: 13.6, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: electrical.charging.plain-washer
+    name: Plain washer, 5/16 in
+    haynes: { figures: [{ figure: "2.6", legend: 26 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers: [{ number: GHF301, by: MGOC Spares }]
+    specs:
+      outside_diameter: { in: 0.688, mm: 17.48, source: { label: S, ref: "SAE plain washer, ANSI B18.22.1 type A narrow" }, display_only: true }

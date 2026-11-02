@@ -1,0 +1,271 @@
+# Instruments, warning lamps and switches, speedometer cable, oil pressure gauge pipe and the
+# capillary temperature gauge. Haynes Ch 10 Sec 40, 45-48, Fig 10.9 (printed p176), Fig 10.14
+# (printed p181), Fig 10.26 key (printed p189); Ch 1 Sec 6 paras 5, 8, 13 (printed p26-27);
+# Ch 2 Sec 15 (capillary transmitter); Ch 12 Sec 46 (early instruments). Positions:
+# mgb/body_layout.py (FACIA_X, INSTRUMENTS, WARNING_LAMPS, SWITCHES; P11 builds the facia
+# round them) and mgb/electrical_layout.py (engine connections). PDF page = printed page + 4.
+defaults:
+  system: electrical
+  assembly: electrical.instruments
+  haynes: { section: 46 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: paint_black
+
+parts:
+  - id: electrical.instruments.speedometer-case
+    name: "Speedometer case"
+    haynes: { section: 46, figures: [{ figure: "45" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Smiths speedometer with odometer and trip, cable driven from the overdrive (Fig 10.26 item 45). Outboard of the tachometer for RHD (D: mirror of the LHD layout; question for Oliver). Held by the bracket, its two knurled nuts and the cable nut (Sec 46)."
+    specs:
+      diameter: { mm: 80.0, source: { label: S, ref: "Smiths Classic MGB speedometer, 80 mm diameter (pafclassic.com)" } }
+
+  - id: electrical.instruments.speedometer-dial
+    name: "Speedometer dial"
+    haynes: { section: 46, figures: [{ figure: "45" }] }
+    quantity: 1
+    finish: instrument_face
+    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    specs:
+      diameter: { mm: 77.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.speedometer-needle
+    name: "Speedometer needle"
+    haynes: { section: 46, figures: [{ figure: "45" }] }
+    quantity: 1
+    finish: needle
+    notes: "Pointer and its hub."
+    specs:
+      length: { mm: 35.0, source: { label: D, method: "Reaches the graduations" } }
+
+  - id: electrical.instruments.tachometer-case
+    name: "Tachometer case"
+    haynes: { section: 46, figures: [{ figure: "95" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Impulse type (Sec 47): pulses from the coil's LT feed; the pulse lead forms a loop at the back of the instrument (Fig 10.14). 18G cars: see the questions for Oliver."
+    specs:
+      diameter: { mm: 80.0, source: { label: S, ref: "Smiths Classic MGB speedometer, 80 mm diameter (pafclassic.com)" } }
+
+  - id: electrical.instruments.tachometer-dial
+    name: "Tachometer dial"
+    haynes: { section: 46, figures: [{ figure: "95" }] }
+    quantity: 1
+    finish: instrument_face
+    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    specs:
+      diameter: { mm: 77.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.tachometer-needle
+    name: "Tachometer needle"
+    haynes: { section: 46, figures: [{ figure: "95" }] }
+    quantity: 1
+    finish: needle
+    notes: "Pointer and its hub."
+    specs:
+      length: { mm: 35.0, source: { label: D, method: "Reaches the graduations" } }
+
+  - id: electrical.instruments.dual-gauge-case
+    name: "Oil pressure and water temperature gauge case"
+    haynes: { section: 46, figures: [{ figure: "42" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Dual gauge: mechanical oil pressure through the pipe from the engine (Ch 1 Sec 6 para 5) and the capillary temperature element (Ch 2 Sec 15) (Fig 10.26 items 42, 46)."
+    specs:
+      diameter: { mm: 52.0, source: { label: D, method: "Smiths small gauge, 2 1/16 in case, half the large dial in Fig 10.9" } }
+
+  - id: electrical.instruments.dual-gauge-dial
+    name: "Oil pressure and water temperature gauge dial"
+    haynes: { section: 46, figures: [{ figure: "42" }] }
+    quantity: 1
+    finish: instrument_face
+    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    specs:
+      diameter: { mm: 49.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.dual-gauge-needle
+    name: "Oil pressure and water temperature gauge needle"
+    haynes: { section: 46, figures: [{ figure: "42" }] }
+    quantity: 1
+    finish: needle
+    notes: "Pointer and its hub."
+    specs:
+      length: { mm: 19.0, source: { label: D, method: "Reaches the graduations" } }
+
+  - id: electrical.instruments.fuel-gauge-case
+    name: "Fuel gauge case"
+    haynes: { section: 46, figures: [{ figure: "34" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Electric fuel gauge fed from the ignition circuit, with the tank unit (Fig 10.26 items 34, 35; tank P11)."
+    specs:
+      diameter: { mm: 52.0, source: { label: D, method: "Smiths small gauge, 2 1/16 in case, half the large dial in Fig 10.9" } }
+
+  - id: electrical.instruments.fuel-gauge-dial
+    name: "Fuel gauge dial"
+    haynes: { section: 46, figures: [{ figure: "34" }] }
+    quantity: 1
+    finish: instrument_face
+    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    specs:
+      diameter: { mm: 49.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.fuel-gauge-needle
+    name: "Fuel gauge needle"
+    haynes: { section: 46, figures: [{ figure: "34" }] }
+    quantity: 1
+    finish: needle
+    notes: "Pointer and its hub."
+    specs:
+      length: { mm: 19.0, source: { label: D, method: "Reaches the graduations" } }
+
+  - id: electrical.instruments.bezel-large
+    name: "Instrument bezel, large"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 2
+    finish: chrome
+    notes: "Chrome bezel ring holding the glass (Fig 10.9 item 3 shows the bezel)."
+    specs:
+      diameter: { mm: 80.0, source: { label: S, ref: "Smiths Classic MGB speedometer, 80 mm diameter (pafclassic.com)" }, display_only: true }
+
+  - id: electrical.instruments.glass-large
+    name: "Instrument glass, large"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 2
+    finish: glass
+    notes: "Domed glass under the bezel."
+    specs:
+      diameter: { mm: 80.0, source: { label: S, ref: "Smiths Classic MGB speedometer, 80 mm diameter (pafclassic.com)" }, display_only: true }
+
+  - id: electrical.instruments.bezel-small
+    name: "Instrument bezel, small"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 2
+    finish: chrome
+    notes: "Chrome bezel ring holding the glass (Fig 10.9 item 3 shows the bezel)."
+    specs:
+      diameter: { mm: 52.0, source: { label: D, method: "Smiths small gauge, 2 1/16 in case, half the large dial in Fig 10.9" }, display_only: true }
+
+  - id: electrical.instruments.glass-small
+    name: "Instrument glass, small"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 2
+    finish: glass
+    notes: "Domed glass under the bezel."
+    specs:
+      diameter: { mm: 52.0, source: { label: D, method: "Smiths small gauge, 2 1/16 in case, half the large dial in Fig 10.9" }, display_only: true }
+
+  - id: electrical.instruments.warning-lamp
+    name: "Warning lamp holder and bezel"
+    haynes: { section: 46 }
+    quantity: 3
+    finish: chrome
+    notes: "Panel and warning lamp holders are a push fit and reached from under the facia (Sec 40 para 2): ignition (Fig 10.26 item 44), main beam (10), direction indicator (27)."
+    specs:
+      diameter: { mm: 16.0, source: { label: D, method: "Small lamp bezel" } }
+
+  - id: electrical.instruments.lens-red
+    name: "Warning lamp lens (ignition warning)"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: lens_red
+    specs:
+      diameter: { mm: 9.2, source: { label: D, method: "In the bezel" } }
+
+  - id: electrical.instruments.lens-blue
+    name: "Warning lamp lens (main beam warning)"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: lens_blue
+    specs:
+      diameter: { mm: 9.2, source: { label: D, method: "In the bezel" } }
+
+  - id: electrical.instruments.lens-green
+    name: "Warning lamp lens (direction indicator warning)"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: lens_green
+    specs:
+      diameter: { mm: 9.2, source: { label: D, method: "In the bezel" } }
+
+  - id: electrical.instruments.toggle-switch
+    name: "Toggle switch (lighting, wiper, heater, overdrive)"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 4
+    finish: chrome
+    notes: "Early facia switches held by their lockrings (Sec 45 para 3); the overdrive switch (Fig 10.9 item 2) on the facia right of the binnacle. Which switches are toggles and which pull switches on the 1963 facia is from Fig 10.9 and is listed in the questions for Oliver."
+    specs:
+      lever_length: { mm: 22.0, source: { label: D, method: "Fig 10.9 proportion" } }
+
+  - id: electrical.instruments.pull-switch
+    name: "Pull switch (panel lamp, map lamp)"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 2
+    finish: chrome
+    notes: "Items 1 and 4: the knob comes off by depressing the plunger in its shank, then the lockring (Sec 45 para 4)."
+    specs:
+      body_diameter: { mm: 18.0, source: { label: D, method: "Fig 10.9 proportion" } }
+
+  - id: electrical.instruments.pull-knob
+    name: "Pull switch knob"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 2
+    finish: plastic_black
+    specs:
+      diameter: { mm: 25.0, source: { label: D, method: "Fig 10.9 proportion" } }
+
+  - id: electrical.instruments.ignition-switch
+    name: "Ignition/starter switch, lock and key"
+    haynes: { section: 46, figures: [{ figure: "10.9" }] }
+    quantity: 1
+    finish: chrome
+    notes: "Items 8-10: key switch with its starter position (the inertia starter's solenoid is energised from it); removed by the lockring behind the facia (Sec 45 para 2)."
+    specs:
+      bezel_diameter: { mm: 30.0, source: { label: D, method: "Fig 10.9 proportion" } }
+
+  - id: electrical.instruments.speedo-cable
+    name: "Speedometer cable"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: cable_black
+    notes: "From the angle drive on the overdrive rear casing (P5b, MGOC 120694) to the back of the speedometer (Ch 1 Sec 6 para 30; Sec 46 para 4: 'disconnect the drive cable'). Route through the tunnel and up behind the facia derived (D)."
+    specs:
+      diameter: { mm: 9.5, source: { label: D, method: "Outer casing" } }
+
+  - id: electrical.instruments.oil-pipe
+    name: "Oil pressure gauge pipe"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: copper
+    notes: "Disconnected at the engine on engine removal (Ch 1 Sec 6 para 5, photo 6.5). Route derived."
+    specs:
+      diameter: { in: 0.1875, mm: 4.76, source: { label: D, method: "3/16 in copper gauge pipe" } }
+
+  - id: electrical.instruments.oil-union
+    name: "Oil gauge pipe union"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: brass
+    notes: "On the main oil gallery near the rear of the block (D: the gallery is the pressure take-off; Haynes photo 6.5 shows the pipe disconnected at the right of the engine)."
+    specs:
+      thread: { in: 0.125, mm: 3.175, source: { label: D, method: "1/8 in pipe thread union" } }
+
+  - id: electrical.instruments.capillary
+    name: "Temperature gauge capillary"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: copper
+    notes: "Capillary from the thermal transmitter to the dual gauge (Ch 2 Sec 15 paras 1-3). Route derived."
+    specs:
+      diameter: { mm: 3.0, source: { label: D, method: "Capillary in its protective coil" } }
+
+  - id: electrical.instruments.transmitter
+    name: "Thermal transmitter and gland nut"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: brass
+    notes: "'Unscrew the thermal transmitter from the cylinder head' (Ch 1 Sec 13 para 6); capillary type held by its gland nut (Ch 2 Sec 15 para 3). Its place on the head's right face ahead of No 1 plug is derived; P1's head has no boss for it yet (noted in PLAN)."
+    specs:
+      gland_af: { mm: 17.3, source: { label: D, method: "Gland nut" } }
+

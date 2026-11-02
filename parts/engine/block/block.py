@@ -224,6 +224,11 @@ def casting(spec) -> Part:
     for cx in (HL.pitch, -HL.pitch):                              # cover bolt bosses inside the chest
         blk = blk + _yboss(8.0, cx, EL.chest_z, 50, cy - 8)
         blk = blk - _yboss(3.9, cx, EL.chest_z, 84, cy)
+    # P10: recess in the right-hand skirt for the starter yoke, walled so the crankcase stays closed
+    from mgb import electrical_layout as EZ
+    x0, x1 = EZ.STARTER_RECESS_X
+    wall = (EZ.recess_cylinder(6.0) - EZ.recess_cylinder()) & box(x0, x1, -126.0, -60.0, sz - 0.01, -240.0)
+    blk = blk - EZ.recess_cylinder() + wall
     return _l(blk, spec)
 
 

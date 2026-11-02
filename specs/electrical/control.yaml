@@ -1,0 +1,108 @@
+# Engine-bay units: control box, fuse block, flasher, overdrive relay and vacuum switch, horns.
+# Haynes Ch 10 Sec 8-10, Fig 10.2 (printed p166); Sec 33, photo 33.1 (printed p172); Sec 42;
+# Sec 50 and specs (printed p162); Fig 10.26 (early wiring, key printed p189); Ch 6 Sec 16.
+# Positions: mgb/body_layout.py (the inner wing valances, bulkhead and front panel are P11).
+# PDF page = printed page + 4.
+defaults:
+  system: electrical
+  assembly: electrical.control
+  haynes: { section: 8 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: paint_black
+
+parts:
+  - id: electrical.control.control-box
+    name: Control box, Lucas RB340
+    haynes: { section: 8, figures: [{ figure: "10.2" }, { figure: "10.26", legend: 2 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Cut-out relay and the current and voltage regulators under a clipped cover (Fig 10.2,
+      Sec 8). MGOC Spares: GEU6605, fitted to dynamo cars to 1967, 'mounted on the right-hand
+      side of the engine bay, beside the fuse box'. With the 18ACR conversion the alternator's
+      own regulator does the work; conversions usually leave the RB340 in place as a junction
+      with its A and A1 (B) leads joined - see the questions for Oliver. Shape from Fig 10.2.
+    part_numbers: [{ number: GEU6605, by: MGOC Spares }]
+    specs:
+      width: { mm: 100.0, source: { label: D, method: "Fig 10.2 proportion" } }
+      height: { mm: 82.0, source: { label: D, method: "Fig 10.2 proportion" } }
+      depth: { mm: 52.0, source: { label: D, method: "Fig 10.2 proportion" } }
+      cut_in_voltage: { count: [12.7, 13.3], source: { label: H, page: 162 }, display_only: true }
+
+  - id: electrical.control.fuse-block
+    name: Fuse block, Lucas 4FJ (two fuses)
+    haynes: { section: 33 }
+    quantity: 1
+    finish: plastic_brown
+    notes: >
+      Two-way fuse block 'adjacent to the control box on the wing valance' (Sec 33 para 1,
+      photo 33.1): fuse 1-2 for the horns and lights that work with the ignition off, fuse 3-4
+      for the ignition-switched circuits; two spare 35 A fuses carried. MGOC Spares 606253A
+      (Lucas 4FJ, 1962-69).
+    part_numbers: [{ number: 606253A, by: MGOC Spares }]
+    specs:
+      width: { mm: 66.0, source: { label: D, method: "Photo 33.1 proportion against the fuses" } }
+      height: { mm: 40.0, source: { label: D, method: "Photo 33.1 proportion" } }
+      fuse_rating: { count: 35, source: { label: H, page: 172, note: "Two spare 35 amp fuses are carried" }, display_only: true }
+
+  - id: electrical.control.flasher
+    name: Flasher unit
+    haynes: { section: 42, figures: [{ figure: "10.26", legend: 25 }] }
+    quantity: 1
+    finish: aluminium
+    notes: "'A small cylindrical metal container in the engine compartment' (Sec 42 para 1), in a clip on the right inner wing (D)."
+    specs:
+      diameter: { mm: 34.0, source: { label: D, method: "FL5 pattern can" } }
+      length: { mm: 58.0, source: { label: D, method: "FL5 pattern can" } }
+
+  - id: electrical.control.relay
+    name: Overdrive relay
+    haynes: { figures: [{ figure: "10.26", legend: 68 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Overdrive relay unit (Fig 10.26 item 68), switched by the facia switch through the gearbox (isolation) and throttle switches, feeding the overdrive solenoid. MGOC 142169: 'rectangular metal can type', overdrive circuit on 3-synchro models. Placed on the left inner wing (D)."
+    part_numbers: [{ number: "142169", by: MGOC Spares }]
+    specs:
+      width: { mm: 40.0, source: { label: D, method: "Rectangular can relay" } }
+      height: { mm: 50.0, source: { label: D, method: "Rectangular can relay" } }
+      depth: { mm: 30.0, source: { label: D, method: "Rectangular can relay" } }
+
+  - id: electrical.control.vacuum-switch
+    name: Overdrive throttle (vacuum) switch
+    haynes: { figures: [{ figure: "10.26", legend: 74 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Item 74, 'overdrive throttle switch', in the relay's earth circuit. Fitted as a vacuum switch on the left of the bulkhead (MGOC, P5b note); its pipe to the inlet manifold is not modelled."
+    specs:
+      diameter: { mm: 36.0, source: { label: D, method: "Small diaphragm switch" } }
+
+  - id: electrical.control.horn
+    name: Horn, Lucas 9H12
+    haynes: { section: 50, figures: [{ figure: "10.26", legend: 23 }] }
+    quantity: 2
+    finish: paint_black
+    notes: >
+      Two horns (Fig 10.26 item 23, 'Horns'), type 9H12, 3 to 3 1/2 A (p162). Adjusting screw and
+      locknut under the cover (Sec 50 para 3). Disc form with a domed cover from the common
+      Lucas pattern; mounted on the front panel behind the grille (D).
+    specs:
+      diameter: { mm: 102.0, source: { label: D, method: "Lucas disc horn, about 4 in" } }
+      depth: { mm: 62.0, source: { label: D, method: "Lucas disc horn" } }
+      current: { count: [3.0, 3.5], source: { label: H, page: 162, note: "Maximum current consumption 3 1/2 amps; Sec 50 para 2: 3 to 3 1/2 A" }, display_only: true }
+
+  - id: electrical.control.panel-screw
+    name: Panel screw (units to the inner wing and bulkhead)
+    haynes: { section: 32 }
+    quantity: 9
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: D, method: "1/4 in self-tapping or UNF screws into the panel" } }
+
+  - id: electrical.control.horn-bolt
+    name: Horn bracket bolt
+    haynes: { section: 50 }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Sec 50 para 1: 'remove the mounting bolts'."
+    specs:
+      thread: { in: 0.3125, mm: 7.94, source: { label: D, method: "5/16 in UNF" } }

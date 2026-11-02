@@ -52,13 +52,14 @@ def sump(spec) -> Part:
     and a shallow tail at the rear, drain plug boss in the floor (photo 55.4)."""
     t = spec.nom("sheet_thickness")
     top = L.SUMP_TOP
-    outer = _sump_solid(t, top, L.SUMP_DEPTH, L.SUMP_SHALLOW)
-    inner = _sump_solid(0.0, top + 1, L.SUMP_DEPTH + 1 - t, L.SUMP_SHALLOW + 1 - t)
+    from mgb import electrical_layout as EZ
+    outer = _sump_solid(t, top, L.SUMP_DEPTH, L.SUMP_SHALLOW) - EZ.recess_cylinder()
+    inner = _sump_solid(0.0, top + 1, L.SUMP_DEPTH + 1 - t, L.SUMP_SHALLOW + 1 - t) - EZ.recess_cylinder(t)
     s = outer - inner
     flange = box(-L.B_HALF + 1, L.B_HALF - 1, -B.FLANGE_HW, B.FLANGE_HW, top - t, top)
     flange = _try_fillet(flange, flange.edges().filter_by(Axis.Z), 10.0)
     flange = flange - box(-L.B_HALF + 9, L.B_HALF - 9, -113, 113, top - t - 1, top + 1)
-    s = s + flange
+    s = s + (flange - EZ.recess_cylinder())   # P10: the flange and wall are relieved round the starter yoke
     for x, y in L.sump_bolts():
         s = s - zcyl(4.2, top - t - 1, top + 1, x, y)
     # stiffening swage round the deep well
@@ -76,6 +77,8 @@ def sump_gasket(spec) -> Part:
     g = box(-L.B_HALF + 1, L.B_HALF - 1, -B.FLANGE_HW, B.FLANGE_HW, L.SUMP_TOP, L.SUMP_TOP + t)
     g = _try_fillet(g, g.edges().filter_by(Axis.Z), 10.0)
     g = g - box(-L.B_HALF + 10, L.B_HALF - 10, -111, 111, L.SUMP_TOP - 1, L.SUMP_TOP + t + 1)
+    from mgb import electrical_layout as EZ
+    g = g - EZ.recess_cylinder()
     for x, y in L.sump_bolts():
         g = g - zcyl(4.2, L.SUMP_TOP - 1, L.SUMP_TOP + t + 1, x, y)
     return _l(g, spec)

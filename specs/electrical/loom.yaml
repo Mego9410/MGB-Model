@@ -1,0 +1,46 @@
+# Wiring loom. Haynes Fig 10.26 (wiring diagram, models up to 1967, dynamo and positive earth;
+# key printed p189, cable colours there), Sec 33, 42, 45; Ch 6 Sec 16 (overdrive). Oliver's car
+# is negative earth with the 18ACR (Fig 10.27, alternator cars, for the charging leads).
+# Routes derived (D): mgb/body_layout.py grommets and unit positions. PDF page = printed + 4.
+defaults:
+  system: electrical
+  assembly: electrical.loom
+  haynes: { section: 1, figures: [{ figure: "10.26" }] }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: loom
+
+parts:
+  - id: electrical.loom.engine-bay
+    name: Main harness, engine bay
+    quantity: 1
+    notes: >
+      The main harness from the bulkhead grommet forward along the right inner wing and across
+      the front panel to the left-hand lamps, with branches to the fuse block, flasher, control
+      box, starter solenoid switch terminal, alternator plug, coil SW terminal, both horns, the
+      headlamps and side/flasher lamps, the overdrive relay and the overdrive throttle (vacuum)
+      switch on the bulkhead (Fig 10.26 items 1-4, 8-12, 19, 23, 25, 28, 29, 39, 68, 74). Drawn as a
+      taped bundle; individual wires are not drawn. Route derived.
+    specs:
+      diameter: { mm: 18.0, source: { label: D, method: "About 30 cables of 14/0.30 to 28/0.30 mm in a taped bundle" } }
+
+  - id: electrical.loom.facia
+    name: Facia harness
+    quantity: 1
+    notes: "Behind the facia from the bulkhead grommet to the tachometer, the small gauges, the warning lamps (Fig 10.26 items 10, 27, 44), the switches (6, 13, 26, 32, 36, 38, 72) and the wiper motor (37). Route derived."
+    specs:
+      diameter: { mm: 15.0, source: { label: D, method: "Taped bundle" } }
+
+  - id: electrical.loom.rear
+    name: Rear harness
+    quantity: 1
+    notes: "From behind the facia along the right-hand side of the body to the boot and across the rear panel to the stop/tail and flasher lamps and number plate lamps (Fig 10.26 items 15-17, 30, 31); the fuel tank unit lead (35) goes with the tank (P11). Route derived."
+    specs:
+      diameter: { mm: 11.0, source: { label: D, method: "Taped bundle" } }
+
+  - id: electrical.loom.overdrive
+    name: Overdrive leads
+    quantity: 1
+    finish: cable_black
+    notes: "Relay (68) to the gearbox switch (73, the isolation switch on the remote housing, P5a) and on to the overdrive solenoid (71) at the back of the overdrive's right side (P5b), Ch 6 Sec 16. Route derived."
+    specs:
+      diameter: { mm: 5.0, source: { label: D, method: "Two leads in a sleeve" } }

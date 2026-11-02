@@ -14,8 +14,9 @@ from mgb import timing_layout as T
 PUMP_FACE_X = T.BLOCK_FRONT                # pump flange on the block front face
 PUMP_AXIS = (-8.0, -42.0)                  # (y, z) of the spindle
 BELT_X = 291.3                             # crankshaft pulley groove centre plane
-PULLEY_PITCH = {"crank": 60.0, "pump": 50.0, "alternator": 30.0}
-ALTERNATOR_AXIS = (-145.0, -125.0)         # pivoted on the right-hand side (18ACR, electrical phase)
+PULLEY_PITCH = {"crank": 60.0, "pump": 50.0, "alternator": 32.0}   # alternator: 2 3/4 in pulley (P10)
+ALTERNATOR_AXIS = (-198.0, -106.0)         # 18ACR on the right-hand side (P10, mgb.electrical_layout): its 2 3/4 in
+                                           # pulley 200 mm from the pump spindle clears the fan blades
 
 RAD_CORE = (362.0, 424.0)                  # core x from/to (rear and front faces)
 RAD_Y = (-215.0, 215.0)

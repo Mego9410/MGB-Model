@@ -19,7 +19,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P7 Rear axle | Ch 8 | done |
 | P8 Brakes | Ch 9 | done |
 | P9 Suspension, steering, wheels and tyres; engine mountings | Ch 11 | |
-| P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | |
+| P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | done |
 | P11 Body shell, panels, trim, fittings; exhaust; fuel tank, pump and pipe | Ch 12, Ch 3 | |
 
 ## Carried over
@@ -89,7 +89,6 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 - Exhaust system (Ch 3 Sec 46, one-piece welded on early cars): with the body/floor.
 - Fuel pump, tank and the rigid pipe to `fuel.pipes.feed-union`: with the body.
 - Engine mountings (Fig 1.29): with the front crossmember (P9).
-- 18ACR alternator and the Lucas HA12 coil: P10.
 - Propeller shaft (P6) bolts to the overdrive coupling flange (`mgb/overdrive_layout.py`): rear face
   `FLANGE_FACE_X` (car x -1018.8) on the axis `FLANGE_AXIS` (y 0, z -253.21, the crank axis; gearbox taken
   as level), flange 96 mm across, four 5/16 in UNF bolts (Rimmer Bros AAA4039, 5/16 UNF x 1 1/8; MGOC nut
@@ -104,12 +103,6 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   there. The engine stay rod, its bracket, buffers, distance tube, bush and pin (Fig 1.29 items 20-32;
   MGOC 1G9384 3-synchro pin) go with P9: the bracket bolts to the two holes in the crossmember's dip,
   under the overdrive valves (Ch 6 Sec 14 para 1), the rod's front end to the gearbox.
-- Speedometer cable (P10/P11): P5b built only the end: the angle drive (MGOC 120694) on the speedometer
-  housing on the right of the overdrive rear casing, output turned forward and down at 45 deg, its
-  knurled nut and a 70 mm stub. The run to the speedometer is P10/P11 (Ch 1 Sec 6 para 30).
-- Overdrive wiring (P10): the solenoid lead leaves the back of the solenoid (right side, car x about
-  -895); the isolation switch is on the remote housing (P5a); the relay, the vacuum switch (left bulkhead,
-  MGOC) and the dash switch with the loom (Ch 6 Sec 16, Fig 6.19).
 - Tunnel (P11) must also clear the overdrive: casings 188-191 mm across, up to 96 mm above the axis
   under the remote housing; the solenoid and lever chamber cover on the right out to 141 mm right of the
   axis; the filter cover on the left at 65 mm; the sump plugs to 128 mm below the axis; the remote
@@ -122,8 +115,6 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   cover over the dipstick (Sec 2 para 1): with the body (P11). The gear lever comes up at
   `gearbox_layout.LEVER_BALL` / `KNOB`; the tunnel must clear the remote housing (top at about crank
   axis + 157 mm) and the bellhousing.
-- Starter motor (P10): its pinion runs in the pocket on the right of the bellhousing behind the rear
-  plate's starter aperture.
 - Bulkhead and tunnel (P11): the bellhousing's back wall is at the bulkhead line (`car_layout.BULKHEAD_X`),
   so the tunnel starts there and must clear the casing (104 mm left and 84 mm right of the mainshaft,
   92 mm above it), the adaptor and the remote housing.
@@ -134,6 +125,54 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 - Bulkhead (P11): the pedal box (P8) bolts to it at `car_layout.BULKHEAD_X` (derived).
 - Hose bracket on the right-hand chassis leg (`clutch_layout.HOSE_BRACKET`) and the two pipe
   clip screws: with the body (P11).
+
+## Carried over from P10 (electrical) for P11 (body)
+
+All positions are in `mgb/body_layout.py` (car frame, labelled D unless stated); P11 builds the body
+round them and should check them against the car:
+
+- Headlamp nacelles: rim face `HEADLAMP_RIM_X` (95 mm behind the bumper front), centres |y| `HEADLAMP_Y`,
+  height `HEADLAMP_Z` (690 mm above the road); the nacelle takes a 118 mm deep bowl behind a 198 mm rim;
+  three fixing screws in the bowl flange at 30/150/270 deg. Side and flasher lamps on the wing front at
+  `SIDELAMP_*` (two studs through the wing, 92 x 50 mm lozenge). Horns on the front panel at `HORN_POS`
+  (foot on a ledge, 5/16 in bolt; panel face `HORN_PANEL_X`).
+- Inner wing valances: engine-bay faces at |y| `INNER_WING_Y` 430 from the bulkhead to x 330; on the right
+  the control box, fuse block, flasher and starter solenoid (`CONTROL_BOX`, `FUSE_BOX`, `FLASHER`,
+  `SOLENOID`, 1/4 in screws), on the left the overdrive relay (`OD_RELAY`); the overdrive vacuum switch
+  on the left of the bulkhead (`OD_VACUUM_SWITCH`). Bulkhead grommets: main harness `HARNESS_GROMMET`,
+  battery cable through the toe board `CABLE_GROMMET`; the speedometer cable, oil gauge pipe and
+  temperature capillary also pass the bulkhead/tunnel on the right (routes in parts/electrical).
+- Scuttle and facia: windscreen base `WINDSCREEN_BASE_X/Z`, scuttle top falling forward at
+  `SCUTTLE_TILT_DEG`; facia rear face `FACIA_X` (1.2 mm panel); holes for the instruments (80 mm
+  speedometer and tachometer, 52 mm small gauges) at `INSTRUMENTS`, warning lamps (`WARNING_LAMPS`,
+  10 mm holes), switches (`SWITCHES`: toggles 12.4 mm, pull switches 11 mm, ignition 20 mm); steering
+  column / driver centre line `DRIVER_Y` (P9 steering column to match). Wiper wheelbox spindles through
+  the scuttle at `WIPER_SPINDLES` along `WIPER_AXIS` (18 mm holes), the DR3A motor bracket on the left
+  scuttle side at `WIPER_MOTOR` (three screws).
+- Rear: rear lamp plinths on the rear wing ends at `REAR_LAMP_*` (three screws); number plate lamps on
+  the inner faces of the rear overriders (`OVERRIDER_Y`, `NUMBER_LAMP`), two screws each.
+- Battery carriers: two boxes hang under the tonneau floor behind the seats at `BATTERY_BOX_X`,
+  |y| `BATTERY_BOX_Y`, floor underside `TONNEAU_FLOOR_Z`, 186 x 236 x 226 mm inside, 22 mm flange with
+  four bolt holes; P11 adds the floor, the access panel with quick-release screws (photo 2.1), the
+  earth bolt and the cable grommet through the box's front wall.
+- Fuel tank sender (Fig 10.26 item 35) and its lead: with the tank (P11).
+- Known P10 approximations: unit positions in the engine bay, the facia layout and every harness
+  route are derived (no photographs of a 1963 engine bay or facia could be opened from the build
+  machine); the 18ACR, M418G, DR3A and the instruments are modelled from the Haynes figures and
+  common pattern sizes, not measured; lens optics, dial figures and individual wires are not drawn;
+  the thermal transmitter sits on the head's right face, which has no boss for it in P1 yet.
+
+## Changes P10 made to earlier phases
+
+- `cooling_layout.ALTERNATOR_AXIS` moved to (y -198, z -106) and the alternator pulley pitch radius
+  to 32 (2 3/4 in pulley) so the pulley clears the fan blades; the fan belt follows.
+- Water pump body: an ear on the right of its flange for the front pivot bolt (Fig 2.6 item 34).
+- Engine front plate: a notch in the right-hand wing round the alternator body and a hole for the
+  adjusting link stud.
+- Engine rear plate and gearbox bellhousing: holes for the starter's two bolts (tapped in the
+  bellhousing lobe).
+- Sump, sump gasket and block skirt: a recess round the starter yoke at the right rear (the sump's
+  three right-hand rear flange bolts go; the block keeps a wall round the recess).
 
 ## Questions for Oliver (asked at the end of the overnight run)
 
@@ -197,3 +236,23 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   centres. A photo from underneath of the crossmember, the mountings and the stay rod would fix the
   position and shapes.
 
+
+- Charging: the model has the 18ACR on the dynamo's mountings (pivot bolts through the water pump
+  ear and the rear bracket, link below to a stud on the engine front). Which conversion brackets
+  does your car use, and is the RB340 control box still in place (as a junction) or removed?
+- Battery: which box holds the 12 V battery (the model uses the right-hand one), what size is it,
+  and is there a battery master switch? Is the car converted to negative earth throughout (the
+  18ACR needs it)?
+- Starter: is it still the M418G inertia starter with the separate solenoid on the inner wing, or a
+  later pre-engaged or high-torque starter? Where is the solenoid on your car?
+- Coil: where is your coil mounted (the model has it on a bracket on the right of the block above
+  the starter, Haynes' early position)? Is it still an HA12, and is there a ballast resistor?
+- Engine bay units: please photograph the right and left inner wings and the bulkhead so the
+  control box, fuse block, flasher, overdrive relay and vacuum switch can be put where they are.
+- Horns: where are they mounted on your car (the model puts two behind the grille)?
+- Facia: which switches are toggles and which pull switches on your facia, and which side are the
+  speedometer and tachometer (the model has the speedometer outboard, on the right)? Is the
+  tachometer the impulse type (electrical lead) or cable driven?
+- Wipers: which way do the arms park (the model parks them toward the driver's side)?
+- Lamps: are the front side/flasher lamps and rear lamps still the original early type, and are
+  reversing lamps or any extra lamps fitted?

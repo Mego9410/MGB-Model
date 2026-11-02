@@ -1,0 +1,96 @@
+# Windscreen wipers, Lucas DR3A single speed (18G, 18GA, 18GB engines). Haynes Ch 10 specs
+# (printed p162), Sec 52-55 and Fig 10.17 (printed p183). Item numbers are Fig 10.17.
+# Positions: mgb/body_layout.py (WIPER_*; P11 builds the scuttle and screen round them).
+# PDF page = printed page + 4.
+defaults:
+  system: electrical
+  assembly: electrical.wipers
+  haynes: { section: 54, spec_page: 162 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: aluminium
+
+parts:
+  - id: electrical.wipers.motor
+    name: Wiper motor and gearbox, Lucas DR3A
+    haynes: { figures: [{ figure: "10.17", legend: 1 }] }
+    quantity: 1
+    notes: >
+      Single speed DR3A (p162), 2.7 to 3.4 A running current, armature endfloat 0.008 to 0.012 in.
+      Gearbox body (1) with the shaft and gear (7), crosshead and rack (12) in its guide, the
+      cover held by four screws with the parking (limit) switch (6) on it (Sec 53 para 1); field
+      coil (5) and brush gear (2, 3) in the yoke under it. 'The bracket on which the combined
+      wiper motor and gearbox is mounted' sits 'under the passenger side of the facia' (Sec 54
+      para 1). Shape from Fig 10.17; position derived.
+    specs:
+      gear_chamber_diameter: { mm: 92.0, source: { label: D, method: "Fig 10.17: the gear (7) about 4/5 of the chamber" } }
+      running_current: { count: [2.7, 3.4], source: { label: H, page: 162 }, display_only: true }
+      armature_endfloat: { in: [0.008, 0.012], mm: [0.2, 0.3], source: { label: H, page: 162 }, display_only: true }
+
+  - id: electrical.wipers.bracket
+    name: Wiper motor bracket
+    haynes: { figures: [{ figure: "10.17", legend: 8 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Held by three screws (Sec 54 para 1; items 9-11)."
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Fig 10.17 proportion" } }
+
+  - id: electrical.wipers.casing-motor
+    name: Rack casing, motor to wheelbox
+    haynes: { figures: [{ figure: "10.17", legend: 13 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Too tight a curve in the connecting tubes raises the motor current (Sec 53 para 3): the route keeps generous bends."
+    specs:
+      outside_diameter: { mm: 8.0, source: { label: D, method: "Rack tube over the 4.8 mm cable rack" } }
+
+  - id: electrical.wipers.casing-between
+    name: Rack casing, wheelbox to wheelbox
+    haynes: { figures: [{ figure: "10.17", legend: 14 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 8.0, source: { label: D, method: "Rack tube" } }
+
+  - id: electrical.wipers.casing-extension
+    name: Rack casing, wheelbox to extension
+    haynes: { figures: [{ figure: "10.17", legend: 15 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 8.0, source: { label: D, method: "Rack tube" } }
+
+  - id: electrical.wipers.wheelbox
+    name: Wheelbox
+    haynes: { figures: [{ figure: "10.17", legend: 16 }] }
+    quantity: 2
+    notes: "Under the splined shafts the arms fit on; the casings are released by slackening the wheelbox cover screws (21) (Sec 54 para 2)."
+    specs:
+      length: { mm: 34.0, source: { label: D, method: "Fig 10.17 proportion" } }
+
+  - id: electrical.wipers.spindle
+    name: Wheelbox spindle and gear, nut, washer and tube
+    haynes: { figures: [{ figure: "10.17", legend: 17 }] }
+    quantity: 2
+    finish: machined_steel
+    notes: "Items 17-20: spindle and gear, rubber tube, wheelbox nut and rubber washer on the scuttle (Sec 54 para 2: 'remove the nut, bush and washer from the base of the splines')."
+    specs:
+      spline_diameter: { mm: 9.2, source: { label: D, method: "Fig 10.17 proportion" } }
+
+  - id: electrical.wipers.arm
+    name: Wiper arm
+    haynes: { figures: [{ figure: "10.17", legend: 22 }] }
+    quantity: 2
+    finish: chrome
+    notes: "Early push-on type held on the splines by its clip (Sec 52 para 3), parked along the base of the screen."
+    specs:
+      length: { mm: 200.0, source: { label: D, method: "Reaches across half the screen from the spindle" } }
+
+  - id: electrical.wipers.blade
+    name: Wiper blade and rubber
+    haynes: { figures: [{ figure: "10.17", legend: 23 }] }
+    quantity: 2
+    finish: chrome
+    notes: "Items 23 and 24; the arm's end slides into the slotted spring fastening at the blade centre (Sec 52 para 2)."
+    specs:
+      length: { in: 10.0, mm: 254.0, source: { label: D, method: "10 in blade: the screen height less the scuttle margin" } }

@@ -120,6 +120,10 @@ def build(spec) -> Part:
     for k in range(3):
         a = math.radians(90 + 120 * k)
         cut.append(Cylinder(3.4, 20, align=BASE).moved(Location((tx + 26 * math.cos(a), ty + 26 * math.sin(a), top - 14))))
+    # P10: tapped hole for the temperature gauge's thermal transmitter (Ch 1 Sec 13 para 6)
+    from mgb import electrical_layout as EZ
+    bx_, by_, bz_ = EZ.TEMP_BULB
+    cut.append(_rod((bx_, by_ - 4.0, bz_), (bx_, by_ + 21.0, bz_), 5.2))
     for c in cut:
         head = head - c
     head.label = spec.id

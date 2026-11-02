@@ -70,6 +70,15 @@ def pump_body(spec) -> Part:
     p = p - _xdisc(8.4, x0 + 20, x0 + 70, y, z)                          # spindle bore
     for sy, sz in ((-30, 22), (30, 22), (-30, -22), (30, -22)):           # four securing bolts (Sec 9 para 5)
         p = p - _xdisc(4.4, x0 - 1, x0 + 14, y + sy, z + sz)
+    # ear for the generator's front pivot bolt (Fig 2.6 item 34), out to the right (P10)
+    from mgb import electrical_layout as EL, poly2d as P2
+    py, pz = EL.PIVOT
+    e0, e1 = EL.PUMP_EAR_X
+    ear_pts = P2.hull(P2.circle_pts(py, pz, 11.0, 24) + [(y - 40.0, z - 30.0), (y - 40.0, z + 4.0), (y - 30.0, z + 10.0)])
+    ear = extrude(Plane.YZ.offset(e0) * Polygon(*ear_pts, align=None), e1 - e0, dir=X)
+    ear = ear + extrude(Plane.YZ.offset(x0 + 11.0) * Polygon(*P2.hull(P2.circle_pts(py, pz, 7.0, 16) +
+                        [(y - 40.0, z - 22.0), (y - 40.0, z - 4.0)]), align=None), e0 - x0 - 10.5, dir=X)   # web back to the flange
+    p = p + ear - _xdisc(4.2, x0 - 2, e1 + 1, py, pz)
     return _l(p, spec)
 
 

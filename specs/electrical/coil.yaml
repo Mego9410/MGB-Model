@@ -1,0 +1,72 @@
+# Lucas HA12 ignition coil on its bracket on the engine, the HT king lead and the low tension
+# lead to the distributor. Haynes Ch 4 (printed p94-100), Ch 10 Sec 25 para 2 and Fig 10.14
+# (printed p181, items 6 ignition coil, 7 distributor). Positions: mgb/electrical_layout.py.
+# PDF page = printed page + 4.
+defaults:
+  system: electrical
+  assembly: electrical.coil
+  haynes: { section: 25 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: paint_black
+
+parts:
+  - id: electrical.coil.coil
+    name: Ignition coil, Lucas HA12
+    haynes: { figures: [{ figure: "10.14", legend: 6 }] }
+    quantity: 1
+    notes: >
+      Oil-filled can coil with a moulded cap: HT tower in the centre, SW (+) and CB (-)
+      terminals either side. On the early cars it is on the engine, above the starter: Haynes
+      removes the oil filter, the ignition coil and the coil attachment bracket before the
+      starter (Ch 10 Sec 25 para 2). Its exact place - on the block's threaded boss between the
+      oil filter and the dipstick - is derived (D). Can size from the common HA12 can (outside
+      photographs could not be opened from the build machine).
+    part_numbers: [{ number: GCL110, by: "BP Northwest (GCL110MGB, 1963-74; 3 ohm primary with external ballast on later cars)" }]
+    specs:
+      diameter: { mm: 63.5, source: { label: D, method: "HA12 pattern can, about 2 1/2 in" } }
+      height: { mm: 152.0, source: { label: D, method: "Can 128 mm plus the cap and HT tower" } }
+
+  - id: electrical.coil.clamp
+    name: Coil clamp bracket
+    haynes: { section: 25 }
+    quantity: 1
+    finish: paint_black
+    notes: "The 'coil attachment bracket' (Sec 25 para 2): band and pinch screw round the can, arm bolted to the block boss (P2 block, x 67). Form derived."
+    specs:
+      band_diameter: { mm: 64.0, source: { label: D, method: "Over the can" } }
+      band_width: { mm: 22.0, source: { label: D, method: "Coil clamp proportion" } }
+      thickness: { mm: 3.0, source: { label: D, method: "Pressed steel" } }
+
+  - id: electrical.coil.pinch-screw
+    name: Clamp pinch screw
+    haynes: { section: 25 }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: D, method: "1/4 in UNF pinch screw" } }
+
+  - id: electrical.coil.bracket-bolt
+    name: Coil bracket bolt
+    haynes: { section: 25 }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.3125, mm: 7.94, source: { label: D, method: "5/16 in into the block boss, as the alternator bracket" } }
+
+  - id: electrical.coil.king-lead
+    name: Coil HT (king) lead
+    haynes: { section: 2 }
+    quantity: 1
+    finish: cable_black
+    notes: "From the coil tower to the centre of the distributor cap (P3 distributor). Route derived."
+    specs:
+      diameter: { mm: 7.0, source: { label: D, method: "7 mm HT lead, as the plug leads (P3)" } }
+
+  - id: electrical.coil.lt-lead
+    name: Coil to distributor low tension lead
+    haynes: { figures: [{ figure: "10.14", legend: 7 }] }
+    quantity: 1
+    finish: cable_white
+    notes: "White/black lead from the coil CB (-) terminal to the distributor's low tension terminal (Fig 10.26 colour code). Route derived."
+    specs:
+      diameter: { mm: 3.2, source: { label: D, method: "14/0.30 mm cable with PVC" } }

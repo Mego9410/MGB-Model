@@ -1,0 +1,139 @@
+# Exterior lamps. Haynes Ch 10 Sec 34-37, Fig 10.7 and Fig 10.8 (printed p172-173), photos 35.1,
+# 36.1 and 37.1 (printed p173-174); Fig 10.26 (early wiring) items 8-12, 15-17, 28-31.
+# Positions: mgb/body_layout.py (P11 builds the wings, nacelles, rear panel and overriders round
+# them). Reversing lamps (Sec 38) were not fitted to 1963 cars and are not modelled.
+# PDF page = printed page + 4.
+defaults:
+  system: electrical
+  assembly: electrical.lamps
+  haynes: { section: 34 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: chrome
+
+parts:
+  - id: electrical.lamps.headlamp-bowl
+    name: Headlamp body (bowl)
+    haynes: { figures: [{ figure: "10.7" }] }
+    quantity: 2
+    finish: paint_black
+    notes: >
+      Pressed lamp body in the wing nacelle, with the three beam setting screws (Fig 10.7 item
+      4: vertical at the top, horizontal at the sides, Sec 34 para 6) and the grommet for the
+      leads at the back. Depth derived from the nacelle; Fig 10.7 shows the four retaining
+      systems used over the years, the early one being the combined adjusting and retaining
+      screws (item 2), modelled here.
+    specs:
+      depth: { mm: 118.0, source: { label: D, method: "7 in pre-focus/sealed beam bowl, Fig 10.7 proportion" } }
+
+  - id: electrical.lamps.light-unit
+    name: Headlamp light unit, 7 in
+    haynes: { figures: [{ figure: "10.8", legend: 4 }] }
+    quantity: 2
+    finish: glass
+    notes: "Sealed beam or bulb-type light unit (Sec 34 para 1); the lugs on a sealed beam allow one position only (para 10). Lens fluting simplified to vertical prisms."
+    specs:
+      diameter: { in: 7.0, mm: 177.8, source: { label: D, method: "Standard 7 in British headlamp unit (Lucas F700 class)" } }
+
+  - id: electrical.lamps.headlamp-rim
+    name: Headlamp chrome rim
+    haynes: { section: 34 }
+    quantity: 2
+    notes: "Hooked on the lugs at the top and snapped down, with the cut-out at the bottom (Sec 34 paras 1 and 5). Profile derived."
+    specs:
+      outside_diameter: { mm: 197.8, source: { label: D, method: "7 in unit plus the rim's lip" } }
+
+  - id: electrical.lamps.dust-excluder
+    name: Headlamp dust excluder
+    haynes: { section: 34 }
+    quantity: 2
+    finish: rubber
+    specs:
+      thickness: { mm: 2.0, source: { label: D, method: "Rubber ring" } }
+
+  - id: electrical.lamps.adjusting-screw
+    name: Headlamp beam setting screw and spring
+    haynes: { figures: [{ figure: "10.7", legend: 4 }] }
+    quantity: 6
+    finish: zinc_steel
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Fig 10.7 proportion" } }
+
+  - id: electrical.lamps.side-body
+    name: Side and flasher lamp body
+    haynes: { section: 35 }
+    quantity: 2
+    notes: "Wing-mounted type: the body held by two nuts behind the wing (Sec 35 para 2); photo 35.1. Lozenge outline derived from the photograph."
+    specs:
+      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+
+  - id: electrical.lamps.side-lens-clear
+    name: Side lamp lens (clear)
+    haynes: { section: 35 }
+    quantity: 2
+    finish: lens_clear
+    notes: "Upper half of the lens, over the side (parking) lamp (Fig 10.26 items 11, 12)."
+    specs:
+      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+
+  - id: electrical.lamps.side-lens-amber
+    name: Front flasher lens (amber)
+    haynes: { section: 35 }
+    quantity: 2
+    finish: lens_amber
+    notes: "Lower half of the lens, over the front flasher (Fig 10.26 items 28, 29)."
+    specs:
+      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+
+  - id: electrical.lamps.side-rim
+    name: Side lamp lens rim
+    haynes: { section: 35 }
+    quantity: 2
+    notes: "Lens and sealing rubber held by the screws (Sec 35 para 1)."
+    specs:
+      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+
+  - id: electrical.lamps.rear-body
+    name: Rear lamp body and plinth
+    haynes: { section: 36 }
+    quantity: 2
+    notes: "Earlier version (Sec 36 paras 1-3): the stop/tail and flasher bulbs one above the other (photo 36.1), body held by three screws, the lens hooked over the upper lip and held by one screw at the bottom. Outline from photo 36.1."
+    specs:
+      height: { mm: 172.0, source: { label: D, method: "Photo 36.1 proportion against the bulb holders" } }
+
+  - id: electrical.lamps.rear-lens-red
+    name: Stop and tail lens (red)
+    haynes: { section: 36 }
+    quantity: 2
+    finish: lens_red
+    notes: "Double filament bulb: tail, and the brighter stop light (Sec 36 para 1)."
+    specs:
+      height: { mm: 98.0, source: { label: D, method: "Photo 36.1: the upper part of the lens" } }
+
+  - id: electrical.lamps.rear-lens-amber
+    name: Rear flasher lens (amber)
+    haynes: { section: 36 }
+    quantity: 2
+    finish: lens_amber
+    specs:
+      height: { mm: 78.0, source: { label: D, method: "Photo 36.1: the lower part of the lens" } }
+
+  - id: electrical.lamps.plate-lamp
+    name: Number plate lamp (plinth and cover)
+    haynes: { section: 37 }
+    quantity: 2
+    notes: "Basic type: two lamps, one on each inside face of the rear overriders, cover, lens, washer and plinth held by two screws to nuts and distance pieces in the overrider (Sec 37 paras 1-2; photo 37.1)."
+    specs:
+      width: { mm: 58.0, source: { label: D, method: "Photo 37.1 proportion" } }
+      height: { mm: 34.0, source: { label: D, method: "Photo 37.1 proportion" } }
+
+  - id: electrical.lamps.plate-lens
+    name: Number plate lamp lens
+    haynes: { section: 37 }
+    quantity: 2
+    finish: lens_clear
+    specs:
+      width: { mm: 58.0, source: { label: D, method: "Photo 37.1 proportion" } }

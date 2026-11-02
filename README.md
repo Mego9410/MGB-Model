@@ -136,7 +136,22 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   ratchet, pawl and rod, operating lever, trunnion, brass adjusting nut and spring, the cable, the scissor
   compensator on P7's pin, rods, clevis pins and clips. Datums: `mgb/brake_layout.py`.
 
+- P10 (electrical) built: Lucas 18ACR alternator (Oliver's conversion) on the dynamo mountings - drive end
+  and slip ring end brackets, stator, rotor, fan, 2 3/4 in pulley, end cover, terminal plug, pivot bolts
+  through the water pump ear and the rear bracket, adjusting link and stud (Haynes Ch 10 Fig 10.3, Ch 2
+  Figs 2.1, 2.6); Lucas M418G inertia starter (Fig 10.4: drive end bracket, yoke, cover band, commutator
+  end bracket, armature, 9-tooth pinion, drive and main spring, terminal post) on two bolts into the
+  bellhousing, the remote solenoid, starter cable and earth strap; Lucas HA12 coil on its bracket with
+  the king lead and low tension lead; the RB340 control box, 4FJ fuse block, flasher, overdrive relay
+  and vacuum switch, two horns; both battery carriers, a single 12 V battery (conversion), clamp,
+  J-bolts and cables; 7 in headlamps (bowl, light unit, rim, beam setting screws, dust excluder), side
+  and flasher lamps, rear lamps and number plate lamps; the DR3A wiper motor, rack casings, wheelboxes,
+  spindles, arms and blades (Fig 10.17); speedometer, tachometer, dual and fuel gauges, warning lamps
+  and switches (Fig 10.9), the speedometer cable from the overdrive, the oil gauge pipe and the
+  temperature capillary; and the wiring loom as sleeved bundles with branches. Body datums for P11
+  are in `mgb/body_layout.py`; engine-bay electrical datums in `mgb/electrical_layout.py`.
+
 Next: P9 (suspension, steering, wheels, engine mountings) on `mgb/front_suspension_layout.py` and the axle datums;
-P10 electrical; P11 the body. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+P11 the body (to `mgb/body_layout.py`). The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
 from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
 pump, tank and the rigid pipe from the pump to the feed union. The working standard is in `CLAUDE.md`.
