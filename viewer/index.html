@@ -39,7 +39,7 @@ nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);backgro
 .loadbar{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--edge);
   border-radius:999px;padding:6px 12px;font:500 12px var(--mono);color:var(--muted);box-shadow:0 2px 10px rgba(0,0,0,.08);max-width:calc(100% - 32px);white-space:nowrap;pointer-events:none;transition:opacity .5s}
 .loadbar .track{width:120px;max-width:30vw;height:4px;border-radius:2px;background:var(--chip);overflow:hidden;flex:none}
-.loadbar .fill{height:100%;width:0;background:var(--accent);transition:width .25s}
+.loadbar .fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
 .loadbar.done{opacity:0}
 .tree .line{display:flex;align-items:center;gap:2px}
 .tree .tw{flex:none;width:22px;min-height:28px;border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer;border-radius:4px;padding:0}
@@ -688,9 +688,9 @@ function markLoading(){
 function updateProgress(){
   const done = allAsm.filter(a => loaded[a]).length, total = allAsm.length;
   lbFill.style.width = (total ? 100 * done / total : 100) + '%';
-  if (done + failed.size < total){ lbText.textContent = `Loading the car · ${done} of ${total}`; lb.classList.remove('done'); return; }
+  if (done + failed.size < total){ lbText.textContent = `Loading the car · ${done} of ${total}`; lb.hidden = false; lb.classList.remove('done'); return; }
   lbText.textContent = failed.size ? `${done} of ${total} loaded · ${failed.size} failed` : `All ${total} assemblies loaded`;
-  clearTimeout(updateProgress.t); updateProgress.t = setTimeout(() => lb.classList.add('done'), failed.size ? 6000 : 1500);
+  clearTimeout(updateProgress.t); updateProgress.t = setTimeout(() => { lb.classList.add('done'); setTimeout(() => { if (lb.classList.contains('done')) lb.hidden = true; }, 600); }, failed.size ? 6000 : 1500);
 }
 function afterLoad(){
   // a newly arrived assembly takes the current view's state: exploded, ghosted outside the focus, selection shown
