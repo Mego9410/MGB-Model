@@ -48,3 +48,16 @@ REAR_XMEMBER_BOLT = "3/8"
 REAR_MOUNT_STUDS = [(REAR_XMEMBER_X, side * MOUNT_STUD_LEFT, G.AXIS_Z + PAD_UP) for side in (1, -1)]
 LOWEST_Z = G.AXIS_Z + CENTRE_UP - XM_FLANGE            # bottom of the crossmember flanges at the centre
 CLEARANCE = LOWEST_Z - CL.GROUND_Z
+
+# ---- gearbox stay (steady) rod, Fig 1.29 items 20-32 (P9) ----------------------------------------------------------
+# Derived (D): the rod lies fore and aft on the left of the overdrive sump (its plugs leave no room under it), from
+# a pin under the gearbox casing's left-hand side to the bracket (20) screwed to the crossmember dip's two holes
+# (P5b), its threaded rear end through the bracket's upright between two rubber buffers (24) with their plates
+# (25) on a distance tube (26). The pin (30) hangs from a wedge flange screwed to the casing (the casing has no
+# drawn pad there: see PLAN).
+STAY_Y = 72.0                                          # rod axis, car y (left of the overdrive sump)
+STAY_Z = -372.0                                        # rod axis height
+STAY_PIN = (-600.0, STAY_Y, STAY_Z)                    # front eye on the pin (pin vertical)
+STAY_PIN_TOP_Z = -345.5                                # casing underside at the pin (sloping side, D)
+STAY_BRACKET_SCREWS = [(O.x_of(MOUNT_E + 12.0), s * 16.0, G.AXIS_Z + CENTRE_UP) for s in (1, -1)]   # P5b's holes
+STAY_WEB_X = O.x_of(MOUNT_E + 12.0) + 16.0             # bracket upright (the rod passes through it along x)

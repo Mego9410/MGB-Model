@@ -1,0 +1,133 @@
+# Front hubs for wire wheels (1963, 12 tpi). Haynes Ch 11: specifications (printed p202-203), Sec 13 (p208-209),
+# Fig 11.2 items 67-75, 77 (p205). Outside references: MGOC Spares "stub axles & hubs" (wire wheel hubs BTB346 RHF /
+# BTB347 LHF 12 tpi, BTB730/731 8 tpi, the change at GHN3-30850; shims ATB4240 0.003 in, ATB4241 0.005, ATB4242 0.010,
+# BTB656 0.030; spacer 88G484; hub oil seal GHS101; distance collar BTB183; retaining washer 1A4742; slotted nut 53K330;
+# split pin GHF505; wire wheel grease cap BTC392); mgaguru.com WL-113 (42 mm series splines). Sizes not published are
+# derived (mgb/front_suspension_layout.py); P8's disc datums fix the flange.
+defaults:
+  system: chassis
+  assembly: chassis.front-hubs
+  haynes: { section: 13, spec_page: 202 }
+  variant: { factory_1963: true, as_fitted: true, wire_wheels: true, spinner_tpi: 12 }
+  finish: machined_steel
+
+parts:
+  - id: chassis.front-hubs.hub-lh
+    name: Front hub, wire wheels, left-hand (right-hand spinner thread)
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 67 }] }
+    quantity: 1
+    part_numbers:
+      - { number: BTB347, by: "MGOC Spares (hub, wire wheel, 12 tpi, LHF)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    notes: >
+      One forging: barrel over the inner bearing with the oil seal in its inner end (inside the disc's centre hole),
+      the flange the disc bolts to (P8: face DISC_FACE_Y, four holes on DISC_BOLT_PCD, nuts on the outer face), the
+      inner cone the wheel seats on, the 42 mm series splines and the 12 tpi spinner thread - right-hand on the
+      left-hand hub so forward rotation tightens the spinner (MGOC) - bored through so the nut and split pin are
+      reached through the hole in the splines (Sec 13 para 2). Cone, spline and thread stations match the rear hub
+      extensions so one wheel fits all four corners.
+    specs:
+      spline_major: { mm: 42.0, source: { label: S, ref: "https://mgaguru.com/mgtech/wheels/wl113.htm", note: "42 mm series Rudge-Whitworth splines" }, display_only: true }
+      thread_tpi: { count: 12, source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html", note: "12 tpi to GHN3-30850" } }
+
+  - id: chassis.front-hubs.hub-rh
+    name: Front hub, wire wheels, right-hand (left-hand spinner thread)
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 67 }] }
+    quantity: 1
+    part_numbers:
+      - { number: BTB346, by: "MGOC Spares (hub, wire wheel, 12 tpi, RHF)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    notes: "As the left-hand hub with a left-hand spinner thread (right-hand side of the car)."
+    specs:
+      spline_major: { mm: 42.0, source: { label: S, ref: "https://mgaguru.com/mgtech/wheels/wl113.htm", note: "42 mm series Rudge-Whitworth splines" }, display_only: true }
+
+  - id: chassis.front-hubs.inner-bearing
+    name: Inner hub bearing
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 70 }] }
+    quantity: 2
+    finish: bearing
+    notes: "Taper roller bearing, cup in the hub, packed with high melting point grease (Sec 13 para 3). Size derived."
+    specs:
+      end_float: { in: [0.002, 0.004], mm: [0.05, 0.10], source: { label: H, page: 202, note: "Wheel bearing end float" }, display_only: true }
+
+  - id: chassis.front-hubs.outer-bearing
+    name: Outer hub bearing
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 73 }] }
+    quantity: 2
+    finish: bearing
+    notes: "Taper roller bearing under the hub's inner cone; its race stays in the hub unless renewed (Sec 13 para 2). Size derived (3/4 in bore class)."
+    specs: {}
+
+  - id: chassis.front-hubs.spacer
+    name: Bearing spacer
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 71 }] }
+    quantity: 2
+    part_numbers:
+      - { number: 88G484, by: "MGOC Spares (spacer, inner to outer wheel bearing, front hub)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    specs: {}
+
+  - id: chassis.front-hubs.shim
+    name: Bearing shim, 0.003 in
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 72 }] }
+    quantity: 2
+    part_numbers:
+      - { number: ATB4240, by: "MGOC Spares (shim, wheel bearing 0.003 in)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    notes: "Shims 0.003, 0.005 and 0.010 in set the end float (Sec 13 paras 4-5); one 0.003 in shim drawn."
+    specs:
+      thickness: { in: 0.003, mm: 0.076, source: { label: H, page: 205, note: "Fig 11.2 item 72" } }
+
+  - id: chassis.front-hubs.collar
+    name: Collar for oil seal
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 68 }] }
+    quantity: 2
+    part_numbers:
+      - { number: BTB183, by: "MGOC Spares (distance collar)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    specs: {}
+
+  - id: chassis.front-hubs.oil-seal
+    name: Oil seal
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 69 }] }
+    quantity: 2
+    finish: rubber
+    part_numbers:
+      - { number: GHS101, by: "MGOC Spares (oil seal, front hub)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    specs: {}
+
+  - id: chassis.front-hubs.retaining-washer
+    name: Bearing retaining washer
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 74 }] }
+    quantity: 2
+    part_numbers:
+      - { number: 1A4742, by: "MGOC Spares (washer, locating, front hub retaining)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    notes: "Keyed in the stub axle's slot (D)."
+    specs: {}
+
+  - id: chassis.front-hubs.nut
+    name: Bearing retaining nut (castellated)
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 75 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: 53K330, by: "MGOC Spares (nut, slotted)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    specs:
+      across_flats: { in: 1.0625, mm: 26.9875, source: { label: D, method: "Inside the 34 mm bore of the splined end" } }
+      torque: { lbf_ft: [40, 70], nm: [54, 95], source: { label: H, page: 203, note: "Bearing retaining nut; further to line up the split pin hole (Sec 13 para 5)" } }
+
+  - id: chassis.front-hubs.split-pin
+    name: Hub nut split pin
+    haynes: { section: 13 }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF505, by: "MGOC Spares (split pin, for 9/64 in)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    specs:
+      length: { mm: 32.0, source: { label: D, method: "Across the nut" } }
+      diameter: { in: 0.140625, mm: 3.572, source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html", note: "For a 9/64 in hole" }, display_only: true }
+
+  - id: chassis.front-hubs.grease-retainer
+    name: Grease retainer (wire wheel fitment)
+    haynes: { section: 13, figures: [{ figure: "11.2", legend: 77 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: BTC392, by: "MGOC Spares (grease cap, wire wheel)", source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html" } }
+    notes: "Pressed cup in the end of the splined bore, withdrawn first (Sec 13 para 2)."
+    specs: {}

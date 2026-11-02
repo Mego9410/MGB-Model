@@ -1,0 +1,106 @@
+# Front engine mountings, 18G engine, early cars. Haynes Ch 1 Fig 1.29 items 1-16, 39 (printed p52), Sec 64; Ch 11
+# Fig 11.2 (the crossmember's two angled brackets). Outside references: MGOC Spares "engine & gearbox mountings"
+# (front mounting rubbers BHH1351 RHF / BHH1352 LHF and packing plates for chrome bumper cars; engine brackets RH and LH;
+# 3/8 UNF screws and nuts, GHF333 spring washers). No outside photographs could be opened from the build machine;
+# forms are from Fig 1.29. Positions in mgb/engine_mount_layout.py.
+defaults:
+  system: engine
+  assembly: engine.mountings
+  haynes: { section: 64, figures: [{ figure: "1.29" }] }
+  variant: { factory_1963: true, as_fitted: true, engine: 18G }
+  finish: paint_black
+
+parts:
+  - id: engine.mountings.bracket-rh
+    name: Mounting bracket (RH)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 1 }] }
+    quantity: 1
+    notes: >
+      Pressing with a vertical plate beside the block and the V-shaped lower end (Fig 1.29 inset) carrying the rubber's
+      upper studs; held by a tab behind the front plate's right-hand wing (P2 drilled the wing, MOUNT_HOLES) with two
+      screws and nuts (items 3, 4). Shape and fixing derived from Fig 1.29.
+    specs: {}
+
+  - id: engine.mountings.bracket-lh
+    name: Mounting bracket (LH)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 2 }] }
+    quantity: 1
+    notes: "As the right-hand bracket without the tab; its plate is screwed to a pad on the block's left wall by two screws (item 5). The pad and its tapped holes were added to the block casting with P9 (D)."
+    specs: {}
+
+  - id: engine.mountings.screw-rh
+    name: Screw (RH)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 3 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: D, method: "Through the front plate's wing and the bracket's tab, nut behind" } }
+
+  - id: engine.mountings.nut-rh
+    name: Nut (RH bracket)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 4 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: engine.mountings.screw-lh
+    name: Screw (LH)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 5 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "3/8 UNC into the block (D)."
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: D, method: "Bracket plate and the pad's tapped hole" } }
+
+  - id: engine.mountings.screw-washer
+    name: Spring washer (LH bracket screws)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 7 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: engine.mountings.rubber-rh
+    name: Mounting rubber (RH)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 10 }] }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: BHH1351, by: "MGOC Spares (mount, engine, chrome bumper, RHF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/engine/engine-gearbox-mountings" } }
+    notes: "Moulded block bonded between two plates, two 3/8 in UNF studs out of each (Fig 1.29). Size derived."
+    specs:
+      thickness: { mm: 30.0, source: { label: D, method: "Fig 1.29 proportions" } }
+
+  - id: engine.mountings.rubber-lh
+    name: Mounting rubber (LH)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 11 }] }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: BHH1352, by: "MGOC Spares (mount, engine, chrome bumper, LHF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/engine/engine-gearbox-mountings" } }
+    specs:
+      thickness: { mm: 30.0, source: { label: D, method: "Fig 1.29 proportions" } }
+
+  - id: engine.mountings.stud-washer
+    name: Spring washer (rubber studs)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 12 }, { figure: "1.29", legend: 16 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs: {}
+
+  - id: engine.mountings.stud-nut
+    name: Nut (rubber studs)
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 13 }, { figure: "1.29", legend: 15 }] }
+    quantity: 8
+    finish: zinc_steel
+    notes: "On the rubbers' upper studs over the bracket flange (13) and lower studs under the crossmember pad (15)."
+    specs: {}
+
+  - id: engine.mountings.packing-plate
+    name: Packing plate
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 39 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: AHH6992, by: "MGOC Spares (packing, engine mounting)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/engine/engine-gearbox-mountings" } }
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Fig 1.29 proportions" } }

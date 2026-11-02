@@ -1,0 +1,150 @@
+# Front crossmember and its body mountings (1963, rubber mounted). Haynes Ch 11: specifications (printed p202-203),
+# Sec 3 removal (p204), Sec 4 dismantling (p204), Fig 11.1 (p204), Fig 11.2 items 1-7, 15-18, 40-45 (p205).
+# Outside references: MGOC Spares "front suspension" (crossmember attached to the bodyshell with two bolts per
+# side; upper and lower rubber mounting pads and metal clamping plates; LHD and RHD crossmembers differ).
+# No outside photographs could be opened from the build machine (the proxy refuses the parts suppliers' image
+# hosts), so the forms are from Figs 11.1 and 11.2 only. Positions in mgb/front_suspension_layout.py.
+defaults:
+  system: chassis
+  assembly: chassis.crossmember
+  haynes: { section: 3, spec_page: 202 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true, rubber_mounted_crossmember: true }
+  finish: paint_black
+
+parts:
+  - id: chassis.crossmember.crossmember
+    name: Front crossmember
+    haynes: { section: 3, figures: [{ figure: "11.2", legend: 1 }, { figure: "11.1" }] }
+    quantity: 1
+    notes: >
+      Pressed and welded box beam right across the car (Fig 11.2, Fig 11.1): a shallow centre section dipped under
+      the sump, sides rising to the two spring towers, each tower top carrying the lever damper on four bolts with
+      a large access hole, an outer shelf the front chassis leg sits on through the rubber pads with an ear fore
+      and aft for the two support bolts (MGOC: two bolts per side), a seam flange along the bottom edges, the two
+      angled engine mounting brackets (two holes each) and two rack clamp bosses welded to the front face, the
+      spring openings under the towers and the wishbone pivot bolt holes. Fig 11.1 shows the dip shallower; in
+      the model it goes lower to pass under the sump's deep well, which sits over the axle line (car_layout
+      FRONT_AXLE_X), and its underside is set at the published 4.2 in minimum ground clearance - see PLAN
+      questions. Painted black (D).
+    specs:
+      width_over_shelves: { mm: 916.0, source: { label: D, method: "Shelves under the front chassis legs at |y| 368-458 (layout XM_SHELF_Y)" } }
+      ground_clearance: { in: 4.2, mm: 106.68, source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "MGB minimum ground clearance 4.2 in; the dip's underside is set on it (tests/test_suspension.py checks it)" }, display_only: true }
+      body_bolt_torque: { lbf_ft: [54, 56], nm: [73, 76], source: { label: H, page: 203, note: "Crossmember to body" } }
+
+  - id: chassis.crossmember.support-bolt
+    name: Crossmember support bolt (stud)
+    haynes: { section: 3, figures: [{ figure: "11.2", legend: 2 }] }
+    quantity: 4
+    finish: zinc_steel
+    notes: "Threaded both ends (Fig 11.2): nut (6) under the plate, up through the lower pad, the crossmember shelf, the upper pad and the chassis leg; the nut and plain washer (7) on top of the leg come off to drop the crossmember (Sec 3 para 2). 7/16 in UNF derived."
+    specs:
+      length: { in: 3.75, mm: 95.25, source: { label: D, method: "Plate, pads, shelf and a 50 mm chassis leg (layout BODY_LEG_TOP_Z) plus the nut" } }
+
+  - id: chassis.crossmember.upper-pad
+    name: Upper mounting pad (rubber)
+    haynes: { section: 3, figures: [{ figure: "11.2", legend: 3 }] }
+    quantity: 4
+    finish: rubber
+    notes: "Between the crossmember shelf and the chassis leg (Fig 11.2). Square with a centre hole (figure)."
+    specs:
+      width: { mm: 34.0, source: { label: D, method: "Fig 11.2 proportions against the support bolt" } }
+      thickness: { mm: 6.0, source: { label: D, method: "Fig 11.2 proportions" } }
+
+  - id: chassis.crossmember.lower-pad
+    name: Lower mounting pad (rubber)
+    haynes: { section: 3, figures: [{ figure: "11.2", legend: 4 }] }
+    quantity: 4
+    finish: rubber
+    notes: "Under the shelf, above the plate (Fig 11.2)."
+    specs:
+      width: { mm: 34.0, source: { label: D, method: "As the upper pad" } }
+      thickness: { mm: 6.0, source: { label: D, method: "As the upper pad" } }
+
+  - id: chassis.crossmember.plate
+    name: Mounting plate
+    haynes: { section: 3, figures: [{ figure: "11.2", legend: 5 }] }
+    quantity: 4
+    finish: zinc_steel
+    notes: "Square clamping plate under the lower pad (MGOC: metal clamping plates), on the support bolt's head."
+    specs:
+      width: { mm: 34.0, source: { label: D, method: "As the pads" } }
+      thickness: { mm: 3.0, source: { label: D, method: "Pressed plate" } }
+
+  - id: chassis.crossmember.nut
+    name: Support bolt nut
+    haynes: { section: 3, figures: [{ figure: "11.2", legend: 6 }, { figure: "11.2", legend: 7 }] }
+    quantity: 8
+    finish: zinc_steel
+    notes: "One under each plate (6) and one on top of the chassis leg over the plain washer (7) (Sec 3 para 2). 7/16 UNF (D)."
+    specs: {}
+
+  - id: chassis.crossmember.plain-washer
+    name: Plain washer
+    haynes: { section: 3, figures: [{ figure: "11.2", legend: 7 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.crossmember.spigot
+    name: Spigot for spring
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 15 }] }
+    quantity: 2
+    notes: "Pressed cup screwed under the tower's shelf; the coil spring's top coil fits over it (Fig 11.2 items 15-18)."
+    specs:
+      diameter: { mm: 68.0, source: { label: D, method: "Inside the coil (96.5 mm outside, 0.5 in wire) with clearance" } }
+      depth: { mm: 26.0, source: { label: D, method: "Fig 11.2 proportions" } }
+
+  - id: chassis.crossmember.spigot-screw
+    name: Spigot screw
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 16 }] }
+    quantity: 4
+    finish: zinc_steel
+    notes: "5/16 UNF x 3/4 in (D), down through the shelf and the spigot flange."
+    specs: {}
+
+  - id: chassis.crossmember.spigot-nut
+    name: Spigot nut
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 17 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.crossmember.spigot-washer
+    name: Spigot washer
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 18 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.crossmember.rebound-buffer
+    name: Rebound buffer
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 40 }] }
+    quantity: 2
+    finish: rubber
+    notes: "Moulded rubber cone on its distance piece, on a ledge on the tower's outer wall under the damper's front arm, which it stops on rebound (Fig 11.2 items 40-45; Sec 4 para 1). Position derived."
+    specs:
+      height: { mm: 24.0, source: { label: D, method: "Fig 11.2 proportions; leaves about 30 mm of rebound under the arm" } }
+      base_diameter: { mm: 30.0, source: { label: D, method: "Fig 11.2 proportions" } }
+
+  - id: chassis.crossmember.distance-piece
+    name: Rebound buffer distance piece
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 41 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      height: { mm: 5.0, source: { label: D, method: "Fig 11.2 proportions" } }
+      diameter: { mm: 18.0, source: { label: D, method: "Fig 11.2 proportions" } }
+
+  - id: chassis.crossmember.buffer-nut
+    name: Rebound buffer nut
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 45 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}
+
+  - id: chassis.crossmember.buffer-washer
+    name: Rebound buffer spring washer
+    haynes: { section: 4, figures: [{ figure: "11.2", legend: 44 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs: {}

@@ -120,8 +120,22 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   12 tpi hub extensions with handed spinner threads, Welch plugs, screws). Datums for brakes (P8) and springs,
   dampers, straps and wheels (P9) are in `mgb/rear_axle_layout.py`.
 
-Next: P8, the brakes, on the axle datums (`rear_axle_layout.BACKPLATE_*`, `DRUM_FACE_Y`, `STUD_*`). The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+- P9 (suspension, steering, wheels and tyres; engine mountings) built (Haynes Ch 11 Figs 11.1-11.8; Ch 1 Fig 1.29):
+  the front crossmember with its rubber body mountings, spring towers, engine and rack brackets (and the RHD column
+  tube); lever-arm dampers whose arms are the upper wishbones, top trunnions and fulcrum pins, swivel pins with their dust
+  excluders, cork rings, bushes and thrust washers, LH and RH swivel axles with the stub axles, P8's caliper flange and
+  dust cover pads; pressed lower wishbone arms on their pivots and bushes, coil springs and pans, steering levers; the
+  wire wheel front hubs (12 tpi, handed) with their taper bearings, spacer, shim, seal, collar, nut and grease retainer;
+  the rear leaf springs (five leaves and a bottom plate, clips, centre bolt), locating plates and pads, U-bolts, bump
+  rubber pedestals, damper brackets, eyebolts and bushes, shackles, rear lever dampers and links, rebound straps; the
+  rack and pinion (RHD) with its brackets and shims, tie-rods, ball housings, gaiters and outer ball joints, the column
+  with its universal joint, bearings, clamp and toe board fittings, the 16 1/2 in banjo steering wheel and horn push;
+  four 60-spoke 4 1/2J x 14 wire wheels with 5.60-14 crossply tyres, valves and handed two-eared spinners; the front
+  engine mountings (brackets, rubbers, packing plates) and the gearbox stay rod. Datums: `mgb/front_suspension_layout.py`
+  (with P8's hub and brake datums), `mgb/rear_suspension_layout.py`, `mgb/steering_layout.py`, `mgb/wheel_layout.py`,
+  `mgb/engine_mount_layout.py`, `mgb/chassis_layout.py` (stay rod); body mounting datums for P11 are listed in PLAN.md.
+
+Next: P8 (brakes) and P10 (electrical) are in progress; then P11, the body, on the datums the chassis phases left. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
 from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
-pump, tank and the rigid pipe from the pump to the feed union. The engine mountings (Fig 1.29) go in with the
-front crossmember, and the 18ACR alternator with the electrical system. The working standard is in
+pump, tank and the rigid pipe from the pump to the feed union. The 18ACR alternator goes in with the electrical system. The working standard is in
 `CLAUDE.md`.

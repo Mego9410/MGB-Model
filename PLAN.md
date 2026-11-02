@@ -18,7 +18,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P6 Propeller shaft | Ch 7 | done |
 | P7 Rear axle | Ch 8 | done |
 | P8 Brakes | Ch 9 | |
-| P9 Suspension, steering, wheels and tyres; engine mountings | Ch 11 | |
+| P9 Suspension, steering, wheels and tyres; engine mountings | Ch 11 | done |
 | P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | |
 | P11 Body shell, panels, trim, fittings; exhaust; fuel tank, pump and pipe | Ch 12, Ch 3 | |
 
@@ -33,17 +33,33 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   615, drum 10 in (P8 to confirm). Brake pipe three-way union bolts to the tab on top of the left-hand neck
   (`PIPE_BRACKET`, x 10, y 150, face z 52 in AF); the handbrake balance lever pivots on the pin on the rear of
   the bowl (`BALANCE_PIVOT`, y 60, z -78, pointing rearward, split pin hole); both positions derived.
-- Rear springs, dampers and straps (P9): spring seats welded under the tubes, flat face at z `SEAT_FACE_Z`
-  (48 mm below the axle centre), centred at |y| `SPRING_Y` 420, 100 mm fore and aft, 11 mm hole for the
-  locating plate's peg (Fig 11.4 items 18-19); U-bolt legs (`UBOLT_LEGS`) 45 mm fore and aft of the tube, 30 mm
-  either side of the spring; the bump rubber pedestal saddles the tube top (`PEDESTAL_SEAT`); the damper link
-  goes to bracket 20 under the spring (Fig 11.4), not to the axle; rebound strap eyes on the spindles at
-  (x -22, |y| 500, z -88) (`REBOUND_EYE`), 3/8 UNF, the spindle nut already fitted outboard at |y| 509 with room
-  for the strap, plain and spring washers. Spring centre line, seat height and bracket positions are derived:
-  P9 should check them against the body's spring hangers.
-- Wheels (P9): the wire wheel's inner cone seats on the hub extension collar (|y| 615-640, 66 to 55 mm across),
-  42 mm series splines |y| 640-712, spinner thread |y| 714-744, 12 tpi, right-hand thread on the left hub and
-  left-hand on the right (`SPINNER_HAND`); wheel centre plane at the track (|y| 625.5).
+- Body mountings for the suspension and steering (P11), all car frame, per side (P9 datums):
+  - Front crossmember: two support bolts each side up through the front chassis legs
+    (`front_suspension_layout.BODY_BOLTS`, |y| 432, x FX-80 and FX+84, leg underside `BODY_FACE_Z` z -226 on the upper
+    rubber pads, leg top `BODY_LEG_TOP_Z` -176 where the nuts and washers sit). The damper arms sweep over the legs
+    between |y| 305 and 499 at z -110 to -173 (more on rebound): the inner wing valances need openings there. The
+    column runs through a tube in the RHD crossmember's right tower (`steering_layout.CROSSMEMBER_TUBE_R`).
+  - Steering column top: the clamp (Fig 11.6 item 59) on a body bracket under the facia at
+    `steering_layout.COLUMN_TOP_CLAMP` (x -780, y -311, z 21) with packing washers; the bottom bracket, blanking plate
+    and draught excluder on the toe board at `COLUMN_TOE_PLATE` (x -440, y -280, z -92): the toe board needs a hole for
+    the 1 1/2 in tube there. The column passes the pedal box area beside the brake and clutch pedals (P8 to check).
+  - Rear springs: front hanger plates either side of the eye on the eyebolt axis `rear_suspension_layout.FRONT_HANGER`
+    (|y| 420, x -1589.9, z -299.3, bolt along y); the rear shackle's upper pin through a body bracket at
+    `SHACKLE_BRACKET` (x -2785, z -208); dampers bolted by two bolts along y to the side member's inner face at
+    `DAMPER_MOUNT` (|y| 436); rebound strap bolts at `REBOUND_BOLT` (x -2246.4, |y| 500, z -132.8); bump rubber strike
+    faces at `BUMP_STRIKE` (z -122.5 at the axle line, |y| 420).
+  - Spare wire wheel and tyre in the boot (P11): the same parts as `wheels.road-wheels` (wheel, tyre, valve) without a
+    spinner, on its clamp.
+- Known P9 approximations: no outside photographs could be opened from the build machine (the proxy refuses the parts
+  suppliers' image hosts), so every form is from the Haynes figures (11.1, 11.2, 11.4, 11.5, 11.6, 11.8, 1.29) and the
+  suppliers' text; the stub axle is drawn level (the published 1 deg of camber is on its spec card but not applied, to
+  keep P8's hub frame); the front crossmember's dip goes lower than in Fig 11.1 to pass under the sump's deep well, which
+  sits over the front axle line in this model (car_layout FRONT_AXLE_X 150, see questions); the column passes through a
+  tube in the RHD crossmember's right tower; the rack and pinion's internals are simplified (the yoke's pad and spring,
+  rack bush and pinion bearing nut are not drawn); the inner tube is not drawn (only its valve); the rear spring's centre
+  bolt locknut is not drawn; the gearbox stay rod lies to the left of the overdrive sump and its pin is screwed under
+  the gearbox casing where P5a drew no pad; the front engine mounting brackets are new shapes (a pad and two tapped holes
+  were added to the block's left wall, P2).
 - Tunnel and floor (P11) must clear the propeller shaft: from the overdrive flange (car x -1018.8, z -253.2) to
   the pinion flange (x -1807.3, z -307.9), 4.3 deg down toward the rear, 96 mm flanges, 58 mm tube; and the
   axle's movement on its springs (bump travel not yet set).
@@ -57,7 +73,6 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 
 - Exhaust system (Ch 3 Sec 46, one-piece welded on early cars): with the body/floor.
 - Fuel pump, tank and the rigid pipe to `fuel.pipes.feed-union`: with the body.
-- Engine mountings (Fig 1.29): with the front crossmember (P9).
 - 18ACR alternator and the Lucas HA12 coil: P10.
 - Propeller shaft (P6) bolts to the overdrive coupling flange (`mgb/overdrive_layout.py`): rear face
   `FLANGE_FACE_X` (car x -1018.8) on the axis `FLANGE_AXIS` (y 0, z -253.21, the crank axis; gearbox taken
@@ -70,9 +85,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   (`gearbox.mounting`). The body side is P9/P11, to `mgb/chassis_layout.py`: four 3/8 in UNF screws up into
   the floor at `REAR_XMEMBER_BOLTS` (car x -772.8 and -792.8, y +/-228, faces at `BODY_FACE_Z` z -381.2,
   202 mm above the road, derived), so the floor beside the tunnel needs captive nuts or tapped plates
-  there. The engine stay rod, its bracket, buffers, distance tube, bush and pin (Fig 1.29 items 20-32;
-  MGOC 1G9384 3-synchro pin) go with P9: the bracket bolts to the two holes in the crossmember's dip,
-  under the overdrive valves (Ch 6 Sec 14 para 1), the rod's front end to the gearbox.
+  there. The stay rod went in with P9 (`gearbox.stay-rod`).
 - Speedometer cable (P10/P11): P5b built only the end: the angle drive (MGOC 120694) on the speedometer
   housing on the right of the overdrive rear casing, output turned forward and down at 45 deg, its
   knurled nut and a 70 mm stub. The run to the speedometer is P10/P11 (Ch 1 Sec 6 para 30).
@@ -118,6 +131,23 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   fitted with 4.1 or 4.22)?
 - Rear axle fittings: where are the handbrake balance lever, the brake pipe three-way union and the rebound
   strap brackets on your axle? A photo of the axle from behind and from underneath would fix them.
+
+- Front axle line against the engine: the model puts the front wheel axis 76 mm behind the block's front face, so the
+  sump's deep well sits over it and the front crossmember has to dip under the sump (its underside is then at the
+  published 4.2 in ground clearance). On the real car I believe the crossmember passes just ahead of the sump. A tape
+  measure from the front hub centre to the front of the block (or the crankshaft pulley) would settle it.
+- Front suspension: is your car's camber still about 1 deg positive at the static unloaded height? (The model draws the
+  stub axle level.) Are the front dampers the original lever-arm type, and are the wishbone pivots on rubber bushes?
+- Steering column: where exactly does your column pass the crossmember's right tower and the engine? A photo looking
+  down into the engine bay on the right, and one from underneath at the rack, would fix the pinion and joint positions.
+- Steering wheel: is it the original 16 1/2 in banjo wheel with the black rim and the MG horn push?
+- Rear springs: how many leaves do yours have (five plus a bottom plate as Haynes, or a later six-leaf), and where is the
+  front hanger relative to the axle (the model has the eyes 22.5 in ahead of and 24 in behind the centre bolt)?
+- Rear dampers and straps: are the rebound (check) straps still fitted, and which way does the damper link run (the model
+  has it inboard of the spring, ahead of the tube)?
+- Wheels: are your wire wheels painted (silver) or chrome, 60-spoke 4 1/2J, with two-eared spinners? Which tyres are
+  fitted now (the model is the original 5.60-14 crossply)?
+- Gearbox stay rod: is it fitted, and where does its front pin attach to your gearbox?
 
 - Distributor cap orientation: which way do the plug leads leave the cap on your car?
 - Fuel hose run between the float chambers: where does it go on your car?

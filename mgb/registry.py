@@ -13,7 +13,7 @@ SYSTEMS = [
     ("engine", "Engine", 1), ("cooling", "Cooling", 2), ("fuel", "Fuel and exhaust", 3),
     ("ignition", "Ignition", 4), ("clutch", "Clutch", 5), ("gearbox", "Gearbox and overdrive", 6),
     ("propshaft", "Propeller shaft", 7), ("axle", "Rear axle", 8), ("brakes", "Brakes", 9),
-    ("electrical", "Electrical", 10), ("chassis", "Suspension and steering", 11),
+    ("electrical", "Electrical", 10), ("chassis", "Suspension and steering", 11), ("wheels", "Wheels and tyres", 11),
     ("body", "Body and fittings", 12),
 ]
 
