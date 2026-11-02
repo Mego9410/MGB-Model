@@ -9,8 +9,8 @@
   --src-h:#1f5f8b; --src-s:#5a6b2e; --src-d:#9a6512; --src-f:#4b3d8f; --src-m:#2d7a6b;
   --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17181a; --stage:#202225; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark } }
-:root[data-theme="dark"]{ --bg:#17181a; --stage:#202225; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17181a; --stage:#383b40; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#17181a; --stage:#383b40; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark }
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 var(--body);overflow:hidden}
 button{font:inherit;color:inherit}
@@ -42,6 +42,22 @@ nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);backgro
 .loadbar .fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
 .loadbar.done{opacity:0}
 .tree .line{display:flex;align-items:center;gap:2px}
+.tree .eye{flex:none;width:26px;height:26px;border:0;background:none;border-radius:4px;cursor:pointer;color:var(--muted);display:grid;place-items:center;padding:0;opacity:.45}
+.tree .line:hover .eye,.tree .eye[aria-pressed="false"],.tree .eye:focus-visible{opacity:1}
+.tree .eye[aria-pressed="false"]{color:var(--accent)}
+.tree .eye svg{width:16px;height:16px;pointer-events:none}
+.tree li.off>.line .row{opacity:.45}
+header .tools{margin-left:auto;position:relative;align-self:center}
+.viewmenu{position:absolute;right:0;top:calc(100% + 8px);z-index:20;width:min(300px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--edge);border-radius:10px;
+  box-shadow:0 8px 28px rgba(0,0,0,.2);padding:14px;display:grid;gap:14px}
+.viewmenu .opt{display:grid;gap:6px}
+.viewmenu .opt>span{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.viewmenu .hint{font-size:12px;color:var(--muted);margin:0}
+.seg{display:flex;border:1px solid var(--edge);border-radius:6px;overflow:hidden}
+.seg button{flex:1;background:none;border:0;padding:7px 8px;font:600 12px var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.seg button+button{border-left:1px solid var(--edge)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.viewmenu .wide{width:100%}
 .tree .tw{flex:none;width:22px;min-height:28px;border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer;border-radius:4px;padding:0}
 .tree .tw:hover{background:var(--chip);color:var(--fg)}
 .tree .tw.leaf{visibility:hidden;cursor:default}
@@ -126,6 +142,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
   .app[data-sheet="card"] nav.tree{display:none}
   .tree .row{min-height:40px}
   .tree .tw{min-height:40px;width:28px}
+  .tree .eye{width:36px;height:40px}
   .facts{font-size:14px}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
@@ -136,6 +153,16 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
     <h1>MGB Workshop</h1>
     <span class="reg">1963 ROADSTER · RHD · 18G · OVERDRIVE · 18ACR</span>
     <div class="crumbs" id="crumbs" aria-label="Location"></div>
+    <div class="tools">
+      <button class="tool" id="view-btn" type="button" aria-expanded="false" aria-controls="view-menu">View</button>
+      <div class="viewmenu" id="view-menu" hidden>
+        <div class="opt"><span>Theme</span><div class="seg" data-opt="theme"><button type="button" data-v="auto">Auto</button><button type="button" data-v="light">Light</button><button type="button" data-v="dark">Dark</button></div></div>
+        <div class="opt"><span>Garage</span><div class="seg" data-opt="garage"><button type="button" data-v="on">Show</button><button type="button" data-v="off">Hide</button></div></div>
+        <div class="opt"><span>Parts outside the selection</span><div class="seg" data-opt="outside"><button type="button" data-v="ghost">Faint</button><button type="button" data-v="hide">Hidden</button></div></div>
+        <div class="opt"><span>Visibility</span><button class="tool wide" id="show-all" type="button">Show everything</button>
+          <p class="hint">Tap the eye beside anything in the Parts list to hide it. Isolate (beside Frame) shows only what is selected.</p></div>
+      </div>
+    </div>
   </header>
   <div class="tabs" role="tablist">
     <button class="grab" id="sheet-grab" type="button" aria-label="Resize the panel"></button>
@@ -153,6 +180,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
     <input id="explode" type="range" min="0" max="100" value="0">
     <span class="val" id="explode-val">0%</span>
     <button class="tool" id="measure" type="button" aria-pressed="false">Measure</button>
+    <button class="tool" id="isolate" type="button" aria-pressed="false" title="Show only what is selected">Isolate</button>
     <button class="tool" id="frame" type="button">Frame</button>
   </div>
   <aside class="card" id="card" aria-live="polite"><p class="empty">Select a part to see its specification.</p></aside>
