@@ -15,14 +15,45 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P4 Clutch | Ch 5 | done |
 | P5a Gearbox (three-synchro, overdrive type), remote control | Ch 6 | done |
 | P5b Overdrive (Laycock type D), speedometer drive, rear mounting | Ch 6, Ch 1 | done |
-| P6 Propeller shaft | Ch 7 | |
-| P7 Rear axle | Ch 8 | |
+| P6 Propeller shaft | Ch 7 | done |
+| P7 Rear axle | Ch 8 | done |
 | P8 Brakes | Ch 9 | |
 | P9 Suspension, steering, wheels and tyres; engine mountings | Ch 11 | |
 | P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | |
 | P11 Body shell, panels, trim, fittings; exhaust; fuel tank, pump and pipe | Ch 12, Ch 3 | |
 
 ## Carried over
+
+- Brakes (P8) on the rear axle (`mgb/rear_axle_layout.py`, axle frame AF at `car_layout.REAR_AXLE_X`,
+  `WHEEL_Z`): each backplate seats on the case flange's outer face at |y| `BACKPLATE_FACE_Y` 562 mm, four
+  3/8 in holes on a 108 mm pitch circle at 45 deg (`BACKPLATE_BOLT_*`); the drum's face seats on the hub
+  extension flange at |y| `DRUM_FACE_Y` 615 over four 1/2 in UNF studs on a 4 1/2 in pitch circle at 45 deg
+  (`STUD_*`); its centre hole must clear the extension collar (72 mm across); the four drum nuts (MGOC lists a
+  1/2 UNF nyloc, GHF225) come with the drum (Ch 8 Sec 4 para 5). Shoes and wheel cylinder between |y| 562 and
+  615, drum 10 in (P8 to confirm). Brake pipe three-way union bolts to the tab on top of the left-hand neck
+  (`PIPE_BRACKET`, x 10, y 150, face z 52 in AF); the handbrake balance lever pivots on the pin on the rear of
+  the bowl (`BALANCE_PIVOT`, y 60, z -78, pointing rearward, split pin hole); both positions derived.
+- Rear springs, dampers and straps (P9): spring seats welded under the tubes, flat face at z `SEAT_FACE_Z`
+  (48 mm below the axle centre), centred at |y| `SPRING_Y` 420, 100 mm fore and aft, 11 mm hole for the
+  locating plate's peg (Fig 11.4 items 18-19); U-bolt legs (`UBOLT_LEGS`) 45 mm fore and aft of the tube, 30 mm
+  either side of the spring; the bump rubber pedestal saddles the tube top (`PEDESTAL_SEAT`); the damper link
+  goes to bracket 20 under the spring (Fig 11.4), not to the axle; rebound strap eyes on the spindles at
+  (x -22, |y| 500, z -88) (`REBOUND_EYE`), 3/8 UNF, the spindle nut already fitted outboard at |y| 509 with room
+  for the strap, plain and spring washers. Spring centre line, seat height and bracket positions are derived:
+  P9 should check them against the body's spring hangers.
+- Wheels (P9): the wire wheel's inner cone seats on the hub extension collar (|y| 615-640, 66 to 55 mm across),
+  42 mm series splines |y| 640-712, spinner thread |y| 714-744, 12 tpi, right-hand thread on the left hub and
+  left-hand on the right (`SPINNER_HAND`); wheel centre plane at the track (|y| 625.5).
+- Tunnel and floor (P11) must clear the propeller shaft: from the overdrive flange (car x -1018.8, z -253.2) to
+  the pinion flange (x -1807.3, z -307.9), 4.3 deg down toward the rear, 96 mm flanges, 58 mm tube; and the
+  axle's movement on its springs (bump travel not yet set).
+- Known P6/P7 approximations: propeller shaft joint size taken as the 27 x 74.6 mm GUJ115 joint (not
+  confirmed for the MGB from a parts list with dimensions); tube, sleeve and yoke sizes scaled from Fig 7.4;
+  the axle's forms from Fig 8.1 only (no outside photographs could be opened); hypoid offset (1 in), crown
+  wheel size (190 mm pitch), side gear and pinion counts (16/10), bearing sizes for the differential and
+  pinion, spring seat and rebound bracket positions all derived; spiral teeth are lofted trapezoids, phased
+  for least overlap (about 22 mm3 crown wheel to pinion, 5.5 mm3 side gear to pinion in the interference
+  check); fasteners show thread engagement as small overlaps with nuts (as P5).
 
 - Exhaust system (Ch 3 Sec 46, one-piece welded on early cars): with the body/floor.
 - Fuel pump, tank and the rigid pipe to `fuel.pipes.feed-union`: with the body.
@@ -76,6 +107,17 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   clip screws: with the body (P11).
 
 ## Questions for Oliver (asked at the end of the overnight run)
+
+- Rear hub nuts: Haynes lists one RH and one LH thread nut but not which side; the model follows mgaguru and
+  BritishCarForum (left-hand thread on the left hub, so forward rotation tightens it), while the MGOC page text
+  pairs them the other way. Which way does your left rear hub nut undo?
+- Wire wheel spinners: cars to chassis GHN3-30850 (about February 1964) have 12 tpi hub extensions, later ones
+  8 tpi. What is your car's chassis number, and are the hubs and spinners 12 tpi?
+- Propeller shaft: is yours still the greasable type with a nipple on each joint (as modelled), or sealed joints?
+- Axle ratio: the model is the standard 3.909 (43/11); has the axle been changed (some overdrive cars were
+  fitted with 4.1 or 4.22)?
+- Rear axle fittings: where are the handbrake balance lever, the brake pipe three-way union and the rebound
+  strap brackets on your axle? A photo of the axle from behind and from underneath would fix them.
 
 - Distributor cap orientation: which way do the plug leads leave the cap on your car?
 - Fuel hose run between the float chambers: where does it go on your car?

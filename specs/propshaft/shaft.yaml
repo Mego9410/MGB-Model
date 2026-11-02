@@ -1,0 +1,212 @@
+# Hardy Spicer propeller shaft, overdrive car with the banjo axle (1963), non-sealed greasable joints.
+# Haynes Ch 7: specifications (printed p138), Sec 1-4 (p138-141), Fig 7.1 exploded view (p139),
+# Fig 7.4 assembled shaft (p140), Fig 7.5 sealed joint (p140); photos 5.2, 5.4a-d (p140-141). Fig 7.1
+# item numbers unless stated.
+# Outside references: MGOC Spares "propshaft" (AHH7487 31 1/8 in shaft for banjo axle overdrive cars,
+# 7H3865 sleeve yoke, 7H3863 flange yoke, GUJ115 joint, greasable on early cars, UHN400 / 7H3858
+# nipples, AAA4039 bolt, GHF332 spring washer, GHF222 nyloc nut); Brit Parts NW AHH7487EOD (MGB 63-67
+# overdrive banjo axle, 31.125 in); URO URGUJ115 (listed for MGB 1963-80) and GMB 2151100 (27 x 74.6
+# mm). Sizes not published are scaled from Fig 7.4 (mgb/propshaft_layout.py).
+defaults:
+  system: propshaft
+  assembly: propshaft.shaft
+  haynes: { section: 4, spec_page: 138 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true, sealed_joints: false }
+  finish: paint_black
+
+parts:
+  - id: propshaft.shaft.flange-yoke
+    name: Flange yoke
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 2 }, { figure: "7.4" }] }
+    quantity: 2
+    part_numbers:
+      - { number: 7H3863, by: "BMC (MGOC Spares: yoke with drive flange, rear)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    notes: >
+      One at each end: the front on the overdrive coupling flange, the rear on the axle pinion flange, four
+      bolts each. A round flange with a recessed face (it clears the overdrive flange's castellated nut and
+      the pinion nut), two forged ears with round eye bosses bored for the bearing cups and grooved for the
+      circlips (Fig 7.1 item 2; photos 5.4b-d). Scratch a mark across the four flanges before removal; the
+      shaft is balanced and must go back in the same position (Sec 3 para 2). Form from Fig 7.1 and the
+      photos; sizes from Fig 7.4 scaled to the 96 mm overdrive flange.
+    specs:
+      diameter: { mm: 96.0, source: { label: D, method: "Matches the overdrive coupling flange (overdrive_layout FLANGE_R)" } }
+      bolt_circle: { in: 3.125, mm: 79.375, source: { label: D, method: "Overdrive flange pitch circle (P5b, Fig 6.12 scale)" }, display_only: true }
+      face_to_joint: { mm: 34.0, source: { label: D, method: "Fig 7.4 scaled, 0.282 mm/px" }, display_only: true }
+
+  - id: propshaft.shaft.spider
+    name: Journal (spider)
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 8 }, { figure: "7.5", legend: 1 }] }
+    quantity: 2
+    finish: machined_steel
+    part_numbers:
+      - { number: GUJ115, by: "MGOC Spares / Rimmer Bros (greasable joint)", source: { label: S, ref: "https://rimmerbros.com/Item--i-GUJ115OE" } }
+    notes: >
+      Journal assembly: square centre, four ground journals drilled for grease, shoulders for the gaskets; the
+      lubricator faces the propeller shaft, not the flange yoke (Sec 4 para 9). Coat the shoulders with
+      shellac on reassembly (Sec 4 para 7).
+    specs:
+      span: { mm: 74.6, source: { label: D, method: "Length across the cups of a GUJ115-size joint (GMB 2151100, as URO URGUJ115 listed for the MGB)" }, display_only: true }
+      journal_diameter: { mm: 15.0, source: { label: D, method: "Cup bore less the needles" }, display_only: true }
+
+  - id: propshaft.shaft.needle-bearing
+    name: Needle bearing assembly
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 9 }, { figure: "7.5", legend: 3 }] }
+    quantity: 8
+    finish: bearing
+    notes: "Drawn cup with its needle rollers, tapped out of the yoke after the circlip (Sec 4 paras 5-6, Fig 7.2-7.3); assemble the needles with thin grease (para 8)."
+    specs:
+      outside_diameter: { mm: 27.0, source: { label: D, method: "GUJ115-size cup (GMB 2151100: 1.063 in, 27 mm)" } }
+
+  - id: propshaft.shaft.circlip
+    name: Bearing circlip
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 10 }, { figure: "7.5", legend: 4 }] }
+    quantity: 8
+    finish: spring_steel
+    notes: "In the groove of each yoke eye outside the cup (Sec 4 para 5); the lugs as Fig 7.5."
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Circlip for a 27 mm cup" } }
+
+  - id: propshaft.shaft.gasket
+    name: Journal gasket
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 11 }] }
+    quantity: 8
+    finish: cork
+    notes: "Cork gasket on each journal shoulder, sealing the open end of the cup; renew on reassembly (Sec 4 para 8). The sealed type joint has a rubber seal instead (Sec 5)."
+    specs:
+      thickness: { mm: 1.8, source: { label: D, method: "Shoulder to cup clearance" } }
+
+  - id: propshaft.shaft.gasket-retainer
+    name: Gasket retainer
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 12 }] }
+    quantity: 8
+    finish: zinc_steel
+    notes: "Pressed steel retainer over each gasket, refitted with a hollow drift (Sec 4 para 8)."
+    specs:
+      thickness: { mm: 0.6, source: { label: D, method: "Pressed steel" } }
+
+  - id: propshaft.shaft.lubricator
+    name: Journal lubricator
+    haynes: { section: 2, figures: [{ figure: "7.1", legend: 13 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: 7H3858, by: "BMC (MGOC Spares: nipple, grease, UJ)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    notes: "One grease nipple on each joint (Sec 2 para 1), three or four strokes of the gun (para 2). Screwed into the spider's centre on the shaft side, angled between two journals (D)."
+    specs:
+      height: { mm: 12.8, source: { label: D, method: "Hex 7 mm, ball head" }, display_only: true }
+
+  - id: propshaft.shaft.sleeve-yoke
+    name: Sleeve yoke (sleeve assembly)
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 3 }, { figure: "7.4" }] }
+    quantity: 1
+    part_numbers:
+      - { number: 7H3865, by: "BMC (MGOC Spares: yoke with sliding joint, front)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    notes: >
+      Front yoke with the splined sleeve the shaft slides in (the sliding spline that takes up the axle's
+      fore-and-aft movement, Sec 1). Hexagonal boss for its lubricator (Fig 7.4), thread for the dust cap,
+      an arrow to line up with the arrow on the shaft so the yokes lie in line (Sec 4 para 11, Fig 7.4
+      yokes A and B). Sizes from Fig 7.4 scaled.
+    specs:
+      outside_diameter: { mm: 38.0, source: { label: D, method: "Fig 7.4 scaled" }, display_only: true }
+      spline_length: { mm: 85.0, source: { label: D, method: "Stub engaged 27 mm fully extended, 70 mm fully compressed (propshaft_layout)" }, display_only: true }
+
+  - id: propshaft.shaft.sleeve-lubricator
+    name: Sleeve lubricator
+    haynes: { section: 2, figures: [{ figure: "7.1", legend: 4 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: UHN400, by: "MGOC Spares (grease nipple straight)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    notes: "The third nipple, on the sliding yoke (Sec 2 para 1); the only one on the sealed type."
+    specs:
+      height: { mm: 12.8, source: { label: D, method: "As the journal lubricator" }, display_only: true }
+
+  - id: propshaft.shaft.dust-cap
+    name: Dust cap
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 5 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Knurled cap screwed onto the end of the sleeve, holding the steel and cork washers round the shaft splines (Sec 4 paras 3, 10-11)."
+    specs:
+      outside_diameter: { mm: 44.0, source: { label: D, method: "Fig 7.4 scaled" } }
+
+  - id: propshaft.shaft.steel-washer
+    name: Steel washer
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 6 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Inside the dust cap (Sec 4 para 10)."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Plain steel washer" } }
+
+  - id: propshaft.shaft.cork-washer
+    name: Cork washer
+    haynes: { section: 4, figures: [{ figure: "7.1", legend: 7 }] }
+    quantity: 1
+    finish: cork
+    notes: "Seals the dust cap on the splines; fit a new one (Sec 4 para 10)."
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Cork washer" } }
+
+  - id: propshaft.shaft.shaft
+    name: Shaft assembly (tube and splined stub)
+    haynes: { section: 3, figures: [{ figure: "7.1", legend: 1 }, { figure: "7.4" }] }
+    quantity: 1
+    part_numbers:
+      - { number: AHH7487, by: "BMC (MGOC Spares: propshaft 31 1/8 in, banjo axle and 3-synchro overdrive)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    notes: >
+      Splined stub, swaged cone, the tube with its bands and the rear yoke welded on (Fig 7.4); arrow on the
+      stub (Sec 4 para 11). Shafts of different lengths are used on standard and overdrive cars (Sec 1); this
+      is the overdrive length. Installed at the supplier length 31 1/8 in between the flange faces, 4.3 deg
+      down toward the rear (overdrive flange on the crank axis, pinion 1 in below the axle centre, both level).
+      Tube diameter and the stub from Fig 7.4 scaled.
+    specs:
+      overall_length_extended: { in: 31.875, mm: 809.625, printed_mm: 810.0, source: { label: H, page: 138, note: "Overall length fully extended, overdrive: 31 7/8 in (81.0 cm)" }, display_only: true }
+      overall_length_compressed: { in: 30.1875, mm: 766.7625, printed_mm: 765.0, erratum: true, source: { label: H, page: 138, note: "Fully compressed, overdrive: 30 3/16 in printed as 76.5 cm" }, display_only: true }
+      shaft_assembly_length: { in: 26.46875, mm: 672.30625, printed_mm: 670.0, erratum: true, source: { label: H, page: 138, note: "Length of shaft assembly, overdrive: 26 15/32 in printed as 67.0 cm; taken from the rear flange face to the front of the splined stub" }, display_only: true }
+      installed_length: { in: 31.125, mm: 790.575, source: { label: S, ref: "https://bpnorthwest.com/mg/driveshaft-overdrive-mgb-63-to-67", note: "AHH7487EOD 31.125 in overall, MGB 1963-67 overdrive banjo axle" }, display_only: true }
+      tube_diameter: { in: 2.25, mm: 57.15, source: { label: D, method: "Fig 7.4 scaled (205 px at 0.282 mm/px)" } }
+      stub_to_joint: { mm: 638.30625, source: { label: D, method: "Shaft assembly length less the flange face to joint centre" } }
+
+  - id: propshaft.shaft.balance-weight
+    name: Balance weight
+    haynes: { section: 3 }
+    quantity: 2
+    notes: "The shaft is balanced to fine limits (Sec 3 para 2); the weights are spot welded where the balancing machine put them (positions D)."
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Small steel weight" } }
+      length: { mm: 18.0, source: { label: D, method: "Small steel weight" } }
+
+  - id: propshaft.shaft.flange-bolt
+    name: Flange bolt
+    haynes: { section: 3, figures: [{ figure: "7.1", legend: 14 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: AAA4039, by: "BMC (MGOC Spares: propshaft rear flange to axle pinion flange; Rimmer Bros 5/16 UNF x 1 1/8)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    notes: "Four at each end on three-synchro cars (MGOC); head on the yoke side, as Fig 7.1. Flange nuts 30 to 35 lbf ft (Haynes specifications)."
+    specs:
+      length: { in: 1.125, mm: 28.575, source: { label: S, ref: "https://rimmerbros.com/Item--i-AAA4039", note: "5/16 UNF x 1 1/8 in" } }
+      torque: { lbf_ft: [30, 35], nm: [41, 47], source: { label: H, page: 138, note: "Flange nuts 30 to 35 lbf ft (41 to 47 Nm)" } }
+
+  - id: propshaft.shaft.flange-nut
+    name: Flange nut (self-locking)
+    haynes: { section: 3, figures: [{ figure: "7.1", legend: 15 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF222, by: "MGOC Spares (nut, nyloc, 5/16 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    notes: "Self-locking nuts, renewed if possible (Sec 3 paras 3-4); on the companion flange side."
+    specs:
+      height: { mm: 8.0, source: { label: D, method: "5/16 UNF nyloc nut" } }
+
+  - id: propshaft.shaft.flange-washer
+    name: Flange bolt washer
+    haynes: { section: 3, figures: [{ figure: "7.1", legend: 16 }] }
+    quantity: 8
+    part_numbers:
+      - { number: GHF332, by: "MGOC Spares (washer, locking, spring, 5/16)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/propshaft" } }
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer (MGOC GHF332)" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }

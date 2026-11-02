@@ -102,7 +102,25 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   datums: `mgb/overdrive_layout.py` (overdrive stations, P6 flange datums), `mgb/chassis_layout.py`
   (crossmember and its body bolts for P9/P11).
 
-Next: P6, the propeller shaft, from the overdrive flange (`overdrive_layout.FLANGE_*`) to the rear axle. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+- P6 (propeller shaft) built: Hardy Spicer tubular shaft, overdrive length, greasable joints (Haynes Ch 7, Figs
+  7.1, 7.4, 7.5): two flange yokes, two spiders with their lubricators, eight needle bearing cups, circlips,
+  cork gaskets and retainers, the sleeve yoke with its lubricator, dust cap, steel and cork washers, the shaft
+  (splined stub, swaged cone, tube, welded rear yoke) with balance weights, and the eight flange bolts, spring
+  washers and self-locking nuts. It runs from the overdrive flange to the axle pinion flange at the supplier
+  length 31 1/8 in, inside the Haynes travel, 4.3 deg down toward the rear (`mgb/propshaft_layout.py`).
+
+- P7 (rear axle) built: early three-quarter floating banjo axle, 3.909 (43/11), wire wheels (Haynes Ch 8, Fig
+  8.1): the welded banjo case with its seam, ring and carrier studs, forged ends (backplate flanges, seal
+  tracks, bearing journals, handed nut threads with keyways), spring seats, rebound strap brackets and spindles,
+  breather, filler/level and drain plugs; the carrier with its saddles, caps, studs, nuts and washers and gasket;
+  the hypoid pinion on two taper roller bearings with spacer, shim, thrust washer, seal, dust cover, flange,
+  spring washer and nut; the differential (cage, 43-tooth crown wheel, bolts and tab washers, side gears,
+  pinions on their shaft and peg, thrust washers, ball bearings, packing washers); axleshafts and the wire wheel
+  hubs (hub, studs, double row bearing, seal, O-ring, locking washer, RH and LH bearing nuts, the RH and LH
+  12 tpi hub extensions with handed spinner threads, Welch plugs, screws). Datums for brakes (P8) and springs,
+  dampers, straps and wheels (P9) are in `mgb/rear_axle_layout.py`.
+
+Next: P8, the brakes, on the axle datums (`rear_axle_layout.BACKPLATE_*`, `DRUM_FACE_Y`, `STUD_*`). The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
 from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
 pump, tank and the rigid pipe from the pump to the feed union. The engine mountings (Fig 1.29) go in with the
 front crossmember, and the 18ACR alternator with the electrical system. The working standard is in

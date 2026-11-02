@@ -117,7 +117,9 @@
    "haynes": {
     "chapter": 7
    },
-   "children": []
+   "children": [
+    "propshaft.shaft"
+   ]
   },
   "axle": {
    "id": "axle",
@@ -127,7 +129,11 @@
    "haynes": {
     "chapter": 8
    },
-   "children": []
+   "children": [
+    "axle.carrier",
+    "axle.casing",
+    "axle.hubs"
+   ]
   },
   "brakes": {
    "id": "brakes",
@@ -168,6 +174,111 @@
     "chapter": 12
    },
    "children": []
+  },
+  "axle.carrier": {
+   "id": "axle.carrier",
+   "kind": "assembly",
+   "name": "Differential carrier, pinion and differential",
+   "parent": "axle",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "8.1"
+     }
+    ],
+    "section": 8
+   },
+   "children": [
+    "axle.carrier.carrier",
+    "axle.carrier.gasket",
+    "axle.carrier.carrier-washer",
+    "axle.carrier.carrier-nut",
+    "axle.carrier.bearing-cap",
+    "axle.carrier.cap-stud",
+    "axle.carrier.cap-plain-washer",
+    "axle.carrier.cap-spring-washer",
+    "axle.carrier.cap-nut",
+    "axle.carrier.pinion",
+    "axle.carrier.pinion-thrust-washer",
+    "axle.carrier.rear-pinion-bearing",
+    "axle.carrier.bearing-spacer",
+    "axle.carrier.pinion-shim",
+    "axle.carrier.front-pinion-bearing",
+    "axle.carrier.pinion-seal",
+    "axle.carrier.dust-cover",
+    "axle.carrier.pinion-flange",
+    "axle.carrier.pinion-washer",
+    "axle.carrier.pinion-nut",
+    "axle.carrier.cage",
+    "axle.carrier.crown-wheel",
+    "axle.carrier.crown-wheel-bolt",
+    "axle.carrier.crown-wheel-lockwasher",
+    "axle.carrier.pinion-peg",
+    "axle.carrier.pinion-shaft",
+    "axle.carrier.diff-bearing",
+    "axle.carrier.packing-washer",
+    "axle.carrier.side-gear",
+    "axle.carrier.side-thrust-washer",
+    "axle.carrier.diff-pinion",
+    "axle.carrier.diff-pinion-thrust-washer"
+   ],
+   "file": "models/axle.carrier.json",
+   "bytes": 718340
+  },
+  "axle.casing": {
+   "id": "axle.casing",
+   "kind": "assembly",
+   "name": "Axle case (banjo) and fittings",
+   "parent": "axle",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "8.1"
+     }
+    ],
+    "section": 3
+   },
+   "children": [
+    "axle.casing.case",
+    "axle.casing.case-stud",
+    "axle.casing.breather",
+    "axle.casing.filler-plug",
+    "axle.casing.drain-plug",
+    "axle.casing.spindle-nut"
+   ],
+   "file": "models/axle.casing.json",
+   "bytes": 296067
+  },
+  "axle.hubs": {
+   "id": "axle.hubs",
+   "kind": "assembly",
+   "name": "Axleshafts and rear hubs (wire wheels)",
+   "parent": "axle",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "8.1"
+     }
+    ],
+    "section": 5
+   },
+   "children": [
+    "axle.hubs.screw",
+    "axle.hubs.hub-extension-lh",
+    "axle.hubs.welch-plug",
+    "axle.hubs.o-ring",
+    "axle.hubs.axleshaft",
+    "axle.hubs.bearing-nut-lh",
+    "axle.hubs.lockwasher",
+    "axle.hubs.hub",
+    "axle.hubs.hub-stud",
+    "axle.hubs.hub-bearing",
+    "axle.hubs.hub-seal",
+    "axle.hubs.hub-extension-rh",
+    "axle.hubs.bearing-nut-rh"
+   ],
+   "file": "models/axle.hubs.json",
+   "bytes": 594640
   },
   "clutch.hydraulics": {
    "id": "clutch.hydraulics",
@@ -226,7 +337,7 @@
     "clutch.hydraulics.mc-spring"
    ],
    "file": "models/clutch.hydraulics.json",
-   "bytes": 591345
+   "bytes": 591217
   },
   "clutch.pedal": {
    "id": "clutch.pedal",
@@ -613,7 +724,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 162021
+   "bytes": 161953
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -743,7 +854,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139258
+   "bytes": 139370
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -1204,7 +1315,2616 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494022
+   "bytes": 494054
+  },
+  "propshaft.shaft": {
+   "id": "propshaft.shaft",
+   "kind": "assembly",
+   "name": "Propeller shaft",
+   "parent": "propshaft",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "7.1"
+     },
+     {
+      "figure": "7.4"
+     }
+    ],
+    "section": 4
+   },
+   "children": [
+    "propshaft.shaft.flange-yoke",
+    "propshaft.shaft.spider",
+    "propshaft.shaft.lubricator",
+    "propshaft.shaft.needle-bearing",
+    "propshaft.shaft.circlip",
+    "propshaft.shaft.gasket",
+    "propshaft.shaft.gasket-retainer",
+    "propshaft.shaft.sleeve-yoke",
+    "propshaft.shaft.sleeve-lubricator",
+    "propshaft.shaft.dust-cap",
+    "propshaft.shaft.steel-washer",
+    "propshaft.shaft.cork-washer",
+    "propshaft.shaft.shaft",
+    "propshaft.shaft.balance-weight",
+    "propshaft.shaft.flange-bolt",
+    "propshaft.shaft.flange-washer",
+    "propshaft.shaft.flange-nut"
+   ],
+   "file": "models/propshaft.shaft.json",
+   "bytes": 290585
+  },
+  "axle.carrier.carrier": {
+   "id": "axle.carrier.carrier",
+   "kind": "part",
+   "name": "Differential carrier",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 13
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": "Cast iron",
+   "finish": "cast_iron",
+   "notes": "The nose piece: round flange on the ten case studs with a spigot into the banjo opening, the tapering nose with four ribs carrying the two pinion bearing cups and the oil seal, and behind the flange the two saddles (with lightening windows) for the differential bearings under their caps. Withdrawn forward after the axleshafts, the propeller shaft and the nuts and spring washers (Sec 8 paras 1-3). Everything behind the flange passes through the case's 205 mm opening. Nose length from Fig 8.1 (about the flange's width) set so the pinion flange lands where the propeller shaft is at its supplier length; the cast surfaces from Fig 8.1 item 13 (no outside photographs could be opened from the build machine).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "flange_diameter",
+     "label": "Flange diameter",
+     "value": "250.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Case ring round the 205 mm opening",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pinion_flange_face",
+     "label": "Pinion flange face",
+     "value": "354.1 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Forward of the axle centre: propeller shaft at 31 1/8 in (propshaft_layout)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.bearing-cap": {
+   "id": "axle.carrier.bearing-cap",
+   "kind": "part",
+   "name": "Differential bearing cap",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 13
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": "Cast iron",
+   "finish": "cast_iron",
+   "notes": "Machined with the carrier (Fig 8.1 shows them as item 13), each on two studs; keep them to their own sides (punch marks). Cap nuts 65 lbf ft (factory manual H.8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "26.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Saddle width, inside the banjo opening",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "52.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Behind the split line: the 80 mm bearing and a 12 mm wall",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.gasket": {
+   "id": "axle.carrier.gasket",
+   "kind": "part",
+   "name": "Carrier to case gasket",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 12
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "1G7465",
+     "by": "BMC (MGOC Spares: gasket, differential to axle case, banjo)"
+    }
+   ],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Use a new gasket on refitting (Sec 8 para 4).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Paper gasket",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.carrier-nut": {
+   "id": "axle.carrier.carrier-nut",
+   "kind": "part",
+   "name": "Carrier nut",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 10,
+   "partNumbers": [
+    {
+     "number": "GHF201",
+     "by": "MGOC Spares (plain nut 5/16 UNF)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread",
+     "label": "Thread",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in UNF case studs",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.carrier-washer": {
+   "id": "axle.carrier.carrier-washer",
+   "kind": "part",
+   "name": "Carrier nut spring washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 10,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer (MGOC GHF332)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.cap-stud": {
+   "id": "axle.carrier.cap-stud",
+   "kind": "part",
+   "name": "Bearing cap stud",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 14
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "3.50 in (88.90 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Saddle, cap, washers and nut, 3/8 in UNF",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.cap-plain-washer": {
+   "id": "axle.carrier.cap-plain-washer",
+   "kind": "part",
+   "name": "Bearing cap plain washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 15
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "PWZ206",
+     "by": "MGOC Spares (large plain washer 3/8)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Large 3/8 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "10.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.cap-spring-washer": {
+   "id": "axle.carrier.cap-spring-washer",
+   "kind": "part",
+   "name": "Bearing cap spring washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 16
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "15.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in spring washer (MGOC GHF333)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "9.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.cap-nut": {
+   "id": "axle.carrier.cap-nut",
+   "kind": "part",
+   "name": "Bearing cap nut",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 17
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "GHF202",
+     "by": "MGOC Spares (plain nut 3/8 UNF)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "65 lbf ft (88 Nm)",
+     "source": "F",
+     "sourceName": "Factory manual",
+     "ref": "MGB workshop manual Section H.8 (manualslib.com/manual/1273353 p210): bearing cap nuts 65 lb ft",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.carrier.pinion": {
+   "id": "axle.carrier.pinion",
+   "kind": "part",
+   "name": "Pinion (crown wheel and pinion)",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 27
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "The pinion of the matched crown wheel and pinion (sold as a pair): 11 teeth for the 3.909 (43/11) ratio (H p142). Spiral (hypoid) teeth on the head, the rear bearing seat behind the head, the shank, the front bearing seat, the splines for the flange and the 3/4 in UNF thread for the nut. Hypoid offset, pitch sizes and spiral angle derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "teeth",
+     "label": "Teeth",
+     "value": "11",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p142",
+     "note": "Ratio 3.909:1 (43/11)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "ratio",
+     "label": "Ratio",
+     "value": "4",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p142",
+     "note": "Ratio 3.909:1",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.carrier.pinion-thrust-washer": {
+   "id": "axle.carrier.pinion-thrust-washer",
+   "kind": "part",
+   "name": "Pinion thrust washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 30
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "ATB7066",
+     "by": "BMC (MGOC Spares: pinion thrust washer 0.122)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Behind the pinion head; selective thickness sets the pinion's depth of mesh.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.119 in (3.0226 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Middle of the 0.112-0.126 in range (H p143, Fig 8.1 item 30)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "range",
+     "label": "Range",
+     "value": "0.112 to 0.126 in (2.85 to 3.20 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p143",
+     "note": "Fig 8.1 item 30: 0.112 to 0.126 in (2.85 to 3.20 mm)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "axle.carrier.rear-pinion-bearing": {
+   "id": "axle.carrier.rear-pinion-bearing",
+   "kind": "part",
+   "name": "Rear pinion bearing",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 31
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "100897A",
+     "by": "MGOC Spares (differential pinion bearing, inner)"
+    }
+   ],
+   "material": null,
+   "finish": "bearing",
+   "notes": "Taper roller bearing behind the pinion head, cup in the nose (sizes derived).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "72.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "35 x 72 x 24 assumed",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.bearing-spacer": {
+   "id": "axle.carrier.bearing-spacer",
+   "kind": "part",
+   "name": "Pinion bearing spacer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 32
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "1B7240",
+     "by": "BMC (MGOC Spares: pinion bearing spacer, banjo axle)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Rigid spacer between the bearing cones (the semi-floating axle has a collapsible one, Sec 7 para 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "121.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Between the two bearing cones (rear_axle_layout)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.pinion-shim": {
+   "id": "axle.carrier.pinion-shim",
+   "kind": "part",
+   "name": "Pinion bearing shim",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 34
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "ATB7104",
+     "by": "BMC (MGOC Spares: outer bearing shim 0.008; 0.004 to 0.030 listed)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Shims between the spacer and the front bearing cone set the bearing preload.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.01 in (0.254 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Within the 0.004-0.030 in range (H p143, Fig 8.1 item 34)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.front-pinion-bearing": {
+   "id": "axle.carrier.front-pinion-bearing",
+   "kind": "part",
+   "name": "Front pinion bearing",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 33
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "2A7213",
+     "by": "MGOC Spares (outer differential pinion bearing, banjo)"
+    }
+   ],
+   "material": null,
+   "finish": "bearing",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "62.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "30 x 62 x 18 assumed",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.pinion-seal": {
+   "id": "axle.carrier.pinion-seal",
+   "kind": "part",
+   "name": "Pinion oil seal",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 7,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 35
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "88G320",
+     "by": "MGOC Spares (differential pinion nose oil seal, banjo)"
+    }
+   ],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Prised out after the flange and end cover; the new seal goes in lip inwards, the flange's face oiled (Sec 7 paras 5-6).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "2.385 in (60.579 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mail.mgaguru.com/mgtech/rearaxle/ra201.htm",
+     "note": "Pinion seal size 2.385 in OD (B-series axle)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.carrier.dust-cover": {
+   "id": "axle.carrier.dust-cover",
+   "kind": "part",
+   "name": "Dust cover (end cover)",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 7,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 36
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Steel end cover on the flange, its skirt over the end of the nose; removed after the flange (Sec 7 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressed steel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.pinion-flange": {
+   "id": "axle.carrier.pinion-flange",
+   "kind": "part",
+   "name": "Pinion flange",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 7,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 37
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Splined on the pinion, its hub running in the oil seal and bearing on the front bearing cone; four holes on the propeller shaft pitch circle with ears behind, and a recess in the face round the nut so the propeller shaft flange seats flat. Mark it and the propeller shaft flange before parting (Sec 7 para 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "96.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the propeller shaft flange yoke",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.pinion-nut": {
+   "id": "axle.carrier.pinion-nut",
+   "kind": "part",
+   "name": "Pinion nut",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 7,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 38
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "FNZ612",
+     "by": "MGOC Spares (thin locknut 3/4 UNF, high tensile)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "135 to 140 lbf ft (183 to 190 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p142",
+     "note": "Pinion bearing nut (three-quarter floating axle) 135 to 140 lbf ft (183 to 190 Nm)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "1.125 in (28.575 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI/ASME B18.2.2 finished hex nut, 3/4 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.carrier.pinion-washer": {
+   "id": "axle.carrier.pinion-washer",
+   "kind": "part",
+   "name": "Pinion nut spring washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 7,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 39
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "WL600121",
+     "by": "MGOC Spares (spring lock washer 3/4)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "31.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "19.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/4 in spring washer, inside the recess",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.casing.case": {
+   "id": "axle.casing.case",
+   "kind": "part",
+   "name": "Axle case (banjo)",
+   "parent": "axle.casing",
+   "haynes": {
+    "section": 3,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": "Pressed and welded steel, forged ends",
+   "finish": "paint_black",
+   "notes": "Banjo case of two pressings welded on the horizontal centre line (the seam bead, drawn as the serrated line in Fig 8.1), a ring round the front opening with the ten gear carrier studs, the necks and tubes, forged ends welded in: brake backplate flange (four lobes), the hub oil seal track (1 15/16 in, the seal's bore), the 40 mm hub bearing journal and the bearing nut thread - left-hand on the left, right-hand on the right (mgaguru.com hub_06; BritishCarForum) - with a keyway for the locking washer's tab. Spring seats welded under the tubes (the locating plate, pad, spring and damper bracket go under them, Ch 11 Fig 11.4); a bracket under each tube with the rebound strap spindle (Fig 8.1 item 5 is its nut; Ch 8 Sec 3 para 4 'check straps ... on the anchor pins'); bosses for the breather on top (Sec 2 para 3), the combined filler/level plug on the rear face (Sec 2 para 1) and the drain plug; a tab for the brake pipe three-way union and the pin for the handbrake balance lever (Sec 3 paras 4-5; their parts are P8). Lubricant 2.25 Imp pints (p142). Positions of the seats, brackets, tab and pin are derived; the hand of each thread follows the references above (see PLAN questions).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "tube_diameter",
+     "label": "Tube diameter",
+     "value": "76.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 8.1 proportions against the 80 mm hub bearing",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width_over_backplate_faces",
+     "label": "Width over backplate faces",
+     "value": "1124.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Drum inside the inner half of the 4 1/2J rim on the 49.25 in track (rear_axle_layout)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "1.50 in (38.10 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Inside the 40 mm bearing bore, 16 tpi",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.casing.case-stud": {
+   "id": "axle.casing.case-stud",
+   "kind": "part",
+   "name": "Gear carrier stud",
+   "parent": "axle.casing",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 10,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Ten studs in the case ring for the differential carrier (Sec 8 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.375 in (34.925 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Ring, gasket, carrier flange, spring washer and nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.casing.breather": {
+   "id": "axle.casing.breather",
+   "kind": "part",
+   "name": "Breather assembly",
+   "parent": "axle.casing",
+   "haynes": {
+    "section": 2,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "21H6060",
+     "by": "BMC (MGOC Spares: breather assembly, gearbox/rear axle)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "On the top of the axle casing; remove and clean in petrol from time to time - a clogged breather causes oil leaks (Sec 2 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "22.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Hex 14.3 mm, domed cap",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.casing.filler-plug": {
+   "id": "axle.casing.filler-plug",
+   "kind": "part",
+   "name": "Filler and level plug",
+   "parent": "axle.casing",
+   "haynes": {
+    "section": 2,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 10
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Combined filler/level plug on the rear face; top up to the level of the plug and let any excess run out before refitting (Sec 2 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Hexagon plug",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.casing.drain-plug": {
+   "id": "axle.casing.drain-plug",
+   "kind": "part",
+   "name": "Drain plug",
+   "parent": "axle.casing",
+   "haynes": {
+    "section": 2,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 9
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "6K499",
+     "by": "MGOC Spares (hex-key drain plug, gearbox/axle)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Under the case; drain the oil hot after a run (Sec 2 para 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "head_diameter",
+     "label": "Head diameter",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Round head, hexagon socket",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.casing.spindle-nut": {
+   "id": "axle.casing.spindle-nut",
+   "kind": "part",
+   "name": "Rebound spindle nut",
+   "parent": "axle.casing",
+   "haynes": {
+    "section": 3,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 5
+     },
+     {
+      "figure": "11.4",
+      "legend": 26
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Holds the rebound (check) strap on its spindle (Ch 8 Sec 3 para 4; Ch 11 Sec 8 para 1). Drawn at its fitted position; the strap, plain and spring washers between are P9.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread",
+     "label": "Thread",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/8 in UNF spindle",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.crown-wheel": {
+   "id": "axle.carrier.crown-wheel",
+   "kind": "part",
+   "name": "Crown wheel",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 27
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "BTB414E",
+     "by": "MGOC Spares (differential assembly 3.909:1, MGB)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "43 teeth (3.909 = 43/11, H p142), spiral (hypoid) form, bolted to the cage's flange on the left with eight bolts; the backlash is etched on its rear face (factory manual H.8). 190 mm pitch diameter, face width and spiral angle derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "teeth",
+     "label": "Teeth",
+     "value": "43",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p142",
+     "note": "Ratio 3.909:1 (43/11)",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "192.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Back ring, 190 mm pitch diameter",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "axle.carrier.crown-wheel-bolt": {
+   "id": "axle.carrier.crown-wheel-bolt",
+   "kind": "part",
+   "name": "Crown wheel bolt",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 28
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [
+    {
+     "number": "ATA7043",
+     "by": "MGOC Spares (crown wheel bolt)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Through the cage flange into the crown wheel, locked in pairs by the tab washers.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.875 in (22.225 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flange 10 mm and 12 mm of thread in the crown wheel, 3/8 in UNF",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.crown-wheel-lockwasher": {
+   "id": "axle.carrier.crown-wheel-lockwasher",
+   "kind": "part",
+   "name": "Crown wheel bolt lockwasher",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 29
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Tab plate under each pair of bolt heads, the tabs turned up against the flats (Fig 8.1 item 29).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.9 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Tab washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.cage": {
+   "id": "axle.carrier.cage",
+   "kind": "part",
+   "name": "Differential cage",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 20
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": "Cast iron",
+   "finish": "cast_iron",
+   "notes": "One-piece cage with two windows for the gears, the pinion shaft bosses, the crown wheel flange and spigot, and two hubs for the bearings (Fig 8.1 item 20).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bearing_seat",
+     "label": "Bearing seat",
+     "value": "38.1 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Differential bearing bore (CHM163 assumed 1.5 x 3.15 x 0.83 in)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.pinion-shaft": {
+   "id": "axle.carrier.pinion-shaft",
+   "kind": "part",
+   "name": "Differential pinion shaft",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 25
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "1G7444",
+     "by": "MGOC Spares (differential gear pin shaft, banjo)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "104.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Across the cage's bosses, 5/8 in diameter",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.pinion-peg": {
+   "id": "axle.carrier.pinion-peg",
+   "kind": "part",
+   "name": "Pinion peg",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 26
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Locates the pinion shaft in the cage.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the shaft into the boss",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.side-gear": {
+   "id": "axle.carrier.side-gear",
+   "kind": "part",
+   "name": "Differential wheel (side gear)",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 21
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Splined for the axleshaft; straight bevel teeth (16, derived) meshing with the two pinions.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "teeth",
+     "label": "Teeth",
+     "value": "16",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Straight bevel pair 16/10 drawn from Fig 8.1 item 21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.side-thrust-washer": {
+   "id": "axle.carrier.side-thrust-washer",
+   "kind": "part",
+   "name": "Differential wheel thrust washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 22
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "ATB7072",
+     "by": "MGOC Spares (differential gear thrust washer)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flat thrust washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.diff-pinion": {
+   "id": "axle.carrier.diff-pinion",
+   "kind": "part",
+   "name": "Differential pinion",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 23
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "On the pinion shaft, spherical back on its domed thrust washer (Fig 8.1 items 23-24).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "teeth",
+     "label": "Teeth",
+     "value": "10",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Straight bevel pair 16/10 drawn from Fig 8.1 item 23",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.diff-pinion-thrust-washer": {
+   "id": "axle.carrier.diff-pinion-thrust-washer",
+   "kind": "part",
+   "name": "Differential pinion thrust washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 24
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "1G7445",
+     "by": "MGOC Spares (pinion gear thrust washer, banjo and tube axles)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Domed thrust washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.diff-bearing": {
+   "id": "axle.carrier.diff-bearing",
+   "kind": "part",
+   "name": "Differential bearing",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 18
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "CHM163",
+     "by": "MGOC Spares (differential bearing, banjo); BPNW cross-references 2K8938"
+    }
+   ],
+   "material": null,
+   "finish": "bearing",
+   "notes": "Ball bearing as Fig 8.1 item 18 shows it; sizes derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "80.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Assumed 38.1 x 80 x 21",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.carrier.packing-washer": {
+   "id": "axle.carrier.packing-washer",
+   "kind": "part",
+   "name": "Differential bearing packing washer",
+   "parent": "axle.carrier",
+   "haynes": {
+    "section": 8,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 19
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Between each bearing and its saddle shoulder; selective, they set the crown wheel's backlash (factory manual H.8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "ratio": "3.909"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.006 in (0.1524 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Within the 0.002-0.010 in range (H p143, Fig 8.1 item 19)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "range",
+     "label": "Range",
+     "value": "0.002 to 0.010 in (0.051 to 0.254 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p143",
+     "note": "Fig 8.1 item 19: packing washer 0.002 to 0.010 in (0.051 to 0.254 mm)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "axle.hubs.axleshaft": {
+   "id": "axle.hubs.axleshaft",
+   "kind": "part",
+   "name": "Axleshaft (wire wheels)",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 4,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 41
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Splined at both ends: the inner end into the differential wheel, the outer into the hub extension; no flange on the wire wheel shaft. Withdrawn after the drum and the hub extension, noting the O-ring seal (Sec 4 paras 5-6). Jack up that side first so the oil does not reach the linings (para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "1.125 in (28.575 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Shaft between the splines",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.hubs.hub": {
+   "id": "axle.hubs.hub",
+   "kind": "part",
+   "name": "Rear hub (wire wheels)",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 5,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 51
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "A bell over the bearing on the end of the case, the oil seal in its inner end, a lobed flange with the four studs for the drum and hub extension and the tapped hole for the extension screw. Drawn off with a puller complete with the bearing and seal (Sec 5 para 3). The bearing's outer face stands 0.001 to 0.004 in proud of the hub so the extension's flange clamps it against the shoulder (para 4d).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bearing_bore",
+     "label": "Bearing bore",
+     "value": "80.0 mm (3.150 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/rearaxle/ra112.htm",
+     "note": "Rear hub bearing 2K7477 (LDJ40 / 4208), 3.1496 in (80.0 mm) OD",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bearing_proud",
+     "label": "Bearing proud",
+     "value": "0.001 to 0.004 in (0.025 to 0.102 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p143",
+     "note": "Sec 5 para 4d: outer bearing face protrudes 0.001 to 0.004 in (0.025 to 0.102 mm)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.hub-stud": {
+   "id": "axle.hubs.hub-stud",
+   "kind": "part",
+   "name": "Hub stud (wire wheels)",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 4,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 52
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [
+    {
+     "number": "BTB229",
+     "by": "MGOC Spares (hub stud, banjo axle page)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Pressed into the hub flange; the hub extension and brake drum go over them, held by four nuts (Sec 4 para 5). The nuts come with the drum in P8.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.375 in (34.925 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Hub flange, extension flange, drum and nut, 1/2 in UNF",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.hubs.hub-bearing": {
+   "id": "axle.hubs.hub-bearing",
+   "kind": "part",
+   "name": "Hub bearing",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 5,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 55
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "2K7477",
+     "by": "BMC (mgaguru.com RA-112: LDJ40 or 4208; also GHB127, GHK1133)"
+    }
+   ],
+   "material": null,
+   "finish": "bearing",
+   "notes": "Double row ball bearing on the case journal, lubricated by the axle oil (open); grease before refitting (Sec 5 para 4b).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "80.0 mm (3.150 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/rearaxle/ra112.htm",
+     "note": "2K7477: 40 x 80 x 23 mm",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "23.0 mm (0.906 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/rearaxle/ra112.htm",
+     "note": "2K7477: 40 x 80 x 23 mm",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.hub-seal": {
+   "id": "axle.hubs.hub-seal",
+   "kind": "part",
+   "name": "Hub oil seal",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 5,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 54
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GHS211",
+     "by": "MGOC Spares (rear hub oil seal, banjo)"
+    },
+    {
+     "number": "8G555",
+     "by": "BMC (mgaguru.com RA-112A)"
+    }
+   ],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Drifted into the hub before the bearing, lip inwards toward the differential (Sec 5 para 4a); runs on the case.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "1.9375 in (49.2125 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/rearaxle/ra112a.htm",
+     "note": "1-15/16 in ID",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "2.75 in (69.85 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/rearaxle/ra112a.htm",
+     "note": "2-3/4 in OD",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "0.3125 in (7.9375 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/rearaxle/ra112a.htm",
+     "note": "5/16 in wide",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.o-ring": {
+   "id": "axle.hubs.o-ring",
+   "kind": "part",
+   "name": "O-ring seal",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 4,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 53
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "ATB7354",
+     "by": "MGOC Spares (O-ring seal, banjo)"
+    }
+   ],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Wire wheels: seals the hub extension's flange to the hub round the bearing; renew it on reassembly (Sec 4 paras 6-7). Placed in a groove in the extension flange (D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "section",
+     "label": "Section",
+     "value": "2.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "O-ring cord in a 2.5 mm groove",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.hubs.lockwasher": {
+   "id": "axle.hubs.lockwasher",
+   "kind": "part",
+   "name": "Bearing nut locking washer",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 5,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "1G7584",
+     "by": "MGOC Spares (locktab washer, rear axle hub nut, banjo)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Inner tab in the case keyway, outer tabs knocked up against the nut's flats (Sec 5 paras 2, 4e).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Tab washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "axle.hubs.bearing-nut-rh": {
+   "id": "axle.hubs.bearing-nut-rh",
+   "kind": "part",
+   "name": "Hub bearing nut, RH thread (right-hand hub)",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 5,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "1G7448",
+     "by": "MGOC Spares (rear axle hub nut, RH thread, banjo)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Octagonal nut holding the bearing on the case (Sec 5 para 2). Right-hand thread on the right-hand (off side) hub so forward rotation tends to tighten it (mgaguru.com hub_06; BritishCarForum). The MGOC page text gives the opposite pairing to its own part titles - see PLAN questions. Thread 1 1/2 in 16 tpi derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "1.95312 in (49.609 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966",
+     "note": "18G152B rear hub box spanner 1 61/64 in; eight-sided (mgaguru.com hub_06, magnette.org)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.bearing-nut-lh": {
+   "id": "axle.hubs.bearing-nut-lh",
+   "kind": "part",
+   "name": "Hub bearing nut, LH thread (left-hand hub)",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 5,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "1G7582",
+     "by": "MGOC Spares / Rimmer Bros (lock nut, left hand thread)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "As the RH nut with a left-hand thread, on the left-hand (near side) hub.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "1.95312 in (49.609 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966",
+     "note": "18G152B rear hub box spanner 1 61/64 in",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.hub-extension-rh": {
+   "id": "axle.hubs.hub-extension-rh",
+   "kind": "part",
+   "name": "Hub extension, RH (wire wheels)",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 4,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 42
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "BTB332",
+     "by": "BMC (MGOC Spares: wire wheel hub, 12 TPI, RH, Mk1)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "On the right-hand hub. Flange on the hub studs (the brake drum over it, four nuts) and held by the countersunk screw; the inner cone the wheel centre seats on, 42 mm series Rudge-Whitworth splines and the spinner thread - left-hand on the car's right-hand side (MGOC \"wheel spinners\"), 12 tpi on cars to GHN3-30850 (about February 1964; MGOC, S C Parts 6954). Splined inside for the axleshaft, closed by the Welch plug. Withdrawn after the drum by undoing the screw (Sec 4 paras 5-6). Spline count, cone and thread diameters derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "spline_major",
+     "label": "Spline major",
+     "value": "42.0 mm (1.654 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/wheels/wl113.htm",
+     "note": "All MGA (and MGB) use 42 mm series hubs and nuts",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "spinner_tpi",
+     "label": "Spinner tpi",
+     "value": "12",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/road-wheels/wheel-spinners",
+     "note": "12 tpi to chassis GHN3-30850, 8 tpi after",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.hub-extension-lh": {
+   "id": "axle.hubs.hub-extension-lh",
+   "kind": "part",
+   "name": "Hub extension, LH (wire wheels)",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 4,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 43
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "BTB333",
+     "by": "BMC (MGOC Spares: wire wheel hub, 12 TPI, LH, Mk1)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "On the left-hand hub, with a right-hand spinner thread; otherwise as the RH extension.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "spline_major",
+     "label": "Spline major",
+     "value": "42.0 mm (1.654 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://mgaguru.com/mgtech/wheels/wl113.htm",
+     "note": "42 mm series hubs",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "spinner_tpi",
+     "label": "Spinner tpi",
+     "value": "12",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/road-wheels/wheel-spinners",
+     "note": "12 tpi to chassis GHN3-30850",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.welch-plug": {
+   "id": "axle.hubs.welch-plug",
+   "kind": "part",
+   "name": "Welch plug",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 4,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 44
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "2K8160",
+     "by": "MGOC Spares (core plug 1 5/16 in)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Closes the outer end of the hub extension.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "1.3125 in (33.3375 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966",
+     "note": "2K8160 core plug 1 5/16 in",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "axle.hubs.screw": {
+   "id": "axle.hubs.screw",
+   "kind": "part",
+   "name": "Screw, hub extension to hub",
+   "parent": "axle.hubs",
+   "haynes": {
+    "section": 4,
+    "spec_page": 142,
+    "figures": [
+     {
+      "figure": "8.1",
+      "legend": 46
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "SF604061",
+     "by": "MGOC Spares (countersunk recessed screw 1/4 UNF x 3/4)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "The extension flange screw (Sec 4 para 6).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "axle_type": "three_quarter_floating",
+    "wire_wheels": true,
+    "spinner_tpi": 12
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.75 in (19.05 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966",
+     "note": "SF604061 1/4 UNF x 3/4",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
   },
   "clutch.hydraulics.mc-body": {
    "id": "clutch.hydraulics.mc-body",
@@ -31912,9 +34632,4048 @@
     }
    ],
    "derivedShare": 1.0
+  },
+  "propshaft.shaft.flange-yoke": {
+   "id": "propshaft.shaft.flange-yoke",
+   "kind": "part",
+   "name": "Flange yoke",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 2
+     },
+     {
+      "figure": "7.4"
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "7H3863",
+     "by": "BMC (MGOC Spares: yoke with drive flange, rear)"
+    }
+   ],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "One at each end: the front on the overdrive coupling flange, the rear on the axle pinion flange, four bolts each. A round flange with a recessed face (it clears the overdrive flange's castellated nut and the pinion nut), two forged ears with round eye bosses bored for the bearing cups and grooved for the circlips (Fig 7.1 item 2; photos 5.4b-d). Scratch a mark across the four flanges before removal; the shaft is balanced and must go back in the same position (Sec 3 para 2). Form from Fig 7.1 and the photos; sizes from Fig 7.4 scaled to the 96 mm overdrive flange.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "96.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Matches the overdrive coupling flange (overdrive_layout FLANGE_R)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "bolt_circle",
+     "label": "Bolt circle",
+     "value": "3.125 in (79.375 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Overdrive flange pitch circle (P5b, Fig 6.12 scale)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "face_to_joint",
+     "label": "Face to joint",
+     "value": "34.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 7.4 scaled, 0.282 mm/px",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.spider": {
+   "id": "propshaft.shaft.spider",
+   "kind": "part",
+   "name": "Journal (spider)",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 8
+     },
+     {
+      "figure": "7.5",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GUJ115",
+     "by": "MGOC Spares / Rimmer Bros (greasable joint)"
+    }
+   ],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Journal assembly: square centre, four ground journals drilled for grease, shoulders for the gaskets; the lubricator faces the propeller shaft, not the flange yoke (Sec 4 para 9). Coat the shoulders with shellac on reassembly (Sec 4 para 7).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "span",
+     "label": "Span",
+     "value": "74.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Length across the cups of a GUJ115-size joint (GMB 2151100, as URO URGUJ115 listed for the MGB)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "journal_diameter",
+     "label": "Journal diameter",
+     "value": "15.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Cup bore less the needles",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.needle-bearing": {
+   "id": "propshaft.shaft.needle-bearing",
+   "kind": "part",
+   "name": "Needle bearing assembly",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 9
+     },
+     {
+      "figure": "7.5",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "bearing",
+   "notes": "Drawn cup with its needle rollers, tapped out of the yoke after the circlip (Sec 4 paras 5-6, Fig 7.2-7.3); assemble the needles with thin grease (para 8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "27.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "GUJ115-size cup (GMB 2151100: 1.063 in, 27 mm)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.circlip": {
+   "id": "propshaft.shaft.circlip",
+   "kind": "part",
+   "name": "Bearing circlip",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 10
+     },
+     {
+      "figure": "7.5",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "In the groove of each yoke eye outside the cup (Sec 4 para 5); the lugs as Fig 7.5.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Circlip for a 27 mm cup",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.gasket": {
+   "id": "propshaft.shaft.gasket",
+   "kind": "part",
+   "name": "Journal gasket",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cork",
+   "notes": "Cork gasket on each journal shoulder, sealing the open end of the cup; renew on reassembly (Sec 4 para 8). The sealed type joint has a rubber seal instead (Sec 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Shoulder to cup clearance",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.gasket-retainer": {
+   "id": "propshaft.shaft.gasket-retainer",
+   "kind": "part",
+   "name": "Gasket retainer",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 12
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Pressed steel retainer over each gasket, refitted with a hollow drift (Sec 4 para 8).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressed steel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.lubricator": {
+   "id": "propshaft.shaft.lubricator",
+   "kind": "part",
+   "name": "Journal lubricator",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 2,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 13
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "7H3858",
+     "by": "BMC (MGOC Spares: nipple, grease, UJ)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "One grease nipple on each joint (Sec 2 para 1), three or four strokes of the gun (para 2). Screwed into the spider's centre on the shaft side, angled between two journals (D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "12.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Hex 7 mm, ball head",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.sleeve-yoke": {
+   "id": "propshaft.shaft.sleeve-yoke",
+   "kind": "part",
+   "name": "Sleeve yoke (sleeve assembly)",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 3
+     },
+     {
+      "figure": "7.4"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "7H3865",
+     "by": "BMC (MGOC Spares: yoke with sliding joint, front)"
+    }
+   ],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Front yoke with the splined sleeve the shaft slides in (the sliding spline that takes up the axle's fore-and-aft movement, Sec 1). Hexagonal boss for its lubricator (Fig 7.4), thread for the dust cap, an arrow to line up with the arrow on the shaft so the yokes lie in line (Sec 4 para 11, Fig 7.4 yokes A and B). Sizes from Fig 7.4 scaled.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "38.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 7.4 scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "spline_length",
+     "label": "Spline length",
+     "value": "85.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Stub engaged 27 mm fully extended, 70 mm fully compressed (propshaft_layout)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.sleeve-lubricator": {
+   "id": "propshaft.shaft.sleeve-lubricator",
+   "kind": "part",
+   "name": "Sleeve lubricator",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 2,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "UHN400",
+     "by": "MGOC Spares (grease nipple straight)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "The third nipple, on the sliding yoke (Sec 2 para 1); the only one on the sealed type.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "12.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the journal lubricator",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.dust-cap": {
+   "id": "propshaft.shaft.dust-cap",
+   "kind": "part",
+   "name": "Dust cap",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Knurled cap screwed onto the end of the sleeve, holding the steel and cork washers round the shaft splines (Sec 4 paras 3, 10-11).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "44.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 7.4 scaled",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.steel-washer": {
+   "id": "propshaft.shaft.steel-washer",
+   "kind": "part",
+   "name": "Steel washer",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Inside the dust cap (Sec 4 para 10).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Plain steel washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.cork-washer": {
+   "id": "propshaft.shaft.cork-washer",
+   "kind": "part",
+   "name": "Cork washer",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 4,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cork",
+   "notes": "Seals the dust cap on the splines; fit a new one (Sec 4 para 10).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Cork washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.shaft": {
+   "id": "propshaft.shaft.shaft",
+   "kind": "part",
+   "name": "Shaft assembly (tube and splined stub)",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 3,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 1
+     },
+     {
+      "figure": "7.4"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "AHH7487",
+     "by": "BMC (MGOC Spares: propshaft 31 1/8 in, banjo axle and 3-synchro overdrive)"
+    }
+   ],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Splined stub, swaged cone, the tube with its bands and the rear yoke welded on (Fig 7.4); arrow on the stub (Sec 4 para 11). Shafts of different lengths are used on standard and overdrive cars (Sec 1); this is the overdrive length. Installed at the supplier length 31 1/8 in between the flange faces, 4.3 deg down toward the rear (overdrive flange on the crank axis, pinion 1 in below the axle centre, both level). Tube diameter and the stub from Fig 7.4 scaled.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "overall_length_extended",
+     "label": "Overall length extended",
+     "value": "31.875 in (809.625 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p138",
+     "note": "Overall length fully extended, overdrive: 31 7/8 in (81.0 cm)",
+     "erratum": false,
+     "printed_mm": [
+      810.0
+     ]
+    },
+    {
+     "key": "overall_length_compressed",
+     "label": "Overall length compressed",
+     "value": "30.1875 in (766.76 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p138",
+     "note": "Fully compressed, overdrive: 30 3/16 in printed as 76.5 cm",
+     "erratum": true,
+     "printed_mm": [
+      765.0
+     ]
+    },
+    {
+     "key": "shaft_assembly_length",
+     "label": "Shaft assembly length",
+     "value": "26.46875 in (672.31 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p138",
+     "note": "Length of shaft assembly, overdrive: 26 15/32 in printed as 67.0 cm; taken from the rear flange face to the front of the splined stub",
+     "erratum": true,
+     "printed_mm": [
+      670.0
+     ]
+    },
+    {
+     "key": "installed_length",
+     "label": "Installed length",
+     "value": "31.125 in (790.575 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://bpnorthwest.com/mg/driveshaft-overdrive-mgb-63-to-67",
+     "note": "AHH7487EOD 31.125 in overall, MGB 1963-67 overdrive banjo axle",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "tube_diameter",
+     "label": "Tube diameter",
+     "value": "2.25 in (57.15 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 7.4 scaled (205 px at 0.282 mm/px)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "stub_to_joint",
+     "label": "Stub to joint",
+     "value": "638.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Shaft assembly length less the flange face to joint centre",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.33
+  },
+  "propshaft.shaft.balance-weight": {
+   "id": "propshaft.shaft.balance-weight",
+   "kind": "part",
+   "name": "Balance weight",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 3,
+    "spec_page": 138
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "The shaft is balanced to fine limits (Sec 3 para 2); the weights are spot welded where the balancing machine put them (positions D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Small steel weight",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Small steel weight",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.flange-bolt": {
+   "id": "propshaft.shaft.flange-bolt",
+   "kind": "part",
+   "name": "Flange bolt",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 3,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 14
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [
+    {
+     "number": "AAA4039",
+     "by": "BMC (MGOC Spares: propshaft rear flange to axle pinion flange; Rimmer Bros 5/16 UNF x 1 1/8)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Four at each end on three-synchro cars (MGOC); head on the yoke side, as Fig 7.1. Flange nuts 30 to 35 lbf ft (Haynes specifications).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.125 in (28.575 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://rimmerbros.com/Item--i-AAA4039",
+     "note": "5/16 UNF x 1 1/8 in",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "torque",
+     "label": "Torque",
+     "value": "30 to 35 lbf ft (41 to 47 Nm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p138",
+     "note": "Flange nuts 30 to 35 lbf ft (41 to 47 Nm)",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "propshaft.shaft.flange-nut": {
+   "id": "propshaft.shaft.flange-nut",
+   "kind": "part",
+   "name": "Flange nut (self-locking)",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 3,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 15
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [
+    {
+     "number": "GHF222",
+     "by": "MGOC Spares (nut, nyloc, 5/16 UNF)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Self-locking nuts, renewed if possible (Sec 3 paras 3-4); on the companion flange side.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 UNF nyloc nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "propshaft.shaft.flange-washer": {
+   "id": "propshaft.shaft.flange-washer",
+   "kind": "part",
+   "name": "Flange bolt washer",
+   "parent": "propshaft.shaft",
+   "haynes": {
+    "section": 3,
+    "spec_page": 138,
+    "figures": [
+     {
+      "figure": "7.1",
+      "legend": 16
+     }
+    ]
+   },
+   "quantity": 8,
+   "partNumbers": [
+    {
+     "number": "GHF332",
+     "by": "MGOC Spares (washer, locking, spring, 5/16)"
+    }
+   ],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "overdrive": true,
+    "sealed_joints": false
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer (MGOC GHF332)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
   }
  },
  "instances": {
+  "axle.carrier.carrier#1": {
+   "part": "axle.carrier.carrier",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.gasket#1": {
+   "part": "axle.carrier.gasket",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--gasket__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 131.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#1": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#1": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#2": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#2": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#3": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#3": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#4": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#4": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#5": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__5",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#5": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__5",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#6": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__6",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#6": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__6",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#7": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__7",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#7": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__7",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#8": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__8",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#8": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__8",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#9": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__9",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#9": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__9",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-washer#10": {
+   "part": "axle.carrier.carrier-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-washer__10",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.carrier-nut#10": {
+   "part": "axle.carrier.carrier-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--carrier-nut__10",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 130,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.bearing-cap#1": {
+   "part": "axle.carrier.bearing-cap",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--bearing-cap__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 136,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.cap-stud#1": {
+   "part": "axle.carrier.cap-stud",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-stud__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.cap-plain-washer#1": {
+   "part": "axle.carrier.cap-plain-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-plain-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.cap-spring-washer#1": {
+   "part": "axle.carrier.cap-spring-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.cap-nut#1": {
+   "part": "axle.carrier.cap-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-nut__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.cap-stud#2": {
+   "part": "axle.carrier.cap-stud",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-stud__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-plain-washer#2": {
+   "part": "axle.carrier.cap-plain-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-plain-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-spring-washer#2": {
+   "part": "axle.carrier.cap-spring-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-nut#2": {
+   "part": "axle.carrier.cap-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-nut__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.bearing-cap#2": {
+   "part": "axle.carrier.bearing-cap",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--bearing-cap__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 136,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-stud#3": {
+   "part": "axle.carrier.cap-stud",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-stud__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-plain-washer#3": {
+   "part": "axle.carrier.cap-plain-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-plain-washer__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-spring-washer#3": {
+   "part": "axle.carrier.cap-spring-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-spring-washer__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-nut#3": {
+   "part": "axle.carrier.cap-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-nut__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-stud#4": {
+   "part": "axle.carrier.cap-stud",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-stud__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-plain-washer#4": {
+   "part": "axle.carrier.cap-plain-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-plain-washer__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-spring-washer#4": {
+   "part": "axle.carrier.cap-spring-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-spring-washer__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.cap-nut#4": {
+   "part": "axle.carrier.cap-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cap-nut__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 135,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.pinion#1": {
+   "part": "axle.carrier.pinion",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 145,
+     "distance_mm": 220,
+     "group": "pinion"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.pinion-thrust-washer#1": {
+   "part": "axle.carrier.pinion-thrust-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-thrust-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 145,
+     "distance_mm": 220,
+     "group": "pinion"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.rear-pinion-bearing#1": {
+   "part": "axle.carrier.rear-pinion-bearing",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--rear-pinion-bearing__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 145,
+     "distance_mm": 220,
+     "group": "pinion"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.bearing-spacer#1": {
+   "part": "axle.carrier.bearing-spacer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--bearing-spacer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 146,
+     "distance_mm": 140
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.pinion-shim#1": {
+   "part": "axle.carrier.pinion-shim",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-shim__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 146.5,
+     "distance_mm": 170
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.front-pinion-bearing#1": {
+   "part": "axle.carrier.front-pinion-bearing",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--front-pinion-bearing__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 147,
+     "distance_mm": 200
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.pinion-seal#1": {
+   "part": "axle.carrier.pinion-seal",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-seal__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 134,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.dust-cover#1": {
+   "part": "axle.carrier.dust-cover",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--dust-cover__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 133.5,
+     "distance_mm": 140
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.pinion-flange#1": {
+   "part": "axle.carrier.pinion-flange",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-flange__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 133,
+     "distance_mm": 160
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.pinion-washer#1": {
+   "part": "axle.carrier.pinion-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 132,
+     "distance_mm": 200
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.pinion-nut#1": {
+   "part": "axle.carrier.pinion-nut",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-nut__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 132,
+     "distance_mm": 230
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.cage#1": {
+   "part": "axle.carrier.cage",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--cage__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel#1": {
+   "part": "axle.carrier.crown-wheel",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 140,
+     "distance_mm": 120,
+     "group": "crown"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#1": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#2": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#3": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#4": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#5": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__5",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#6": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__6",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#7": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__7",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-bolt#8": {
+   "part": "axle.carrier.crown-wheel-bolt",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-bolt__8",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-lockwasher#1": {
+   "part": "axle.carrier.crown-wheel-lockwasher",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-lockwasher__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-lockwasher#2": {
+   "part": "axle.carrier.crown-wheel-lockwasher",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-lockwasher__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-lockwasher#3": {
+   "part": "axle.carrier.crown-wheel-lockwasher",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-lockwasher__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.crown-wheel-lockwasher#4": {
+   "part": "axle.carrier.crown-wheel-lockwasher",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--crown-wheel-lockwasher__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 139,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.pinion-peg#1": {
+   "part": "axle.carrier.pinion-peg",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-peg__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 141,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.pinion-shaft#1": {
+   "part": "axle.carrier.pinion-shaft",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--pinion-shaft__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 142,
+     "distance_mm": 160
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.diff-bearing#1": {
+   "part": "axle.carrier.diff-bearing",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--diff-bearing__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 138,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.packing-washer#1": {
+   "part": "axle.carrier.packing-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--packing-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 138,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.side-gear#1": {
+   "part": "axle.carrier.side-gear",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--side-gear__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 144,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.side-thrust-washer#1": {
+   "part": "axle.carrier.side-thrust-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--side-thrust-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 144,
+     "distance_mm": 55
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.diff-bearing#2": {
+   "part": "axle.carrier.diff-bearing",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--diff-bearing__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 138,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.packing-washer#2": {
+   "part": "axle.carrier.packing-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--packing-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 138,
+     "distance_mm": 110
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.side-gear#2": {
+   "part": "axle.carrier.side-gear",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--side-gear__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 144,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.side-thrust-washer#2": {
+   "part": "axle.carrier.side-thrust-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--side-thrust-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 144,
+     "distance_mm": 55
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.diff-pinion#1": {
+   "part": "axle.carrier.diff-pinion",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--diff-pinion__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 143,
+     "distance_mm": 35
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.diff-pinion-thrust-washer#1": {
+   "part": "axle.carrier.diff-pinion-thrust-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--diff-pinion-thrust-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 143,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.carrier.diff-pinion#2": {
+   "part": "axle.carrier.diff-pinion",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--diff-pinion__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 143,
+     "distance_mm": 35
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.carrier.diff-pinion-thrust-washer#2": {
+   "part": "axle.carrier.diff-pinion-thrust-washer",
+   "assembly": "axle.carrier",
+   "node": "axle--carrier--diff-pinion-thrust-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 131,
+     "distance_mm": 420,
+     "group": "carrier"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 137,
+     "distance_mm": 260,
+     "group": "diff"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 143,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case#1": {
+   "part": "axle.casing.case",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "axle.casing.case-stud#1": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.casing.case-stud#2": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#3": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#4": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#5": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__5",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#6": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__6",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#7": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__7",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#8": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__8",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#9": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__9",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.case-stud#10": {
+   "part": "axle.casing.case-stud",
+   "assembly": "axle.casing",
+   "node": "axle--casing--case-stud__10",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 152,
+     "distance_mm": 120
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.casing.breather#1": {
+   "part": "axle.casing.breather",
+   "assembly": "axle.casing",
+   "node": "axle--casing--breather__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 150,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.casing.filler-plug#1": {
+   "part": "axle.casing.filler-plug",
+   "assembly": "axle.casing",
+   "node": "axle--casing--filler-plug__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 150,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.casing.drain-plug#1": {
+   "part": "axle.casing.drain-plug",
+   "assembly": "axle.casing",
+   "node": "axle--casing--drain-plug__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 150,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.casing.spindle-nut#1": {
+   "part": "axle.casing.spindle-nut",
+   "assembly": "axle.casing",
+   "node": "axle--casing--spindle-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 151,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.casing.spindle-nut#2": {
+   "part": "axle.casing.spindle-nut",
+   "assembly": "axle.casing",
+   "node": "axle--casing--spindle-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 151,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.screw#1": {
+   "part": "axle.hubs.screw",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 120,
+     "distance_mm": 380
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.hub-extension-lh#1": {
+   "part": "axle.hubs.hub-extension-lh",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-extension-lh__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 121,
+     "distance_mm": 260,
+     "group": "ext-l"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.welch-plug#1": {
+   "part": "axle.hubs.welch-plug",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--welch-plug__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 121,
+     "distance_mm": 260,
+     "group": "ext-l"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 122,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.o-ring#1": {
+   "part": "axle.hubs.o-ring",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--o-ring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 121,
+     "distance_mm": 260,
+     "group": "ext-l"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 122,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.axleshaft#1": {
+   "part": "axle.hubs.axleshaft",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--axleshaft__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 123,
+     "distance_mm": 900
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.bearing-nut-lh#1": {
+   "part": "axle.hubs.bearing-nut-lh",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--bearing-nut-lh__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 124,
+     "distance_mm": 190
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.lockwasher#1": {
+   "part": "axle.hubs.lockwasher",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--lockwasher__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 125,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.hub#1": {
+   "part": "axle.hubs.hub",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-l"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#1": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-l"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#2": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-l"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#3": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-l"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#4": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-l"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-bearing#1": {
+   "part": "axle.hubs.hub-bearing",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-bearing__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-l"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 127,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.hub-seal#1": {
+   "part": "axle.hubs.hub-seal",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-seal__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-l"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 127,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.screw#2": {
+   "part": "axle.hubs.screw",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--screw__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 120,
+     "distance_mm": 380
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-extension-rh#1": {
+   "part": "axle.hubs.hub-extension-rh",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-extension-rh__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 121,
+     "distance_mm": 260,
+     "group": "ext-r"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.welch-plug#2": {
+   "part": "axle.hubs.welch-plug",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--welch-plug__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 121,
+     "distance_mm": 260,
+     "group": "ext-r"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 122,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.o-ring#2": {
+   "part": "axle.hubs.o-ring",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--o-ring__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 121,
+     "distance_mm": 260,
+     "group": "ext-r"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 122,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.axleshaft#2": {
+   "part": "axle.hubs.axleshaft",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--axleshaft__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 123,
+     "distance_mm": 900
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.bearing-nut-rh#1": {
+   "part": "axle.hubs.bearing-nut-rh",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--bearing-nut-rh__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 124,
+     "distance_mm": 190
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "axle.hubs.lockwasher#2": {
+   "part": "axle.hubs.lockwasher",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--lockwasher__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 125,
+     "distance_mm": 150
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub#2": {
+   "part": "axle.hubs.hub",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-r"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#5": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-r"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#6": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-r"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#7": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-r"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-stud#8": {
+   "part": "axle.hubs.hub-stud",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-stud__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-r"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-bearing#2": {
+   "part": "axle.hubs.hub-bearing",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-bearing__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-r"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 127,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "axle.hubs.hub-seal#2": {
+   "part": "axle.hubs.hub-seal",
+   "assembly": "axle.hubs",
+   "node": "axle--hubs--hub-seal__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 126,
+     "distance_mm": 90,
+     "group": "hub-r"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 127,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
   "clutch.hydraulics.hose#1": {
    "part": "clutch.hydraulics.hose",
    "assembly": "clutch.hydraulics",
@@ -58510,7 +65269,2075 @@
    ],
    "label": false,
    "fitted": null
+  },
+  "propshaft.shaft.flange-yoke#1": {
+   "part": "propshaft.shaft.flange-yoke",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-yoke__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.spider#1": {
+   "part": "propshaft.shaft.spider",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--spider__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.lubricator#1": {
+   "part": "propshaft.shaft.lubricator",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--lubricator__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      -0.766,
+      0.4545,
+      0.4545
+     ],
+     "order": 109,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#1": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#1": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#1": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#1": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#2": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#2": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#2": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#2": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#3": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#3": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#3": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#3": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#4": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#4": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#4": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#4": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "front-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-yoke#2": {
+   "part": "propshaft.shaft.flange-yoke",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-yoke__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.spider#2": {
+   "part": "propshaft.shaft.spider",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--spider__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.lubricator#2": {
+   "part": "propshaft.shaft.lubricator",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--lubricator__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.766,
+      -0.4545,
+      0.4545
+     ],
+     "order": 109,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#5": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#5": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#5": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#5": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#6": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.0,
+      -1.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#6": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.0,
+      -1.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#6": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.0,
+      -1.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#6": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      -0.0,
+      -1.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#7": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#7": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#7": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#7": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.needle-bearing#8": {
+   "part": "propshaft.shaft.needle-bearing",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--needle-bearing__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 107,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.circlip#8": {
+   "part": "propshaft.shaft.circlip",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--circlip__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 106,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket#8": {
+   "part": "propshaft.shaft.gasket",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 14
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.gasket-retainer#8": {
+   "part": "propshaft.shaft.gasket-retainer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--gasket-retainer__8",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 108,
+     "distance_mm": 60,
+     "group": "rear-spider"
+    },
+    {
+     "axis": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "order": 109,
+     "distance_mm": 24
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.sleeve-yoke#1": {
+   "part": "propshaft.shaft.sleeve-yoke",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--sleeve-yoke__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.sleeve-lubricator#1": {
+   "part": "propshaft.shaft.sleeve-lubricator",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--sleeve-lubricator__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 109,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.dust-cap#1": {
+   "part": "propshaft.shaft.dust-cap",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--dust-cap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 104,
+     "distance_mm": 200,
+     "group": "sleeve"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 104.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.steel-washer#1": {
+   "part": "propshaft.shaft.steel-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--steel-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 105,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.cork-washer#1": {
+   "part": "propshaft.shaft.cork-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--cork-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 105,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.shaft#1": {
+   "part": "propshaft.shaft.shaft",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--shaft__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.balance-weight#1": {
+   "part": "propshaft.shaft.balance-weight",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--balance-weight__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.balance-weight#2": {
+   "part": "propshaft.shaft.balance-weight",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--balance-weight__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 103,
+     "distance_mm": 260,
+     "group": "shaft"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#1": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#1": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#1": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#2": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#2": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#2": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#3": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#3": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#3": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__3",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#4": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#4": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#4": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__4",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#5": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__5",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#5": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#5": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#6": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__6",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#6": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#6": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#7": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__7",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#7": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__7",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#7": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__7",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-bolt#8": {
+   "part": "propshaft.shaft.flange-bolt",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-bolt__8",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 102,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-washer#8": {
+   "part": "propshaft.shaft.flange-washer",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-washer__8",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "propshaft.shaft.flange-nut#8": {
+   "part": "propshaft.shaft.flange-nut",
+   "assembly": "propshaft.shaft",
+   "node": "propshaft--shaft--flange-nut__8",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 101,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
   }
  },
- "built": "2026-11-02T04:54:42+00:00"
+ "built": "2026-11-02T06:40:42+00:00"
 }
