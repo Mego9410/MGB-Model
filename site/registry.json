@@ -60,7 +60,11 @@
    },
    "children": [
     "fuel.carbs",
-    "fuel.pipes"
+    "fuel.exhaust",
+    "fuel.pipes",
+    "fuel.pump",
+    "fuel.supply",
+    "fuel.tank"
    ]
   },
   "ignition": {
@@ -401,7 +405,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468658
+   "bytes": 468674
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -443,7 +447,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592317
+   "bytes": 592169
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -758,7 +762,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 150130
+   "bytes": 150078
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -846,7 +850,7 @@
     "electrical.coil.pinch-screw"
    ],
    "file": "models/electrical.coil.json",
-   "bytes": 95273
+   "bytes": 95217
   },
   "electrical.control": {
    "id": "electrical.control",
@@ -925,7 +929,7 @@
     "electrical.instruments.ignition-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 298639
+   "bytes": 298623
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -982,7 +986,7 @@
     "electrical.loom.overdrive"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 440214
+   "bytes": 439894
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1307,7 +1311,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 161961
+   "bytes": 170472
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -1417,6 +1421,42 @@
    "file": "models/fuel.carbs.json",
    "bytes": 835730
   },
+  "fuel.exhaust": {
+   "id": "fuel.exhaust",
+   "kind": "assembly",
+   "name": "Exhaust system",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [],
+    "section": 46
+   },
+   "children": [
+    "fuel.exhaust.front-pipe",
+    "fuel.exhaust.centre-silencer",
+    "fuel.exhaust.inter-pipe",
+    "fuel.exhaust.rear-silencer",
+    "fuel.exhaust.tail-pipe",
+    "fuel.exhaust.sealing-ring",
+    "fuel.exhaust.manifold-stud",
+    "fuel.exhaust.flange-washer",
+    "fuel.exhaust.flange-nut",
+    "fuel.exhaust.gearbox-bracket",
+    "fuel.exhaust.gearbox-strap",
+    "fuel.exhaust.strap-bolt",
+    "fuel.exhaust.strap-washer",
+    "fuel.exhaust.strap-nut",
+    "fuel.exhaust.rear-bracket",
+    "fuel.exhaust.bracket-screw",
+    "fuel.exhaust.rear-mounting",
+    "fuel.exhaust.mount-bolt",
+    "fuel.exhaust.small-washer",
+    "fuel.exhaust.small-nut",
+    "fuel.exhaust.rear-clamp",
+    "fuel.exhaust.clamp-bolt"
+   ],
+   "file": "models/fuel.exhaust.json",
+   "bytes": 227935
+  },
   "fuel.pipes": {
    "id": "fuel.pipes",
    "kind": "assembly",
@@ -1438,6 +1478,99 @@
    ],
    "file": "models/fuel.pipes.json",
    "bytes": 139354
+  },
+  "fuel.pump": {
+   "id": "fuel.pump",
+   "kind": "assembly",
+   "name": "Fuel pump (SU HP)",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "3.2"
+     }
+    ],
+    "section": 5
+   },
+   "children": [
+    "fuel.pump.body",
+    "fuel.pump.gasket",
+    "fuel.pump.sandwich-plate",
+    "fuel.pump.coil-housing",
+    "fuel.pump.sealing-band",
+    "fuel.pump.end-cover",
+    "fuel.pump.outlet-connection",
+    "fuel.pump.inlet-union",
+    "fuel.pump.filter-plug",
+    "fuel.pump.body-screw",
+    "fuel.pump.rubber-mounting",
+    "fuel.pump.mounting-screw",
+    "fuel.pump.bracket",
+    "fuel.pump.spring-washer",
+    "fuel.pump.bracket-bolt"
+   ],
+   "file": "models/fuel.pump.json",
+   "bytes": 118578
+  },
+  "fuel.supply": {
+   "id": "fuel.supply",
+   "kind": "assembly",
+   "name": "Fuel pipes, tank to carburettors",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [],
+    "section": 5
+   },
+   "children": [
+    "fuel.supply.tank-hose",
+    "fuel.supply.tank-pipe",
+    "fuel.supply.pump-hose",
+    "fuel.supply.feed-pipe",
+    "fuel.supply.union-nut",
+    "fuel.supply.pipe-union",
+    "fuel.supply.p-clip",
+    "fuel.supply.clip-screw"
+   ],
+   "file": "models/fuel.supply.json",
+   "bytes": 227087
+  },
+  "fuel.tank": {
+   "id": "fuel.tank",
+   "kind": "assembly",
+   "name": "Fuel tank, filler and gauge unit",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "3.9"
+     }
+    ],
+    "section": 12
+   },
+   "children": [
+    "fuel.tank.tank",
+    "fuel.tank.drain-washer",
+    "fuel.tank.drain-plug",
+    "fuel.tank.gauge-gasket",
+    "fuel.tank.gauge-unit",
+    "fuel.tank.gauge-screw",
+    "fuel.tank.filler-cap",
+    "fuel.tank.filler-tube",
+    "fuel.tank.filler-hose",
+    "fuel.tank.hose-clip",
+    "fuel.tank.filler-seal",
+    "fuel.tank.packing-strip",
+    "fuel.tank.strap",
+    "fuel.tank.rear-hanger",
+    "fuel.tank.clevis-pin",
+    "fuel.tank.pin-washer",
+    "fuel.tank.split-pin",
+    "fuel.tank.strap-bolt",
+    "fuel.tank.strap-washer",
+    "fuel.tank.strap-nut"
+   ],
+   "file": "models/fuel.tank.json",
+   "bytes": 178264
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -1898,7 +2031,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494186
+   "bytes": 494146
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -30742,7 +30875,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "cast_iron",
-   "notes": "Cast iron. Three ports matching the head (the centre one siamesed for Nos 2 and 3), branches sweeping down past the tappet covers to one outlet with a two-stud flange for the down pipe (photo 61.1(a)).",
+   "notes": "Cast iron. Three ports matching the head (the centre one siamesed for Nos 2 and 3), branches sweeping down past the tappet covers to two outlets side by side under the centre port: cylinders 1 and 4 join in a Y to the front outlet, the siamesed 2/3 port feeds the rear one (MGOC Spares \"MGB exhaust systems\": twin downpipes; Haynes photo 46.2 shows the two downpipe flanges and their sealing rings). One flange carries both outlets, each with two studs across the car and a counterbore for the sealing ring (P11a: mgb/exhaust_layout.py). Photo 61.1(a) for the branches.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -34277,6 +34410,995 @@
    ],
    "derivedShare": 1.0
   },
+  "fuel.exhaust.front-pipe": {
+   "id": "fuel.exhaust.front-pipe",
+   "kind": "part",
+   "name": "Front pipe (twin downpipes and Y-piece)",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "exhaust_steel",
+   "notes": "Two downpipes, one from each manifold outlet (the front one carries cylinders 1 and 4 through the Y in the casting, the rear one the siamesed 2/3 port: MGOC Spares \"MGB exhaust systems\"), each with a two-hole flange welded below a flared spigot that carries the sealing ring (photo 46.2). They drop beside the bellhousing, behind the engine rear plate, and run into a pressed breeches that necks down to the 1 7/8 in system pipe, which passes under the gearbox crossmember (Moss Motors 459-075: the head pipe \"may touch the transmission cross member\") to the centre silencer. Part of the one-piece welded system (Sec 46 para 1). Route and bends derived; downpipe size derived from the outlets.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "downpipe_od",
+     "label": "Downpipe od",
+     "value": "1.50 in (38.10 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sized to the manifold outlets; not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "flange_thickness",
+     "label": "Flange thickness",
+     "value": "5.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Plate flange as photo 46.2",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.centre-silencer": {
+   "id": "fuel.exhaust.centre-silencer",
+   "kind": "part",
+   "name": "Centre silencer",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "exhaust_steel",
+   "notes": "Flattened oval case on chrome bumper cars (MGOC Spares \"MGB exhaust systems\"; twin perforated tube internals from July 1963), with rolled lock seams round the end plates, two pressed beads and a lock seam along it. Hangs under the left-hand floor beside the tunnel, 8 mm under the floor (mgb.underbody_layout FLOOR_Z), its underside at the published 4.2 in minimum ground clearance. Size derived (18 x 8 in section 80 mm deep).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "18.00 in (457.20 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Proportion of the flattened oval box to the floor length behind the crossmember",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "8.00 in (203.20 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flattened oval section beside the tunnel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth",
+     "label": "Depth",
+     "value": "80.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Floor height less 8 mm less the 4.2 in ground clearance",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.inter-pipe": {
+   "id": "fuel.exhaust.inter-pipe",
+   "kind": "part",
+   "name": "Intermediate pipe",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "exhaust_steel",
+   "notes": "From the centre silencer back between the tunnel and the left-hand battery carrier (P10), under the axle's left neck (Moss Motors 459-075: the system passes under the rear axle), under the left-hand handbrake rod behind the axle (P8) and out to the rear silencer. 1 7/8 in pipe (MGOC Spares GEX9008 U clamp 1 7/8 in).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "1.875 in (47.625 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems",
+     "note": "GEX9008 U clamp, exhaust 1 7/8 in",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wall",
+     "label": "Wall",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "16 swg mild steel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "fuel.exhaust.rear-silencer": {
+   "id": "fuel.exhaust.rear-silencer",
+   "kind": "part",
+   "name": "Rear silencer",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "exhaust_steel",
+   "notes": "Cylindrical (MGOC Spares: \"the rear silencer was always a cylindrical type\"), rolled end seams, dished end plates, a centre bead and a lock seam. Lies fore and aft behind the axle on the left, between the fuel tank and the left-hand road spring. Size derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "15.00 in (381.00 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Space between the axle and the rear mounting",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "4.50 in (114.30 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Gap between the tank and the road spring",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.tail-pipe": {
+   "id": "fuel.exhaust.tail-pipe",
+   "kind": "part",
+   "name": "Tail pipe",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "exhaust_steel",
+   "notes": "From the rear silencer to the bumper line on the left (MGOC Spares: the tail pipe exits on the left-hand side; originally cut at 45 degrees). The rear mounting's pinch clamp grips it (Sec 46 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "cut_angle",
+     "label": "Cut angle",
+     "value": "45.0\u00b0",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems",
+     "note": "Tailpipe originally cut at a 45 degree angle",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.exhaust.sealing-ring": {
+   "id": "fuel.exhaust.sealing-ring",
+   "kind": "part",
+   "name": "Exhaust flange sealing ring",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GEG753",
+     "by": "MGOC Spares (seal downpipe)"
+    }
+   ],
+   "material": null,
+   "finish": "copper",
+   "notes": "One on each downpipe's flared spigot, seating in the counterbore of each manifold outlet; \"note the sealing rings\" (Sec 46 para 2, photo 46.2). Two per car (Rimmer Bros fitting kit: \"downpipe seals\"). Size derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "43.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fits the 44 mm outlet counterbore",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Photo 46.2 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.manifold-stud": {
+   "id": "fuel.exhaust.manifold-stud",
+   "kind": "part",
+   "name": "Downpipe stud",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "CHS2513",
+     "by": "MGOC Spares (stud for the downpipe to manifold joint)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Two per outlet, screwed up into the manifold's outlet flange either side of the outlet, across the car (D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.625 in (41.275 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings",
+     "note": "CHS2513 stud 5/16 x 1 5/8",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.exhaust.flange-washer": {
+   "id": "fuel.exhaust.flange-washer",
+   "kind": "part",
+   "name": "Spring washer, downpipe flange",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "GHF332",
+     "by": "MGOC Spares"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.flange-nut": {
+   "id": "fuel.exhaust.flange-nut",
+   "kind": "part",
+   "name": "Nut, downpipe flange",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "GHF261",
+     "by": "MGOC Spares (nut, brass, deep, 5/16 UNF)"
+    }
+   ],
+   "material": null,
+   "finish": "brass",
+   "notes": "Brass so it does not seize on the hot stud (MGOC). Removed first; the pipe then drops away (Sec 46 para 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread",
+     "label": "Thread",
+     "value": "0.3125 in (7.9375 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings",
+     "note": "5/16 UNF",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.exhaust.gearbox-bracket": {
+   "id": "fuel.exhaust.gearbox-bracket",
+   "kind": "part",
+   "name": "Exhaust bracket, gearbox (3-synchro)",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "GEX7189",
+     "by": "MGOC Spares (bracket g/box 3sync); Rimmer Bros (exhaust bracket - downpipe to gearbox)"
+    }
+   ],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "The gearbox clip (Ch 1 Sec 6 para 14, photo 6.14(b): a flat bar to a strap round the pipe). Held under the two lowest rear side cover bolts on the left of the gearbox, where the pipe runs (D: the side cover face is the nearest machined face on the 3-synchro casing); its tongue joggles out to the strap. The two side cover bolts lose 4 mm of thread engagement to it.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "4.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Flat bar as photo 6.14(b)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.gearbox-strap": {
+   "id": "fuel.exhaust.gearbox-strap",
+   "kind": "part",
+   "name": "Exhaust strap, gearbox clip",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "GEX7194",
+     "by": "MGOC Spares (strap exh mount)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "A band round the system pipe whose two ears are pinched against the bracket's tongue by the front support bolt (Sec 46 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Photo 6.14(b) proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.strap-bolt": {
+   "id": "fuel.exhaust.strap-bolt",
+   "kind": "part",
+   "name": "Front support bolt",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "GHF103",
+     "by": "MGOC Spares (screw, hex head, 5/16 UNF x 1)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Removed to free the system at the gearbox (Sec 46 para 3).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.00 in (25.40 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems",
+     "note": "GHF103 5/16 UNF x 1",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.exhaust.strap-washer": {
+   "id": "fuel.exhaust.strap-washer",
+   "kind": "part",
+   "name": "Spring washer, front support",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "GHF332",
+     "by": "MGOC Spares"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.strap-nut": {
+   "id": "fuel.exhaust.strap-nut",
+   "kind": "part",
+   "name": "Nut, front support",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "GHF201",
+     "by": "MGOC Spares (nut, plain, 5/16 UNF)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread",
+     "label": "Thread",
+     "value": "0.3125 in (7.9375 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems",
+     "note": "5/16 UNF",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.exhaust.rear-bracket": {
+   "id": "fuel.exhaust.rear-bracket",
+   "kind": "part",
+   "name": "Rear mounting bracket (body)",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Pressed angle screwed up under the boot floor behind the tank (P11b: two captive nuts), its tab hanging on the outboard face of the rubber mounting with turned-out edges. Form derived; \"the two brackets under the car\" (Ch 8 Sec 3 para 6) are this and the gearbox bracket.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressed steel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.bracket-screw": {
+   "id": "fuel.exhaust.bracket-screw",
+   "kind": "part",
+   "name": "Screw, rear bracket to body",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GHF117",
+     "by": "MGOC Spares (screw, hex head, 1/4 UNF x 3/4)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.75 in (19.05 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems",
+     "note": "GHF117 1/4 UNF x 3/4",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.exhaust.rear-mounting": {
+   "id": "fuel.exhaust.rear-mounting",
+   "kind": "part",
+   "name": "Rear mounting rubber",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "GEX7275",
+     "by": "MGOC Spares (exh rr mount MGB)"
+    }
+   ],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Bonded rubber block with a steel tube through each end: the bracket bolt through the top, the pinch clamp's ears and bolt through the bottom (cars to 1970: \"a pinch clamp rear mounting arrangement\", MGOC Spares). Size derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "66.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Two bolt holes 40 mm apart",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.rear-clamp": {
+   "id": "fuel.exhaust.rear-clamp",
+   "kind": "part",
+   "name": "Pinch clamp half, rear mounting",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Two pressed halves round the tail pipe, their long ears either side of the rubber block's lower end. The \"rear mounting pipe bolt\" is loosened to slide the pipe out (Sec 46 para 3). Form derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "25.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pinch clamp band",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.clamp-bolt": {
+   "id": "fuel.exhaust.clamp-bolt",
+   "kind": "part",
+   "name": "Rear mounting pipe bolt",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Pinches the clamp halves' ears and the rubber block's lower tube; loosened to slide the tail pipe out (Sec 46 para 3). MGOC lists a 1/4 UNF x 2 3/4 bolt (BH604221) with the rear mount; with the block drawn here a 1 1/4 in bolt fills the stack, so the length is derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.25 in (31.75 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Two clamp ears, the rubber block's tube, washer and nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.mount-bolt": {
+   "id": "fuel.exhaust.mount-bolt",
+   "kind": "part",
+   "name": "Bolt, rubber to rear bracket",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.25 in (31.75 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the bracket tab and the block's upper tube",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.small-washer": {
+   "id": "fuel.exhaust.small-washer",
+   "kind": "part",
+   "name": "Spring washer, 1/4 in",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GHF331",
+     "by": "MGOC Spares"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.exhaust.small-nut": {
+   "id": "fuel.exhaust.small-nut",
+   "kind": "part",
+   "name": "Nut, 1/4 UNF",
+   "parent": "fuel.exhaust",
+   "haynes": {
+    "section": 46,
+    "spec_page": 92
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GHF200",
+     "by": "MGOC Spares"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "one_piece_system": true,
+    "gearbox": "three_synchro"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread",
+     "label": "Thread",
+     "value": "0.25 in (6.35 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems",
+     "note": "1/4 UNF",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
   "fuel.pipes.float-hose-front": {
    "id": "fuel.pipes.float-hose-front",
    "kind": "part",
@@ -34608,6 +35730,1937 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Small worm-drive clip",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.body": {
+   "id": "fuel.pump.body",
+   "kind": "part",
+   "name": "Pump body",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 6,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 61
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "HP pump body (Fig 3.2 item 61): the pumping chamber flange, the outlet valve cage and outlet connection on top, the inlet connection on the side and the filter and plug underneath (Sec 6 para 1). Minimum delivery 7 Imp gal per hour (specifications). Inlet faces the rear for the pipe from the tank; Sec 5 para 6: inlet and outlet must be connected correctly.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "flange_diameter",
+     "label": "Flange diameter",
+     "value": "84.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.2 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "delivery_gal_per_hour",
+     "label": "Delivery gal per hour",
+     "value": "7",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p66",
+     "note": "Minimum delivery, early models: 7 Imp gal (31.8 litres) per hour",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "fuel.pump.gasket": {
+   "id": "fuel.pump.gasket",
+   "kind": "part",
+   "name": "Pump body gasket",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 74
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "Either side of the sandwich plate (Sec 7 para 20, \"with the gaskets interposed between them\").",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Joint washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.sandwich-plate": {
+   "id": "fuel.pump.sandwich-plate",
+   "kind": "part",
+   "name": "Sandwich plate",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 75
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.2 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.coil-housing": {
+   "id": "fuel.pump.coil-housing",
+   "kind": "part",
+   "name": "Coil housing",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "aluminium",
+   "notes": "Houses the solenoid and armature; the two cast lugs at the bottom (Sec 7 para 20) carry the pump on its bracket through rubber blocks; the earth connector (item 8) on its screw on the side boss.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "72.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.2 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.end-cover": {
+   "id": "fuel.pump.end-cover",
+   "kind": "part",
+   "name": "End cover",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 28
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "Over the contact breaker; the terminal nut, Lucar connector and insulating sleeve (items 29-32) on the end, the non-return vent valve (34) on top (Sec 8 para 6).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "66.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.2 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.sealing-band": {
+   "id": "fuel.pump.sealing-band",
+   "kind": "part",
+   "name": "Sealing band",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 33
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Over the end cover joint, sealed with adhesive tape (Sec 7 para 28).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.2 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.outlet-connection": {
+   "id": "fuel.pump.outlet-connection",
+   "kind": "part",
+   "name": "Outlet connection",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 73
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "hexagon",
+     "label": "Hexagon",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/2 in UNF nut size hexagon",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.inlet-union": {
+   "id": "fuel.pump.inlet-union",
+   "kind": "part",
+   "name": "Inlet connection",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 63
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "hexagon",
+     "label": "Hexagon",
+     "value": "17.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in UNF nut size hexagon",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.filter-plug": {
+   "id": "fuel.pump.filter-plug",
+   "kind": "part",
+   "name": "Filter plug",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 66
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "Taken off with the filter (item 64) for cleaning (Sec 6 para 1, Sec 8 para 1).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "hexagon",
+     "label": "Hexagon",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/2 in UNF nut size hexagon",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.body-screw": {
+   "id": "fuel.pump.body-screw",
+   "kind": "part",
+   "name": "Body screw",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 7,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.2",
+      "legend": 9
+     }
+    ]
+   },
+   "quantity": 6,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Six screws, fitted finger tight and then tightened in diagonal sequence (Sec 7 paras 20-21).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the coil housing flange, gaskets and sandwich plate into the body",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.bracket": {
+   "id": "fuel.pump.bracket",
+   "kind": "part",
+   "name": "Pump bracket",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 5,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Comes off with the pump on its two bolts and spring washers (Sec 5 para 5). An angle on the heelboard's rear face (mgb.underbody_layout HEELBOARD_X), the leg under the coil housing's lugs. Form derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressed steel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.rubber-mounting": {
+   "id": "fuel.pump.rubber-mounting",
+   "kind": "part",
+   "name": "Pump rubber mounting",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 5,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Between each lug and the bracket (MGOC Spares, part 2). Check it has not gone hard.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Rubber bobbin",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.mounting-screw": {
+   "id": "fuel.pump.mounting-screw",
+   "kind": "part",
+   "name": "Pump mounting screw",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 5,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bracket, rubber and into the lug",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.bracket-bolt": {
+   "id": "fuel.pump.bracket-bolt",
+   "kind": "part",
+   "name": "Bracket bolt",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 5,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Into captive nuts in the heelboard (P11b).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.75 in (19.05 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bracket and heelboard into a captive nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.pump.spring-washer": {
+   "id": "fuel.pump.spring-washer",
+   "kind": "part",
+   "name": "Spring washer, bracket bolt",
+   "parent": "fuel.pump",
+   "haynes": {
+    "section": 5,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "pump": "su_hp"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in spring washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.tank-hose": {
+   "id": "fuel.supply.tank-hose",
+   "kind": "part",
+   "name": "Flexible hose, tank to pipe",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 12,
+    "spec_page": 67
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "braided",
+   "notes": "Braided hose with crimped ferrules and union nuts from the tank's outlet stub to the tank-to-pump pipe (MGOC; run derived).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "12.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Braided 1/4 in bore hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.tank-pipe": {
+   "id": "fuel.supply.tank-pipe",
+   "kind": "part",
+   "name": "Fuel pipe, tank to pump",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 5,
+    "spec_page": 67
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "AHH6703",
+     "by": "MGOC Spares (pipe tank to pump, MGB to 1974)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Across the tank's front face, up over the axle under the body's arch (mgb.underbody_layout ARCH_Z), forward under the tonneau floor between the tunnel and P10's right-hand battery carrier, and into the pump's inlet connection from behind. The suction side: an air leak here makes the pump run fast (Sec 9 para 1). Run derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.3125 in (7.9375 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in steel pipe, matching P3's 5/16 in hoses",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.pump-hose": {
+   "id": "fuel.supply.pump-hose",
+   "kind": "part",
+   "name": "Flexible hose, pump to pipe",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 5,
+    "spec_page": 67
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "AHH7371",
+     "by": "MGOC Spares (braided pump hose MGB)"
+    }
+   ],
+   "material": null,
+   "finish": "braided",
+   "notes": "From the outlet connection on top of the pump to the main pipe's union on the heelboard (run derived).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "12.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Braided 1/4 in bore hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.feed-pipe": {
+   "id": "fuel.supply.feed-pipe",
+   "kind": "part",
+   "name": "Fuel pipe, pump to carburettors",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 5,
+    "spec_page": 67
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "AHH6995",
+     "by": "MGOC Spares (fuel pipe pump to carb MGB chrome bumper)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Down the heelboard, forward under the right-hand floor 22 mm outboard of P8's rear brake pipe, up the toe board, up the bulkhead's engine-side face inboard of P8's left front brake pipe, across it above that pipe and the bellhousing, and forward along the left of the engine to the feed union under the carburettors (P3). Mild steel as standard (MGOC). Run derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.3125 in (7.9375 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "5/16 in steel pipe",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.union-nut": {
+   "id": "fuel.supply.union-nut",
+   "kind": "part",
+   "name": "Pipe union nut",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 5,
+    "spec_page": 67
+   },
+   "quantity": 5,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "Tank stub, both ends of the tank hose's pipe joint, the pump inlet, and both ends of the pump hose (\"undoing the nuts\", Sec 5 para 4).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "17.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in UNF union nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.pipe-union": {
+   "id": "fuel.supply.pipe-union",
+   "kind": "part",
+   "name": "Main pipe union (engine end)",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 18,
+    "spec_page": 67
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "Screws into the feed union nut on P3's feed hose (fuel.pipes.feed-union).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "17.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in UNF union",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.p-clip": {
+   "id": "fuel.supply.p-clip",
+   "kind": "part",
+   "name": "Fuel pipe clip",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 5,
+    "spec_page": 67
+   },
+   "quantity": 7,
+   "partNumbers": [
+    {
+     "number": "PCR509",
+     "by": "MGOC Spares (P clip 5/16 in cable hole, 9/32 in fixing)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "P clips to the floor, the bulkhead, the axle arch and the tonneau floor (MGOC: 'secured by clips to the floor and bulkhead'); stations derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Strip width",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.supply.clip-screw": {
+   "id": "fuel.supply.clip-screw",
+   "kind": "part",
+   "name": "Clip screw",
+   "parent": "fuel.supply",
+   "haynes": {
+    "section": 5,
+    "spec_page": 67
+   },
+   "quantity": 7,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "12.7 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "No 10 x 1/2 in self tapping screw",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.tank": {
+   "id": "fuel.tank.tank",
+   "kind": "part",
+   "name": "Fuel tank (earlier type)",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "ARH176",
+     "by": "MGOC Spares (fuel tank, up to 1965)"
+    }
+   ],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "A wedge with a flat top and a curved bottom (MGOC), the two end plates rolled into a seam flange all round, an X-shaped panel pressed in the top (Fig 3.9), the filler stub on top, the gauge unit's six-screw ring and the outlet on the right-hand end (the gauge wires come off the right side, Sec 12 para 4), the drain plug underneath (para 2). Held up under the boot floor by two straps (para 6). Plan size and depths derived for the early cars' 10 Imp gal, the tank sitting between the right-hand road spring and the rear silencer.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "18.00 in (457.20 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Axle (bowl and compensator) to the rear spring shackles",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "575.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Right-hand spring (33 mm clear) to the rear silencer (37 mm clear)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth_front",
+     "label": "Depth front",
+     "value": "142.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Wedge, shallower at the front",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "depth_rear",
+     "label": "Depth rear",
+     "value": "200.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Wedge, deeper at the rear",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "capacity_litres",
+     "label": "Capacity litres",
+     "value": "43 to 48",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "10 Imp gal (45.5 litres), the early tank; computed from the side profile",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.drain-plug": {
+   "id": "fuel.tank.drain-plug",
+   "kind": "part",
+   "name": "Drain plug",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 2
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Removed first, under the car, to drain the tank (Sec 12 para 2).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Plug in the 14 mm boss",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.drain-washer": {
+   "id": "fuel.tank.drain-washer",
+   "kind": "part",
+   "name": "Drain plug washer",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 3
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "copper",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sealing washer for the 14 mm plug",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sealing washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.strap": {
+   "id": "fuel.tank.strap",
+   "kind": "part",
+   "name": "Tank mounting strap",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 5
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "AHH6253",
+     "by": "MGOC Spares (tank strap, MGB)"
+    }
+   ],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Forked end pinned to a body tab ahead of the tank (P11b), down the front face, under the curved bottom and up the rear face to an end tab under the rear hanger, drawn up by the strap bolt and nut (\"undo the strap nuts at the rear of the tank\", Sec 12 para 6). Width and section derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "1.00 in (25.40 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.9 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressed strip",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.packing-strip": {
+   "id": "fuel.tank.packing-strip",
+   "kind": "part",
+   "name": "Rubber packing strip",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 4
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "AHH5115",
+     "by": "MGOC Spares (packing strip)"
+    }
+   ],
+   "material": null,
+   "finish": "rubber",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Rubber strip under the strap",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.rear-hanger": {
+   "id": "fuel.tank.rear-hanger",
+   "kind": "part",
+   "name": "Strap rear hanger",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 6
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "A pressed channel on the clevis pin through the body tab (P11b), the strap bolt through its foot (Fig 3.9). Form derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "37.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pin to foot, Fig 3.9 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.clevis-pin": {
+   "id": "fuel.tank.clevis-pin",
+   "kind": "part",
+   "name": "Clevis pin",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 7
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "CLZ427",
+     "by": "MGOC Spares (clevis pin 1/4)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Through each rear hanger and its body tab; the straps' forked front ends are pinned the same way (D).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units",
+     "note": "CLZ427 clevis pin 1/4",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "40.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the hanger's two cheeks, the body tab and the washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "fuel.tank.split-pin": {
+   "id": "fuel.tank.split-pin",
+   "kind": "part",
+   "name": "Split pin",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71
+   },
+   "quantity": 4,
+   "partNumbers": [
+    {
+     "number": "GHF500",
+     "by": "MGOC Spares (split pin 1/16)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.0625 in (1.5875 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units",
+     "note": "GHF500 split pin 1/16",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.tank.pin-washer": {
+   "id": "fuel.tank.pin-washer",
+   "kind": "part",
+   "name": "Clevis pin washer",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 8
+     }
+    ]
+   },
+   "quantity": 4,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.strap-bolt": {
+   "id": "fuel.tank.strap-bolt",
+   "kind": "part",
+   "name": "Strap bolt",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 9
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "BH604181",
+     "by": "MGOC Spares (bolt, hex head, 1/4 UNF x 2 1/4)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "2.25 in (57.15 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units",
+     "note": "BH604181 1/4 UNF x 2 1/4",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.tank.strap-washer": {
+   "id": "fuel.tank.strap-washer",
+   "kind": "part",
+   "name": "Strap bolt washer",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 10
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GHF300",
+     "by": "MGOC Spares (washer, plain, 1/4)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in plain washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.strap-nut": {
+   "id": "fuel.tank.strap-nut",
+   "kind": "part",
+   "name": "Strap nut",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 11
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GHF221",
+     "by": "MGOC Spares (nut, nyloc, 1/4 UNF)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread",
+     "label": "Thread",
+     "value": "0.25 in (6.35 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units",
+     "note": "1/4 UNF",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.tank.filler-seal": {
+   "id": "fuel.tank.filler-seal",
+   "kind": "part",
+   "name": "Rubber seal, tank to boot floor",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 12
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "AHH6268",
+     "by": "MGOC Spares (filler neck seal)"
+    }
+   ],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Round the filler stub where it passes up through the boot floor (mgb.underbody_layout BOOT_FLOOR_Z); \"pull out the extension and seal\" (Sec 12 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "86.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Two lips either side of the floor hole",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.filler-hose": {
+   "id": "fuel.tank.filler-hose",
+   "kind": "part",
+   "name": "Filler connection hose",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 27
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "BHH191",
+     "by": "MGOC Spares (filler hose, inlet)"
+    }
+   ],
+   "material": null,
+   "finish": "rubber",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bore",
+     "label": "Bore",
+     "value": "2.00 in (50.80 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units",
+     "note": "2 in hose clips GHC1622 on the filler hose",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.tank.hose-clip": {
+   "id": "fuel.tank.hose-clip",
+   "kind": "part",
+   "name": "Filler hose clip",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 12,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 28
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [
+    {
+     "number": "GHC1622",
+     "by": "MGOC Spares (hose clip, 2 inch)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Two clips on the filler neck hose (Sec 12 para 5).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "63.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the 2 in hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Worm-drive band",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.filler-tube": {
+   "id": "fuel.tank.filler-tube",
+   "kind": "part",
+   "name": "Filler tube (extension)",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 15,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 26
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "AHH6281",
+     "by": "MGOC Spares (filler tube, MGB)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "A 90 degree elbow from the hose up and out to the cap (Fig 3.9). Its run to the body's filler housing is derived: the elbow turns outward to the right; where the cap sits on the body is a question for Oliver (PLAN.md) and for P11b.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "2.00 in (50.80 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Inside the 2 in hose",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.filler-cap": {
+   "id": "fuel.tank.filler-cap",
+   "kind": "part",
+   "name": "Filler cap",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 15,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 29
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "chrome",
+   "notes": "Lift-off cap with a fluted rim and a vent hole (earlier roadsters, MGOC Spares MGB fuel caps); a blocked vent starves the pump (Sec 9 para 3b).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "72.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the 2 in neck",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.gauge-unit": {
+   "id": "fuel.tank.gauge-unit",
+   "kind": "part",
+   "name": "Fuel gauge tank unit (early)",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 16,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 30
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "BHA4292",
+     "by": "MGOC Spares (tank sender unit, up to 1965)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Six screws hold it to the right-hand end of the tank (Sec 16 para 1); the resistance housing and two terminals outside, the float arm and float inside (\"taking care not to damage the float lever\"). Sizes derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "screw_pcd",
+     "label": "Screw pcd",
+     "value": "66.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Six screws on the ring, Fig 3.9 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.gauge-gasket": {
+   "id": "fuel.tank.gauge-gasket",
+   "kind": "part",
+   "name": "Gauge unit gasket",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 16,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 32
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [
+    {
+     "number": "2H1082B",
+     "by": "MGOC Spares (sender gasket, six-screw, original cork type)"
+    }
+   ],
+   "material": null,
+   "finish": "cork",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Cork gasket",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.tank.gauge-screw": {
+   "id": "fuel.tank.gauge-screw",
+   "kind": "part",
+   "name": "Gauge unit screw",
+   "parent": "fuel.tank",
+   "haynes": {
+    "section": 16,
+    "spec_page": 71,
+    "figures": [
+     {
+      "figure": "3.9",
+      "legend": 33
+     }
+    ]
+   },
+   "quantity": 6,
+   "partNumbers": [
+    {
+     "number": "53K165",
+     "by": "MGOC Spares (sender screw, pan head)"
+    }
+   ],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "tank": "early_strap_mounted"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "9.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the unit, gasket and the tank's ring",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -77165,6 +80218,669 @@
    "label": false,
    "fitted": null
   },
+  "fuel.exhaust.front-pipe#1": {
+   "part": "fuel.exhaust.front-pipe",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--front-pipe__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.centre-silencer#1": {
+   "part": "fuel.exhaust.centre-silencer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--centre-silencer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.inter-pipe#1": {
+   "part": "fuel.exhaust.inter-pipe",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--inter-pipe__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.rear-silencer#1": {
+   "part": "fuel.exhaust.rear-silencer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--rear-silencer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.tail-pipe#1": {
+   "part": "fuel.exhaust.tail-pipe",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--tail-pipe__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.sealing-ring#1": {
+   "part": "fuel.exhaust.sealing-ring",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--sealing-ring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.sealing-ring#2": {
+   "part": "fuel.exhaust.sealing-ring",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--sealing-ring__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 45
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.manifold-stud#1": {
+   "part": "fuel.exhaust.manifold-stud",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--manifold-stud__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-washer#1": {
+   "part": "fuel.exhaust.flange-washer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-nut#1": {
+   "part": "fuel.exhaust.flange-nut",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.manifold-stud#2": {
+   "part": "fuel.exhaust.manifold-stud",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--manifold-stud__2",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-washer#2": {
+   "part": "fuel.exhaust.flange-washer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-nut#2": {
+   "part": "fuel.exhaust.flange-nut",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.manifold-stud#3": {
+   "part": "fuel.exhaust.manifold-stud",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--manifold-stud__3",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-washer#3": {
+   "part": "fuel.exhaust.flange-washer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-nut#3": {
+   "part": "fuel.exhaust.flange-nut",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-nut__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.manifold-stud#4": {
+   "part": "fuel.exhaust.manifold-stud",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--manifold-stud__4",
+   "stages": [],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-washer#4": {
+   "part": "fuel.exhaust.flange-washer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.flange-nut#4": {
+   "part": "fuel.exhaust.flange-nut",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--flange-nut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.gearbox-bracket#1": {
+   "part": "fuel.exhaust.gearbox-bracket",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--gearbox-bracket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 7,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.gearbox-strap#1": {
+   "part": "fuel.exhaust.gearbox-strap",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--gearbox-strap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.strap-bolt#1": {
+   "part": "fuel.exhaust.strap-bolt",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--strap-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.strap-washer#1": {
+   "part": "fuel.exhaust.strap-washer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--strap-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.strap-nut#1": {
+   "part": "fuel.exhaust.strap-nut",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--strap-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.rear-bracket#1": {
+   "part": "fuel.exhaust.rear-bracket",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--rear-bracket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.bracket-screw#1": {
+   "part": "fuel.exhaust.bracket-screw",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--bracket-screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.bracket-screw#2": {
+   "part": "fuel.exhaust.bracket-screw",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--bracket-screw__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.rear-mounting#1": {
+   "part": "fuel.exhaust.rear-mounting",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--rear-mounting__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.mount-bolt#1": {
+   "part": "fuel.exhaust.mount-bolt",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--mount-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.small-washer#1": {
+   "part": "fuel.exhaust.small-washer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--small-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.small-nut#1": {
+   "part": "fuel.exhaust.small-nut",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--small-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.rear-clamp#1": {
+   "part": "fuel.exhaust.rear-clamp",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--rear-clamp__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.rear-clamp#2": {
+   "part": "fuel.exhaust.rear-clamp",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--rear-clamp__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 260,
+     "group": "system"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.clamp-bolt#1": {
+   "part": "fuel.exhaust.clamp-bolt",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--clamp-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.exhaust.small-washer#2": {
+   "part": "fuel.exhaust.small-washer",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--small-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.exhaust.small-nut#2": {
+   "part": "fuel.exhaust.small-nut",
+   "assembly": "fuel.exhaust",
+   "node": "fuel--exhaust--small-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
   "fuel.pipes.breather-hose#1": {
    "part": "fuel.pipes.breather-hose",
    "assembly": "fuel.pipes",
@@ -77397,6 +81113,2161 @@
     }
    ],
    "label": true,
+   "fitted": null
+  },
+  "fuel.pump.body#1": {
+   "part": "fuel.pump.body",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--body__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.gasket#1": {
+   "part": "fuel.pump.gasket",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--gasket__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 45
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.sandwich-plate#1": {
+   "part": "fuel.pump.sandwich-plate",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--sandwich-plate__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.gasket#2": {
+   "part": "fuel.pump.gasket",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--gasket__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 12
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.coil-housing#1": {
+   "part": "fuel.pump.coil-housing",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--coil-housing__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.sealing-band#1": {
+   "part": "fuel.pump.sealing-band",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--sealing-band__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.end-cover#1": {
+   "part": "fuel.pump.end-cover",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--end-cover__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.outlet-connection#1": {
+   "part": "fuel.pump.outlet-connection",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--outlet-connection__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.inlet-union#1": {
+   "part": "fuel.pump.inlet-union",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--inlet-union__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.filter-plug#1": {
+   "part": "fuel.pump.filter-plug",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--filter-plug__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.body-screw#1": {
+   "part": "fuel.pump.body-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--body-screw__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.body-screw#2": {
+   "part": "fuel.pump.body-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--body-screw__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.body-screw#3": {
+   "part": "fuel.pump.body-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--body-screw__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.body-screw#4": {
+   "part": "fuel.pump.body-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--body-screw__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.body-screw#5": {
+   "part": "fuel.pump.body-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--body-screw__5",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.body-screw#6": {
+   "part": "fuel.pump.body-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--body-screw__6",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 70,
+     "group": "pumpset"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.rubber-mounting#1": {
+   "part": "fuel.pump.rubber-mounting",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--rubber-mounting__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.mounting-screw#1": {
+   "part": "fuel.pump.mounting-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--mounting-screw__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.rubber-mounting#2": {
+   "part": "fuel.pump.rubber-mounting",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--rubber-mounting__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.mounting-screw#2": {
+   "part": "fuel.pump.mounting-screw",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--mounting-screw__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 50
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.bracket#1": {
+   "part": "fuel.pump.bracket",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--bracket__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120,
+     "group": "pump"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.spring-washer#1": {
+   "part": "fuel.pump.spring-washer",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.bracket-bolt#1": {
+   "part": "fuel.pump.bracket-bolt",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--bracket-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.pump.spring-washer#2": {
+   "part": "fuel.pump.spring-washer",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.pump.bracket-bolt#2": {
+   "part": "fuel.pump.bracket-bolt",
+   "assembly": "fuel.pump",
+   "node": "fuel--pump--bracket-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.tank-hose#1": {
+   "part": "fuel.supply.tank-hose",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--tank-hose__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.tank-pipe#1": {
+   "part": "fuel.supply.tank-pipe",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--tank-pipe__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 140
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.pump-hose#1": {
+   "part": "fuel.supply.pump-hose",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--pump-hose__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.feed-pipe#1": {
+   "part": "fuel.supply.feed-pipe",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--feed-pipe__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.union-nut#1": {
+   "part": "fuel.supply.union-nut",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--union-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 110
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.union-nut#2": {
+   "part": "fuel.supply.union-nut",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--union-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 2,
+     "distance_mm": 110
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.union-nut#3": {
+   "part": "fuel.supply.union-nut",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--union-nut__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.union-nut#4": {
+   "part": "fuel.supply.union-nut",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--union-nut__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 110
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.union-nut#5": {
+   "part": "fuel.supply.union-nut",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--union-nut__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 110
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.pipe-union#1": {
+   "part": "fuel.supply.pipe-union",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--pipe-union__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.p-clip#1": {
+   "part": "fuel.supply.p-clip",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--p-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.clip-screw#1": {
+   "part": "fuel.supply.clip-screw",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--clip-screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.supply.p-clip#2": {
+   "part": "fuel.supply.p-clip",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--p-clip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.clip-screw#2": {
+   "part": "fuel.supply.clip-screw",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--clip-screw__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.p-clip#3": {
+   "part": "fuel.supply.p-clip",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--p-clip__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.clip-screw#3": {
+   "part": "fuel.supply.clip-screw",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--clip-screw__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.p-clip#4": {
+   "part": "fuel.supply.p-clip",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--p-clip__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.clip-screw#4": {
+   "part": "fuel.supply.clip-screw",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--clip-screw__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.p-clip#5": {
+   "part": "fuel.supply.p-clip",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--p-clip__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.clip-screw#5": {
+   "part": "fuel.supply.clip-screw",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--clip-screw__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.p-clip#6": {
+   "part": "fuel.supply.p-clip",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--p-clip__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.clip-screw#6": {
+   "part": "fuel.supply.clip-screw",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--clip-screw__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.p-clip#7": {
+   "part": "fuel.supply.p-clip",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--p-clip__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.supply.clip-screw#7": {
+   "part": "fuel.supply.clip-screw",
+   "assembly": "fuel.supply",
+   "node": "fuel--supply--clip-screw__7",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.tank#1": {
+   "part": "fuel.tank.tank",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--tank__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.drain-washer#1": {
+   "part": "fuel.tank.drain-washer",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--drain-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.drain-plug#1": {
+   "part": "fuel.tank.drain-plug",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--drain-plug__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.gauge-gasket#1": {
+   "part": "fuel.tank.gauge-gasket",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.gauge-unit#1": {
+   "part": "fuel.tank.gauge-unit",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-unit__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.gauge-screw#1": {
+   "part": "fuel.tank.gauge-screw",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.gauge-screw#2": {
+   "part": "fuel.tank.gauge-screw",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-screw__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.gauge-screw#3": {
+   "part": "fuel.tank.gauge-screw",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-screw__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.gauge-screw#4": {
+   "part": "fuel.tank.gauge-screw",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-screw__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.gauge-screw#5": {
+   "part": "fuel.tank.gauge-screw",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-screw__5",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.gauge-screw#6": {
+   "part": "fuel.tank.gauge-screw",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--gauge-screw__6",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 220,
+     "group": "tank"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 90
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.filler-cap#1": {
+   "part": "fuel.tank.filler-cap",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--filler-cap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.filler-tube#1": {
+   "part": "fuel.tank.filler-tube",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--filler-tube__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.filler-hose#1": {
+   "part": "fuel.tank.filler-hose",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--filler-hose__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.hose-clip#1": {
+   "part": "fuel.tank.hose-clip",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--hose-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.hose-clip#2": {
+   "part": "fuel.tank.hose-clip",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--hose-clip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.filler-seal#1": {
+   "part": "fuel.tank.filler-seal",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--filler-seal__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.packing-strip#1": {
+   "part": "fuel.tank.packing-strip",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--packing-strip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-0"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.strap#1": {
+   "part": "fuel.tank.strap",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-0"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.rear-hanger#1": {
+   "part": "fuel.tank.rear-hanger",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--rear-hanger__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.clevis-pin#1": {
+   "part": "fuel.tank.clevis-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--clevis-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-0"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.pin-washer#1": {
+   "part": "fuel.tank.pin-washer",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--pin-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-0"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.4,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.split-pin#1": {
+   "part": "fuel.tank.split-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--split-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-0"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.3,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.clevis-pin#2": {
+   "part": "fuel.tank.clevis-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--clevis-pin__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.pin-washer#2": {
+   "part": "fuel.tank.pin-washer",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--pin-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.4,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.split-pin#2": {
+   "part": "fuel.tank.split-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--split-pin__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.strap-bolt#1": {
+   "part": "fuel.tank.strap-bolt",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 6,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.strap-washer#1": {
+   "part": "fuel.tank.strap-washer",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.strap-nut#1": {
+   "part": "fuel.tank.strap-nut",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.tank.packing-strip#2": {
+   "part": "fuel.tank.packing-strip",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--packing-strip__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-1"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.strap#2": {
+   "part": "fuel.tank.strap",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-1"
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.rear-hanger#2": {
+   "part": "fuel.tank.rear-hanger",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--rear-hanger__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.clevis-pin#3": {
+   "part": "fuel.tank.clevis-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--clevis-pin__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-1"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.pin-washer#3": {
+   "part": "fuel.tank.pin-washer",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--pin-washer__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-1"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.4,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.split-pin#3": {
+   "part": "fuel.tank.split-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--split-pin__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7,
+     "distance_mm": 140,
+     "group": "strap-1"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.clevis-pin#4": {
+   "part": "fuel.tank.clevis-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--clevis-pin__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.pin-washer#4": {
+   "part": "fuel.tank.pin-washer",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--pin-washer__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.4,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.split-pin#4": {
+   "part": "fuel.tank.split-pin",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--split-pin__4",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 6.3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.strap-bolt#2": {
+   "part": "fuel.tank.strap-bolt",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 6,
+     "distance_mm": 80
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.strap-washer#2": {
+   "part": "fuel.tank.strap-washer",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.tank.strap-nut#2": {
+   "part": "fuel.tank.strap-nut",
+   "assembly": "fuel.tank",
+   "node": "fuel--tank--strap-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6,
+     "distance_mm": 70
+    }
+   ],
+   "label": false,
    "fitted": null
   },
   "gearbox.casing.od-gasket#1": {
@@ -90149,7 +96020,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-02T13:25:48+00:00",
+ "built": "2026-11-02T14:13:43+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 909.9399999999996,
