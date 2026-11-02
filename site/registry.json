@@ -401,7 +401,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468562
+   "bytes": 468658
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -443,7 +443,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592429
+   "bytes": 592317
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -758,7 +758,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 150078
+   "bytes": 150130
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -846,7 +846,7 @@
     "electrical.coil.pinch-screw"
    ],
    "file": "models/electrical.coil.json",
-   "bytes": 95217
+   "bytes": 95273
   },
   "electrical.control": {
    "id": "electrical.control",
@@ -925,7 +925,7 @@
     "electrical.instruments.ignition-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 299055
+   "bytes": 298639
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -982,7 +982,7 @@
     "electrical.loom.overdrive"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 440198
+   "bytes": 440214
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1307,7 +1307,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 162009
+   "bytes": 161961
   },
   "engine.timing": {
    "id": "engine.timing",
@@ -1437,7 +1437,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139370
+   "bytes": 139354
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -1898,7 +1898,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494282
+   "bytes": 494186
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -90149,5 +90149,13 @@
    "fitted": null
   }
  },
- "built": "2026-11-02T10:09:34+00:00"
+ "built": "2026-11-02T13:25:48+00:00",
+ "datums": {
+  "ground_z": -583.21,
+  "front_x": 909.9399999999996,
+  "rear_x": -2981.3399999999997,
+  "width": 1521.4599999999998,
+  "front_axle_x": 150.0,
+  "rear_axle_x": -2161.4
+ }
 }

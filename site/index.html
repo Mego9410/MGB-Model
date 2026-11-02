@@ -16,8 +16,9 @@
   --src-h:#1f5f8b; --src-s:#5a6b2e; --src-d:#9a6512; --src-f:#4b3d8f; --src-m:#2d7a6b;
   --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17181a; --stage:#202225; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark } }
-:root[data-theme="dark"]{ --bg:#17181a; --stage:#202225; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17181a; --stage:#383b40; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#17181a; --stage:#383b40; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark }
+[hidden]{display:none!important}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 var(--body);overflow:hidden}
 button{font:inherit;color:inherit}
@@ -49,6 +50,22 @@ nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);backgro
 .loadbar .fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
 .loadbar.done{opacity:0}
 .tree .line{display:flex;align-items:center;gap:2px}
+.tree .eye{flex:none;width:26px;height:26px;border:0;background:none;border-radius:4px;cursor:pointer;color:var(--muted);display:grid;place-items:center;padding:0;opacity:.45}
+.tree .line:hover .eye,.tree .eye[aria-pressed="false"],.tree .eye:focus-visible{opacity:1}
+.tree .eye[aria-pressed="false"]{color:var(--accent)}
+.tree .eye svg{width:16px;height:16px;pointer-events:none}
+.tree li.off>.line .row{opacity:.45}
+header .tools{margin-left:auto;position:relative;align-self:center}
+.viewmenu{position:absolute;right:0;top:calc(100% + 8px);z-index:20;width:min(300px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--edge);border-radius:10px;
+  box-shadow:0 8px 28px rgba(0,0,0,.2);padding:14px;display:grid;gap:14px}
+.viewmenu .opt{display:grid;gap:6px}
+.viewmenu .opt>span{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.viewmenu .hint{font-size:12px;color:var(--muted);margin:0}
+.seg{display:flex;border:1px solid var(--edge);border-radius:6px;overflow:hidden}
+.seg button{flex:1;background:none;border:0;padding:7px 8px;font:600 12px var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.seg button+button{border-left:1px solid var(--edge)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.viewmenu .wide{width:100%}
 .tree .tw{flex:none;width:22px;min-height:28px;border:0;background:none;color:var(--muted);font-size:11px;cursor:pointer;border-radius:4px;padding:0}
 .tree .tw:hover{background:var(--chip);color:var(--fg)}
 .tree .tw.leaf{visibility:hidden;cursor:default}
@@ -133,6 +150,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
   .app[data-sheet="card"] nav.tree{display:none}
   .tree .row{min-height:40px}
   .tree .tw{min-height:40px;width:28px}
+  .tree .eye{width:36px;height:40px}
   .facts{font-size:14px}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
@@ -143,6 +161,16 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
     <h1>MGB Workshop</h1>
     <span class="reg">1963 ROADSTER · RHD · 18G · OVERDRIVE · 18ACR</span>
     <div class="crumbs" id="crumbs" aria-label="Location"></div>
+    <div class="tools">
+      <button class="tool" id="view-btn" type="button" aria-expanded="false" aria-controls="view-menu">View</button>
+      <div class="viewmenu" id="view-menu" hidden>
+        <div class="opt"><span>Theme</span><div class="seg" data-opt="theme"><button type="button" data-v="auto">Auto</button><button type="button" data-v="light">Light</button><button type="button" data-v="dark">Dark</button></div></div>
+        <div class="opt"><span>Garage</span><div class="seg" data-opt="garage"><button type="button" data-v="on">Show</button><button type="button" data-v="off">Hide</button></div></div>
+        <div class="opt"><span>Parts outside the selection</span><div class="seg" data-opt="outside"><button type="button" data-v="ghost">Faint</button><button type="button" data-v="hide">Hidden</button></div></div>
+        <div class="opt"><span>Visibility</span><button class="tool wide" id="show-all" type="button">Show everything</button>
+          <p class="hint">Tap the eye beside anything in the Parts list to hide it. Isolate (beside Frame) shows only what is selected.</p></div>
+      </div>
+    </div>
   </header>
   <div class="tabs" role="tablist">
     <button class="grab" id="sheet-grab" type="button" aria-label="Resize the panel"></button>
@@ -160,6 +188,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
     <input id="explode" type="range" min="0" max="100" value="0">
     <span class="val" id="explode-val">0%</span>
     <button class="tool" id="measure" type="button" aria-pressed="false">Measure</button>
+    <button class="tool" id="isolate" type="button" aria-pressed="false" title="Show only what is selected">Isolate</button>
     <button class="tool" id="frame" type="button">Frame</button>
   </div>
   <aside class="card" id="card" aria-live="polite"><p class="empty">Select a part to see its specification.</p></aside>
@@ -207,9 +236,13 @@ const camera = new THREE.PerspectiveCamera(35, 1, 0.001, 50);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; controls.dampingFactor = 0.09; controls.zoomToCursor = true;
 const key = new THREE.DirectionalLight(0xffffff, 0.8); key.position.set(1, 2, 1.5); scene.add(key);
+const models = new THREE.Group(); models.name = 'models'; scene.add(models);   // every loaded assembly; framing uses this, not the scene
+// The garage is a scene of its own, rendered first; depth is cleared before the car, so the room never hides a part.
+const garageScene = new THREE.Scene();
+renderer.autoClear = false;
 
 function themeColor(v){ return new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue(v).trim()); }
-function applyTheme(){ scene.background = themeColor('--stage'); selMat && selMat.emissive.copy(themeColor('--sel')).multiplyScalar(0.35); }
+function applyTheme(){ garageScene.background = themeColor('--stage'); scene.background = null; selMat && selMat.emissive.copy(themeColor('--sel')).multiplyScalar(0.35); recolorGarage(); try { wake(); } catch (_) {} }
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
 new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
@@ -254,6 +287,180 @@ const matCache = {};
 function finishMat(f){ f = FINISH[f] ? f : 'default'; return matCache[f] ||= new THREE.MeshStandardMaterial(FINISH[f]); }
 let selMat = new THREE.MeshStandardMaterial({ ...FINISH.machined_steel, emissive: 0x000000 });
 
+// ---------- viewer preferences (per viewer, in this browser only)
+const prefs = (() => { try { return JSON.parse(localStorage.getItem('mgb-view') || '{}'); } catch (_) { return {}; } })();
+function savePrefs(){ try { localStorage.setItem('mgb-view', JSON.stringify(prefs)); } catch (_) {} }
+function setTheme(t){
+  const root = document.documentElement;
+  if (t === 'light' || t === 'dark') root.dataset.theme = t; else delete root.dataset.theme;
+  prefs.theme = t; savePrefs(); markMenu(); applyTheme();
+}
+
+// ---------- visibility: hide anything from the tree, isolate the selection, or hide (not ghost) what is outside it
+const hidden = new Set();          // node ids (system, assembly or part) switched off
+let isolated = null;               // node id shown on its own
+let outsideMode = prefs.outside === 'hide' ? 'hide' : 'ghost';
+const EYE_ON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+const EYE_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 5.1A10.4 10.4 0 0 1 12 5c6.4 0 10 7 10 7a17.6 17.6 0 0 1-3.2 4.1M6.6 6.6C3.9 8.4 2 12 2 12s3.6 7 10 7a9.7 9.7 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>';
+function lineage(id){ const a = []; for (let n = N[id]; n; n = N[n.parent]) a.push(n.id || id); return a; }
+function instChain(i){ return i.chain ||= [i.partId, ...lineage(reg.instances[i.instId].assembly)]; }
+function instVisible(i){
+  const ch = instChain(i);
+  if (ch.some(id => hidden.has(id))) return false;
+  if (isolated && !ch.includes(isolated)) return false;
+  if (outsideMode === 'hide'){ const f = focusAssembly(); if (f && ch[1] !== f) return false; }
+  return true;
+}
+function shownObj(o){ for (; o; o = o.parent) if (!o.visible) return false; return true; }
+function applyVisibility(){
+  for (const i of instances) i.obj.visible = instVisible(i);
+  markHidden(); drawLeaders && drawLeaders();
+  isoBtn.setAttribute('aria-pressed', !!isolated);
+  try { wake(); } catch (_) {}
+}
+function markHidden(){
+  document.querySelectorAll('.tree li[data-id]').forEach(li => {
+    const id = li.dataset.id, off = lineage(id).some(a => hidden.has(a)) || (isolated && !lineage(id).includes(isolated) && !lineage(isolated).includes(id));
+    li.classList.toggle('off', !!off);
+    const eye = li.querySelector(':scope > .line > .eye');
+    if (eye){ const on = !hidden.has(id); if (eye.getAttribute('aria-pressed') !== String(on)){ eye.setAttribute('aria-pressed', on); eye.innerHTML = on ? EYE_ON : EYE_OFF; } }
+  });
+}
+function toggleHidden(id){ hidden.has(id) ? hidden.delete(id) : hidden.add(id); applyVisibility(); }
+function revealFor(id){
+  // going to something hidden shows it again; going outside the isolated item ends isolation
+  let changed = false;
+  for (const a of lineage(id)) if (hidden.delete(a)) changed = true;
+  if (isolated && !lineage(id).includes(isolated)){ isolated = null; changed = true; }
+  if (changed) applyVisibility();
+}
+const isoBtn = document.getElementById('isolate');
+isoBtn.addEventListener('click', () => {
+  if (isolated){ isolated = null; applyVisibility(); return; }
+  const id = selected || current;
+  if (!id || id === 'car') { say('Select a part, an assembly or a system to isolate it.', 2500); return; }
+  isolated = id; for (const a of lineage(id)) hidden.delete(a); applyVisibility();
+  const vis = instances.filter(i => i.obj.visible).map(i => i.obj); if (vis.length) frameObjs(vis);
+});
+function showAll(){ hidden.clear(); isolated = null; applyVisibility(); }
+
+// ---------- View menu
+const viewBtn = document.getElementById('view-btn'), viewMenu = document.getElementById('view-menu');
+function openMenu(on){ viewMenu.hidden = !on; viewBtn.setAttribute('aria-expanded', on); }
+viewBtn.addEventListener('click', e => { e.stopPropagation(); openMenu(viewMenu.hidden); });
+addEventListener('pointerdown', e => { if (!viewMenu.hidden && !e.target.closest('.tools')) openMenu(false); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && !viewMenu.hidden){ openMenu(false); viewBtn.focus(); } });
+function markMenu(){
+  const val = { theme: prefs.theme || 'auto', garage: prefs.garage === 'off' ? 'off' : 'on', outside: outsideMode };
+  viewMenu.querySelectorAll('.seg').forEach(seg => seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === val[seg.dataset.opt])));
+}
+viewMenu.addEventListener('click', e => {
+  const b = e.target.closest('.seg button'); if (!b) return;
+  const opt = b.closest('.seg').dataset.opt, v = b.dataset.v;
+  if (opt === 'theme') setTheme(v);
+  if (opt === 'garage'){ prefs.garage = v; savePrefs(); garage.visible = v !== 'off'; markMenu(); try { wake(); } catch (_) {} }
+  if (opt === 'outside'){ outsideMode = v; prefs.outside = v; savePrefs(); markMenu(); setSelected(selected); }
+});
+document.getElementById('show-all').addEventListener('click', () => { showAll(); openMenu(false); });
+
+// ---------- the garage: a faded room the car stands in. Drawn before the car with depth cleared, in colours
+// pulled most of the way to the stage colour, so it frames the model without competing with any part.
+const D = reg.datums || { ground_z: -583.2, front_x: 910.0, rear_x: -2981.3, width: 1521.5, front_axle_x: 150.0, rear_axle_x: -2161.4 };  // fallback: mgb/car_layout.py
+const garage = new THREE.Group(); garage.name = 'garage'; garageScene.add(garage);
+garage.visible = prefs.garage !== 'off';
+const gMats = [];   // { mat, base } recoloured with the theme
+function gMat(base, map, opts){ const m = new THREE.MeshBasicMaterial({ map: map || null, ...(opts || {}) }); gMats.push({ mat: m, base: new THREE.Color(base) }); return m; }
+function recolorGarage(){
+  if (!gMats.length) return;
+  const stageCol = themeColor('--stage'), dark = stageCol.r + stageCol.g + stageCol.b < 1.2;
+  for (const { mat, base } of gMats){
+    const c = base.clone(); if (dark) c.multiplyScalar(0.5);
+    mat.color.copy(c.lerp(stageCol, dark ? 0.66 : 0.62));
+  }
+  shadowMat.opacity = dark ? 0.55 : 0.32;
+}
+function canvasTex(w, h, draw, repeat){
+  const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d'); draw(g, w, h);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+  if (repeat){ t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(...repeat); }
+  return t;
+}
+function speckle(g, w, h, n, a){ for (let k = 0; k < n; k++){ const v = Math.random() < 0.5 ? 0 : 255; g.fillStyle = `rgba(${v},${v},${v},${a * Math.random()})`; g.fillRect(Math.random() * w, Math.random() * h, 2, 2); } }
+let shadowMat;
+(function buildGarage(){
+  const mm = v => v / 1000;
+  const gy = mm(D.ground_z), cx = mm((D.front_x + D.rear_x) / 2);
+  const L = 11.5, W = 9.0, H = 3.1;                       // room: length along the car, depth across, wall height
+  const xB = cx - L / 2, zB = -W / 2;                      // back corner: behind the car's tail, on its near (left) side
+  // floor: concrete with saw-cut joints every 1.5 m, speckle and a couple of old oil marks under the engine
+  const floorTex = canvasTex(1150, 900, (g, w, h) => {
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); speckle(g, w, h, 26000, 0.10);
+    g.strokeStyle = 'rgba(0,0,0,0.16)'; g.lineWidth = 2;
+    for (let x = 150; x < w; x += 150){ g.beginPath(); g.moveTo(x, 0); g.lineTo(x, h); g.stroke(); }
+    for (let y = 150; y < h; y += 150){ g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
+    const ex = (0 - xB) * 100;                              // engine sits at x = 0
+    for (const [dx, dy, r] of [[0, 0, 55], [40, -25, 30], [-60, 18, 22]]){
+      const gr = g.createRadialGradient(ex + dx, h / 2 + dy, 0, ex + dx, h / 2 + dy, r);
+      gr.addColorStop(0, 'rgba(0,0,0,0.13)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    }
+  });
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(L, W), gMat('#bdb8ae', floorTex));
+  floor.rotation.x = -Math.PI / 2; floor.position.set(cx, gy - 0.002, 0); garage.add(floor);
+  // soft contact shadow under the car
+  const shTex = canvasTex(256, 128, (g, w, h) => {
+    const gr = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(0,0,0,1)'); gr.addColorStop(0.55, 'rgba(0,0,0,0.6)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  });
+  shadowMat = new THREE.MeshBasicMaterial({ map: shTex, color: 0x000000, transparent: true, opacity: 0.32, depthWrite: false });
+  const sh = new THREE.Mesh(new THREE.PlaneGeometry(mm(D.front_x - D.rear_x) * 1.08, mm(D.width) * 1.25), shadowMat);
+  sh.rotation.x = -Math.PI / 2; sh.position.set(cx, gy, 0); garage.add(sh);
+  // block walls, painted: darker dado to 1.2 m, lighter above; 440 x 215 mm blocks
+  const wallTex = (len) => canvasTex(Math.round(len * 100), 310, (g, w, h) => {
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); g.fillStyle = 'rgba(70,80,70,0.20)'; g.fillRect(0, h - 120, w, 120);
+    g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(0, h - 121, w, 2);
+    g.strokeStyle = 'rgba(0,0,0,0.07)'; g.lineWidth = 1;
+    for (let r = 0, y = h; y > 0; r++, y -= 21.5){ g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke();
+      for (let x = (r % 2) * 22; x < w; x += 44){ g.beginPath(); g.moveTo(x, y); g.lineTo(x, y - 21.5); g.stroke(); } }
+    speckle(g, w, h, Math.round(w * 4), 0.05);
+  });
+  const back = new THREE.Mesh(new THREE.PlaneGeometry(L, H), gMat('#d8d1c2', wallTex(L)));
+  back.position.set(cx, gy + H / 2, zB); garage.add(back);
+  const side = new THREE.Mesh(new THREE.PlaneGeometry(W, H), gMat('#cfc8b8', wallTex(W)));
+  side.rotation.y = Math.PI / 2; side.position.set(xB, gy + H / 2, 0); garage.add(side);
+  // strip lights high on both walls
+  const lampMat = gMat('#fffdf4');
+  for (const x of [cx - 3, cx + 1.5]){ const l = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.06, 0.1), lampMat); l.position.set(x, gy + H - 0.25, zB + 0.06); garage.add(l); }
+  { const l = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.06, 1.5), lampMat); l.position.set(xB + 0.06, gy + H - 0.25, 0); garage.add(l); }
+  // workbench against the back wall, with a pegboard of tool outlines above it
+  const benchX = cx + 1.2, benchZ = zB + 0.35;
+  const wood = gMat('#9a7b58'), steel = gMat('#7d8584'), dark = gMat('#4a4c4e');
+  const top = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.05, 0.62), wood); top.position.set(benchX, gy + 0.9, benchZ); garage.add(top);
+  for (const dx of [-1.12, 1.12]) for (const dz of [-0.26, 0.26]){ const leg = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.88, 0.05), steel); leg.position.set(benchX + dx, gy + 0.44, benchZ + dz); garage.add(leg); }
+  const shelf = new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.025, 0.55), wood); shelf.position.set(benchX, gy + 0.22, benchZ); garage.add(shelf);
+  const drawers = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.55, 0.55), gMat('#a2423a')); drawers.position.set(benchX + 0.75, gy + 0.6, benchZ); garage.add(drawers);
+  const vice = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.14, 0.12), dark); vice.position.set(benchX - 0.95, gy + 0.995, benchZ + 0.22); garage.add(vice);
+  const pegTex = canvasTex(480, 240, (g, w, h) => {
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); g.fillStyle = 'rgba(0,0,0,0.18)';
+    for (let x = 6; x < w; x += 12) for (let y = 6; y < h; y += 12){ g.beginPath(); g.arc(x, y, 1.4, 0, 7); g.fill(); }
+    g.fillStyle = 'rgba(30,30,30,0.45)'; g.strokeStyle = 'rgba(30,30,30,0.45)'; g.lineCap = 'round';
+    for (let k = 0; k < 7; k++){ const x = 40 + k * 26, len = 60 + k * 9; g.lineWidth = 5; g.beginPath(); g.moveTo(x, 30); g.lineTo(x, 30 + len); g.stroke();      // spanners
+      g.lineWidth = 3; g.beginPath(); g.arc(x, 26, 7, 0, 7); g.stroke(); }
+    g.fillRect(250, 30, 10, 110); g.fillRect(232, 26, 46, 18);                                             // hammer
+    for (let k = 0; k < 5; k++){ g.fillRect(300 + k * 18, 30, 8, 40); g.fillRect(302 + k * 18, 70, 4, 60); } // screwdrivers
+    g.lineWidth = 6; g.beginPath(); g.moveTo(410, 40); g.lineTo(450, 150); g.moveTo(450, 40); g.lineTo(410, 150); g.stroke(); // pliers
+  });
+  const peg = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 1.1), gMat('#c9b48e', pegTex)); peg.position.set(benchX, gy + 1.65, zB + 0.012); garage.add(peg);
+  // steel shelving on the end wall with boxes, and a stack of old tyres in the corner
+  const shX = xB + 0.25;
+  for (const y of [0.15, 0.75, 1.35, 1.95]){ const sb = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.03, 1.6), steel); sb.position.set(shX, gy + y, -1.4); garage.add(sb); }
+  for (const dz of [-0.78, 0.78]) for (const dx of [-0.19, 0.19]){ const up = new THREE.Mesh(new THREE.BoxGeometry(0.03, 2.05, 0.03), steel); up.position.set(shX + dx, gy + 1.02, -1.4 + dz); garage.add(up); }
+  const boxMat = gMat('#a98d66');
+  for (const [y, dz, w, hgt] of [[0.75, -0.9, 0.5, 0.3], [0.75, -0.3, 0.4, 0.22], [1.35, -1.0, 0.45, 0.35], [1.35, 0.1, 0.55, 0.28], [0.15, -0.6, 0.6, 0.4]]){
+    const b = new THREE.Mesh(new THREE.BoxGeometry(0.34, hgt, w), boxMat); b.position.set(shX, gy + y + hgt / 2 + 0.015, -1.4 + dz); garage.add(b); }
+  const tyre = gMat('#2c2d2f');
+  for (let k = 0; k < 3; k++){ const t = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.08, 10, 28), tyre); t.rotation.x = Math.PI / 2; t.position.set(xB + 0.55, gy + 0.08 + k * 0.165, zB + 0.55); garage.add(t); }
+})();
+
 // ---------- loading assemblies
 const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
 const loaded = {};          // assembly id -> THREE.Group
@@ -282,7 +489,7 @@ async function loadAssemblyNow(aid){
   const got = instances.filter(i => reg.instances[i.instId].assembly === aid).length;
   if (got !== want) say(`${a.name}: ${want - got} of ${want} parts did not load. Rebuild the model files.`);
   (window.mgbStatus ||= { matched: {}, expected: {} }).matched[aid] = got; window.mgbStatus.expected[aid] = want;
-  scene.add(root);
+  models.add(root);
   root.updateMatrixWorld(true);
   // cache each instance's centre relative to its origin (explode only translates)
   for (const i of instances) if (!i.centre) {
@@ -314,7 +521,7 @@ window.mgbCameraPos = () => camera.position.toArray();
 window.mgbCamera = ({ dir, part, zoom } = {}) => {
   const target = part ? instances.filter(i => i.partId === part).map(i => i.obj) : null;
   const g = new THREE.Group();
-  const obj = target && target.length ? target[0] : (current && loaded[current]) || scene;
+  const obj = target && target.length ? target[0] : (current && loaded[current]) || models;
   frame(obj, true, dir, zoom);
 };
 
@@ -332,6 +539,7 @@ function setSelected(pid){
     const outside = focus && reg.instances[i.instId].assembly !== focus;
     i.obj.traverse(m => { if (m.isMesh){ m.material = pid ? (on ? selMatFor(f) : ghostMat(f)) : outside ? ghostMat(f) : finishMat(f); m.renderOrder = on ? 1 : 0; } });
   }
+  applyVisibility();
 }
 function frameObjs(objs){
   if (!objs.length) return;
@@ -385,7 +593,7 @@ function drawLeaders(){
   leaders.clear();
   const seen = new Set();
   for (const i of instances){
-    if (seen.has(i.partId)) continue; seen.add(i.partId);
+    if (seen.has(i.partId) || !i.obj.visible) continue; seen.add(i.partId);
     if (i.obj.position.distanceTo(i.base) < 1e-5) continue;
     const g = new THREE.BufferGeometry().setFromPoints([i.base.clone().applyMatrix4(i.obj.parent.matrixWorld), i.obj.getWorldPosition(new THREE.Vector3())]);
     const l = new THREE.Line(g, leaderMat); l.computeLineDistances(); leaders.add(l);
@@ -401,7 +609,7 @@ function updateLabels(){
   const shown = new Set(), legends = new Set(), placed = [];
   const W = stage.clientWidth, H = stage.clientHeight;
   for (const i of instances){
-    if (shown.has(i.partId) || reg.instances[i.instId].label === false) continue;
+    if (shown.has(i.partId) || reg.instances[i.instId].label === false || !i.obj.visible) continue;
     if (reg.instances[i.instId].assembly !== focusAssembly()) continue;
     shown.add(i.partId);
     const figs = (N[i.partId].haynes || {}).figures || [];
@@ -478,7 +686,7 @@ renderer.domElement.addEventListener('pointerup', e => {
   const r = renderer.domElement.getBoundingClientRect();
   ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
   ray.setFromCamera(ptr, camera);
-  const hit = ray.intersectObjects(Object.values(loaded), true).find(h => h.object.isMesh && h.object.userData.partId);
+  const hit = ray.intersectObjects(Object.values(loaded), true).find(h => h.object.isMesh && h.object.userData.partId && shownObj(h.object));
   if (measuring){ if (hit) addMeasurePoint(hit.point); return; }
   const now = performance.now(), dbl = now - lastTap < 320; lastTap = now;
   if (!hit){ if (selected){ setSelected(null); markTree(); if (current) showCard(current); } return; }
@@ -543,7 +751,11 @@ function renderTree(){
       if (kids.length && current === id && !selected) return setOpen(id, li.classList.contains('closed'));
       go(id);
     });
-    const line = document.createElement('div'); line.className = 'line'; line.append(tw, b); li.append(line);
+    const eye = document.createElement('button'); eye.type = 'button'; eye.className = 'eye'; eye.dataset.id = id;
+    eye.setAttribute('aria-pressed', 'true'); eye.setAttribute('aria-label', 'Show or hide ' + n.name); eye.title = 'Show or hide';
+    eye.innerHTML = EYE_ON;
+    eye.addEventListener('click', e => { e.stopPropagation(); toggleHidden(id); });
+    const line = document.createElement('div'); line.className = 'line'; line.append(tw, b, eye); li.append(line);
     if (kids.length){ const ul = document.createElement('ul'); kids.forEach(k => { treeParent[k] = id; ul.append(make(k)); }); li.append(ul); }
     return li;
   };
@@ -563,6 +775,7 @@ function markTree(){
 async function go(id){
   if (!N[id]) return;
   const n = N[id];
+  revealFor(id);
   current = id; setSelected(null); renderCrumbs(id); markTree();
   if (n.kind === 'assembly'){
     say('Loading ' + n.name + '…');
@@ -576,10 +789,10 @@ async function go(id){
     if (n.kind === 'system' && !built.length){ showCard(id); say(n.name + ' is not built yet.', 3500); return; }
     // show what is already here at once; the rest arrives in the background and is framed when complete
     const t0 = performance.now();
-    setSelected(null); applyExplode(); frame(scene); showCard(id); setHash(id);
+    setSelected(null); applyExplode(); frame(models); showCard(id); setHash(id);
     if (built.some(a => !loaded[a])){
       await Promise.all(built.map(a => loadAssembly(a).catch(() => null)));
-      if (current === id && lastUserMove < t0){ setSelected(null); applyExplode(); frame(scene); }
+      if (current === id && lastUserMove < t0){ setSelected(null); applyExplode(); frame(models); }
     }
     return;
   }
@@ -587,6 +800,7 @@ async function go(id){
 }
 function select(pid){
   const n = N[pid];
+  revealFor(pid);
   if (!loaded[n.parent]) { go(n.parent).then(() => select(pid)); return; }
   current = n.parent; renderCrumbs(pid); setSelected(pid); applyExplode(); markTree(); showCard(pid); setHash(pid);
   frameObjs(instances.filter(i => i.partId === pid).map(i => i.obj));
@@ -653,7 +867,11 @@ document.getElementById('sheet-grab').onclick = () => { app.dataset.size = app.d
 }
 document.getElementById('tab-tree').onclick = () => sheet('tree');
 document.getElementById('tab-card').onclick = () => sheet('card');
-document.getElementById('frame').onclick = () => frame(current && loaded[current] ? loaded[current] : scene);
+document.getElementById('frame').onclick = () => {
+  const vis = instances.filter(i => i.obj.visible).map(i => i.obj);
+  if ((isolated || hidden.size || outsideMode === 'hide') && vis.length) return frameObjs(vis);
+  frame(current && loaded[current] ? loaded[current] : models);
+};
 addEventListener('keydown', e => {
   if (e.target.closest('input,textarea')) return;
   if (e.key === 'Escape'){ if (selected){ setSelected(null); markTree(); showCard(current); } else if (current && N[current].parent) go(N[current].parent); }
@@ -684,7 +902,9 @@ renderer.setAnimationLoop(() => {
       controls.target.copy(fly.to.target); camera.position.copy(fly.to.pos); fly.to = null;
     }
   }
-  controls.update(); renderer.render(scene, camera); updateLabels(); placeMeasureTag();
+  controls.update();
+  renderer.clear(); renderer.render(garageScene, camera); renderer.clearDepth(); renderer.render(scene, camera);
+  updateLabels(); placeMeasureTag();
 });
 
 // ---------- background loading: every assembly loads from the start, with a progress pill and tree spinners
@@ -727,6 +947,8 @@ async function preloadAll(){
 }
 
 // ---------- start
+if (prefs.theme === 'light' || prefs.theme === 'dark') document.documentElement.dataset.theme = prefs.theme;
+applyTheme(); markMenu();
 renderTree(); markLoading(); updateProgress();
 const start = location.hash ? fromHash(location.hash.slice(1)) : null;
 const startAsm = start && N[start] ? (N[start].kind === 'part' ? N[start].parent : N[start].kind === 'assembly' ? start : null) : null;
