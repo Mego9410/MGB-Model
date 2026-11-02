@@ -201,8 +201,10 @@ def oil_pipe(spec) -> Part:
     ux, uy, uz = E.OIL_UNION
     gx, gy, gz = _facia_point("dual-gauge", DEPTH["small"] + 12.0)
     gx_, gy_ = gx, gy + 6.0
+    # through the bulkhead inboard of the pedal box (P8), then outboard under the scuttle above the pedals
     pts = [(ux, uy - 20.0, uz), (ux, -105.0, uz), (ux - 10.0, -142.0, -70.0), (BL.BULKHEAD_X + 20.0, -142.0, -50.0),
-           (BL.BULKHEAD_X - 40.0, -560.0, 0.0), (gx_ + 120.0, gy_ - 20.0, gz - 70.0), (gx_ + 30.0, gy_, gz + 8.0), (gx_, gy_, gz + 8.0)]
+           (BL.BULKHEAD_X - 40.0, -142.0, -40.0), (BL.BULKHEAD_X - 130.0, -400.0, 40.0), (BL.BULKHEAD_X - 170.0, -560.0, 90.0),
+           (gx_ + 120.0, gy_ - 20.0, gz - 70.0), (gx_ + 30.0, gy_, gz + 8.0), (gx_, gy_, gz + 8.0)]
     c = X.cable(pts, spec.nom("diameter"), 40.0)
     return label(c, spec)
 
@@ -222,8 +224,9 @@ def capillary(spec) -> Part:
     gx, gy, gz = _facia_point("dual-gauge", DEPTH["small"] + 8.0)
     gy -= 8.0
     gz -= 6.0
-    pts = [(tx, ty - 14.0, tz), (tx, ty - 40.0, tz + 4.0), (tx - 40.0, -170.0, -20.0), (-150.0, -175.0, -20.0), (BL.BULKHEAD_X + 30.0, -280.0, 90.0),
-           (BL.BULKHEAD_X - 40.0, -575.0, 20.0), (gx + 150.0, gy - 35.0, gz - 80.0), (gx + 20.0, gy, gz), (gx, gy, gz)]
+    pts = [(tx, ty - 14.0, tz), (tx, ty - 40.0, tz + 4.0), (tx - 40.0, -170.0, -20.0), (-150.0, -175.0, -20.0),
+           (BL.BULKHEAD_X + 30.0, -152.0, -30.0), (BL.BULKHEAD_X - 40.0, -152.0, -25.0), (BL.BULKHEAD_X - 130.0, -412.0, 55.0),
+           (BL.BULKHEAD_X - 170.0, -575.0, 105.0), (gx + 150.0, gy - 35.0, gz - 80.0), (gx + 20.0, gy, gz), (gx, gy, gz)]
     c = X.cable(pts, spec.nom("diameter"), 50.0)
     return label(c, spec)
 

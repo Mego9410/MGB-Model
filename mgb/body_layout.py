@@ -121,7 +121,8 @@ NUMBER_LAMP = (REAR_X + 38.0, OVERRIDER_Y - 26.0, above_ground(430.0))   # lamp 
 # of the rear axle and inboard of the rear springs (rear_axle_layout SPRING_Y 420).
 BATTERY_BOX_X = -1700.0                                # box centre (x)
 BATTERY_BOX_Y = 268.0                                  # |y| of each box centre
-TONNEAU_FLOOR_Z = -228.0                               # floor (box flange) under side
+TONNEAU_FLOOR_Z = -140.0                               # floor (box flange) under side: the boxes' bottoms clear P8's rear brake
+                                                       # pipe (z -394) and handbrake cable (z -387) that run under them
 BATTERY_BOX_INNER = (186.0, 236.0, 226.0)              # x, y, depth inside the box (takes a Lucas SG9E 6 V)
 BATTERY_BOX_FLANGE = 22.0                              # flange round the top, bolted up to the floor
 BATTERY_SIDE = -1                                      # Oliver's single 12 V battery: right-hand box (question in PLAN)

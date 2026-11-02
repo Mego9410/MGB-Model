@@ -152,8 +152,9 @@ round them and should check them against the car:
 - Rear: rear lamp plinths on the rear wing ends at `REAR_LAMP_*` (three screws); number plate lamps on
   the inner faces of the rear overriders (`OVERRIDER_Y`, `NUMBER_LAMP`), two screws each.
 - Battery carriers: two boxes hang under the tonneau floor behind the seats at `BATTERY_BOX_X`,
-  |y| `BATTERY_BOX_Y`, floor underside `TONNEAU_FLOOR_Z`, 186 x 236 x 226 mm inside, 22 mm flange with
-  four bolt holes; P11 adds the floor, the access panel with quick-release screws (photo 2.1), the
+  |y| `BATTERY_BOX_Y`, floor underside `TONNEAU_FLOOR_Z` (z -140, 443 mm above the road; set high enough that
+  the boxes' bottoms clear P8's rear brake pipe and handbrake cable, which run under them at z -394 and -387),
+  186 x 236 x 226 mm inside, 22 mm flange with four bolt holes; P11 adds the floor, the access panel with quick-release screws (photo 2.1), the
   earth bolt and the cable grommet through the box's front wall.
 - Fuel tank sender (Fig 10.26 item 35) and its lead: with the tank (P11).
 - Known P10 approximations: unit positions in the engine bay, the facia layout and every harness

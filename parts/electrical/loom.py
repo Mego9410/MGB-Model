@@ -155,10 +155,11 @@ def rear(spec) -> Part:
     sill to the boot, across the rear panel to both rear lamps and number plate lamps."""
     d = spec.nom("diameter")
     sill_y = BL.HALF_W - 170.0
-    floor_z = BL.TONNEAU_FLOOR_Z - 120.0
+    floor_z = -350.0                                # along the inside of the sill, just above the cockpit floor
+    arch_y, arch_z = 480.0, -90.0                   # inboard of and over the rear wheel arch, clear of the axle and springs
     rl_x = BL.REAR_LAMP_X + 30.0
     trunk = [(BL.FACIA_X + 100.0, BL.DRIVER_Y - 220.0, BL.IP_Z + 60.0), (BL.FACIA_X + 60.0, -sill_y, 0.0), (BL.FACIA_X - 80.0, -sill_y, floor_z),
-             (BL.REAR_X + 400.0, -sill_y, floor_z), (rl_x + 60.0, -sill_y, BL.REAR_LAMP_Z - 80.0),
+             (-1500.0, -sill_y, floor_z), (-1640.0, -arch_y, arch_z), (BL.REAR_X + 400.0, -arch_y, arch_z), (rl_x + 60.0, -sill_y, BL.REAR_LAMP_Z - 80.0),
              (rl_x + 40.0, -BL.REAR_LAMP_Y + 40.0, BL.REAR_LAMP_Z - 120.0), (rl_x + 40.0, BL.REAR_LAMP_Y - 40.0, BL.REAR_LAMP_Z - 120.0),
              (rl_x + 10.0, BL.REAR_LAMP_Y, BL.REAR_LAMP_Z - 30.0)]
     br = [([(rl_x + 40.0, -BL.REAR_LAMP_Y + 40.0, BL.REAR_LAMP_Z - 120.0), (rl_x + 10.0, -BL.REAR_LAMP_Y, BL.REAR_LAMP_Z - 30.0)], 5.0)]
@@ -176,7 +177,7 @@ def overdrive(spec) -> Part:
     rx, ry, rz = BL.OD_RELAY
     iso = (-751.0, -26.0, -135.0)                 # terminals of the isolation switch (P5a remote housing)
     sol = (-906.0, -119.0, -269.0)                # lead leaves the back of the overdrive solenoid (P5b)
-    pts = [(rx - 25.0, ry - 12.0, rz - 36.0), (rx - 40.0, ry - 30.0, rz - 90.0), (BL.BULKHEAD_X + 30.0, 200.0, -60.0), (BL.BULKHEAD_X - 30.0, 120.0, -120.0),
+    pts = [(rx - 25.0, ry - 12.0, rz - 36.0), (rx - 40.0, ry - 30.0, rz - 90.0), (BL.BULKHEAD_X + 30.0, 215.0, -35.0), (BL.BULKHEAD_X - 30.0, 120.0, -120.0),
            (iso[0] + 100.0, -60.0, -110.0), (iso[0] + 10.0, iso[1] - 20.0, iso[2] + 10.0), (iso[0], iso[1] - 2.0, iso[2])]
     c = X.cable(pts, d, 40.0)
     c = c + X.cable([(iso[0] - 4.0, iso[1] - 20.0, iso[2] + 4.0), (iso[0] - 60.0, -90.0, -180.0), (sol[0] + 30.0, -150.0, sol[2] + 10.0),
