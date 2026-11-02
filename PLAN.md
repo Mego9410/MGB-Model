@@ -90,7 +90,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 - Underbody (P11a) for P11b, `mgb/underbody_layout.py` (all D, derived from P5b/P8/P9/P10 datums): cockpit floor
   underside `FLOOR_Z` -386 beside the tunnel; toe board from `TOE_FOOT` (x -485, z -386) up to the bulkhead at
   `TOE_TOP` (x -400, z -215); tunnel walls |y| `TUNNEL_Y` 122; heelboard rear face `HEELBOARD_X` -1450, from the
-  floor up to the tonneau floor `TONNEAU_Z` -228; body underside over the axle `ARCH_Z` -122.5 (P9's bump strike)
+  floor up to the tonneau floor `TONNEAU_Z` (P10's `body_layout.TONNEAU_FLOOR_Z`, -140); body underside over the axle `ARCH_Z` -122.5 (P9's bump strike)
   between `ARCH_X` (x -1981 to -2311); boot floor underside `BOOT_FLOOR_Z` -172.5 over the tank; rear valance
   `REAR_PANEL_X` / `REAR_PANEL_LOW_Z`. P11b builds the panels to these and adds what hangs on them:
   - exhaust: the rear mounting bracket's two 1/4 UNF screws up into the boot floor (captive nuts) at x -2871 and
@@ -109,12 +109,12 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 - P11a changes outside its own files: the exhaust manifold (P2, `parts/engine/manifolds/manifolds.py`) now has two
   outlets with four studs and sealing-ring counterbores for the twin downpipes; two gearbox side cover bolts
   (`assemblies/gearbox_casing.py`, the lowest rear pair) sit 4 mm further out on the exhaust bracket.
-- Conflicts left for P10/P11b: P10's battery positive cable (wip/p10 `parts/electrical/battery.py` _cable_path)
-  leaves the right-hand battery carrier forward and down through the space where Haynes puts the fuel pump (on the
-  heelboard ahead of the right spring) and crosses the floor diagonally: the cable should leave the carrier
-  inboard of the pump or pass under it (about 5.8 cm3 of overlap with the pump's end cover). P8's rear brake pipe
-  runs under P10's right-hand battery carrier and "up the heel board" at x -1851, behind P11a's heelboard
-  (x -1450): P11b to settle the heelboard and carrier positions and reroute whichever moves.
+- Interference (P11a, scratchpad clash check against main with P8 and P10 and against wip/p9's chassis parts): no
+  clashes with other phases' parts. What remains is inside P11a and intended: pipes welded into the silencer
+  collars, the rubber filler hose over its retaining beads, studs and nuts in their threads. The pump sits between
+  the heelboard and P10's right-hand battery carrier, clear of P10's battery cable; if
+  P11b moves the heelboard (x -1450) or the carriers, the pump, its bracket and the pipe ends move with
+  `HEELBOARD_X`.
 - Known P11a approximations: no photographs of the bare parts could be opened from the build machine; forms are
   from Haynes Figs 3.2 and 3.9 and photos 6.14 and 46.2 with sizes derived. The early system is drawn with the two
   supports Haynes gives (gearbox clip, rear pinch clamp mounting); Rimmer Bros' early fitting kit also lists an

@@ -17,8 +17,8 @@ that hang from the body already agree with each other:
   front wall about x -1606), leaving room between them for the fuel pump, which Haynes puts "on the
   heelboard adjacent to the front of the RH leaf spring" (Ch 3 Sec 5 para 1, printed p67). The heelboard runs
   from FLOOR_Z up to TONNEAU_Z.
-- TONNEAU_Z, the underside of the tonneau floor behind the seats: P10's battery box flanges (body_layout
-  TONNEAU_FLOOR_Z -228), repeated here so main does not import a P10 module.
+- TONNEAU_Z, the underside of the tonneau floor behind the seats: P10's battery box flanges
+  (mgb.body_layout TONNEAU_FLOOR_Z).
 - ARCH_Z, the underside of the body over the axle: the rear springs' bump stops strike the body at the axle
   pedestal top + bump rubber + 52 mm static gap (P9 rear_suspension_layout BUMP_STRIKE: axle centre + tube
   radius + 26 + 44 + 52); the axle arch and the pipes clipped under it are kept at that height, x ARCH_X.
@@ -28,14 +28,14 @@ that hang from the body already agree with each other:
 """
 from __future__ import annotations
 
-from mgb import car_layout as CL, rear_axle_layout as A
+from mgb import body_layout as BL, car_layout as CL, rear_axle_layout as A
 
 FLOOR_Z = -386.0                         # cockpit floor underside beside the tunnel (D)
 TOE_FOOT = (-485.0, FLOOR_Z)             # (x, z) where the toe board meets the floor (D)
 TOE_TOP = (CL.BULKHEAD_X, -215.0)        # (x, z) where the toe board meets the bulkhead's engine-side face (D)
 TUNNEL_Y = 122.0                         # |y| of the tunnel side walls, cabin face (D, P8)
 HEELBOARD_X = -1450.0                    # rear (axle side) face of the heelboard (D)
-TONNEAU_Z = -228.0                       # tonneau floor underside (D, P10)
+TONNEAU_Z = BL.TONNEAU_FLOOR_Z           # tonneau floor underside (D, P10)
 ARCH_Z = CL.WHEEL_Z + A.TUBE_R + 26.0 + 44.0 + 52.0   # body underside over the axle (D, P9 bump strike) = -122.5
 ARCH_X = (CL.REAR_AXLE_X + 180.0, CL.REAR_AXLE_X - 150.0)   # front and rear ends of the arch's flat roof (D)
 BOOT_FLOOR_Z = ARCH_Z - 50.0             # boot floor underside over the tank (D)

@@ -91,8 +91,9 @@ TP_ROUTE = [(-2307.0, -330.0, OUTLET[1]), (-2307.0, PIPE_IN_Y, OUTLET[1]), (-230
             (-1592.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0), (-1592.0, INLET_TIP[1], INLET_TIP[2]),
             (INLET_TIP[0] - 2.0, INLET_TIP[1], INLET_TIP[2])]
 MAIN_START = (U.HEELBOARD_X - 8.0, -352.0, -262.0)        # union on the heelboard outboard of the pump's end cover
-PUMP_HOSE = [(OUTLET_TIP[0], OUTLET_TIP[1], OUTLET_TIP[2] + 3.5), (OUTLET_TIP[0], OUTLET_TIP[1], U.TONNEAU_Z - 9.0),
-             (MAIN_START[0] - 8.0, MAIN_START[1] + 40.0, U.TONNEAU_Z - 9.0), (MAIN_START[0], MAIN_START[1], MAIN_START[2] + 8.0)]
+HOSE_Z = OUTLET_TIP[2] + 26.0                    # the pump hose's run over the pump to the heelboard
+PUMP_HOSE = [(OUTLET_TIP[0], OUTLET_TIP[1], OUTLET_TIP[2] + 3.5), (OUTLET_TIP[0], OUTLET_TIP[1], HOSE_Z),
+             (MAIN_START[0] - 8.0, MAIN_START[1] + 40.0, HOSE_Z), (MAIN_START[0], MAIN_START[1], MAIN_START[2] + 8.0)]
 FLOOR_Y = -370.0                                 # under the floor outboard of P10's battery cable (y -300 to -355)
                                                  # and P8's rear brake pipe (y -270)
 FLOOR_PIPE_Z = U.FLOOR_Z - 10.0
