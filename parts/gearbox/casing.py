@@ -301,6 +301,10 @@ def casing(spec) -> Part:
     # bell holes, starter aperture, lever opening, slave pad
     for u, l in BELL_HOLES:
         c = c - zc(5.2, BELL_D - 1, BELL_D + 60.0, u, l)
+    from mgb import electrical_layout as EZ
+    for y, z in EZ.starter_bolt_points():                    # P10: tapped holes for the starter's two 3/8 in bolts
+        c = c + zc(10.0, BELL_D, BELL_D + FLANGE_T + 4.0, z - G.AXIS_Z, y)
+        c = c - zc(4.76, BELL_D - 1, BELL_D + FLANGE_T + 2.0, z - G.AXIS_Z, y)
     c = c - zc(STARTER_R + 7.0, BELL_D - 1, BELL_D + 2.5, su, sl)               # relief for the plate's lip round the aperture
     for y, z in P.REAR_SCREWS_5_16 + P.REAR_SCREWS_3_8:                          # pockets for the plate screw heads
         u, l = z - G.AXIS_Z, y

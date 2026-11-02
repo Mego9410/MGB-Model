@@ -89,6 +89,10 @@ def front_plate(spec) -> Part:
         p = p - _xhole(3.3, y, z)
     for y, z in MOUNT_HOLES:
         p = p - _xhole(5.2, y, z)
+    # P10: notch in the right-hand wing for the alternator body, hole for its adjusting link stud
+    from mgb import electrical_layout as EZ
+    p = p - _xhole(EZ.FRONT_PLATE_NOTCH_R, EZ.ALT_AXIS[0], EZ.ALT_AXIS[1])
+    p = p - _xhole(4.2, *EZ.LINK_STUD)
     for k in range(3):                                                   # camshaft locating plate bolts
         a = math.radians(90 + 120 * k)
         p = p - _xhole(3.6, EL.cam_y + 34 * math.cos(a), EL.cam_z + 34 * math.sin(a))
@@ -135,6 +139,9 @@ def rear_plate(spec) -> Part:
         p = p - _xhole(5.0, y, z)
     for y, z in _bell_points():                                          # gearbox bellhousing bolts
         p = p - _xhole(5.2, y, z)
+    from mgb import electrical_layout as EZ
+    for y, z in EZ.starter_bolt_points():                               # P10: the starter's two bolts
+        p = p - _xhole(5.0, y, z)
     for y, z in DOWELS:
         p = p - _xhole(5.6, y, z)
     for k in range(6):                                                   # seal retaining plate bolts

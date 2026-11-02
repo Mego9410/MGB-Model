@@ -57,7 +57,9 @@ def sump_bolts():
         pts += [(x, -B.FLANGE_HW + 6), (x, B.FLANGE_HW - 6)]
     for y in (-60.0, 60.0):
         pts += [(x1 + 4, y), (x0 - 4, y)]
-    return pts
+    # P10: none where the flange is relieved for the starter yoke (mgb.electrical_layout)
+    from mgb import electrical_layout as EZ
+    return [(x, y) for x, y in pts if not EZ.in_starter_recess(x, y, SUMP_TOP, 8.0)]
 
 
 B_HALF = 226.0

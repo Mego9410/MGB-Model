@@ -1,0 +1,186 @@
+# Starter motor, Lucas M418G inertia engaged (18G engines), with the remote starter solenoid
+# of the early cars, the solenoid-to-starter cable and the engine earth strap. Haynes Ch 10
+# Sec 23-26, Fig 10.4 (printed p168), specs printed p162; Ch 1 Sec 6 para 21 (starter and
+# distributor). Item numbers are Fig 10.4. Positions: mgb/electrical_layout.py, mgb/body_layout.py.
+# PDF page = printed page + 4.
+defaults:
+  system: electrical
+  assembly: electrical.starting
+  haynes: { section: 26, spec_page: 162 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: paint_black
+
+parts:
+  - id: electrical.starting.drive-end-bracket
+    name: Starter drive end bracket
+    haynes: { figures: [{ figure: "10.4", legend: 19 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: >
+      Flange with two bolt ears that holds the motor to the engine (Sec 23 para 1: "held by two
+      bolts"; Sec 25 para 3), a spigot into the starter aperture of the engine rear plate (P2)
+      and the bush (item 20) for the shaft. The two bolts pass through the rear plate and screw
+      into the bellhousing lobe round the starter pocket (P5a casing). Fig 10.4 draws the
+      flange with its two holes and the boss; the ears' spacing is derived to fit inside the
+      plate's starter lobe.
+    specs:
+      flange_thickness: { mm: 9.0, source: { label: D, method: "Fig 10.4 proportion against the yoke" } }
+      bolt_torque: { lbf_ft: 30, nm: 41, source: { label: H, page: 162, note: "Starter motor mounting bolts" }, display_only: true }
+
+  - id: electrical.starting.yoke
+    name: Starter yoke and field coils
+    haynes: { figures: [{ figure: "10.4", legend: 29 }] }
+    quantity: 1
+    notes: >
+      Four field coils on four pole shoes held by countersunk pole screws (Sec 23 para 1, "four
+      field coil, four pole piece type"; Fig 10.5 item 30 pole shoe screw), brush windows at the
+      commutator end under the cover band (item 31), and the field terminal post (25) through
+      the yoke. The diameter follows the Lucas type number (M418, 4.18 in); the length is set by
+      the room between the engine rear plate and the oil filter canister, which Haynes has
+      removed first (Sec 25 para 2).
+    specs:
+      diameter: { in: 4.18, mm: 106.17, source: { label: D, method: "Lucas M-series type number (M418) read as the yoke diameter in inches" } }
+      ratio: { count: 13.3, source: { label: H, page: 162, note: "Starter gear ratio 13.3 to 1" }, display_only: true }
+      brushes: { count: 4, source: { label: H, page: 162 }, display_only: true }
+
+  - id: electrical.starting.cover-band
+    name: Starter cover band
+    haynes: { figures: [{ figure: "10.4", legend: 31 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Band over the brush windows, loosened by its screw to reach the brushes (Sec 26 para 1)."
+    specs:
+      width: { mm: 26.0, source: { label: D, method: "Fig 10.4: about a quarter of the yoke length" } }
+
+  - id: electrical.starting.commutator-end-bracket
+    name: Starter commutator end bracket
+    haynes: { figures: [{ figure: "10.4", legend: 21 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: "Dished end bracket carrying the brush boxes and the commutator end bush (22), held by the two through-bolts (26)."
+    specs:
+      depth: { mm: 14.0, source: { label: D, method: "Fig 10.4 proportion" } }
+
+  - id: electrical.starting.shaft-cap
+    name: Starter shaft cap
+    haynes: { figures: [{ figure: "10.4", legend: 23 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Cap over the squared end of the armature shaft; a spanner on the square frees a jammed motor (Sec 24 para 2)."
+    specs:
+      diameter: { mm: 28.0, source: { label: D, method: "Fig 10.4 proportion" } }
+
+  - id: electrical.starting.through-bolt
+    name: Starter through-bolt
+    haynes: { figures: [{ figure: "10.4", legend: 26 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      diameter: { mm: 4.8, source: { label: D, method: "Fig 10.4 proportion (2 BA class)" } }
+
+  - id: electrical.starting.armature
+    name: Starter armature and shaft
+    haynes: { figures: [{ figure: "10.4", legend: 30 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Armature core, commutator (not undercut, Sec 26 para 8) and the shaft that runs back through the drive end bush to carry the drive, with its Woodruff key (18)."
+    specs:
+      shaft_diameter: { mm: 12.4, source: { label: D, method: "Fig 10.4 proportion; the screwed sleeve slides on it" } }
+
+  - id: electrical.starting.pinion
+    name: Starter pinion and barrel
+    haynes: { figures: [{ figure: "10.4", legend: 17 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: >
+      Nine-tooth pinion, shown at rest out of mesh ahead of the ring gear; the inertia of the
+      pinion makes it run along the screwed sleeve into the ring when the motor starts. 9 teeth
+      on the 120-tooth ring give the published 13.3 to 1.
+    specs:
+      teeth: { count: 9, source: { label: D, method: "120-tooth ring / 13.3 (H p162) = 9" } }
+      ratio: { count: 13.3, source: { label: H, page: 162 }, display_only: true }
+
+  - id: electrical.starting.drive-sleeve
+    name: Starter drive (screwed sleeve, drive head sleeve, anchor plates, circlip)
+    haynes: { figures: [{ figure: "10.4", legend: 1 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Drive assembly 1 of Fig 10.4 less the pinion and main spring: screwed sleeve (9), drive head sleeve (5), rear and front anchor plates (8, 3) and circlip (2) at the shaft end (Sec 26 para 4)."
+    specs:
+      sleeve_diameter: { mm: 15.0, source: { label: D, method: "Fig 10.4 proportion" } }
+
+  - id: electrical.starting.main-spring
+    name: Starter main spring
+    haynes: { figures: [{ figure: "10.4", legend: 4 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      outside_diameter: { mm: 34.0, source: { label: D, method: "Fig 10.4: about the anchor plate diameter" } }
+      wire: { mm: 3.6, source: { label: D, method: "Fig 10.4 proportion" } }
+
+  - id: electrical.starting.terminal-post
+    name: Starter terminal post, nuts and washers
+    haynes: { figures: [{ figure: "10.4", legend: 25 }] }
+    quantity: 1
+    finish: brass
+    notes: "Items 24 and 25: the starter cable is held under the outer nut (Sec 25 para 1)."
+    specs:
+      thread: { in: 0.3125, mm: 7.94, source: { label: D, method: "5/16 in stud, as the solenoid main terminals" } }
+
+  - id: electrical.starting.mounting-bolt
+    name: Starter mounting bolt
+    haynes: { section: 25 }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Two bolts (Sec 23 para 1, Sec 25 para 3), 30 lbf ft (p162): through the flange and the engine rear plate into the bellhousing lobe; the earth strap eye under the top one."
+    specs:
+      thread: { in: 0.375, mm: 9.525, source: { label: D, method: "3/8 in UNF: the size that takes 30 lbf ft on this engine (rear plate large screws, P2)" } }
+      torque: { lbf_ft: 30, nm: 41, source: { label: H, page: 162 }, display_only: true }
+
+  - id: electrical.starting.spring-washer
+    name: Spring washer, 3/8 in
+    haynes: { section: 25 }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      inside_diameter: { mm: 9.8, source: { label: D, method: "3/8 in spring washer" } }
+      outside_diameter: { mm: 16.0, source: { label: D, method: "3/8 in spring washer" } }
+      thickness: { mm: 2.4, source: { label: D, method: "3/8 in spring washer" } }
+
+  - id: electrical.starting.solenoid
+    name: Starter solenoid (remote)
+    haynes: { figures: [{ figure: "10.26", legend: 4 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Item 4 of the early wiring diagram (Fig 10.26, dynamo cars): the inertia starter needs a
+      separate solenoid switch (Sec 24 para 4: "a click should have been heard ... the
+      solenoid main contacts"). Modelled as the Lucas ST950 pattern with two main studs and the
+      small switch terminal on the cap and the manual push underneath. Its place on the right
+      inner wing beside the control box is derived (body_layout.SOLENOID); see the questions for
+      Oliver. MGOC lists the cables AHH5449 (battery to solenoid) and AHA6280 (solenoid to
+      starter).
+    specs:
+      body_length: { mm: 64.0, source: { label: D, method: "ST950 pattern, about 2 1/2 in can" } }
+      body_diameter: { mm: 54.0, source: { label: D, method: "ST950 pattern, about 2 1/8 in can" } }
+
+  - id: electrical.starting.starter-cable
+    name: Solenoid to starter cable
+    haynes: { section: 25 }
+    quantity: 1
+    finish: cable_black
+    part_numbers: [{ number: AHA6280, by: MGOC Spares }]
+    notes: "Heavy cable from the solenoid's starter stud to the starter terminal post (Sec 25 para 1). Route derived (D): up off the stud, inboard over the chassis leg and down onto the post."
+    specs:
+      diameter: { mm: 11.0, source: { label: D, method: "Starter cable, about 37/0.9 mm with PVC cover" } }
+
+  - id: electrical.starting.earth-strap
+    name: Engine to body earth strap
+    haynes: { section: 24 }
+    quantity: 1
+    finish: copper
+    part_numbers: [{ number: 2K6167, by: MGOC Spares }]
+    notes: "Braided strap between the engine and the body (Sec 24 para 3: 'check the earth strap between the engine and vehicle body'); its engine eye under the starter's top bolt is derived."
+    specs:
+      width: { mm: 16.0, source: { label: D, method: "Braided earth strap" } }
+      thickness: { mm: 3.0, source: { label: D, method: "Braided earth strap" } }

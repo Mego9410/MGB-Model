@@ -1,0 +1,94 @@
+# Battery carriers, battery, clamp and cables. Haynes Ch 10 specs (printed p161), Sec 2-4 and
+# photo 2.1 (printed p163). Early cars had two 6 V batteries (Lucas SG9E or STGZ9E on 18G
+# engines) in series in two carriers under the tonneau floor; Oliver's car has one 12 V battery
+# in one carrier (conversion). Positions: mgb/body_layout.py (BATTERY_*). PDF page = printed + 4.
+defaults:
+  system: electrical
+  assembly: electrical.battery
+  haynes: { section: 2, spec_page: 161 }
+  variant: { factory_1963: false, as_fitted: true }
+  finish: paint_black
+
+parts:
+  - id: electrical.battery.carrier
+    name: Battery carrier (box)
+    haynes: { section: 2 }
+    quantity: 2
+    variant: { factory_1963: true, as_fitted: true }
+    notes: >
+      Two pressed steel boxes, one each side of the tunnel under the tonneau floor behind the
+      seats, reached through the access panel with quick-release screws (Sec 2 para 1, photo
+      2.1; MGOC Spares batteries page; Moss Motors 456-271 'battery box, 6 volt', two per car,
+      1962-74). Box size made to take the Lucas SG9E 6 V; the flange bolts up under the floor
+      (P11 builds the floor and access panel to body_layout.BATTERY_*). The J-bolt slots in the
+      rim and the drain hole are derived.
+    part_numbers: [{ number: 456-271, by: Moss Motors }]
+    specs:
+      inside_length: { mm: 236.0, source: { label: D, method: "Takes a 6 V SG9E with room for the cable" } }
+      inside_width: { mm: 186.0, source: { label: D, method: "Takes a 6 V SG9E" } }
+      depth: { mm: 226.0, source: { label: D, method: "Battery height plus the terminals below the floor" } }
+      sheet_thickness: { mm: 1.2, source: { label: D, method: "18 swg pressing" } }
+
+  - id: electrical.battery.battery
+    name: Battery, 12 V (conversion)
+    haynes: { section: 2 }
+    quantity: 1
+    finish: plastic_black
+    notes: >
+      Oliver's car runs one 12 V battery in place of the original pair of 6 V batteries
+      (Haynes p161: early models two 6 V, later one 12 V, 51 to 66 Ah). Modelled as a BCI group
+      26 size, which owners report fits the MGB box (britishcarforum.com thread 18387, 'MGB
+      battery box dimensions'), in the right-hand carrier (see the questions for Oliver), with
+      taper posts, six vent plugs and its cell partitions showing on the case. Negative earth
+      (needed for the 18ACR).
+    specs:
+      length: { mm: 208.0, source: { label: S, ref: "BCI battery group 26: 208 x 173 x 197 mm" } }
+      width: { mm: 173.0, source: { label: S, ref: "BCI battery group 26: 208 x 173 x 197 mm" } }
+      height: { mm: 197.0, source: { label: S, ref: "BCI battery group 26: 208 x 173 x 197 mm" }, display_only: true }
+      capacity: { count: [51, 66], source: { label: H, page: 161, note: "Ah, depending on model and territory" }, display_only: true }
+
+  - id: electrical.battery.clamp
+    name: Battery clamp bar
+    haynes: { section: 2 }
+    quantity: 1
+    notes: "Sec 2 para 1: 'remove the clamp plates'. MGOC 34G2065 (12 V clamp, negative earth). Channel section derived."
+    part_numbers: [{ number: 34G2065, by: MGOC Spares }]
+    specs:
+      width: { mm: 24.0, source: { label: D, method: "Channel pressing" } }
+
+  - id: electrical.battery.j-bolt
+    name: Battery clamp J-bolt, nut and washer
+    haynes: { section: 2 }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers: [{ number: BHH1586, by: MGOC Spares }, { number: GHF200, by: "MGOC Spares (nut 1/4 UNF)" }]
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: S, ref: "MGOC Spares GHF200 nut 1/4 UNF, GHF300 washer 1/4" }, display_only: true }
+
+  - id: electrical.battery.positive-cable
+    name: Battery to solenoid cable
+    haynes: { section: 2 }
+    quantity: 1
+    finish: cable_black
+    part_numbers: [{ number: AHH5449, by: MGOC Spares }]
+    notes: "Screw-on 'helmet' terminal on the positive post (MGOC: screw-fixing terminals until February 1976); route under the floor, through the toe board and up to the solenoid derived (D)."
+    specs:
+      diameter: { mm: 12.0, source: { label: D, method: "Battery cable with PVC cover" } }
+
+  - id: electrical.battery.earth-cable
+    name: Battery earth lead (negative)
+    haynes: { section: 2 }
+    quantity: 1
+    finish: cable_black
+    part_numbers: [{ number: 5L924, by: MGOC Spares }]
+    notes: "Disconnected first and refitted last (Sec 2 paras 1-2). To a bolt through the carrier into the body (D)."
+    specs:
+      diameter: { mm: 10.0, source: { label: D, method: "Earth lead with PVC cover" } }
+
+  - id: electrical.battery.floor-bolt
+    name: Earth bolt
+    haynes: { section: 2 }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: D, method: "1/4 in UNF" } }
