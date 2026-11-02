@@ -173,6 +173,7 @@ aside.card{grid-area:card;overflow:auto;border-left:1px solid var(--edge);backgr
       <div class="viewmenu" id="view-menu" hidden>
         <div class="opt"><span>Theme</span><div class="seg" data-opt="theme"><button type="button" data-v="auto">Auto</button><button type="button" data-v="light">Light</button><button type="button" data-v="dark">Dark</button></div></div>
         <div class="opt"><span>Garage</span><div class="seg" data-opt="garage"><button type="button" data-v="on">Show</button><button type="button" data-v="off">Hide</button></div></div>
+        <div class="opt"><span>Haynes figure numbers when exploded</span><div class="seg" data-opt="labels"><button type="button" data-v="on">Show</button><button type="button" data-v="off">Hide</button></div></div>
         <div class="opt"><span>Parts outside the selection</span><div class="seg" data-opt="outside"><button type="button" data-v="ghost">Faint</button><button type="button" data-v="hide">Hidden</button></div></div>
         <div class="opt"><span>Visibility</span><button class="tool wide" id="show-all" type="button">Show everything</button>
           <p class="hint">In the Parts list, the eye hides an item and the target shows only that item. Isolate (beside Frame) shows only what is selected.</p></div>
@@ -397,7 +398,7 @@ viewBtn.addEventListener('click', e => { e.stopPropagation(); openMenu(viewMenu.
 addEventListener('pointerdown', e => { if (!viewMenu.hidden && !e.target.closest('.tools')) openMenu(false); });
 addEventListener('keydown', e => { if (e.key === 'Escape' && !viewMenu.hidden){ e.stopImmediatePropagation(); openMenu(false); viewBtn.focus(); } });
 function markMenu(){
-  const val = { theme: prefs.theme || 'auto', garage: prefs.garage === 'off' ? 'off' : 'on', outside: outsideMode };
+  const val = { theme: prefs.theme || 'auto', garage: prefs.garage === 'off' ? 'off' : 'on', outside: outsideMode, labels: prefs.labels === 'on' ? 'on' : 'off' };
   viewMenu.querySelectorAll('.seg').forEach(seg => seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === val[seg.dataset.opt])));
 }
 viewMenu.addEventListener('click', e => {
@@ -405,6 +406,7 @@ viewMenu.addEventListener('click', e => {
   const opt = b.closest('.seg').dataset.opt, v = b.dataset.v;
   if (opt === 'theme') setTheme(v);
   if (opt === 'garage'){ prefs.garage = v; savePrefs(); garage.visible = v !== 'off'; markMenu(); try { wake(); } catch (_) {} }
+  if (opt === 'labels'){ prefs.labels = v; savePrefs(); markMenu(); try { wake(); } catch (_) {} }
   if (opt === 'outside'){ outsideMode = v; prefs.outside = v; savePrefs(); markMenu(); setSelected(selected); }
 });
 document.getElementById('show-all').addEventListener('click', () => { showAll(); openMenu(false); });
@@ -655,7 +657,8 @@ function drawLeaders(){
 const labels = document.getElementById('labels');
 function updateLabels(){
   labels.querySelectorAll('.leg').forEach(e => e.remove());
-  if (ex.value == 0) return;
+  // Haynes legend numbers only mean something beside the book, so they are off unless asked for in View
+  if (ex.value == 0 || prefs.labels !== 'on') return;
   const fig = (N[current] && N[current].haynes && N[current].haynes.figures || [])[0];
   const shown = new Set(), legends = new Set(), placed = [];
   const W = stage.clientWidth, H = stage.clientHeight;
