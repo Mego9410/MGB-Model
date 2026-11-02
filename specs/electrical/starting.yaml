@@ -167,20 +167,34 @@ parts:
   - id: electrical.starting.starter-cable
     name: Solenoid to starter cable
     haynes: { section: 25 }
+    assembly: electrical.wiring-starting
     quantity: 1
-    finish: cable_black
+    finish: wire_B
     part_numbers: [{ number: AHA6280, by: MGOC Spares }]
     notes: "Heavy cable from the solenoid's starter stud to the starter terminal post (Sec 25 para 1). Route derived (D): up off the stud, inboard over the chassis leg and down onto the post."
+    wire:
+      code: ""
+      size: "37/0.90"
+      circuit: "Starter motor feed"
+      from: { part: electrical.starting.solenoid, terminal: "STA", label: "Starter solenoid" }
+      to: { part: electrical.starting.terminal-post, terminal: "", label: "Starter motor terminal post" }
     specs:
       diameter: { mm: 11.0, source: { label: D, method: "Starter cable, about 37/0.9 mm with PVC cover" } }
 
   - id: electrical.starting.earth-strap
     name: Engine to body earth strap
     haynes: { section: 24 }
+    assembly: electrical.wiring-earths
     quantity: 1
     finish: copper
     part_numbers: [{ number: 2K6167, by: MGOC Spares }]
     notes: "Braided strap between the engine and the body (Sec 24 para 3: 'check the earth strap between the engine and vehicle body'); its engine eye under the starter's top bolt is derived."
+    wire:
+      code: ""
+      size: "braided copper strap"
+      circuit: "Engine earth"
+      from: { part: electrical.starting.mounting-bolt, terminal: "", label: "Starter top mounting bolt (engine)" }
+      to: { label: "Body: the chassis leg beside the bulkhead (P11)" }
     specs:
       width: { mm: 16.0, source: { label: D, method: "Braided earth strap" } }
       thickness: { mm: 3.0, source: { label: D, method: "Braided earth strap" } }

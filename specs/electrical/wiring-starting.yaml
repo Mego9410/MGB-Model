@@ -1,0 +1,467 @@
+# Starting, ignition and the ignition supplies (P10b). Haynes Fig 10.26 (printed p190), Fig 6.19 (p131) for A3.
+defaults:
+  system: electrical
+  assembly: electrical.wiring-starting
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-starting.fuse-a1-to-ignition-switch
+  name: 'N: fuse block A1 to ignition/starter switch 1'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 19, 38
+  quantity: 1
+  finish: wire_N
+  notes: 'Brown battery feed to the ignition/starter switch terminal 1. Colour N (brown), 28/0.30. Colour and both ends: Haynes Fig 10.26 (wiring
+    diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: N
+    size: 28/0.30
+    circuit: Ignition switch feed
+    fuse: 'Unfused: brown, battery supply'
+    from:
+      part: electrical.control.fuse-block
+      terminal: A1
+      label: Fuse block (4FJ)
+    to:
+      part: electrical.instruments.ignition-switch
+      terminal: '1'
+      label: Ignition/starter switch
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: fuse.A1
+    to: ign.1
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-starting.ignition-switch-to-solenoid
+  name: 'WR: ignition/starter switch 3 to starter solenoid'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 38, 4
+  quantity: 1
+  finish: wire_W_R
+  notes: 'White/red from the switch''s start terminal 3 to the solenoid''s switch terminal; turning the key to start energises the solenoid. Colour
+    WR (white with red tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: WR
+    size: 14/0.30
+    circuit: Starter solenoid
+    from:
+      part: electrical.instruments.ignition-switch
+      terminal: '3'
+      label: Ignition/starter switch
+    to:
+      part: electrical.starting.solenoid
+      terminal: switch (WR)
+      label: Starter solenoid
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: ign.3
+    to: sol.SW
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-starting.ignition-switch-to-white-joint
+  name: 'W: ignition/starter switch 2 to white joint (ignition supply, behind the facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '38'
+  quantity: 1
+  finish: wire_W
+  notes: 'White from the ignition terminal 2 to the white joint behind the facia; everything that works with the ignition on takes its feed from
+    here. Colour W (white), 28/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 28/0.30
+    circuit: Ignition supply
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.instruments.ignition-switch
+      terminal: '2'
+      label: Ignition/starter switch
+    to:
+      part: electrical.wiring-starting.w-joint
+      terminal: ''
+      label: White joint (ignition supply, behind the facia)
+    via:
+    - Facia harness
+  route:
+    from: ign.2
+    to: joint.w-joint
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-starting.white-joint-to-tachometer
+  name: 'W: white joint (ignition supply, behind the facia) to tachometer (pulse lead in)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '95'
+  quantity: 1
+  finish: wire_W
+  notes: 'White to the impulse tachometer''s pulse lead: the coil''s feed current runs through the loop at the back of the instrument (Fig 10.26:
+    W to 95; Haynes Sec 47 and Fig 10.14). Colour W (white), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed
+    p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 14/0.30
+    circuit: 'Ignition: coil feed through the tachometer'
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.wiring-starting.w-joint
+      terminal: ''
+      label: White joint (ignition supply, behind the facia)
+    to:
+      part: electrical.instruments.tachometer-case
+      terminal: pulse lead in
+      label: Tachometer
+    via:
+    - Facia harness
+  route:
+    from: joint.w-joint
+    to: tachometer.pulse.in
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-starting.tachometer-to-coil
+  name: 'W: tachometer (pulse lead out) to ignition coil CB'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 95, 39
+  quantity: 1
+  finish: wire_W
+  notes: 'White from the tachometer''s pulse lead on to the coil. Negative earth conversion: the HA12''s leads are swapped, so the ignition feed
+    goes on the CB terminal (now positive) and the distributor lead on SW (PLAN.md questions). Colour W (white), 14/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 14/0.30
+    circuit: 'Ignition: coil feed'
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.instruments.tachometer-case
+      terminal: pulse lead out
+      label: Tachometer
+    to:
+      part: electrical.coil.coil
+      terminal: CB
+      label: Ignition coil
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    - Engine branch
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: tachometer.pulse.out
+    to: coil.CB
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-starting.coil-to-distributor
+  name: 'WB: ignition coil SW to distributor LT (CB)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 39, 40
+  quantity: 1
+  finish: wire_W_B
+  notes: 'White/black low tension lead from the coil to the distributor''s terminal (Fig 10.26: 39 to 40). Negative earth: from the coil''s SW
+    terminal (see the white lead''s note). Colour WB (white with black tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram
+    up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: WB
+    size: 14/0.30
+    circuit: 'Ignition: contact breaker'
+    from:
+      part: electrical.coil.coil
+      terminal: SW
+      label: Ignition coil
+    to:
+      part: ignition.distributor.body
+      terminal: LT (CB)
+      label: Distributor
+    via:
+    - Engine branch
+  route:
+    from: coil.SW
+    to: dist.LT
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-starting.white-joint-to-fuse-a3
+  name: 'W: white joint (ignition supply, behind the facia) to fuse block A3'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '19'
+  quantity: 1
+  finish: wire_W
+  notes: 'White from the ignition switch (through the joint) to A3, the input of fuse 3-4 (Fig 6.19: 2 to 1 A3). Colour W (white), 28/0.30. Colour
+    and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 28/0.30
+    circuit: Ignition supply to the fuse block
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.wiring-starting.w-joint
+      terminal: ''
+      label: White joint (ignition supply, behind the facia)
+    to:
+      part: electrical.control.fuse-block
+      terminal: A3
+      label: Fuse block (4FJ)
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.w-joint
+    to: fuse.A3
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-starting.fuse-a4-to-green-joint
+  name: 'G: fuse block A4 to green joint (fuse A4 supply, engine bay)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '19'
+  quantity: 1
+  finish: wire_G
+  notes: 'Green from A4, the output of fuse 3-4: the fused ignition supply to the stop lamps, flashers, fuel gauge, wipers and heater. Colour
+    G (green), 28/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: G
+    size: 28/0.30
+    circuit: Fused ignition supply
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.control.fuse-block
+      terminal: A4
+      label: Fuse block (4FJ)
+    to:
+      part: electrical.wiring-starting.g-joint-bay
+      terminal: ''
+      label: Green joint (fuse A4 supply, engine bay)
+  route:
+    from: fuse.A4
+    to: joint.g-joint-bay
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-starting.green-joint-to-facia
+  name: 'G: green joint (fuse A4 supply, engine bay) to green joint (fused supply, behind the facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: ''
+  quantity: 1
+  finish: wire_G
+  notes: 'Green on through the bulkhead grommet to the joint behind the facia for the wiper, heater and gauge feeds. Colour G (green), 14/0.30.
+    Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: G
+    size: 14/0.30
+    circuit: Fused ignition supply
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-starting.g-joint-bay
+      terminal: ''
+      label: Green joint (fuse A4 supply, engine bay)
+    to:
+      part: electrical.wiring-starting.g-joint-facia
+      terminal: ''
+      label: Green joint (fused supply, behind the facia)
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.g-joint-bay
+    to: joint.g-joint-facia
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-starting.fuse-a3-to-fuel-pump
+  name: 'W: fuse block A3 to fuel pump'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 19, 41
+  quantity: 1
+  finish: wire_W
+  notes: 'White from A3 back through the rear harness to the SU pump''s terminal (Fig 10.26: W to 41). Colour W (white), 14/0.30. Colour and both
+    ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 14/0.30
+    circuit: Fuel pump
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.control.fuse-block
+      terminal: A3
+      label: Fuse block (4FJ)
+    to:
+      part: fuel.pump.end-cover
+      terminal: terminal stud
+      label: Fuel pump (SU)
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    - Rear harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: fuse.A3
+    to: pump.feed
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-starting.fuel-pump-earth
+  name: 'B: fuel pump to earth point (fuel pump)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 41, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth lead from the pump to the body (Fig 10.26: 41 earth). Colour B (black), 14/0.30. Colour and both ends: Haynes Fig 10.26
+    (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 14/0.30
+    circuit: Fuel pump earth
+    from:
+      part: fuel.pump.end-cover
+      terminal: earth terminal
+      label: Fuel pump (SU)
+    to:
+      part: electrical.wiring-earths.earth-fuel-pump
+      terminal: earth screw
+      label: Earth point (fuel pump)
+  route:
+    from: pump.earth
+    to: earth.fuel-pump
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-starting.g-joint-bay
+  name: Green joint (fuse A4 supply, engine bay)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-starting.w-joint
+  name: White joint (ignition supply, behind the facia)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-starting.g-joint-facia
+  name: Green joint (fused supply, behind the facia)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs

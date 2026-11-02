@@ -43,8 +43,6 @@ ST = Location((E.REAR_PLATE_FRONT_X, sy, sz)) * Rot(0, 90, 0)
 M = ["motor"]
 O = Location((0, 0, 0))
 
-add("starter-cable", O, explode=ex([0, -1, 0.3], 1, 140))
-add("earth-strap", O, explode=ex([0, -1, 0], 1.5, 90))
 add("solenoid", O, explode=ex([0, -1, 0], 0.5, 120))
 x_fl = E.REAR_PLATE_FRONT_X + E.FLANGE_T
 sw = SP["electrical.starting.spring-washer"].nom("thickness")

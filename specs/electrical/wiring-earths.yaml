@@ -1,0 +1,124 @@
+# Earth points and earth cables (P10b).
+defaults:
+  system: electrical
+  assembly: electrical.wiring-earths
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-earths.earth-headlamp-right
+  name: Earth point (headlamp right)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: earth symbols
+  quantity: 1
+  finish: zinc_steel
+  notes: No 10 self-tapping screw into the body with a shakeproof washer, the earth eyelets under its head. Position derived (mgb/body_layout.py
+    EARTH_POINTS); the panel is the body's (P11).
+  specs:
+    screw_thread:
+      in: 0.19
+      source:
+        label: D
+        method: No 10 self-tapping screw, as BMC used for earths
+- id: electrical.wiring-earths.earth-headlamp-left
+  name: Earth point (headlamp left)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: earth symbols
+  quantity: 1
+  finish: zinc_steel
+  notes: No 10 self-tapping screw into the body with a shakeproof washer, the earth eyelets under its head. Position derived (mgb/body_layout.py
+    EARTH_POINTS); the panel is the body's (P11).
+  specs:
+    screw_thread:
+      in: 0.19
+      source:
+        label: D
+        method: No 10 self-tapping screw, as BMC used for earths
+- id: electrical.wiring-earths.earth-relay
+  name: Earth point (relay)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: earth symbols
+  quantity: 1
+  finish: zinc_steel
+  notes: No 10 self-tapping screw into the body with a shakeproof washer, the earth eyelets under its head. Position derived (mgb/body_layout.py
+    EARTH_POINTS); the panel is the body's (P11).
+  specs:
+    screw_thread:
+      in: 0.19
+      source:
+        label: D
+        method: No 10 self-tapping screw, as BMC used for earths
+- id: electrical.wiring-earths.earth-facia
+  name: Earth point (facia)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: earth symbols
+  quantity: 1
+  finish: zinc_steel
+  notes: No 10 self-tapping screw into the body with a shakeproof washer, the earth eyelets under its head. Position derived (mgb/body_layout.py
+    EARTH_POINTS); the panel is the body's (P11).
+  specs:
+    screw_thread:
+      in: 0.19
+      source:
+        label: D
+        method: No 10 self-tapping screw, as BMC used for earths
+- id: electrical.wiring-earths.earth-scuttle
+  name: Earth point (scuttle)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: earth symbols
+  quantity: 1
+  finish: zinc_steel
+  notes: No 10 self-tapping screw into the body with a shakeproof washer, the earth eyelets under its head. Position derived (mgb/body_layout.py
+    EARTH_POINTS); the panel is the body's (P11).
+  specs:
+    screw_thread:
+      in: 0.19
+      source:
+        label: D
+        method: No 10 self-tapping screw, as BMC used for earths
+- id: electrical.wiring-earths.earth-boot
+  name: Earth point (boot)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: earth symbols
+  quantity: 1
+  finish: zinc_steel
+  notes: No 10 self-tapping screw into the body with a shakeproof washer, the earth eyelets under its head. Position derived (mgb/body_layout.py
+    EARTH_POINTS); the panel is the body's (P11).
+  specs:
+    screw_thread:
+      in: 0.19
+      source:
+        label: D
+        method: No 10 self-tapping screw, as BMC used for earths
+- id: electrical.wiring-earths.earth-fuel-pump
+  name: Earth point (fuel pump)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: earth symbols
+  quantity: 1
+  finish: zinc_steel
+  notes: No 10 self-tapping screw into the body with a shakeproof washer, the earth eyelets under its head. Position derived (mgb/body_layout.py
+    EARTH_POINTS); the panel is the body's (P11).
+  specs:
+    screw_thread:
+      in: 0.19
+      source:
+        label: D
+        method: No 10 self-tapping screw, as BMC used for earths

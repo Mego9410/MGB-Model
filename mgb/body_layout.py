@@ -86,10 +86,15 @@ INSTRUMENTS = {
     "fuel-gauge": (DRIVER_Y + 186.0, IP_Z - 22.0),
     "dual-gauge": (DRIVER_Y - 186.0, IP_Z - 22.0),
 }
-WARNING_LAMPS = {                                      # small lenses between and above the dials
-    "ignition": (DRIVER_Y, IP_Z + 34.0),
-    "main-beam": (DRIVER_Y - 18.0, IP_Z + 58.0),
-    "indicator": (DRIVER_Y + 18.0, IP_Z + 58.0),
+# Warning lamps (P10b): on the early cars they are inside the instruments (Haynes Fig 10.26, printed
+# p190: the ignition warning lamp 44 in the tachometer 95, the main beam warning lamp 10 in the
+# speedometer 45, and a green arrow (27) for each side, left in the tachometer, right in the
+# speedometer). (name, instrument, y, z) of each lens on its dial, lit from a bulb holder in the case.
+WARNING_LAMPS = {
+    "ignition": ("tachometer", INSTRUMENTS["tachometer"][0], IP_Z - 22.0),
+    "main-beam": ("speedometer", INSTRUMENTS["speedometer"][0], IP_Z - 22.0),
+    "indicator-left": ("tachometer", INSTRUMENTS["tachometer"][0] + 20.0, IP_Z - 12.0),
+    "indicator-right": ("speedometer", INSTRUMENTS["speedometer"][0] - 20.0, IP_Z - 12.0),
 }
 # centre switch panel (Fig 10.9 items 1, 4, 5, 6/7, 8, 13; early cars)
 SWITCHES = {
@@ -108,6 +113,28 @@ WIPER_SPINDLES = [(WINDSCREEN_BASE_X + 22.0, y, WINDSCREEN_BASE_Z - 4.0) for y i
 WIPER_AXIS = (math.sin(math.radians(SCUTTLE_TILT_DEG)), 0.0, math.cos(math.radians(SCUTTLE_TILT_DEG)))
 WIPER_MOTOR = (-560.0, 470.0, 150.0)                   # motor bracket bolts to the scuttle side, left
 WIPER_PARK_SIDE = -1                                   # arms park toward the right (-y), along the screen base
+
+# ---- wiring harness fittings (P10b, D) ------------------------------------------------------------------
+# Headlamp dip switch (Fig 10.26 item 7): on the toe board, mgb.wiring_layout DIP_SWITCH (from mgb.underbody_layout).
+# Direction indicator switch (item 26): on P9's steering column, mgb.wiring_layout COLUMN_SWITCH.
+# Instrument voltage stabiliser (item 64) on the facia rear face beside the fuel gauge.
+STABILISER = (FACIA_X + FACIA_T, -118.0, IP_Z - 100.0)    # below the fuel gauge and switches, clear of their cases
+# Heater blower motor lead (items 32/33): the heater (P11) sits on the engine side of the bulkhead; the
+# harness ends at its snap connector there.
+HEATER_CONNECTOR = (BULKHEAD_X + 30.0, -40.0, 190.0)
+# Map lamp (items 101/102, early cars): on the facia top rail, centre (P11 trim); its lead ends at a snap
+# connector behind the facia.
+MAP_LAMP_CONNECTOR = (FACIA_X + 60.0, 30.0, IP_Z + 70.0)
+# Earth points: a self-tapping screw into the body with the eyelets under its head; (point on the panel
+# face, outward normal of the face).
+EARTH_POINTS = {
+    "headlamp-right": ((560.0, -INNER_WING_Y - 30.0, 95.0), (0.0, 1.0, 0.0)),
+    "headlamp-left": ((560.0, INNER_WING_Y + 30.0, 95.0), (0.0, -1.0, 0.0)),
+    "relay": ((-195.0, INNER_WING_Y, 0.0), (0.0, -1.0, 0.0)),
+    "facia": ((FACIA_X + FACIA_T, -225.0, IP_Z - 95.0), (1.0, 0.0, 0.0)),
+    "scuttle": ((-640.0, INNER_WING_Y + 10.0, 120.0), (0.0, -1.0, 0.0)),
+    "boot": ((-2470.0, -HALF_W + 190.0, -150.0), (0.0, 1.0, 0.0)),
+}
 
 # ---- rear lamps (D) ------------------------------------------------------------------------------------
 REAR_LAMP_X = REAR_X + 75.0                            # lens face, on the rear wing end above the bumper

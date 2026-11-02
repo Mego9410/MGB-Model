@@ -156,22 +156,13 @@ parts:
     specs:
       diameter: { mm: 52.0, source: { label: D, method: "Smiths small gauge, 2 1/16 in case, half the large dial in Fig 10.9" }, display_only: true }
 
-  - id: electrical.instruments.warning-lamp
-    name: "Warning lamp holder and bezel"
-    haynes: { section: 46 }
-    quantity: 3
-    finish: chrome
-    notes: "Panel and warning lamp holders are a push fit and reached from under the facia (Sec 40 para 2): ignition (Fig 10.26 item 44), main beam (10), direction indicator (27)."
-    specs:
-      diameter: { mm: 16.0, source: { label: D, method: "Small lamp bezel" } }
-
   - id: electrical.instruments.lens-red
     name: "Warning lamp lens (ignition warning)"
     haynes: { section: 46 }
     quantity: 1
     finish: lens_red
     specs:
-      diameter: { mm: 9.2, source: { label: D, method: "In the bezel" } }
+      diameter: { mm: 9.2, source: { label: D, method: "Window in the dial" } }
 
   - id: electrical.instruments.lens-blue
     name: "Warning lamp lens (main beam warning)"
@@ -179,15 +170,16 @@ parts:
     quantity: 1
     finish: lens_blue
     specs:
-      diameter: { mm: 9.2, source: { label: D, method: "In the bezel" } }
+      diameter: { mm: 9.2, source: { label: D, method: "Window in the dial" } }
 
   - id: electrical.instruments.lens-green
-    name: "Warning lamp lens (direction indicator warning)"
+    name: "Warning lamp lens (direction indicator arrows)"
     haynes: { section: 46 }
-    quantity: 1
+    quantity: 2
+    notes: "Green arrows, the left in the tachometer, the right in the speedometer (Fig 10.26 item 27, P10b)."
     finish: lens_green
     specs:
-      diameter: { mm: 9.2, source: { label: D, method: "In the bezel" } }
+      diameter: { mm: 9.2, source: { label: D, method: "Window in the dial" } }
 
   - id: electrical.instruments.toggle-switch
     name: "Toggle switch (lighting, wiper, heater, overdrive)"

@@ -1,0 +1,516 @@
+# Wipers, horns and heater blower wiring (P10b). Haynes Fig 10.26 (printed p190).
+defaults:
+  system: electrical
+  assembly: electrical.wiring-wipers-horn
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-wipers-horn.green-joint-to-wiper-motor
+  name: 'G: green joint (fused supply, behind the facia) to wiper motor 2'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '37'
+  quantity: 1
+  finish: wire_G
+  notes: 'Green fused supply to the wiper motor (Fig 10.26: 37 terminal 2). Colour G (green), 14/0.30. Colour and both ends: Haynes Fig 10.26
+    (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: G
+    size: 14/0.30
+    circuit: Windscreen wipers
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-starting.g-joint-facia
+      terminal: ''
+      label: Green joint (fused supply, behind the facia)
+    to:
+      part: electrical.wipers.motor
+      terminal: '2'
+      label: Wiper motor (DR3A)
+    via:
+    - Facia harness
+  route:
+    from: joint.g-joint-facia
+    to: wiper.2
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.wiper-motor-to-switch
+  name: 'BG: wiper motor 1 to wiper switch 4'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 37, 36
+  quantity: 1
+  finish: wire_B_G
+  notes: 'Black/green from the wiper motor to the wiper switch, which earths it to run the motor (Fig 10.26: 37 to 36 terminal 4). Colour BG (black
+    with green tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: BG
+    size: 14/0.30
+    circuit: Windscreen wipers
+    from:
+      part: electrical.wipers.motor
+      terminal: '1'
+      label: Wiper motor (DR3A)
+    to:
+      part: electrical.instruments.toggle-switch
+      terminal: '4'
+      label: Wiper switch
+    via:
+    - Facia harness
+  route:
+    from: wiper.1
+    to: sw.wiper.4
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.wiper-switch-earth
+  name: 'B: wiper switch 1 to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 36, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the wiper switch (Fig 10.26: 36 terminals 1-2, B). Colour B (black), 14/0.30. Colour and both ends: Haynes Fig 10.26
+    (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 14/0.30
+    circuit: Windscreen wipers earth
+    from:
+      part: electrical.instruments.toggle-switch
+      terminal: '1'
+      label: Wiper switch
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: sw.wiper.1
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.wiper-motor-earth
+  name: 'B: wiper motor E to earth point (scuttle)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 37, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the motor''s E terminal (the limit switch''s earth, Fig 10.26: 37 E). Colour B (black), 14/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 14/0.30
+    circuit: Wiper motor earth
+    from:
+      part: electrical.wipers.motor
+      terminal: E
+      label: Wiper motor (DR3A)
+    to:
+      part: electrical.wiring-earths.earth-scuttle
+      terminal: earth screw
+      label: Earth point (scuttle)
+  route:
+    from: wiper.E
+    to: earth.scuttle
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.fuse-a2-to-horn-joint
+  name: 'P: fuse block A2 to purple joint (horn feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '19'
+  quantity: 1
+  finish: wire_P
+  notes: 'Purple from A2, the output of fuse 1-2, to the horn joint at the front (Fig 10.26: 19 2 to 23). Colour P (purple), 14/0.30. Colour and
+    both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: P
+    size: 14/0.30
+    circuit: Horns
+    fuse: A1-A2 (35 A)
+    from:
+      part: electrical.control.fuse-block
+      terminal: A2
+      label: Fuse block (4FJ)
+    to:
+      part: electrical.wiring-wipers-horn.p-joint
+      terminal: ''
+      label: Purple joint (horn feed)
+    via:
+    - Main harness, engine bay
+  route:
+    from: fuse.A2
+    to: joint.p-joint
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.horn-joint-to-lh-horn
+  name: 'P: purple joint (horn feed) to left-hand horn'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '23'
+  quantity: 1
+  finish: wire_P
+  notes: 'Purple to the left-hand horn. Colour P (purple), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed
+    p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: P
+    size: 14/0.30
+    circuit: Horns
+    fuse: A1-A2 (35 A)
+    from:
+      part: electrical.wiring-wipers-horn.p-joint
+      terminal: ''
+      label: Purple joint (horn feed)
+    to:
+      part: electrical.control.horn
+      terminal: LH horn 1
+      label: Left-hand horn
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.p-joint
+    to: horn.L1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.horn-joint-to-rh-horn
+  name: 'P: purple joint (horn feed) to right-hand horn'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '23'
+  quantity: 1
+  finish: wire_P
+  notes: 'Purple to the right-hand horn. Colour P (purple), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed
+    p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: P
+    size: 14/0.30
+    circuit: Horns
+    fuse: A1-A2 (35 A)
+    from:
+      part: electrical.wiring-wipers-horn.p-joint
+      terminal: ''
+      label: Purple joint (horn feed)
+    to:
+      part: electrical.control.horn
+      terminal: RH horn 1
+      label: Right-hand horn
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.p-joint
+    to: horn.R1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.lh-horn-to-push-joint
+  name: 'PB: left-hand horn to purple/black joint (horn push)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '23'
+  quantity: 1
+  finish: wire_P_B
+  notes: 'Purple/black from the left-hand horn''s other terminal to the horn push joint. Colour PB (purple with black tracer), 14/0.30. Colour
+    and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: PB
+    size: 14/0.30
+    circuit: Horn push
+    fuse: A1-A2 (35 A)
+    from:
+      part: electrical.control.horn
+      terminal: LH horn 2
+      label: Left-hand horn
+    to:
+      part: electrical.wiring-wipers-horn.pb-joint
+      terminal: ''
+      label: Purple/black joint (horn push)
+    via:
+    - Main harness, engine bay
+  route:
+    from: horn.L2
+    to: joint.pb-joint
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.rh-horn-to-push-joint
+  name: 'PB: right-hand horn to purple/black joint (horn push)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '23'
+  quantity: 1
+  finish: wire_P_B
+  notes: 'Purple/black from the right-hand horn. Colour PB (purple with black tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring
+    diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: PB
+    size: 14/0.30
+    circuit: Horn push
+    fuse: A1-A2 (35 A)
+    from:
+      part: electrical.control.horn
+      terminal: RH horn 2
+      label: Right-hand horn
+    to:
+      part: electrical.wiring-wipers-horn.pb-joint
+      terminal: ''
+      label: Purple/black joint (horn push)
+    via:
+    - Main harness, engine bay
+  route:
+    from: horn.R2
+    to: joint.pb-joint
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.push-joint-to-column
+  name: 'PB: purple/black joint (horn push) to direction indicator switch'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '26'
+  quantity: 1
+  finish: wire_P_B
+  notes: 'Purple/black back through the grommet to the column switch''s connector (Fig 10.26: 23 to 24). Colour PB (purple with black tracer),
+    14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: PB
+    size: 14/0.30
+    circuit: Horn push
+    fuse: A1-A2 (35 A)
+    from:
+      part: electrical.wiring-wipers-horn.pb-joint
+      terminal: ''
+      label: Purple/black joint (horn push)
+    to:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: horn push (PB)
+      label: Direction indicator switch
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.pb-joint
+    to: ind.PB
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.column-to-horn-push
+  name: 'PB: direction indicator switch to horn push contact'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 26, 24
+  quantity: 1
+  finish: wire_P_B
+  notes: 'Purple/black horn push lead from the column switch up beside the column to the horn push in the wheel hub (Fig 10.26: 24); the push
+    earths it through the column. Colour PB (purple with black tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to
+    1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: PB
+    size: 14/0.30
+    circuit: Horn push
+    fuse: A1-A2 (35 A)
+    from:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: horn push contact
+      label: Direction indicator switch
+    to:
+      part: chassis.steering.horn-push
+      terminal: contact
+      label: Horn push (steering wheel)
+  route:
+    from: ind.horn
+    to: hornpush.lead
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.green-joint-to-heater-switch
+  name: 'G: green joint (fused supply, behind the facia) to heater blower switch 1'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '32'
+  quantity: 1
+  finish: wire_G
+  notes: 'Green fused supply to the heater blower switch (Fig 10.26: 32). Colour G (green), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring
+    diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: G
+    size: 14/0.30
+    circuit: Heater blower
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-starting.g-joint-facia
+      terminal: ''
+      label: Green joint (fused supply, behind the facia)
+    to:
+      part: electrical.instruments.toggle-switch
+      terminal: '1'
+      label: Heater blower switch
+    via:
+    - Facia harness
+  route:
+    from: joint.g-joint-facia
+    to: sw.heater.1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.heater-switch-to-motor
+  name: 'GN: heater blower switch 2 to heater blower motor connector'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '32'
+  quantity: 1
+  finish: wire_G_N
+  notes: 'Green/brown from the heater switch through the grommet to the blower motor''s connector on the bulkhead (Fig 10.26: 32 to 33). Colour
+    GN (green with brown tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GN
+    size: 14/0.30
+    circuit: Heater blower
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.instruments.toggle-switch
+      terminal: '2'
+      label: Heater blower switch
+    to:
+      part: electrical.wiring-wipers-horn.heater-connector
+      terminal: ''
+      label: Heater blower motor connector
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: sw.heater.2
+    to: joint.heater-connector
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-wipers-horn.p-joint
+  name: Purple joint (horn feed)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-wipers-horn.pb-joint
+  name: Purple/black joint (horn push)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-wipers-horn.heater-connector
+  name: Heater blower motor connector
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: rubber
+  notes: Bullet connector. Lucas bullet terminals in a single/double snap connector sleeve. End of the harness at the heater blower motor's lead
+    (the heater is the body's, P11). Position derived (mgb/wiring_layout.py JOINTS).
+  specs:
+    length:
+      mm: 26.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs

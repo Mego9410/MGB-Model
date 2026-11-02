@@ -1,0 +1,288 @@
+# Overdrive wiring (P10b), Laycock type D. Haynes Fig 6.19 (printed p131) and Fig 10.26 items 68-74.
+defaults:
+  system: electrical
+  assembly: electrical.wiring-overdrive
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-overdrive.white-joint-to-switch
+  name: 'W: white joint (ignition supply, behind the facia) to overdrive switch 1'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: '72'
+  quantity: 1
+  finish: wire_W
+  notes: 'White ignition feed to the overdrive switch on the facia (Fig 6.19: 2 to 3). Colour W (white), 14/0.30. Colour and both ends: Haynes
+    Fig 6.19, printed p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 14/0.30
+    circuit: Overdrive
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.wiring-starting.w-joint
+      terminal: ''
+      label: White joint (ignition supply, behind the facia)
+    to:
+      part: electrical.instruments.toggle-switch
+      terminal: '1'
+      label: Overdrive switch
+    via:
+    - Facia harness
+  route:
+    from: joint.w-joint
+    to: sw.overdrive.1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-overdrive.switch-to-relay
+  name: 'Y: overdrive switch 2 to overdrive relay W1'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: 72, 68
+  quantity: 1
+  finish: wire_Y
+  notes: 'Yellow from the overdrive switch to the relay coil''s W1 terminal (Fig 6.19: 3 to 5 W1). Colour Y (yellow), 14/0.30. Colour and both
+    ends: Haynes Fig 6.19, printed p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: Y
+    size: 14/0.30
+    circuit: Overdrive
+    from:
+      part: electrical.instruments.toggle-switch
+      terminal: '2'
+      label: Overdrive switch
+    to:
+      part: electrical.control.relay
+      terminal: W1
+      label: Overdrive relay
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: sw.overdrive.2
+    to: relay.W1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-overdrive.relay-to-vacuum-switch
+  name: 'Y: overdrive relay W1 to overdrive throttle 1'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: 68, 74
+  quantity: 1
+  finish: wire_Y
+  notes: 'Yellow from W1 to the throttle (vacuum) switch, which holds the relay in until the throttle is opened (Fig 6.19: 5 W1 to 4). Colour
+    Y (yellow), 14/0.30. Colour and both ends: Haynes Fig 6.19, printed p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: Y
+    size: 14/0.30
+    circuit: Overdrive
+    from:
+      part: electrical.control.relay
+      terminal: W1
+      label: Overdrive relay
+    to:
+      part: electrical.control.vacuum-switch
+      terminal: '1'
+      label: Overdrive throttle (vacuum) switch
+    via:
+    - Main harness, engine bay
+  route:
+    from: relay.W1
+    to: vac.1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-overdrive.vacuum-switch-to-relay
+  name: 'YR: overdrive throttle 2 to overdrive relay C1'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: 74, 68
+  quantity: 1
+  finish: wire_Y_R
+  notes: 'Yellow/red from the vacuum switch back to the relay''s C1 contact terminal (Fig 6.19: 4 to 5 C1). Colour YR (yellow with red tracer),
+    14/0.30. Colour and both ends: Haynes Fig 6.19, printed p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: YR
+    size: 14/0.30
+    circuit: Overdrive
+    from:
+      part: electrical.control.vacuum-switch
+      terminal: '2'
+      label: Overdrive throttle (vacuum) switch
+    to:
+      part: electrical.control.relay
+      terminal: C1
+      label: Overdrive relay
+    via:
+    - Main harness, engine bay
+  route:
+    from: vac.2
+    to: relay.C1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-overdrive.relay-to-gearbox-switch
+  name: 'YR: overdrive relay C1 to overdrive gearbox switch 1'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: 68, 73
+  quantity: 1
+  finish: wire_Y_R
+  notes: 'Yellow/red from C1 down to the gearbox switch on the remote control housing, closed in third and top (Fig 6.19: 5 C1 to 6). Colour YR
+    (yellow with red tracer), 14/0.30. Colour and both ends: Haynes Fig 6.19, printed p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: YR
+    size: 14/0.30
+    circuit: Overdrive
+    from:
+      part: electrical.control.relay
+      terminal: C1
+      label: Overdrive relay
+    to:
+      part: gearbox.remote.isolation-switch
+      terminal: '1'
+      label: Overdrive gearbox switch
+    via:
+    - Overdrive leads, down the gearbox tunnel
+  route:
+    from: relay.C1
+    to: iso.1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-overdrive.fuse-a3-to-relay
+  name: 'W: fuse block A3 to overdrive relay C2'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: 19, 68
+  quantity: 1
+  finish: wire_W
+  notes: 'White from A3 to the relay''s C2 contact terminal (Fig 6.19: 1 A3 to 5 C2). Colour W (white), 14/0.30. Colour and both ends: Haynes
+    Fig 6.19, printed p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 14/0.30
+    circuit: Overdrive
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.control.fuse-block
+      terminal: A3
+      label: Fuse block (4FJ)
+    to:
+      part: electrical.control.relay
+      terminal: C2
+      label: Overdrive relay
+    via:
+    - Main harness, engine bay
+  route:
+    from: fuse.A3
+    to: relay.C2
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-overdrive.gearbox-switch-to-solenoid
+  name: 'YP: overdrive gearbox switch 2 to overdrive solenoid lead'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: 73, 71
+  quantity: 1
+  finish: wire_Y_P
+  notes: 'Yellow/purple from the gearbox switch to the overdrive solenoid, which earths through the gearbox (Fig 6.19: 6 to 7). Colour YP (yellow
+    with purple tracer), 14/0.30. Colour and both ends: Haynes Fig 6.19, printed p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: YP
+    size: 14/0.30
+    circuit: Overdrive
+    from:
+      part: gearbox.remote.isolation-switch
+      terminal: '2'
+      label: Overdrive gearbox switch
+    to:
+      part: gearbox.overdrive-hydraulics.solenoid
+      terminal: lead
+      label: Overdrive solenoid
+    via:
+    - Overdrive leads, down the gearbox tunnel
+  route:
+    from: iso.2
+    to: odsol.T
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-overdrive.relay-earth
+  name: 'B: overdrive relay W2 to earth point (relay)'
+  haynes:
+    figures:
+    - figure: '6.19'
+      legend: 68, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the relay coil''s W2 terminal (Fig 6.19: 5 W2). Colour B (black), 14/0.30. Colour and both ends: Haynes Fig 6.19, printed
+    p131; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 14/0.30
+    circuit: Overdrive relay earth
+    from:
+      part: electrical.control.relay
+      terminal: W2
+      label: Overdrive relay
+    to:
+      part: electrical.wiring-earths.earth-relay
+      terminal: earth screw
+      label: Earth point (relay)
+  route:
+    from: relay.W2
+    to: earth.relay
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'

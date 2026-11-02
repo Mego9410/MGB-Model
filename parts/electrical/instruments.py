@@ -3,7 +3,8 @@ gauge pipe and the temperature gauge's capillary and thermal transmitter.
 Haynes Ch 10 Sec 40, 45-48, Fig 10.9 (printed p176), Fig 10.26 (early wiring); Ch 1 Sec 6 paras
 5, 8, 13 (gauge pipe, thermal transmitter); Ch 2 Sec 15 (capillary temperature gauge);
 Ch 12 Sec 46 (early instruments). The facia panel itself is P11 (body), built round the
-positions in mgb.body_layout (FACIA_X, INSTRUMENTS, WARNING_LAMPS, SWITCHES).
+positions in mgb.body_layout (FACIA_X, INSTRUMENTS, WARNING_LAMPS, SWITCHES); the warning lamps are lenses on the
+tachometer and speedometer dials, lit from bulb holders in the cases (Fig 10.26).
 
 Facia items are built in the facia frame: local z toward the driver (car -x) from the facia's
 rear face, local x up, local y the car's left; the assembly places each with one Location.
@@ -39,9 +40,12 @@ def case(size, kind):
             br = br + zc(2.0, -d * 0.55 - 12.0, -2.0, 0.0, s * (r + 9.0))
             br = br + Location((0, s * (r + 9.0), -d * 0.55 - 9.0)) * extrude(RegularPolygon(5.5, 18), 6.0)
         c = c + br
-        for a in (135.0, 225.0):                                                       # bulb holders
+        holders = [E.BULB_HOLDERS["panel"]]                                            # bulb holders: panel lamp, and in
+        if kind in ("speedometer", "tachometer"):                                      # the two big dials the warning lamp
+            holders += [E.BULB_HOLDERS["warning"], E.BULB_HOLDERS["arrow"]]            # and the indicator arrow (P10b)
+        for a in holders:
             x, y = polar(r - 8.0, a)
-            c = c + zc(5.5, -d - 18.0, -d + 1.0, x, y)
+            c = c + zc(5.5, -d - 18.0, -d + 1.0, x, y) + zc(6.5, -d - 3.0, -d + 1.0, x, y)
         if kind == "speedometer":
             c = c + zc(9.0, -d - 14.0, -d + 1.0, 0.0, 0.0) + zc(11.0, -d - 26.0, -d - 14.0)   # cable boss, knurled nut
             for k in range(14):
@@ -52,6 +56,8 @@ def case(size, kind):
             c = c + zc(6.0, -d - 10.0, -d + 1.0, 8.0, 0.0)
             c = c + X.cable([(8.0, 0.0, -d - 9.0), (8.0, 0.0, -d - 30.0), (24.0, 8.0, -d - 40.0), (8.0, 16.0, -d - 30.0),
                              (8.0, 16.0, -d - 2.0)], 3.0, 6.0)                                     # pulse lead loop (Fig 10.14)
+            for y in (-12.0, 24.0):                                                     # pulse lead's two pins (P10b harness)
+                c = c + zc(3.2, -d - 4.0, -d + 1.0, -6.0, y) + zc(1.0, -d - 15.0, -d - 3.9, -6.0, y)
         elif kind == "dual-gauge":
             c = c + zc(6.0, -d - 12.0, -d + 1.0, 6.0, 8.0)                                     # oil pipe union
             c = c + Location((6.0, 8.0, -d - 12.0)) * extrude(RegularPolygon(7.0, 6), 6.0)
@@ -123,13 +129,6 @@ def needle(size, kind):
 
 
 # ---- warning lamps and switches -----------------------------------------------------------------
-def warning_lamp(spec) -> Part:
-    """Warning lamp: chrome bezel nut through the facia on the bulb holder body (Sec 40 para 2)."""
-    b = rev([(0, -30.0), (6.0, -30.0), (6.0, -2.0), (5.0, -2.0), (5.0, 0.0), (8.0, 0.0), (8.0, 1.5), (6.5, 3.5), (0, 3.5)])
-    b = b - zc(4.6, 1.0, 4.0)
-    return label(b, spec)
-
-
 def warning_lens(spec) -> Part:
     return label(X.lens_dome(4.6, 2.2, 1.6), spec)
 
@@ -249,7 +248,6 @@ for _size, _kinds in (("large", ("speedometer", "tachometer")), ("small", ("dual
     PARTS[f"electrical.instruments.bezel-{_size}"] = {"build": bezel(_size)}
     PARTS[f"electrical.instruments.glass-{_size}"] = {"build": glass(_size)}
 PARTS.update({
-    "electrical.instruments.warning-lamp": {"build": warning_lamp},
     "electrical.instruments.lens-red": {"build": warning_lens},
     "electrical.instruments.lens-blue": {"build": warning_lens},
     "electrical.instruments.lens-green": {"build": warning_lens},

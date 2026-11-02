@@ -62,11 +62,3 @@ parts:
     specs:
       diameter: { mm: 7.0, source: { label: D, method: "7 mm HT lead, as the plug leads (P3)" } }
 
-  - id: electrical.coil.lt-lead
-    name: Coil to distributor low tension lead
-    haynes: { figures: [{ figure: "10.14", legend: 7 }] }
-    quantity: 1
-    finish: cable_white
-    notes: "White/black lead from the coil CB (-) terminal to the distributor's low tension terminal (Fig 10.26 colour code). Route derived."
-    specs:
-      diameter: { mm: 3.2, source: { label: D, method: "14/0.30 mm cable with PVC" } }

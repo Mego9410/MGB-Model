@@ -1,0 +1,266 @@
+# Charging circuit wiring, Lucas 18ACR conversion of the dynamo car (P10b). Haynes Fig 10.26 (up to 1967, printed p190)
+# for the harness and colours; Fig 10.27 (alternator cars) for the alternator plug. Conversion as described in PLAN.md.
+defaults:
+  system: electrical
+  assembly: electrical.wiring-charging
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-charging.solenoid-to-junction
+  name: 'N: starter solenoid BAT to charging junction (snap connector at the control box)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '4'
+  quantity: 1
+  finish: wire_N
+  notes: 'The heavy brown from the solenoid''s battery terminal, originally to the RB340''s B terminal (Fig 10.26: 4 to 2 B). With the 18ACR conversion
+    the control box is bypassed: its brown wires are joined in a snap connector beside it. Colour N (brown), 44/0.30. Colour and both ends: Haynes
+    Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: N
+    size: 44/0.30
+    circuit: 'Charging: battery feed'
+    fuse: 'Unfused: brown, battery supply'
+    from:
+      part: electrical.starting.solenoid
+      terminal: BAT
+      label: Starter solenoid
+    to:
+      part: electrical.wiring-charging.b-connector
+      terminal: ''
+      label: Charging junction (snap connector at the control box)
+    via:
+    - Main harness, engine bay
+  route:
+    from: sol.BAT
+    to: joint.b-connector
+  specs:
+    diameter:
+      mm: 3.7
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 44/0.30'
+- id: electrical.wiring-charging.alternator-1-to-junction
+  name: 'N: 18ACR alternator plug + (1) to charging junction (snap connector at the control box)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '1'
+  quantity: 1
+  finish: wire_N
+  notes: '18ACR output: brown from the first + blade of the alternator plug to the charging junction. In the conversion the old dynamo D cable''s
+    run along the engine is used for the output (conversion described in PLAN.md). Colour N (brown), 28/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: N
+    size: 28/0.30
+    circuit: 'Charging: alternator output'
+    fuse: 'Unfused: brown, battery supply'
+    from:
+      part: electrical.charging.terminal-plug
+      terminal: + (1)
+      label: 18ACR alternator plug
+    to:
+      part: electrical.wiring-charging.b-connector
+      terminal: ''
+      label: Charging junction (snap connector at the control box)
+    via:
+    - Engine branch
+    - Main harness, engine bay
+  route:
+    from: alt.+1
+    to: joint.b-connector
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-charging.alternator-2-to-junction
+  name: 'N: 18ACR alternator plug + (2) to charging junction (snap connector at the control box)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '1'
+  quantity: 1
+  finish: wire_N
+  notes: '18ACR output: brown from the second + blade (the plug carries both, paralleled, as on the factory alternator cars, Fig 10.27). Colour
+    N (brown), 28/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: N
+    size: 28/0.30
+    circuit: 'Charging: alternator output'
+    fuse: 'Unfused: brown, battery supply'
+    from:
+      part: electrical.charging.terminal-plug
+      terminal: + (2)
+      label: 18ACR alternator plug
+    to:
+      part: electrical.wiring-charging.b-connector
+      terminal: ''
+      label: Charging junction (snap connector at the control box)
+    via:
+    - Engine branch
+    - Main harness, engine bay
+  route:
+    from: alt.+2
+    to: joint.b-connector
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-charging.junction-to-fuse-a1
+  name: 'N: charging junction (snap connector at the control box) to fuse block A1'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '19'
+  quantity: 1
+  finish: wire_N
+  notes: 'Brown from the junction (the control box B terminals) to fuse block A1, the input of fuse 1-2 (Fig 10.26: 2 B to 19 1). Colour N (brown),
+    44/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: N
+    size: 44/0.30
+    circuit: 'Charging: supply to the fuse block'
+    fuse: 'Unfused: brown, battery supply'
+    from:
+      part: electrical.wiring-charging.b-connector
+      terminal: ''
+      label: Charging junction (snap connector at the control box)
+    to:
+      part: electrical.control.fuse-block
+      terminal: A1
+      label: Fuse block (4FJ)
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.b-connector
+    to: fuse.A1
+  specs:
+    diameter:
+      mm: 3.7
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 44/0.30'
+- id: electrical.wiring-charging.alternator-ind-to-connector
+  name: 'NY: 18ACR alternator plug IND to warning lamp connector (at the control box)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '1'
+  quantity: 1
+  finish: wire_N_Y
+  notes: 'Brown/yellow from the 18ACR IND blade: the old dynamo D lead''s brown/yellow, moved at the control box to join the warning lamp lead.
+    Colour NY (brown with yellow tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived
+    (mgb/wiring_layout.py).'
+  wire:
+    code: NY
+    size: 14/0.30
+    circuit: 'Charging: warning lamp'
+    from:
+      part: electrical.charging.terminal-plug
+      terminal: IND
+      label: 18ACR alternator plug
+    to:
+      part: electrical.wiring-charging.ind-connector
+      terminal: ''
+      label: Warning lamp connector (at the control box)
+    via:
+    - Engine branch
+    - Main harness, engine bay
+  route:
+    from: alt.IND
+    to: joint.ind-connector
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-charging.connector-to-warning-lamp
+  name: 'NY: warning lamp connector (at the control box) to tachometer (warning lamp return)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '95'
+  quantity: 1
+  finish: wire_N_Y
+  notes: 'Brown/yellow from the warning lamp in the tachometer (Fig 10.26: 44 in 95) to the control box WL terminal, now joined to the alternator
+    IND lead. The lamp lights until the alternator charges. Colour NY (brown with yellow tracer), 9/0.30. Colour and both ends: Haynes Fig 10.26
+    (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: NY
+    size: 9/0.30
+    circuit: 'Charging: ignition warning lamp'
+    from:
+      part: electrical.wiring-charging.ind-connector
+      terminal: ''
+      label: Warning lamp connector (at the control box)
+    to:
+      part: electrical.instruments.tachometer-case
+      terminal: warning lamp return
+      label: Tachometer
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.ind-connector
+    to: tachometer.warning.return
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-charging.b-connector
+  name: Charging junction (snap connector at the control box)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: rubber
+  notes: 'Snap connector. Lucas multi-way snap connector: a moulded rubber sleeve holding the bullet terminals. Where the RB340 control box''s
+    B terminals were: with the 18ACR conversion the brown battery feed, the two alternator output browns and the brown to fuse A1 are joined here
+    and the control box is bypassed (left in place, unwired). Assumed conversion, see PLAN.md questions. Position derived (mgb/wiring_layout.py
+    JOINTS).'
+  specs:
+    length:
+      mm: 30.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-charging.ind-connector
+  name: Warning lamp connector (at the control box)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: rubber
+  notes: Bullet connector. Lucas bullet terminals in a single/double snap connector sleeve. The warning lamp's brown/yellow (from the control
+    box WL terminal) joined to the alternator's IND lead. Position derived (mgb/wiring_layout.py JOINTS).
+  specs:
+    length:
+      mm: 26.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs

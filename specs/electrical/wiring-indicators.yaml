@@ -1,0 +1,748 @@
+# Direction indicators and stop lamps (P10b). Haynes Fig 10.26 (printed p190).
+defaults:
+  system: electrical
+  assembly: electrical.wiring-indicators
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-indicators.green-joint-to-stop-switch
+  name: 'G: green joint (fuse A4 supply, engine bay) to stop lamp switch 1'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '18'
+  quantity: 1
+  finish: wire_G
+  notes: 'Green fused supply to the hydraulic stop lamp switch on the four-way connection (Fig 10.26: 19 4 to 18). Colour G (green), 14/0.30.
+    Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: G
+    size: 14/0.30
+    circuit: Stop lamps
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-starting.g-joint-bay
+      terminal: ''
+      label: Green joint (fuse A4 supply, engine bay)
+    to:
+      part: brakes.lines.stop-switch
+      terminal: '1'
+      label: Stop lamp switch
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+  route:
+    from: joint.g-joint-bay
+    to: stop.1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.stop-switch-to-rear-joint
+  name: 'GP: stop lamp switch 2 to green/purple joint (stop lamps, boot)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '18'
+  quantity: 1
+  finish: wire_G_P
+  notes: 'Green/purple from the stop lamp switch through the grommet and down the rear harness to the joint in the boot. Colour GP (green with
+    purple tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GP
+    size: 14/0.30
+    circuit: Stop lamps
+    fuse: A3-A4 (35 A)
+    from:
+      part: brakes.lines.stop-switch
+      terminal: '2'
+      label: Stop lamp switch
+    to:
+      part: electrical.wiring-indicators.gp-joint-rear
+      terminal: ''
+      label: Green/purple joint (stop lamps, boot)
+    via:
+    - Bulkhead grommet
+    - Facia harness
+    - Rear harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: stop.2
+    to: joint.gp-joint-rear
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.stop-to-rh-lamp
+  name: 'GP: green/purple joint (stop lamps, boot) to right-hand stop, tail and flasher lamp (stop)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 16/17, 30/31
+  quantity: 1
+  finish: wire_G_P
+  notes: 'Green/purple to the right-hand stop filament (Fig 10.26: 16). Colour GP (green with purple tracer), 14/0.30. Colour and both ends: Haynes
+    Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GP
+    size: 14/0.30
+    circuit: Stop lamps
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.gp-joint-rear
+      terminal: ''
+      label: Green/purple joint (stop lamps, boot)
+    to:
+      part: electrical.lamps.rear-body
+      terminal: stop
+      label: Right-hand stop, tail and flasher lamp
+    via:
+    - Rear harness
+  route:
+    from: joint.gp-joint-rear
+    to: rear.R.stop
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.stop-to-lh-lamp
+  name: 'GP: green/purple joint (stop lamps, boot) to left-hand stop, tail and flasher lamp (stop)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 16/17, 30/31
+  quantity: 1
+  finish: wire_G_P
+  notes: 'Green/purple to the left-hand stop filament (Fig 10.26: 17). Colour GP (green with purple tracer), 14/0.30. Colour and both ends: Haynes
+    Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GP
+    size: 14/0.30
+    circuit: Stop lamps
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.gp-joint-rear
+      terminal: ''
+      label: Green/purple joint (stop lamps, boot)
+    to:
+      part: electrical.lamps.rear-body
+      terminal: stop
+      label: Left-hand stop, tail and flasher lamp
+    via:
+    - Rear harness
+  route:
+    from: joint.gp-joint-rear
+    to: rear.L.stop
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.green-joint-to-flasher
+  name: 'G: green joint (fuse A4 supply, engine bay) to flasher unit B'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '25'
+  quantity: 1
+  finish: wire_G
+  notes: 'Green fused supply to the flasher unit''s B terminal (Fig 10.26: 25 B). Colour G (green), 14/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: G
+    size: 14/0.30
+    circuit: Direction indicators
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-starting.g-joint-bay
+      terminal: ''
+      label: Green joint (fuse A4 supply, engine bay)
+    to:
+      part: electrical.control.flasher
+      terminal: B
+      label: Flasher unit (FL5)
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.g-joint-bay
+    to: flasher.B
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.flasher-to-switch
+  name: 'LGN: flasher unit L to direction indicator switch LGN'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 25, 26
+  quantity: 1
+  finish: wire_LG_N
+  notes: 'Light green/brown from the flasher''s L terminal to the direction indicator switch on the column (Fig 10.26: 25 L to 26). Colour LGN
+    (light green with brown tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived
+    (mgb/wiring_layout.py).'
+  wire:
+    code: LGN
+    size: 14/0.30
+    circuit: Direction indicators
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.control.flasher
+      terminal: L
+      label: Flasher unit (FL5)
+    to:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: LGN
+      label: Direction indicator switch
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: flasher.L
+    to: ind.LGN
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.flasher-to-warning-joint
+  name: 'LGP: flasher unit P to light green/purple joint (indicator warning lamps)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '25'
+  quantity: 1
+  finish: wire_LG_P
+  notes: 'Light green/purple from the flasher''s P (pilot) terminal to the warning lamp joint (Fig 10.26: 25 P). Colour LGP (light green with
+    purple tracer), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: LGP
+    size: 9/0.30
+    circuit: Indicator warning lamps
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.control.flasher
+      terminal: P
+      label: Flasher unit (FL5)
+    to:
+      part: electrical.wiring-indicators.lgp-joint
+      terminal: ''
+      label: Light green/purple joint (indicator warning lamps)
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: flasher.P
+    to: joint.lgp-joint
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-indicators.warning-joint-to-left-arrow
+  name: 'LGP: light green/purple joint (indicator warning lamps) to tachometer (arrow lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '95'
+  quantity: 1
+  finish: wire_LG_P
+  notes: 'Light green/purple to the left-hand arrow lamp in the tachometer (Fig 10.26: 27). Colour LGP (light green with purple tracer), 9/0.30.
+    Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: LGP
+    size: 9/0.30
+    circuit: Indicator warning lamps
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.lgp-joint
+      terminal: ''
+      label: Light green/purple joint (indicator warning lamps)
+    to:
+      part: electrical.instruments.tachometer-case
+      terminal: arrow lamp feed
+      label: Tachometer
+    via:
+    - Facia harness
+  route:
+    from: joint.lgp-joint
+    to: tachometer.arrow.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-indicators.warning-joint-to-right-arrow
+  name: 'LGP: light green/purple joint (indicator warning lamps) to speedometer (arrow lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '45'
+  quantity: 1
+  finish: wire_LG_P
+  notes: 'Light green/purple to the right-hand arrow lamp in the speedometer (Fig 10.26: 27). Colour LGP (light green with purple tracer), 9/0.30.
+    Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: LGP
+    size: 9/0.30
+    circuit: Indicator warning lamps
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.lgp-joint
+      terminal: ''
+      label: Light green/purple joint (indicator warning lamps)
+    to:
+      part: electrical.instruments.speedometer-case
+      terminal: arrow lamp feed
+      label: Speedometer
+    via:
+    - Facia harness
+  route:
+    from: joint.lgp-joint
+    to: speedometer.arrow.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-indicators.left-arrow-to-switch
+  name: 'LGY: tachometer (arrow lamp return) to direction indicator switch LGY'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 95, 26
+  quantity: 1
+  finish: wire_LG_Y
+  notes: 'Light green/yellow from the left arrow lamp to the indicator switch, which earths it when the left flashers are selected (Fig 10.26:
+    27 to 26, LGY at both ends). Colour LGY (light green with yellow tracer), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up
+    to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: LGY
+    size: 9/0.30
+    circuit: Indicator warning lamps
+    from:
+      part: electrical.instruments.tachometer-case
+      terminal: arrow lamp return
+      label: Tachometer
+    to:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: LGY
+      label: Direction indicator switch
+    via:
+    - Facia harness
+  route:
+    from: tachometer.arrow.return
+    to: ind.LGY
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-indicators.right-arrow-to-switch
+  name: 'LGW: speedometer (arrow lamp return) to direction indicator switch LGW'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 45, 26
+  quantity: 1
+  finish: wire_LG_W
+  notes: 'Light green/white from the right arrow lamp to the indicator switch (Fig 10.26: LGW at the switch 26; the lamp end is printed LGU, taken
+    as a misprint). Colour LGW (light green with white tracer), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed
+    p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: LGW
+    size: 9/0.30
+    circuit: Indicator warning lamps
+    from:
+      part: electrical.instruments.speedometer-case
+      terminal: arrow lamp return
+      label: Speedometer
+    to:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: LGW
+      label: Direction indicator switch
+    via:
+    - Facia harness
+  route:
+    from: speedometer.arrow.return
+    to: ind.LGW
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-indicators.switch-earth
+  name: 'B: direction indicator switch to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 26, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth for the switch''s warning lamp contacts (Fig 10.26: 26, B). Colour B (black), 9/0.30. Colour and both ends: Haynes Fig 10.26
+    (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 9/0.30
+    circuit: Indicator warning lamps earth
+    from:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: warning lamp earth (B)
+      label: Direction indicator switch
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: ind.B
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-indicators.switch-to-left-joint
+  name: 'GR: direction indicator switch GR to green/red joint (left-hand flashers)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '26'
+  quantity: 1
+  finish: wire_G_R
+  notes: 'Green/red from the indicator switch (left) to the left-hand flasher joint. Colour GR (green with red tracer), 14/0.30. Colour and both
+    ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GR
+    size: 14/0.30
+    circuit: Left-hand flashers
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: GR
+      label: Direction indicator switch
+    to:
+      part: electrical.wiring-indicators.gr-joint
+      terminal: ''
+      label: Green/red joint (left-hand flashers)
+    via:
+    - Facia harness
+  route:
+    from: ind.GR
+    to: joint.gr-joint
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.left-joint-to-front
+  name: 'GR: green/red joint (left-hand flashers) to left-hand side and flasher lamp (flasher)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 11/12, 28/29
+  quantity: 1
+  finish: wire_G_R
+  notes: 'Green/red through the grommet and across the front to the left-hand front flasher (Fig 10.26: 29). Colour GR (green with red tracer),
+    14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GR
+    size: 14/0.30
+    circuit: Left-hand flashers
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.gr-joint
+      terminal: ''
+      label: Green/red joint (left-hand flashers)
+    to:
+      part: electrical.lamps.side-body
+      terminal: flasher
+      label: Left-hand side and flasher lamp
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.gr-joint
+    to: side.L.flasher
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.left-joint-to-rear
+  name: 'GR: green/red joint (left-hand flashers) to left-hand stop, tail and flasher lamp (flasher)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 16/17, 30/31
+  quantity: 1
+  finish: wire_G_R
+  notes: 'Green/red down the rear harness and across the rear panel to the left-hand rear flasher (Fig 10.26: 31). Colour GR (green with red tracer),
+    14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GR
+    size: 14/0.30
+    circuit: Left-hand flashers
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.gr-joint
+      terminal: ''
+      label: Green/red joint (left-hand flashers)
+    to:
+      part: electrical.lamps.rear-body
+      terminal: flasher
+      label: Left-hand stop, tail and flasher lamp
+    via:
+    - Facia harness
+    - Rear harness
+  route:
+    from: joint.gr-joint
+    to: rear.L.flasher
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.switch-to-right-joint
+  name: 'GW: direction indicator switch GW to green/white joint (right-hand flashers)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '26'
+  quantity: 1
+  finish: wire_G_W
+  notes: 'Green/white from the indicator switch (right) to the right-hand flasher joint. Colour GW (green with white tracer), 14/0.30. Colour
+    and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GW
+    size: 14/0.30
+    circuit: Right-hand flashers
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.indicator-switch
+      terminal: GW
+      label: Direction indicator switch
+    to:
+      part: electrical.wiring-indicators.gw-joint
+      terminal: ''
+      label: Green/white joint (right-hand flashers)
+    via:
+    - Facia harness
+  route:
+    from: ind.GW
+    to: joint.gw-joint
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.right-joint-to-front
+  name: 'GW: green/white joint (right-hand flashers) to right-hand side and flasher lamp (flasher)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 11/12, 28/29
+  quantity: 1
+  finish: wire_G_W
+  notes: 'Green/white through the grommet to the right-hand front flasher (Fig 10.26: 28). Colour GW (green with white tracer), 14/0.30. Colour
+    and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GW
+    size: 14/0.30
+    circuit: Right-hand flashers
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.gw-joint
+      terminal: ''
+      label: Green/white joint (right-hand flashers)
+    to:
+      part: electrical.lamps.side-body
+      terminal: flasher
+      label: Right-hand side and flasher lamp
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.gw-joint
+    to: side.R.flasher
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.right-joint-to-rear
+  name: 'GW: green/white joint (right-hand flashers) to right-hand stop, tail and flasher lamp (flasher)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 16/17, 30/31
+  quantity: 1
+  finish: wire_G_W
+  notes: 'Green/white down the rear harness to the right-hand rear flasher (Fig 10.26: 30). Colour GW (green with white tracer), 14/0.30. Colour
+    and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GW
+    size: 14/0.30
+    circuit: Right-hand flashers
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-indicators.gw-joint
+      terminal: ''
+      label: Green/white joint (right-hand flashers)
+    to:
+      part: electrical.lamps.rear-body
+      terminal: flasher
+      label: Right-hand stop, tail and flasher lamp
+    via:
+    - Facia harness
+    - Rear harness
+  route:
+    from: joint.gw-joint
+    to: rear.R.flasher
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-indicators.indicator-switch
+  name: Direction indicator switch
+  haynes:
+    section: 45
+    figures:
+    - figure: '10.26'
+      legend: '26'
+  quantity: 1
+  finish: plastic_black
+  notes: 'Lucas column-mounted direction indicator switch (Fig 10.26 item 26): the moulded body clamped to the steering column under the wheel,
+    its lever, the cancelling cam and the row of Lucar blades for the flasher lead (LGN), the two flasher circuits (GR left, GW right), the two
+    warning lamp returns (LGY, LGW) and their earth (B), and the horn push lead (PB) on to the column. The column, wheel and horn push are P9''s;
+    position derived (body_layout COLUMN_SWITCH).'
+  specs:
+    body_width:
+      mm: 64.0
+      source:
+        label: D
+        method: Scaled from photographs of the early Lucas column switch
+- id: electrical.wiring-indicators.lgp-joint
+  name: Light green/purple joint (indicator warning lamps)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-indicators.gr-joint
+  name: Green/red joint (left-hand flashers)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-indicators.gw-joint
+  name: Green/white joint (right-hand flashers)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-indicators.gp-joint-rear
+  name: Green/purple joint (stop lamps, boot)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs

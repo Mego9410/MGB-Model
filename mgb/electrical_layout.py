@@ -196,3 +196,229 @@ def speedo_cable_end():
 # ---- gauge connections on the engine (oil pressure pipe, temperature bulb) ----------------------
 OIL_UNION = (-200.0, B.YR - 6.0 - 10.0, B.LEDGE_Z - 4.0)   # on the main oil gallery's outer face, near the rear
 TEMP_BULB = (205.0, -66.0, 32.0)                       # gland nut on the head's right face, ahead of No 1 plug
+
+
+# ---- terminals (P10b wiring) -------------------------------------------------------------------
+# Every wire end and every terminal it lands on share these records, so the wiring (P10b) and the
+# components (P10, P5, P8) agree. Each record: p = the terminal's root point (blade root, stud seat,
+# entry of a moulded plug or bulb holder), d = the unit direction the wire leaves along, kind =
+# 'lucar' (6.3 mm blade, female Lucar with an insulating sleeve over it), 'pin' (round pin or stud,
+# a sleeved bullet-type female on it), 'eye' (ring terminal on a stud: axis = the stud axis), 'plug'
+# (the wire enters a moulded plug, grommet or bulb holder directly), 'joint' (soldered joint or snap
+# connector in the harness); part = the part id the terminal belongs to; name = the terminal marking.
+# Positions follow the components' own geometry (their build code and assembly frames); the
+# terminal markings are Haynes Fig 10.26 (printed p190) and Fig 6.19 (printed p131) unless noted.
+
+
+def _xf(loc, p):
+    from build123d import Location
+    q = (loc * Location(tuple(float(c) for c in p))).position
+    return (q.X, q.Y, q.Z)
+
+
+def _xd(loc, d):
+    a, b = _xf(loc, (0, 0, 0)), _xf(loc, d)
+    v = (b[0] - a[0], b[1] - a[1], b[2] - a[2])
+    n = math.sqrt(sum(c * c for c in v))
+    return tuple(c / n for c in v)
+
+
+def _load(rel):
+    import importlib.util
+    sp = importlib.util.spec_from_file_location("_t_" + rel.replace("/", "_").replace(".", "_"), ROOT / rel)
+    m = importlib.util.module_from_spec(sp)
+    sp.loader.exec_module(m)
+    return m
+
+
+_TERMS = None
+
+
+def terminals():
+    """{key: record} for every terminal the wiring lands on (cached)."""
+    global _TERMS
+    if _TERMS is not None:
+        return _TERMS
+    from build123d import Location, Rot
+    from mgb import body_layout as BL, overdrive_layout as OL
+    T = {}
+
+    def t(key, part, name, p, d, kind="lucar", label="", **kw):
+        n = math.sqrt(sum(c * c for c in d))
+        T[key] = dict(key=key, part=part, name=name, p=tuple(float(c) for c in p), d=tuple(c / n for c in d), kind=kind,
+                      label=label, **kw)
+
+    def spec(f, pid):
+        return {s.id: s for s in S.load_file(ROOT / "specs" / "electrical" / f)}[pid]
+
+    # alternator plug (18ACR): the leads leave the moulded plug rearward (P10 terminal-plug)
+    z0 = COVER_Z[0]
+    for name, dx in (("+ (1)", -8.0), ("+ (2)", -3.0), ("IND", 2.0)):
+        t("alt." + name.split()[0] + ("" if name == "IND" else name[-2]), "electrical.charging.terminal-plug", name,
+          alt_local(dx, -34.0, z0 - 14.0), (-1.0, 0.0, 0.0), "plug", "18ACR alternator plug")
+    # starter solenoid: battery and starter studs (eyes under the nuts), switch terminal pin on the cap
+    bx, by, bz = sol_terminal(1)
+    t("sol.BAT", "electrical.starting.solenoid", "BAT", (bx, by, bz - 3.5), (0.0, 1.0, 0.25), "eye", "Starter solenoid",
+      axis=(0.0, 0.0, 1.0), eye_r=4.1)
+    sx, sy, sz = sol_terminal(-1)
+    t("sol.STA", "electrical.starting.solenoid", "STA", (sx, sy, sz - 10.5), (0.0, 1.0, 0.0), "eye", "Starter solenoid",
+      axis=(0.0, 0.0, 1.0), eye_r=4.1)
+    cx, cy, cz = SOL_C
+    t("sol.SW", "electrical.starting.solenoid", "switch (WR)", (cx, cy + 15.0, cz + SOL_LEN / 2 + 11.0), (0.0, 0.0, 1.0), "pin",
+      "Starter solenoid")
+    t("starter.post", "electrical.starting.terminal-post", "terminal post", starter_terminal(),
+      (0.0, math.cos(math.radians(TERMINAL_ANGLE)), math.sin(math.radians(TERMINAL_ANGLE))), "eye", "Starter motor")
+    # coil: SW and CB studs (eyes under the brass nuts); negative earth: CB takes the ignition feed
+    for name, (x, y) in COIL_TERMINALS.items():
+        t("coil." + name, "electrical.coil.coil", name, (x, y, COIL_TERMINAL_Z - 5.7), (-1.0 if name == "SW" else 1.0, 0.0, 0.0), "eye",
+          "Ignition coil",
+          axis=(0.0, 0.0, 1.0), eye_r=2.2)
+    # distributor low tension terminal blade (P3 distributor body), the lead pushed on along its length
+    # the blade stands out radially toward the block, only a few mm from its face, so the lead's female is
+    # drawn pushed on from the front, along the gap between the body and the block (as P10's lead ran)
+    v = tuple(o - l for o, l in zip(DIST_LT_OUT, DIST_LT))
+    ax = DIST_AXIS
+    tg = (ax[1] * v[2] - ax[2] * v[1], ax[2] * v[0] - ax[0] * v[2], ax[0] * v[1] - ax[1] * v[0])
+    tg = tg if tg[0] > 0 else tuple(-c for c in tg)
+    tg = (tg[0], 0.0, tg[2])                       # level with the block face, not into it
+    t("dist.LT", "ignition.distributor.body", "LT (CB)", DIST_LT, tg, "lucar", "Distributor", normal=v)
+
+    # inner wing units (frames as assemblies/electrical_control.py)
+    RIGHT = Rot(-90, 0, 0) * Rot(0, 0, 180)
+    LEFT = Rot(90, 0, 0)
+    BULK = Rot(0, 90, 0) * Rot(0, 0, 90)
+    fb = Location(BL.FUSE_BOX) * RIGHT
+    fw = spec("control.yaml", "electrical.control.fuse-block").nom("width")
+    for name, sx_, yy in (("A1", -1, 13.0), ("A2", 1, 13.0), ("A3", -1, -13.0), ("A4", 1, -13.0)):
+        t("fuse." + name, "electrical.control.fuse-block", name, _xf(fb, (sx_ * (fw / 2 + 0.5), yy, 3.5)), _xd(fb, (sx_, 0, 0)),
+          "lucar", "Fuse block (4FJ)", normal=_xd(fb, (0, 0, 1)))
+    fl = Location(BL.FLASHER) * RIGHT
+    fsp = spec("control.yaml", "electrical.control.flasher")
+    fr_, fL = fsp.nom("diameter") / 2, fsp.nom("length")
+    for name, dx in (("B", -7.0), ("L", 0.0), ("P", 7.0)):
+        t("flasher." + name, "electrical.control.flasher", name, _xf(fl, (dx, -fL / 2, fr_ + 3.0)), _xd(fl, (0, -1, 0)), "lucar",
+          "Flasher unit (FL5)", normal=_xd(fl, (0, 0, 1)))
+    rl = Location(BL.OD_RELAY) * LEFT
+    rsp = spec("control.yaml", "electrical.control.relay")
+    rw, rh, rd = rsp.nom("width"), rsp.nom("height"), rsp.nom("depth")
+    for k, name in enumerate(("W1", "W2", "C1", "C2")):
+        x = -rw / 2 + 7.0 + k * (rw - 14.0) / 3
+        t("relay." + name, "electrical.control.relay", name, _xf(rl, (x, -rh / 2 - 1.5, rd / 2)), _xd(rl, (0, -1, 0)), "lucar",
+          "Overdrive relay", normal=_xd(rl, (0, 0, 1)))
+    vs = Location(BL.OD_VACUUM_SWITCH) * BULK
+    vr = spec("control.yaml", "electrical.control.vacuum-switch").nom("diameter") / 2
+    for name, dx in (("1", -6.0), ("2", 6.0)):
+        t("vac." + name, "electrical.control.vacuum-switch", name, _xf(vs, (dx, -vr - 5.0, 12.0)), _xd(vs, (0, -1, 0)), "pin",
+          "Overdrive throttle (vacuum) switch")
+    hsp = spec("control.yaml", "electrical.control.horn")
+    hr = hsp.nom("diameter") / 2
+    for k, (hx, hy, hz) in enumerate(BL.HORN_POS):
+        side = "L" if hy > 0 else "R"
+        h = Location((hx, hy, hz + hr + 34.0)) * BULK
+        for name, dx in (("1", -8.0 if hy > 0 else 8.0), ("2", 8.0 if hy > 0 else -8.0)):
+            t(f"horn.{side}{name}", "electrical.control.horn", f"{'LH' if side == 'L' else 'RH'} horn {name}",
+              _xf(h, (dx, 6.0, -3.0)), _xd(h, (0, 0, -1)), "pin", f"{'Left' if side == 'L' else 'Right'}-hand horn")
+
+    # stop lamp switch on the four-way connection (P8): two spades on its moulded head
+    lines = _load("parts/brakes/lines.py")
+    p, d = lines.four_way_ports()["switch"]
+    base = tuple(pp + dd * (lines.SWITCH_WASHER_T + 22.0) for pp, dd in zip(p, d))
+    for name, k in (("1", -1), ("2", 1)):
+        t("stop." + name, "brakes.lines.stop-switch", name, (base[0] + k * 4.0, base[1], base[2]), d, "lucar", "Stop lamp switch",
+          normal=(1.0, 0.0, 0.0))
+    # overdrive gearbox (isolation) switch on the remote housing (P5a) and the solenoid (P5b)
+    rm = _load("parts/gearbox/remote.py")
+    iso = G.GF * Location((rm.SU, rm.SW_L0, rm.SWITCH_D)) * Rot(-90, 0, 0)
+    for name, dy in (("1", -4.5), ("2", 4.5)):
+        t("iso." + name, "gearbox.remote.isolation-switch", name, _xf(iso, (0.0, dy, -20.0)), _xd(iso, (0, 0, -1)), "lucar",
+          "Overdrive gearbox switch", normal=_xd(iso, (0, 1, 0)))
+    su, sl = OL.SOL_AXIS
+    sol = G.GF * Location((0, 0, OL.Z0)) * Location((su, sl, 0))
+    t("odsol.T", "gearbox.overdrive-hydraulics.solenoid", "lead", _xf(sol, (-OL.SOL_R * 0.4, 0.0, OL.SOL_E[1] + 9.0)),
+      (-0.35, -1.0, 0.25), "pin", "Overdrive solenoid")      # the lead bends outboard, clear of the speedometer angle drive
+
+    # lamps (frames as assemblies/electrical_lamps.py)
+    FRONT, REAR = Rot(0, 90, 0), Rot(0, -90, 0)
+    hd = spec("lamps.yaml", "electrical.lamps.headlamp-bowl").nom("depth")
+    for s, side in ((-1, "R"), (1, "L")):
+        hl = Location((BL.HEADLAMP_RIM_X, s * BL.HEADLAMP_Y, BL.HEADLAMP_Z)) * FRONT
+        for name, (dx, dy) in (("main", (-3.0, -3.0)), ("dip", (-3.0, 3.0)), ("earth", (3.0, 0.0))):
+            t(f"hl.{side}.{name}", "electrical.lamps.headlamp-bowl", name, _xf(hl, (dx, dy, -14.0 - hd - 6.0)), _xd(hl, (0, 0, -1)),
+              "plug", f"{'Right' if s < 0 else 'Left'}-hand headlamp")
+        sl_ = Location((BL.SIDELAMP_X, s * BL.SIDELAMP_Y, BL.SIDELAMP_Z)) * FRONT
+        for name, dy in (("side", -18.0 * s), ("flasher", 18.0 * s)):
+            t(f"side.{side}.{name}", "electrical.lamps.side-body", name, _xf(sl_, (0.0, dy, -9.0)), _xd(sl_, (0, 0, -1)), "plug",
+              f"{'Right' if s < 0 else 'Left'}-hand side and flasher lamp")
+        rl_ = Location((BL.REAR_LAMP_X, s * BL.REAR_LAMP_Y, BL.REAR_LAMP_Z)) * REAR
+        for name, (dx, dy) in (("tail", (40.0, -3.0)), ("stop", (40.0, 3.0)), ("flasher", (-40.0, 0.0))):
+            t(f"rear.{side}.{name}", "electrical.lamps.rear-body", name, _xf(rl_, (dx, dy, -8.0)), _xd(rl_, (0, 0, -1)), "plug",
+              f"{'Right' if s < 0 else 'Left'}-hand stop, tail and flasher lamp")
+        nx, ny, nz = BL.NUMBER_LAMP
+        t(f"plate.{side}", "electrical.lamps.plate-lamp", "feed", (nx, s * (ny + 1.0), nz), (0.0, s, 0.0), "plug",
+          f"{'Right' if s < 0 else 'Left'}-hand number plate lamp")
+
+    # facia (frame as assemblies/electrical_instruments.py: car = (FACIA_X - lz, y + ly, z + lx))
+    def fa(y, z, lx, ly, lz):
+        return (BL.FACIA_X - lz, y + ly, z + lx)
+    for sw, names in (("lighting", ("4", "7", "8")), ("wiper", ("1", "4", "")), ("heater", ("1", "2", "")),
+                      ("overdrive", ("1", "2", ""))):
+        y, z = BL.SWITCHES[sw]
+        for name, ly in zip(names, (-4.5, 0.0, 4.5)):
+            if name:
+                t(f"sw.{sw}.{name}", "electrical.instruments.toggle-switch", name, fa(y, z, 0.0, ly, -34.0), (1.0, 0.0, 0.0), "lucar",
+                  {"lighting": "Lighting switch", "wiper": "Wiper switch", "heater": "Heater blower switch",
+                   "overdrive": "Overdrive switch"}[sw], normal=(0.0, 1.0, 0.0))
+    for sw in ("panel-lamp", "map-lamp"):
+        y, z = BL.SWITCHES[sw]
+        for name, ly in (("1", -4.0), ("2", 4.0)):
+            t(f"sw.{sw}.{name}", "electrical.instruments.pull-switch", name, fa(y, z, 0.0, ly, -38.0), (1.0, 0.0, 0.0), "lucar",
+              {"panel-lamp": "Panel lamp switch", "map-lamp": "Map lamp switch"}[sw], normal=(0.0, 1.0, 0.0))
+    y, z = BL.SWITCHES["ignition"]
+    for name, ly in (("1", -6.0), ("2", 0.0), ("3", 6.0)):
+        t("ign." + name, "electrical.instruments.ignition-switch", name, fa(y, z, 0.0, ly, -40.0), (1.0, 0.0, 0.0), "lucar",
+          "Ignition/starter switch", normal=(0.0, 1.0, 0.0))
+    # instruments: bulb holders in the cases (panel lamp, warning lamps), tachometer pulse lead, fuel gauge studs
+    for inst, (y, z) in BL.INSTRUMENTS.items():
+        big = inst in ("speedometer", "tachometer")
+        r, dep = (40.0 if big else 26.0), (72.0 if big else 50.0)
+        name = {"speedometer": "Speedometer", "tachometer": "Tachometer", "fuel-gauge": "Fuel gauge",
+                "dual-gauge": "Oil pressure and water temperature gauge"}[inst]
+        holders = {"panel": BULB_HOLDERS["panel"]}
+        if inst in ("tachometer", "speedometer"):
+            holders["warning"] = BULB_HOLDERS["warning"]
+            holders["arrow"] = BULB_HOLDERS["arrow"]
+        for hname, a in holders.items():
+            hx, hy = r - 8.0 if big else r - 7.0, 0.0
+            hx, hy = (r - 8.0) * math.cos(math.radians(a)), (r - 8.0) * math.sin(math.radians(a))
+            for k, wn in ((0, "feed"), (1, "return")):
+                t(f"{inst}.{hname}.{wn}", f"electrical.instruments.{inst}-case", f"{hname} lamp {wn}",
+                  fa(y, z, hx, hy + (k - 0.5) * 5.0, -dep - 18.0), (1.0, 0.0, 0.0), "plug", name)
+        if inst == "tachometer":
+            for wn, ly in (("in", -12.0), ("out", 24.0)):
+                t(f"tachometer.pulse.{wn}", "electrical.instruments.tachometer-case", f"pulse lead {wn}",
+                  fa(y, z, -6.0, ly, -dep - 6.0), (1.0, 0.0, 0.0), "pin", name)
+        if inst == "fuel-gauge":
+            for wn, ly in (("I", -8.0), ("T", 8.0)):
+                t(f"fuel-gauge.{wn}", "electrical.instruments.fuel-gauge-case", wn, fa(y, z, 6.0, ly, -dep - 8.0),
+                  (1.0, 0.0, 0.0), "pin", name)
+    # wiper motor (DR3A): three Lucar blades on the front of the field yoke (P10 wipers)
+    mx, my, mz = BL.WIPER_MOTOR
+    for name, ly in (("1", 15.0), ("2", 29.0), ("E", 43.0)):
+        t("wiper." + name, "electrical.wipers.motor", name, (mx - 10.0 + 30.0, my + 70.0 + ly, mz + 8.0 - 8.0 - 40.0), (1.0, 0.0, 0.0),
+          "lucar", "Wiper motor (DR3A)", normal=(0.0, 0.0, 1.0))
+    for key, rec in WIRING_TERMINALS().items():
+        T[key] = rec
+    _TERMS = T
+    return T
+
+
+# angles of the bulb holders round the instrument cases (deg from up toward the car's left, in the
+# facia frame): the panel lamp (P10's upper holder), the warning lamp and the indicator arrow.
+BULB_HOLDERS = {"panel": 135.0, "warning": 225.0, "arrow": 180.0}
+
+
+def WIRING_TERMINALS():
+    """Terminals of the parts P10b adds (dip switch, column switch, stabiliser, connectors, earth
+    points, joints): defined with those parts in mgb.wiring_layout."""
+    from mgb import wiring_layout as WL
+    return WL.terminals()

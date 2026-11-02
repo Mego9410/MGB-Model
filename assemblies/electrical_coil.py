@@ -1,6 +1,6 @@
 """Ignition coil, Lucas HA12, its bracket and leads (Haynes Ch 10 Sec 25 para 2; Fig 10.14).
 
-Explode stages: leads off the coil (king lead out of the tower, the low tension lead off CB),
+Explode stages: the king lead out of the tower (the low tension leads are in electrical.wiring-starting),
 then the bracket bolt out and the coil and bracket away together, the pinch screw and clamp.
 """
 from pathlib import Path
@@ -37,7 +37,6 @@ def add(part, loc, **o):
 
 O = Location((0, 0, 0))
 add("king-lead", O, explode=ex(UP, 1, 90))
-add("lt-lead", O, explode=ex(UP, 1.5, 60))
 bx, bz = E.COIL_BOSS
 t = SP["electrical.coil.clamp"].nom("thickness")
 add("bracket-bolt", Location((bx, E.BOSS_FACE_Y - t, bz)) * Rot(-90, 0, 0), explode=ex(OUT, 2, 60))

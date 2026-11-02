@@ -1,0 +1,239 @@
+# Instrument wiring (P10b): ignition warning lamp, voltage stabiliser and fuel gauge. Haynes Fig 10.26 (printed p190).
+defaults:
+  system: electrical
+  assembly: electrical.wiring-instruments
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-instruments.white-joint-to-warning-lamp
+  name: 'W: white joint (ignition supply, behind the facia) to tachometer (warning lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '95'
+  quantity: 1
+  finish: wire_W
+  notes: 'White ignition feed to the ignition warning lamp in the tachometer (Fig 10.26: W to 44). Colour W (white), 9/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: W
+    size: 9/0.30
+    circuit: Ignition warning lamp
+    fuse: 'Unfused: white, ignition supply (A3 is the fuse''s input)'
+    from:
+      part: electrical.wiring-starting.w-joint
+      terminal: ''
+      label: White joint (ignition supply, behind the facia)
+    to:
+      part: electrical.instruments.tachometer-case
+      terminal: warning lamp feed
+      label: Tachometer
+    via:
+    - Facia harness
+  route:
+    from: joint.w-joint
+    to: tachometer.warning.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-instruments.green-joint-to-stabiliser
+  name: 'G: green joint (fused supply, behind the facia) to voltage stabiliser B'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '64'
+  quantity: 1
+  finish: wire_G
+  notes: 'Green fused supply to the voltage stabiliser''s B terminal (Fig 10.26: 64 B). Colour G (green), 14/0.30. Colour and both ends: Haynes
+    Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: G
+    size: 14/0.30
+    circuit: Fuel gauge
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-starting.g-joint-facia
+      terminal: ''
+      label: Green joint (fused supply, behind the facia)
+    to:
+      part: electrical.wiring-instruments.stabiliser
+      terminal: B
+      label: Voltage stabiliser
+    via:
+    - Facia harness
+  route:
+    from: joint.g-joint-facia
+    to: stab.B
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-instruments.stabiliser-to-fuel-gauge
+  name: 'LGG: voltage stabiliser I to fuel gauge I'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 64, 34
+  quantity: 1
+  finish: wire_LG_G
+  notes: 'Light green/green: the stabilised 10 V supply from the stabiliser''s I terminal to the fuel gauge (Fig 10.26: 64 I to 34). Colour LGG
+    (light green with green tracer), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: LGG
+    size: 9/0.30
+    circuit: Fuel gauge
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.wiring-instruments.stabiliser
+      terminal: I
+      label: Voltage stabiliser
+    to:
+      part: electrical.instruments.fuel-gauge-case
+      terminal: I
+      label: Fuel gauge
+    via:
+    - Facia harness
+  route:
+    from: stab.I
+    to: fuel-gauge.I
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-instruments.stabiliser-earth
+  name: 'B: voltage stabiliser E to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 64, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the stabiliser''s E terminal (Fig 10.26: 64 E). Colour B (black), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring
+    diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 9/0.30
+    circuit: Voltage stabiliser earth
+    from:
+      part: electrical.wiring-instruments.stabiliser
+      terminal: E
+      label: Voltage stabiliser
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: stab.E
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-instruments.fuel-gauge-to-tank-unit
+  name: 'GB: fuel gauge T to fuel tank gauge unit terminal'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 34, 35
+  quantity: 1
+  finish: wire_G_B
+  notes: 'Green/black from the fuel gauge down the rear harness to the tank unit (Fig 10.26: 34 to 35). Colour GB (green with black tracer), 14/0.30.
+    Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: GB
+    size: 14/0.30
+    circuit: Fuel gauge
+    fuse: A3-A4 (35 A)
+    from:
+      part: electrical.instruments.fuel-gauge-case
+      terminal: T
+      label: Fuel gauge
+    to:
+      part: fuel.tank.gauge-unit
+      terminal: terminal
+      label: Fuel tank gauge unit
+    via:
+    - Facia harness
+    - Rear harness
+  route:
+    from: fuel-gauge.T
+    to: tank.T
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-instruments.tank-unit-earth
+  name: 'B: fuel tank gauge unit to earth point (boot)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 35, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the tank unit to the body in the boot (Fig 10.26: 35, B). Colour B (black), 14/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 14/0.30
+    circuit: Fuel tank unit earth
+    from:
+      part: fuel.tank.gauge-unit
+      terminal: earth terminal
+      label: Fuel tank gauge unit
+    to:
+      part: electrical.wiring-earths.earth-boot
+      terminal: earth screw
+      label: Earth point (boot)
+    via:
+    - Rear harness
+  route:
+    from: tank.E
+    to: earth.boot
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-instruments.stabiliser
+  name: Instrument voltage stabiliser
+  haynes:
+    section: 48
+    figures:
+    - figure: '10.26'
+      legend: '64'
+  quantity: 1
+  finish: zinc_steel
+  notes: 'Bi-metallic voltage stabiliser (Haynes Sec 48, Fig 10.26 item 64): a small steel can with a fixing tab, terminals B (green supply),
+    I (light green/green to the fuel gauge) and E (earth). Haynes draws it on the up-to-1967 diagram; whether a 1963 car has one is a question
+    for Oliver (PLAN.md). On the facia rear beside the fuel gauge (D).'
+  specs:
+    length:
+      mm: 38.0
+      source:
+        label: D
+        method: Scaled from photographs of the Smiths stabiliser

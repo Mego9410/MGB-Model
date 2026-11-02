@@ -20,6 +20,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P8 Brakes | Ch 9 | done |
 | P9 Suspension, steering, wheels and tyres; engine mountings | Ch 11 | done |
 | P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | done |
+| P10b Wiring harness, wire by wire (every cable, its colour, terminals and route) | Ch 10, Ch 6 | done |
 | P11a Exhaust system; fuel tank, pump and pipes | Ch 3 | done |
 | P11b Body shell, panels, trim, fittings | Ch 12 | |
 
@@ -205,8 +206,74 @@ round them and should check them against the car:
 - Known P10 approximations: unit positions in the engine bay, the facia layout and every harness
   route are derived (no photographs of a 1963 engine bay or facia could be opened from the build
   machine); the 18ACR, M418G, DR3A and the instruments are modelled from the Haynes figures and
-  common pattern sizes, not measured; lens optics, dial figures and individual wires are not drawn;
+  common pattern sizes, not measured; lens optics and dial figures are not drawn (individual wires: P10b);
   the thermal transmitter sits on the head's right face, which has no boss for it in P1 yet.
+
+## P10b wiring harness: what was built and assumed
+
+- Wire list from Haynes Fig 10.26 (wiring diagram, models up to 1967, printed p190, key p189; rendered at 300 dpi
+  and read section by section) and Fig 6.19 (overdrive circuit, p131); fuse duties from Sec 33 para 1 (fuse 1-2:
+  horns, unfused-ignition items; fuse 3-4: stop lamps, fuel gauge, flashers, wipers). Cable sizes and outside
+  diameters: Auto Electric Supplies standard cable table and Autosparks PVC cable (S). Conversion practice: mgaguru
+  "generator to alternator" (Barney Gaylord), Moss conversion instructions 130-068, MGOC Spares (RB340 GEU6605, 4FJ).
+  The specs are `specs/electrical/wiring-*.yaml` (one per circuit); every wire has its `wire:` block for the viewer
+  card and a `route:` (its two terminal keys). Terminals: `mgb/electrical_layout.py terminals()` (P10/P5/P8/P11a
+  components) and `mgb/wiring_layout.py terminals()` (the parts P10b adds); harness graph, joints, bundle layout:
+  `mgb/wiring_layout.py`. Each wire leaves its terminal along the terminal's direction, follows the shortest path
+  through the harness graph in its own slot of the bundle (hexagonal rings round the path), and lands on the other
+  terminal with its fitting (female Lucar and PVC sleeve, sleeved bullet on a pin, eye on a stud, or into a moulded
+  plug, bulb holder or joint).
+- 18ACR conversion as modelled (an assumption, see questions): the RB340 control box stays on the wing but is
+  bypassed; its two B terminals' browns (from the solenoid, to fuse A1) and the two browns from the alternator's +
+  blades meet in a four-way snap connector beside it; the warning lamp's brown/yellow (old WL lead) is joined in a
+  bullet connector to the old dynamo D lead's brown/yellow, which now goes to the alternator's IND blade. The old
+  brown/green field lead (F) is redundant and not drawn. The car is taken as converted to negative earth throughout:
+  the battery's positive post to the solenoid, the negative to the body; the HA12 coil's leads swapped (ignition
+  white on CB, the distributor's white/black on SW); the tachometer's pulse loop reversed.
+- Warning lamps moved into the instruments (Fig 10.26: ignition 44 in the tachometer 95, main beam 10 and the
+  indicator arrows 27 in the speedometer 45 and tachometer): P10's three separate facia warning lamps are gone; their
+  lenses sit on the dials, lit from bulb holders in the cases.
+- Parts P10b added: headlamp dip switch on the toe board, direction indicator switch clamped on P9's outer column tube below the wheel
+  (`wiring_layout.COLUMN_SWITCH`), with the horn push lead up beside the column to P9's horn push, instrument voltage stabiliser (item 64; Haynes draws it on the early diagram,
+  see questions), harness joints and snap connectors, earth points (`body_layout.EARTH_POINTS`), the bulkhead
+  grommet, and the braided sleeving sized to each bundle. Changes to P10 parts: the fuse block's blades now leave its
+  ends (photo 33.1), the flasher has three blades (B, L, P), the alternator plug's stub leads are gone (the harness
+  leads enter it), the coil's low tension lead is now the harness wire, the instrument cases have the extra bulb
+  holders and the tachometer's pulse lead pins, the battery and starter cables and the earth strap moved to the
+  wiring assemblies.
+- Interference check (P10b, every wire's centre line and surface sampled every 2.5 mm against every other system,
+  each hit confirmed by surface distance; joints, earth points and switch gear by booleans): no wire passes through
+  another part; wires touch only their own
+  terminals and bundle mates; the column switch's cancelling cam touches the column's swaged top (3 mm3).
+- Known P10b approximations: every harness route, joint position and the order of the wires in each bundle are
+  derived; joints (soldered splices in the factory harness) are drawn where the circuit splits, so the real harness
+  may split at other places; terminal numbers on the lighting switch (4, 7, 8) and ignition switch (1, 2, 3) are as
+  read on the diagram (the drawing is small); the map lamp, heater blower motor and horn push are not built (their
+  leads end at connectors or the column switch); reversing lamps, fog/spot lamps, radio and cigar lighter are not
+  fitted (dashed or later items on the diagram); cables are drawn 8-sided.
+
+## Carried over from P10b (wiring) for P11b (body) and P9 (steering)
+
+- Grommets and holes: the main harness grommet in the bulkhead (`body_layout.HARNESS_GROMMET`, about 38 mm hole);
+  the rear harness passes the heelboard at x `underbody_layout.HEELBOARD_X` (+30 mm, cabin face) beside the right
+  sill and on over the right-hand wheel arch at about z -90 (`wiring_layout` nodes re.*): a grommet or clip there, and
+  where the pump lead goes back through the heelboard to the pump (y about -430, z -345) and where the tank unit lead
+  goes down through the boot floor to the gauge unit (x about -2530, y -420); the number plate lamp leads pass
+  through the rear panel/overriders; the overdrive leads pass the bulkhead/tunnel at about (x -430, y 120, z -120);
+  the dip switch's leads come up the toe board from (x -445, y -165).
+- Clips: P-clips along the inner wing tops (z 118, |y| 405), across the front panel behind the grille (x 560, z -40),
+  along behind the facia (x -655, z 277), down the right sill (y -591, z -350) and in the boot; the facia harness
+  runs need a bracket or the facia's own clips.
+- Earth points on the body (`body_layout.EARTH_POINTS`, No 10 self-tapping screws): headlamps (front panel behind
+  each lamp), left valance by the overdrive relay, facia rear face, scuttle by the wiper motor, boot (right-hand
+  side by the tank), heelboard by the fuel pump.
+- Heater blower (`body_layout.HEATER_CONNECTOR`) and map lamp (`MAP_LAMP_CONNECTOR`): the harness ends at their
+  connectors; the units are the body's.
+- Steering (P9 built): the direction indicator switch is clamped on the outer tube 56 mm below its swaged top
+  (`wiring_layout.COLUMN_SWITCH`); a column cowl, if wanted, should enclose it. The horn push lead runs outside the
+  tube to the push; the real contact (slip ring or brush in the wheel boss) is not modelled.
+- Fuel (P11a built): the pump lead ends on the SU pump's end cover terminal stud and its earth lead goes from the
+  cover to an earth screw on the heelboard; the tank unit's two blades take the green/black lead and its earth.
 
 ## Changes P10 made to earlier phases
 
@@ -332,3 +399,19 @@ round them and should check them against the car:
 - Wipers: which way do the arms park (the model parks them toward the driver's side)?
 - Lamps: are the front side/flasher lamps and rear lamps still the original early type, and are
   reversing lamps or any extra lamps fitted?
+
+- Wiring (P10b), the 18ACR conversion: how was yours done? The model bypasses the RB340 (left in place) with a
+  four-way snap connector joining the browns and a bullet joining the warning lamp's brown/yellow to the alternator's
+  IND lead. Is the control box still there, removed, or replaced by a dummy junction box? Which wires go to the
+  alternator plug (two browns on the + blades and brown/yellow on IND assumed)?
+- Wiring: has the whole car been converted to negative earth (coil leads swapped, tachometer loop reversed)? The model
+  assumes so, as the 18ACR needs.
+- Wiring: does your car have the instrument voltage stabiliser (Haynes Fig 10.26 item 64) behind the facia? Haynes
+  draws it on the up-to-1967 diagram; some early cars may not have one.
+- Wiring: are the indicator warning lamps the two green arrows in the tachometer and speedometer (as Haynes Fig
+  10.26 draws them, and as modelled), and the ignition and main beam warning lamps in the instruments? P10 had put
+  three separate lamps on the facia.
+- Wiring: is the harness the original braided type, or a replacement (PVC taped)? Any extra circuits (reversing
+  lamps, fog/spot lamps, radio, electric fan, electronic ignition, a battery master switch)?
+- Wiring: where are your dip switch and the horn push lead (the model has the foot switch on the toe board left of
+  the clutch pedal, and the horn push lead through the column switch)?

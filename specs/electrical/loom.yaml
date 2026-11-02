@@ -1,7 +1,5 @@
-# Wiring loom. Haynes Fig 10.26 (wiring diagram, models up to 1967, dynamo and positive earth;
-# key printed p189, cable colours there), Sec 33, 42, 45; Ch 6 Sec 16 (overdrive). Oliver's car
-# is negative earth with the 18ACR (Fig 10.27, alternator cars, for the charging leads).
-# Routes derived (D): mgb/body_layout.py grommets and unit positions. PDF page = printed + 4.
+# Wiring loom coverings (P10b): the braided sleeving over the main runs of the harness and the bulkhead grommet.
+# The wires themselves are the electrical.wiring-* assemblies. Haynes Fig 10.26 (printed p190). PDF page = printed + 4.
 defaults:
   system: electrical
   assembly: electrical.loom
@@ -11,36 +9,42 @@ defaults:
 
 parts:
   - id: electrical.loom.engine-bay
-    name: Main harness, engine bay
+    name: Main harness sleeving, engine bay
     quantity: 1
     notes: >
-      The main harness from the bulkhead grommet forward along the right inner wing and across
-      the front panel to the left-hand lamps, with branches to the fuse block, flasher, control
-      box, starter solenoid switch terminal, alternator plug, coil SW terminal, both horns, the
-      headlamps and side/flasher lamps, the overdrive relay and the overdrive throttle (vacuum)
-      switch on the bulkhead (Fig 10.26 items 1-4, 8-12, 19, 23, 25, 28, 29, 39, 68, 74). Drawn as a
-      taped bundle; individual wires are not drawn. Route derived.
+      Braided sleeving over the main harness from the bulkhead grommet forward along the top of the right inner wing,
+      across behind the grille and back along the left wing to the overdrive relay and throttle switch (early MGB
+      harnesses are covered in lacquered cotton braid; the branches to the units leave it as bare wires). It fits the
+      bundle it covers: its size on each run is the bundle's (mgb/wiring_layout.py). Hide it with the eye toggle to see
+      the wires inside. Route derived.
     specs:
-      diameter: { mm: 18.0, source: { label: D, method: "About 30 cables of 14/0.30 to 28/0.30 mm in a taped bundle" } }
+      wall: { mm: 0.5, source: { label: D, method: "Thin braided cotton sleeving" } }
 
   - id: electrical.loom.facia
-    name: Facia harness
+    name: Facia harness sleeving
     quantity: 1
-    notes: "Behind the facia from the bulkhead grommet to the tachometer, the small gauges, the warning lamps (Fig 10.26 items 10, 27, 44), the switches (6, 13, 26, 32, 36, 38, 72) and the wiper motor (37). Route derived."
+    notes: "Braided sleeving over the harness from the grommet behind the facia, along behind the instruments and switches to the wiper motor, and down to the dip switch and the column switch. Route derived."
     specs:
-      diameter: { mm: 15.0, source: { label: D, method: "Taped bundle" } }
+      wall: { mm: 0.5, source: { label: D, method: "Thin braided cotton sleeving" } }
 
   - id: electrical.loom.rear
-    name: Rear harness
+    name: Rear harness sleeving
     quantity: 1
-    notes: "From behind the facia along the right-hand side of the body to the boot and across the rear panel to the stop/tail and flasher lamps and number plate lamps (Fig 10.26 items 15-17, 30, 31); the fuel tank unit lead (35) goes with the tank (P11). Route derived."
+    notes: "Braided sleeving over the rear harness down the right-hand sill, up the heelboard, over the right-hand wheel arch into the boot and across the rear panel. Route derived."
     specs:
-      diameter: { mm: 11.0, source: { label: D, method: "Taped bundle" } }
+      wall: { mm: 0.5, source: { label: D, method: "Thin braided cotton sleeving" } }
 
   - id: electrical.loom.overdrive
-    name: Overdrive leads
+    name: Overdrive leads sleeving
     quantity: 1
-    finish: cable_black
-    notes: "Relay (68) to the gearbox switch (73, the isolation switch on the remote housing, P5a) and on to the overdrive solenoid (71) at the back of the overdrive's right side (P5b), Ch 6 Sec 16. Route derived."
+    notes: "Sleeving over the overdrive leads from the relay down past the bulkhead into the tunnel to the gearbox switch and on to the solenoid (Ch 6 Sec 16). Route derived."
     specs:
-      diameter: { mm: 5.0, source: { label: D, method: "Two leads in a sleeve" } }
+      wall: { mm: 0.5, source: { label: D, method: "Thin braided cotton sleeving" } }
+
+  - id: electrical.loom.bulkhead-grommet
+    name: Main harness bulkhead grommet
+    quantity: 1
+    finish: rubber
+    notes: "Rubber grommet in the bulkhead where the main harness passes from the engine bay to behind the facia (right-hand side, high). Position derived (mgb/body_layout.py HARNESS_GROMMET); its hole in the bulkhead is the body's (P11)."
+    specs:
+      flange_diameter: { mm: 40.0, source: { label: D, method: "Sized round the harness bundle with a 6 mm lip" } }

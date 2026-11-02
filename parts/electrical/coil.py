@@ -87,28 +87,10 @@ def king_lead(spec) -> Part:
     return label(lead, spec)
 
 
-def lt_lead(spec) -> Part:
-    """Low tension lead (white/black) from the coil CB terminal to the distributor."""
-    d = spec.nom("diameter")
-    x, y = E.COIL_TERMINALS["CB"]
-    ox, oy, oz = E.DIST_LT_OUT
-    lx, ly, lz = E.DIST_LT
-    u = ((ox - lx) / 13.0, (oy - ly) / 13.0, (oz - lz) / 13.0)
-    zt = E.COIL_TERMINAL_Z - 5.7
-    # off the CB stud sideways, round the front of the distributor and onto its terminal blade
-    # back along the gap between the block and the distributor body to the inboard-facing terminal
-    p = [(x + 4.0, y, zt + 0.8), (x + 18.0, y, zt + 0.8), (x + 20.0, y + 20.0, zt - 10.0), (-30.0, -68.0, -24.0),
-         (lx + 14.0, -68.5, lz + 2.0), (lx + 3.0, ly + 0.5, lz), (lx, ly, lz)]
-    c = X.cable(p, d, 18.0)
-    c = c + Location((x, y, zt)) * (zc(4.5, 0, 1.6) - zc(2.2, -1, 2))
-    return label(c, spec)
-
-
 PARTS = {
     "electrical.coil.coil": {"build": can},
     "electrical.coil.clamp": {"build": clamp},
     "electrical.coil.pinch-screw": {"build": pinch_screw},
     "electrical.coil.bracket-bolt": {"build": bracket_bolt},
     "electrical.coil.king-lead": {"build": king_lead},
-    "electrical.coil.lt-lead": {"build": lt_lead},
 }

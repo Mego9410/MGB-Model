@@ -57,7 +57,11 @@ def fuse_block(spec) -> Part:
         base = base + Location((0, yy, 13.0)) * Rot(0, 90, 0) * (zc(3.2, -14.0, 14.0) + zc(3.6, -16.0, -10.0) + zc(3.6, 10.0, 16.0))
         for s in (-1, 1):                                               # spring clips and terminal screws
             base = base + box(s * 13.0 - 2.5, s * 13.0 + 2.5, yy - 4.0, yy + 4.0, 7.0, 15.0)
-            base = base + zc(2.6, 7.0, 11.0, s * 22.0, yy) + _blade(s * 22.0, yy - 3.0, 9.0, 6.0)
+            base = base + zc(2.6, 7.0, 11.0, s * 22.0, yy)
+    for yy in (-13.0, 13.0):                                            # terminal blades out of the ends (photo 33.1):
+        for s in (-1, 1):                                               # A1, A2 on the upper fuse; A3, A4 on the lower
+            x0, x1 = sorted((s * (w / 2 - 6.0), s * (w / 2 + 8.0)))
+            base = base + box(x0, x1, yy - 3.2, yy + 3.2, 3.1, 3.9)
     cov = box(-w / 2 + 2.0, w / 2 - 2.0, -h / 2 + 2.0, h / 2 - 2.0, 7.0, 21.0)
     cov = tryfillet(cov, cov.edges().group_by(Axis.Z)[-1], 4.0)
     cov = cov - box(-w / 2 + 3.6, w / 2 - 3.6, -h / 2 + 3.6, h / 2 - 3.6, 6.0, 19.4)
@@ -66,12 +70,12 @@ def fuse_block(spec) -> Part:
 
 def flasher(spec) -> Part:
     """Flasher unit: 'a small cylindrical metal container' (Sec 42 para 1), its spade
-    terminals (B, L) in the moulded base, held in a spring clip screwed to the panel."""
+    terminals (B, L and P for the warning lamp, Fig 10.26 item 25) in the moulded base, held in a spring clip screwed to the panel."""
     r = spec.nom("diameter") / 2
     L = spec.nom("length")
     f = Location((0, 0, r + 3.0)) * Rot(90, 0, 0) * (rev([(0, -L / 2), (r - 2.0, -L / 2), (r, -L / 2 + 2.0), (r, L / 2 - 6.0),
                                                            (r + 0.6, L / 2 - 5.0), (r + 0.6, L / 2), (0, L / 2)]))
-    for dx in (-5.0, 5.0):
+    for dx in (-7.0, 0.0, 7.0):                                          # B, L, P (three-terminal FL5)
         f = f + box(dx - 3.2, dx + 3.2, -L / 2 - 8.0, -L / 2, r + 2.6, r + 3.4)
     clip = box(-r - 17.0, r + 17.0, -6.0, 6.0, 0.0, 1.2) + (Location((0, 0, r + 3.0)) * Rot(90, 0, 0) * Sh.tube(2 * r + 2.4, 2 * r + 0.2, 12.0, -6.0)
                                                          - box(-r - 3, r + 3, -7, 7, r + 3.0, 2 * r + 9.0))

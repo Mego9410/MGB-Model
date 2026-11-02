@@ -68,20 +68,36 @@ parts:
   - id: electrical.battery.positive-cable
     name: Battery to solenoid cable
     haynes: { section: 2 }
+    assembly: electrical.wiring-starting
     quantity: 1
-    finish: cable_black
+    finish: wire_B
     part_numbers: [{ number: AHH5449, by: MGOC Spares }]
     notes: "Screw-on 'helmet' terminal on the positive post (MGOC: screw-fixing terminals until February 1976); route under the floor, through the toe board and up to the solenoid derived (D)."
+    wire:
+      code: ""
+      size: "37/0.90 (starter cable)"
+      circuit: "Battery positive to the starter solenoid (negative earth)"
+      fuse: "Unfused"
+      from: { part: electrical.battery.battery, terminal: "+", label: "Battery (12 V)" }
+      to: { part: electrical.starting.solenoid, terminal: "BAT", label: "Starter solenoid" }
+      via: ["Out of the battery box's front wall", "Under the floor beside the tunnel", "Up through the toe board grommet"]
     specs:
       diameter: { mm: 12.0, source: { label: D, method: "Battery cable with PVC cover" } }
 
   - id: electrical.battery.earth-cable
     name: Battery earth lead (negative)
     haynes: { section: 2 }
+    assembly: electrical.wiring-earths
     quantity: 1
-    finish: cable_black
+    finish: wire_B
     part_numbers: [{ number: 5L924, by: MGOC Spares }]
     notes: "Disconnected first and refitted last (Sec 2 paras 1-2). To a bolt through the carrier into the body (D)."
+    wire:
+      code: ""
+      size: "37/0.90"
+      circuit: "Battery negative to earth (negative earth conversion)"
+      from: { part: electrical.battery.battery, terminal: "-", label: "Battery (12 V)" }
+      to: { part: electrical.battery.floor-bolt, terminal: "", label: "Earth bolt through the battery box" }
     specs:
       diameter: { mm: 10.0, source: { label: D, method: "Earth lead with PVC cover" } }
 

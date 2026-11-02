@@ -53,10 +53,9 @@ for k, (y, z) in BL.INSTRUMENTS.items():
     add(f"{k}-needle", f, explode=ex(REARWARD, 3, 140))
     add(f"glass-{SIZE[k]}", f, explode=ex(REARWARD, 2, 190))
     add(f"bezel-{SIZE[k]}", f, explode=ex(REARWARD, 2, 230))
-for k, (y, z) in BL.WARNING_LAMPS.items():
-    f = at(y, z)
-    add("warning-lamp", f, explode=ex(FWD, 4, 60))
-    add({"ignition": "lens-red", "main-beam": "lens-blue", "indicator": "lens-green"}[k], f, explode=ex(FWD, 4, 60))
+for k, (inst, y, z) in BL.WARNING_LAMPS.items():           # lenses in the dials (Fig 10.26: 44 in 95, 10 and 27 in 45/95)
+    f = at(y, z) * Location((0, 0, -0.6))
+    add({"ignition": "lens-red", "main-beam": "lens-blue"}.get(k, "lens-green"), f, explode=ex(REARWARD, 2, 190))
 for k, (y, z) in BL.SWITCHES.items():
     f = at(y, z)
     if k in ("panel-lamp", "map-lamp"):

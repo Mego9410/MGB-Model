@@ -151,6 +151,17 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   temperature capillary; and the wiring loom as sleeved bundles with branches. Body datums for P11
   are in `mgb/body_layout.py`; engine-bay electrical datums in `mgb/electrical_layout.py`.
 
+- P10b (wiring harness) built, wire by wire: every cable of the harness from Haynes Fig 10.26 (wiring diagram up to
+  1967) and Fig 6.19 (overdrive), each its own part in its Lucas colour (main colour and tracer), size, circuit and
+  the two terminals it joins (the viewer's wire card links to both, and every component lists its wires). Wires run
+  side by side in bundles along the harness routes (engine bay, facia, rear harness, overdrive leads), break out to
+  their units and end in Lucar, bullet or ring terminals on the real terminal positions; the soldered joints, snap
+  connectors, earth points, bulkhead grommet and braided sleeving are parts too. Grouped by circuit
+  (`electrical.wiring-charging`, `-starting`, `-lighting`, `-indicators`, `-instruments`, `-wipers-horn`,
+  `-overdrive`, `-earths`) so one circuit can be isolated and traced. Adapted for the 18ACR alternator (control box
+  bypassed) and the negative-earth single 12 V battery. Terminals: `mgb/electrical_layout.py terminals()`; routes,
+  joints and bundles: `mgb/wiring_layout.py`.
+
 - P11a (exhaust and fuel supply) built: the early one-piece welded exhaust (Haynes Ch 3 Sec 46, photos 6.14 and
   46.2): twin downpipes with their flanges and sealing rings on the manifold's two outlets (the manifold now has
   two), the Y-piece, the flattened oval centre silencer, the interpipe under the axle and the left handbrake rod,

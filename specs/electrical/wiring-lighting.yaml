@@ -1,0 +1,1284 @@
+# Lighting wiring (P10b): head, side, tail, number plate, panel and map lamps. Haynes Fig 10.26 (printed p190).
+defaults:
+  system: electrical
+  assembly: electrical.wiring-lighting
+  haynes:
+    section: 1
+    figures:
+    - figure: '10.26'
+  variant:
+    factory_1963: true
+    as_fitted: true
+parts:
+- id: electrical.wiring-lighting.fuse-a1-to-lighting-switch
+  name: 'N: fuse block A1 to lighting switch 4'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 19, 6
+  quantity: 1
+  finish: wire_N
+  notes: 'Brown battery feed to the lighting switch (Fig 10.26: N to 6 terminal 4, as read on the diagram). Colour N (brown), 28/0.30. Colour
+    and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: N
+    size: 28/0.30
+    circuit: Lighting switch feed
+    fuse: 'Unfused: brown, battery supply'
+    from:
+      part: electrical.control.fuse-block
+      terminal: A1
+      label: Fuse block (4FJ)
+    to:
+      part: electrical.instruments.toggle-switch
+      terminal: '4'
+      label: Lighting switch
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: fuse.A1
+    to: sw.lighting.4
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-lighting.lighting-switch-to-dip-switch
+  name: 'U: lighting switch 8 to headlamp dip switch feed (U)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 6, 7
+  quantity: 1
+  finish: wire_U
+  notes: 'Blue from the lighting switch (headlamp position) to the foot dip switch (Fig 10.26: 6 to 7). Colour U (blue), 28/0.30. Colour and both
+    ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: U
+    size: 28/0.30
+    circuit: Headlamps
+    from:
+      part: electrical.instruments.toggle-switch
+      terminal: '8'
+      label: Lighting switch
+    to:
+      part: electrical.wiring-lighting.dip-switch
+      terminal: feed (U)
+      label: Headlamp dip switch
+    via:
+    - Facia harness
+  route:
+    from: sw.lighting.8
+    to: dip.feed
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-lighting.dip-switch-to-main-joint
+  name: 'UW: headlamp dip switch to blue/white joint (main beams)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '7'
+  quantity: 1
+  finish: wire_U_W
+  notes: 'Blue/white from the dip switch''s main beam terminal forward to the main beam joint. Colour UW (blue with white tracer), 28/0.30. Colour
+    and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: UW
+    size: 28/0.30
+    circuit: Headlamp main beams
+    from:
+      part: electrical.wiring-lighting.dip-switch
+      terminal: main (UW)
+      label: Headlamp dip switch
+    to:
+      part: electrical.wiring-lighting.uw-joint
+      terminal: ''
+      label: Blue/white joint (main beams)
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: dip.main
+    to: joint.uw-joint
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-lighting.main-joint-to-rh-headlamp
+  name: 'UW: blue/white joint (main beams) to right-hand headlamp (main)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 8/9
+  quantity: 1
+  finish: wire_U_W
+  notes: 'Blue/white to the right-hand headlamp''s main beam filament, through the snap connector behind the lamp (Fig 10.26: 8). Colour UW (blue
+    with white tracer), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: UW
+    size: 14/0.30
+    circuit: Headlamp main beams
+    from:
+      part: electrical.wiring-lighting.uw-joint
+      terminal: ''
+      label: Blue/white joint (main beams)
+    to:
+      part: electrical.lamps.headlamp-bowl
+      terminal: main
+      label: Right-hand headlamp
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.uw-joint
+    to: hl.R.main
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.main-joint-to-lh-headlamp
+  name: 'UW: blue/white joint (main beams) to left-hand headlamp (main)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 8/9
+  quantity: 1
+  finish: wire_U_W
+  notes: 'Blue/white to the left-hand headlamp''s main beam filament (Fig 10.26: 9). Colour UW (blue with white tracer), 14/0.30. Colour and both
+    ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: UW
+    size: 14/0.30
+    circuit: Headlamp main beams
+    from:
+      part: electrical.wiring-lighting.uw-joint
+      terminal: ''
+      label: Blue/white joint (main beams)
+    to:
+      part: electrical.lamps.headlamp-bowl
+      terminal: main
+      label: Left-hand headlamp
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.uw-joint
+    to: hl.L.main
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.main-joint-to-warning-lamp
+  name: 'UW: blue/white joint (main beams) to speedometer (warning lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '45'
+  quantity: 1
+  finish: wire_U_W
+  notes: 'Blue/white back through the grommet to the main beam warning lamp in the speedometer (Fig 10.26: 10 in 45). Colour UW (blue with white
+    tracer), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: UW
+    size: 9/0.30
+    circuit: Main beam warning lamp
+    from:
+      part: electrical.wiring-lighting.uw-joint
+      terminal: ''
+      label: Blue/white joint (main beams)
+    to:
+      part: electrical.instruments.speedometer-case
+      terminal: warning lamp feed
+      label: Speedometer
+    via:
+    - Main harness, engine bay
+    - Bulkhead grommet
+    - Facia harness
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.uw-joint
+    to: speedometer.warning.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.dip-switch-to-dip-joint
+  name: 'UR: headlamp dip switch dip (UR) to blue/red joint (dipped beams)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '7'
+  quantity: 1
+  finish: wire_U_R
+  notes: 'Blue/red from the dip switch''s dip terminal forward to the dipped beam joint. Colour UR (blue with red tracer), 28/0.30. Colour and
+    both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: UR
+    size: 28/0.30
+    circuit: Headlamp dipped beams
+    from:
+      part: electrical.wiring-lighting.dip-switch
+      terminal: dip (UR)
+      label: Headlamp dip switch
+    to:
+      part: electrical.wiring-lighting.ur-joint
+      terminal: ''
+      label: Blue/red joint (dipped beams)
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: dip.dip
+    to: joint.ur-joint
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-lighting.dip-joint-to-rh-headlamp
+  name: 'UR: blue/red joint (dipped beams) to right-hand headlamp (dip)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 8/9
+  quantity: 1
+  finish: wire_U_R
+  notes: 'Blue/red to the right-hand headlamp''s dipped filament (Fig 10.26: 8). Colour UR (blue with red tracer), 14/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: UR
+    size: 14/0.30
+    circuit: Headlamp dipped beams
+    from:
+      part: electrical.wiring-lighting.ur-joint
+      terminal: ''
+      label: Blue/red joint (dipped beams)
+    to:
+      part: electrical.lamps.headlamp-bowl
+      terminal: dip
+      label: Right-hand headlamp
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.ur-joint
+    to: hl.R.dip
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.dip-joint-to-lh-headlamp
+  name: 'UR: blue/red joint (dipped beams) to left-hand headlamp (dip)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 8/9
+  quantity: 1
+  finish: wire_U_R
+  notes: 'Blue/red to the left-hand headlamp''s dipped filament (Fig 10.26: 9). Colour UR (blue with red tracer), 14/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: UR
+    size: 14/0.30
+    circuit: Headlamp dipped beams
+    from:
+      part: electrical.wiring-lighting.ur-joint
+      terminal: ''
+      label: Blue/red joint (dipped beams)
+    to:
+      part: electrical.lamps.headlamp-bowl
+      terminal: dip
+      label: Left-hand headlamp
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.ur-joint
+    to: hl.L.dip
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.rh-headlamp-earth
+  name: 'B: right-hand headlamp (earth) to earth point (headlamp right)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 8/9, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the right-hand headlamp to the body (Fig 10.26: 8, B). Colour B (black), 14/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 14/0.30
+    circuit: Headlamp earth
+    from:
+      part: electrical.lamps.headlamp-bowl
+      terminal: earth
+      label: Right-hand headlamp
+    to:
+      part: electrical.wiring-earths.earth-headlamp-right
+      terminal: earth screw
+      label: Earth point (headlamp right)
+  route:
+    from: hl.R.earth
+    to: earth.headlamp-right
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.lh-headlamp-earth
+  name: 'B: left-hand headlamp (earth) to earth point (headlamp left)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 8/9, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the left-hand headlamp to the body (Fig 10.26: 9, B). Colour B (black), 14/0.30. Colour and both ends: Haynes Fig 10.26
+    (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 14/0.30
+    circuit: Headlamp earth
+    from:
+      part: electrical.lamps.headlamp-bowl
+      terminal: earth
+      label: Left-hand headlamp
+    to:
+      part: electrical.wiring-earths.earth-headlamp-left
+      terminal: earth screw
+      label: Earth point (headlamp left)
+  route:
+    from: hl.L.earth
+    to: earth.headlamp-left
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.lighting-switch-to-red-joint
+  name: 'R: lighting switch 7 to red joint (side and tail lamps, behind the facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '6'
+  quantity: 1
+  finish: wire_R
+  notes: 'Red from the lighting switch (side lamp position, terminal 7) to the red joint behind the facia. Colour R (red), 28/0.30. Colour and
+    both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 28/0.30
+    circuit: Side, tail and panel lamps
+    from:
+      part: electrical.instruments.toggle-switch
+      terminal: '7'
+      label: Lighting switch
+    to:
+      part: electrical.wiring-lighting.r-joint-facia
+      terminal: ''
+      label: Red joint (side and tail lamps, behind the facia)
+    via:
+    - Facia harness
+  route:
+    from: sw.lighting.7
+    to: joint.r-joint-facia
+  specs:
+    diameter:
+      mm: 3.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 28/0.30'
+- id: electrical.wiring-lighting.red-joint-to-panel-switch
+  name: 'R: red joint (side and tail lamps, behind the facia) to panel lamp switch 1'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '13'
+  quantity: 1
+  finish: wire_R
+  notes: 'Red to the panel lamp switch (Fig 10.26: R to 13). Colour R (red), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up
+    to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Panel lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-facia
+      terminal: ''
+      label: Red joint (side and tail lamps, behind the facia)
+    to:
+      part: electrical.instruments.pull-switch
+      terminal: '1'
+      label: Panel lamp switch
+    via:
+    - Facia harness
+  route:
+    from: joint.r-joint-facia
+    to: sw.panel-lamp.1
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.panel-switch-to-map-switch
+  name: 'R: panel lamp switch 1 to map lamp switch 1'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 13, 101
+  quantity: 1
+  finish: wire_R
+  notes: 'Red on from the panel lamp switch''s feed to the map lamp switch (Fig 10.26: 13 to 101). Colour R (red), 9/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 9/0.30
+    circuit: Map lamp
+    from:
+      part: electrical.instruments.pull-switch
+      terminal: '1'
+      label: Panel lamp switch
+    to:
+      part: electrical.instruments.pull-switch
+      terminal: '1'
+      label: Map lamp switch
+    via:
+    - Facia harness
+  route:
+    from: sw.panel-lamp.1
+    to: sw.map-lamp.1
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.map-switch-to-map-lamp
+  name: 'RG: map lamp switch 2 to map lamp connector'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '101'
+  quantity: 1
+  finish: wire_R_G
+  notes: 'Red/green from the map lamp switch to the map lamp (Fig 10.26: 101 to 102). Colour RG (red with green tracer), 9/0.30. Colour and both
+    ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: RG
+    size: 9/0.30
+    circuit: Map lamp
+    from:
+      part: electrical.instruments.pull-switch
+      terminal: '2'
+      label: Map lamp switch
+    to:
+      part: electrical.wiring-lighting.map-connector
+      terminal: ''
+      label: Map lamp connector
+    via:
+    - Facia harness
+  route:
+    from: sw.map-lamp.2
+    to: joint.map-connector
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.red-joint-to-front
+  name: 'R: red joint (side and tail lamps, behind the facia) to red joint (side lamps)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: ''
+  quantity: 1
+  finish: wire_R
+  notes: 'Red through the bulkhead grommet to the front side lamp joint. Colour R (red), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring
+    diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Side lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-facia
+      terminal: ''
+      label: Red joint (side and tail lamps, behind the facia)
+    to:
+      part: electrical.wiring-lighting.r-joint-front
+      terminal: ''
+      label: Red joint (side lamps)
+    via:
+    - Facia harness
+    - Bulkhead grommet
+    - Main harness, engine bay
+    via_parts:
+    - electrical.loom.bulkhead-grommet
+  route:
+    from: joint.r-joint-facia
+    to: joint.r-joint-front
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.red-to-rh-side-lamp
+  name: 'R: red joint (side lamps) to right-hand side and flasher lamp (side)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 11/12, 28/29
+  quantity: 1
+  finish: wire_R
+  notes: 'Red to the right-hand side lamp, through the snap connector behind it (Fig 10.26: 11). Colour R (red), 14/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Side lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-front
+      terminal: ''
+      label: Red joint (side lamps)
+    to:
+      part: electrical.lamps.side-body
+      terminal: side
+      label: Right-hand side and flasher lamp
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.r-joint-front
+    to: side.R.side
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.red-to-lh-side-lamp
+  name: 'R: red joint (side lamps) to left-hand side and flasher lamp (side)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 11/12, 28/29
+  quantity: 1
+  finish: wire_R
+  notes: 'Red to the left-hand side lamp (Fig 10.26: 12). Colour R (red), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to
+    1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Side lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-front
+      terminal: ''
+      label: Red joint (side lamps)
+    to:
+      part: electrical.lamps.side-body
+      terminal: side
+      label: Left-hand side and flasher lamp
+    via:
+    - Main harness, engine bay
+  route:
+    from: joint.r-joint-front
+    to: side.L.side
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.red-joint-to-rear
+  name: 'R: red joint (side and tail lamps, behind the facia) to red joint (tail and number plate lamps, boot)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: ''
+  quantity: 1
+  finish: wire_R
+  notes: 'Red down the rear harness to the joint in the boot. Colour R (red), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram
+    up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Tail and number plate lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-facia
+      terminal: ''
+      label: Red joint (side and tail lamps, behind the facia)
+    to:
+      part: electrical.wiring-lighting.r-joint-rear
+      terminal: ''
+      label: Red joint (tail and number plate lamps, boot)
+    via:
+    - Facia harness
+    - Rear harness
+  route:
+    from: joint.r-joint-facia
+    to: joint.r-joint-rear
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.red-to-rh-tail-lamp
+  name: 'R: red joint (tail and number plate lamps, boot) to right-hand stop, tail and flasher lamp (tail)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 16/17, 30/31
+  quantity: 1
+  finish: wire_R
+  notes: 'Red to the right-hand tail filament (Fig 10.26: 16). Colour R (red), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram
+    up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Tail lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-rear
+      terminal: ''
+      label: Red joint (tail and number plate lamps, boot)
+    to:
+      part: electrical.lamps.rear-body
+      terminal: tail
+      label: Right-hand stop, tail and flasher lamp
+    via:
+    - Rear harness
+  route:
+    from: joint.r-joint-rear
+    to: rear.R.tail
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.red-to-lh-tail-lamp
+  name: 'R: red joint (tail and number plate lamps, boot) to left-hand stop, tail and flasher lamp (tail)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 16/17, 30/31
+  quantity: 1
+  finish: wire_R
+  notes: 'Red across the rear panel to the left-hand tail filament (Fig 10.26: 17). Colour R (red), 14/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Tail lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-rear
+      terminal: ''
+      label: Red joint (tail and number plate lamps, boot)
+    to:
+      part: electrical.lamps.rear-body
+      terminal: tail
+      label: Left-hand stop, tail and flasher lamp
+    via:
+    - Rear harness
+  route:
+    from: joint.r-joint-rear
+    to: rear.L.tail
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.red-to-rh-plate-lamp
+  name: 'R: red joint (tail and number plate lamps, boot) to right-hand number plate lamp feed'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '15'
+  quantity: 1
+  finish: wire_R
+  notes: 'Red to the right-hand number plate lamp (Fig 10.26: 15). Colour R (red), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram
+    up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Number plate lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-rear
+      terminal: ''
+      label: Red joint (tail and number plate lamps, boot)
+    to:
+      part: electrical.lamps.plate-lamp
+      terminal: feed
+      label: Right-hand number plate lamp
+    via:
+    - Rear harness
+  route:
+    from: joint.r-joint-rear
+    to: plate.R
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.red-to-lh-plate-lamp
+  name: 'R: red joint (tail and number plate lamps, boot) to left-hand number plate lamp feed'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '15'
+  quantity: 1
+  finish: wire_R
+  notes: 'Red to the left-hand number plate lamp (Fig 10.26: 15). Colour R (red), 14/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram
+    up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: R
+    size: 14/0.30
+    circuit: Number plate lamps
+    from:
+      part: electrical.wiring-lighting.r-joint-rear
+      terminal: ''
+      label: Red joint (tail and number plate lamps, boot)
+    to:
+      part: electrical.lamps.plate-lamp
+      terminal: feed
+      label: Left-hand number plate lamp
+    via:
+    - Rear harness
+  route:
+    from: joint.r-joint-rear
+    to: plate.L
+  specs:
+    diameter:
+      mm: 2.6
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 14/0.30'
+- id: electrical.wiring-lighting.panel-switch-to-rw-joint
+  name: 'RW: panel lamp switch 2 to red/white joint (panel lamps)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '13'
+  quantity: 1
+  finish: wire_R_W
+  notes: 'Red/white from the panel lamp switch to the panel lamp joint behind the instruments (Fig 10.26: 13 to 14). Colour RW (red with white
+    tracer), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: RW
+    size: 9/0.30
+    circuit: Panel lamps
+    from:
+      part: electrical.instruments.pull-switch
+      terminal: '2'
+      label: Panel lamp switch
+    to:
+      part: electrical.wiring-lighting.rw-joint
+      terminal: ''
+      label: Red/white joint (panel lamps)
+    via:
+    - Facia harness
+  route:
+    from: sw.panel-lamp.2
+    to: joint.rw-joint
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.rw-joint-to-tachometer
+  name: 'RW: red/white joint (panel lamps) to tachometer (panel lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '95'
+  quantity: 1
+  finish: wire_R_W
+  notes: 'Red/white to the panel lamp in the tachometer (Fig 10.26: 14). Colour RW (red with white tracer), 9/0.30. Colour and both ends: Haynes
+    Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: RW
+    size: 9/0.30
+    circuit: Panel lamps
+    from:
+      part: electrical.wiring-lighting.rw-joint
+      terminal: ''
+      label: Red/white joint (panel lamps)
+    to:
+      part: electrical.instruments.tachometer-case
+      terminal: panel lamp feed
+      label: Tachometer
+    via:
+    - Facia harness
+  route:
+    from: joint.rw-joint
+    to: tachometer.panel.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.tachometer-panel-lamp-earth
+  name: 'B: tachometer (panel lamp return) to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 95, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the tachometer''s panel lamp holder (Fig 10.26: 14, B). Colour B (black), 9/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 9/0.30
+    circuit: Panel lamp earth
+    from:
+      part: electrical.instruments.tachometer-case
+      terminal: panel lamp return
+      label: Tachometer
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: tachometer.panel.return
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.rw-joint-to-speedometer
+  name: 'RW: red/white joint (panel lamps) to speedometer (panel lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '45'
+  quantity: 1
+  finish: wire_R_W
+  notes: 'Red/white to the panel lamp in the speedometer (Fig 10.26: 14). Colour RW (red with white tracer), 9/0.30. Colour and both ends: Haynes
+    Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: RW
+    size: 9/0.30
+    circuit: Panel lamps
+    from:
+      part: electrical.wiring-lighting.rw-joint
+      terminal: ''
+      label: Red/white joint (panel lamps)
+    to:
+      part: electrical.instruments.speedometer-case
+      terminal: panel lamp feed
+      label: Speedometer
+    via:
+    - Facia harness
+  route:
+    from: joint.rw-joint
+    to: speedometer.panel.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.speedometer-panel-lamp-earth
+  name: 'B: speedometer (panel lamp return) to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 45, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the speedometer''s panel lamp holder (Fig 10.26: 14, B). Colour B (black), 9/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 9/0.30
+    circuit: Panel lamp earth
+    from:
+      part: electrical.instruments.speedometer-case
+      terminal: panel lamp return
+      label: Speedometer
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: speedometer.panel.return
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.rw-joint-to-fuel-gauge
+  name: 'RW: red/white joint (panel lamps) to fuel gauge (panel lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '34'
+  quantity: 1
+  finish: wire_R_W
+  notes: 'Red/white to the panel lamp in the fuel gauge (Fig 10.26: 14). Colour RW (red with white tracer), 9/0.30. Colour and both ends: Haynes
+    Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: RW
+    size: 9/0.30
+    circuit: Panel lamps
+    from:
+      part: electrical.wiring-lighting.rw-joint
+      terminal: ''
+      label: Red/white joint (panel lamps)
+    to:
+      part: electrical.instruments.fuel-gauge-case
+      terminal: panel lamp feed
+      label: Fuel gauge
+    via:
+    - Facia harness
+  route:
+    from: joint.rw-joint
+    to: fuel-gauge.panel.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.fuel-gauge-panel-lamp-earth
+  name: 'B: fuel gauge (panel lamp return) to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 34, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the fuel gauge''s panel lamp holder (Fig 10.26: 14, B). Colour B (black), 9/0.30. Colour and both ends: Haynes Fig
+    10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 9/0.30
+    circuit: Panel lamp earth
+    from:
+      part: electrical.instruments.fuel-gauge-case
+      terminal: panel lamp return
+      label: Fuel gauge
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: fuel-gauge.panel.return
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.rw-joint-to-dual-gauge
+  name: 'RW: red/white joint (panel lamps) to oil pressure and water temperature gauge (panel lamp feed)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: '43'
+  quantity: 1
+  finish: wire_R_W
+  notes: 'Red/white to the panel lamp in the oil and temperature gauge (Fig 10.26: 14). Colour RW (red with white tracer), 9/0.30. Colour and
+    both ends: Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: RW
+    size: 9/0.30
+    circuit: Panel lamps
+    from:
+      part: electrical.wiring-lighting.rw-joint
+      terminal: ''
+      label: Red/white joint (panel lamps)
+    to:
+      part: electrical.instruments.dual-gauge-case
+      terminal: panel lamp feed
+      label: Oil pressure and water temperature gauge
+    via:
+    - Facia harness
+  route:
+    from: joint.rw-joint
+    to: dual-gauge.panel.feed
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.dual-gauge-panel-lamp-earth
+  name: 'B: oil pressure and water temperature gauge (panel lamp return) to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 43, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the oil and temperature gauge''s panel lamp holder (Fig 10.26: 14, B). Colour B (black), 9/0.30. Colour and both ends:
+    Haynes Fig 10.26 (wiring diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 9/0.30
+    circuit: Panel lamp earth
+    from:
+      part: electrical.instruments.dual-gauge-case
+      terminal: panel lamp return
+      label: Oil pressure and water temperature gauge
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: dual-gauge.panel.return
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.main-beam-warning-earth
+  name: 'B: speedometer (warning lamp return) to earth point (facia)'
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: 45, earth
+  quantity: 1
+  finish: wire_B
+  notes: 'Black earth from the main beam warning lamp (Fig 10.26: 10, B). Colour B (black), 9/0.30. Colour and both ends: Haynes Fig 10.26 (wiring
+    diagram up to 1967), printed p190; route derived (mgb/wiring_layout.py).'
+  wire:
+    code: B
+    size: 9/0.30
+    circuit: Main beam warning lamp earth
+    from:
+      part: electrical.instruments.speedometer-case
+      terminal: warning lamp return
+      label: Speedometer
+    to:
+      part: electrical.wiring-earths.earth-facia
+      terminal: earth screw
+      label: Earth point (facia)
+    via:
+    - Facia harness
+  route:
+    from: speedometer.warning.return
+    to: earth.facia
+  specs:
+    diameter:
+      mm: 2.3
+      display_only: true
+      source:
+        label: S
+        ref: 'Auto Electric Supplies, standard cable: nominal outside diameter, 9/0.30'
+- id: electrical.wiring-lighting.dip-switch
+  name: Headlamp dip switch
+  haynes:
+    section: 45
+    figures:
+    - figure: '10.26'
+      legend: '7'
+    - figure: '10.9'
+      legend: '14'
+  quantity: 1
+  finish: paint_black
+  notes: 'Lucas foot-operated dip switch on the toe board left of the clutch pedal (Fig 10.9 item 14, its bracket items 15-22 on later cars):
+    pressed steel base with two fixing screws, the moulded switch body, the rubber-booted plunger and the three Lucar blades (feed U, main UW,
+    dip UR; Fig 10.26 item 7). Form from catalogue photographs of the Lucas 8SA/SPB type; position derived (mgb/body_layout.py DIP_SWITCH).'
+  specs:
+    base_length:
+      mm: 64.0
+      source:
+        label: D
+        method: Scaled from catalogue photographs of the Lucas foot dip switch
+- id: electrical.wiring-lighting.uw-joint
+  name: Blue/white joint (main beams)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-lighting.ur-joint
+  name: Blue/red joint (dipped beams)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-lighting.r-joint-front
+  name: Red joint (side lamps)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-lighting.r-joint-facia
+  name: Red joint (side and tail lamps, behind the facia)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-lighting.rw-joint
+  name: Red/white joint (panel lamps)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-lighting.r-joint-rear
+  name: Red joint (tail and number plate lamps, boot)
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: cable_black
+  notes: Soldered joint. Wires twisted and soldered together under a taped/sleeved cover, as in the factory harness. Position derived (mgb/wiring_layout.py
+    JOINTS).
+  specs:
+    length:
+      mm: 16.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs
+- id: electrical.wiring-lighting.map-connector
+  name: Map lamp connector
+  haynes:
+    figures:
+    - figure: '10.26'
+      legend: joints and snap connectors drawn on the harness
+  quantity: 1
+  finish: rubber
+  notes: Bullet connector. Lucas bullet terminals in a single/double snap connector sleeve. End of the harness at the map lamp's lead (the lamp
+    is on the facia top rail, P11 trim). Position derived (mgb/wiring_layout.py JOINTS).
+  specs:
+    length:
+      mm: 26.0
+      source:
+        label: D
+        method: Typical Lucas joint/connector length from catalogue photographs

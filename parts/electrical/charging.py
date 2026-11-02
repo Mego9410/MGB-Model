@@ -193,14 +193,15 @@ def through_bolt(spec) -> Part:
 
 
 def terminal_plug(spec) -> Part:
-    """Moulded multi-pin plug on the terminal blades at the back (B+ pair and IND), its
-    three leads leaving outboard."""
+    """Moulded three-way plug on the terminal blades at the back (the two + blades and IND); the
+    harness leads (P10b, electrical.wiring-charging) enter its rear face, each through a moulded
+    shroud."""
     z0 = E.COVER_Z[0]
     p = box(-12.0, 6.0, -42.0, -26.0, z0 - 14.0, z0 + 2.0)
     p = tryfillet(p, p.edges().filter_by(Axis.Z), 2.0)
     for k, dx in enumerate((-8.0, -3.0, 2.0)):
-        r = 2.6 if k < 2 else 1.6
-        p = p + X.cable([(dx, -34.0, z0 - 13.0), (dx, -34.0, z0 - 26.0), (dx, -60.0, z0 - 40.0)], 2 * r, 10.0)
+        r = 2.4 if k < 2 else 1.9
+        p = p + zc(r + 0.9, z0 - 17.0, z0 - 13.9, dx, -34.0)              # lead shroud
     return label(p, spec)
 
 
