@@ -24,9 +24,9 @@ PARENT = "brakes"
 HAYNES = {"figures": [{"figure": "9.11"}, {"figure": "9.16"}], "section": 17}
 
 UP, DOWN, FWD, BACK, LEFT, RIGHT = [0, 0, 1], [0, 0, -1], [1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0]
-GROUPS = {"cover": {"axis": UP, "order": 2, "distance_mm": 160},
+GROUPS = {"cover": {"axis": UP, "order": 2, "distance_mm": 330},
           "pipe": {"axis": FWD, "order": 4, "distance_mm": 60},
-          "master": {"axis": UP, "order": 6, "distance_mm": 220},
+          "master": {"axis": UP, "order": 6, "distance_mm": 150},
           "box": {"axis": FWD, "order": 11, "distance_mm": 260}}
 
 

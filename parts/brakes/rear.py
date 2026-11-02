@@ -235,7 +235,7 @@ def tappet(spec) -> Part:
     shoe web (front tappet drawn; the rear is turned half round z about the adjuster centre)."""
     L = spec.nom("length")
     x0 = 3.0
-    t = xcyl(4.4, x0, x0 + L, B.WEB_MID_Y, B.ADJ_Z)
+    t = xcyl(3.8, x0, x0 + L, B.WEB_MID_Y, B.ADJ_Z)
     t = t - (Location((x0, B.WEB_MID_Y, B.ADJ_Z)) * Rot(0, 0, 0) * Rot(0, 45, 0) * Box(4.0, 12.0, 12.0))  # wedge face
     t = t - box(x0 + L - 5.0, x0 + L + 1, B.WEB_Y[0] - 0.3, B.WEB_Y[1] + 0.3, B.ADJ_Z - 6, B.ADJ_Z + 6)   # web slot
     return lab(t, spec)
@@ -337,6 +337,7 @@ def wc_boot(spec) -> Part:
     o = o.moved(Location((0, B.WC_AXIS_Y, B.WC_Z)))
     o = o - box(L - 4, g1 + 3, B.HB_LEVER_Y - 5.5, B.WC_AXIS_Y + r + 4, B.WC_Z - 3.0, B.WC_Z + 3.0)
     o = o - box(g0 - 1.0, g1 + 3, B.WEB_Y[0] - 0.4, B.WEB_Y[1] + 0.4, B.WC_Z - 30, B.WC_Z + 30)
+    o = o & box(-L - 20, L + 20, B.PLATEAU_Y + 0.1, B.WC_AXIS_Y + 30, B.WC_Z - 30, B.WC_Z + 30)    # flat on the backplate side
     return lab(o, spec)
 
 
@@ -399,7 +400,7 @@ def _boot_left():
 
 def hb_lever_boot(side):
     def b(spec) -> Part:
-        o = _boot_left()
+        o = _boot_left() - _backplate_left()
         return lab(o if side > 0 else mirror_y(o), spec)
     return b
 
