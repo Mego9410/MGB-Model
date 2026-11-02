@@ -1,0 +1,385 @@
+# Remote control, overdrive cars: the remote control housing (tower) on the gearbox adaptor, the
+# selector lever shaft and rear lever, the gear lever and knob, plungers and detents, the
+# overdrive isolation switch, the dipstick, the support bracket and the fixings.
+# Haynes Ch 6: Fig 6.4 (remote control arrangement, overdrive fitted, printed p116); Sec 2 para 1
+# (p112); Sec 4 paras 2 and 4 (p113); Sec 5 paras 29-31 (p122). Fig 6.4 item numbers unless
+# stated. Not fitted to this car: item 52 (alternative reverse plunger) and items 55-56 (reverse
+# light switch and its washer, later cars). PDF page = printed page + 4.
+# Positions: mgb/gearbox_layout.py (REMOTE_*, SEL_SHAFT_*, LEVER_BALL*, KNOB), all D: the lever
+# comes up on the car centreline over the front of the overdrive with the knob about 680 mm
+# above the road, cranked back toward the driver.
+defaults:
+  system: gearbox
+  assembly: gearbox.remote
+  haynes: { section: 4, spec_page: 111 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true }
+  finish: machined_steel
+
+parts:
+  - id: gearbox.remote.housing
+    name: Remote control housing
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 11 }] }
+    quantity: 1
+    finish: paint_engine
+    material: Cast aluminium alloy (D)
+    notes: >
+      Fig 6.4 item 11: a flanged front box bolted down on the adaptor (gasket 29, dowel 12),
+      a tube back over the overdrive carrying the selector lever shaft, and the lever turret
+      at the rear: the socket the gear lever ball sits in, bosses for the locating pin (17),
+      the reverse plunger (22) with its ball detent (25-28) and the spring plunger (33-36),
+      and two feet bolted (40, 41) to the support bracket (39). The shaft bore is closed at
+      the back by a Welch plug (13); the isolation switch (44) screws into the side of the
+      tube. On overdrive cars the dipstick goes through its front (item 10). Remove its bolts
+      and lift it off (Sec 4 para 4). Form from Fig 6.4; sizes derived.
+    specs:
+      length: { mm: 199.0, source: { label: D, method: "gearbox_layout.REMOTE_D" }, display_only: true }
+
+  - id: gearbox.remote.gasket
+    name: Remote housing gasket
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 29 }] }
+    quantity: 1
+    finish: gasket
+    notes: "Remote housing to overdrive adaptor, MGOC Spares 22H168."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Paper joint" } }
+
+  - id: gearbox.remote.dowel
+    name: Remote housing dowel
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 12 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 6.0, source: { label: D, method: "Fig 6.4 item 12" } }
+      length: { mm: 12.0, source: { label: D, method: "Fig 6.4 item 12" } }
+
+  - id: gearbox.remote.welch-plug
+    name: Selector shaft Welch plug
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 13 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      diameter: { mm: 19.0, source: { label: D, method: "Closes the shaft bore" } }
+
+  - id: gearbox.remote.housing-bolt
+    name: Remote housing bolt
+    haynes: { section: 4 }
+    quantity: 4
+    finish: zinc_steel
+    notes: "Drawn unnumbered in Fig 6.4 through the housing flange into the adaptor."
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Boss 14 mm and 18 mm into the adaptor" } }
+
+  - id: gearbox.remote.housing-washer
+    name: Remote housing bolt washer
+    haynes: { section: 4 }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: gearbox.remote.shaft
+    name: Selector lever shaft
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 37 }] }
+    quantity: 1
+    notes: "Turns to choose the selector, slides to move it. Keyed levers front and rear; detent notches for the plunger (53) and a flat for the isolation switch plunger (46)."
+    specs:
+      diameter: { mm: 14.0, source: { label: D, method: "In proportion to Fig 6.4" } }
+
+  - id: gearbox.remote.key
+    name: Woodruff key
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 3 }] }
+    quantity: 2
+    notes: "One under each lever on the shaft (Fig 6.4 shows two; Fig 6.3 item 125)."
+    specs:
+      width: { in: 0.125, mm: 3.175, source: { label: D, method: "1/8 x 1/2 in Woodruff key" } }
+
+  - id: gearbox.remote.rear-lever
+    name: Rear selector lever
+    haynes: { section: 4 }
+    quantity: 1
+    notes: "Keyed and screwed to the back of the shaft (rear selector screw, item 1); its socket takes the ball on the lower end of the gear lever. Drawn unnumbered in Fig 6.4."
+    specs:
+      throw: { mm: 47.0, source: { label: D, method: "Shaft axis to the gear lever end" }, display_only: true }
+
+  - id: gearbox.remote.rear-screw
+    name: Rear selector screw
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 1 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { in: 0.3125, mm: 7.9375, source: { label: D, method: "Through the lever hub, its point in a dimple in the shaft" } }
+
+  - id: gearbox.remote.gear-lever
+    name: Gearchange lever
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 14 }] }
+    quantity: 1
+    finish: chrome
+    notes: "Ball in the turret socket with a slot for the locating pin, a lower ball end in the rear lever, cranked back to the knob. Remove the circlip and pins to take it out (Sec 5 para 29)."
+    specs:
+      diameter: { mm: 14.0, source: { label: D, method: "Fig 6.4 item 14" } }
+      ball_diameter: { mm: 25.4, source: { label: D, method: "Fig 6.4 item 14" }, display_only: true }
+
+  - id: gearbox.remote.knob
+    name: Gear lever knob
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 15 }] }
+    quantity: 1
+    finish: plastic_black
+    notes: "Pear-shaped knob with the gear positions on top (MGOC Spares 1G3706). The overdrive switch was on the dash on 1963 cars, not in the knob."
+    specs:
+      height: { mm: 52.0, source: { label: D, method: "Fig 6.4 item 15" } }
+      diameter: { mm: 44.0, source: { label: D, method: "Fig 6.4 item 15" } }
+
+  - id: gearbox.remote.knob-locknut
+    name: Knob locknut
+    haynes: { section: 4 }
+    quantity: 1
+    finish: chrome
+    notes: "Thin 5/16 UNF locknut under the knob (MGOC Spares FNP205); drawn unnumbered in Fig 6.4."
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/external-gearbox-components/3-synchromesh", note: "FNP205 thin locknut 5/16 UNF" }, display_only: true }
+
+  - id: gearbox.remote.ball-spring
+    name: Lever ball spring
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 19 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      free_length: { mm: 9.8, source: { label: D, method: "Ball to the cover, fitted" } }
+      wire_diameter: { mm: 2.0, source: { label: D, method: "Fig 6.4 item 19" } }
+      outside_diameter: { mm: 34.0, source: { label: D, method: "In the 40 mm socket" } }
+
+  - id: gearbox.remote.cover
+    name: Lever cover
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 20 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 39.2, source: { label: D, method: "In the socket under the circlip" }, display_only: true }
+
+  - id: gearbox.remote.circlip
+    name: Lever cover circlip
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 21 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "Remove first to take the lever out (Sec 5 para 29)."
+    specs:
+      outside_diameter: { mm: 42.8, source: { label: D, method: "In the socket groove" }, display_only: true }
+
+  - id: gearbox.remote.locating-pin
+    name: Lever locating pin
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 17 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Screwed through the turret wall into the slot in the lever ball (Sec 5 para 29: remove the pins)."
+    specs:
+      length: { mm: 33.0, source: { label: D, method: "Boss face to the ball slot" } }
+
+  - id: gearbox.remote.pin-washer
+    name: Locating pin washer
+    haynes: { section: 5 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Drawn under the pin head in Fig 6.4."
+    specs:
+      outside_diameter: { mm: 16.0, source: { label: D, method: "Under the hex" } }
+      inside_diameter: { mm: 8.4, source: { label: D, method: "Over the thread" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Fig 6.4" } }
+
+  - id: gearbox.remote.reverse-plunger
+    name: Reverse selector plunger
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 22 }] }
+    quantity: 1
+    notes: "Spring plunger the lever must be pushed past to select reverse; its peg (24) stops it turning. Removed after the locating pin (Sec 5 para 30)."
+    specs:
+      length: { mm: 26.0, source: { label: D, method: "Fig 6.4 item 22" } }
+
+  - id: gearbox.remote.reverse-spring
+    name: Reverse plunger spring
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 23 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      free_length: { mm: 9.0, source: { label: D, method: "Behind the plunger in its bore" } }
+      wire_diameter: { mm: 0.9, source: { label: D, method: "Fig 6.4" } }
+      outside_diameter: { mm: 7.0, source: { label: D, method: "In the plunger" } }
+
+  - id: gearbox.remote.reverse-peg
+    name: Reverse plunger peg
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 24 }] }
+    quantity: 1
+    specs:
+      length: { mm: 10.0, source: { label: D, method: "Fig 6.4 item 24" } }
+
+  - id: gearbox.remote.detent-ball
+    name: Reverse detent ball
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 25 }] }
+    quantity: 1
+    finish: bearing
+    specs:
+      diameter: { in: 0.25, mm: 6.35, source: { label: D, method: "Fig 6.4 item 25" } }
+
+  - id: gearbox.remote.detent-spring
+    name: Reverse detent spring
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 26 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      free_length: { mm: 10.0, source: { label: D, method: "Plug to ball in the detent bore" } }
+      wire_diameter: { mm: 0.8, source: { label: D, method: "Fig 6.4" } }
+      outside_diameter: { mm: 5.5, source: { label: D, method: "Fig 6.4" } }
+
+  - id: gearbox.remote.retainer-plug
+    name: Spring retainer plug
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 27 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { mm: 8.0, source: { label: D, method: "Fig 6.4 item 27" } }
+
+  - id: gearbox.remote.plug-washer
+    name: Retainer plug washer
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 28 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "Fig 6.4 item 28" } }
+      inside_diameter: { mm: 7.0, source: { label: D, method: "Fig 6.4" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Fig 6.4" } }
+
+  - id: gearbox.remote.plunger
+    name: Lever plunger
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 33 }] }
+    quantity: 1
+    notes: "Spring plunger on the other side of the lever (Sec 5 para 30)."
+    specs:
+      length: { mm: 30.0, source: { label: D, method: "Through the rear chamber wall to the ball" } }
+
+  - id: gearbox.remote.plunger-spring
+    name: Plunger spring
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 34 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      free_length: { mm: 8.3, source: { label: D, method: "Between the cap and the plunger" } }
+      wire_diameter: { mm: 0.9, source: { label: D, method: "Fig 6.4" } }
+      outside_diameter: { mm: 7.0, source: { label: D, method: "Fig 6.4" } }
+
+  - id: gearbox.remote.cap
+    name: Plunger cap
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 35 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { mm: 6.0, source: { label: D, method: "Fig 6.4 item 35" } }
+
+  - id: gearbox.remote.cap-washer
+    name: Plunger cap washer
+    haynes: { section: 5, figures: [{ figure: "6.4", legend: 36 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 16.0, source: { label: D, method: "Fig 6.4 item 36" } }
+      inside_diameter: { mm: 9.2, source: { label: D, method: "Fig 6.4" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Fig 6.4" } }
+
+  - id: gearbox.remote.isolation-switch
+    name: Overdrive isolation switch
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 44 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Lets the overdrive work only in third and top; screwed into the side of the housing over the shaft, worked by the plunger (46). MGOC Spares BAU1074."
+    specs:
+      thread_diameter: { mm: 15.0, source: { label: D, method: "Fig 6.4 item 44" }, display_only: true }
+
+  - id: gearbox.remote.switch-gasket
+    name: Isolation switch gasket
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 45 }] }
+    quantity: 1
+    finish: gasket
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Fibre washer" } }
+
+  - id: gearbox.remote.switch-plunger
+    name: Overdrive switch plunger
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 46 }] }
+    quantity: 1
+    specs:
+      length: { mm: 8.6, source: { label: D, method: "Spring to the flat on the shaft" } }
+
+  - id: gearbox.remote.switch-spring
+    name: Switch plunger spring
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 47 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      free_length: { mm: 8.0, source: { label: D, method: "Switch to the plunger" } }
+      wire_diameter: { mm: 0.6, source: { label: D, method: "Fig 6.4" } }
+      outside_diameter: { mm: 5.0, source: { label: D, method: "Fig 6.4" } }
+
+  - id: gearbox.remote.switch-pin
+    name: Switch plunger locating pin
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 48 }] }
+    quantity: 1
+    specs:
+      length: { mm: 8.0, source: { label: D, method: "Fig 6.4 item 48" } }
+
+  - id: gearbox.remote.detent-plunger
+    name: Selector shaft detent plunger
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 53 }] }
+    quantity: 1
+    specs:
+      length: { mm: 10.0, source: { label: D, method: "Plug to the shaft notch" } }
+
+  - id: gearbox.remote.detent-plug
+    name: Detent plunger plug
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 54 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thread_diameter: { mm: 8.0, source: { label: D, method: "Fig 6.4 item 54" }, display_only: true }
+
+  - id: gearbox.remote.dipstick
+    name: Dipstick and filler plug
+    haynes: { section: 2, figures: [{ figure: "6.4", legend: 10 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Combined filler plug and dipstick under a rubber cover in the gearbox tunnel, reached from under the carpet (Sec 2 para 1); pulled out first (Sec 4 para 2). On overdrive cars it goes through the remote housing; its blade reaches the oil in the adaptor and case."
+    specs:
+      length: { mm: 210.0, source: { label: D, method: "Housing top to below the oil level" }, display_only: true }
+
+  - id: gearbox.remote.bracket
+    name: Remote housing support bracket
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 39 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Under the turret feet, its legs bolted down to the overdrive casing (screws 38); the overdrive bosses are P5b datums (REMOTE_BRACKET_*)."
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Pressed steel" } }
+
+  - id: gearbox.remote.bracket-bolt
+    name: Turret foot bolt
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 40 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Through the foot and the bracket into a nut" } }
+
+  - id: gearbox.remote.bracket-washer
+    name: Turret foot washer
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 41 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: gearbox.remote.bracket-screw
+    name: Bracket screw
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 38 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Into the overdrive casing bosses (P5b)."
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: D, method: "Through the bracket leg" } }

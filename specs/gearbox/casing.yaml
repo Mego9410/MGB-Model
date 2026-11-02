@@ -1,0 +1,364 @@
+# Gearbox casing (with the bellhousing), front cover, side cover, plugs, studs and fixings, and
+# the overdrive adaptor ("gearbox extension" on overdrive cars). Early three-synchro gearbox,
+# 18G with Laycock type D overdrive, 1963.
+# Haynes Ch 6: specifications printed p111; Sec 2 (p112), Sec 4 (p113), Sec 5 paras 25-32
+# (p122), Sec 7 (p123), Sec 11 (p126); Fig 6.3 (early type exploded view, p114, legend p115).
+# Fig 6.3 item numbers unless stated. PDF page = printed page + 4.
+#
+# Overdrive cars: Haynes Sec 4 para 4 removes the "remote control extension (overdrive models)"
+# and Sec 11 para 3 separates the overdrive "from the gearbox extension" on eight nuts on
+# 1/4 in studs, one stud longer. MGOC Spares lists the joints as gear case to rear case
+# (1G3712, overdrive and non-overdrive), overdrive unit to gearbox adaptor (37H1901) and
+# remote housing to overdrive adaptor (22H168):
+# https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/external-gearbox-components/3-synchromesh
+# So the overdrive gearbox has a short adaptor on the casing's rear face, the overdrive bolted
+# behind it and the remote control housing on top; the non-overdrive rear extension (Fig 6.3
+# items 20-25, 30-33, 45-48) and the speedometer drive on it (items 76-81, 116-117) are not
+# fitted: on these cars the speedometer drive is in the overdrive rear casing (Fig 6.13 items
+# 78, 88, 89) and comes with P5b.
+#
+# No dimensioned drawing of the casing is published. Its form is from Fig 6.3 item 1, Haynes
+# photos 4.19, 4.20a, 4.21-4.25, 7.1-7.3, 7.6a and 7.7, and the datums it must meet: the rear
+# plate bolt holes and starter aperture (parts/engine/block/plates.py), the clutch withdrawal
+# lever opening, pivot lugs and slave cylinder pad (mgb/gearbox_layout.py, set in P4), and the
+# gear train inside (mgb/gearbox_layout.py). Those are all D.
+defaults:
+  system: gearbox
+  assembly: gearbox.casing
+  haynes: { section: 4, spec_page: 111 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true }
+  finish: paint_engine
+
+parts:
+  - id: gearbox.casing.casing
+    name: Gearbox casing and bellhousing
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 1 }] }
+    quantity: 1
+    material: Cast iron
+    notes: >
+      One casting: the bellhousing and the gearbox case (Fig 6.3 item 1). Bell: round bolting
+      flange on the engine rear plate, two ears at the top for the upper bolts and a lobe
+      round the starter aperture; a deep, nearly round shell over the flywheel ring gear and
+      the clutch with six external ribs, its top sloping down to the box (Fig 6.3); a pocket
+      for the starter pinion; the right-hand wall drawn in to a flat face round the oval
+      opening the clutch withdrawal lever leaves through (dust cover over it, Ch 5 Sec 7);
+      the slave cylinder pad on a web on the right (Ch 5 Sec 6). Box: the front wall carries
+      the first motion shaft bearing and the front cover on eight studs; a large opening on
+      the left for the side cover on a machined face (photos 4.20a, 4.21a); the sump under
+      the laygear with the drain plug; layshaft and selector rod bores through both walls;
+      a boss and locating screw for the reverse shaft (photos 7.6a, 7.6b); the rear wall
+      carries the centre bearing housing (Sec 4 para 14), the selector rod detent block on
+      two dowels (Sec 4 para 9) and the studs for the adaptor. Side of the side cover: left
+      (D, see PLAN questions). The dipstick on an overdrive car is in the remote control
+      housing (Fig 6.4 item 10), so the casing top only has the plug (item 5).
+      Lubricant capacity with overdrive 5 1/4 pints, 3.36 litres (p111). Drain the overdrive
+      as well (Sec 2 para 4).
+    specs:
+      bell_depth: { mm: 160.0, source: { label: D, method: "gearbox_layout.BELL_DEPTH: flange face to the gearbox front face (P4)" } }
+      length: { mm: 410.0, source: { label: D, method: "Bell depth plus the 250 mm case: the gear train stack in gearbox_layout" } }
+      bell_outside_radius: { mm: 163.0, source: { label: D, method: "Inside the bolt circle so the bolt heads clear it; 3 mm over the 12 1/8 in ring gear" } }
+      capacity_pints: { count: 5.25, source: { label: H, page: 111, note: "Gearbox with overdrive, 5 1/4 pints (3.36 litres, 6 US pints)" }, display_only: true }
+
+  - id: gearbox.casing.front-cover
+    name: Gearbox front cover
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 7 }] }
+    quantity: 1
+    material: Cast iron
+    notes: >
+      Cover over the first motion shaft bearing on the casing front face (Fig 6.3 item 7,
+      photo 4.19), held on studs with spring washers and nuts (items 3, 10, 11; Sec 4 para 11).
+      It covers the layshaft end, which has a step that lines up with a cut-out in the cover
+      so the layshaft cannot turn (Sec 7 para 7), and the selector rod ends. The sleeve
+      forward carries the oil seal (item 8; renew it by drifting, Sec 5 para 32); the arm on
+      the right carries the two lugs the clutch withdrawal lever pivots between on its bolt
+      (Ch 5 Sec 7, photo 7.3; lug positions from gearbox_layout, P4). Check that it floats
+      slightly on its studs so the seal centres on the shaft before tightening the nuts half
+      a turn at a time in diagonal order (Sec 7 paras 7-8).
+    specs:
+      seal_bore: { mm: 42.0, source: { label: D, method: "Fits the oil seal" } }
+      studs: { count: 8, source: { label: D, method: "Fig 6.3 draws the cover with eight holes" } }
+
+  - id: gearbox.casing.front-cover-gasket
+    name: Front cover gasket
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 9 }] }
+    quantity: 1
+    finish: gasket
+    notes: "Sec 4 para 11. MGOC Spares 1G3666 (3-synchro)."
+    specs:
+      thickness: { in: 0.012, mm: 0.3048, source: { label: H, page: 125, note: "Compressed joint thickness assumed 0.012 in (0.30 mm) in the shim calculations, Sec 9-10" } }
+
+  - id: gearbox.casing.front-oil-seal
+    name: Front cover oil seal
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 8 }] }
+    quantity: 1
+    finish: rubber
+    notes: "Lipped seal on the first motion shaft with its garter spring (Sec 5 para 32; MGOC Spares 88G545)."
+    specs:
+      outside_diameter: { mm: 42.0, source: { label: D, method: "In proportion to the sleeve in Fig 6.3" } }
+      inside_diameter: { mm: 28.0, source: { label: D, method: "On the 28 mm plain length of the first motion shaft" } }
+      width: { mm: 8.0, source: { label: D, method: "Fig 6.3 item 8" } }
+
+  - id: gearbox.casing.front-stud
+    name: Front cover stud
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 3 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Into the case 14 mm, through the cover flange, spring washer and nut" } }
+
+  - id: gearbox.casing.front-nut
+    name: Front cover nut
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 11 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in UNF, in proportion to Fig 6.3" }, display_only: true }
+
+  - id: gearbox.casing.front-washer
+    name: Front cover spring washer
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 10 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: gearbox.casing.side-cover
+    name: Gearbox side cover
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 12 }] }
+    quantity: 1
+    material: Pressed steel
+    notes: >
+      Plate over the side opening (Sec 4 para 7, Sec 7 para 18; photo 4.20a): a flat flange
+      round a raised panel stiffened by a cross swage. One bolt goes into the case below the
+      oil level and takes a fibre washer under a plain washer (items 16, 17) to stop a severe
+      oil leak; the slotted screw (item 18) in the middle holds the cover to an internal web.
+    specs:
+      thickness: { mm: 2.0, source: { label: D, method: "Pressed steel sheet" } }
+
+  - id: gearbox.casing.side-cover-gasket
+    name: Side cover gasket
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 13 }] }
+    quantity: 1
+    finish: gasket
+    notes: "MGOC Spares 1G3658 (3-synchro)."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Paper joint" } }
+
+  - id: gearbox.casing.side-cover-bolt
+    name: Side cover bolt
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 14 }] }
+    quantity: 10
+    finish: zinc_steel
+    specs:
+      length: { in: 0.625, mm: 15.875, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/external-gearbox-components/3-synchromesh", note: "SH604051 hex screw 1/4 UNF x 5/8 listed for the 3-synchro box" } }
+
+  - id: gearbox.casing.side-cover-washer
+    name: Side cover spring washer
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 15 }] }
+    quantity: 9
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "1/4 in spring washer (MGOC GHF331)" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "1/4 in spring washer" } }
+
+  - id: gearbox.casing.plain-washer
+    name: Side cover plain washer
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 16 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Goes on top of the fibre washer under the one bolt that enters the case below the oil (Sec 4 para 7)."
+    specs:
+      outside_diameter: { mm: 15.9, source: { label: S, ref: "ANSI B18.22.1 type A narrow, 1/4 in", note: "0.625 in" } }
+      inside_diameter: { mm: 7.1, source: { label: D, method: "1/4 in plain washer" } }
+      thickness: { mm: 1.65, source: { label: D, method: "1/4 in plain washer" } }
+
+  - id: gearbox.casing.fibre-washer
+    name: Side cover fibre washer
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 17 }] }
+    quantity: 1
+    finish: plastic_brown
+    notes: "Must be in position on the bolt shown in Fig 6.3 (Sec 7 para 18)."
+    specs:
+      outside_diameter: { mm: 14.0, source: { label: D, method: "Under the plain washer" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in bolt" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Fibre sealing washer" } }
+
+  - id: gearbox.casing.side-cover-screw
+    name: Side cover centre screw
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 18 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Slotted screw drawn in the middle of the cover in Fig 6.3; position on the cover derived."
+    specs:
+      length: { mm: 16.0, source: { label: D, method: "Through the cover into the internal web" } }
+
+  - id: gearbox.casing.side-cover-screw-washer
+    name: Side cover centre screw washer
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 19 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: gearbox.casing.welch-plug
+    name: Casing plug
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 5 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Welch plug drawn on the top of the casing in Fig 6.3, closing the casting hole there; position derived."
+    specs:
+      diameter: { mm: 22.0, source: { label: D, method: "In proportion to Fig 6.3" } }
+
+  - id: gearbox.casing.drain-plug
+    name: Drain plug
+    haynes: { section: 2, figures: [{ figure: "6.3", legend: 6 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Taper plug with a hex socket in the bottom of the casing (Sec 2 para 3; Fig 6.3 item 6; MGOC Spares 2K5830)."
+    specs:
+      thread_diameter: { mm: 18.0, source: { label: D, method: "Fig 6.3 item 6 in proportion" } }
+      length: { mm: 14.0, source: { label: D, method: "Fig 6.3 item 6" } }
+
+  - id: gearbox.casing.block-dowel
+    name: Detent block dowel
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 2 }] }
+    quantity: 2
+    finish: machined_steel
+    notes: "Locate the selector rod block on the rear face (Sec 4 para 9: note the two locating dowels)."
+    specs:
+      diameter: { mm: 6.0, source: { label: D, method: "Fig 6.3 item 2" } }
+      length: { mm: 14.0, source: { label: D, method: "Half in the case, half in the block" } }
+
+  - id: gearbox.casing.rear-stud
+    name: Adaptor stud
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 4 }] }
+    quantity: 9
+    finish: zinc_steel
+    notes: "Studs in the casing rear face for the overdrive adaptor (non-overdrive cars: the rear extension), Sec 4 para 6."
+    specs:
+      length: { in: 1.75, mm: 44.45, source: { label: D, method: "14 mm in the case, the gasket and 12 mm adaptor flange, washer and nut" } }
+
+  - id: gearbox.casing.adaptor
+    name: Overdrive adaptor (gearbox extension)
+    haynes: { section: 11, figures: [{ figure: "6.4", legend: 11 }] }
+    quantity: 1
+    material: Cast iron
+    notes: >
+      Short housing on the casing's rear face that the overdrive main casing bolts to (Sec 11
+      para 3: eight nuts on 1/4 in studs, one stud longer; MGOC calls it the gearbox adaptor,
+      gaskets 1G3712 to the case and 37H1901 to the overdrive). It encloses the detent block,
+      the selectors and the front selector lever; its top is open under the remote control
+      housing (gasket 22H168, dowel Fig 6.4 item 12); oil reaches the overdrive pump filter
+      through the bottom of its rear face. Haynes draws it only merged with the remote
+      housing in Fig 6.4; form derived. The overdrive face, its studs, register and oil way
+      are the P5b datums in gearbox_layout (OD_FACE_X, OD_STUD_*, OD_SPIGOT_R, OD_OIL_PORT).
+    specs:
+      length: { mm: 76.0, source: { label: D, method: "gearbox_layout.ADAPTOR_LEN: room for the detent block and selectors" } }
+      od_stud_circle: { mm: 156.0, source: { label: D, method: "gearbox_layout.OD_STUD_R x 2" } }
+
+  - id: gearbox.casing.adaptor-gasket
+    name: Adaptor gasket
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 26 }] }
+    quantity: 1
+    finish: gasket
+    notes: "Gear case to rear case/overdrive adaptor, MGOC Spares 1G3712. Use it to align the dowel when fitting the mainshaft (Sec 7 para 2)."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Paper joint" } }
+
+  - id: gearbox.casing.adaptor-nut
+    name: Adaptor nut
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 29 }] }
+    quantity: 9
+    finish: zinc_steel
+    notes: "MGOC Spares GHF201 plain nut 5/16 UNF."
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/external-gearbox-components/3-synchromesh", note: "GHF201 nut 5/16 UNF" }, display_only: true }
+
+  - id: gearbox.casing.adaptor-washer
+    name: Adaptor spring washer
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 28 }] }
+    quantity: 9
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer (MGOC GHF332)" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: gearbox.casing.od-stud
+    name: Overdrive stud
+    haynes: { section: 11 }
+    quantity: 7
+    finish: zinc_steel
+    notes: "Seven short and one long stud take the eight overdrive nuts (Sec 11 para 3). The nuts, washers and the overdrive come with P5b."
+    specs:
+      length: { in: 1.5, mm: 38.1, source: { label: D, method: "Into the adaptor 22 mm and through the overdrive flange" } }
+      thread_diameter: { in: 0.25, source: { label: H, page: 126, note: "Sec 11 para 3: 1/4 in (6.35 mm) diameter studs" }, display_only: true }
+
+  - id: gearbox.casing.od-stud-long
+    name: Overdrive stud, long
+    haynes: { section: 11 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Note the extra length of one stud (Sec 11 para 3). MGOC Spares 37H1897."
+    specs:
+      length: { in: 2.5, mm: 63.5, source: { label: D, method: "One inch longer than the others" } }
+      thread_diameter: { in: 0.25, source: { label: H, page: 126, note: "Sec 11 para 3" }, display_only: true }
+
+  - id: gearbox.casing.od-gasket
+    name: Overdrive to adaptor gasket
+    haynes: { section: 11 }
+    quantity: 1
+    finish: gasket
+    notes: "Joint between the adaptor and the overdrive main casing (MGOC Spares 37H1901, D, LH or J type). Fitted here so the overdrive (P5b) bolts straight on."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Paper joint" } }
+
+  - id: gearbox.casing.bell-bolt-short
+    name: Bellhousing bolt, short
+    haynes: { section: 3, figures: [{ figure: "6.3", legend: 156 }] }
+    quantity: 4
+    finish: zinc_steel
+    notes: "The four lower bolts, through the flange bosses and the engine rear plate, spring washer and nut on the engine side."
+    specs:
+      length: { in: 1.5, mm: 38.1, source: { label: D, method: "Flange boss 18 mm, rear plate, washer and nut" } }
+
+  - id: gearbox.casing.bell-bolt-medium
+    name: Bellhousing bolt, medium
+    haynes: { section: 3, figures: [{ figure: "6.3", legend: 157 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "The two bolts at the sides of the flange."
+    specs:
+      length: { in: 1.5, mm: 38.1, source: { label: D, method: "Flange boss 18 mm, rear plate, washer and nut" } }
+
+  - id: gearbox.casing.bell-bolt-long
+    name: Bellhousing bolt, long
+    haynes: { section: 3, figures: [{ figure: "6.3", legend: 158 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "The two upper bolts through the deep bosses on the ears at the top of the flange."
+    specs:
+      length: { in: 2.75, mm: 69.85, source: { label: D, method: "Ear boss 46 mm, rear plate, washer and nut" } }
+
+  - id: gearbox.casing.bell-nut
+    name: Bellhousing nut
+    haynes: { section: 3, figures: [{ figure: "6.3", legend: 159 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs:
+      thread_diameter: { in: 0.375, source: { label: D, method: "Fits the 3/8 in holes in the engine rear plate" }, display_only: true }
+
+  - id: gearbox.casing.bell-washer
+    name: Bellhousing spring washer
+    haynes: { section: 3, figures: [{ figure: "6.3", legend: 160 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 15.5, source: { label: D, method: "3/8 in spring washer" } }
+      inside_diameter: { mm: 9.8, source: { label: D, method: "3/8 in spring washer" } }
+      thickness: { mm: 2.4, source: { label: D, method: "3/8 in spring washer" } }

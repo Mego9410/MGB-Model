@@ -32,7 +32,7 @@ add = lambda part, loc, **o: I.append((f"engine.flywheel.{part}#{sum(1 for i in 
                                         f"engine.flywheel.{part}", loc, o))
 cz = EL.crank_z
 FW_X = K.FW_X                                 # crankshaft flange sits 4.5 mm into the flywheel register
-add("spigot-bush", Location((FLANGE_REAR + 15, 0, cz)) * Rot(0, -90, 0), explode=ex(4, 260))
+add("spigot-bush", Location((FLANGE_REAR, 0, cz)), explode=ex(4, 260))    # the part is built along +X: in the crank's bore
 add("flywheel", Location((FW_X, 0, cz)), groups=["flywheel"])
 add("ring-gear", Location((FW_X, 0, cz)), groups=["flywheel"])
 hub_t = SP["engine.flywheel.flywheel"].nom("hub_thickness")

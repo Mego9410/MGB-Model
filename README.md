@@ -79,8 +79,18 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   on the bellhousing datums of `mgb/gearbox_layout.py`; the master cylinder on the pedal box,
   RHD pipe, hose and slave cylinder with every Fig 5.3 item; and the clutch pedal.
 
-Next: P5, the gearbox and overdrive, with the bellhousing built on the datums in
-`mgb/gearbox_layout.py`. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+- P5a (gearbox) built: early three-synchro gearbox for an overdrive car (Haynes Ch 6, Figs 6.3, 6.4
+  and 6.6): the casing with its integral bellhousing on the engine rear plate, front cover with the
+  clutch lever pivot lugs, side cover, plugs and fixings; first motion shaft, mainshaft (overdrive
+  type tail) with helical second, third and constant mesh gears, straight-cut first gear, both
+  synchronisers and baulk rings, bushes, the third gear locking washer and peg; laygear on loose
+  needle rollers; reverse idler; selector rods, forks, detent block, selectors, interlock plate and
+  front selector lever; the overdrive adaptor ("gearbox extension") with the overdrive studs; and the
+  remote control housing with the selector shaft, gear lever, knob, plungers, detents, isolation
+  switch, dipstick and support bracket. Tooth counts give the published ratios.
+
+Next: P5b, the Laycock type D overdrive, on the datums in `mgb/gearbox_layout.py` (overdrive face,
+studs, mainshaft tail), with the speedometer drive and the gearbox rear mounting. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
 from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
 pump, tank and the rigid pipe from the pump to the feed union. The engine mountings (Fig 1.29) go in with the
 front crossmember, and the 18ACR alternator with the electrical system. The working standard is in

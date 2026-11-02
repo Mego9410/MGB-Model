@@ -1,0 +1,436 @@
+# Gearbox shafts and gears: first motion shaft, mainshaft (third motion shaft, overdrive type)
+# with its gears, bushes and synchronisers, the laygear and layshaft, and the reverse idler.
+# Early three-synchro gearbox, 1963 (first gear without synchromesh, Haynes p111 and Sec 1).
+# Haynes Ch 6: specifications printed p111; Sec 4 paras 10-15 (p113); Sec 5 paras 1-24
+# (p119-121); Sec 7 paras 1-6 (p123); Fig 6.3 (p114-115), Fig 6.6 (p120); photos 5.14-5.21,
+# 7.1-7.4, 7.6. Fig 6.3 item numbers unless stated. PDF page = printed page + 4.
+#
+# Ratios (H p111): 1st 3.64, 2nd 2.21, 3rd 1.37, top 1.00, reverse 4.76 to 1. Tooth counts (S):
+# mgaguru.com gt102a, the MGA 1600 / early MGB standard box with the same ratios: constant mesh
+# 21/30, third 25/26, second 31/20, first 28/11, reverse idler 17/13 (30/21 x 28/11 = 3.636,
+# 30/21 x 31/20 = 2.214, 30/21 x 25/26 = 1.374, 30/21 x 17/11 x 28/13 = 4.755).
+# Pitches (D): first and reverse 8 DP straight cut; the helical pairs 12 DP normal at about 29
+# deg so both tooth-sum 39 and 51 pairs share one centre distance (gearbox_layout). Widths and
+# stations from the stack in gearbox_layout, proportioned on Fig 6.3. Bearing sizes are D.
+defaults:
+  system: gearbox
+  assembly: gearbox.shafts
+  haynes: { section: 5, spec_page: 111 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true }
+  finish: machined_steel
+
+parts:
+  - id: gearbox.shafts.first-motion-shaft
+    name: First motion shaft
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 35 }] }
+    quantity: 1
+    notes: >
+      Input shaft: spigot in the crankshaft bush, 23 splines for the driven plate, the plain
+      length through the front cover oil seal, the left-hand thread for its nut (Sec 5 para 7),
+      the bearing seat, the 21-tooth helical constant mesh gear, the fourth gear dog teeth and
+      synchro cone, and the bore for the mainshaft nose needle rollers (Sec 7 para 3). Early
+      18G (three-bearing engine) shaft with the 0.62 in spigot (MGOC Spares: 0.85 in from
+      October 1964 on the 18GB).
+    specs:
+      spigot_diameter: { in: 0.62, mm: 15.748, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/internal-gearbox-components", note: "18G/18GA first motion shaft spigot 0.62 in" }, display_only: true }
+      splines: { count: 23, source: { label: S, ref: "https://rimmerbros.com/Item--i-RP1447EARLY", note: "Clutch alignment tool for MGB to 1965: 23 splines" } , display_only: true }
+      teeth: { count: 21, source: { label: S, ref: "https://mgaguru.com/mgtech/gearbox/gt102a.htm", note: "Constant mesh 21/30" }, display_only: true }
+      bore_diameter: { mm: 21.0, source: { label: D, method: "Needle rollers 2.5 mm on the 16 mm mainshaft nose" } }
+
+  - id: gearbox.shafts.fms-bearing
+    name: First motion shaft bearing
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 36 }] }
+    quantity: 1
+    finish: bearing
+    notes: "Ball bearing in the casing front wall; drive the shaft out of it with a tube on the shoulder and drive it back on the same way (Sec 5 paras 7-8). MGOC Spares 6K885. Size derived (80 x 35 x 21 mm, a 6307 envelope)."
+    specs:
+      outside_diameter: { mm: 80.0, source: { label: D, method: "6307 size bearing, in proportion to Fig 6.3" } }
+      inside_diameter: { mm: 35.0, source: { label: D, method: "6307" } }
+      width: { mm: 21.0, source: { label: D, method: "6307" } }
+
+  - id: gearbox.shafts.fms-ring
+    name: First motion shaft bearing ring
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 37 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "Spring ring in the bearing's outer race groove, against the casing front face."
+    specs:
+      outside_diameter: { mm: 86.0, source: { label: D, method: "Snap ring for the 80 mm bearing" } }
+
+  - id: gearbox.shafts.fms-shim
+    name: First motion shaft bearing shim
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 38 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Shims between the bearing and the front cover (Sec 4 para 11, Sec 7 para 7). Shims 0.002 in and 0.004 in (MGOC Spares 6K907, 6K908); one 0.004 in shim shown."
+    specs:
+      thickness: { in: 0.004, mm: 0.1016, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/internal-gearbox-components/3-synchromesh", note: "6K908 shim 0.004 in, 1st motion" } }
+
+  - id: gearbox.shafts.fms-needles
+    name: Spigot needle rollers
+    haynes: { section: 7, figures: [{ figure: "6.3", legend: 39 }] }
+    quantity: 1
+    finish: bearing
+    notes: "Loose needle rollers in the bore of the first motion shaft, held in with grease while the shaft goes in (Sec 7 para 3, photo 7.3a); one set modelled as one part. MGOC Spares 8G2404."
+    specs:
+      count: { count: 20, source: { label: D, method: "As many 2.5 mm rollers as fill the 9.25 mm pitch circle with clearance" } }
+      length: { mm: 24.0, source: { label: D, method: "Fig 6.3 item 39" } }
+
+  - id: gearbox.shafts.fms-lock-washer
+    name: First motion shaft lock washer
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 40 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Tab washer under the nut, inner tab in the shaft keyway, outer tab bent on a nut flat (Sec 5 para 7; MGOC Spares 1A3717)."
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Tab washer" } }
+
+  - id: gearbox.shafts.fms-nut
+    name: First motion shaft nut
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 41 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Left-hand thread (Sec 5 para 7; MGOC Spares 1G3584, also the rear hub nut)."
+    specs:
+      across_flats: { mm: 46.0, source: { label: D, method: "Inside the front cover's bearing recess" } }
+      thickness: { mm: 10.0, source: { label: D, method: "Fig 6.3 item 41" } }
+
+  - id: gearbox.shafts.mainshaft
+    name: Mainshaft (third motion shaft), overdrive type
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 95 }] }
+    quantity: 1
+    notes: >
+      Third motion shaft: nose in the first motion shaft's needle rollers, splines along the
+      gear train with the hole for the third gear locking peg (Fig 6.6 A) and oil holes for the
+      bushes, the centre bearing seat, and on overdrive cars the long tail into the overdrive:
+      the cam seat with a 1/2 in Woodruff keyway (early D type cams are keyed, MGOC Spares
+      WKN304) and its circlip groove, splines for the overdrive clutch and planet carrier, and
+      the pilot that runs in the needle bearing in the overdrive output shaft (Sec 11 para 5).
+      Tail stations are the P5b datums in gearbox_layout (MS_*).
+    specs:
+      bearing_journal: { mm: 40.0, source: { label: D, method: "Centre bearing bore" } }
+      length: { mm: 477.0, source: { label: D, method: "Nose at 31 mm to the pilot end at 508 mm behind the casing front face" } }
+
+  - id: gearbox.shafts.oil-restrictor
+    name: Oil restrictor
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 96 }] }
+    quantity: 1
+    notes: "Plug in the nose of the mainshaft drilling (Fig 6.3 item 96) metering oil to the gear bushes."
+    specs:
+      diameter: { mm: 5.2, source: { label: D, method: "Fig 6.3 item 96" }, display_only: true }
+
+  - id: gearbox.shafts.centre-bearing
+    name: Mainshaft centre bearing
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 44 }] }
+    quantity: 1
+    finish: bearing
+    notes: "Large ball bearing that comes out with the mainshaft and its housing (Sec 4 para 14). MGOC Spares 503791. Size derived."
+    specs:
+      outside_diameter: { mm: 80.0, source: { label: D, method: "In proportion to the housing in Fig 6.3" } }
+      inside_diameter: { mm: 40.0, source: { label: D, method: "Mainshaft journal" } }
+      width: { mm: 20.0, source: { label: D, method: "Fig 6.3 item 44" } }
+
+  - id: gearbox.shafts.bearing-housing
+    name: Centre bearing housing
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 42 }] }
+    quantity: 1
+    notes: "Flanged housing in the rear wall; tap it out from inside at alternate diagonally opposite points, then lever under its lip, taking care of the case and laygear (Sec 4 para 14). Tap it down flush on refitting (Sec 7 para 2)."
+    specs:
+      flange_diameter: { mm: 104.0, source: { label: D, method: "Fig 6.3 item 42; inside the layshaft" } }
+
+  - id: gearbox.shafts.housing-peg
+    name: Bearing housing peg
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 43 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 4.0, source: { label: D, method: "Fig 6.3 item 43" }, display_only: true }
+      length: { mm: 7.0, source: { label: D, method: "In the housing flange and the case" }, display_only: true }
+
+  - id: gearbox.shafts.mainshaft-clip
+    name: Mainshaft clip
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 51 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "Split clip on the mainshaft, overdrive cars (Fig 6.4 item 51); position behind the centre bearing derived."
+    specs:
+      inside_diameter: { mm: 40.0, source: { label: D, method: "On the bearing journal" } }
+
+  - id: gearbox.shafts.synchro-hub-34
+    name: Third and fourth gear synchroniser hub
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 111 }] }
+    quantity: 1
+    notes: "Splined hub with three slots for the baulk ring lugs and three radial holes for the springs and balls. Slide it off with the baulk rings and sleeve as one; do not pull the sleeve off the hub or the balls and springs fly out (Sec 5 para 9)."
+    specs:
+      width: { mm: 28.0, source: { label: D, method: "gearbox_layout.SYN34" }, display_only: true }
+
+  - id: gearbox.shafts.coupling-sleeve
+    name: Third and fourth gear coupling sleeve
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 114 }] }
+    quantity: 1
+    notes: "Sliding sleeve on the hub with the fork groove; its internal splines engage the dog teeth of third gear or the first motion shaft."
+    specs:
+      outside_diameter: { mm: 76.0, source: { label: D, method: "Fig 6.3 item 114 in proportion to the gears" } }
+
+  - id: gearbox.shafts.baulk-ring-34
+    name: Third and fourth gear baulk ring, front
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 110 }] }
+    quantity: 1
+    finish: bronze
+    notes: "Bronze ring on the fourth gear cone of the first motion shaft. The coned faces should show clear machining lines and not rock on the gear cone (Sec 5 para 1). MGOC Spares 11G3022."
+    specs:
+      outside_diameter: { mm: 62.0, source: { label: D, method: "Over the dog teeth" }, display_only: true }
+
+  - id: gearbox.shafts.baulk-ring-34-rear
+    name: Third and fourth gear baulk ring, rear
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 110 }] }
+    quantity: 1
+    finish: bronze
+    notes: "On the third gear cone (Sec 5 para 21)."
+    specs:
+      outside_diameter: { mm: 62.0, source: { label: D, method: "Over the dog teeth" }, display_only: true }
+
+  - id: gearbox.shafts.synchro-spring
+    name: Synchroniser spring
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 112 }, { figure: "6.3", legend: 103 }] }
+    quantity: 6
+    finish: spring_steel
+    notes: "Three in each synchroniser hub under the balls (MGOC Spares 6K884)."
+    specs:
+      free_length: { mm: 8.0, source: { label: D, method: "In the hub hole under the ball" } }
+      wire_diameter: { mm: 0.9, source: { label: D, method: "Fig 6.3" } }
+      outside_diameter: { mm: 5.5, source: { label: D, method: "In the 6.6 mm hole" } }
+
+  - id: gearbox.shafts.synchro-ball
+    name: Synchroniser ball
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 113 }, { figure: "6.3", legend: 102 }] }
+    quantity: 6
+    finish: bearing
+    specs:
+      diameter: { in: 0.28125, mm: 7.144, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/internal-gearbox-components/3-synchromesh", note: "BLS109 ball bearing 9/32 in, synchro hubs" } }
+
+  - id: gearbox.shafts.third-gear
+    name: Third speed gear
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 108 }] }
+    quantity: 1
+    notes: "25-tooth helical gear running on its bush, with the dog teeth and synchro cone forward; the hole in the cone lets the locking peg be pressed down (Sec 5 paras 10, 19; Fig 6.6). Third gear ratio 1.37 to 1."
+    specs:
+      teeth: { count: 25, source: { label: S, ref: "https://mgaguru.com/mgtech/gearbox/gt102a.htm", note: "Third 25/26" }, display_only: true }
+      ratio: { count: 1.37, source: { label: H, page: 111 }, display_only: true }
+      endfloat: { in: [0.004, 0.006], mm: [0.102, 0.152], source: { label: H, page: 111, note: "Mainshaft 2nd and 3rd gear endfloats" }, display_only: true }
+
+  - id: gearbox.shafts.third-gear-bush
+    name: Third gear bush
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 109 }] }
+    quantity: 1
+    finish: bronze
+    notes: "Heat to 180-200 C to fit, tongues in line with the shaft splines and the oil holes in line (Sec 5 para 13); fit lug end first with the cut-out over the hole in the mainshaft (Sec 5 para 18, photo 5.18)."
+    specs:
+      outside_diameter: { mm: 42.0, source: { label: D, method: "Third gear bore" }, display_only: true }
+
+  - id: gearbox.shafts.interlock-ring
+    name: Interlocking ring
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 107 }] }
+    quantity: 1
+    notes: "Locks the second and third gear bushes to each other (Sec 5 para 17; MGOC Spares 1G3331)."
+    specs:
+      thickness: { mm: 3.5, source: { label: D, method: "gearbox_layout.RING107" }, display_only: true }
+
+  - id: gearbox.shafts.second-gear
+    name: Second speed gear
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 105 }] }
+    quantity: 1
+    notes: "31-tooth helical gear on its bush, dog teeth and cone toward the rear for the 1st/2nd synchroniser. Second gear ratio 2.21 to 1. Endfloat between second and third gear is set by the third gear locking washer (Sec 5 para 20)."
+    specs:
+      teeth: { count: 31, source: { label: S, ref: "https://mgaguru.com/mgtech/gearbox/gt102a.htm", note: "Second 31/20" }, display_only: true }
+      ratio: { count: 2.21, source: { label: H, page: 111 }, display_only: true }
+      endfloat: { in: [0.004, 0.006], mm: [0.102, 0.152], source: { label: H, page: 111 }, display_only: true }
+
+  - id: gearbox.shafts.second-gear-bush
+    name: Second gear bush
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 106 }] }
+    quantity: 1
+    finish: bronze
+    notes: "Heated and fitted with the oil holes in line and the lugs toward the splined end of the shaft (Sec 5 para 16)."
+    specs:
+      outside_diameter: { mm: 42.0, source: { label: D, method: "Second gear bore" }, display_only: true }
+
+  - id: gearbox.shafts.third-gear-washer
+    name: Third gear locking thrust washer
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 98 }, { figure: "6.6", legend: "D" }] }
+    quantity: 1
+    notes: >
+      Splined washer over the depressed peg, turned so a spline holds the peg down, then the peg
+      rises into its notch and locks it (Sec 5 paras 10, 19; Fig 6.6). Selective: 0.1565-0.1575,
+      0.1585-0.1595, 0.1605-0.1615 in to set the 2nd/3rd endfloat (Sec 5 para 20).
+    specs:
+      outside_diameter: { mm: 46.0, source: { label: D, method: "Inside the third gear cone" } }
+      thickness: { in: [0.1565, 0.1575], mm: [3.975, 4.0], source: { label: H, page: 121, note: "Thinnest of the three selective washers" }, display_only: true }
+
+  - id: gearbox.shafts.peg
+    name: Third gear locking peg
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 99 }, { figure: "6.6", legend: "C" }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 4.6, source: { label: D, method: "Fig 6.6" } }
+      length: { mm: 9.0, source: { label: D, method: "Fig 6.6" } }
+
+  - id: gearbox.shafts.peg-spring
+    name: Locking peg spring
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 100 }, { figure: "6.6", legend: "B" }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      free_length: { mm: 7.0, source: { label: D, method: "Fig 6.6: hole bottom to the peg" } }
+      wire_diameter: { mm: 0.6, source: { label: D, method: "Fig 6.6" } }
+      outside_diameter: { mm: 4.4, source: { label: D, method: "In the 4.8 mm hole" } }
+
+  - id: gearbox.shafts.baulk-ring-2
+    name: Second gear baulk ring
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 104 }] }
+    quantity: 1
+    finish: bronze
+    notes: "On the second gear cone (Sec 5 para 16, photo 5.16a). Bronze 11G3063; a steel ring 22H249 came with the December 1965 second gear synchro change (MGOC Spares)."
+    specs:
+      outside_diameter: { mm: 62.0, source: { label: D, method: "Over the dog teeth" }, display_only: true }
+
+  - id: gearbox.shafts.synchro-hub-12
+    name: First and second gear synchroniser hub
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 101 }] }
+    quantity: 1
+    notes: "Inner member of item 101, splined to the mainshaft, with the three balls and springs (items 102, 103) that hold first gear in neutral (Sec 5 para 12)."
+    specs:
+      width: { mm: 54.0, source: { label: D, method: "gearbox_layout.SYN12: long enough to carry first gear into mesh with the laygear" }, display_only: true }
+
+  - id: gearbox.shafts.first-gear
+    name: First speed gear
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 101 }] }
+    quantity: 1
+    notes: >
+      Outer member of the 1st/2nd synchroniser (item 101): 28 straight-cut teeth, the fork
+      collar, internal splines on the hub. Forward it engages the second gear dogs through the
+      baulk ring; back, it meshes the laygear's 11 teeth for first (no synchromesh on first,
+      p111). Keep it on the hub when sliding the assembly off or the balls and springs are
+      lost (Sec 5 para 12). First gear ratio 3.64 to 1.
+    specs:
+      teeth: { count: 28, source: { label: S, ref: "https://mgaguru.com/mgtech/gearbox/gt102a.htm", note: "First 28/11" }, display_only: true }
+      ratio: { count: 3.64, source: { label: H, page: 111 }, display_only: true }
+
+  - id: gearbox.shafts.rear-thrust-washer
+    name: Mainshaft rear thrust washer
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 97 }] }
+    quantity: 1
+    specs:
+      outside_diameter: { mm: 50.0, source: { label: D, method: "Fig 6.3 item 97" } }
+
+  - id: gearbox.shafts.laygear
+    name: Laygear (gear unit)
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 84 }] }
+    quantity: 1
+    notes: >
+      One-piece cluster: 30-tooth constant mesh, 26-tooth third and 20-tooth second (helical)
+      and 11-tooth first (straight cut), bored for three sets of loose needle rollers (early
+      three-bearing laygear, MGOC Spares 22H54). Endfloat 0.002-0.003 in; measure it with a
+      feeler gauge before dismantling and fit new thrust washers if it exceeds 0.003 in
+      (Sec 4 para 12).
+    specs:
+      teeth: { count: 30, source: { label: S, ref: "https://mgaguru.com/mgtech/gearbox/gt102a.htm", note: "30 (constant), 26, 20, 11" }, display_only: true }
+      endfloat: { in: [0.002, 0.003], mm: [0.051, 0.076], source: { label: H, page: 111 }, display_only: true }
+      centre_distance: { mm: 61.91, source: { label: D, method: "gearbox_layout.C_LAY: 39 teeth at 8 DP" }, display_only: true }
+
+  - id: gearbox.shafts.layshaft
+    name: Layshaft
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 83 }] }
+    quantity: 1
+    notes: "Drifted out forward with a soft rod (Sec 4 para 13); refit with the cutaway end forward so its step lines up with the cut-out in the front cover (Sec 7 paras 4, 7)."
+    specs:
+      length: { mm: 252.0, source: { label: D, method: "Through both walls of the 250 mm case, the step proud at the front" } }
+      diameter: { in: 0.6668, mm: 16.937, source: { label: D, method: "Three-bearing laygear layshaft, in proportion" } }
+
+  - id: gearbox.shafts.lay-thrust-front
+    name: Laygear front thrust washer
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 86 }] }
+    quantity: 1
+    notes: "Tagged into the case so it cannot turn. MGOC Spares 1G3576."
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "Fig 6.3 item 86" } }
+      outside_diameter: { mm: 40.0, source: { label: D, method: "Fig 6.3 item 86" } }
+
+  - id: gearbox.shafts.lay-thrust-rear
+    name: Laygear rear thrust washer
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 85 }] }
+    quantity: 1
+    notes: "Selective, to set the laygear endfloat: 0.154-0.156, 0.157-0.159, 0.160-0.161 or 0.163-0.164 in (Sec 5 para 3)."
+    specs:
+      thickness: { in: [0.157, 0.159], mm: [3.99, 4.04], source: { label: H, page: 119, note: "Second of the four selective sizes" } }
+      outside_diameter: { mm: 36.0, source: { label: D, method: "Fig 6.3 item 85" } }
+
+  - id: gearbox.shafts.lay-needles
+    name: Laygear needle rollers (one set)
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 87 }] }
+    quantity: 3
+    finish: bearing
+    notes: "Early cars have loose rollers (Sec 5 para 22): the bottom set, the distance tube and the top two sets go on the greased shaft before the laygear is slid over (Sec 5 para 23). One set modelled as one part. MGOC Spares 3H2865A."
+    specs:
+      count: { count: 23, source: { label: D, method: "2.5 mm rollers round the 0.667 in shaft" } }
+      length: { mm: 22.0, source: { label: D, method: "Fig 6.3 item 87" } }
+
+  - id: gearbox.shafts.lay-distance-tube
+    name: Laygear distance tube
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 88 }] }
+    quantity: 1
+    notes: "MGOC Spares 11G3026."
+    specs:
+      length: { mm: 151.0, source: { label: D, method: "Between the front and middle roller sets" }, display_only: true }
+
+  - id: gearbox.shafts.lay-ring
+    name: Laygear spring ring
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 89 }] }
+    quantity: 2
+    finish: spring_steel
+    notes: "One in a groove at each end of the laygear bore (Sec 5 paras 22-23). MGOC Spares 11G3027."
+    specs:
+      outside_diameter: { mm: 23.4, source: { label: D, method: "In the groove in the 22 mm bore" }, display_only: true }
+
+  - id: gearbox.shafts.reverse-shaft
+    name: Reverse shaft
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 90 }] }
+    quantity: 1
+    notes: "The cut-out in the shaft must line up under the threaded hole for the locating screw (Sec 7 para 6, photo 7.6a)."
+    specs:
+      diameter: { in: 0.625, mm: 15.875, source: { label: D, method: "In proportion to Fig 6.3" } }
+
+  - id: gearbox.shafts.reverse-gear
+    name: Reverse idler gear
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 93 }] }
+    quantity: 1
+    notes: "Double idler, 13 and 17 straight-cut teeth, with the groove for the reverse fork; slides forward into mesh with first gear (Sec 4 para 22, photo 4.22). MGOC Spares 22H83. Reverse 4.76 to 1."
+    specs:
+      teeth: { count: 17, source: { label: S, ref: "https://mgaguru.com/mgtech/gearbox/gt102a.htm", note: "Reverse idler 17/13" }, display_only: true }
+      ratio: { count: 4.76, source: { label: H, page: 111 }, display_only: true }
+      bore: { mm: 22.0, source: { label: D, method: "Over the bush" } }
+
+  - id: gearbox.shafts.reverse-bush
+    name: Reverse gear bush
+    haynes: { section: 5, figures: [{ figure: "6.3", legend: 94 }] }
+    quantity: 1
+    finish: bronze
+    notes: "Examine for wear (Sec 5 para 5)."
+    specs:
+      outside_diameter: { mm: 22.0, source: { label: D, method: "Fig 6.3 item 94" } }
+
+  - id: gearbox.shafts.reverse-screw
+    name: Reverse shaft locating screw
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 91 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Into the cut-out in the reverse shaft, locked by a tab washer (Sec 4 para 22, Sec 7 para 6; MGOC Spares 1G3581)."
+    specs:
+      length: { in: 0.375, mm: 9.525, source: { label: D, method: "Through the boss into the shaft cut-out" } }
+
+  - id: gearbox.shafts.reverse-tab-washer
+    name: Reverse screw tab washer
+    haynes: { section: 4, figures: [{ figure: "6.3", legend: 92 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thickness: { mm: 0.9, source: { label: D, method: "Tab washer" } }

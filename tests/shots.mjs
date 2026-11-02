@@ -31,14 +31,14 @@ await page.route('https://cdn.jsdelivr.net/npm/**', route => {
 await page.route('https://fonts.googleapis.com/**', r => r.fulfill({ status: 200, contentType: 'text/css', body: '' }));
 await page.goto(`http://127.0.0.1:${server.address().port}/#${(process.env.SELECT || asm).replaceAll('.', '--')}`);
 await page.waitForFunction(() => document.getElementById('toast').hidden, null, { timeout: 120000 });
-await page.waitForTimeout(1500);
+await page.waitForTimeout(Number(process.env.SETTLE || 1500));   // SETTLE=ms: the car view keeps loading after the toast hides
 const views = process.env.VIEWS ? JSON.parse(process.env.VIEWS) : [
   { name: 'assembled', explode: 0 },
   { name: 'explode-35', explode: 35 },
   { name: 'explode-100', explode: 100 },
 ];
 for (const v of views) {
-  await page.fill('#explode', String(v.explode)); await page.dispatchEvent('#explode', 'input');
+  await page.fill('#explode', String(v.explode), { timeout: 600000 }); await page.dispatchEvent('#explode', 'input');
   if (v.camera) await page.evaluate(c => window.mgbCamera && window.mgbCamera(c), v.camera);
   await page.waitForTimeout(1200);
   const box = await page.locator('#stage').boundingBox();
