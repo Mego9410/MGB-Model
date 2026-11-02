@@ -1,0 +1,175 @@
+# Axleshafts and rear hubs for wire wheels, three-quarter floating banjo axle (1963). Haynes Ch 8: Sec 4
+# axleshaft removal (printed p142-143), Sec 5 rear hub (p143), Fig 8.1 (p143). Fig 8.1 item numbers.
+# Outside references: MGOC Spares "axle banjo type 1962-1966" (hub nuts 1G7448 RH and 1G7582 LH thread,
+# locktab washer 1G7584, wire wheel hubs (extensions) BTB332/BTB333 12 tpi to GHN3-30850, core plug
+# 2K8160 1 5/16 in, screw SF604061, hub stud BTB229, O-ring ATB7354, hub oil seal GHS211, bearing kit
+# GHK1133); MGOC "wheel spinners" (handing, 12/8 tpi change); S C Parts wire wheel hubs (6954/6955,
+# 42 mm 12 tpi, MGB roadster to GHN3-30850 banjo axle); mgaguru.com RA-112 (bearing 2K7477, 40 x 80 x 23),
+# RA-112A (seal 1 15/16 x 2 3/4 x 5/16 in), hub_06 (nut threads, 1 61/64 in eight-sided socket), WL-113
+# (42 mm series hubs). Sizes not published are derived (mgb/rear_axle_layout.py).
+defaults:
+  system: axle
+  assembly: axle.hubs
+  haynes: { section: 5, spec_page: 142 }
+  variant: { factory_1963: true, as_fitted: true, axle_type: three_quarter_floating, wire_wheels: true, spinner_tpi: 12 }
+  finish: machined_steel
+
+parts:
+  - id: axle.hubs.axleshaft
+    name: Axleshaft (wire wheels)
+    haynes: { section: 4, figures: [{ figure: "8.1", legend: 41 }] }
+    quantity: 2
+    notes: >
+      Splined at both ends: the inner end into the differential wheel, the outer into the hub extension; no
+      flange on the wire wheel shaft. Withdrawn after the drum and the hub extension, noting the O-ring seal
+      (Sec 4 paras 5-6). Jack up that side first so the oil does not reach the linings (para 1).
+    specs:
+      diameter: { in: 1.125, mm: 28.575, source: { label: D, method: "Shaft between the splines" } }
+
+  - id: axle.hubs.hub
+    name: Rear hub (wire wheels)
+    haynes: { section: 5, figures: [{ figure: "8.1", legend: 51 }] }
+    quantity: 2
+    notes: >
+      A bell over the bearing on the end of the case, the oil seal in its inner end, a lobed flange with the
+      four studs for the drum and hub extension and the tapped hole for the extension screw. Drawn off with
+      a puller complete with the bearing and seal (Sec 5 para 3). The bearing's outer face stands 0.001 to
+      0.004 in proud of the hub so the extension's flange clamps it against the shoulder (para 4d).
+    specs:
+      bearing_bore: { mm: 80.0, source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112.htm", note: "Rear hub bearing 2K7477 (LDJ40 / 4208), 3.1496 in (80.0 mm) OD" } }
+      bearing_proud: { in: [0.001, 0.004], mm: [0.025, 0.102], source: { label: H, page: 143, note: "Sec 5 para 4d: outer bearing face protrudes 0.001 to 0.004 in (0.025 to 0.102 mm)" }, display_only: true }
+
+  - id: axle.hubs.hub-stud
+    name: Hub stud (wire wheels)
+    haynes: { section: 4, figures: [{ figure: "8.1", legend: 52 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: BTB229, by: "MGOC Spares (hub stud, banjo axle page)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Pressed into the hub flange; the hub extension and brake drum go over them, held by four nuts (Sec 4 para 5). The nuts come with the drum in P8."
+    specs:
+      length: { in: 1.375, mm: 34.925, source: { label: D, method: "Hub flange, extension flange, drum and nut, 1/2 in UNF" } }
+
+  - id: axle.hubs.hub-bearing
+    name: Hub bearing
+    haynes: { section: 5, figures: [{ figure: "8.1", legend: 55 }] }
+    quantity: 2
+    finish: bearing
+    part_numbers:
+      - { number: 2K7477, by: "BMC (mgaguru.com RA-112: LDJ40 or 4208; also GHB127, GHK1133)", source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112.htm" } }
+    notes: "Double row ball bearing on the case journal, lubricated by the axle oil (open); grease before refitting (Sec 5 para 4b)."
+    specs:
+      outside_diameter: { mm: 80.0, source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112.htm", note: "2K7477: 40 x 80 x 23 mm" } }
+      width: { mm: 23.0, source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112.htm", note: "2K7477: 40 x 80 x 23 mm" } }
+
+  - id: axle.hubs.hub-seal
+    name: Hub oil seal
+    haynes: { section: 5, figures: [{ figure: "8.1", legend: 54 }] }
+    quantity: 2
+    finish: rubber
+    part_numbers:
+      - { number: GHS211, by: "MGOC Spares (rear hub oil seal, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+      - { number: 8G555, by: "BMC (mgaguru.com RA-112A)", source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112a.htm" } }
+    notes: "Drifted into the hub before the bearing, lip inwards toward the differential (Sec 5 para 4a); runs on the case."
+    specs:
+      inside_diameter: { in: 1.9375, mm: 49.2125, source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112a.htm", note: "1-15/16 in ID" } }
+      outside_diameter: { in: 2.75, mm: 69.85, source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112a.htm", note: "2-3/4 in OD" } }
+      width: { in: 0.3125, mm: 7.9375, source: { label: S, ref: "https://mgaguru.com/mgtech/rearaxle/ra112a.htm", note: "5/16 in wide" } }
+
+  - id: axle.hubs.o-ring
+    name: O-ring seal
+    haynes: { section: 4, figures: [{ figure: "8.1", legend: 53 }] }
+    quantity: 2
+    finish: rubber
+    part_numbers:
+      - { number: ATB7354, by: "MGOC Spares (O-ring seal, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Wire wheels: seals the hub extension's flange to the hub round the bearing; renew it on reassembly (Sec 4 paras 6-7). Placed in a groove in the extension flange (D)."
+    specs:
+      section: { mm: 2.4, source: { label: D, method: "O-ring cord in a 2.5 mm groove" } }
+
+  - id: axle.hubs.lockwasher
+    name: Bearing nut locking washer
+    haynes: { section: 5, figures: [{ figure: "8.1", legend: 6 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: 1G7584, by: "MGOC Spares (locktab washer, rear axle hub nut, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Inner tab in the case keyway, outer tabs knocked up against the nut's flats (Sec 5 paras 2, 4e)."
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Tab washer" } }
+
+  - id: axle.hubs.bearing-nut-rh
+    name: Hub bearing nut, RH thread (right-hand hub)
+    haynes: { section: 5, figures: [{ figure: "8.1", legend: 2 }] }
+    quantity: 1
+    part_numbers:
+      - { number: 1G7448, by: "MGOC Spares (rear axle hub nut, RH thread, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: >
+      Octagonal nut holding the bearing on the case (Sec 5 para 2). Right-hand thread on the right-hand (off
+      side) hub so forward rotation tends to tighten it (mgaguru.com hub_06; BritishCarForum). The MGOC page
+      text gives the opposite pairing to its own part titles - see PLAN questions. Thread 1 1/2 in 16 tpi
+      derived.
+    specs:
+      across_flats: { in: 1.953125, mm: 49.609, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966", note: "18G152B rear hub box spanner 1 61/64 in; eight-sided (mgaguru.com hub_06, magnette.org)" } }
+
+  - id: axle.hubs.bearing-nut-lh
+    name: Hub bearing nut, LH thread (left-hand hub)
+    haynes: { section: 5, figures: [{ figure: "8.1", legend: 3 }] }
+    quantity: 1
+    part_numbers:
+      - { number: 1G7582, by: "MGOC Spares / Rimmer Bros (lock nut, left hand thread)", source: { label: S, ref: "https://rimmerbros.com/Item--i-1G7582" } }
+    notes: "As the RH nut with a left-hand thread, on the left-hand (near side) hub."
+    specs:
+      across_flats: { in: 1.953125, mm: 49.609, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966", note: "18G152B rear hub box spanner 1 61/64 in" } }
+
+  - id: axle.hubs.hub-extension-rh
+    name: Hub extension, RH (wire wheels)
+    haynes: { section: 4, figures: [{ figure: "8.1", legend: 42 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: BTB332, by: "BMC (MGOC Spares: wire wheel hub, 12 TPI, RH, Mk1)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: >
+      On the right-hand hub. Flange on the hub studs (the brake drum over it, four nuts) and held by the
+      countersunk screw; the inner cone the wheel centre seats on, 42 mm series Rudge-Whitworth splines and the
+      spinner thread - left-hand on the car's right-hand side (MGOC "wheel spinners"), 12 tpi on cars to
+      GHN3-30850 (about February 1964; MGOC, S C Parts 6954). Splined inside for the axleshaft, closed by the
+      Welch plug. Withdrawn after the drum by undoing the screw (Sec 4 paras 5-6). Spline count, cone and
+      thread diameters derived.
+    specs:
+      spline_major: { mm: 42.0, source: { label: S, ref: "https://mgaguru.com/mgtech/wheels/wl113.htm", note: "All MGA (and MGB) use 42 mm series hubs and nuts" }, display_only: true }
+      spinner_tpi: { count: 12, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/road-wheels/wheel-spinners", note: "12 tpi to chassis GHN3-30850, 8 tpi after" } }
+
+  - id: axle.hubs.hub-extension-lh
+    name: Hub extension, LH (wire wheels)
+    haynes: { section: 4, figures: [{ figure: "8.1", legend: 43 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: BTB333, by: "BMC (MGOC Spares: wire wheel hub, 12 TPI, LH, Mk1)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "On the left-hand hub, with a right-hand spinner thread; otherwise as the RH extension."
+    specs:
+      spline_major: { mm: 42.0, source: { label: S, ref: "https://mgaguru.com/mgtech/wheels/wl113.htm", note: "42 mm series hubs" }, display_only: true }
+      spinner_tpi: { count: 12, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/road-wheels/wheel-spinners", note: "12 tpi to chassis GHN3-30850" } }
+
+  - id: axle.hubs.welch-plug
+    name: Welch plug
+    haynes: { section: 4, figures: [{ figure: "8.1", legend: 44 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: 2K8160, by: "MGOC Spares (core plug 1 5/16 in)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Closes the outer end of the hub extension."
+    specs:
+      diameter: { in: 1.3125, mm: 33.3375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966", note: "2K8160 core plug 1 5/16 in" } }
+
+  - id: axle.hubs.screw
+    name: Screw, hub extension to hub
+    haynes: { section: 4, figures: [{ figure: "8.1", legend: 46 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: SF604061, by: "MGOC Spares (countersunk recessed screw 1/4 UNF x 3/4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "The extension flange screw (Sec 4 para 6)."
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966", note: "SF604061 1/4 UNF x 3/4" } }

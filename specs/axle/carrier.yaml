@@ -1,0 +1,234 @@
+# Differential carrier (nose piece), its fixings, and the pinion with its bearings, seal and flange;
+# three-quarter floating banjo axle (1963). Haynes Ch 8: specifications (printed p142), Sec 7 pinion oil
+# seal (p145), Sec 8 differential assembly (p145), Fig 8.1 (p143). Fig 8.1 item numbers unless stated.
+# Outside references: MGOC Spares "axle banjo type 1962-1966" (gasket 1G7465, nuts and washers, pinion
+# bearings 100897A and 2A7213, spacer 1B7240, shims ATB7102-ATB7108, thrust washers ATB7066/ATB7067,
+# seal 88G320, pinion nut FNZ612 and spring washer WL600121); mgaguru.com RA-201 (pinion seal 2.385 in
+# OD); the factory workshop manual (manualslib, MGB section H.8: bearing cap nuts 65 lbf ft). Sizes not
+# published are derived (mgb/rear_axle_layout.py).
+defaults:
+  system: axle
+  assembly: axle.carrier
+  haynes: { section: 8, spec_page: 142 }
+  variant: { factory_1963: true, as_fitted: true, axle_type: three_quarter_floating, ratio: "3.909" }
+  finish: machined_steel
+
+parts:
+  - id: axle.carrier.carrier
+    name: Differential carrier
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 13 }] }
+    quantity: 1
+    material: Cast iron
+    finish: cast_iron
+    notes: >
+      The nose piece: round flange on the ten case studs with a spigot into the banjo opening, the tapering
+      nose with four ribs carrying the two pinion bearing cups and the oil seal, and behind the flange the two
+      saddles (with lightening windows) for the differential bearings under their caps. Withdrawn forward
+      after the axleshafts, the propeller shaft and the nuts and spring washers (Sec 8 paras 1-3). Everything
+      behind the flange passes through the case's 205 mm opening. Nose length from Fig 8.1 (about the flange's
+      width) set so the pinion flange lands where the propeller shaft is at its supplier length; the cast
+      surfaces from Fig 8.1 item 13 (no outside photographs could be opened from the build machine).
+    specs:
+      flange_diameter: { mm: 250.0, source: { label: D, method: "Case ring round the 205 mm opening" }, display_only: true }
+      pinion_flange_face: { mm: 354.1, source: { label: D, method: "Forward of the axle centre: propeller shaft at 31 1/8 in (propshaft_layout)" }, display_only: true }
+
+  - id: axle.carrier.bearing-cap
+    name: Differential bearing cap
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 13 }] }
+    quantity: 2
+    material: Cast iron
+    finish: cast_iron
+    notes: "Machined with the carrier (Fig 8.1 shows them as item 13), each on two studs; keep them to their own sides (punch marks). Cap nuts 65 lbf ft (factory manual H.8)."
+    specs:
+      width: { mm: 26.0, source: { label: D, method: "Saddle width, inside the banjo opening" }, display_only: true }
+      depth: { mm: 52.0, source: { label: D, method: "Behind the split line: the 80 mm bearing and a 12 mm wall" }, display_only: true }
+
+  - id: axle.carrier.gasket
+    name: Carrier to case gasket
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 12 }] }
+    quantity: 1
+    finish: gasket
+    part_numbers:
+      - { number: 1G7465, by: "BMC (MGOC Spares: gasket, differential to axle case, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Use a new gasket on refitting (Sec 8 para 4)."
+    specs:
+      thickness: { mm: 0.4, source: { label: D, method: "Paper gasket" } }
+
+  - id: axle.carrier.carrier-nut
+    name: Carrier nut
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 7 }] }
+    quantity: 10
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF201, by: "MGOC Spares (plain nut 5/16 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      thread: { in: 0.3125, source: { label: D, method: "5/16 in UNF case studs" }, display_only: true }
+
+  - id: axle.carrier.carrier-washer
+    name: Carrier nut spring washer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 8 }] }
+    quantity: 10
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer (MGOC GHF332)" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: axle.carrier.cap-stud
+    name: Bearing cap stud
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 14 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      length: { in: 3.5, mm: 88.9, source: { label: D, method: "Saddle, cap, washers and nut, 3/8 in UNF" } }
+
+  - id: axle.carrier.cap-plain-washer
+    name: Bearing cap plain washer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 15 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: PWZ206, by: "MGOC Spares (large plain washer 3/8)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      outside_diameter: { mm: 22.0, source: { label: D, method: "Large 3/8 in plain washer" } }
+      inside_diameter: { mm: 10.3, source: { label: D, method: "3/8 in plain washer" } }
+      thickness: { mm: 1.65, source: { label: D, method: "3/8 in plain washer" } }
+
+  - id: axle.carrier.cap-spring-washer
+    name: Bearing cap spring washer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 16 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 15.5, source: { label: D, method: "3/8 in spring washer (MGOC GHF333)" } }
+      inside_diameter: { mm: 9.8, source: { label: D, method: "3/8 in spring washer" } }
+      thickness: { mm: 2.4, source: { label: D, method: "3/8 in spring washer" } }
+
+  - id: axle.carrier.cap-nut
+    name: Bearing cap nut
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 17 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF202, by: "MGOC Spares (plain nut 3/8 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      torque: { lbf_ft: 65, nm: 88, source: { label: F, ref: "MGB workshop manual Section H.8 (manualslib.com/manual/1273353 p210): bearing cap nuts 65 lb ft" } }
+
+  - id: axle.carrier.pinion
+    name: Pinion (crown wheel and pinion)
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 27 }] }
+    quantity: 1
+    notes: >
+      The pinion of the matched crown wheel and pinion (sold as a pair): 11 teeth for the 3.909 (43/11) ratio
+      (H p142). Spiral (hypoid) teeth on the head, the rear bearing seat behind the head, the shank, the front
+      bearing seat, the splines for the flange and the 3/4 in UNF thread for the nut. Hypoid offset, pitch
+      sizes and spiral angle derived.
+    specs:
+      teeth: { count: 11, source: { label: H, page: 142, note: "Ratio 3.909:1 (43/11)" } }
+      ratio: { count: 3.909, source: { label: H, page: 142, note: "Ratio 3.909:1" }, display_only: true }
+
+  - id: axle.carrier.pinion-thrust-washer
+    name: Pinion thrust washer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 30 }] }
+    quantity: 1
+    part_numbers:
+      - { number: ATB7066, by: "BMC (MGOC Spares: pinion thrust washer 0.122)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Behind the pinion head; selective thickness sets the pinion's depth of mesh."
+    specs:
+      thickness: { in: 0.119, mm: 3.0226, source: { label: D, method: "Middle of the 0.112-0.126 in range (H p143, Fig 8.1 item 30)" } }
+      range: { in: [0.112, 0.126], mm: [2.85, 3.20], source: { label: H, page: 143, note: "Fig 8.1 item 30: 0.112 to 0.126 in (2.85 to 3.20 mm)" }, display_only: true }
+
+  - id: axle.carrier.rear-pinion-bearing
+    name: Rear pinion bearing
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 31 }] }
+    quantity: 1
+    finish: bearing
+    part_numbers:
+      - { number: 100897A, by: "MGOC Spares (differential pinion bearing, inner)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Taper roller bearing behind the pinion head, cup in the nose (sizes derived)."
+    specs:
+      outside_diameter: { mm: 72.0, source: { label: D, method: "35 x 72 x 24 assumed" } }
+
+  - id: axle.carrier.bearing-spacer
+    name: Pinion bearing spacer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 32 }] }
+    quantity: 1
+    part_numbers:
+      - { number: 1B7240, by: "BMC (MGOC Spares: pinion bearing spacer, banjo axle)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Rigid spacer between the bearing cones (the semi-floating axle has a collapsible one, Sec 7 para 7)."
+    specs:
+      length: { mm: 121.0, source: { label: D, method: "Between the two bearing cones (rear_axle_layout)" }, display_only: true }
+
+  - id: axle.carrier.pinion-shim
+    name: Pinion bearing shim
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 34 }] }
+    quantity: 1
+    part_numbers:
+      - { number: ATB7104, by: "BMC (MGOC Spares: outer bearing shim 0.008; 0.004 to 0.030 listed)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Shims between the spacer and the front bearing cone set the bearing preload."
+    specs:
+      thickness: { in: 0.010, mm: 0.254, source: { label: D, method: "Within the 0.004-0.030 in range (H p143, Fig 8.1 item 34)" } }
+
+  - id: axle.carrier.front-pinion-bearing
+    name: Front pinion bearing
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 33 }] }
+    quantity: 1
+    finish: bearing
+    part_numbers:
+      - { number: 2A7213, by: "MGOC Spares (outer differential pinion bearing, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      outside_diameter: { mm: 62.0, source: { label: D, method: "30 x 62 x 18 assumed" } }
+
+  - id: axle.carrier.pinion-seal
+    name: Pinion oil seal
+    haynes: { section: 7, figures: [{ figure: "8.1", legend: 35 }] }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: 88G320, by: "MGOC Spares (differential pinion nose oil seal, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Prised out after the flange and end cover; the new seal goes in lip inwards, the flange's face oiled (Sec 7 paras 5-6)."
+    specs:
+      outside_diameter: { in: 2.385, mm: 60.579, source: { label: S, ref: "https://mail.mgaguru.com/mgtech/rearaxle/ra201.htm", note: "Pinion seal size 2.385 in OD (B-series axle)" } }
+
+  - id: axle.carrier.dust-cover
+    name: Dust cover (end cover)
+    haynes: { section: 7, figures: [{ figure: "8.1", legend: 36 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Steel end cover on the flange, its skirt over the end of the nose; removed after the flange (Sec 7 para 5)."
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Pressed steel" } }
+
+  - id: axle.carrier.pinion-flange
+    name: Pinion flange
+    haynes: { section: 7, figures: [{ figure: "8.1", legend: 37 }] }
+    quantity: 1
+    notes: >
+      Splined on the pinion, its hub running in the oil seal and bearing on the front bearing cone; four holes
+      on the propeller shaft pitch circle with ears behind, and a recess in the face round the nut so the
+      propeller shaft flange seats flat. Mark it and the propeller shaft flange before parting (Sec 7 para 2).
+    specs:
+      diameter: { mm: 96.0, source: { label: D, method: "As the propeller shaft flange yoke" } }
+
+  - id: axle.carrier.pinion-nut
+    name: Pinion nut
+    haynes: { section: 7, figures: [{ figure: "8.1", legend: 38 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: FNZ612, by: "MGOC Spares (thin locknut 3/4 UNF, high tensile)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      torque: { lbf_ft: [135, 140], nm: [183, 190], source: { label: H, page: 142, note: "Pinion bearing nut (three-quarter floating axle) 135 to 140 lbf ft (183 to 190 Nm)" } }
+      across_flats: { in: 1.125, mm: 28.575, source: { label: S, ref: "ANSI/ASME B18.2.2 finished hex nut, 3/4 in" }, display_only: true }
+
+  - id: axle.carrier.pinion-washer
+    name: Pinion nut spring washer
+    haynes: { section: 7, figures: [{ figure: "8.1", legend: 39 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: WL600121, by: "MGOC Spares (spring lock washer 3/4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      outside_diameter: { mm: 31.0, source: { label: D, method: "3/4 in spring washer" } }
+      inside_diameter: { mm: 19.4, source: { label: D, method: "3/4 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "3/4 in spring washer, inside the recess" } }

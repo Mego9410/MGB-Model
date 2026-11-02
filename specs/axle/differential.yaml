@@ -1,0 +1,127 @@
+# Differential of the three-quarter floating banjo axle (1963): cage, crown wheel, gears, bearings. Part
+# of the carrier assembly (it comes out with the carrier, Haynes Ch 8 Sec 8). Haynes Ch 8: specifications
+# (printed p142), Fig 8.1 items 18-29 (p143). Outside references: MGOC Spares "axle banjo type 1962-1966"
+# (BTB414E differential assembly 3.909:1, ATA7043 crown wheel bolt, CHM163 differential bearing, ATB7072
+# gear thrust washer, 1G7444 pin shaft, 1G7445 pinion thrust washer). Sizes derived
+# (mgb/rear_axle_layout.py).
+defaults:
+  system: axle
+  assembly: axle.carrier
+  haynes: { section: 8, spec_page: 142 }
+  variant: { factory_1963: true, as_fitted: true, axle_type: three_quarter_floating, ratio: "3.909" }
+  finish: machined_steel
+
+parts:
+  - id: axle.carrier.crown-wheel
+    name: Crown wheel
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 27 }] }
+    quantity: 1
+    part_numbers:
+      - { number: BTB414E, by: "MGOC Spares (differential assembly 3.909:1, MGB)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: >
+      43 teeth (3.909 = 43/11, H p142), spiral (hypoid) form, bolted to the cage's flange on the left with
+      eight bolts; the backlash is etched on its rear face (factory manual H.8). 190 mm pitch diameter, face
+      width and spiral angle derived.
+    specs:
+      teeth: { count: 43, source: { label: H, page: 142, note: "Ratio 3.909:1 (43/11)" } }
+      outside_diameter: { mm: 192.0, source: { label: D, method: "Back ring, 190 mm pitch diameter" } }
+
+  - id: axle.carrier.crown-wheel-bolt
+    name: Crown wheel bolt
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 28 }] }
+    quantity: 8
+    part_numbers:
+      - { number: ATA7043, by: "MGOC Spares (crown wheel bolt)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Through the cage flange into the crown wheel, locked in pairs by the tab washers."
+    specs:
+      length: { in: 0.875, mm: 22.225, source: { label: D, method: "Flange 10 mm and 12 mm of thread in the crown wheel, 3/8 in UNF" } }
+
+  - id: axle.carrier.crown-wheel-lockwasher
+    name: Crown wheel bolt lockwasher
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 29 }] }
+    quantity: 4
+    finish: zinc_steel
+    notes: "Tab plate under each pair of bolt heads, the tabs turned up against the flats (Fig 8.1 item 29)."
+    specs:
+      thickness: { mm: 0.9, source: { label: D, method: "Tab washer" } }
+
+  - id: axle.carrier.cage
+    name: Differential cage
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 20 }] }
+    quantity: 1
+    material: Cast iron
+    finish: cast_iron
+    notes: "One-piece cage with two windows for the gears, the pinion shaft bosses, the crown wheel flange and spigot, and two hubs for the bearings (Fig 8.1 item 20)."
+    specs:
+      bearing_seat: { mm: 38.1, source: { label: D, method: "Differential bearing bore (CHM163 assumed 1.5 x 3.15 x 0.83 in)" }, display_only: true }
+
+  - id: axle.carrier.pinion-shaft
+    name: Differential pinion shaft
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 25 }] }
+    quantity: 1
+    part_numbers:
+      - { number: 1G7444, by: "MGOC Spares (differential gear pin shaft, banjo)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      length: { mm: 104.0, source: { label: D, method: "Across the cage's bosses, 5/8 in diameter" } }
+
+  - id: axle.carrier.pinion-peg
+    name: Pinion peg
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 26 }] }
+    quantity: 1
+    notes: "Locates the pinion shaft in the cage."
+    specs:
+      length: { mm: 18.0, source: { label: D, method: "Through the shaft into the boss" } }
+
+  - id: axle.carrier.side-gear
+    name: Differential wheel (side gear)
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 21 }] }
+    quantity: 2
+    notes: "Splined for the axleshaft; straight bevel teeth (16, derived) meshing with the two pinions."
+    specs:
+      teeth: { count: 16, source: { label: D, method: "Straight bevel pair 16/10 drawn from Fig 8.1 item 21" } }
+
+  - id: axle.carrier.side-thrust-washer
+    name: Differential wheel thrust washer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 22 }] }
+    quantity: 2
+    part_numbers:
+      - { number: ATB7072, by: "MGOC Spares (differential gear thrust washer)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Flat thrust washer" } }
+
+  - id: axle.carrier.diff-pinion
+    name: Differential pinion
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 23 }] }
+    quantity: 2
+    notes: "On the pinion shaft, spherical back on its domed thrust washer (Fig 8.1 items 23-24)."
+    specs:
+      teeth: { count: 10, source: { label: D, method: "Straight bevel pair 16/10 drawn from Fig 8.1 item 23" } }
+
+  - id: axle.carrier.diff-pinion-thrust-washer
+    name: Differential pinion thrust washer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 24 }] }
+    quantity: 2
+    part_numbers:
+      - { number: 1G7445, by: "MGOC Spares (pinion gear thrust washer, banjo and tube axles)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Domed thrust washer" } }
+
+  - id: axle.carrier.diff-bearing
+    name: Differential bearing
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 18 }] }
+    quantity: 2
+    finish: bearing
+    part_numbers:
+      - { number: CHM163, by: "MGOC Spares (differential bearing, banjo); BPNW cross-references 2K8938", source: { label: S, ref: "https://bpnorthwest.com/mg/bearing-differential-carrier-mgb-banjo/" } }
+    notes: "Ball bearing as Fig 8.1 item 18 shows it; sizes derived."
+    specs:
+      outside_diameter: { mm: 80.0, source: { label: D, method: "Assumed 38.1 x 80 x 21" } }
+
+  - id: axle.carrier.packing-washer
+    name: Differential bearing packing washer
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 19 }] }
+    quantity: 2
+    notes: "Between each bearing and its saddle shoulder; selective, they set the crown wheel's backlash (factory manual H.8)."
+    specs:
+      thickness: { in: 0.006, mm: 0.1524, source: { label: D, method: "Within the 0.002-0.010 in range (H p143, Fig 8.1 item 19)" } }
+      range: { in: [0.002, 0.010], mm: [0.051, 0.254], source: { label: H, page: 143, note: "Fig 8.1 item 19: packing washer 0.002 to 0.010 in (0.051 to 0.254 mm)" }, display_only: true }

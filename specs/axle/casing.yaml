@@ -1,0 +1,85 @@
+# Rear axle case, three-quarter floating banjo axle (early 18G cars, 1962-67), and its fittings.
+# Haynes Ch 8: specifications and Sec 1-3 (printed p142), Fig 8.1 exploded view (p143); Ch 11 Fig 11.4
+# rear suspension (p207) for the spring seat and rebound strap fixings. Fig 8.1 item numbers unless stated.
+# Outside references: MGOC Spares "axle banjo type 1962-1966" (breather 21H6060, drain plug 6K499, nuts
+# and washers); mgaguru.com rear axle pages (RA-112, RA-112A, hub_06). Sizes not published are derived
+# (mgb/rear_axle_layout.py), forms from Fig 8.1 item 1.
+defaults:
+  system: axle
+  assembly: axle.casing
+  haynes: { section: 3, spec_page: 142 }
+  variant: { factory_1963: true, as_fitted: true, axle_type: three_quarter_floating, wire_wheels: true }
+  finish: paint_black
+
+parts:
+  - id: axle.casing.case
+    name: Axle case (banjo)
+    haynes: { section: 3, figures: [{ figure: "8.1", legend: 1 }] }
+    quantity: 1
+    material: Pressed and welded steel, forged ends
+    notes: >
+      Banjo case of two pressings welded on the horizontal centre line (the seam bead, drawn as the serrated
+      line in Fig 8.1), a ring round the front opening with the ten gear carrier studs, the necks and tubes,
+      forged ends welded in: brake backplate flange (four lobes), the hub oil seal track (1 15/16 in, the
+      seal's bore), the 40 mm hub bearing journal and the bearing nut thread - left-hand on the left, right-hand
+      on the right (mgaguru.com hub_06; BritishCarForum) - with a keyway for the locking washer's tab. Spring
+      seats welded under the tubes (the locating plate, pad, spring and damper bracket go under them, Ch 11
+      Fig 11.4); a bracket under each tube with the rebound strap spindle (Fig 8.1 item 5 is its nut; Ch 8 Sec 3
+      para 4 'check straps ... on the anchor pins'); bosses for the breather on top (Sec 2 para 3), the
+      combined filler/level plug on the rear face (Sec 2 para 1) and the drain plug; a tab for the brake pipe
+      three-way union and the pin for the handbrake balance lever (Sec 3 paras 4-5; their parts are P8).
+      Lubricant 2.25 Imp pints (p142). Positions of the seats, brackets, tab and pin are derived; the hand of
+      each thread follows the references above (see PLAN questions).
+    specs:
+      tube_diameter: { mm: 76.0, source: { label: D, method: "Fig 8.1 proportions against the 80 mm hub bearing" } }
+      width_over_backplate_faces: { mm: 1124.0, source: { label: D, method: "Drum inside the inner half of the 4 1/2J rim on the 49.25 in track (rear_axle_layout)" } }
+      thread_diameter: { in: 1.5, mm: 38.1, source: { label: D, method: "Inside the 40 mm bearing bore, 16 tpi" }, display_only: true }
+
+  - id: axle.casing.case-stud
+    name: Gear carrier stud
+    haynes: { section: 8, figures: [{ figure: "8.1", legend: 4 }] }
+    quantity: 10
+    finish: zinc_steel
+    notes: "Ten studs in the case ring for the differential carrier (Sec 8 para 3)."
+    specs:
+      length: { in: 1.375, mm: 34.925, source: { label: D, method: "Ring, gasket, carrier flange, spring washer and nut" } }
+
+  - id: axle.casing.breather
+    name: Breather assembly
+    haynes: { section: 2, figures: [{ figure: "8.1", legend: 11 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: 21H6060, by: "BMC (MGOC Spares: breather assembly, gearbox/rear axle)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "On the top of the axle casing; remove and clean in petrol from time to time - a clogged breather causes oil leaks (Sec 2 para 3)."
+    specs:
+      height: { mm: 22.6, source: { label: D, method: "Hex 14.3 mm, domed cap" }, display_only: true }
+
+  - id: axle.casing.filler-plug
+    name: Filler and level plug
+    haynes: { section: 2, figures: [{ figure: "8.1", legend: 10 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Combined filler/level plug on the rear face; top up to the level of the plug and let any excess run out before refitting (Sec 2 para 1)."
+    specs:
+      across_flats: { mm: 22.0, source: { label: D, method: "Hexagon plug" }, display_only: true }
+
+  - id: axle.casing.drain-plug
+    name: Drain plug
+    haynes: { section: 2, figures: [{ figure: "8.1", legend: 9 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: 6K499, by: "MGOC Spares (hex-key drain plug, gearbox/axle)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/axle-banjo-type-1962-1966" } }
+    notes: "Under the case; drain the oil hot after a run (Sec 2 para 2)."
+    specs:
+      head_diameter: { mm: 22.0, source: { label: D, method: "Round head, hexagon socket" }, display_only: true }
+
+  - id: axle.casing.spindle-nut
+    name: Rebound spindle nut
+    haynes: { section: 3, figures: [{ figure: "8.1", legend: 5 }, { figure: "11.4", legend: 26 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Holds the rebound (check) strap on its spindle (Ch 8 Sec 3 para 4; Ch 11 Sec 8 para 1). Drawn at its fitted position; the strap, plain and spring washers between are P9."
+    specs:
+      thread: { in: 0.375, source: { label: D, method: "3/8 in UNF spindle" }, display_only: true }
