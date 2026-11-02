@@ -16,8 +16,9 @@ central horn push with the MG badge.
 Derived (D), not published: every station below. The rack lies ahead of the crossmember on its bosses with
 the pinion on the right (RHD); the column runs back from the pinion, beside the engine, through a tube in
 the right-hand tower of the (RHD) crossmember and the toe board, to the wheel in front of the driver. The
-driver's centre line and the wheel height are set from the MGB's proportions (a low seat: the wheel centre
-about 630 mm above the road, the rim top under the scuttle), and so the column clears P4's clutch pipe.
+driver's centre line is P10's (body_layout.DRIVER_Y, under the instruments); the wheel centre is about 590 mm
+above the road (a low seat; the rim top under the instruments) so that the column passes under P8's pedal box
+and master cylinder pipe at the bulkhead.
 """
 from __future__ import annotations
 
@@ -42,10 +43,10 @@ PINION_PITCH_R = 16.0
 PINION_TEETH = 7
 
 # ---- pinion and column, one axis (Sec 20: the alignment gauges meet) -------------------------------------------
-PINION_Y = -200.0
+PINION_Y = -278.0
 PINION_MESH = (RACK_X, PINION_Y, RACK_Z + RACK_R + PINION_PITCH_R + 4.0)   # where the pinion axis passes over the rack
 from mgb import body_layout as BL  # noqa: E402  (P10: facia, instruments over the column)
-WHEEL_CENTRE = (-990.0, BL.DRIVER_Y, 60.0)                # steering wheel centre (hub face plane), RHD
+WHEEL_CENTRE = (-990.0, BL.DRIVER_Y, 10.0)                # steering wheel centre (hub face plane), RHD
 _d = [WHEEL_CENTRE[i] - PINION_MESH[i] for i in range(3)]
 _L = math.sqrt(sum(v * v for v in _d))
 COLUMN_DIR = tuple(v / _L for v in _d)               # up the column, rearward

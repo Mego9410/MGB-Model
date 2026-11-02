@@ -111,7 +111,7 @@ r = S.OUTER_TUBE_R + 0.2
 add("clamp-bolt", CF(S.UPPER_CLAMP_T) * Location((r + 16.0, -20.0, 0)) * Rot(-90, 0, 0), explode=ex(DOWN, 64, 30))
 add("clamp-washer", CF(S.UPPER_CLAMP_T) * Location((r + 16.0, 20.0, 0)) * Rot(-90, 0, 0), explode=ex(DOWN, 64, 30))
 add("clamp-nut", CF(S.UPPER_CLAMP_T) * Location((r + 16.0, 21.3, 0)) * Rot(-90, 0, 0), explode=ex(DOWN, 64, 30))
-add("draught-excluder", CF(S.TOE_BOARD_T - 41.0), groups=["column"], explode=ex([-c for c in COL], 64, 60))
+add("draught-excluder", CF(S.TOE_BOARD_T + 13.0), groups=["column"], explode=ex(COL, 64, 120))
 add("bottom-bracket", CF(S.TOE_BOARD_T), groups=["column"], explode=ex(COL, 64, 50))
 add("blanking-plate", CF(S.TOE_BOARD_T + 3.0), groups=["column"], explode=ex(COL, 64, 70))
 for y in (44.0, -44.0):

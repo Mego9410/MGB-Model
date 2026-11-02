@@ -121,7 +121,7 @@ parts:
     haynes: { section: 8, figures: [{ figure: "11.4", legend: 15 }] }
     quantity: 4
     finish: zinc_steel
-    notes: "Over the pedestal on the axle tube, either side of the spring, legs through the bracket (20). Check the nuts regularly (Sec 2 para 2). 7/16 in UNF (D); legs 34 mm either side of the spring centre to clear the axle seat's sides."
+    notes: "Over the pedestal on the axle tube, either side of the spring, legs through the bracket (20). Check the nuts regularly (Sec 2 para 2). 7/16 in UNF (D); legs 34 mm either side of the spring centre to clear the axle seat's sides. The bend is lifted 12 mm above the axle centre (D) so it clears P8's axle pipe on the rear-upper side of the tube; the legs stay where a concentric bend would put them, clear of the handbrake rods."
     specs: {}
 
   - id: chassis.rear.u-bolt-nut
@@ -143,7 +143,7 @@ parts:
     name: Bump rubber pedestal
     haynes: { section: 8, figures: [{ figure: "11.4", legend: 17 }] }
     quantity: 2
-    notes: "Pressed saddle on the tube top (P7 PEDESTAL_SEAT) clamped by the U-bolts, two arched webs up to the platform for the bump rubber."
+    notes: "Saddle on the tube top (P7 PEDESTAL_SEAT) clamped by the U-bolts, thick under their lifted crown with a channel for the axle brake pipe (D, to suit P8's pipe route), two arched webs up to the platform for the bump rubber."
     specs: {}
 
   - id: chassis.rear.bump-rubber

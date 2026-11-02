@@ -25,7 +25,9 @@ inboard of the spring and ahead of the axle tube.
 """
 from __future__ import annotations
 
-from mgb import car_layout as CL, rear_axle_layout as A
+import math
+
+from mgb import brake_layout as BK, car_layout as CL, rear_axle_layout as A
 
 IN = 25.4
 AX, AZ = A.AX, A.AZ
@@ -79,6 +81,14 @@ PEDESTAL_T = 3.0
 UBOLT_ROD_R = 7.0 / 16.0 * IN / 2
 UBOLT_R = A.TUBE_R + PEDESTAL_T + UBOLT_ROD_R  # bend centre line radius over the pedestal
 UBOLT_X = UBOLT_R                              # legs fore and aft of the tube
+# P8's axle pipe runs along the rear-upper side of the tube (r 45 at 45 deg); the U-bolt's bend is lifted
+# so its inside clears the pipe, and the pedestal's saddle is thick enough under the crown to carry it,
+# with a channel for the pipe. A bend concentric with the tube at a larger radius would put the aft legs'
+# nuts on P8's handbrake rod, so the legs stay at UBOLT_X.
+PIPE_R = 3.0 / 16.0 * IN / 2
+_pa = math.radians(BK.AXLE_PIPE_ANGLE)
+AXLE_PIPE_XZ = (BK.AXLE_PIPE_R * math.sin(_pa), BK.AXLE_PIPE_R * math.cos(_pa))   # relative to the axle centre
+UBOLT_LIFT = 12.0                              # bend centre above the axle centre (D)
 LOWER_STACK_TOP = BOTTOM_Z                     # spring underside: lower pad, lower plate, bracket below it
 BRACKET_T = 3.5
 BRACKET_UNDER_Z = BOTTOM_Z - PAD19_T - PLATE18_T - BRACKET_T

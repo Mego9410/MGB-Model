@@ -47,17 +47,17 @@ add("rod", Location(), groups=["rod"])
 add("bush", Location((PX, Y, Z + 9.0 + 2.5)) * Rot(180, 0, 0), groups=["rod"])
 add("bush", Location((PX, Y, Z - 9.0 - 2.5)), groups=["rod"])
 add("pin", Location(), explode=ex(UP, 7, 60))
-for dx in (-14.0, 14.0):
-    add("pin-screw", Location((PX + dx, Y - 6.0, K.STAY_PIN_TOP_Z - 12.0)), explode=ex(DOWN, 7, 30))
+for dx in (-P.PIN_SCREW_DX, P.PIN_SCREW_DX):
+    add("pin-screw", Location((PX + dx, Y - 6.0, K.STAY_PIN_TOP_Z - 16.5)), explode=ex(DOWN, 7, 30))
 add("pin-washer", Location((PX, Y, Z - 11.5 - 1.7)), explode=ex(DOWN, 1, 30))
 add("pin-nut", Location((PX, Y, Z - 11.5 - 1.7 - 8.5)), explode=ex(DOWN, 1, 60))
 # rear end: plate, buffer | web | buffer, plate, washer, nut; the distance tube through the web
 ROT = Rot(0, 90, 0)                       # +z -> +x
-add("distance-tube", Location((WX - 14.0, Y, Z)) * ROT, explode=ex(BACK, 5, 40))
+add("distance-tube", Location((WX - 12.0, Y, Z)) * ROT, explode=ex(BACK, 5, 40))
 add("buffer", Location((WX + 3.0, Y, Z)) * ROT, explode=ex(FWD, 5, 30))
 add("buffer-plate", Location((WX + 3.0 + 12.0, Y, Z)) * ROT, explode=ex(FWD, 5, 50))
 add("buffer", Location((WX, Y, Z)) * Rot(0, -90, 0), explode=ex(BACK, 5, 30))
 add("buffer-plate", Location((WX - 12.0, Y, Z)) * Rot(0, -90, 0), explode=ex(BACK, 5, 50))
 add("rod-washer", Location((WX - 14.0, Y, Z)) * Rot(0, -90, 0), explode=ex(BACK, 5, 70))
-add("rod-nut", Location((WX - 15.3, Y, Z)) * Rot(0, -90, 0), explode=ex(BACK, 5, 90))
+add("rod-nut", Location((WX - 15.6, Y, Z)) * Rot(0, -90, 0), explode=ex(BACK, 5, 90))
 INSTANCES = I

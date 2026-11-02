@@ -56,7 +56,7 @@ CLEARANCE = LOWEST_Z - CL.GROUND_Z
 # (25) on a distance tube (26). The pin (30) hangs from a wedge flange screwed to the casing (the casing has no
 # drawn pad there: see PLAN).
 STAY_Y = 80.0                                          # rod axis, car y (left of the overdrive sump)
-STAY_Z = -372.0                                        # rod axis height
+STAY_Z = -368.0                                        # rod axis height
 STAY_PIN = (-600.0, STAY_Y, STAY_Z)                    # front eye on the pin (pin vertical)
 STAY_PIN_TOP_Z = -339.3                                # casing underside at the pin (sloping side, D)
 STAY_BRACKET_SCREWS = [(O.x_of(MOUNT_E + 12.0), s * 16.0, G.AXIS_Z + CENTRE_UP) for s in (1, -1)]   # P5b's holes

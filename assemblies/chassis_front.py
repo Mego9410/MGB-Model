@@ -121,9 +121,10 @@ for s, k in ((1, "l"), (-1, "r")):
     add("lubricator", Location(P3(s, (ex_ + 8.0, ey_, ez_ - 26.0))) * Rot(180, 0, 0), groups=g_sw)
     add("grub-screw", along_x(s, (ex_ - 14.0, ey_, ez_ + 17.0), fwd=True), groups=g_sw)
     from build123d import Vector
-    for h in (L.SWIVEL_H[1] - 14.0, L.SWIVEL_H[0] + 14.0):
-        p = L.kp(h)
-        add("lubricator", Location(P3(s, (p[0] + 30.0, p[1], p[2]))) * Rot(0, 90, 0), groups=g_sw)
+    p = L.kp(L.SWIVEL_H[1] - 14.0)
+    add("lubricator", Location(P3(s, (p[0] + 30.0, p[1], p[2]))) * Rot(0, 90, 0), groups=g_sw)
+    p = L.kp(L.SWIVEL_H[0] + 14.0)
+    add("lubricator", Location(P3(s, (p[0], p[1] - 30.0, p[2]))) * Rot(90 * s, 0, 0), groups=g_sw)
 
     # ---- outer pivot bolt (30-32), distance tube (25), thrust washers (26), seals (27), supports (28) -----------
     h_out = L.WISHBONE_OUT_X + P.ARM_T / 2

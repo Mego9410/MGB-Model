@@ -55,18 +55,22 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   backplate side because the cylinder axis sits only 10.6 mm off the raised face.
 - Body mountings for the suspension and steering (P11), all car frame, per side (P9 datums):
   - Front crossmember: two support bolts each side up through the front chassis legs
-    (`front_suspension_layout.BODY_BOLTS`, |y| 432, x FX-80 and FX+84, leg underside `BODY_FACE_Z` z -226 on the upper
+    (`front_suspension_layout.BODY_BOLTS`, |y| 432, x FX-80 and FX+88, leg underside `BODY_FACE_Z` z -226 on the upper
     rubber pads, leg top `BODY_LEG_TOP_Z` -176 where the nuts and washers sit). The damper arms sweep over the legs
-    between |y| 305 and 499 at z -110 to -173 (more on rebound): the inner wing valances need openings there. The
+    between |y| 305 and 499 at z -113 to -175 (more on rebound): the inner wing valances need openings there. The
     column runs through a tube in the RHD crossmember's right tower (`steering_layout.CROSSMEMBER_TUBE_R`).
   - Steering column top: the clamp (Fig 11.6 item 59) on a body bracket under the facia at
-    `steering_layout.COLUMN_TOP_CLAMP` (x -780, y -311, z 21) with packing washers; the bottom bracket, blanking plate
-    and draught excluder on the toe board at `COLUMN_TOE_PLATE` (x -440, y -280, z -92): the toe board needs a hole for
-    the 1 1/2 in tube there. The column passes the pedal box area beside the brake and clutch pedals (P8 to check).
+    `steering_layout.COLUMN_TOP_CLAMP` (x -780, y -338, z -42), just ahead of P10's facia (`body_layout.FACIA_X`; the
+    wheel is on `DRIVER_Y`), with packing washers; the bottom bracket, blanking plate
+    and draught excluder on the toe board at `COLUMN_TOE_PLATE` (x -440, y -319, z -127): the toe board needs a hole for
+    the 1 1/2 in tube there. The column passes under P8's pedal box and master cylinder pipe and outboard
+    of the brake pedal (the wheel centre about 590 mm above the road, on P10's `DRIVER_Y`); P4's clutch pipe and hose
+    bracket (`clutch_layout.HOSE_BRACKET`, set on a chassis leg at |y| 268) lie inboard of it, whereas the front
+    chassis legs are at |y| 432 (P9's crossmember mountings): P11 should move that bracket onto the leg.
   - Rear springs: front hanger plates either side of the eye on the eyebolt axis `rear_suspension_layout.FRONT_HANGER`
     (|y| 420, x -1589.9, z -299.3, bolt along y); the rear shackle's upper pin through a body bracket at
     `SHACKLE_BRACKET` (x -2785, z -208); dampers bolted by two bolts along y to the side member's inner face at
-    `DAMPER_MOUNT` (|y| 436); rebound strap bolts at `REBOUND_BOLT` (x -2246.4, |y| 500, z -132.8); bump rubber strike
+    `DAMPER_MOUNT` (|y| 436, x -2056 and -1902, z -210); rebound strap bolts at `REBOUND_BOLT` (x -2246.4, |y| 500, z -132.8); bump rubber strike
     faces at `BUMP_STRIKE` (z -122.5 at the axle line, |y| 420).
   - Spare wire wheel and tyre in the boot (P11): the same parts as `wheels.road-wheels` (wheel, tyre, valve) without a
     spinner, on its clamp.
@@ -79,7 +83,9 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   rack bush and pinion bearing nut are not drawn); the inner tube is not drawn (only its valve); the rear spring's centre
   bolt locknut is not drawn; the gearbox stay rod lies to the left of the overdrive sump and its pin is screwed under
   the gearbox casing where P5a drew no pad; the front engine mounting brackets are new shapes (a pad and two tapped holes
-  were added to the block's left wall, P2).
+  were added to the block's left wall, P2); the rear U-bolts' bend is lifted 12 mm above the axle centre so it passes
+  over P8's axle pipe, which runs in a channel under the pedestal's thickened saddle (the legs keep their places, clear
+  of the handbrake rods; the damper bracket's aft edge is trimmed to clear the right-hand rod).
 - Tunnel and floor (P11) must clear the propeller shaft: from the overdrive flange (car x -1018.8, z -253.2) to
   the pinion flange (x -1807.3, z -307.9), 4.3 deg down toward the rear, 96 mm flanges, 58 mm tube; and the
   axle's movement on its springs (bump travel not yet set).
@@ -139,7 +145,9 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   (`gearbox.mounting`). The body side is P9/P11, to `mgb/chassis_layout.py`: four 3/8 in UNF screws up into
   the floor at `REAR_XMEMBER_BOLTS` (car x -772.8 and -792.8, y +/-228, faces at `BODY_FACE_Z` z -381.2,
   202 mm above the road, derived), so the floor beside the tunnel needs captive nuts or tapped plates
-  there. The stay rod went in with P9 (`gearbox.stay-rod`).
+  there. The stay rod went in with P9 (`gearbox.stay-rod`). Its bracket uses P5b's two tapped holes in the
+  crossmember's bead (`chassis_layout.STAY_BRACKET_SCREWS`); the left-hand screw's head and washer overlap the
+  overdrive's drain plug (P5a, car x -783, y 24) by a few millimetres. One of the two has to move (P5 follow-up).
 - Tunnel (P11) must also clear the overdrive: casings 188-191 mm across, up to 96 mm above the axis
   under the remote housing; the solenoid and lever chamber cover on the right out to 141 mm right of the
   axis; the filter cover on the left at 65 mm; the sump plugs to 128 mm below the axis; the remote

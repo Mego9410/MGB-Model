@@ -156,7 +156,7 @@ def ubolt(spec) -> Part:
     inboard U-bolt in the car frame relative to the axle centre line (y 0 local)."""
     r = R.UBOLT_ROD_R
     Rb = R.UBOLT_R
-    z0 = R.AZ
+    z0 = R.AZ + R.UBOLT_LIFT                                                   # bend lifted over P8's axle pipe
     bend = (Location((R.AX, 0, z0)) * Rot(90, 0, 0) * Torus(Rb, r)) & box(R.AX - Rb - 20, R.AX + Rb + 20, -20, 20, z0, z0 + Rb + 20)
     u = bend
     for sx in (-1, 1):
@@ -182,19 +182,24 @@ def pedestal(spec, side=1) -> Part:
     r0 = A.TUBE_R + 0.2
     t = R.PEDESTAL_T
     zt = R.PEDESTAL_TOP_Z
-    sad = ycyl(r0 + t, y - 44.0, y + 44.0, R.AX, R.AZ) - ycyl(r0, y - 45, y + 45, R.AX, R.AZ)
-    sad = sad & box(R.AX - 34.0, R.AX + 34.0, y - 45, y + 45, R.AZ + 14.0, R.AZ + r0 + t + 1)
+    # saddle: tube underneath, the U-bolts' lifted bend on top (thick under the crown), channel for the axle pipe
+    ro = R.UBOLT_R - R.UBOLT_ROD_R - 0.3
+    sad = ycyl(ro, y - 44.0, y + 44.0, R.AX, R.AZ + R.UBOLT_LIFT) - ycyl(r0, y - 45, y + 45, R.AX, R.AZ)
+    sad = sad & box(R.AX - 34.0, R.AX + 34.0, y - 45, y + 45, R.AZ + 14.0, R.AZ + R.UBOLT_LIFT + ro + 1)
     sad = sad - box(R.AX - 2.5, R.AX + 2.5, y - 46, y + 46, R.AZ + r0 - 1.0, R.AZ + r0 + 2.0)   # clears the case's seam
-    top = zcyl(30.0, zt - 4.0, zt, R.AX, y) + zcyl(27.0, zt - 0.01, zt + 3.0, R.AX, y) - zcyl(24.0, zt - 1, zt + 4, R.AX, y)
+    top = zcyl(27.5, zt - 4.0, zt, R.AX, y) + zcyl(26.8, zt - 0.01, zt + 3.0, R.AX, y) - zcyl(24.0, zt - 1, zt + 4, R.AX, y)
     p = sad + top
     for s in (1, -1):
         web = yprism([(R.AX - 30.0, R.AZ + 20.0), (R.AX + 30.0, R.AZ + 20.0), (R.AX + 22.0, zt - 3.9), (R.AX - 22.0, zt - 3.9)],
                      y + s * 22.0 - 1.5, y + s * 22.0 + 1.5)
         web = web - ycyl(r0, y - 50, y + 50, R.AX, R.AZ)
         p = p + web
-    p = p + xprism([(y - 22.0, R.AZ + 30.0), (y + 22.0, R.AZ + 30.0), (y + 22.0, zt - 3.9), (y - 22.0, zt - 3.9)], R.AX - 1.5, R.AX + 1.5)
-    p = p - xprism([(y - 14.0, R.AZ + 40.0), (y + 14.0, R.AZ + 40.0), (y + 10.0, zt - 12.0), (y - 10.0, zt - 12.0)], R.AX - 3, R.AX + 3)
-    p = p - zcyl(4.2, zt - 6, zt + 4, R.AX, y)
+    p = p + xprism([(y - 22.0, R.AZ + r0 + t - 0.5), (y + 22.0, R.AZ + r0 + t - 0.5), (y + 22.0, zt - 3.9), (y - 22.0, zt - 3.9)], R.AX - 1.5, R.AX + 1.5)
+    p = p - zcyl(4.4, R.AZ + r0 + 1.0, zt + 4, R.AX, y)
+    crown = R.AZ + R.UBOLT_LIFT + R.UBOLT_R - R.UBOLT_ROD_R
+    p = p - box(R.AX - 3, R.AX + 3, y - 10.0, y + 10.0, crown + 0.2, zt - 3.9)          # pocket for the bump rubber's nut
+    px, pz = R.AXLE_PIPE_XZ
+    p = p - ycyl(R.PIPE_R + 0.6, y - 50, y + 50, R.AX + px, R.AZ + pz)        # P8's axle pipe passes under the crown
     return lab(side_of(p, side), spec)
 
 
@@ -213,7 +218,7 @@ def damper_bracket(spec, side=1) -> Part:
     y = R.SPRING_Y
     z1 = R.BRACKET_UNDER_Z + R.BRACKET_T
     z0 = R.BRACKET_UNDER_Z
-    p = box(R.AX - 60.0, R.AX + 60.0, y - 46.0, y + 46.0, z0, z1)
+    p = box(R.AX - 56.5, R.AX + 60.0, y - 46.0, y + 46.0, z0, z1)           # aft edge clear of P8's handbrake rod
     for sx in (-1, 1):
         for sy in (-1, 1):
             p = p - zcyl(6.0, z0 - 1, z1 + 1, R.AX + sx * R.UBOLT_X, y + sy * R.UBOLT_DY)
@@ -224,7 +229,7 @@ def damper_bracket(spec, side=1) -> Part:
     web = web + box(R.AX - 40.0, R.LINK_X + 6.0, w0, y - 46.0 + 0.01, z0, z1)
     p = p + web
     # link stud, pointing inboard
-    st = ycyl(6.35, R.LINK_Y - 16.0, w0 + 0.01, R.LINK_X, R.LINK_LOW_Z) + ycyl(9.0, w0 - 2.0, w0 + 0.01, R.LINK_X, R.LINK_LOW_Z)
+    st = ycyl(6.35, R.LINK_Y - 16.0, w0 + 0.01, R.LINK_X, R.LINK_LOW_Z) + ycyl(9.0, w0 - 1.4, w0 + 0.01, R.LINK_X, R.LINK_LOW_Z)
     p = p + st
     return lab(side_of(p, side), spec)
 

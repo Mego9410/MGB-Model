@@ -85,7 +85,7 @@ def rack_housing(spec) -> Part:
 
 def rack(spec) -> Part:
     r = S.RACK_R
-    y0, y1 = -S.INNER_BALL_Y + 6.0, S.INNER_BALL_Y - 6.0
+    y0, y1 = -S.INNER_BALL_Y + 13.5, S.INNER_BALL_Y - 13.5
     b = ycyl(r, y0, y1, RX, RZ)
     # teeth on top under the pinion (straight-cut slots across a machined flat)
     b = b - box(RX - r - 1, RX + r + 1, S.PINION_Y - 75.0, S.PINION_Y + 75.0, RZ + r - 2.0, RZ + r + 1)

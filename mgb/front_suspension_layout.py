@@ -245,7 +245,7 @@ XM_LOW_Z = CL.GROUND_Z + 4.2 * IN                 # underside of the dip: the pu
 XM_BOTTOM_Z = WISHBONE_INNER[2] + 21.0            # beam underside at the wishbone pivots
 XM_EAR_X = 106.0                                  # body mounting ears fore and aft of FX on the shelf
 BODY_BOLT_Y = 432.0                               # crossmember to body support bolts (item 2), two each side
-BODY_BOLT_X = (FX - 80.0, FX + 88.0)
+BODY_BOLT_X = (FX - 84.0, FX + 88.0)
 BODY_FACE_Z = XM_SHELF_Z + 6.0                    # upper rubber pad (3) on the shelf: chassis leg underside (P11)
 BODY_PAD_T = 6.0                                  # upper and lower rubber pads (3, 4)
 BODY_BOLTS = {s: [(x, s * BODY_BOLT_Y, BODY_FACE_Z) for x in BODY_BOLT_X] for s in (1, -1)}
@@ -259,8 +259,8 @@ ENGINE_MOUNT_Y = 170.0                            # crossmember's engine mountin
 ENGINE_MOUNT_ANGLE = 45.0                         # pad face tilt from horizontal, facing up and inboard
 ENGINE_MOUNT_PAD = (XM_X[1] - 28.0, ENGINE_MOUNT_Y, -290.0)   # pad face centre (x, |y|, z)
 BODY_LEG_TOP_Z = BODY_FACE_Z + 50.0               # P11: top of the chassis leg where nuts 7 sit (D)
-RACK_AXIS = (XM_X[1] + 62.0, -362.0)              # (x, z) of the rack housing axis (Fig 11.6), ahead of the beam
-RACK_CLAMP_Y = 262.0                              # |y| of the two rack clamps on the crossmember bosses
+RACK_AXIS = (XM_X[1] + 62.0, -339.0)              # (x, z) of the rack housing axis (Fig 11.6), ahead of the beam
+RACK_CLAMP_Y = 225.0                              # |y| of the two rack clamps on the crossmember bosses
 RACK_SHIM_T = 0.020 * IN                          # one shim each side (H p212: shims 0.020 in)
 RACK_BOSS_TOP = RACK_AXIS[1] - 22.0 - RACK_SHIM_T - 3.0   # boss tops (rack bracket feet 3 mm thick under the housing pads)
 RACK_BOLT_DX = 30.0                               # clamp bolts fore and aft of the rack axis, vertical into the bosses
@@ -293,7 +293,7 @@ HUB_BARREL_R = 39.5                               # inside the disc's centre hol
 SPINNER_HAND = {1: "right", -1: "left"}           # as the rear (MGOC: right-hand side of the car, LH thread)
 
 # steering lever (item 62) on the swivel axle, tie-rod end ball pin (Fig 11.6 item 30)
-ARM_BALL = (FX + 130.0, 506.0, FZ - 76.0)         # ball pin centre at the lever's eye (|y|)
+ARM_BALL = (FX + 130.0, 506.0, FZ - 60.0)         # ball pin centre at the lever's eye (|y|)
 ARM_PAD_H = -38.0                                 # lever's bolting pad on the swivel axle, height on the pin
 ARM_BOLT_X = (FX + 46.0, FX + 70.0)               # two bolts 63 (D)
 

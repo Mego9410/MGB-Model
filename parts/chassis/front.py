@@ -278,17 +278,19 @@ def _swivel_axle_left():
     h0, h1 = L.SWIVEL_H
     boss = on_pin(zrev([(13.0, h0), (26.0, h0), (26.0, h1), (13.0, h1)]))
     # lubricator bosses top and bottom (Fig 11.2 items 52; Sec 15 extra nipple on the lower bush)
-    for h in (h1 - 14.0, h0 + 14.0):                                    # facing forward (Sec 15: LH lower drilling)
-        p = Vector(*L.kp(h))
-        boss = boss + Location((p.X + 24.0, p.Y, p.Z)) * Rot(0, 90, 0) * zcyl(6.0, -4.0, 6.0)
+    p = Vector(*L.kp(h1 - 14.0))                                       # upper nipple facing forward
+    boss = boss + Location((p.X + 24.0, p.Y, p.Z)) * Rot(0, 90, 0) * zcyl(6.0, -4.0, 6.0)
+    p = Vector(*L.kp(h0 + 14.0))                                       # lower (Sec 15) nipple, facing inboard here
+    boss = boss + Location((p.X, p.Y - 24.0, p.Z)) * Rot(90, 0, 0) * zcyl(6.0, -4.0, 6.0)
     # flange face plate behind the dust cover, on the stub axle root
     yf = L.SHIELD_FACE_Y
     fl = ycyl(L.SHIELD_SCREW_R + 9.0, yf - 10.0, yf - 4.0, FX, FZ)
     for a in L.SHIELD_SCREW_ANGLES:
         x, z = L.ang(L.SHIELD_SCREW_R, a)
         fl = fl + ycyl(9.0, yf - 10.0, yf, FX + x, FZ + z) - ycyl(3.2, yf - 12.0, yf + 1, FX + x, FZ + z)
+    fl = fl - box(FX - 200.0, FX - 50.0, yf - 12.0, yf + 1.0, FZ - 200.0, FZ + 200.0)   # clear of the caliper's lugs
     # web from the pin boss to the flange face
-    web = yprism(hull(circle_pts(0.0, 0.0, 40.0, 24) + [(-30.0, 60.0), (30.0, 60.0), (-30.0, -62.0), (30.0, -62.0)]), L.KP_Y0 + 6.0, yf - 9.0)
+    web = yprism(hull(circle_pts(0.0, 0.0, 34.0, 24) + [(-24.0, 60.0), (24.0, 60.0), (-24.0, -58.0), (24.0, -58.0)]), L.KP_Y0 + 6.0, yf - 9.0)
     web = web.moved(Location((FX, 0, FZ)))
     # caliper flange (P8: outboard face CALIPER_MOUNT_FACE_Y, thickness SWIVEL_CALIPER_FLANGE_T)
     cy1 = L.CALIPER_MOUNT_FACE_Y
@@ -296,7 +298,7 @@ def _swivel_axle_left():
     pts = []
     for v in (-L.LUG_V, L.LUG_V):
         x, z = L.uv(L.LUG_U[0] + 8.0, v)
-        pts += circle_pts(x, z, 15.0, 20)
+        pts += circle_pts(x, z, 11.0, 20)
     pts += [(-20.0, 45.0), (-20.0, -45.0)]
     cf = yprism(hull(pts), cy0, cy1).moved(Location((FX, 0, FZ)))
     for v in (-L.LUG_V, L.LUG_V):
@@ -324,9 +326,10 @@ def _swivel_axle_left():
     # pin bore and bush counterbores
     s = s - on_pin(zcyl(12.7 + 0.05, h0 - 1, h1 + 1))
     # lubricator drillings
-    for h in (h1 - 14.0, h0 + 14.0):
-        p = Vector(*L.kp(h))
-        s = s - Location((p.X + 24.0, p.Y, p.Z)) * Rot(0, 90, 0) * zcyl(2.6, -10.0, 8.0)
+    p = Vector(*L.kp(h1 - 14.0))
+    s = s - Location((p.X + 24.0, p.Y, p.Z)) * Rot(0, 90, 0) * zcyl(2.6, -10.0, 8.0)
+    p = Vector(*L.kp(h0 + 14.0))
+    s = s - Location((p.X, p.Y - 24.0, p.Z)) * Rot(90, 0, 0) * zcyl(2.6, -10.0, 8.0)
     return s
 
 

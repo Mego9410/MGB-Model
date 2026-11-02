@@ -64,10 +64,10 @@ def _shell():
     rc0, rc1 = W.INNER_CONE_R
     fy0, fr0 = W.INNER_FLANGE
     fy1, fr1 = W.OUTER_FLANGE
-    prof = [(36.6, y0 + 1.0), (41.0, y0 + 1.0), (41.0, fy0 - 10.0), (fr0, fy0 - 4.0), (fr0, fy0 + 4.0), (40.0, fy0 + 10.0), (35.0, fy1 - 14.0), (fr1, fy1 - 4.0),
+    prof = [(36.6, y0 + 4.5), (41.0, y0 + 4.5), (41.0, fy0 - 10.0), (fr0, fy0 - 4.0), (fr0, fy0 + 4.0), (40.0, fy0 + 10.0), (35.0, fy1 - 14.0), (fr1, fy1 - 4.0),
             (fr1, fy1 + 4.0), (31.0, fy1 + 10.0), (31.0, y1 - 3.0), (28.5, y1), (25.0, y1), (23.0, y1 - 3.0),
-            (W.SPLINE[1] / 2 + 0.25, s1 - 4.0), (W.SPLINE[1] / 2 + 0.25, s0), (rc1 + 0.3, s0 - 0.5), (rc0 + 0.3, 5.0),
-            (36.6, 5.0)]
+            (W.SPLINE[1] / 2 + 0.25, s1 - 4.0), (W.SPLINE[1] / 2 + 0.25, s0), (rc1 + 0.3, s0 - 0.5), (rc0 + 0.3, 7.5),
+            (36.6, 7.5)]
     sh = yrev(prof)
     # internal splines: teeth standing in from the bore to the hub's minor diameter
     n, dmaj, dmin = W.SPLINE

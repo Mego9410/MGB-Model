@@ -51,7 +51,7 @@ parts:
     part_numbers:
       - { number: 1G8781, by: "MGOC Spares (buffer, rubber, gearbox steady rod)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/engine/engine-gearbox-mountings" } }
     specs:
-      width: { mm: 28.0, source: { label: D, method: "Fig 1.29 proportions" } }
+      width: { mm: 22.0, source: { label: D, method: "Fig 1.29 proportions, narrow enough to clear the overdrive filter cover's screw" } }
       thickness: { mm: 12.0, source: { label: D, method: "Fig 1.29 proportions" } }
 
   - id: gearbox.stay-rod.buffer-plate
@@ -62,7 +62,7 @@ parts:
     part_numbers:
       - { number: 1G8782, by: "MGOC Spares (plate, rubber buffer, gearbox steady rod)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/engine/engine-gearbox-mountings" } }
     specs:
-      width: { mm: 30.0, source: { label: D, method: "Over the buffer" } }
+      width: { mm: 24.0, source: { label: D, method: "Over the buffer" } }
 
   - id: gearbox.stay-rod.distance-tube
     name: Distance tube for stay-rod
@@ -72,7 +72,7 @@ parts:
     part_numbers:
       - { number: 1G8775, by: "MGOC Spares (tube, distance, gearbox steady rod)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/engine/engine-gearbox-mountings" } }
     specs:
-      length: { mm: 41.0, source: { label: D, method: "Through both buffers and the bracket's upright" } }
+      length: { mm: 27.0, source: { label: D, method: "Through both buffers and the bracket's upright, the plates bearing on its ends (2 x 12 mm buffer + 3 mm upright)" } }
 
   - id: gearbox.stay-rod.rod-washer
     name: Spring washer (rod)
@@ -112,6 +112,7 @@ parts:
     haynes: { section: 6 }
     quantity: 2
     finish: zinc_steel
+    notes: "5/16 in UNF countersunk (D): hex heads under the flange would foul the rod's eye and bushes."
     specs:
       length: { in: 0.75, mm: 19.05, source: { label: D, method: "Flange and the casing's tapped hole" } }
 

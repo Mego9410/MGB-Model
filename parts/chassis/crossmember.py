@@ -89,15 +89,21 @@ def _engine_bracket(side):
     u = (math.cos(a), math.sin(a))                       # up the slope, outboard
     lo = (cy - 32 * u[0], cz - 32 * u[1])
     hi = (cy + 32 * u[0], cz + 32 * u[1])
-    ys = [hi[0] + 2.0 - k * (hi[0] + 2.0 - (lo[0] - 4.0)) / 8 for k in range(9)]
-    poly = [lo, hi] + [(y, min(top_z(y) + 1.5, hi[1] - 6.0)) for y in ys]
+    ys = [hi[0] - 6.0 - k * (hi[0] - 6.0 - (lo[0] - 4.0)) / 8 for k in range(9)]
+    poly = [lo, hi] + [(y, min(top_z(y) + 1.5, hi[1] - 10.0)) for y in ys]
     xa, xb = cx - 28.0, cx + 28.0
     br = extrude(_xface(poly, xa), xb - xa, dir=(1, 0, 0))
-    inner = offset(_xface(poly, xa + 3.0), -3.0)
-    br = br - extrude(inner, xb - xa - 6.0, dir=(1, 0, 0))
+    from mgb.poly2d import dedupe
+    poly = dedupe(poly, 0.5)
+    br = extrude(_xface(poly, xa), xb - xa, dir=(1, 0, 0))
+    try:                                                 # hollow pressing, open underneath
+        inner = offset(_xface(poly, xa + 3.0), -3.0)
+        br = br - extrude(inner, xb - xa - 6.0, dir=(1, 0, 0))
+    except Exception:
+        pass
     for dx in (-13.0, 13.0):
         p = (cx + dx, cy, cz)
-        br = br - Location(p) * Rot(math.degrees(a), 0, 0) * zcyl(4.4, -12, 4)
+        br = br - Location(p) * Rot(math.degrees(a), 0, 0) * zcyl(5.0, -12, 4)
     return br if side > 0 else br.mirror(__import__("build123d").Plane.XZ)
 
 
@@ -108,7 +114,6 @@ def _rack_boss(side):
     top = L.RACK_BOSS_TOP
     xa, xb = X1 - 0.5, L.RACK_AXIS[0] + L.RACK_BOLT_DX + 12.0
     b = box(xa, xb, y - 15.0, y + 15.0, top - 12.0, top)
-    b = b + yprism([(xa, top - 11.0), (xa, top - 44.0), (xa + 30.0, top - 11.0)], y - 4.0, y + 4.0)   # gusset
     for dx in (-L.RACK_BOLT_DX, L.RACK_BOLT_DX):
         b = b - zcyl(4.2, top - 13, top + 1, L.RACK_AXIS[0] + dx, y)
     return b

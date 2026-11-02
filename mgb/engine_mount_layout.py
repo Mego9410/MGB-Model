@@ -29,7 +29,7 @@ RUBBER_T = 30.0
 BRACKET_T = 3.5
 STACK = PACKING_T + PLATE_T + RUBBER_T + PLATE_T   # pad face to the bracket flange's underside
 STUD_DX = 13.0                                     # studs fore and aft of the centre (crossmember pad holes)
-RUBBER_W = (60.0, 46.0)                            # along x, along the slope
+RUBBER_W = (60.0, 40.0)                            # along x, along the slope
 
 
 def along(p, d, k):

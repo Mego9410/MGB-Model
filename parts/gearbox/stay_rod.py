@@ -19,26 +19,29 @@ PX = K.STAY_PIN[0]
 WX = K.STAY_WEB_X
 XM_TOP = K.STAY_BRACKET_SCREWS[0][2] + 2.6          # on the crossmember's centre bead
 ROD_D = F.THREADS["3/8"][0] * IN
+PIN_SCREW_DX = 14.0                                     # pin flange screws either side of the eye (D)
+CSK_R = 7.6                                             # 5/16 in countersunk head, 90 deg
 
 
 def bracket(spec) -> Part:
     t = 3.0
     x0, x1 = K.STAY_BRACKET_SCREWS[0][0] - 11.0, WX + t
-    base = box(x0, x1, -26.0, 74.0, XM_TOP, XM_TOP + t)
+    base = box(x0, -762.0, -26.0, 62.0, XM_TOP, XM_TOP + t) + box(-766.0, x1, 40.0, Y + 19.0, XM_TOP, XM_TOP + t)
+    base = base - zcyl(13.0, XM_TOP - 1, XM_TOP + t + 1, -783.0, 24.0)          # round the overdrive's drain plug
+    base = base - box(-767.0, -760.3, 66.0, Y + 20.0, XM_TOP - 1, XM_TOP + t + 1)  # clear of the crossmember's flange
     for x, y, z in K.STAY_BRACKET_SCREWS:
-        base = base - zcyl(4.2, z - 1, z + t + 1, x, y)
-    web = xprism([(Y - 16.0, XM_TOP + t - 0.01), (Y + 16.0, XM_TOP + t - 0.01), (Y + 16.0, Z + 16.0), (Y - 16.0, Z + 16.0)], WX, WX + t)
+        base = base - zcyl(4.4, XM_TOP - 1, XM_TOP + t + 1, x, y)
+    web = xprism([(Y - 11.5, XM_TOP + t - 0.01), (Y + 19.0, XM_TOP + t - 0.01), (Y + 19.0, Z + 16.0), (Y - 11.5, Z + 16.0)], WX, WX + t)   # inboard edge clear of the filter cover's screw
     web = web - xcyl(ROD_D / 2 + 3.5, WX - 1, WX + t + 1, Y, Z)
-    gus = yprism([(x0 + 26.0, XM_TOP + t - 0.01), (WX + 0.01, XM_TOP + t - 0.01), (WX + 0.01, Z - 8.0)], Y - 15.0, Y - 12.0)
-    gus = gus + yprism([(x0 + 26.0, XM_TOP + t - 0.01), (WX + 0.01, XM_TOP + t - 0.01), (WX + 0.01, Z - 8.0)], -16.0, -13.0)
+    gus = yprism([(-760.0, XM_TOP + t - 0.01), (WX + 0.01, XM_TOP + t - 0.01), (WX + 0.01, Z - 8.0)], Y + 15.4, Y + 18.8)   # beside the buffer, outboard (the overdrive's filter cover is inboard)
     return lab(base + web + gus, spec)
 
 
 def rod(spec) -> Part:
     """Item 23: front eye round the bushes, rod rearward through the bracket, threaded end."""
-    x_end = WX - 26.0
-    r = rod_ = xcyl(ROD_D / 2 + 1.6, x_end + 34.0, PX - 18.0, Y, Z)
-    r = r + xcyl(ROD_D / 2, x_end, x_end + 34.01, Y, Z)
+    x_end = WX - 25.6
+    r = xcyl(ROD_D / 2 + 1.6, WX + 30.0, PX - 18.0, Y, Z)
+    r = r + xcyl(ROD_D / 2, x_end, WX + 30.01, Y, Z)
     eye = zrev([(11.5, -9.0), (17.0, -9.0), (17.0, 9.0), (11.5, 9.0)]).moved(Location((PX, Y, Z)))
     r = r + eye
     for k in range(16):                                                  # thread
@@ -50,7 +53,7 @@ def rod(spec) -> Part:
 def buffer(spec) -> Part:
     """Item 24: square rubber buffer with a centre hole (drawn on +z from 0, axis along z)."""
     w, t = spec.nom("width"), spec.nom("thickness")
-    b = box(-w / 2, w / 2, -w / 2, w / 2, 0, t) - zcyl(6.6, -1, t + 1)
+    b = box(-w / 2, w / 2, -w / 2, w / 2, 0, t) - zcyl(ROD_D / 2 + 3.3, -1, t + 1)          # over the distance tube
     b = b - box(-w / 2 - 1, w / 2 + 1, -1.0, 1.0, t - 1.0, t + 1)
     return lab(b, spec)
 
@@ -76,14 +79,24 @@ def bush(spec) -> Part:
 def pin(spec) -> Part:
     """Item 30: wedge flange under the casing's sloping side, two screw holes, the pin hanging down, threaded end."""
     top = K.STAY_PIN_TOP_Z
-    top = top - 4.0                                                     # clear of the casing's sloping side
-    fl = zprism([(-20.0, -14.0), (20.0, -14.0), (12.0, 14.0), (-12.0, 14.0)], top - 8.0, top - 0.3).moved(Location((PX, Y, 0)))
+    top = top - 9.5                                                     # clear of the casing's sloping side
+    fl = zprism([(-21.0, -14.0), (21.0, -14.0), (13.0, 14.0), (-13.0, 14.0)], top - 7.0, top - 0.3).moved(Location((PX, Y, 0)))
     fl = fl & yprism([(PX - 30, top - 8.0), (PX + 30, top - 8.0), (PX + 30, top + 2.0), (PX - 30, top + 2.0)], Y - 20, Y + 20)
     fl = fl - yprism([(PX - 31, top - 0.3), (PX + 31, top - 0.3), (PX + 31, top + 6.0), (PX - 31, top + 6.0)], Y - 21, Y + 21)
-    for dx in (-14.0, 14.0):
+    for dx in (-PIN_SCREW_DX, PIN_SCREW_DX):                           # countersunk: heads flush, clear of the rod's eye
         fl = fl - zcyl(4.2, top - 10, top + 1, PX + dx, Y - 6.0)
-    p = fl + zcyl(6.4, Z - 13.0, top - 7.9, PX, Y) + zcyl(ROD_D / 2, Z - 26.0, Z - 12.99, PX, Y)
+        fl = fl - zrev([(0, -0.5), (CSK_R + 0.5, -0.5), (CSK_R, 0.0), (4.2, CSK_R - 4.2), (0, CSK_R - 4.2)]).moved(Location((PX + dx, Y - 6.0, top - 7.0)))
+    p = fl + zcyl(6.4, Z - 11.6, top - 6.9, PX, Y) + zcyl(ROD_D / 2, Z - 26.0, Z - 11.59, PX, Y)      # washer and nut clamp on the shoulder
     return lab(p, spec)
+
+
+def csk_screw(spec) -> Part:
+    """5/16 in UNF countersunk screw, head face at z 0, shank along +z."""
+    r = F.THREADS["5/16"][0] * IN / 2
+    L = spec.nom("length")
+    s = zrev([(0, 0), (CSK_R, 0), (r, CSK_R - r), (r, L), (0, L)])
+    s = s - box(-0.9, 0.9, -CSK_R - 1, CSK_R + 1, -1, 2.2)                  # screwdriver slot
+    return lab(s, spec)
 
 
 def screw516(spec):
@@ -120,7 +133,7 @@ PARTS = {
     "gearbox.stay-rod.rod-nut": {"build": nut("3/8")},
     "gearbox.stay-rod.bush": {"build": bush},
     "gearbox.stay-rod.pin": {"build": pin},
-    "gearbox.stay-rod.pin-screw": {"build": screw516},
+    "gearbox.stay-rod.pin-screw": {"build": csk_screw},
     "gearbox.stay-rod.pin-washer": {"build": sw("3/8")},
     "gearbox.stay-rod.pin-nut": {"build": nut("3/8")},
 }
