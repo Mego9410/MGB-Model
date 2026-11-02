@@ -89,8 +89,20 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   remote control housing with the selector shaft, gear lever, knob, plungers, detents, isolation
   switch, dipstick and support bracket. Tooth counts give the published ratios.
 
-Next: P5b, the Laycock type D overdrive, on the datums in `mgb/gearbox_layout.py` (overdrive face,
-studs, mainshaft tail), with the speedometer drive and the gearbox rear mounting. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+- P5b (overdrive and rear mounting) built: Laycock de Normanville type D overdrive (Haynes Ch 6, Figs
+  6.10-6.18): main casing with its sump, filter cover, plugs, operating cylinders, valve bosses and
+  lever chamber, the brake ring and the rear casing with the remote bracket bosses; the clutch bolts,
+  springs, retainer plate, thrust bearing and housing, the cone clutch, sun wheel, planet carrier with
+  three timed helical planets (0.802), the uni-directional roller clutch, the annulus and output shaft on
+  its two bearings with the speedometer worm, spacer and shim, the rear seal and the coupling flange,
+  washer, castellated nut and split pin; the pump cam, pump, non-return, relief and operating valves,
+  filter, the operating pistons and bridge pieces, solenoid, operating lever and cover; the speedometer
+  drive (pinion, housing, seal, locking screw), the angle drive and the cable end; and the gearbox rear
+  mounting (Ch 1 Fig 1.29): two rubber mountings on the overdrive and the removable crossmember. Shared
+  datums: `mgb/overdrive_layout.py` (overdrive stations, P6 flange datums), `mgb/chassis_layout.py`
+  (crossmember and its body bolts for P9/P11).
+
+Next: P6, the propeller shaft, from the overdrive flange (`overdrive_layout.FLANGE_*`) to the rear axle. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
 from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
 pump, tank and the rigid pipe from the pump to the feed union. The engine mountings (Fig 1.29) go in with the
 front crossmember, and the 18ACR alternator with the electrical system. The working standard is in

@@ -1,0 +1,320 @@
+# Laycock type D overdrive power train (1963 MGB): clutch bolts and springs, retainer plate, thrust
+# bearing and housing, cone clutch, sun wheel and steady bush, planet carrier, planets and pins,
+# locating ring, uni-directional roller clutch, annulus and output shaft with its bearings, the
+# speedometer driving gear, spacer and shim, rear oil seal and the coupling flange, washer, nut and
+# split pin. Haynes Ch 6: specifications printed p111; Sec 11 (p126), Sec 12 (p126, p129-130),
+# Sec 15 (p130-131); Fig 6.10 and 6.11 power train (p127), Fig 6.12 sectional view (p127), Fig 6.13
+# exploded view (p128), Fig 6.16 (p129); photo 15.1 (p130). Fig 6.13 item numbers unless stated.
+# Outside references: MGOC Spares D-type list (part numbers, bearings, seal, flange bolts); Rimmer
+# Bros AAA4039 (propeller shaft flange bolt 5/16 UNF x 1 1/8). Sizes not published are derived from
+# Fig 6.12 at 4.36 px/mm (mgb/overdrive_layout.py).
+defaults:
+  system: gearbox
+  assembly: gearbox.overdrive-internals
+  haynes: { section: 12, spec_page: 111 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true }
+  finish: machined_steel
+
+parts:
+  - id: gearbox.overdrive-internals.clutch-bolt
+    name: Clutch bolt
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 55 }] }
+    quantity: 4
+    notes: >
+      Four bolts screwed into the bearing housing with their threaded ends forward (Sec 12 para 18);
+      they pass through the main casing beside the operating cylinders and carry the bridge pieces
+      in front, so the pistons pull the cone clutch forward onto the brake ring (Fig 6.12 inset).
+    specs:
+      length: { in: 3.5, mm: 88.9, source: { label: D, method: "Bearing housing lug to the bridge piece nut (overdrive_layout stations)" } }
+
+  - id: gearbox.overdrive-internals.clutch-spring
+    name: Clutch spring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 56 }, { figure: "6.12", legend: 6 }] }
+    quantity: 4
+    finish: spring_steel
+    notes: "On the guide bolts between the main casing and the retainer plate; they hold the cone clutch on the annulus for direct drive (Fig 6.10 item 1). Released as the rear casing nuts are undone (Sec 12 para 4). Drawn at the fitted length."
+    specs:
+      free_length: { in: 1.51, mm: 38.354, source: { label: H, page: 111, note: "Overdrive spring free lengths: clutch spring 1.51 in (38.4 mm)" }, display_only: true }
+      fitted_length: { mm: 32.0, source: { label: D, method: "Main casing pad to the retainer plate (overdrive_layout SPRING_E)" } }
+      outside_diameter: { mm: 15.0, source: { label: D, method: "Fig 6.12 item 6 scaled" } }
+      wire: { mm: 2.4, source: { label: D, method: "Fig 6.12 item 6 scaled" } }
+
+  - id: gearbox.overdrive-internals.retainer-plate
+    name: Spring retainer plate
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 54 }] }
+    quantity: 1
+    notes: "Plate over the bolts the clutch springs bear on (Sec 12 para 18)."
+    specs:
+      thickness: { mm: 2.0, source: { label: D, method: "Pressed steel plate" } }
+
+  - id: gearbox.overdrive-internals.bearing-housing
+    name: Thrust bearing housing
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 52 }] }
+    quantity: 1
+    notes: "Holds the thrust bearing on the cone clutch hub; the four bolts screw into its lugs. Pull it off with the bearing after removing circlip 58 (Sec 12 para 6)."
+    specs:
+      length: { mm: 12.0, source: { label: D, method: "Width of the thrust bearing" } }
+
+  - id: gearbox.overdrive-internals.thrust-bearing
+    name: Clutch thrust bearing
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 53 }, { figure: "6.12", legend: 7 }] }
+    quantity: 1
+    finish: bearing
+    notes: "Ball bearing pressed into the housing (Sec 12 para 18); it lets the stationary housing push the turning clutch."
+    specs:
+      outside_diameter: { mm: 68.0, source: { label: D, method: "Fig 6.12 item 7 scaled (45 x 68 x 12 assumed)" } }
+
+  - id: gearbox.overdrive-internals.housing-circlip
+    name: Thrust bearing circlip
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 58 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "Locks the bearing and housing on the clutch hub (Sec 12 paras 6, 18)."
+    specs:
+      thickness: { mm: 1.3, source: { label: D, method: "Circlip" } }
+
+  - id: gearbox.overdrive-internals.sun-circlip
+    name: Sun wheel circlip
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 59 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "Snap ring on the splined end of the sun wheel in front of the clutch hub (Sec 12 paras 5, 18)."
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Circlip" } }
+
+  - id: gearbox.overdrive-internals.clutch
+    name: Cone clutch (sliding member)
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 51 }, { figure: "6.12", legend: 9 }] }
+    quantity: 1
+    notes: >
+      Slides on the sun wheel splines. Its lined cone ring sits between the annulus cone (direct
+      drive, held there by the springs, Fig 6.10) and the brake ring cone (overdrive, pulled forward
+      by the operating pistons, Fig 6.11). Renew the linings if burnt or worn (Sec 12 para 12).
+      MGOC Spares 17H8017E (sliding member, reconditioned). Drawn in direct drive.
+    specs:
+      lining_outside_diameter: { mm: 156.8, source: { label: D, method: "Brake ring cone less running clearance (overdrive_layout)" } }
+
+  - id: gearbox.overdrive-internals.sun-wheel
+    name: Sun wheel
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 65 }, { figure: "6.12", legend: 8 }] }
+    quantity: 1
+    notes: "A sleeve on the mainshaft: splines in front for the cone clutch, the sun gear at the back meshing with the three planets. Can be withdrawn from the carrier once the planets are timed (Sec 12 para 17)."
+    specs:
+      teeth: { count: 25, source: { label: D, method: "Tooth counts for 0.802 (Haynes p111) with equal planet spacing: 101 / (101 + 25)" } }
+
+  - id: gearbox.overdrive-internals.steady-bush
+    name: Mainshaft steady bush
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 83 }, { figure: "6.15", legend: 6 }] }
+    quantity: 1
+    finish: bronze
+    notes: "Steady bush for the third motion shaft (Fig 6.13 item 83), fed from the axial mainshaft drilling (Fig 6.15 items 5, 6). Check for wear (Sec 12 para 11). Placed in the sun wheel's front bore (D)."
+    specs:
+      outside_diameter: { mm: 26.4, source: { label: D, method: "Sun wheel bore over the 7/8 in shaft" } }
+
+  - id: gearbox.overdrive-internals.planet-carrier
+    name: Planet carrier
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 66 }, { figure: "6.12", legend: 16 }, { figure: "6.16" }] }
+    quantity: 1
+    notes: "Splined to the mainshaft (Sec 11 para 4). Two plates joined by webs between the three planets, three etched lines on its periphery for timing the planets (Fig 6.16, Sec 12 para 17)."
+    specs:
+      planets: { count: 3, source: { label: H, page: 129, note: "Sec 12 para 17: three corresponding lines on the periphery of the planet carrier" } }
+
+  - id: gearbox.overdrive-internals.planet
+    name: Planet wheel
+    haynes: { section: 12, figures: [{ figure: "6.12", legend: 17 }, { figure: "6.16" }] }
+    quantity: 3
+    notes: "Part of the planet carrier assembly (66). Each has an etched line, lined up with one on the carrier before the sun wheel goes in (Fig 6.16). Helical teeth (D)."
+    specs:
+      teeth: { count: 38, source: { label: D, method: "(Za - Zs) / 2 with Za 101, Zs 25" } }
+
+  - id: gearbox.overdrive-internals.planet-pin
+    name: Planet pin
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 66 }] }
+    quantity: 3
+    notes: "Part of the planet carrier assembly."
+    specs:
+      diameter: { mm: 12.0, source: { label: D, method: "In proportion to Fig 6.12" } }
+
+  - id: gearbox.overdrive-internals.locating-ring
+    name: Locating ring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 67 }] }
+    quantity: 1
+    notes: "Locating ring for the third motion shaft (Fig 6.13 item 67), drawn between the sun wheel and the carrier; position derived."
+    specs:
+      thickness: { mm: 1.8, source: { label: D, method: "Fig 6.13 item 67" } }
+
+  - id: gearbox.overdrive-internals.ud-inner
+    name: Uni-directional clutch inner member
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 68 }, { figure: "6.12", legend: 15 }] }
+    quantity: 1
+    notes: "Splined on the mainshaft behind the carrier; twelve ramps for the rollers. As it comes out the rollers fall out (Sec 12 para 7). The outer ring is expanded into the annulus and must not be removed (para 8)."
+    specs:
+      ramps: { count: 12, source: { label: D, method: "Fig 6.13 item 69 cage windows" } }
+
+  - id: gearbox.overdrive-internals.ud-cage
+    name: Uni-directional clutch cage
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 69 }] }
+    quantity: 1
+    finish: brass
+    specs:
+      length: { mm: 13.5, source: { label: D, method: "Roller length and the front flange" } }
+
+  - id: gearbox.overdrive-internals.ud-roller
+    name: Uni-directional clutch roller
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 70 }] }
+    quantity: 12
+    notes: "Held in the cage with grease while the inner member is fitted (Sec 12 para 16)."
+    specs:
+      diameter: { mm: 7.0, source: { label: D, method: "Inner member ramps to the outer race" } }
+      length: { mm: 12.0, source: { label: D, method: "Fig 6.12 item 15" } }
+
+  - id: gearbox.overdrive-internals.ud-spring
+    name: Uni-directional clutch spring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 71 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "Fit so that it pushes the rollers up the ramps on the inner member (Sec 12 para 16)."
+    specs:
+      wire: { mm: 1.2, source: { label: D, method: "Light wire spring" } }
+
+  - id: gearbox.overdrive-internals.ud-circlip
+    name: Uni-directional clutch circlip
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 72 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "With the oil thrower, in front of the clutch (Sec 12 paras 7, 16)."
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Circlip" } }
+
+  - id: gearbox.overdrive-internals.oil-thrower
+    name: Oil thrower
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 73 }] }
+    quantity: 1
+    notes: "Dished washer in front of the uni-directional clutch, behind the circlip (Sec 12 para 16)."
+    specs:
+      outside_diameter: { mm: 63.8, source: { label: D, method: "In the annulus bore" } }
+
+  - id: gearbox.overdrive-internals.thrust-washer
+    name: Thrust washer
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 74 }] }
+    quantity: 1
+    finish: bronze
+    notes: "Legend 'thrust bearing'; refitted before the uni-directional clutch (Sec 12 para 16); check for wear (para 11). MGOC Spares 500613 thrust washer 1/8 in."
+    specs:
+      thickness: { in: 0.125, mm: 3.175, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/overdrive/overdrive-3-synchromesh-d-type", note: "500613 thrust washer 1/8 in" }, display_only: true }
+
+  - id: gearbox.overdrive-internals.annulus
+    name: Annulus and output shaft
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 75 }, { figure: "6.12", legend: 10 }] }
+    quantity: 1
+    notes: >
+      One forging: the annulus with its internal teeth, the outer cone at its front lip for the cone
+      clutch, the uni-directional clutch race in its back wall, then the output shaft with the
+      needle bearing for the mainshaft pilot in its front bore (Sec 11 para 5), the larger front
+      bearing (which comes away with the shaft, Sec 12 para 9), the speedometer drive gear and
+      spacer, the smaller rear bearing, splines for the coupling flange and the thread for the
+      castellated nut. Endfloat 0.005 to 0.010 in, set with shims (Sec 12 para 13).
+    specs:
+      teeth: { count: 101, source: { label: D, method: "Zs / (Za + Zs) gives 0.802 (Haynes p111): 101 / 126 = 0.8016" } }
+      endfloat: { in: [0.005, 0.010], mm: [0.127, 0.254], source: { label: H, page: 129, note: "Sec 12 para 13: output shaft endfloat 0.005 to 0.010 in (0.13 to 0.25 mm)" }, display_only: true }
+
+  - id: gearbox.overdrive-internals.needle-bearing
+    name: Pilot needle bearing
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 76 }, { figure: "6.12", legend: 14 }] }
+    quantity: 1
+    finish: bearing
+    notes: "In the front of the output shaft; the end of the mainshaft enters it (Sec 11 para 5). Lever it out or use an extractor (Sec 12 para 8)."
+    specs:
+      length: { mm: 30.0, source: { label: D, method: "On the mainshaft pilot (P5a MS_PILOT_D)" } }
+
+  - id: gearbox.overdrive-internals.front-bearing
+    name: Output shaft front bearing
+    haynes: { section: 15, figures: [{ figure: "6.13", legend: 77 }] }
+    quantity: 1
+    finish: bearing
+    notes: "The larger inner bearing; comes away with the output shaft (Sec 12 para 9); press off and on by the inner track (Sec 15 para 2). MGOC Spares 134465, bearing, D-type overdrive annulus, front."
+    specs:
+      outside_diameter: { mm: 72.0, source: { label: D, method: "Fig 6.12 scaled; 35 x 72 x 17 assumed" } }
+
+  - id: gearbox.overdrive-internals.speedo-drive-gear
+    name: Speedometer driving gear
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 78 }, { figure: "6.12", legend: 11 }] }
+    quantity: 1
+    notes: "Do not omit it when refitting the annulus and output shaft (Sec 12 para 13). A multi-start worm on the shaft between the bearings (D)."
+    specs:
+      outside_diameter: { mm: 39.6, source: { label: D, method: "Fig 6.12 item 11 scaled" } }
+
+  - id: gearbox.overdrive-internals.spacer
+    name: Spacer (bush)
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 79 }, { figure: "6.12", legend: 12 }] }
+    quantity: 1
+    specs:
+      length: { mm: 24.0, source: { label: D, method: "Speedometer gear to the shim (Fig 6.12)" } }
+
+  - id: gearbox.overdrive-internals.shim
+    name: Output shaft shim (thrust washer)
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 80 }, { figure: "6.12", legend: 13 }] }
+    quantity: 1
+    notes: "Selects the output shaft endfloat; four thicknesses 0.090, 0.095, 0.100, 0.105 in (Sec 12 para 13). Drawn at 0.095 in."
+    specs:
+      thickness: { in: 0.095, mm: 2.413, source: { label: H, page: 129, note: "Sec 12 para 13: shims 0.090 in (2.28 mm), 0.095 in (2.41 mm), 0.100 in (2.54 mm), 0.105 in (2.67 mm)" } }
+
+  - id: gearbox.overdrive-internals.rear-bearing
+    name: Output shaft rear bearing
+    haynes: { section: 15, figures: [{ figure: "6.13", legend: 81 }] }
+    quantity: 1
+    finish: bearing
+    notes: "The smaller outer bearing; stays in the casing and is extracted from the rear (Sec 12 para 9); pressed in by the outer track (Sec 15 para 3). MGOC Spares 533360A."
+    specs:
+      outside_diameter: { mm: 62.0, source: { label: D, method: "Fig 6.12 scaled; 30 x 62 x 16 assumed" } }
+
+  - id: gearbox.overdrive-internals.rear-seal
+    name: Rear oil seal
+    haynes: { section: 15, figures: [{ figure: "6.13", legend: 82 }] }
+    quantity: 1
+    finish: rubber
+    notes: "Renewable with the unit in the car: propeller shaft and flange off, prise or extract the seal, tap a new one in squarely (Sec 15 para 1, photo 15.1). MGOC Spares 7H8325."
+    specs:
+      outside_diameter: { mm: 63.5, source: { label: D, method: "Rear casing bore" } }
+      inside_diameter: { mm: 44.0, source: { label: D, method: "On the flange hub" } }
+      width: { mm: 10.0, source: { label: D, method: "Photo 15.1" } }
+
+  - id: gearbox.overdrive-internals.flange
+    name: Coupling flange
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 101 }] }
+    quantity: 1
+    notes: >
+      Splined on the output shaft, its hub running in the rear oil seal; the propeller shaft front
+      flange bolts to its rear face on four bolts and nuts (MGOC Spares lists AAA4039 bolt and BTB753
+      nut for the propeller shaft flanges; Rimmer Bros gives AAA4039 as 5/16 UNF x 1 1/8). A recess
+      in the rear face takes the washer and nut. P6 datums: overdrive_layout FLANGE_FACE_E,
+      FLANGE_PCD, FLANGE_BOLT.
+    specs:
+      diameter: { mm: 96.0, source: { label: D, method: "Fig 6.12 scaled: 420 px at 4.36 px/mm" } }
+      bolt_circle: { in: 3.125, mm: 79.375, source: { label: D, method: "Hardy Spicer flange proportion inside the 96 mm flange" } }
+      bolt_hole: { mm: 8.3, source: { label: D, method: "Clearance for 5/16 UNF (Rimmer Bros AAA4039)" } }
+
+  - id: gearbox.overdrive-internals.flange-washer
+    name: Flange washer
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 102 }] }
+    quantity: 1
+    specs:
+      outside_diameter: { mm: 36.0, source: { label: D, method: "In the flange recess" } }
+      inside_diameter: { mm: 19.4, source: { label: D, method: "3/4 in thread" } }
+      thickness: { mm: 2.5, source: { label: D, method: "Plain washer" } }
+
+  - id: gearbox.overdrive-internals.flange-nut
+    name: Flange nut (castellated)
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 103 }] }
+    quantity: 1
+    notes: "Tighten to the specified torque and lock with a split pin (Sec 12 para 14)."
+    specs:
+      torque: { lbf_ft: [100, 130], nm: [136, 176], source: { label: H, page: 112, note: "Driveflange nut, overdrive type D: 100 to 130 lbf ft (136 to 176 Nm)" } }
+      across_flats: { in: 1.125, mm: 28.575, source: { label: D, method: "3/4 in UNF castellated nut (thread size derived)" } }
+
+  - id: gearbox.overdrive-internals.split-pin
+    name: Flange nut split pin
+    haynes: { section: 12 }
+    quantity: 1
+    specs:
+      diameter: { mm: 2.4, source: { label: D, method: "3/32 in split pin" } }

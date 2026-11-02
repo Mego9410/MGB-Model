@@ -1,0 +1,417 @@
+# Laycock type D overdrive hydraulics and controls (1963 MGB): operating pistons and O-rings, bridge
+# pieces, lockwashers and nuts; the pump cam, key and circlip on the mainshaft; pump plunger, pin,
+# spring and body, grub screw; non-return valve; relief valve; operating valve; filter, sealing
+# plate and magnetic rings; solenoid, gasket, screws and nut; operating lever, Mills pins, O-ring;
+# the lever chamber cover, gasket and screws. Haynes Ch 6: specifications printed p111; Sec 2 paras
+# 5-6 (p112); Sec 11 para 5 (p126); Sec 12 paras 1-3, 10, 22-24 (p126, p129-130); Sec 13 and Sec 14
+# (p130); Figs 6.12, 6.13, 6.14, 6.15, 6.17. Fig 6.13 item numbers unless stated.
+# Outside references: MGOC Spares D-type list (part numbers; solenoid screws 10-32 UNF x 1/2 with
+# 3/16 star washers; fibre washer 506118 for the relief valve; circlip 22H228 for the pump cam;
+# Woodruff key WKN304 1/2 in). Positions in mgb/overdrive_layout.py (D).
+defaults:
+  system: gearbox
+  assembly: gearbox.overdrive-hydraulics
+  haynes: { section: 12, spec_page: 111 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true }
+  finish: machined_steel
+
+parts:
+  - id: gearbox.overdrive-hydraulics.piston
+    name: Operating piston
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 1 }, { figure: "6.14", legend: 1 }] }
+    quantity: 2
+    notes: "In the two cylinders of the main casing, spigoted ends facing the front against the bridge pieces (Sec 12 para 22). Check the bores for scores (para 10)."
+    specs:
+      diameter: { in: 0.875, mm: 22.225, source: { label: D, method: "Fits the front wall beside the cam chamber (overdrive_layout PISTON_D)" } }
+
+  - id: gearbox.overdrive-hydraulics.piston-o-ring
+    name: Operating piston O-ring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 61 }] }
+    quantity: 2
+    finish: rubber
+    notes: "Renew if worn or becoming hard (Sec 12 para 10); fit and oil generously (para 22)."
+    specs:
+      section: { mm: 2.4, source: { label: D, method: "Groove in the piston" } }
+
+  - id: gearbox.overdrive-hydraulics.bridge-piece
+    name: Bridge piece
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 62 }] }
+    quantity: 2
+    notes: "Over the ends of two clutch bolts in front of each piston (Sec 12 paras 2, 22; Fig 6.12 inset)."
+    specs:
+      thickness: { mm: 6.0, source: { label: D, method: "Fig 6.13 item 62 in proportion" } }
+
+  - id: gearbox.overdrive-hydraulics.lockwasher
+    name: Bridge piece lockwasher
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 63 }] }
+    quantity: 4
+    notes: "Tab washers: bend back the tabs, undo the nuts (Sec 12 para 2); turn them up on refitting (para 22)."
+    specs:
+      thickness: { mm: 0.9, source: { label: D, method: "Tab washer" } }
+
+  - id: gearbox.overdrive-hydraulics.bridge-nut
+    name: Bridge piece nut
+    haynes: { section: 12 }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: D, method: "5/16 in UNF on the clutch bolts" }, display_only: true }
+
+  - id: gearbox.overdrive-hydraulics.cam
+    name: Pump cam
+    haynes: { section: 11, figures: [{ figure: "6.13", legend: 93 }, { figure: "6.12", legend: 5 }] }
+    quantity: 1
+    notes: "Keyed on the mainshaft (P5a keyway at MS_CAM_D); when refitting the overdrive its lowest part must rest against the pump (Sec 11 para 5). Drawn with the low point down."
+    specs:
+      throw: { mm: 2.5, source: { label: D, method: "Eccentricity: a short pump stroke" } }
+
+  - id: gearbox.overdrive-hydraulics.key
+    name: Pump cam Woodruff key
+    haynes: { section: 11, figures: [{ figure: "6.13", legend: 92 }] }
+    quantity: 1
+    notes: "MGOC Spares WKN304 Woodruff key 1/2 in."
+    specs:
+      diameter: { in: 0.5, mm: 12.7, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/overdrive/overdrive-3-synchromesh-d-type", note: "WKN304 Woodruff key 1/2 in" }, display_only: true }
+      thickness: { in: 0.125, mm: 3.175, source: { label: D, method: "1/2 in Woodruff key, 1/8 in wide (P5a keyway)" } }
+
+  - id: gearbox.overdrive-hydraulics.cam-circlip
+    name: Pump cam circlip
+    haynes: { section: 11, figures: [{ figure: "6.13", legend: 94 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "MGOC Spares 22H228 circlip, pump drive cam retaining. In the P5a groove behind the cam."
+    specs:
+      thickness: { mm: 1.1, source: { label: D, method: "P5a groove" } }
+
+  - id: gearbox.overdrive-hydraulics.pump-plunger
+    name: Pump plunger
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 41 }, { figure: "6.12", legend: 3 }] }
+    quantity: 1
+    notes: "Forked head carrying the pin that rides the cam, stem in the pump body; check plunger and pin for wear (Sec 12 para 10)."
+    specs:
+      stem_diameter: { mm: 9.0, source: { label: D, method: "Fig 6.12 item 3 scaled" } }
+
+  - id: gearbox.overdrive-hydraulics.pump-pin
+    name: Pump plunger pin
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 42 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 6.0, source: { label: D, method: "Across the plunger fork under the cam" } }
+
+  - id: gearbox.overdrive-hydraulics.pump-spring
+    name: Pump plunger spring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 44 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "Must conform to the free length and not be distorted (Sec 12 para 10). Drawn compressed between the plunger head and the pump body."
+    specs:
+      free_length: { in: 2.0, mm: 50.8, source: { label: H, page: 111, note: "Overdrive spring free lengths: pump spring 2.00 in (50.8 mm)" }, display_only: true }
+      outside_diameter: { mm: 13.0, source: { label: D, method: "Round the plunger stem" } }
+      wire: { mm: 1.6, source: { label: D, method: "Fig 6.13 item 44" } }
+
+  - id: gearbox.overdrive-hydraulics.pump-body
+    name: Pump body
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 43 }] }
+    quantity: 1
+    notes: "Small end first into the centre hole at the bottom of the casing, oil inlet facing the rear; tap in until the groove lines up with the grub screw hole (Sec 12 para 23)."
+    specs:
+      outside_diameter: { mm: 20.3, source: { label: D, method: "Fig 6.12 scaled" } }
+
+  - id: gearbox.overdrive-hydraulics.grub-screw
+    name: Pump body grub screw
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 47 }, { figure: "6.12", legend: 2 }] }
+    quantity: 1
+    notes: "From the front face into the groove in the pump body (Fig 6.12 item 2; Sec 12 paras 3, 23)."
+    specs:
+      length: { mm: 8.0, source: { label: D, method: "Fig 6.12 item 2" } }
+
+  - id: gearbox.overdrive-hydraulics.nrv-body
+    name: Non-return valve body
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 45 }, { figure: "6.12", legend: 1 }] }
+    quantity: 1
+    notes: "Screwed into the bottom of the pump body (Sec 12 para 3, Sec 14 para 2)."
+    specs:
+      outside_diameter: { mm: 16.0, source: { label: D, method: "Fig 6.13 item 45" } }
+
+  - id: gearbox.overdrive-hydraulics.nrv-ball
+    name: Non-return valve ball
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 46 }] }
+    quantity: 1
+    notes: "Hold it to its spring with petroleum jelly when refitting; tap it into its seat with a soft drift if the seat is suspect (Sec 14 paras 3-4)."
+    specs:
+      diameter: { in: 0.25, mm: 6.35, source: { label: D, method: "Fig 6.13 item 46 in proportion" } }
+
+  - id: gearbox.overdrive-hydraulics.nrv-spring
+    name: Non-return valve spring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 48 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      outside_diameter: { mm: 6.0, source: { label: D, method: "In the plug pocket" } }
+      wire: { mm: 0.8, source: { label: D, method: "Light spring" } }
+
+  - id: gearbox.overdrive-hydraulics.nrv-plug
+    name: Non-return valve plug
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 49 }, { figure: "6.18", legend: 2 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Wired to the relief valve plug (Sec 12 paras 3, 24; Sec 14 para 2)."
+    specs:
+      across_flats: { in: 0.875, mm: 22.225, source: { label: D, method: "Fig 6.13 item 49 in proportion" } }
+
+  - id: gearbox.overdrive-hydraulics.nrv-washer
+    name: Non-return valve plug washer
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 50 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 29.0, source: { label: D, method: "Under the plug head" } }
+      inside_diameter: { mm: 25.2, source: { label: D, method: "On the plug thread" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Copper washer" } }
+
+  - id: gearbox.overdrive-hydraulics.relief-body
+    name: Relief valve body
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 99 }, { figure: "6.15", legend: 4 }] }
+    quantity: 1
+    notes: "Removed with circlip pliers (Sec 14 para 2): two holes in its lower end."
+    specs:
+      outside_diameter: { mm: 15.1, source: { label: D, method: "Fig 6.13 item 99" } }
+
+  - id: gearbox.overdrive-hydraulics.relief-o-ring
+    name: Relief valve O-ring
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 100 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      section: { mm: 2.4, source: { label: D, method: "Groove in the body" } }
+
+  - id: gearbox.overdrive-hydraulics.relief-plunger
+    name: Relief valve plunger
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 98 }] }
+    quantity: 1
+    notes: "Examine the plunger and seat (Sec 14 para 3)."
+    specs:
+      diameter: { mm: 9.0, source: { label: D, method: "Fig 6.13 item 98" } }
+
+  - id: gearbox.overdrive-hydraulics.relief-spring
+    name: Relief valve spring
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 97 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Fig 6.13 item 97" } }
+      wire: { mm: 1.4, source: { label: D, method: "Fig 6.13 item 97" } }
+
+  - id: gearbox.overdrive-hydraulics.relief-plug
+    name: Relief valve plug
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 95 }, { figure: "6.18", legend: 3 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Wired to the non-return valve plug (Sec 12 para 24)."
+    specs:
+      across_flats: { in: 0.75, mm: 19.05, source: { label: D, method: "Fig 6.13 item 95 in proportion" } }
+
+  - id: gearbox.overdrive-hydraulics.relief-washer
+    name: Relief valve washer
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 96 }] }
+    quantity: 1
+    finish: copper
+    notes: "Remember the copper washer between the cap and the main casing (Sec 14 para 4). MGOC Spares lists 506118 fibre sealing washer, oil pressure relief valve (D and LH types)."
+    specs:
+      outside_diameter: { mm: 25.0, source: { label: D, method: "Under the plug head" } }
+      inside_diameter: { mm: 22.2, source: { label: D, method: "On the plug thread" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Sealing washer" } }
+
+  - id: gearbox.overdrive-hydraulics.op-valve
+    name: Operating valve
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 25 }, { figure: "6.14", legend: 3 }] }
+    quantity: 1
+    notes: "A tube resting on the cross-shaft cam, a seat at its top for the ball, a small hole in its side to keep clean; lift it out with a piece of 1/8 in wire (Sec 14 para 6)."
+    specs:
+      length: { mm: 33.5, source: { label: D, method: "Cross-shaft to the seat" } }
+
+  - id: gearbox.overdrive-hydraulics.op-ball
+    name: Operating valve ball
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 24 }] }
+    quantity: 1
+    notes: "Lifted 1/32 in when the solenoid is actuated (Sec 14 para 5); remove with a magnet (para 6)."
+    specs:
+      diameter: { in: 0.25, mm: 6.35, source: { label: D, method: "Fig 6.13 item 24" } }
+      lift: { in: 0.03125, mm: 0.79375, source: { label: H, page: 130, note: "Sec 14 para 5: the ball is lifted 1/32 in when the solenoid is actuated" }, display_only: true }
+
+  - id: gearbox.overdrive-hydraulics.op-plunger
+    name: Operating valve plunger
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 23 }] }
+    quantity: 1
+    specs:
+      length: { mm: 9.0, source: { label: D, method: "Fig 6.13 item 23" } }
+
+  - id: gearbox.overdrive-hydraulics.op-spring
+    name: Operating valve spring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 22 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      outside_diameter: { mm: 6.0, source: { label: D, method: "On the plunger" } }
+      wire: { mm: 0.8, source: { label: D, method: "Light spring" } }
+
+  - id: gearbox.overdrive-hydraulics.op-washer
+    name: Operating valve plug washer
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 21 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 22.0, source: { label: D, method: "Under the plug head" } }
+      inside_diameter: { mm: 16.2, source: { label: D, method: "On the plug thread" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Copper washer" } }
+
+  - id: gearbox.overdrive-hydraulics.op-plug
+    name: Operating valve plug
+    haynes: { section: 14, figures: [{ figure: "6.13", legend: 20 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "On top of the casing; reached by removing the remote control assembly from inside the car (Sec 14 para 5). First thing off when dismantling (Sec 12 para 1)."
+    specs:
+      across_flats: { in: 0.75, mm: 19.05, source: { label: D, method: "Fig 6.13 item 20 in proportion" } }
+
+  - id: gearbox.overdrive-hydraulics.filter
+    name: Filter gauze
+    haynes: { section: 2, figures: [{ figure: "6.13", legend: 11 }] }
+    quantity: 1
+    notes: "Behind the cover plate on the left; pull it out and clean it in petrol (Sec 2 para 5). MGOC: D-type filters should be cleaned and reused."
+    specs:
+      diameter: { mm: 24.0, source: { label: D, method: "Fits the cover opening" } }
+
+  - id: gearbox.overdrive-hydraulics.sealing-plate
+    name: Filter sealing plate
+    haynes: { section: 2, figures: [{ figure: "6.13", legend: 12 }] }
+    quantity: 1
+    notes: "The filter seal: refit with the metal surface facing inwards (Sec 2 para 6)."
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 6.13 item 12" } }
+
+  - id: gearbox.overdrive-hydraulics.magnetic-ring
+    name: Filter magnetic ring
+    haynes: { section: 2, figures: [{ figure: "6.13", legend: 13 }] }
+    quantity: 2
+    finish: graphite
+    notes: "Clean in petrol with the filter (Sec 2 para 5)."
+    specs:
+      width: { mm: 5.0, source: { label: D, method: "Fig 6.13 item 13" } }
+
+  - id: gearbox.overdrive-hydraulics.solenoid
+    name: Overdrive solenoid
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 34 }, { figure: "6.17" }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      MGOC Spares 10002, solenoid assembly, D-type (changeable without removing the engine and
+      gearbox). Flange on the lever chamber's rear wall, plunger forward through it to the lever;
+      hold the plunger by its two flats and screw nut B in or out to adjust (Sec 13 para 4). Draws
+      2 amps when set right, about 17 if the plunger does not move far enough to switch to the
+      holding coil (para 5). The lead is cut short here; the wiring is P10.
+    specs:
+      diameter: { mm: 44.0, source: { label: D, method: "Fig 6.17 in proportion to the cover" } }
+      current: { count: 2, source: { label: H, page: 130, note: "Sec 13 para 5: about 2 amps with the operating arm correctly set" }, display_only: true }
+
+  - id: gearbox.overdrive-hydraulics.solenoid-gasket
+    name: Solenoid gasket
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 36 }] }
+    quantity: 1
+    finish: gasket
+    notes: "MGOC Spares 7H8196, gasket, solenoid to overdrive unit (A and D type)."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Paper joint" } }
+
+  - id: gearbox.overdrive-hydraulics.solenoid-nut
+    name: Solenoid plunger self-locking nut
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 35 }, { figure: "6.17", legend: "B" }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      across_flats: { in: 0.3125, mm: 7.9375, source: { label: D, method: "Small self-locking nut, Fig 6.17 B" } }
+
+  - id: gearbox.overdrive-hydraulics.solenoid-screw
+    name: Solenoid screw
+    haynes: { section: 13 }
+    quantity: 2
+    finish: zinc_steel
+    notes: "MGOC Spares 53K126 screw 10-32 UNF x 1/2 in."
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/overdrive/overdrive-3-synchromesh-d-type", note: "53K126 screw 10-32 UNF x 1/2 in" } }
+
+  - id: gearbox.overdrive-hydraulics.solenoid-washer
+    name: Solenoid screw star washer
+    haynes: { section: 13 }
+    quantity: 2
+    finish: zinc_steel
+    notes: "MGOC Spares WF702101 star washer, internal, 3/16 in."
+    specs:
+      outside_diameter: { mm: 9.5, source: { label: D, method: "3/16 in internal star washer" } }
+      inside_diameter: { mm: 5.0, source: { label: D, method: "3/16 in internal star washer" } }
+      thickness: { mm: 0.6, source: { label: D, method: "3/16 in internal star washer" } }
+
+  - id: gearbox.overdrive-hydraulics.op-lever
+    name: Operating valve lever assembly
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 26 }, { figure: "6.14", legend: 5 }, { figure: "6.17" }] }
+    quantity: 1
+    notes: >
+      The cross-shaft through the casing from the lever chamber to the operating valve, a cam under
+      the valve, and the outer arm on the solenoid plunger with hole A: with the solenoid energised a
+      3/16 in rod passes through hole A fully home into the casing when the adjustment is right
+      (Sec 13 para 3, Fig 6.17).
+    specs:
+      test_rod: { in: 0.1875, mm: 4.7625, source: { label: H, page: 130, note: "Sec 13 para 3: a 3/16 in (4.76 mm) diameter rod" }, display_only: true }
+
+  - id: gearbox.overdrive-hydraulics.mills-pin
+    name: Mills pin
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 27 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Grooved pins (items 27, 28) fixing the arm and the cam to the cross-shaft."
+    specs:
+      diameter: { mm: 3.2, source: { label: D, method: "Fig 6.13 items 27, 28" } }
+
+  - id: gearbox.overdrive-hydraulics.lever-o-ring
+    name: Cross-shaft O-ring
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 29 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      section: { mm: 2.2, source: { label: D, method: "On the shaft in its bore" } }
+
+  - id: gearbox.overdrive-hydraulics.cover
+    name: Solenoid cover
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 30 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Over the lever chamber on three bolts and washers (Sec 13 para 2). MGOC Spares 513204 is the gasket under it (side cover / name plate cover)."
+    specs:
+      thickness: { mm: 2.0, source: { label: D, method: "Pressed steel" } }
+
+  - id: gearbox.overdrive-hydraulics.cover-gasket
+    name: Solenoid cover gasket
+    haynes: { section: 13, figures: [{ figure: "6.13", legend: 31 }] }
+    quantity: 1
+    finish: gasket
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Paper joint" } }
+
+  - id: gearbox.overdrive-hydraulics.cover-screw
+    name: Solenoid cover bolt
+    haynes: { section: 13 }
+    quantity: 3
+    finish: zinc_steel
+    notes: "Three bolts and washers (Sec 13 para 2); MGOC Spares GHF117 1/4 UNF x 3/4."
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/overdrive/overdrive-3-synchromesh-d-type", note: "GHF117 hex head screw 1/4 UNF x 3/4" } }
+
+  - id: gearbox.overdrive-hydraulics.cover-washer
+    name: Solenoid cover spring washer
+    haynes: { section: 13 }
+    quantity: 3
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "1/4 in spring washer (MGOC GHF331)" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "1/4 in spring washer" } }

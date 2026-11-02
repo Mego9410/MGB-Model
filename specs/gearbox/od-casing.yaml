@@ -1,0 +1,298 @@
+# Laycock de Normanville type D overdrive (1963 MGB, three-synchro gearbox): main casing, brake
+# ring, rear casing and their fixings, the filter cover, plugs and the speedometer drive in the rear
+# casing. Haynes Ch 6: specifications printed p111; Sec 2 paras 4-6 (p112); Sec 11 (p126); Sec 12
+# (p126, p129-130); Sec 13-15 (p130-131); Fig 6.12 sectional view (p127), Fig 6.13 exploded view
+# (p128), Fig 6.17 (p130), Fig 6.18 underside (p130); photo 11.3 (p126). Fig 6.13 item numbers
+# unless stated. PDF page = printed page + 4.
+# Outside references: MGOC Spares "MGB Overdrive - 3 Synchromesh - D Type"
+# (https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/overdrive/overdrive-3-synchromesh-d-type)
+# for part numbers and fixing sizes; MGOC Spares "Overdrive - Ins and Outs" (blog 1324) for the
+# D type on the 1963-67 MGB. No outside photographs could be opened from the build machine, so the
+# forms are from the Haynes figures; datums in mgb/overdrive_layout.py (D). Casings taken as
+# aluminium alloy castings with a cast iron brake ring (Laycock practice; D, see PLAN questions).
+defaults:
+  system: gearbox
+  assembly: gearbox.overdrive-casing
+  haynes: { section: 12, spec_page: 111 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true }
+  finish: aluminium
+
+parts:
+  - id: gearbox.overdrive-casing.main-casing
+    name: Overdrive main casing
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 2 }, { figure: "6.12" }, { figure: "6.18" }] }
+    quantity: 1
+    material: Aluminium alloy
+    notes: >
+      The front casing of the unit (Fig 6.13 item 2, "main casing assembly"). Round front flange on the
+      adaptor (gasket 37H1901, P5a) with its spigot in the adaptor register and the eight 1/4 in stud
+      holes, the long stud running back in a groove (Sec 11 para 3); the two operating cylinders bored
+      in the front wall either side of the mainshaft with the four clutch bolt holes above and below
+      them (Fig 6.12 inset, Sec 12 para 22); the cam chamber behind the front wall; the pump bore at
+      the bottom centre under the cam with the grub screw from the front (Sec 12 para 23, Fig 6.12
+      items 1-3); the relief valve bore beside it; the drain plug with DRAIN cast beside it (Fig 6.18);
+      the filter behind a cover plate on the left (Sec 2 para 5); the operating valve boss on the top
+      right, its plug reached from inside the car (Sec 14 para 5); the lever chamber on the right with
+      the cross-shaft bore, test hole A and the solenoid seat on its rear wall, closed by a cover on
+      three bolts (Sec 13, Fig 6.17); the rear mounting pads low on both sides; ribs over the top; the
+      rear flange tapped for the eight casing studs. Seal the joint to the brake ring with jointing
+      compound (Sec 12 para 20). Proportions from Fig 6.12; sides from Figs 6.17 and 6.18 (solenoid on
+      the right) and Sec 2 para 5 (filter cover on the left); sizes derived (overdrive_layout).
+    specs:
+      length: { mm: 80.0, source: { label: D, method: "Fig 6.12 scaled at 4.36 px/mm: front face to the brake ring joint" } }
+      flange_diameter: { mm: 188.0, source: { label: D, method: "Fig 6.12 scaled (about 186 mm); top kept under the remote housing (P5a REMOTE_BOTTOM_UP)" } }
+      stud_thread: { in: 0.25, source: { label: H, page: 126, note: "Sec 11 para 3: eight nuts on 1/4 in (6.35 mm) studs, one stud longer" }, display_only: true }
+
+  - id: gearbox.overdrive-casing.brake-ring
+    name: Brake ring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 7 }, { figure: "6.12", legend: 18 }] }
+    quantity: 1
+    material: Cast iron
+    finish: cast_iron
+    notes: >
+      Clamped between the main casing and the rear casing by the eight casing studs; its smaller
+      diameter abuts the main casing (Sec 12 para 20), the inner cone taking the cone clutch's outer
+      lining in overdrive (Fig 6.11 item 2). Tap it with a soft hammer if it sticks (Sec 12 para 4).
+      A raised band round the outside and a slotted lug (Fig 6.13).
+    specs:
+      outside_diameter: { mm: 191.0, source: { label: D, method: "Fig 6.12 scaled: 815 px across at 4.36 px/mm (187 mm); top kept under the remote housing" } }
+      width: { mm: 16.0, source: { label: D, method: "Fig 6.12 scaled (black section, item 18)" } }
+
+  - id: gearbox.overdrive-casing.rear-casing
+    name: Rear casing
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 8 }, { figure: "6.12" }] }
+    quantity: 1
+    material: Aluminium alloy
+    notes: >
+      Haynes's legend calls it the intermediate casing; the text calls it the rear casing (Sec 12
+      paras 4, 9, 21). Front flange on the brake ring, a body stepping down to the housing for the
+      larger front output shaft bearing, a tail with the rear bearing and the oil seal (Fig 6.12);
+      a flat-topped hump over the front (Fig 6.13 item 8); the two bosses the remote control support
+      bracket screws into (P5a datums REMOTE_BRACKET_*); the speedometer drive boss on the right below
+      the output shaft with the lug for the locking screw (Sec 12 paras 9, 15; Fig 6.18 shows the
+      boss on the solenoid side). Remove nut 103 and the flange, then drift the output shaft and
+      annulus forward out of it; the smaller outer bearing stays and is extracted from the rear.
+    specs:
+      length: { mm: 170.0, source: { label: D, method: "Fig 6.12 scaled: brake ring joint to the seal housing" } }
+
+  - id: gearbox.overdrive-casing.od-nut
+    name: Overdrive to adaptor nut
+    haynes: { section: 11 }
+    quantity: 8
+    finish: zinc_steel
+    notes: "Eight nuts on the adaptor studs (Sec 11 para 3); MGOC Spares GHF200 plain nut 1/4 UNF. Undo them to separate the overdrive from the gearbox extension (photo 11.3)."
+    specs:
+      thread_diameter: { in: 0.25, source: { label: H, page: 126, note: "Sec 11 para 3" }, display_only: true }
+
+  - id: gearbox.overdrive-casing.od-washer
+    name: Overdrive to adaptor spring washer
+    haynes: { section: 11 }
+    quantity: 8
+    finish: zinc_steel
+    notes: "MGOC Spares GHF331 spring washer 1/4."
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "1/4 in spring washer" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "1/4 in spring washer" } }
+
+  - id: gearbox.overdrive-casing.case-stud
+    name: Casing stud
+    haynes: { section: 12, figures: [{ figure: "6.13" }] }
+    quantity: 8
+    finish: zinc_steel
+    notes: "Studs in the main casing's rear face through the brake ring and the rear casing flange (Sec 12 paras 4, 21: eight nuts and spring washers, undone a turn at a time against the clutch springs)."
+    specs:
+      length: { in: 1.875, mm: 47.625, source: { label: D, method: "14 mm in the main casing, 16 mm brake ring, 10 mm flange, washer and nut" } }
+
+  - id: gearbox.overdrive-casing.case-nut
+    name: Casing nut
+    haynes: { section: 12 }
+    quantity: 8
+    finish: zinc_steel
+    notes: "MGOC Spares GHF200 nut 1/4 UNF (the D-type list gives 1/4 UNF nuts and spring washers for both joints)."
+    specs:
+      thread_diameter: { in: 0.25, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/overdrive/overdrive-3-synchromesh-d-type", note: "GHF200 nut, plain, 1/4 UNF" }, display_only: true }
+
+  - id: gearbox.overdrive-casing.case-washer
+    name: Casing spring washer
+    haynes: { section: 12 }
+    quantity: 8
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "1/4 in spring washer (MGOC GHF331)" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "1/4 in spring washer" } }
+
+  - id: gearbox.overdrive-casing.filter-cover
+    name: Filter cover plate
+    haynes: { section: 2, figures: [{ figure: "6.13", legend: 14 }] }
+    quantity: 1
+    material: Pressed steel
+    finish: paint_black
+    notes: "On the left-hand side of the overdrive (Sec 2 para 5): remove the bolts and washers, the plate and gasket, and pull out the filter. Ensure it does not leak when refilled (para 6). A flat plate with a pressed dish over the filter, four screws (Fig 6.13)."
+    specs:
+      thickness: { mm: 2.0, source: { label: D, method: "Pressed steel sheet" } }
+
+  - id: gearbox.overdrive-casing.filter-cover-gasket
+    name: Filter cover gasket
+    haynes: { section: 2, figures: [{ figure: "6.13", legend: 15 }] }
+    quantity: 1
+    finish: gasket
+    notes: "MGOC Spares 506098 gasket, filter cover, D-type overdrive."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Paper joint" } }
+
+  - id: gearbox.overdrive-casing.cover-screw
+    name: Filter cover screw
+    haynes: { section: 2, figures: [{ figure: "6.13" }] }
+    quantity: 4
+    finish: zinc_steel
+    notes: "MGOC Spares GHF117 hex head screw 1/4 UNF x 3/4."
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/clutch-gearbox-axle/gearbox-overdrive/overdrive/overdrive-3-synchromesh-d-type", note: "GHF117 hex head screw 1/4 UNF x 3/4" } }
+
+  - id: gearbox.overdrive-casing.cover-washer
+    name: Filter cover spring washer
+    haynes: { section: 2 }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "1/4 in spring washer (MGOC GHF331)" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "1/4 in spring washer" } }
+
+  - id: gearbox.overdrive-casing.drain-plug
+    name: Overdrive drain plug
+    haynes: { section: 2, figures: [{ figure: "6.13", legend: 18 }, { figure: "6.18", legend: 1 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "The plug marked DRAIN must be removed as well as the gearbox plug when draining (Sec 2 para 4; Fig 6.18). Hexagon head with a flange on a sealing washer (Fig 6.13 item 18)."
+    specs:
+      thread_diameter: { mm: 17.5, source: { label: D, method: "Fig 6.13 item 18 in proportion to the 1/4 in screws" } }
+
+  - id: gearbox.overdrive-casing.drain-washer
+    name: Drain plug washer
+    haynes: { section: 2, figures: [{ figure: "6.13", legend: 19 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 25.0, source: { label: D, method: "Under the plug flange" } }
+      inside_diameter: { mm: 17.7, source: { label: D, method: "On the plug thread" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Copper sealing washer" } }
+
+  - id: gearbox.overdrive-casing.plug
+    name: Pressure take-off plug
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 39 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Plug and washer (items 39, 40) closing a drilling on the right of the sump into the pump delivery (D: position; the usual place a pressure gauge is connected on Laycock units)."
+    specs:
+      thread_diameter: { mm: 12.0, source: { label: D, method: "Fig 6.13 item 39 in proportion" } }
+
+  - id: gearbox.overdrive-casing.plug-washer
+    name: Pressure take-off plug washer
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 40 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 17.0, source: { label: D, method: "Under the plug head" } }
+      inside_diameter: { mm: 12.2, source: { label: D, method: "On the plug thread" } }
+      thickness: { mm: 1.2, source: { label: D, method: "Copper sealing washer" } }
+
+  - id: gearbox.overdrive-casing.speedo-housing
+    name: Speedometer drive bearing assembly
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 88 }] }
+    quantity: 1
+    finish: bronze
+    notes: >
+      The housing the driven gear spindle runs in (MGOC Spares 17H8012, speedometer pinion housing,
+      MGB 3-synchro), in the boss on the right of the rear casing; held by the locking screw (86) and
+      washer (87) over its flange (Sec 12 paras 9, 15). O-ring 84 on the outside, oil seal 90 in the
+      outer end, the cable (here the angle drive) on the thread.
+    specs:
+      outside_diameter: { mm: 22.0, source: { label: D, method: "Fig 6.13 item 88 in proportion to the driven gear" } }
+
+  - id: gearbox.overdrive-casing.speedo-o-ring
+    name: Speedometer housing O-ring
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 84 }] }
+    quantity: 1
+    finish: rubber
+    notes: "MGOC Spares 506115, O-ring, speedometer pinion housing, D-type."
+    specs:
+      section: { mm: 2.4, source: { label: D, method: "Groove in the housing" } }
+
+  - id: gearbox.overdrive-casing.speedo-pin
+    name: Speedometer housing pin
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 85 }] }
+    quantity: 1
+    finish: machined_steel
+    notes: "Pin across the inner end of the housing (Fig 6.13 item 85); position derived."
+    specs:
+      diameter: { mm: 3.2, source: { label: D, method: "Fig 6.13 item 85" } }
+
+  - id: gearbox.overdrive-casing.speedo-seal
+    name: Speedometer bearing oil seal
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 90 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      outside_diameter: { mm: 14.0, source: { label: D, method: "In the outer end of the housing" } }
+
+  - id: gearbox.overdrive-casing.speedo-gear
+    name: Speedometer driven gear
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 89 }] }
+    quantity: 1
+    finish: plastic_brown
+    notes: >
+      Driven by the driving gear (worm) on the output shaft (item 78). MGOC Spares 17H8021 speedometer
+      drive pinion, D-type; their speedometer article gives 21 teeth (white) for chrome bumper
+      overdrive cars and 1280 turns per mile for the overdrive speedometer. Fit after the flange,
+      then the bearing assembly (Sec 12 para 15).
+    specs:
+      teeth: { count: 21, source: { label: S, ref: "https://www.mgocspares.co.uk/blog/1411/mgb-overdrive-conversion-speedometer-considerations", note: "37H3463 chrome bumper overdrive speedo gear, 21T, white" } }
+
+  - id: gearbox.overdrive-casing.lock-screw
+    name: Speedometer housing locking screw
+    haynes: { section: 12, figures: [{ figure: "6.13", legend: 86 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Remove it to free the speedometer pinion and bush (Sec 12 para 9)."
+    specs:
+      length: { in: 0.625, mm: 15.875, source: { label: D, method: "Into the lug beside the boss" } }
+
+  - id: gearbox.overdrive-casing.lock-washer
+    name: Speedometer housing locking washer
+    haynes: { section: 12, figures: [{ figure: "6.13" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Washer (87) under the locking screw (Sec 12 para 15); its rim lies over the housing flange."
+    specs:
+      outside_diameter: { mm: 20.0, source: { label: D, method: "Reaches over the housing flange" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Plain steel washer" } }
+
+  - id: gearbox.overdrive-casing.angle-drive
+    name: Speedometer cable angle drive
+    haynes: { section: 12 }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Right-angle drive on the speedometer housing thread, turning the drive forward along the car
+      for the cable (MGOC Spares 120694, angle drive, speedometer cable, listed under the MGB
+      3-synchro external gearbox components; BritishCarForum "MGB laycock type d overdrive 3 syncro"
+      thread mentions keeping the angle drive for the speedo cable). Form derived: knurled nut, body
+      with the bevel gears, threaded output.
+    specs:
+      output_offset: { mm: 46.0, source: { label: D, method: "Boss face to the output axis" } }
+
+  - id: gearbox.overdrive-casing.cable-end
+    name: Speedometer cable end
+    haynes: { section: 12 }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Just the end of the speedometer cable: the knurled nut on the angle drive output, a stub of the
+      outer casing and the inner cable's square. The run to the speedometer is P10/P11 (Ch 1 Sec 6
+      para 30: disconnect the speedometer cable at the gearbox).
+    specs:
+      length: { mm: 70.0, source: { label: D, method: "Stub drawn to show the cable leaving forward" } }

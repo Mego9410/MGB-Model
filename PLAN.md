@@ -14,7 +14,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P3 Carburettors, fuel hoses, breather, ignition | Ch 3-4 | done |
 | P4 Clutch | Ch 5 | done |
 | P5a Gearbox (three-synchro, overdrive type), remote control | Ch 6 | done |
-| P5b Overdrive (Laycock type D), speedometer drive, rear mounting | Ch 6 | |
+| P5b Overdrive (Laycock type D), speedometer drive, rear mounting | Ch 6, Ch 1 | done |
 | P6 Propeller shaft | Ch 7 | |
 | P7 Rear axle | Ch 8 | |
 | P8 Brakes | Ch 9 | |
@@ -28,18 +28,34 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 - Fuel pump, tank and the rigid pipe to `fuel.pipes.feed-union`: with the body.
 - Engine mountings (Fig 1.29): with the front crossmember (P9).
 - 18ACR alternator and the Lucas HA12 coil: P10.
-- Overdrive (P5b) bolts to the datums in `mgb/gearbox_layout.py`: the adaptor's rear face `OD_FACE_X`
-  (gasket 37H1901 already fitted by P5a), eight 1/4 in UNF studs on `OD_STUD_R` at `OD_STUD_ANGLES`
-  (index `OD_STUD_LONG` is the long one; P5b supplies the nuts and washers), the register `OD_SPIGOT_R`,
-  the oil way `OD_OIL_PORT` at the bottom of the face. The mainshaft tail is built to `MS_CAM_D` (1/2 in
-  Woodruff keyway and circlip groove for the pump cam: cam, key and circlip are P5b), `MS_SPLINE_D` /
-  `MS_SPLINE` (clutch and planet carrier) and `MS_PILOT_D` / `MS_PILOT_R` (needle bearing in the output
-  shaft); the shaft ends at `MS_END_X`. Keep the overdrive under `REMOTE_BOTTOM_UP` below the remote
-  housing, and give it two bosses for the remote support bracket screws at `REMOTE_BRACKET_D`,
-  `REMOTE_BRACKET_UP`, `REMOTE_BRACKET_HOLES`. The speedometer drive is in the overdrive rear casing on
-  these cars (Fig 6.13 items 78, 88, 89), so it comes with P5b.
-- Gearbox rear mounting ("mounting to gearbox case 15-20 lbf ft", Ch 6 specs) and the rear crossmember:
-  with P5b and the chassis (P9).
+- Propeller shaft (P6) bolts to the overdrive coupling flange (`mgb/overdrive_layout.py`): rear face
+  `FLANGE_FACE_X` (car x -1018.8) on the axis `FLANGE_AXIS` (y 0, z -253.21, the crank axis; gearbox taken
+  as level), flange 96 mm across, four 5/16 in UNF bolts (Rimmer Bros AAA4039, 5/16 UNF x 1 1/8; MGOC nut
+  BTB753) in 8.3 mm holes on a 3.125 in (79.4 mm) pitch circle at `FLANGE_HOLE_ANGLES` (45 deg from the
+  top); the castellated nut and split pin stand `NUT_PROTRUSION` (6.2 mm) proud of the face inside a
+  20 mm radius recess, so the propeller shaft flange needs a centre clearance. Flange diameter and pitch
+  circle are derived (Fig 6.12 scale), not published.
+- Gearbox rear mounting: P5b built the two rubber mountings, the crossmember and their fixings
+  (`gearbox.mounting`). The body side is P9/P11, to `mgb/chassis_layout.py`: four 3/8 in UNF screws up into
+  the floor at `REAR_XMEMBER_BOLTS` (car x -772.8 and -792.8, y +/-228, faces at `BODY_FACE_Z` z -381.2,
+  202 mm above the road, derived), so the floor beside the tunnel needs captive nuts or tapped plates
+  there. The engine stay rod, its bracket, buffers, distance tube, bush and pin (Fig 1.29 items 20-32;
+  MGOC 1G9384 3-synchro pin) go with P9: the bracket bolts to the two holes in the crossmember's dip,
+  under the overdrive valves (Ch 6 Sec 14 para 1), the rod's front end to the gearbox.
+- Speedometer cable (P10/P11): P5b built only the end: the angle drive (MGOC 120694) on the speedometer
+  housing on the right of the overdrive rear casing, output turned forward and down at 45 deg, its
+  knurled nut and a 70 mm stub. The run to the speedometer is P10/P11 (Ch 1 Sec 6 para 30).
+- Overdrive wiring (P10): the solenoid lead leaves the back of the solenoid (right side, car x about
+  -895); the isolation switch is on the remote housing (P5a); the relay, the vacuum switch (left bulkhead,
+  MGOC) and the dash switch with the loom (Ch 6 Sec 16, Fig 6.19).
+- Tunnel (P11) must also clear the overdrive: casings 188-191 mm across, up to 96 mm above the axis
+  under the remote housing; the solenoid and lever chamber cover on the right out to 141 mm right of the
+  axis; the filter cover on the left at 65 mm; the sump plugs to 128 mm below the axis; the remote
+  support bracket on top.
+- Known P5b approximations: casing forms are from the Haynes figures only (no outside photographs could
+  be opened from the build machine); tooth counts derived for 0.802 (Zs 25, Zp 38, Za 101); the
+  speedometer worm and pinion are not phased (about 19 mm3 overlap in the interference check); thread
+  engagement of nuts on studs shows as small overlaps; the clutch is drawn in direct drive.
 - Gearbox tunnel cover with the gear lever grommet and retainer (Fig 6.3 items 161-166) and the rubber
   cover over the dipstick (Sec 2 para 1): with the body (P11). The gear lever comes up at
   `gearbox_layout.LEVER_BALL` / `KNOB`; the tunnel must clear the remote housing (top at about crank
@@ -88,4 +104,13 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 - Laygear: early three-bearing laygear with loose needle rollers assumed (18G); has yours been rebuilt
   with the later four-bearing type?
 - Overdrive isolation switch: does your car have the switch on the remote housing (Fig 6.4 item 44)?
+- Overdrive layout: the model puts the solenoid, its lever chamber and the speedometer drive on the right
+  of the overdrive and the filter cover on the left (Haynes Figs 6.17, 6.18, Sec 2). Is that how yours
+  sits, and which way does the speedometer cable leave (is there an angle drive on it)?
+- Overdrive casings: modelled as bare aluminium alloy with a cast iron brake ring. Is yours bare, or
+  painted with the gearbox?
+- Gearbox rear mounting: the model hangs the gearbox on two rubber mountings on pads low on the sides of
+  the overdrive main casing, on a crossmember bolted up to the floor about 930 mm behind the front wheel
+  centres. A photo from underneath of the crossmember, the mountings and the stay rod would fix the
+  position and shapes.
 

@@ -1,0 +1,109 @@
+# Gearbox rear mounting, early (three-synchro, 1962-67) cars with the D-type overdrive: two rubber
+# mountings on pads on the overdrive main casing and the removable rear crossmember, with their
+# fixings. Haynes Ch 1: Sec 6 paras 33-35 and photo 6.33 (printed p28), Sec 64 paras 7-11 (p51),
+# Fig 1.29 engine mountings exploded view (p52; "later designs vary"); Ch 6 specifications torque
+# table (p112). Fig 1.29 item numbers unless stated.
+# Outside references: MGOC Spares "engine gearbox mountings" (GEX7422 mount, gearbox, 3-synchro;
+# 3-synchro steady rod pin 1G9384) and the fastener list on that page (5/16 and 3/8 UNF screws,
+# nuts, spring and plain washers). The position of the crossmember in the car is derived
+# (mgb/chassis_layout.py), and the stay rod, its bracket and buffers (items 20-32) go with the
+# chassis in P9 (PLAN.md).
+defaults:
+  system: gearbox
+  assembly: gearbox.mounting
+  haynes: { section: 6, spec_page: 112 }
+  variant: { factory_1963: true, as_fitted: true, overdrive: true }
+  finish: zinc_steel
+
+parts:
+  - id: gearbox.mounting.mounting
+    name: Gearbox rear mounting
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 33 }] }
+    quantity: 2
+    finish: rubber
+    notes: >
+      Bonded rubber mounting, one each side: a steel angle on the pad low on the side of the overdrive
+      main casing (two screws, items 37-38), the rubber block, and a base plate with a stud down through
+      the crossmember ear, plain washer, spring washer and nut underneath (items 34-36). MGOC Spares
+      GEX7422 (mount, gearbox, 3-synchro). Remove the crossmember by taking out the bolts securing the
+      rear mountings (Ch 1 Sec 6 para 35). Form from Fig 1.29 item 33; sizes derived.
+    specs:
+      height: { mm: 50.5, source: { label: D, method: "Casing pad to the crossmember ear (chassis_layout PAD_UP)" } }
+
+  - id: gearbox.mounting.mounting-screw
+    name: Mounting to gearbox screw
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 37 }] }
+    quantity: 4
+    notes: "Mounting to gearbox case, 15 to 20 lbf ft (Ch 6 specs)."
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/engine/engine-gearbox-mountings", note: "GHF120 hex head screw 5/16 UNF x 3/4 listed with the mountings" } }
+      torque: { lbf_ft: [15, 20], nm: [20, 27], source: { label: H, page: 112, note: "Manual gearbox: mounting to gearbox case 15 to 20 lbf ft (20 to 27 Nm)" } }
+
+  - id: gearbox.mounting.mounting-screw-washer
+    name: Mounting screw spring washer
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 38 }] }
+    quantity: 4
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "5/16 in spring washer (MGOC GHF332)" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: gearbox.mounting.crossmember
+    name: Gearbox rear crossmember
+    haynes: { section: 6, figures: [{ figure: "1.29", legend: 17 }] }
+    quantity: 1
+    material: Pressed steel
+    finish: paint_black
+    notes: >
+      Removable crossmember under the gearbox (Ch 1 Sec 6 paras 33-35 and photo 6.33 on early cars;
+      Sec 64 para 9): a pressed channel with its ends flattened and bolted up to the floor beside the
+      tunnel, raised ears under the two mountings, a dip under the overdrive sump. The engine steady
+      rod bracket bolts to it under the overdrive valves (Ch 6 Sec 14 para 1): the two holes in the
+      dip; the rod and bracket are P9. Form from Fig 1.29 item 17; position derived
+      (chassis_layout). Body side bolt points and floor height are the P9/P11 datums.
+    specs:
+      span: { mm: 504.0, source: { label: D, method: "Floor either side of the tunnel (chassis_layout END_LEFT)" } }
+      thickness: { mm: 3.0, source: { label: D, method: "Pressed steel" } }
+
+  - id: gearbox.mounting.stud-nut
+    name: Mounting stud nut
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 36 }] }
+    quantity: 2
+    notes: "Under the crossmember; remove to take the crossmember away (Ch 1 Sec 6 para 38)."
+    specs:
+      thread_diameter: { in: 0.375, source: { label: D, method: "3/8 in UNF mounting stud (MGOC GHF202 nut 3/8 UNF listed)" }, display_only: true }
+
+  - id: gearbox.mounting.stud-washer
+    name: Mounting stud spring washer
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 35 }] }
+    quantity: 2
+    specs:
+      outside_diameter: { mm: 15.5, source: { label: D, method: "3/8 in spring washer (MGOC GHF333)" } }
+      inside_diameter: { mm: 9.8, source: { label: D, method: "3/8 in spring washer" } }
+      thickness: { mm: 2.4, source: { label: D, method: "3/8 in spring washer" } }
+
+  - id: gearbox.mounting.stud-plain-washer
+    name: Mounting stud plain washer
+    haynes: { section: 64, figures: [{ figure: "1.29", legend: 34 }] }
+    quantity: 2
+    specs:
+      outside_diameter: { mm: 20.6, source: { label: S, ref: "ANSI B18.22.1 type A narrow, 3/8 in", note: "0.812 in (MGOC GHF302)" } }
+      inside_diameter: { mm: 10.3, source: { label: D, method: "3/8 in plain washer" } }
+      thickness: { mm: 1.65, source: { label: D, method: "3/8 in plain washer" } }
+
+  - id: gearbox.mounting.crossmember-screw
+    name: Crossmember to body screw
+    haynes: { section: 6, figures: [{ figure: "1.29", legend: 18 }] }
+    quantity: 4
+    notes: "Up through the crossmember ends into the body (Ch 1 Sec 6 para 33, photo 6.33; para 37 'four bolts' on later cars). The body side nuts or tapped plates are P9/P11."
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: D, method: "Crossmember end, washer and the body's captive nut" } }
+
+  - id: gearbox.mounting.crossmember-washer
+    name: Crossmember screw spring washer
+    haynes: { section: 6, figures: [{ figure: "1.29", legend: 19 }] }
+    quantity: 4
+    specs:
+      outside_diameter: { mm: 15.5, source: { label: D, method: "3/8 in spring washer (MGOC GHF333)" } }
+      inside_diameter: { mm: 9.8, source: { label: D, method: "3/8 in spring washer" } }
+      thickness: { mm: 2.4, source: { label: D, method: "3/8 in spring washer" } }
