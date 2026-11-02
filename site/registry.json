@@ -468,7 +468,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592505
+   "bytes": 592429
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -923,7 +923,7 @@
     "clutch.hydraulics.mc-spring"
    ],
    "file": "models/clutch.hydraulics.json",
-   "bytes": 591225
+   "bytes": 591341
   },
   "clutch.pedal": {
    "id": "clutch.pedal",
@@ -1137,7 +1137,7 @@
     "electrical.coil.pinch-screw"
    ],
    "file": "models/electrical.coil.json",
-   "bytes": 95285
+   "bytes": 95217
   },
   "electrical.control": {
    "id": "electrical.control",
@@ -1216,7 +1216,7 @@
     "electrical.instruments.ignition-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 299015
+   "bytes": 298795
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1273,7 +1273,7 @@
     "electrical.loom.overdrive"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 440278
+   "bytes": 440362
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1598,7 +1598,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170552
+   "bytes": 170468
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -1771,7 +1771,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 227967
+   "bytes": 228051
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -1793,7 +1793,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139354
+   "bytes": 139370
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2379,7 +2379,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494198
+   "bytes": 494194
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -114548,7 +114548,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-02T15:16:21+00:00",
+ "built": "2026-11-02T16:07:15+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 909.9399999999996,
