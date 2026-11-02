@@ -30,6 +30,7 @@ const parts = Object.values(reg.nodes).filter(n => n.kind === 'part');
 
 for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { width: 390, height: 844 }]]) {
   const page = await browser.newPage({ viewport: vp, reducedMotion: 'reduce' });   // camera snaps instead of flying
+  page.setDefaultTimeout(120000);   // software GL: the full car keeps the main thread busy while it loads
   page.on('console', m => { if (m.type() === 'error') errors.push(`${name}: ${m.text()}`); });
   page.on('pageerror', e => errors.push(`${name}: ${e.message}`));
   await page.route('https://cdn.jsdelivr.net/npm/**', route => {
