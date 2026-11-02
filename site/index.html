@@ -579,6 +579,18 @@ let selected = null;  // part id
 // With a part selected, every other part is ghosted so the selection shows through.
 const ghostCache = {};
 function ghostMat(f){ const m = ghostCache[f] ||= cloneMat(FINISH[f] || wireColours(f) ? f : 'default', { transparent: true, opacity: 0.12, depthWrite: false }); return m; }
+// A selected wire gets a halo (its own tube pushed out along the normals, back faces only) whose width
+// follows the camera distance, so a 3 mm cable can be followed end to end even with the whole car in view.
+const haloMat = new THREE.MeshBasicMaterial({ color: 0xffb300, side: THREE.BackSide, transparent: true, opacity: 0.85, depthWrite: false });
+haloMat.userData.widen = { value: 0.002 };
+haloMat.onBeforeCompile = sh => { sh.uniforms.uWiden = haloMat.userData.widen;
+  sh.vertexShader = 'uniform float uWiden;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\ntransformed += normalize(normal) * (uWiden / length(modelMatrix[0].xyz));'); };
+const halos = [];
+function setHalos(pid){
+  for (const h of halos.splice(0)) h.parent && h.parent.remove(h);
+  if (!pid || !N[pid] || !N[pid].wire) return;
+  for (const i of instances) if (i.partId === pid) i.obj.traverse(m => { if (m.isMesh && !m.userData.halo){ const h = new THREE.Mesh(m.geometry, haloMat); h.userData.halo = true; h.renderOrder = 2; h.raycast = () => {}; m.add(h); halos.push(h); } });
+}
 function setSelected(pid){
   selected = pid;
   const focus = focusAssembly();
@@ -587,6 +599,7 @@ function setSelected(pid){
     const outside = focus && reg.instances[i.instId].assembly !== focus;
     i.obj.traverse(m => { if (m.isMesh){ m.material = pid ? (on ? selMatFor(f) : ghostMat(f)) : outside ? ghostMat(f) : finishMat(f); m.renderOrder = on ? 1 : 0; } });
   }
+  setHalos(pid);
   applyVisibility();
 }
 function frameObjs(objs){
@@ -998,6 +1011,7 @@ renderer.setAnimationLoop(() => {
     }
   }
   controls.update();
+  if (halos.length) haloMat.userData.widen.value = camera.position.distanceTo(controls.target) * 0.0042;
   renderer.clear(); renderer.render(garageScene, camera); renderer.clearDepth(); renderer.render(scene, camera);
   updateLabels(); placeMeasureTag();
 });
