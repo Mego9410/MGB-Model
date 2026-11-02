@@ -137,7 +137,7 @@ SEAL_GROOVE = (12.0, 15.6)                          # |dy| from the mouth inward
 TRANSFER = (142.5, -50.0)                           # (u, v) of the fluid transfer port across the joint
 CLIP_T = 0.8                                        # pad retaining spring clip (spec)
 PAD_TOP_U = L.PISTON_R_AT + L.PAD_H / 2 + 4.0       # top of the pads' lugs, where the clip bears
-PIN_U = PAD_TOP_U + CLIP_T + 1.6 + 0.1              # pad retaining pins just over the clip (D: Fig 9.7, Sec 10 para 2)
+PIN_U = L.PAD_PIN_U                                 # pad retaining pins just over the clip (D: Fig 9.7, Sec 10 para 2)
 
 
 def _half_left():

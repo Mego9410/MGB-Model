@@ -129,3 +129,7 @@ CALIPER_BOLTS = {s: [car(s, (uv(LUG_U[0] + 8.0, v)[0], CALIPER_MOUNT_FACE_Y, uv(
                  for s in (1, -1)}
 SHIELD_SCREWS = {s: [car(s, (ang(SHIELD_SCREW_R, a)[0], SHIELD_FACE_Y, ang(SHIELD_SCREW_R, a)[1])) for a in SHIELD_SCREW_ANGLES]
                  for s in (1, -1)}
+
+# ---- notes added at the end of P8 (the datums above are fixed for P9) ------------------------------------
+# PIN_U is not used: the pad retaining pins sit just over the pad clip at parts/brakes/front.py PIN_U (137.5 mm).
+PAD_PIN_U = PISTON_R_AT + PAD_H / 2 + 4.0 + 0.8 + 1.7    # caliper pad pins, radius from the wheel axis

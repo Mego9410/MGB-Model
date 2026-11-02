@@ -164,6 +164,10 @@ def main():
             print(f"  glb   {a.ID:<40} {sizes[a.ID] / 1024:.0f} KB")
         reg = build_registry(specs, assemblies, sizes)
         reg["built"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+        from mgb import car_layout as CL
+        # car datums the viewer stages the model on (garage floor, walls): CAD mm, engine frame
+        reg["datums"] = {"ground_z": CL.GROUND_Z, "front_x": CL.FRONT_X, "rear_x": CL.REAR_X,
+                         "width": CL.WIDTH, "front_axle_x": CL.FRONT_AXLE_X, "rear_axle_x": CL.REAR_AXLE_X}
         (OUT / "viewer" / "registry.json").write_text(json.dumps(reg, indent=1))
         shutil.copy(ROOT / "viewer" / "index.html", OUT / "viewer" / "index.html")
         write_site()
