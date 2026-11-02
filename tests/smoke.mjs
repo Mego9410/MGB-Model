@@ -46,12 +46,12 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
   for (const a of assemblies) {
     await page.evaluate(id => { location.hash = '#' + id.replaceAll('.', '--'); }, a.id);
     await page.waitForTimeout(600);
-    await page.fill('#explode', '100'); await page.dispatchEvent('#explode', 'input');
+    await page.fill('#explode', '100', { timeout: 120000 }); await page.dispatchEvent('#explode', 'input', null, { timeout: 120000 });
     await page.waitForTimeout(600);
     await page.screenshot({ path: `${shots}/${name}-${a.id}-exploded.png`, timeout: 120000 });
     const st = await page.evaluate(id => window.mgbStatus && [window.mgbStatus.matched[id], window.mgbStatus.expected[id]], a.id);
     if (!st || st[0] !== st[1] || !st[1]) errors.push(`${name}: ${a.id} matched ${st && st[0]} of ${st && st[1]} instances`);
-    await page.fill('#explode', '0'); await page.dispatchEvent('#explode', 'input');
+    await page.fill('#explode', '0', { timeout: 120000 }); await page.dispatchEvent('#explode', 'input', null, { timeout: 120000 });
   }
   // Software GL renders a laptop-sized canvas slowly, so the laptop pass samples every
   // eighth card and the phone pass every third (every instance is matched in the assembly pass above).
