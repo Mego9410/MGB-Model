@@ -11,6 +11,7 @@
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17181a; --stage:#383b40; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark } }
 :root[data-theme="dark"]{ --bg:#17181a; --stage:#383b40; --panel:#1d1f22; --edge:#33363a; --fg:#ebe8e2; --muted:#a19d95; --accent:#e0544a; --accent-ink:#17181a; --chip:#2a2d31; --sel:#ff6a5e; --src-h:#7fb4dc; --src-s:#a9bd72; --src-d:#e2a649; --src-f:#a99be6; --src-m:#6fc7b4; color-scheme:dark }
+[hidden]{display:none!important}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 var(--body);overflow:hidden}
 button{font:inherit;color:inherit}
@@ -367,7 +368,7 @@ function recolorGarage(){
   const stageCol = themeColor('--stage'), dark = stageCol.r + stageCol.g + stageCol.b < 1.2;
   for (const { mat, base } of gMats){
     const c = base.clone(); if (dark) c.multiplyScalar(0.5);
-    mat.color.copy(c.lerp(stageCol, dark ? 0.55 : 0.62));
+    mat.color.copy(c.lerp(stageCol, dark ? 0.66 : 0.62));
   }
   shadowMat.opacity = dark ? 0.55 : 0.32;
 }
