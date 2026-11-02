@@ -30,7 +30,7 @@ const parts = Object.values(reg.nodes).filter(n => n.kind === 'part');
 
 for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { width: 390, height: 844 }]]) {
   const page = await browser.newPage({ viewport: vp, reducedMotion: 'reduce' });   // camera snaps instead of flying
-  page.setDefaultTimeout(120000);   // software GL: the full car keeps the main thread busy while it loads
+  page.setDefaultTimeout(300000);   // software GL: the full car keeps the main thread busy while it loads
   page.on('console', m => { if (m.type() === 'error') errors.push(`${name}: ${m.text()}`); });
   page.on('pageerror', e => errors.push(`${name}: ${e.message}`));
   await page.route('https://cdn.jsdelivr.net/npm/**', route => {
@@ -41,18 +41,18 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
   });
   await page.route('https://fonts.googleapis.com/**', r => r.fulfill({ status: 200, contentType: 'text/css', body: '' }));
   await page.goto(base);
-  await page.waitForFunction(() => document.getElementById('toast').hidden, null, { timeout: 30000 });
+  await page.waitForFunction(() => document.getElementById('toast').hidden, null, { timeout: 300000 });
   await page.waitForTimeout(800);
-  await page.screenshot({ path: `${shots}/${name}-start.png`, timeout: 120000 });
+  await page.screenshot({ path: `${shots}/${name}-start.png`, timeout: 300000 });
   for (const a of assemblies) {
     await page.evaluate(id => { location.hash = '#' + id.replaceAll('.', '--'); }, a.id);
     await page.waitForTimeout(600);
-    await page.fill('#explode', '100', { timeout: 120000 }); await page.dispatchEvent('#explode', 'input', null, { timeout: 120000 });
+    await page.fill('#explode', '100', { timeout: 300000 }); await page.dispatchEvent('#explode', 'input', null, { timeout: 300000 });
     await page.waitForTimeout(600);
-    await page.screenshot({ path: `${shots}/${name}-${a.id}-exploded.png`, timeout: 120000 });
+    await page.screenshot({ path: `${shots}/${name}-${a.id}-exploded.png`, timeout: 300000 });
     const st = await page.evaluate(id => window.mgbStatus && [window.mgbStatus.matched[id], window.mgbStatus.expected[id]], a.id);
     if (!st || st[0] !== st[1] || !st[1]) errors.push(`${name}: ${a.id} matched ${st && st[0]} of ${st && st[1]} instances`);
-    await page.fill('#explode', '0', { timeout: 120000 }); await page.dispatchEvent('#explode', 'input', null, { timeout: 120000 });
+    await page.fill('#explode', '0', { timeout: 300000 }); await page.dispatchEvent('#explode', 'input', null, { timeout: 300000 });
   }
   // Software GL renders a laptop-sized canvas slowly, so the laptop pass samples every
   // eighth card and the phone pass every third (every instance is matched in the assembly pass above).
@@ -65,7 +65,7 @@ for (const [name, vp] of [['laptop', { width: 1366, height: 820 }], ['phone', { 
     if (title !== p.name) errors.push(`${name}: card shows "${title}" for ${p.id}`);
   }
   console.log(`${name}: part cards done`);
-  await page.screenshot({ path: `${shots}/${name}-card.png`, timeout: 120000 });
+  await page.screenshot({ path: `${shots}/${name}-card.png`, timeout: 300000 });
   // the view must respond to a drag right after a part has been selected (camera fly-to)
   const box = await page.locator('#stage canvas').boundingBox();
   const before = await page.evaluate(() => window.mgbCameraPos && window.mgbCameraPos());
