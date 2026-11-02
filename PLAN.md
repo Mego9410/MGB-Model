@@ -415,3 +415,21 @@ round them and should check them against the car:
   lamps, fog/spot lamps, radio, electric fan, electronic ignition, a battery master switch)?
 - Wiring: where are your dip switch and the horn push lead (the model has the foot switch on the toe board left of
   the clutch pedal, and the horn push lead through the column switch)?
+
+## From Oliver's photos of his car (2 Nov 2026), mechanical items left for later
+
+The photos (scratchpad refs/oliver-car, 28 images) show differences from the mechanical model. Oliver asked for the
+body only for now; these are to do later:
+- Rocker cover: polished, finned cast-alloy cover with a raised octagon emblem (photos 07, 12, 13, 28), not the
+  pressed steel cover in `engine.head`.
+- Cooling: an electric radiator fan in a plastic shroud on the radiator (photos 13, 28), not the engine-driven fan.
+- Tyres: 165/80 R14 radials (photo 03: 165/80R14 85T), not 5.60-14 crossplies.
+- Steering wheel: black rim, three spokes of three chrome wires each, octagon horn push (photos 01, 04, 17).
+- Front indicators: rectangular amber/clear units with chrome surrounds below the headlamps (photos 10, 20).
+- Engine bay: Smiths heater blower on the bulkhead, separate screen washer bottle on the left inner wing, black
+  box-type air cleaners on the carbs (photos 13, 28).
+- Earth polarity: a sticker on the front slam panel reads "...wired POSITIVE EARTH" (photo 13). The wiring model
+  assumes negative earth for the 18ACR alternator - this needs Oliver's confirmation (question below).
+
+Question for Oliver: the slam panel sticker says positive earth. Is the car still positive earth (and is it really
+an 18ACR alternator, or a dynamo?), or was the sticker left on after a negative-earth conversion?
