@@ -434,7 +434,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468658
+   "bytes": 468578
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -476,7 +476,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592537
+   "bytes": 592817
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1220,7 +1220,7 @@
     "electrical.instruments.ignition-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 305943
+   "bytes": 305931
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1873,7 +1873,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170508
+   "bytes": 170476
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2046,7 +2046,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 228051
+   "bytes": 228035
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2068,7 +2068,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139358
+   "bytes": 139258
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2123,7 +2123,7 @@
     "fuel.supply.clip-screw"
    ],
    "file": "models/fuel.supply.json",
-   "bytes": 226995
+   "bytes": 227087
   },
   "fuel.tank": {
    "id": "fuel.tank",
@@ -122401,7 +122401,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-02T19:56:57+00:00",
+ "built": "2026-11-02T20:35:44+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 909.9399999999996,
