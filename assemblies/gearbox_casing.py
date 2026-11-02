@@ -18,7 +18,7 @@ import math
 
 from build123d import Location, Rot
 
-from mgb import gearbox_layout as G
+from mgb import exhaust_layout as EX, gearbox_layout as G
 from parts.gearbox import casing as C
 
 ID = "gearbox.casing"
@@ -76,7 +76,11 @@ add("side-cover-gasket", at(0, 0, 0), groups=["side-cover"], explode=ex(LEFT, 12
 add("side-cover", at(0, SGT, 0), groups=["side-cover"])
 face = C.SIDE_FACE + SGT + SCT
 for k, (u, d) in enumerate(C.SC_BOLTS):
-    if k == C.SC_FIBRE:
+    if k in EX.SIDE_COVER_BOLTS:
+        # these two also hold the exhaust bracket (P11a, fuel.exhaust.gearbox-bracket) under their washers
+        add("side-cover-washer", at(u, face + EX.BRACKET_T, d) * Rot(-90, 0, 0), explode=ex(LEFT, 10, 50))
+        add("side-cover-bolt", at(u, face + EX.BRACKET_T + 1.6, d) * Rot(90, 0, 0), explode=ex(LEFT, 10, 80))
+    elif k == C.SC_FIBRE:
         add("fibre-washer", at(u, face, d) * Rot(-90, 0, 0), explode=ex(LEFT, 10, 50))
         add("plain-washer", at(u, face + 1.6, d) * Rot(-90, 0, 0), explode=ex(LEFT, 10, 65))
         add("side-cover-bolt", at(u, face + 3.25, d) * Rot(90, 0, 0), explode=ex(LEFT, 10, 95))

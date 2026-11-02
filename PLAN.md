@@ -20,7 +20,8 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P8 Brakes | Ch 9 | done |
 | P9 Suspension, steering, wheels and tyres; engine mountings | Ch 11 | |
 | P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | done |
-| P11 Body shell, panels, trim, fittings; exhaust; fuel tank, pump and pipe | Ch 12, Ch 3 | |
+| P11a Exhaust system; fuel tank, pump and pipes | Ch 3 | done |
+| P11b Body shell, panels, trim, fittings | Ch 12 | |
 
 ## Carried over
 
@@ -86,8 +87,43 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   for least overlap (about 22 mm3 crown wheel to pinion, 5.5 mm3 side gear to pinion in the interference
   check); fasteners show thread engagement as small overlaps with nuts (as P5).
 
-- Exhaust system (Ch 3 Sec 46, one-piece welded on early cars): with the body/floor.
-- Fuel pump, tank and the rigid pipe to `fuel.pipes.feed-union`: with the body.
+- Underbody (P11a) for P11b, `mgb/underbody_layout.py` (all D, derived from P5b/P8/P9/P10 datums): cockpit floor
+  underside `FLOOR_Z` -386 beside the tunnel; toe board from `TOE_FOOT` (x -485, z -386) up to the bulkhead at
+  `TOE_TOP` (x -400, z -215); tunnel walls |y| `TUNNEL_Y` 122; heelboard rear face `HEELBOARD_X` -1450, from the
+  floor up to the tonneau floor `TONNEAU_Z` -228; body underside over the axle `ARCH_Z` -122.5 (P9's bump strike)
+  between `ARCH_X` (x -1981 to -2311); boot floor underside `BOOT_FLOOR_Z` -172.5 over the tank; rear valance
+  `REAR_PANEL_X` / `REAR_PANEL_LOW_Z`. P11b builds the panels to these and adds what hangs on them:
+  - exhaust: the rear mounting bracket's two 1/4 UNF screws up into the boot floor (captive nuts) at x -2871 and
+    -2899, y 338 (`parts/fuel/exhaust.py` rear_bracket); the system's clearances to the floor (centre silencer
+    8 mm under `FLOOR_Z` beside the tunnel, y 132-336), to the tunnel and to the boot floor;
+  - tank: the two strap front pins and the two rear hanger clevis pins through body tabs under the boot floor
+    (`fuel_supply_layout.STRAP_PIN_FRONT`, `HANGER_PIN`, at y -232 and 78); the filler stub's hole and seal in the
+    boot floor at (x -2470, y -205); the filler cap end of the filler tube at y -470, z -40 (body filler housing:
+    see the question below);
+  - pump: the bracket's two 5/16 UNF bolts into captive nuts in the heelboard (`parts/fuel/pump.py`
+    BRACKET_BOLT_Y, BRACKET_BOLT_Z);
+  - fuel pipes: seven P-clip screws (`fuel_supply_layout.CLIPS`: three under the floor at y -370, two on the
+    bulkhead face, one under the axle arch, one under the tonneau floor), the hose union on the heelboard
+    (`MAIN_START`), and the pipe's run across the bulkhead's engine-side face at z 70 above the pedal box "by the
+    heater" (MGOC).
+- P11a changes outside its own files: the exhaust manifold (P2, `parts/engine/manifolds/manifolds.py`) now has two
+  outlets with four studs and sealing-ring counterbores for the twin downpipes; two gearbox side cover bolts
+  (`assemblies/gearbox_casing.py`, the lowest rear pair) sit 4 mm further out on the exhaust bracket.
+- Conflicts left for P10/P11b: P10's battery positive cable (wip/p10 `parts/electrical/battery.py` _cable_path)
+  leaves the right-hand battery carrier forward and down through the space where Haynes puts the fuel pump (on the
+  heelboard ahead of the right spring) and crosses the floor diagonally: the cable should leave the carrier
+  inboard of the pump or pass under it (about 5.8 cm3 of overlap with the pump's end cover). P8's rear brake pipe
+  runs under P10's right-hand battery carrier and "up the heel board" at x -1851, behind P11a's heelboard
+  (x -1450): P11b to settle the heelboard and carrier positions and reroute whichever moves.
+- Known P11a approximations: no photographs of the bare parts could be opened from the build machine; forms are
+  from Haynes Figs 3.2 and 3.9 and photos 6.14 and 46.2 with sizes derived. The early system is drawn with the two
+  supports Haynes gives (gearbox clip, rear pinch clamp mounting); Rimmer Bros' early fitting kit also lists an
+  intermediate mounting, not drawn. The manifold's two outlets are drawn one behind the other; the downpipe flanges
+  each carry two studs across the car. The tank's plan size and depths are derived for 10 gallons between the
+  right-hand spring and the rear silencer (P7's springs at |y| 420 leave little room). The pump is drawn with its
+  axis across the car, inlet to the rear, outlet up; the fuel pipe runs and clip stations are derived. Welded joints
+  (pipes into the silencer collars, the tail pipe into the rear silencer) and thread engagement show as overlaps
+  in the interference check.
 - Engine mountings (Fig 1.29): with the front crossmember (P9).
 - Propeller shaft (P6) bolts to the overdrive coupling flange (`mgb/overdrive_layout.py`): rear face
   `FLANGE_FACE_X` (car x -1018.8) on the axis `FLANGE_AXIS` (y 0, z -253.21, the crank axis; gearbox taken
@@ -176,6 +212,19 @@ round them and should check them against the car:
   three right-hand rear flange bolts go; the block keeps a wall round the recess).
 
 ## Questions for Oliver (asked at the end of the overnight run)
+
+- Exhaust: is your car still on a one-piece system (early type) or a later three or five piece system, and how
+  many hangers does it have (the model has the gearbox clip and the rear pinch clamp only, as Haynes describes)?
+  Does the tail pipe leave on the left as modelled? A photo from underneath of the downpipes and the gearbox clip
+  would fix the downpipe run and the clip's bracket (the model hangs it under two gearbox side cover bolts).
+- Exhaust manifold: the model gives it two outlets one behind the other, each with a two-stud downpipe flange
+  and a sealing ring. Are yours side by side across the car instead, and how many studs hold the downpipes?
+- Fuel tank: is it still the early strap-mounted tank with the six-screw gauge unit? Where is your filler cap on
+  the body (the model brings the filler tube's elbow out to the right, toward the right-hand rear wing)?
+- Fuel pump: is it still an SU HP (or has it been changed for an AUF or a modern pump), and is it on the heelboard
+  just ahead of the right-hand spring, behind the right-hand battery carrier? Which way do its unions point?
+- Fuel pipe: does your pipe run under the right-hand floor with the battery cable and come up into the engine bay
+  on the right, crossing the bulkhead by the heater to the carburettors (as modelled), or another way?
 
 - Brakes: is the car still on the original single-line system with the square-tank master cylinder (Lockheed
   GMC150) and the hydraulic stop lamp switch on the four-way connection, or has it been converted (dual line,

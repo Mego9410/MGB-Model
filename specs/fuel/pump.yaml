@@ -1,0 +1,150 @@
+# SU type HP electric fuel pump (early models), on the heelboard adjacent to the front of the right-hand road
+# spring. Haynes Ch 3 Secs 4-8 (printed p67-70), specifications (p66), Fig 3.2 (p68: the HP body items 61-75 and
+# the coil housing, contact breaker and end cover items 1-34 common to the HP and AUF 300). MGOC Spares "Keeping on
+# top of the MGB fuel system" part 2 (pump on the axle side of the right-hand heelboard, on a bracket with a rubber
+# block). Sizes not published are derived from Fig 3.2's proportions (mgb/fuel_supply_layout.py stations).
+defaults:
+  system: fuel
+  assembly: fuel.pump
+  haynes: { section: 5, spec_page: 66 }
+  variant: { factory_1963: true, as_fitted: true, pump: su_hp }
+  finish: aluminium
+
+parts:
+  - id: fuel.pump.body
+    name: Pump body
+    haynes: { section: 6, figures: [{ figure: "3.2", legend: 61 }] }
+    quantity: 1
+    notes: >
+      HP pump body (Fig 3.2 item 61): the pumping chamber flange, the outlet valve cage and outlet connection on
+      top, the inlet connection on the side and the filter and plug underneath (Sec 6 para 1). Minimum delivery
+      7 Imp gal per hour (specifications). Inlet faces the rear for the pipe from the tank; Sec 5 para 6: inlet and
+      outlet must be connected correctly.
+    specs:
+      flange_diameter: { mm: 84.0, source: { label: D, method: "Fig 3.2 proportion" } }
+      delivery_gal_per_hour: { count: 7, source: { label: H, page: 66, note: "Minimum delivery, early models: 7 Imp gal (31.8 litres) per hour" }, display_only: true }
+
+  - id: fuel.pump.gasket
+    name: Pump body gasket
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 74 }] }
+    quantity: 2
+    finish: gasket
+    notes: Either side of the sandwich plate (Sec 7 para 20, "with the gaskets interposed between them").
+    specs:
+      thickness: { mm: 0.5, source: { label: D, method: "Joint washer" } }
+
+  - id: fuel.pump.sandwich-plate
+    name: Sandwich plate
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 75 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 8.0, source: { label: D, method: "Fig 3.2 proportion" } }
+
+  - id: fuel.pump.coil-housing
+    name: Coil housing
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 1 }] }
+    quantity: 1
+    notes: >
+      Houses the solenoid and armature; the two cast lugs at the bottom (Sec 7 para 20) carry the pump on its
+      bracket through rubber blocks; the earth connector (item 8) on its screw on the side boss.
+    specs:
+      diameter: { mm: 72.0, source: { label: D, method: "Fig 3.2 proportion" } }
+
+  - id: fuel.pump.end-cover
+    name: End cover
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 28 }] }
+    quantity: 1
+    finish: plastic_black
+    notes: Over the contact breaker; the terminal nut, Lucar connector and insulating sleeve (items 29-32) on the end, the non-return vent valve (34) on top (Sec 8 para 6).
+    specs:
+      diameter: { mm: 66.0, source: { label: D, method: "Fig 3.2 proportion" } }
+
+  - id: fuel.pump.sealing-band
+    name: Sealing band
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 33 }] }
+    quantity: 1
+    finish: rubber
+    notes: Over the end cover joint, sealed with adhesive tape (Sec 7 para 28).
+    specs:
+      width: { mm: 10.0, source: { label: D, method: "Fig 3.2 proportion" } }
+
+  - id: fuel.pump.outlet-connection
+    name: Outlet connection
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 73 }] }
+    quantity: 1
+    finish: brass
+    specs:
+      hexagon: { in: 0.75, mm: 19.05, source: { label: D, method: "1/2 in UNF nut size hexagon" } }
+
+  - id: fuel.pump.inlet-union
+    name: Inlet connection
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 63 }] }
+    quantity: 1
+    finish: brass
+    specs:
+      hexagon: { mm: 17.5, source: { label: D, method: "7/16 in UNF nut size hexagon" } }
+
+  - id: fuel.pump.filter-plug
+    name: Filter plug
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 66 }] }
+    quantity: 1
+    finish: brass
+    notes: Taken off with the filter (item 64) for cleaning (Sec 6 para 1, Sec 8 para 1).
+    specs:
+      hexagon: { in: 0.75, mm: 19.05, source: { label: D, method: "1/2 in UNF nut size hexagon" } }
+
+  - id: fuel.pump.body-screw
+    name: Body screw
+    haynes: { section: 7, figures: [{ figure: "3.2", legend: 9 }] }
+    quantity: 6
+    finish: zinc_steel
+    notes: Six screws, fitted finger tight and then tightened in diagonal sequence (Sec 7 paras 20-21).
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Through the coil housing flange, gaskets and sandwich plate into the body" } }
+
+  - id: fuel.pump.bracket
+    name: Pump bracket
+    haynes: { section: 5 }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Comes off with the pump on its two bolts and spring washers (Sec 5 para 5). An angle on the heelboard's rear
+      face (mgb.underbody_layout HEELBOARD_X), the leg under the coil housing's lugs. Form derived.
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Pressed steel" } }
+
+  - id: fuel.pump.rubber-mounting
+    name: Pump rubber mounting
+    haynes: { section: 5 }
+    quantity: 2
+    finish: rubber
+    notes: Between each lug and the bracket (MGOC Spares, part 2). Check it has not gone hard.
+    specs:
+      thickness: { mm: 6.0, source: { label: D, method: "Rubber bobbin" } }
+
+  - id: fuel.pump.mounting-screw
+    name: Pump mounting screw
+    haynes: { section: 5 }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: D, method: "Bracket, rubber and into the lug" } }
+
+  - id: fuel.pump.bracket-bolt
+    name: Bracket bolt
+    haynes: { section: 5 }
+    quantity: 2
+    finish: zinc_steel
+    notes: Into captive nuts in the heelboard (P11b).
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: D, method: "Bracket and heelboard into a captive nut" } }
+
+  - id: fuel.pump.spring-washer
+    name: Spring washer, bracket bolt
+    haynes: { section: 5 }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.5, source: { label: D, method: "5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }

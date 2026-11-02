@@ -151,7 +151,21 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   temperature capillary; and the wiring loom as sleeved bundles with branches. Body datums for P11
   are in `mgb/body_layout.py`; engine-bay electrical datums in `mgb/electrical_layout.py`.
 
+- P11a (exhaust and fuel supply) built: the early one-piece welded exhaust (Haynes Ch 3 Sec 46, photos 6.14 and
+  46.2): twin downpipes with their flanges and sealing rings on the manifold's two outlets (the manifold now has
+  two), the Y-piece, the flattened oval centre silencer, the interpipe under the axle and the left handbrake rod,
+  the cylindrical rear silencer and the 45 degree tail pipe; the studs, washers and brass nuts; the 3-synchro
+  gearbox bracket and strap with the front support bolt; the rear pinch clamp mounting with its rubber block and
+  body bracket. The early strap-mounted 10 gallon tank (Fig 3.9): the tank with its seams, X pressing, filler stub,
+  gauge ring, outlet and drain boss; drain plug and washer; straps, packing strips, rear hangers, clevis pins,
+  washers, split pins, strap bolts, washers and nyloc nuts; filler seal, hose, clips, filler tube and lift-off cap;
+  the early gauge unit, its gasket and six screws. The SU HP pump (Fig 3.2): body, gaskets, sandwich plate, coil
+  housing with its two lugs, end cover with terminal and vent valve, sealing band, outlet and inlet connections,
+  filter plug, six body screws, on a bracket and rubber mountings on the heelboard ahead of the right spring
+  (Sec 5). The pipes: braided hoses at the tank and the pump, the tank-to-pump pipe over the axle, the main pipe
+  under the right-hand floor and up and across the bulkhead to P3's feed union, with union nuts and P-clips. Body
+  datums for P11b: `mgb/underbody_layout.py`.
+
 Next: P9 (suspension, steering, wheels, engine mountings) on `mgb/front_suspension_layout.py` and the axle datums;
-P11 the body (to `mgb/body_layout.py`). The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
-from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
-pump, tank and the rigid pipe from the pump to the feed union. The working standard is in `CLAUDE.md`.
+P11b the body shell, built round `mgb/body_layout.py`, `mgb/underbody_layout.py` and the exhaust and fuel parts that
+hang from it. The working standard is in `CLAUDE.md`.

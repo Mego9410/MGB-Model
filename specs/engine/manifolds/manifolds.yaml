@@ -13,8 +13,12 @@ parts:
     quantity: 1
     notes: >
       Cast iron. Three ports matching the head (the centre one siamesed for Nos 2 and 3),
-      branches sweeping down past the tappet covers to one outlet with a two-stud flange
-      for the down pipe (photo 61.1(a)).
+      branches sweeping down past the tappet covers to two outlets side by side under the
+      centre port: cylinders 1 and 4 join in a Y to the front outlet, the siamesed 2/3 port
+      feeds the rear one (MGOC Spares "MGB exhaust systems": twin downpipes; Haynes photo 46.2
+      shows the two downpipe flanges and their sealing rings). One flange carries both
+      outlets, each with two studs across the car and a counterbore for the sealing ring
+      (P11a: mgb/exhaust_layout.py). Photo 61.1(a) for the branches.
     specs:
       branch_bore: { mm: 32.0, source: { label: D, method: "Matches the head exhaust ports; not published" } }
       flange_thickness: { mm: 12.0, source: { label: D, method: "Not published" } }
