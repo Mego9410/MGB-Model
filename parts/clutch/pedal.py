@@ -23,7 +23,7 @@ AX, _, AZ = K.PEDAL_PAD
 T = 8.0                                   # pedal arm thickness (along Y)
 PAD_N = (-math.cos(math.radians(25)), 0.0, math.sin(math.radians(25)))   # foot plate faces back and a little up
 SPRING_PEDAL = (PX, PZ - 70.0)            # return spring hole in the arm (x, z)
-SPRING_ANCHOR = (PX - 38.0, PZ - 58.0)    # its anchor on the pedal box (D)
+SPRING_ANCHOR = (PX - 26.0, PZ - 58.0)    # its anchor tab on the pedal box (P8: parts/brakes/master.py anchor bar) (D)
 
 
 def _l(p, spec):

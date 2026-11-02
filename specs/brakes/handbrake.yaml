@@ -1,0 +1,282 @@
+# Handbrake, early layout (1963): lever, cable, compensator and rods. Haynes Ch 9 Fig 9.10 (printed p153) items
+# 1-29 and A; Sec 4 adjustment (p148: the brass adjusting nut on the lower end of the lever under the floor; 4 or 5
+# notches), Sec 16 removal (p154). PDF page = printed page + 4. MGOC Spares "MGB handbrake"
+# (https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake): early (banjo axle) cars use a flexible cable secured
+# at the rear of the differential, AHH5228 for wire-wheel cars; clevis pins 5/16 (CLZ513).
+# Positions derived (mgb/brake_layout.py HB_*, COMP_*; the fulcrum is P7's pin, rear_axle_layout.BALANCE_PIVOT).
+defaults:
+  system: brakes
+  assembly: brakes.handbrake
+  haynes: { section: 16, spec_page: 146 }
+  variant: { factory_1963: true, as_fitted: true, axle_type: three_quarter_floating, wire_wheels: true }
+  finish: zinc_steel
+
+parts:
+  - id: brakes.handbrake.handle
+    name: Handbrake lever (handle)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 2 }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Flat steel lever on the right of the tunnel, pivoted at its rear end on the spigot welded through it, cranked
+      up to the grip at the front; pulling it up swings the operating lever's lower end forward and draws the cable
+      inner. The pawl pivots on its inner face, the pawl rod's guides on its outer face. Shape from Fig 9.10;
+      length and position derived (the seats and tunnel are P11).
+    specs:
+      thickness: { mm: 6.0, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.grip
+    name: Handle grip
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 3 }] }
+    quantity: 1
+    finish: plastic_black
+    specs:
+      length: { mm: 110.0, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.pawl-rod
+    name: Pawl rod
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 4 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 3.5, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.knob
+    name: Release knob
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 5 }] }
+    quantity: 1
+    finish: chrome
+    specs:
+      diameter: { mm: 13.6, source: { label: D, method: "Inside the grip" } }
+
+  - id: brakes.handbrake.knob-spring
+    name: Knob spring
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 6 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      wire_diameter: { mm: 1.2, source: { label: D, method: "Fig 9.10" } }
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.pawl
+    name: Pawl
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 7 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "In the plane of the ratchet sector" } }
+
+  - id: brakes.handbrake.washer-handle
+    name: Plain washer (handle side)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 8 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.ratchet-plate
+    name: Ratchet plate
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 9 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Bolted to the tunnel wall by three bolts (Sec 16 para 3), carrying the toothed sector and the spigot's bush through the wall."
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Pressed plate" } }
+
+  - id: brakes.handbrake.ratchet-bolt
+    name: Ratchet plate bolt
+    haynes: { section: 16, figures: [{ figure: "9.10" }] }
+    quantity: 3
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: D, method: "Into caged nuts in the tunnel (P11)" } }
+
+  - id: brakes.handbrake.washer-lever
+    name: Washer (operating lever side)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 10 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.operating-lever
+    name: Operating lever
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 11 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "On the spigot's squared end inside the tunnel, its forked lower end carrying the trunnion under the floor line (Sec 4 para 2)."
+    specs:
+      length: { mm: 92.0, source: { label: D, method: "Pivot to trunnion" } }
+
+  - id: brakes.handbrake.lever-nut
+    name: Operating lever nut
+    haynes: { section: 16, figures: [{ figure: "9.10" }] }
+    quantity: 1
+    specs:
+      thread: { in: 0.3125, mm: 7.9375, source: { label: D, method: "On the spigot's threaded end" }, display_only: true }
+
+  - id: brakes.handbrake.trunnion
+    name: Cable trunnion
+    haynes: { section: 4, figures: [{ figure: "9.10", legend: 20 }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 8.0, source: { label: D, method: "In the lever's fork" } }
+
+  - id: brakes.handbrake.adjusting-nut
+    name: Cable adjusting nut (brass)
+    haynes: { section: 4, figures: [{ figure: "9.10", legend: 21 }] }
+    quantity: 1
+    finish: brass
+    part_numbers:
+      - { number: ACH5104, by: "MGOC Spares (nut, handbrake adjuster)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake" } }
+    notes: "Turned to adjust the cable until the shoes lock at 4 or 5 notches (Sec 4 para 2)."
+    specs:
+      across_flats: { in: 0.4375, mm: 11.1125, source: { label: D, method: "7/16 in AF" } }
+
+  - id: brakes.handbrake.cable-spring
+    name: Cable spring
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 22 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      wire_diameter: { mm: 1.2, source: { label: D, method: "Fig 9.10" } }
+      outside_diameter: { mm: 10.0, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.cable-washer-front
+    name: Cable plain washer (trunnion)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 24 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.cable-washer-rear
+    name: Cable plain washer (abutment)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 23 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.cable
+    name: Handbrake cable (outer)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 19 }] }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: AHH5228, by: "MGOC Spares (cable, handbrake, banjo axle, wire wheels)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake" } }
+    notes: >
+      From the front abutment A under the floor back beside the tunnel, up the heel board ahead of the axle, over
+      the right-hand tube (clip 29) and behind the banjo bowl to the outer compensating lever (Fig 9.10; MGOC: the
+      early cable is secured at the rear of the differential). Grease nipple not modelled (Sec 2 para 5). Route derived.
+    specs:
+      outside_diameter: { mm: 8.0, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.cable-inner
+    name: Handbrake cable (inner, exposed ends)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 19 }] }
+    quantity: 1
+    notes: The threaded front end through the trunnion and the rear end across the compensator's tabs.
+    specs:
+      diameter: { mm: 3.2, source: { label: D, method: "Stranded inner" } }
+
+  - id: brakes.handbrake.floor-clip
+    name: Cable clip (floor)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 26 }] }
+    quantity: 1
+    specs:
+      width: { mm: 12.0, source: { label: D, method: "P-clip" } }
+
+  - id: brakes.handbrake.axle-clip
+    name: Cable clip (axle tube)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 29 }] }
+    quantity: 1
+    specs:
+      width: { mm: 12.0, source: { label: D, method: "Band clip" } }
+
+  - id: brakes.handbrake.comp-lever-inner
+    name: Inner compensating lever
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 14 }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      On P7's fulcrum pin on the rear of the bowl; its tip pulls the left-hand rod, its tab takes the cable inner's
+      end; the outer lever's tab takes the outer's ferrule, so the cable closes the two tabs and the levers pull
+      both rods (scissor compensator). Shapes from Fig 9.10; sizes derived.
+    specs:
+      thickness: { mm: 5.0, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.comp-lever-outer
+    name: Outer compensating lever
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 15 }] }
+    quantity: 1
+    finish: paint_black
+    specs:
+      thickness: { mm: 5.0, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.comp-bush
+    name: Lever bush
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 16 }] }
+    quantity: 1
+    specs:
+      length: { mm: 6.0, source: { label: D, method: "Between the levers" } }
+
+  - id: brakes.handbrake.comp-washer-inner
+    name: Plain washer (boss side)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 13 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.0, source: { label: D, method: "Boss to the inner lever" } }
+
+  - id: brakes.handbrake.comp-anti-rattle-washer
+    name: Anti-rattle washer
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 17 }] }
+    quantity: 1
+    part_numbers:
+      - { number: AWZ107, by: "MGOC Spares (anti rattle washer)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake" } }
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Spring washer" } }
+
+  - id: brakes.handbrake.comp-washer-outer
+    name: Plain washer (outer)
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 18 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 9.10" } }
+
+  - id: brakes.handbrake.comp-split-pin
+    name: Fulcrum pin split pin
+    haynes: { section: 16, figures: [{ figure: "9.10" }] }
+    quantity: 1
+    specs:
+      diameter: { mm: 2.4, source: { label: D, method: "In P7's 2.6 mm hole" } }
+      length: { mm: 22.0, source: { label: D, method: "Across the 1/2 in pin" } }
+
+  - id: brakes.handbrake.rod-lh
+    name: Handbrake rod, LH
+    haynes: { section: 16, figures: [{ figure: "9.10" }] }
+    quantity: 1
+    notes: "From the inner compensating lever's tip to the lever on the LH backplate, forked at both ends with a locknut at the wheel end (Sec 16 para 6). Length derived."
+    specs:
+      diameter: { mm: 6.35, source: { label: D, method: "1/4 in rod, Fig 9.10" } }
+
+  - id: brakes.handbrake.rod-rh
+    name: Handbrake rod, RH
+    haynes: { section: 16, figures: [{ figure: "9.10" }] }
+    quantity: 1
+    notes: "From the outer lever's tip behind the bowl to the RH backplate lever."
+    specs:
+      diameter: { mm: 6.35, source: { label: D, method: "1/4 in rod" } }
+
+  - id: brakes.handbrake.clevis-pin
+    name: Clevis pin
+    haynes: { section: 16, figures: [{ figure: "9.10", legend: 25 }] }
+    quantity: 4
+    part_numbers:
+      - { number: CLZ513, by: "MGOC Spares (pin, clevis, 5/16)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake" } }
+    specs:
+      diameter: { in: 0.3125, mm: 7.9375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake", note: "5/16 clevis pin" }, display_only: true }
+      length: { mm: 16.0, source: { label: D, method: "Across the rod fork" } }
+
+  - id: brakes.handbrake.rod-split-pin
+    name: Clevis pin split pin
+    haynes: { section: 16, figures: [{ figure: "9.10" }] }
+    quantity: 4
+    part_numbers:
+      - { number: GHF502, by: "MGOC Spares (split pin, for 3/32)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake" } }
+    specs:
+      diameter: { in: 0.09375, mm: 2.38125, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/handbrake", note: "3/32 split pin" }, display_only: true }
+      length: { mm: 18.0, source: { label: D, method: "Across the clevis pin" } }

@@ -1,0 +1,219 @@
+# Brake pipes, connections and hoses (1963, single line, RHD). Haynes Ch 9 Fig 9.1 (printed p147) items 1, 3-12;
+# Sec 1, Sec 8 flexible hoses and Sec 9 metal pipes (p149). PDF page = printed page + 4.
+# Routes, positions and sizes not published are derived (mgb/brake_layout.py, parts/brakes/lines.py). Brake pipe
+# 3/16 in, as the clutch pipe (specs/clutch/hydraulics.yaml).
+defaults:
+  system: brakes
+  assembly: brakes.lines
+  haynes: { section: 9, spec_page: 146 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true, single_line: true }
+  finish: zinc_steel
+
+parts:
+  - id: brakes.lines.four-way
+    name: Four-way connection
+    haynes: { section: 1, figures: [{ figure: "9.1", legend: 5 }] }
+    quantity: 1
+    finish: brass
+    notes: >
+      Forged block on its spacer on the bulkhead below the pedal box, bolted through the middle (Fig 9.1 items 5-6):
+      the master cylinder pipe into the top, the stop lamp switch beside it, the front pipes out of each side and
+      the rear pipe out of the bottom. Position derived: under the box, clear of the pedals where they cross the
+      bulkhead and of the clutch hose. Shape after Fig 9.1.
+    specs:
+      length: { mm: 44.0, source: { label: D, method: "Fig 9.1, room for five ports" } }
+
+  - id: brakes.lines.four-way-spacer
+    name: Four-way connection spacer
+    haynes: { section: 1, figures: [{ figure: "9.1", legend: 6 }] }
+    quantity: 1
+    specs:
+      length: { mm: 10.0, source: { label: D, method: "Fig 9.1" } }
+
+  - id: brakes.lines.four-way-bolt
+    name: Four-way connection bolt
+    haynes: { section: 1, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    specs:
+      length: { in: 2.0, mm: 50.8, source: { label: D, method: "Block, spacer, 1 mm bulkhead panel and nut" } }
+
+  - id: brakes.lines.four-way-spring-washer
+    name: Four-way connection bolt spring washer
+    haynes: { section: 1, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    specs:
+      size: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in" }, display_only: true }
+
+  - id: brakes.lines.four-way-nut
+    name: Four-way connection nut
+    haynes: { section: 1, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    notes: On the footwell side of the bulkhead (P11 builds the panel; 1 mm assumed).
+    specs:
+      thread: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in UNF" }, display_only: true }
+
+  - id: brakes.lines.stop-switch
+    name: Stop lamp switch (hydraulic)
+    haynes: { section: 1, figures: [{ figure: "9.1", legend: 7 }] }
+    quantity: 1
+    finish: plastic_black
+    notes: "Pressure switch screwed into the four-way connection (Fig 9.1 item 7; item 8 is the alternative design). Two spade terminals for the stop lamp feed (P10)."
+    specs:
+      diameter: { mm: 21.0, source: { label: D, method: "Fig 9.1" } }
+
+  - id: brakes.lines.switch-washer
+    name: Stop lamp switch sealing washer
+    haynes: { section: 1, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: copper
+    specs:
+      thickness: { mm: 1.0, source: { label: D, method: "Copper sealing washer" } }
+
+  - id: brakes.lines.mc-pipe
+    name: Pipe, master cylinder to four-way connection
+    haynes: { section: 9, figures: [{ figure: "9.1", legend: 1 }] }
+    quantity: 1
+    finish: copper
+    notes: "Brazed into the banjo (parts/brakes/master.py), down through the grommet in the pedal box floor, back under the box outboard of the brake pedal and down to the connection; tube nut at the connection. Route derived."
+    specs:
+      outside_diameter: { in: 0.1875, mm: 4.7625, source: { label: D, method: "3/16 in brake pipe, as the clutch pipe; not in Haynes" } }
+
+  - id: brakes.lines.grommet
+    name: Pedal box floor grommet
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      outside_diameter: { mm: 17.0, source: { label: D, method: "13 mm hole in the box floor" } }
+
+  - id: brakes.lines.front-pipe-lh
+    name: Pipe, four-way connection to LH front hose
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: copper
+    notes: >
+      Up the bulkhead face beside the pedal box, across above the bellhousing, down the left side and forward along
+      the chassis leg, up and out to the hose bracket on the wing valance, its nut in the hose end (Sec 8 para 2).
+      Route derived; P11 clips it to the bulkhead and leg, P9 checks it against the suspension.
+    specs:
+      outside_diameter: { in: 0.1875, mm: 4.7625, source: { label: D, method: "3/16 in" } }
+
+  - id: brakes.lines.front-pipe-rh
+    name: Pipe, four-way connection to RH front hose
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: copper
+    notes: "Outboard to the right chassis leg, forward along it and up and out to the hose bracket. Route derived."
+    specs:
+      outside_diameter: { in: 0.1875, mm: 4.7625, source: { label: D, method: "3/16 in" } }
+
+  - id: brakes.lines.rear-pipe
+    name: Pipe, four-way connection to rear hose
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: copper
+    notes: "Down the toe board, back under the floor beside the tunnel on the right, rising ahead of the axle to the rear hose bracket. Route derived (P11: floor clips)."
+    specs:
+      outside_diameter: { in: 0.1875, mm: 4.7625, source: { label: D, method: "3/16 in" } }
+
+  - id: brakes.lines.rear-hose-bracket
+    name: Rear hose bracket (on the body)
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Shelf the rear hose's top end passes through, welded to the body ahead of and above the axle (P11). Position derived."
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Pressed steel" } }
+
+  - id: brakes.lines.rear-locking-plate
+    name: Rear hose locking plate
+    haynes: { section: 8, figures: [{ figure: "9.1", legend: 4 }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "As the front ones" } }
+
+  - id: brakes.lines.rear-hose-locknut
+    name: Rear hose locknut
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 6.4, source: { label: D, method: "Thin nut" } }
+
+  - id: brakes.lines.rear-hose-lockwasher
+    name: Rear hose shakeproof washer
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Shakeproof washer" } }
+
+  - id: brakes.lines.rear-hose
+    name: Rear flexible hose
+    haynes: { section: 8, figures: [{ figure: "9.1", legend: 3 }] }
+    quantity: 1
+    finish: rubber
+    notes: "From the body bracket down and back to the three-way connection on the axle, slack for the axle's travel. Length and run derived."
+    specs:
+      outside_diameter: { mm: 10.0, source: { label: D, method: "Brake hose, as the front ones" } }
+
+  - id: brakes.lines.rear-hose-copper-washer
+    name: Rear hose copper washer
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: copper
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Sealing washer" } }
+
+  - id: brakes.lines.union
+    name: Three-way connection (axle)
+    haynes: { section: 9, figures: [{ figure: "9.1", legend: 9 }] }
+    quantity: 1
+    finish: brass
+    notes: >
+      On the tab on top of the right-hand neck of the axle case (rear_axle_layout.PIPE_BRACKET; Figs 9.1-9.3 draw
+      it right of the differential): the hose into the top, the two axle pipes from its sides; the ear bolted to
+      the tab. Fig 9.1 shows a separate bracket (10) on later axles; on the banjo axle the case carries the tab.
+    specs:
+      width: { mm: 34.0, source: { label: D, method: "Fig 9.1" } }
+
+  - id: brakes.lines.union-bolt
+    name: Three-way connection bolt
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: D, method: "Ear and washer into the tapped tab" } }
+
+  - id: brakes.lines.union-spring-washer
+    name: Three-way connection spring washer
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    specs:
+      size: { in: 0.25, mm: 6.35, source: { label: D, method: "1/4 in" }, display_only: true }
+
+  - id: brakes.lines.axle-pipe-lh
+    name: Axle pipe, LH
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: copper
+    notes: >
+      From the three-way connection behind the banjo bowl (above the filler plug and clear of the handbrake
+      compensator), along the rear-upper side of the left tube, over to the front by the backplate and down to the
+      wheel cylinder's inlet behind the backplate. P9: the U-bolts pass outside it. Route derived.
+    specs:
+      outside_diameter: { in: 0.1875, mm: 4.7625, source: { label: D, method: "3/16 in" } }
+
+  - id: brakes.lines.axle-pipe-rh
+    name: Axle pipe, RH
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { in: 0.1875, mm: 4.7625, source: { label: D, method: "3/16 in" } }
+
+  - id: brakes.lines.axle-clip
+    name: Axle pipe clip
+    haynes: { section: 9, figures: [{ figure: "9.1", legend: 12 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: One on each tube between the union and the spring seat.
+    specs:
+      width: { mm: 10.0, source: { label: D, method: "Fig 9.1" } }

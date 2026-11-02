@@ -1,0 +1,269 @@
+# Brake master cylinder (single, square supply tank) and the pedal box with its protecting cover (1963). Haynes Ch 9:
+# Fig 9.11 (printed p155) items 1-17; Sec 2 para 2 and photo 1.1 (p147); Sec 17 removal (p154); Sec 18 dismantling
+# (p154); Sec 19 paras 6-7 and Fig 9.16 items 11-13 (p155, p159) for the box and its fixings. PDF page = printed + 4.
+# Outside references: Moss Motors 180-757 "Brake master cylinder, 3/4 in" (https://mossmotors.com/180-757-brake-master-cylinder-3-4);
+# v8register.net (https://www.v8register.net/sub/news170424brakemastercylinder.htm): the original MGB cylinder is
+# Lockheed GMC150 with a square metal tank (later replacements have round tanks); Moss 180-754 metal tank for
+# 1962-67 (https://mossmotors.com/180-754-lockheed-metal-tank-brake-master-cylinder-1962-67).
+# Stations and every size not published are derived (mgb/brake_layout.py, parts/brakes/master.py).
+defaults:
+  system: brakes
+  assembly: brakes.master
+  haynes: { section: 18, spec_page: 146 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true, single_line: true }
+  finish: machined_steel
+
+parts:
+  - id: brakes.master.mc-body
+    name: Brake master cylinder and supply tank
+    haynes: { section: 17, figures: [{ figure: "9.11", legend: 1 }] }
+    quantity: 1
+    finish: paint_black
+    part_numbers:
+      - { number: GMC150, by: "Lockheed, square tank (v8register.net, Moss MGL001B)", source: { label: S, ref: "https://www.v8register.net/sub/news170424brakemastercylinder.htm" } }
+    notes: >
+      Cast cylinder with a two-bolt flange on the pedal box's mounting wall beside the clutch cylinder (outboard of
+      it on RHD cars, photo 1.1), the square pressed-steel supply tank over its forward part with the filler neck
+      on top, and the outlet boss through the tank's front face for the banjo connector. Feed and by-pass
+      (compensating) ports from the tank into the bore (Sec 18 para 2: probe the compensating hole). Keep the fluid
+      1/4 in below the bottom of the filler neck (Sec 2 para 2). Shape from Fig 9.11 and photo 1.1; tank and casting
+      sizes derived in proportion to the 3/4 in bore.
+    specs:
+      bore: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://mossmotors.com/180-757-brake-master-cylinder-3-4", note: "3/4 in bore" } }
+      fluid_level_below_neck: { in: 0.25, mm: 6.35, source: { label: H, page: 147, note: "Sec 2 para 2" }, display_only: true }
+      tank_width: { mm: 62.0, source: { label: D, method: "Fig 9.11 and photo 1.1, in proportion to the bore" } }
+
+  - id: brakes.master.mc-cap
+    name: Supply tank cap
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 2 }] }
+    quantity: 1
+    finish: paint_black
+    notes: Fluted cap with its breather hole (Sec 2 para 2).
+    specs:
+      diameter: { mm: 38.0, source: { label: D, method: "Fig 9.11, over the filler neck" } }
+
+  - id: brakes.master.mc-cap-seal
+    name: Cap seal
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 3 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Fig 9.11" } }
+
+  - id: brakes.master.valve
+    name: Valve assembly
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 4 }] }
+    quantity: 1
+    finish: rubber
+    notes: "In the large end of the return spring, at the outlet end of the bore (Sec 18 para 4)."
+    specs:
+      diameter: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://mossmotors.com/180-757-brake-master-cylinder-3-4", note: "To the 3/4 in bore" }, display_only: true }
+
+  - id: brakes.master.mc-spring
+    name: Piston return spring
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 5 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      wire_diameter: { mm: 1.4, source: { label: D, method: "Fig 9.11" } }
+      outside_diameter: { mm: 17.0, source: { label: D, method: "In the 3/4 in bore" } }
+
+  - id: brakes.master.spring-retainer
+    name: Spring retainer
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 6 }] }
+    quantity: 1
+    notes: "In the small end of the spring, against the main cup (Sec 18 para 4). Form as the clutch cylinder's."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Pressed retainer" } }
+
+  - id: brakes.master.main-cup
+    name: Main cup
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 7 }] }
+    quantity: 1
+    finish: rubber
+    notes: "Fitted lip end first, pressed against the spring retainer (Sec 18 para 4)."
+    specs:
+      length: { mm: 7.0, source: { label: D, method: "As the clutch cylinder's main cup (same 3/4 in bore)" } }
+
+  - id: brakes.master.piston-washer
+    name: Piston washer
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 8 }] }
+    quantity: 1
+    notes: "Concave face against the main cup (Sec 18 para 4)."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Thin dished washer" } }
+
+  - id: brakes.master.piston
+    name: Piston
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 9 }] }
+    quantity: 1
+    notes: "Fitted plain end first (Sec 18 para 5)."
+    specs:
+      diameter: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://mossmotors.com/180-757-brake-master-cylinder-3-4", note: "To the 3/4 in bore" }, display_only: true }
+
+  - id: brakes.master.secondary-cup
+    name: Secondary cup
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 10 }] }
+    quantity: 1
+    finish: rubber
+    notes: "In the groove in the piston, lip toward the piston head (Sec 18 para 3)."
+    specs:
+      length: { mm: 6.0, source: { label: D, method: "As the clutch cylinder's" } }
+
+  - id: brakes.master.pushrod
+    name: Pushrod
+    haynes: { section: 17, figures: [{ figure: "9.11", legend: 11 }] }
+    quantity: 1
+    notes: "With the stop washer under the circlip and the clevis fork on its locknut; the fork takes the brake pedal's clevis pin (Sec 17 para 3)."
+    specs:
+      diameter: { mm: 8.0, source: { label: D, method: "As the clutch pushrod" } }
+
+  - id: brakes.master.circlip
+    name: Circlip
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 12 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Internal circlip in the mouth" } }
+
+  - id: brakes.master.boot
+    name: Boot
+    haynes: { section: 18, figures: [{ figure: "9.11", legend: 13 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      length: { mm: 18.5, source: { label: D, method: "Mouth to the pushrod" } }
+
+  - id: brakes.master.banjo
+    name: Banjo connector
+    haynes: { section: 17, figures: [{ figure: "9.11", legend: 14 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "On the outlet boss, its stub pointing down; the pipe to the four-way connection is brazed in (Fig 9.1 item 1)."
+    specs:
+      thickness: { mm: 11.0, source: { label: D, method: "Fig 9.11" } }
+
+  - id: brakes.master.banjo-bolt
+    name: Banjo bolt
+    haynes: { section: 17, figures: [{ figure: "9.11", legend: 15 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: D, method: "Two gaskets and the banjo into the outlet boss" } }
+
+  - id: brakes.master.gasket-inner
+    name: Banjo gasket, inner
+    haynes: { section: 17, figures: [{ figure: "9.11", legend: 16 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 9.11" } }
+
+  - id: brakes.master.gasket-outer
+    name: Banjo gasket, outer
+    haynes: { section: 17, figures: [{ figure: "9.11", legend: 17 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 9.11" } }
+
+  - id: brakes.master.mc-bolt-long
+    name: Master cylinder bolt (top, long)
+    haynes: { section: 17, figures: [{ figure: "9.11" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "The longer bolt goes in the top hole (Sec 17 para 5), through the flange and the mounting wall; nut and spring washer inside the box."
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: D, method: "Flange, wall, washer, nut and a little more than the short bolt" } }
+
+  - id: brakes.master.mc-bolt
+    name: Master cylinder bolt (bottom)
+    haynes: { section: 17, figures: [{ figure: "9.11" }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { in: 0.875, mm: 22.225, source: { label: D, method: "Flange, wall, washer and nut" } }
+
+  - id: brakes.master.mc-nut
+    name: Master cylinder bolt nut
+    haynes: { section: 17, figures: [{ figure: "9.11" }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in UNF, as the clutch cylinder's fixings" }, display_only: true }
+
+  - id: brakes.master.mc-spring-washer
+    name: Master cylinder bolt spring washer
+    haynes: { section: 17, figures: [{ figure: "9.11" }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      size: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in" }, display_only: true }
+
+  - id: brakes.master.pedal-box
+    name: Pedal box (master cylinder box)
+    haynes: { section: 19, figures: [{ figure: "9.16", legend: 11 }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Pressed steel box on the engine side of the bulkhead (photo 1.1): the rear section the clutch and brake
+      pedals hang in, open underneath, the common pivot bolt through its side walls (Sec 24 para 3); the
+      mounting wall carrying both master cylinders (spigot and bolt holes, and a hole the clutch pipe passes);
+      the front section round the cylinders with a floor (grommet hole for the brake pipe), a front wall and a
+      rim the protecting cover screws to; a flange round its rear edge on the bulkhead with six bolt holes (Sec 19
+      para 7, later box); the anchor bar inside the rear flange with tabs for the two pedal pull-off springs.
+      Form from Fig 9.16 item 11 and photo 1.1; every size and position derived (mgb/brake_layout.py). P11 builds
+      the bulkhead it bolts to and the toe board slots the pedals pass through.
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Pressed steel" } }
+      length: { mm: 247.0, source: { label: D, method: "Bulkhead to clear of the clutch cylinder's banjo bolt" } }
+
+  - id: brakes.master.cover
+    name: Master cylinder protecting cover
+    haynes: { section: 17, figures: [{ figure: "9.16", legend: 13 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Pressed hood over the ends of both master cylinders, held by four screws and washers (Sec 17 para 1). Height to clear the supply tank cap; form after the later cover (Fig 9.16 item 13)."
+    specs:
+      thickness: { mm: 1.0, source: { label: D, method: "Pressed steel" } }
+
+  - id: brakes.master.cover-screw
+    name: Cover screw
+    haynes: { section: 17, figures: [{ figure: "9.16" }] }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: D, method: "1/4 UNF into caged nuts under the rim" } }
+
+  - id: brakes.master.cover-washer
+    name: Cover screw washer
+    haynes: { section: 17, figures: [{ figure: "9.16" }] }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      size: { in: 0.25, mm: 6.35, source: { label: D, method: "1/4 in plain washer" }, display_only: true }
+
+  - id: brakes.master.box-bolt
+    name: Pedal box to bulkhead bolt
+    haynes: { section: 19, figures: [{ figure: "9.16" }] }
+    quantity: 6
+    finish: zinc_steel
+    notes: "Six bolts through the rear flange and the bulkhead (Sec 19 para 7), heads on the flange, nuts on the footwell side behind a 1 mm panel (P11)."
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: D, method: "Flange, bulkhead panel, washer and nut" } }
+
+  - id: brakes.master.box-nut
+    name: Pedal box bolt nut
+    haynes: { section: 19, figures: [{ figure: "9.16" }] }
+    quantity: 6
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in UNF" }, display_only: true }
+
+  - id: brakes.master.box-spring-washer
+    name: Pedal box bolt spring washer
+    haynes: { section: 19, figures: [{ figure: "9.16" }] }
+    quantity: 6
+    finish: zinc_steel
+    specs:
+      size: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in" }, display_only: true }

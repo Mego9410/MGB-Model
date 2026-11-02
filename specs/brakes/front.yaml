@@ -1,0 +1,382 @@
+# Front disc brakes, Lockheed two-piston calipers, 10.75 in discs (1963). Haynes Ch 9: specs (printed p146),
+# Sec 8 flexible hoses (p149), Sec 10 pads (p150), Sec 11 disc and caliper (p150), Sec 12 caliper (p150);
+# Figs 9.6 (p150), 9.7 and 9.8 (p151), 9.1 item 4 (p147), 9.2/9.3 (caliper behind the axle). PDF = printed + 4.
+# Outside references: MGOC Spares "MGB front brakes" https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes
+# (calipers 27H4650 RH / 27H4651 LH; piston 17H7989; seal kit GRK5007; bridge seal 17H7679; bridge bolt 27H4353,
+# 35.5-37 lbf ft; caliper bolt ATB4074; locktab BTC114; pads GBP202; pad pin PS610241; retaining spring clip
+# 17H7990; anti-squeal shims ASV101; dust covers BTB412 RH / BTB413 LH; disc GBD156; disc-to-hub bolt BTB198,
+# nut FNZ506 3/8 UNF, spring washer GHF333; screw SH605041 5/16 UNF x 1/2 and spring washer GHF332; bleed screw
+# 3H2428 3/8 UNF); bpnorthwest 8G8642 caliper piston 54 mm (https://bpnorthwest.com/mg/caliper-piston-mgb-tr8).
+# Stations and forms not published are derived (mgb/front_suspension_layout.py).
+defaults:
+  system: brakes
+  assembly: brakes.front
+  haynes: { section: 12, spec_page: 146 }
+  variant: { factory_1963: true, as_fitted: true, wire_wheels: true }
+  finish: machined_steel
+
+parts:
+  - id: brakes.front.disc
+    name: Brake disc
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 1 }] }
+    quantity: 2
+    finish: cast_iron
+    part_numbers:
+      - { number: GBD156, by: "MGOC Spares (brake disc, each)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: >
+      Hat-section disc: the centre plate with four bolt holes stands outboard and seats on the back of the hub
+      flange, the hat wall runs back to the swept ring (Fig 9.7). Bolted to the hub with four bolts, washers and
+      nuts; mark disc and hub before parting them (Sec 11 para 4). Run-out 0.006 in maximum. Hat depth, bore,
+      bolt circle and the heat groove derived.
+    specs:
+      diameter: { in: 10.75, mm: 273.0, source: { label: H, page: 146, note: "Disc diameter 10.75 in (273 mm)" } }
+      thickness: { in: [0.34, 0.35], mm: [8.64, 8.89], source: { label: H, page: 146, note: "New 0.34 to 0.35 in" } }
+      minimum_thickness: { in: [0.30, 0.31], mm: [7.62, 7.87], source: { label: H, page: 146, note: "After refinishing" }, display_only: true }
+      runout: { in: 0.006, mm: 0.15, source: { label: H, page: 146, note: "Maximum disc run-out" }, display_only: true }
+
+  - id: brakes.front.disc-bolt
+    name: Disc to hub bolt
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 2 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: BTB198, by: "MGOC Spares (disc to hub bolt)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: "Head inside the disc's hat, through the centre plate and the hub flange; 3/8 UNF from the MGOC nut. Length derived."
+    specs:
+      length: { in: 1.125, mm: 28.575, source: { label: D, method: "Disc plate, hub flange, washer and nut" } }
+
+  - id: brakes.front.disc-spring-washer
+    name: Disc bolt washer
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 3 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF333, by: "MGOC Spares (spring washer 3/8)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      size: { in: 0.375, mm: 9.525, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes", note: "3/8" }, display_only: true }
+
+  - id: brakes.front.disc-nut
+    name: Disc bolt nut
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 4 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: FNZ506, by: "MGOC Spares (nut, plain, 3/8 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      thread: { in: 0.375, mm: 9.525, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes", note: "3/8 UNF" }, display_only: true }
+
+  - id: brakes.front.dust-cover-lh
+    name: Disc dust cover (stone guard), LH
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 5 }] }
+    quantity: 1
+    finish: paint_black
+    part_numbers:
+      - { number: BTB413, by: "MGOC Spares (back plate, L/H; black or stainless)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: >
+      Dished pressing behind the disc with an open sector round the caliper, pressed radial ribs and a rolled
+      rim (Fig 9.7), held to the swivel axle by three screws and spring washers. Screw positions and sizes derived.
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Sheet steel" } }
+
+  - id: brakes.front.dust-cover-rh
+    name: Disc dust cover (stone guard), RH
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 5 }] }
+    quantity: 1
+    finish: paint_black
+    part_numbers:
+      - { number: BTB412, by: "MGOC Spares (back plate, R/H)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: Mirror image of the LH cover.
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Sheet steel" } }
+
+  - id: brakes.front.dust-cover-screw
+    name: Dust cover bolt
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 6 }] }
+    quantity: 6
+    finish: zinc_steel
+    part_numbers:
+      - { number: SH605041, by: "MGOC Spares (hex head screw, 5/16 UNF x 1/2)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      length: { in: 0.5, mm: 12.7, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes", note: "5/16 UNF x 1/2" } }
+      torque: { lbf_ft: [17, 19], nm: [23, 26], source: { label: H, page: 146, note: "Stone-guard screws" } }
+
+  - id: brakes.front.dust-cover-spring-washer
+    name: Dust cover bolt spring washer
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 7 }] }
+    quantity: 6
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF332, by: "MGOC Spares (spring washer 5/16)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      size: { in: 0.3125, mm: 7.9375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes", note: "5/16" }, display_only: true }
+
+  - id: brakes.front.caliper-mounting-half-lh
+    name: Caliper mounting half, LH
+    haynes: { section: 12, figures: [{ figure: "9.8", legend: 1 }, { figure: "9.7", legend: 8 }] }
+    quantity: 1
+    finish: cast_iron
+    part_numbers:
+      - { number: 27H4651, by: "MGOC Spares (caliper L/H, new, complete)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: >
+      Inboard half: cylinder block with the 54 mm bore, the fluid seal groove and the dust seal recess in its
+      mouth (Fig 9.8), a raised boss on its back; cheeks guiding the pads and the bridge bosses over the disc;
+      the two mounting lugs (tapped for the caliper bolts from behind the swivel axle), the hose union on its
+      inboard face, the bleed screw on top, the fluid port across the joint with its seal. The caliper sits
+      behind the axle (Figs 9.2, 9.3). Shape from Figs 9.7 and 9.8; outside sizes derived; the halves are never
+      to be separated in service.
+    specs:
+      bore: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm caliper piston for MGB (8G8642 / 17H7989)" } }
+      bolt_torque: { lbf_ft: [40, 45], nm: [54, 61], source: { label: H, page: 146, note: "Caliper securing bolts" } }
+
+  - id: brakes.front.caliper-mounting-half-rh
+    name: Caliper mounting half, RH
+    haynes: { section: 12, figures: [{ figure: "9.8", legend: 1 }, { figure: "9.7", legend: 8 }] }
+    quantity: 1
+    finish: cast_iron
+    part_numbers:
+      - { number: 27H4650, by: "MGOC Spares (caliper R/H, new, complete)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: Mirror image of the LH half (Fig 9.7 draws the RH caliper).
+    specs:
+      bore: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm" } }
+
+  - id: brakes.front.caliper-rim-half-lh
+    name: Caliper rim half, LH
+    haynes: { section: 12, figures: [{ figure: "9.8", legend: 2 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: "Outboard half: as the mounting half without the lugs and union, clearance holes and spot faces for the bridge bolt heads, the plug (14) in its top boss."
+    specs:
+      bore: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm" }, display_only: true }
+
+  - id: brakes.front.caliper-rim-half-rh
+    name: Caliper rim half, RH
+    haynes: { section: 12, figures: [{ figure: "9.8", legend: 2 }] }
+    quantity: 1
+    finish: cast_iron
+    notes: Mirror image of the LH rim half.
+    specs:
+      bore: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm" }, display_only: true }
+
+  - id: brakes.front.bridge-bolt
+    name: Caliper bridge bolt
+    haynes: { section: 12, figures: [{ figure: "9.8" }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: 27H4353, by: "MGOC Spares (bridge bolt; 35.5 to 37 lbf ft)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: "Two per caliper, through the rim half into the mounting half beside the pad aperture. Size (7/16 UNF) and length derived; not shown in Haynes."
+    specs:
+      length: { in: 3.5, mm: 88.9, source: { label: D, method: "Rim half spot face into the mounting half" } }
+      torque: { lbf_ft: [35.5, 37], source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes", note: "Bridge bolts" } }
+
+  - id: brakes.front.bridge-seal
+    name: Caliper bridge seal (fluid channel)
+    haynes: { section: 12, figures: [{ figure: "9.8" }] }
+    quantity: 2
+    finish: rubber
+    part_numbers:
+      - { number: 17H7679, by: "MGOC Spares (bridge seal for caliper halves, fluid channel)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Recess in the joint face" } }
+
+  - id: brakes.front.piston
+    name: Caliper piston
+    haynes: { section: 12, figures: [{ figure: "9.7", legend: 9 }, { figure: "9.8", legend: 3 }, { figure: "9.6" }] }
+    quantity: 4
+    finish: chrome
+    part_numbers:
+      - { number: 17H7989, by: "MGOC Spares (standard front caliper piston)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: "Hollow, the open end on the pad; the relieved face toward the hub centre (Fig 9.6, Sec 10 para 4), set 1/4 in proud of the cylinder when fitting the dust seal (Sec 12 para 4)."
+    specs:
+      diameter: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm" } }
+      fitting_protrusion: { in: 0.25, mm: 6.35, source: { label: H, page: 150, note: "Sec 12 para 4" }, display_only: true }
+
+  - id: brakes.front.fluid-seal
+    name: Caliper fluid seal (inner)
+    haynes: { section: 12, figures: [{ figure: "9.7", legend: 10 }, { figure: "9.8", legend: 8 }] }
+    quantity: 4
+    finish: rubber
+    part_numbers:
+      - { number: GRK5007, by: "MGOC Spares (caliper seal kit A+B)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      section: { mm: 3.4, source: { label: D, method: "Groove in the bore" } }
+
+  - id: brakes.front.dust-seal
+    name: Caliper dust seal
+    haynes: { section: 12, figures: [{ figure: "9.7", legend: 11 }, { figure: "9.8", legend: 7 }] }
+    quantity: 4
+    finish: rubber
+    specs:
+      width: { mm: 4.6, source: { label: D, method: "Fig 9.8" } }
+
+  - id: brakes.front.dust-seal-retainer
+    name: Caliper dust seal retainer
+    haynes: { section: 12, figures: [{ figure: "9.7", legend: 11 }, { figure: "9.8", legend: 6 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      width: { mm: 5.3, source: { label: D, method: "Fig 9.8" } }
+
+  - id: brakes.front.pad
+    name: Brake pad backing plate
+    haynes: { section: 10, figures: [{ figure: "9.7", legend: 12 }, { figure: "9.8", legend: 4 }] }
+    quantity: 4
+    finish: spring_steel
+    part_numbers:
+      - { number: GBP202, by: "MGOC Spares (pad set, OE quality)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: "Renew all four pads together (Sec 2 para 1). Outline from Fig 9.7 with the lug the clip bears on; size derived."
+    specs:
+      thickness: { mm: 3.2, source: { label: D, method: "Fig 9.8" } }
+
+  - id: brakes.front.pad-lining
+    name: Brake pad friction material
+    haynes: { section: 10, figures: [{ figure: "9.8", legend: 5 }] }
+    quantity: 4
+    finish: friction
+    specs:
+      thickness: { mm: 9.5, source: { label: D, method: "Fig 9.8 scaled to the 54 mm piston" } }
+      minimum_thickness: { in: 0.0625, mm: 1.6, source: { label: H, page: 146, note: "Pad minimum thickness 1/16 in" }, display_only: true }
+
+  - id: brakes.front.anti-squeal-shim
+    name: Anti-squeal shim
+    haynes: { section: 10, figures: [{ figure: "9.7" }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: ASV101, by: "MGOC Spares (anti-squeal shims, pack of 4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: "Thin plate between piston and pad backing, its arrow upward. Not in the Haynes figure."
+    specs:
+      thickness: { mm: 0.5, source: { label: D, method: "Shim plate" } }
+
+  - id: brakes.front.pad-clip
+    name: Pad retaining spring clip
+    haynes: { section: 10, figures: [{ figure: "9.7", legend: 13 }] }
+    quantity: 2
+    finish: spring_steel
+    part_numbers:
+      - { number: 17H7990, by: "MGOC Spares (pad retaining spring clip, front, 4-cylinder)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: "Pressed down while the split pins are drawn (Sec 10 para 2)."
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Spring steel strip" } }
+
+  - id: brakes.front.pad-pin
+    name: Pad retaining split pin
+    haynes: { section: 10, figures: [{ figure: "9.7", legend: 18 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: PS610241, by: "MGOC Spares (brake pad pin)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      diameter: { mm: 3.2, source: { label: D, method: "Through both halves" } }
+      length: { mm: 122.0, source: { label: D, method: "Across the caliper" } }
+
+  - id: brakes.front.bleed-screw
+    name: Caliper bleed screw
+    haynes: { section: 6, figures: [{ figure: "9.7", legend: 15 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: 3H2428, by: "MGOC Spares (bleed screw 3/8 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      thread: { in: 0.375, mm: 9.525, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes", note: "3/8 UNF" }, display_only: true }
+
+  - id: brakes.front.bleed-cap
+    name: Bleed screw dust cap
+    haynes: { section: 6, figures: [{ figure: "9.7" }] }
+    quantity: 2
+    finish: rubber
+    specs:
+      length: { mm: 9.6, source: { label: D, method: "Over the nipple" } }
+
+  - id: brakes.front.plug
+    name: Caliper plug
+    haynes: { section: 12, figures: [{ figure: "9.7", legend: 14 }] }
+    quantity: 2
+    finish: zinc_steel
+    notes: "Blanks the bleed hole not used on this side (the halves are cast alike)."
+    specs:
+      thread: { in: 0.375, mm: 9.525, source: { label: D, method: "As the bleed screw it replaces" }, display_only: true }
+
+  - id: brakes.front.caliper-bolt
+    name: Caliper securing bolt
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 16 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: ATB4074, by: "MGOC Spares (caliper mounting bolt)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    notes: "Two per caliper, from behind the swivel axle's caliper flange into the lugs, under the tab washer (Sec 11 para 2). 7/16 UNF x 1 1/4 derived."
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Tab, swivel axle flange and lug" } }
+      torque: { lbf_ft: [40, 45], nm: [54, 61], source: { label: H, page: 146, note: "Caliper securing bolts" } }
+
+  - id: brakes.front.tab-washer
+    name: Caliper bolt tab washer
+    haynes: { section: 11, figures: [{ figure: "9.7", legend: 17 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: BTC114, by: "MGOC Spares (locktab)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
+    specs:
+      thickness: { mm: 0.9, source: { label: D, method: "Lock tab" } }
+
+  - id: brakes.front.hose
+    name: Front flexible hose
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 2
+    finish: rubber
+    notes: >
+      From the bracket on the body to the caliper union (Sec 8 paras 2-3): the top end's hex under the bracket,
+      held by the locking plate, shakeproof washer and nut, the pipe's union nut screwed into it; the bottom end
+      screwed into the caliper on a copper washer. Run and length derived for the static ride height and
+      straight-ahead steering; P9 checks lock and bump.
+    specs:
+      outside_diameter: { mm: 10.0, source: { label: D, method: "Brake hose" } }
+
+  - id: brakes.front.hose-copper-washer
+    name: Hose to caliper copper washer
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 2
+    finish: copper
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Sealing washer" } }
+
+  - id: brakes.front.hose-bracket-lh
+    name: Front hose bracket, LH
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Pressed bracket on the wing valance (P11 builds the valance it is welded to): a shelf the hose end passes through, with the slot for the locking plate's tongue. Position derived (front_suspension_layout.HOSE_BRACKET)."
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Pressed steel" } }
+
+  - id: brakes.front.hose-bracket-rh
+    name: Front hose bracket, RH
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: paint_black
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Pressed steel" } }
+
+  - id: brakes.front.locking-plate
+    name: Hose locking plate
+    haynes: { section: 8, figures: [{ figure: "9.1", legend: 4 }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Fig 9.1" } }
+
+  - id: brakes.front.hose-locknut
+    name: Hose attachment nut
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      thickness: { mm: 6.4, source: { label: D, method: "Thin nut" } }
+
+  - id: brakes.front.hose-lockwasher
+    name: Hose shakeproof washer
+    haynes: { section: 8, figures: [{ figure: "9.1" }] }
+    quantity: 2
+    finish: zinc_steel
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Shakeproof washer" } }

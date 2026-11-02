@@ -17,22 +17,48 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P5b Overdrive (Laycock type D), speedometer drive, rear mounting | Ch 6, Ch 1 | done |
 | P6 Propeller shaft | Ch 7 | done |
 | P7 Rear axle | Ch 8 | done |
-| P8 Brakes | Ch 9 | |
+| P8 Brakes | Ch 9 | done |
 | P9 Suspension, steering, wheels and tyres; engine mountings | Ch 11 | |
 | P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | |
 | P11 Body shell, panels, trim, fittings; exhaust; fuel tank, pump and pipe | Ch 12, Ch 3 | |
 
 ## Carried over
 
-- Brakes (P8) on the rear axle (`mgb/rear_axle_layout.py`, axle frame AF at `car_layout.REAR_AXLE_X`,
-  `WHEEL_Z`): each backplate seats on the case flange's outer face at |y| `BACKPLATE_FACE_Y` 562 mm, four
-  3/8 in holes on a 108 mm pitch circle at 45 deg (`BACKPLATE_BOLT_*`); the drum's face seats on the hub
-  extension flange at |y| `DRUM_FACE_Y` 615 over four 1/2 in UNF studs on a 4 1/2 in pitch circle at 45 deg
-  (`STUD_*`); its centre hole must clear the extension collar (72 mm across); the four drum nuts (MGOC lists a
-  1/2 UNF nyloc, GHF225) come with the drum (Ch 8 Sec 4 para 5). Shoes and wheel cylinder between |y| 562 and
-  615, drum 10 in (P8 to confirm). Brake pipe three-way union bolts to the tab on top of the left-hand neck
-  (`PIPE_BRACKET`, x 10, y 150, face z 52 in AF); the handbrake balance lever pivots on the pin on the rear of
-  the bowl (`BALANCE_PIVOT`, y 60, z -78, pointing rearward, split pin hole); both positions derived.
+- Front brakes (P8) for P9, `mgb/front_suspension_layout.py` (left-hand front hub frame FH: origin on the wheel
+  axis at the car centre line, car axes, |y| outward; static camber and king pin inclination are P9's to add by
+  turning this frame): the disc's centre plate seats on the inboard face of the hub flange at |y| `DISC_FACE_Y` 588,
+  flange `HUB_FLANGE_Y` 588-598, `HUB_FLANGE_R` 62, four 3/8 UNF bolts (heads in the disc's hat, spring washers and
+  nuts on the flange's outer face) on a 100 mm circle at 45 deg (`DISC_BOLT_*`); the hub must pass through the
+  disc's 82 mm centre hole (`DISC_BORE_R` 41) inside the hat (`HAT_R` 60). The caliper hangs straight behind the
+  axle (`CALIPER_ANGLE` 270): its two lugs face the swivel axle's caliper flange at |y| `CALIPER_MOUNT_FACE_Y` 512,
+  the flange `SWIVEL_CALIPER_FLANGE_T` 12 thick (|y| 500-512) with two 7/16 UNF clearance holes at
+  `CALIPER_BOLTS` (64 mm behind the axis, 40 mm above and below it), bolt heads and the tab washer on its inboard
+  face. The stone guard's centre (|y| `SHIELD_FACE_Y` 532) sits on three pads on the swivel axle with tapped 5/16
+  UNF holes at `SHIELD_SCREWS` (58 mm radius, 0/100/200 deg from up toward the front). The front hose bracket is
+  at `HOSE_BRACKET` (x 80, |y| 470, z -132.5, on the wing valance, P11): P9 to check the hose at full lock and
+  bump, and the front pipes' run along the chassis legs (`brake_layout.CHASSIS_LEG_Y`, `LEG_PIPE_Z`) and up to the
+  bracket against the crossmember, springs and dampers. The rear brakes cover P7's backplate face, drum face and
+  studs as P7 left them.
+- Rear axle fittings (P8) for P9: the axle pipes run along the rear-upper side of each tube (`brake_layout.AXLE_PIPE_R`
+  45 mm, 45 deg up and to the rear) from |y| 230 to 470 and down the front of the tube to the wheel cylinder; the
+  U-bolts must pass outside them. The handbrake rods run from the compensator behind the bowl (`brake_layout.comp_tip`)
+  to the backplate levers (AF x -50, |y| 549, z -100), passing under the road springs about 106 mm below the axle
+  centre at |y| 420: P9's spring, U-bolt plate and damper link must clear them. The cable goes over the right-hand
+  tube at |y| 330 (clip, `CABLE_CLIP_Y`).
+- Body (P11) attachments left by P8: the pedal box's rear flange on the bulkhead's engine-side face (six bolts,
+  `parts/brakes/master.py box_bolts`, nuts behind a 1 mm panel), the toe board slots the two pedals pass through
+  (the arms cross the bulkhead plane at about z -140, y -215 and -290), the four-way connection's bolt
+  through the bulkhead (`brake_layout.FOUR_WAY`); clips along the brake pipe runs (`parts/brakes/lines.py`
+  `front_pipe_points`, `rear_pipe_points`: bulkhead face, chassis legs, under the floor at y -270, z -394, up the
+  heel board); the rear hose bracket on the body (`brake_layout.REAR_HOSE_BRACKET`); the handbrake: tunnel right wall
+  at y -122 with the ratchet plate's three bolts and the spigot hole (`HB_PIVOT`), the cable's front abutment
+  bracket A (`CABLE_ABUTMENT`) and the floor clip; seats and tunnel must clear the lever and its 4-5 notch travel.
+- Known P8 approximations: no outside photographs of the parts could be opened from the build machine, so forms are
+  from the Haynes figures and photos (1.1, 13.3, 13.4) with sizes derived; the brake pedal is the clutch pedal's
+  form moved to the brake line; the brake cylinder's internals are the clutch cylinder's (same 3/4 in bore); the
+  front pad pins sit just over the clip (front.py `PIN_U`, not the layout's `PIN_U`); the stop lamp switch is drawn
+  as a generic Lucas hydraulic switch; every pipe, hose and cable route is derived; the compensator is a scissor pair
+  on P7's pin with the cable across their tabs, its proportions derived from Fig 9.10.
 - Rear springs, dampers and straps (P9): spring seats welded under the tubes, flat face at z `SEAT_FACE_Z`
   (48 mm below the axle centre), centred at |y| `SPRING_Y` 420, 100 mm fore and aft, 11 mm hole for the
   locating plate's peg (Fig 11.4 items 18-19); U-bolt legs (`UBOLT_LEGS`) 45 mm fore and aft of the tube, 30 mm
@@ -100,13 +126,23 @@ ground, overhangs). Every assembly outside the engine is placed from it.
   synchroniser but sits behind it in the model; the selector mechanism layout (rods side by side high on
   the left, the selector lever shaft above them in the remote housing) is derived; gear teeth are
   phased to mesh in neutral (first gear and the idler's 13 teeth are out of mesh).
-- Pedal box, its cover over the master cylinders, the common pedal pivot bolt, the brake
-  pedal and the bulkhead (P8/P11): the clutch master cylinder flange face is at
-  `clutch_layout.PEDAL_BOX_FACE_X`; `car_layout.BULKHEAD_X` is derived.
+- Bulkhead (P11): the pedal box (P8) bolts to it at `car_layout.BULKHEAD_X` (derived).
 - Hose bracket on the right-hand chassis leg (`clutch_layout.HOSE_BRACKET`) and the two pipe
   clip screws: with the body (P11).
 
 ## Questions for Oliver (asked at the end of the overnight run)
+
+- Brakes: is the car still on the original single-line system with the square-tank master cylinder (Lockheed
+  GMC150) and the hydraulic stop lamp switch on the four-way connection, or has it been converted (dual line,
+  servo, round-tank cylinder)?
+- Where is the four-way connection on your car, and how do the front pipes cross the bulkhead? The model puts it
+  low on the bulkhead below the pedal box with the left-hand pipe crossing above the bellhousing.
+- Handbrake: the model puts the lever on the right of the tunnel with its pivot at the rear and the grip forward
+  (so the operating lever's lower end pulls the cable forward), the cable over the right-hand axle tube to the
+  compensator on the back of the differential. Is that how yours is laid out? A photo of the lever and of the
+  compensator on the axle would fix it.
+- Rear hose: where is the rear hose bracket on your body (the model hangs it ahead of the axle, 200 mm above the
+  axle centre)?
 
 - Rear hub nuts: Haynes lists one RH and one LH thread nut but not which side; the model follows mgaguru and
   BritishCarForum (left-hand thread on the left hub, so forward rotation tightens it), while the MGOC page text

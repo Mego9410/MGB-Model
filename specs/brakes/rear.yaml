@@ -1,0 +1,333 @@
+# Rear drum brakes, Lockheed 10 x 1.75 in, banjo axle, wire wheels (1963). Haynes Ch 9: specs (printed p146),
+# Sec 3 adjustment (p148), Sec 13 shoes and adjusters (p151, 154), Sec 14 wheel cylinders (p154), Sec 15
+# backplates (p154); Fig 9.9 (p152) and photos 13.3, 13.4. Fig 9.9 item numbers. PDF page = printed page + 4.
+# Outside references: MGOC Spares "MGB rear brakes" https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes
+# (drum BTB338 banjo axle; drums 10 x 1.75 in; wheel cylinder GWC1103, 0.800 in bore on roadsters to 1967;
+# bleed screw 513118 1/4 UNF; E-clip 17H7949; shoes GBS740; handbrake levers 37H2005 RH / 37H2006 LH and
+# boot 17H8057; pull-off springs 17H7994/17H7995 and adjuster end 27H6478; steady pin 17H7993, spring
+# 17H7969, cup 17H7971; adjuster BAU2294; adjuster nuts GHF200 1/4 UNF and spring washers GHF331;
+# backplate bolts BH606161 3/8 UNF x 2 and Philidas nuts GHF243; drum nuts GHF225 1/2 UNF nyloc).
+# Stations and forms not published are derived (mgb/brake_layout.py).
+defaults:
+  system: brakes
+  assembly: brakes.rear
+  haynes: { section: 13, spec_page: 146 }
+  variant: { factory_1963: true, as_fitted: true, axle_type: three_quarter_floating, wire_wheels: true }
+  finish: paint_black
+
+parts:
+  - id: brakes.rear.backplate-lh
+    name: Rear brake backplate, LH
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 1 }] }
+    quantity: 1
+    notes: >
+      Pressed steel plate bolted to the axle flange with four bolts (Sec 15 para 3). Drawn as the Lockheed
+      pressing: flat centre on the flange with a stiffening bead, a raised annular face carrying six pressed shoe
+      platforms and radial ribs, the rim turned back into the drum mouth; holes for the steady pins, the
+      adjuster's wedge and studs at the top, the wheel cylinder neck at the bottom and the handbrake lever slot
+      behind it (Fig 9.9, photo 13.3). Handed by the lever slot. Shapes from Fig 9.9 and photo 13.3; sizes
+      derived. No outside photographs of the bare plate could be opened from the build machine.
+    specs:
+      thickness: { mm: 2.4, source: { label: D, method: "Pressed steel plate, scaled from Fig 9.9" } }
+
+  - id: brakes.rear.backplate-rh
+    name: Rear brake backplate, RH
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 1 }] }
+    quantity: 1
+    notes: Mirror image of the LH plate.
+    specs:
+      thickness: { mm: 2.4, source: { label: D, method: "As the LH plate" } }
+
+  - id: brakes.rear.backplate-bolt
+    name: Backplate bolt
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 2 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: BH606161, by: "MGOC Spares (bolt, hex head, 3/8 UNF x 2)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: >
+      Four per side through the backplate and the axle flange (Sec 15 para 3). Drawn with the head on the
+      backplate and the nut behind the flange, where the 2 in length clears the hub; which way round the
+      factory fitted them is not stated.
+    specs:
+      length: { in: 2.0, mm: 50.8, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "BH606161 3/8 UNF x 2" } }
+
+  - id: brakes.rear.backplate-nut
+    name: Backplate nut (self-locking)
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 3 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF243, by: "MGOC Spares (nut, Philidas, self locking, 3/8 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      thread: { in: 0.375, mm: 9.525, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "3/8 UNF" }, display_only: true }
+
+  - id: brakes.rear.backplate-spring-washer
+    name: Backplate bolt spring washer
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 4 }] }
+    quantity: 8
+    finish: zinc_steel
+    specs:
+      size: { in: 0.375, mm: 9.525, source: { label: H, page: 152, note: "Fig 9.9 item 4 under the nut; 3/8 size from the bolt" }, display_only: true }
+
+  - id: brakes.rear.shoe
+    name: Brake shoe
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 5 }] }
+    quantity: 4
+    finish: paint_black
+    part_numbers:
+      - { number: GBS740, by: "MGOC Spares (brake shoe set MGB)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: >
+      Pressed steel shoe of T section: the table carrying the lining and the web, its tips square to the
+      adjuster tappets (top) and the cylinder pistons (bottom), holes for the two pull-off springs and the steady
+      pin, a notch for the handbrake lever. Both shoes of a wheel are the same part, the trailing one turned half
+      round. Renew in axle sets (Sec 13 para 1). Section and arc derived.
+    specs:
+      web_thickness: { mm: 4.5, source: { label: D, method: "Fig 9.9" } }
+
+  - id: brakes.rear.lining
+    name: Brake shoe lining
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 5 }] }
+    quantity: 4
+    finish: friction
+    notes: "Bonded lining on each shoe (Haynes gives 1/32 in minimum for bonded linings, flush with the rivets for riveted). Arc and thickness derived."
+    specs:
+      width: { in: 1.75, mm: 44.45, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "10 in x 1.75 in drums throughout production" } }
+      minimum_thickness: { in: 0.03125, mm: 0.79, source: { label: H, page: 146, note: "Bonded linings 1/32 in (0.79 mm)" }, display_only: true }
+      thickness: { mm: 4.8, source: { label: D, method: "New lining, 3/16 in" } }
+
+  - id: brakes.rear.pull-off-spring-cylinder
+    name: Pull-off spring, cylinder end
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 6 }] }
+    quantity: 2
+    finish: spring_steel
+    part_numbers:
+      - { number: 17H7994, by: "MGOC Spares (spring, brake shoe pull off, RH; 17H7995 LH)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: "Hooked into the two webs above the wheel cylinder, on the backplate side of the webs (Sec 13 paras 3-4: mark the shoes so the springs go back right). Handed RH/LH by MGOC; drawn alike."
+    specs:
+      wire_diameter: { mm: 2.0, source: { label: D, method: "Fig 9.9" } }
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Fig 9.9" } }
+
+  - id: brakes.rear.pull-off-spring-adjuster
+    name: Pull-off spring, adjuster end
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 7 }] }
+    quantity: 2
+    finish: spring_steel
+    part_numbers:
+      - { number: 27H6478, by: "MGOC Spares (spring, brake shoe return, adjuster end)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      wire_diameter: { mm: 1.8, source: { label: D, method: "Fig 9.9" } }
+      outside_diameter: { mm: 8.5, source: { label: D, method: "Fig 9.9" } }
+
+  - id: brakes.rear.steady-pin
+    name: Shoe steady pin
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 8 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: 17H7993, by: "MGOC Spares (pin, brake shoe steady, Lockheed type)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: "Head behind the backplate, through the shoe web; the cup washer is pressed and turned onto its flattened end (Sec 13 para 4, photo 13.4)."
+    specs:
+      length: { mm: 18.5, source: { label: D, method: "Backplate to the cup over the web" } }
+
+  - id: brakes.rear.steady-spring
+    name: Shoe steady spring
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 9 }] }
+    quantity: 4
+    finish: spring_steel
+    part_numbers:
+      - { number: 17H7969, by: "MGOC Spares (spring, brake shoe steady, Lockheed type)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      wire_diameter: { mm: 1.2, source: { label: D, method: "Photo 13.4" } }
+      outside_diameter: { mm: 10.0, source: { label: D, method: "Photo 13.4" } }
+
+  - id: brakes.rear.steady-washer
+    name: Shoe steady cup washer
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 10 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: 17H7971, by: "MGOC Spares (washer, cup, brake shoe steady, Lockheed type)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      diameter: { mm: 15.0, source: { label: D, method: "Photo 13.4" } }
+
+  - id: brakes.rear.adjuster-body
+    name: Adjuster body
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 11 }] }
+    quantity: 2
+    finish: cast_iron
+    part_numbers:
+      - { number: BAU2294, by: "MGOC Spares (brake adjuster MGB, repro)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: >
+      Cast body on the backplate at the top, the tappets in its cross bore at the shoe web level, the wedge
+      screwed in from behind; two studs through the backplate with nuts and spring washers (Sec 13 para 5). Turn
+      the square head clockwise to expand the shoes (Sec 3 para 3, photo 3.3). Size derived.
+    specs:
+      length: { mm: 36.0, source: { label: D, method: "Fig 9.9" } }
+
+  - id: brakes.rear.tappet
+    name: Adjuster tappet
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 12 }] }
+    quantity: 4
+    finish: machined_steel
+    notes: "Two per adjuster; inclined inner face on the wedge's cone, slotted outer end for the shoe web."
+    specs:
+      length: { mm: 21.0, source: { label: D, method: "Bore to the web" } }
+
+  - id: brakes.rear.wedge
+    name: Adjuster wedge (square-headed)
+    haynes: { section: 3, figures: [{ figure: "9.9", legend: 13 }] }
+    quantity: 2
+    finish: machined_steel
+    notes: "Screw with a cone point between the tappets and a square head behind the backplate for the brake spanner (Sec 3 paras 3, 5; MGOC Z251 brake adjust spanner)."
+    specs:
+      square: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in square, the usual Lockheed adjuster" } }
+
+  - id: brakes.rear.adjuster-nut
+    name: Adjuster retaining nut
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 14 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF200, by: "MGOC Spares (nut, plain, 1/4 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "1/4 UNF" }, display_only: true }
+
+  - id: brakes.rear.adjuster-spring-washer
+    name: Adjuster spring washer
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 15 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF331, by: "MGOC Spares (washer, locking, spring, 1/4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      size: { in: 0.25, mm: 6.35, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "1/4" }, display_only: true }
+
+  - id: brakes.rear.wheel-cylinder
+    name: Wheel cylinder body
+    haynes: { section: 14, figures: [{ figure: "9.9", legend: 16 }] }
+    quantity: 2
+    finish: cast_iron
+    part_numbers:
+      - { number: GWC1103, by: "MGOC Spares (wheel cylinder, rear, MGB roadster to 1967)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: >
+      Cast body with a flat base on the backplate at the bottom, the bore along the car with a piston at each end,
+      the slot the handbrake lever passes through with its pivot, and a neck through the backplate carrying the
+      pipe inlet (pointing inboard) and the bleed screw (on top), held by the E-clip (Sec 14 para 6). Drawn
+      symmetrical fore and aft. Inlet and bleed positions derived.
+    specs:
+      bore: { in: 0.8, mm: 20.32, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "0.800 in bore, roadster and early GT" } }
+
+  - id: brakes.rear.wc-piston
+    name: Wheel cylinder piston
+    haynes: { section: 14, figures: [{ figure: "9.9", legend: 17 }] }
+    quantity: 4
+    finish: machined_steel
+    notes: "Outer end slotted for the shoe web, groove for the boot."
+    specs:
+      diameter: { in: 0.8, mm: 20.32, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "To the 0.800 in bore" } }
+
+  - id: brakes.rear.wc-seal
+    name: Wheel cylinder seal
+    haynes: { section: 14, figures: [{ figure: "9.9", legend: 18 }] }
+    quantity: 4
+    finish: rubber
+    part_numbers:
+      - { number: GRK2012, by: "MGOC Spares (seal kit wheel cylinder)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: "Cup seal, sealing edge (largest diameter) toward the centre of the cylinder (Sec 14 para 4)."
+    specs:
+      width: { mm: 4.6, source: { label: D, method: "Cup seal in a 0.8 in bore" } }
+
+  - id: brakes.rear.wc-boot
+    name: Wheel cylinder boot
+    haynes: { section: 14, figures: [{ figure: "9.9", legend: 19 }] }
+    quantity: 4
+    finish: rubber
+    specs:
+      length: { mm: 8.0, source: { label: D, method: "Body lip to piston groove" } }
+
+  - id: brakes.rear.wc-clip
+    name: Wheel cylinder retaining clip
+    haynes: { section: 14, figures: [{ figure: "9.9", legend: 20 }] }
+    quantity: 2
+    finish: spring_steel
+    part_numbers:
+      - { number: 17H7949, by: "MGOC Spares (circlip, E clip type, securing wheel cylinder to back plate)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Spring steel clip" } }
+
+  - id: brakes.rear.wc-bleed-screw
+    name: Wheel cylinder bleed screw
+    haynes: { section: 6, figures: [{ figure: "9.9", legend: 21 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: "513118", by: "MGOC Spares (bleed screw, Lockheed type wheel cylinder, 1/4 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: "Open half a turn to bleed (Sec 6 para 8)."
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "1/4 UNF" }, display_only: true }
+
+  - id: brakes.rear.hb-lever-lh
+    name: Handbrake lever (on the wheel cylinder), LH
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 22 }] }
+    quantity: 1
+    finish: paint_black
+    part_numbers:
+      - { number: 37H2006, by: "MGOC Spares (lever, handbrake, through backplate to brake shoes, LH)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: >
+      Flat lever pivoted in the wheel cylinder's slot, out through the backplate behind the cylinder to the
+      clevis of the handbrake rod (Sec 15 para 2: detach the cable from the lever). Shape derived from Fig 9.9.
+    specs:
+      thickness: { mm: 5.0, source: { label: D, method: "Fig 9.9" } }
+
+  - id: brakes.rear.hb-lever-rh
+    name: Handbrake lever (on the wheel cylinder), RH
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 22 }] }
+    quantity: 1
+    finish: paint_black
+    part_numbers:
+      - { number: 37H2005, by: "MGOC Spares (lever, handbrake, through backplate to brake shoes, RH)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      thickness: { mm: 5.0, source: { label: D, method: "As the LH lever" } }
+
+  - id: brakes.rear.hb-lever-boot-lh
+    name: Handbrake lever boot, LH
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 23 }] }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: 17H8057, by: "MGOC Spares (gaiter, boot, handbrake actuating lever to backplate)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      length: { mm: 12.5, source: { label: D, method: "Backplate to the lever" } }
+
+  - id: brakes.rear.hb-lever-boot-rh
+    name: Handbrake lever boot, RH
+    haynes: { section: 15, figures: [{ figure: "9.9", legend: 23 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      length: { mm: 12.5, source: { label: D, method: "As the LH boot" } }
+
+  - id: brakes.rear.drum
+    name: Brake drum (wire wheels)
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 24 }] }
+    quantity: 2
+    finish: cast_iron
+    part_numbers:
+      - { number: BTB338, by: "MGOC Spares (brake drum, banjo axle)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    notes: >
+      Cast iron drum, its plate on the hub extension flange over the four hub studs, held by the four nuts on
+      wire-wheel cars (Sec 13 para 3: tap the rim if tight); the two screw holes serve the disc-wheel setscrews
+      (item 25, not fitted with wire wheels). Mouth band and ribs round the barrel; outside sizes derived.
+    specs:
+      internal_diameter: { in: 10.0, mm: 254.0, source: { label: H, page: 146, note: "Drum internal diameter 10 in (254 mm)" } }
+
+  - id: brakes.rear.drum-nut
+    name: Brake drum nut (wire wheels)
+    haynes: { section: 13, figures: [{ figure: "9.9", legend: 26 }] }
+    quantity: 8
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF225, by: "MGOC Spares (nut, nyloc, self locking, 1/2 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes" } }
+    specs:
+      thread: { in: 0.5, mm: 12.7, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/brakes/rear-brakes", note: "1/2 UNF" }, display_only: true }

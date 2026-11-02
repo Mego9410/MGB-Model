@@ -1,0 +1,156 @@
+# Brake pedal, early cars, and the common pedal pivot (1963). Haynes Ch 9 Sec 17 para 3 (printed p154: split pin,
+# washer and clevis pin), Sec 24 and Fig 9.16 items 1-10 (p159-160: bush, pad, distance tube, bolt, spacer,
+# washers, clevis pin, pull-off spring; the bolt's head against the clutch pedal end); Ch 5 Sec 8 (p110).
+# PDF page = printed page + 4. Positions: mgb/brake_layout.py and mgb/clutch_layout.py (all D).
+defaults:
+  system: brakes
+  assembly: brakes.pedal
+  haynes: { section: 24, spec_page: 146 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true }
+  finish: paint_black
+
+parts:
+  - id: brakes.pedal.pedal
+    name: Brake pedal
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 1 }] }
+    quantity: 1
+    notes: >
+      Pressed-steel pedal on the common pivot in the pedal box, outboard of the clutch pedal (RHD), the pushrod
+      clevis just below the pivot, the arm cranked back under the box and through the toe board to the pad
+      (Fig 9.16 item 1). Drawn as the clutch pedal's form on the brake cylinder's line: the two pads side by side
+      at the same height. Lengths derived (mgb/clutch_layout.py).
+    specs:
+      bush_bore: { mm: 19.2, source: { label: D, method: "Fits the bush, as the clutch pedal" } }
+
+  - id: brakes.pedal.bush
+    name: Brake pedal bush
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 3 }] }
+    quantity: 1
+    finish: bronze
+    specs:
+      outside_diameter: { mm: 19.0, source: { label: D, method: "Fig 9.16, as the clutch pedal bush" } }
+      inside_diameter: { mm: 15.9, source: { label: D, method: "Over the distance tube" } }
+
+  - id: brakes.pedal.distance-tube
+    name: Brake pedal distance tube
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 5 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 15.8, source: { label: D, method: "In the bush" } }
+      inside_diameter: { in: 0.5, mm: 12.7, source: { label: D, method: "Over the 1/2 in pivot bolt" } }
+      length: { mm: 26.0, source: { label: D, method: "Bush length plus clearance" } }
+
+  - id: brakes.pedal.pad
+    name: Brake pedal rubber pad
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 4 }] }
+    quantity: 1
+    finish: rubber
+    specs:
+      thickness: { mm: 8.0, source: { label: D, method: "Fig 9.16, as the clutch pedal pad" } }
+
+  - id: brakes.pedal.return-spring
+    name: Brake pedal pull-off spring
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 10 }] }
+    quantity: 1
+    finish: spring_steel
+    notes: "From the hole in the arm back to its tab on the pedal box's anchor bar (Sec 24 para 2: lift off the pull-off spring)."
+    specs:
+      outside_diameter: { mm: 9.0, source: { label: D, method: "Fig 9.16" } }
+      wire_diameter: { mm: 1.4, source: { label: D, method: "Fig 9.16" } }
+
+  - id: brakes.pedal.clevis-pin
+    name: Pushrod clevis pin
+    haynes: { section: 17, figures: [{ figure: "9.16", legend: 9 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Through the pushrod fork and the pedal, with a plain washer and split pin (Sec 17 para 3)."
+    specs:
+      length: { mm: 28.0, source: { label: D, method: "Through the fork with room for the washer and split pin" } }
+
+  - id: brakes.pedal.clevis-washer
+    name: Clevis pin washer
+    haynes: { section: 17, figures: [{ figure: "9.16" }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thickness: { mm: 1.2, source: { label: D, method: "Plain washer" } }
+
+  - id: brakes.pedal.clevis-split-pin
+    name: Clevis pin split pin
+    haynes: { section: 17, figures: [{ figure: "9.16" }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      diameter: { mm: 1.6, source: { label: D, method: "1/16 in split pin" } }
+      length: { mm: 14.0, source: { label: D, method: "Across the clevis pin" } }
+
+  - id: brakes.pedal.pivot-bolt
+    name: Pedal pivot (fulcrum pin) bolt
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 6 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Common to both pedals, through both walls of the pedal box; the head fits against the clutch pedal end (Sec 24 para 3)."
+    specs:
+      length: { in: 6.5, mm: 165.1, source: { label: D, method: "Across the box, spring washer and nut" } }
+
+  - id: brakes.pedal.pivot-spring-washer
+    name: Pivot bolt spring washer
+    haynes: { section: 24, figures: [{ figure: "9.16" }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      size: { in: 0.5, mm: 12.7, source: { label: D, method: "1/2 in" }, display_only: true }
+
+  - id: brakes.pedal.pivot-nut
+    name: Pivot bolt nut
+    haynes: { section: 24, figures: [{ figure: "9.16" }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thread: { in: 0.5, mm: 12.7, source: { label: D, method: "1/2 in UNF" }, display_only: true }
+
+  - id: brakes.pedal.washer-inner
+    name: Pivot plain washer, inboard
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 8 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thickness: { in: 0.095, mm: 2.413, source: { label: D, method: "1/2 in plain washer" } }
+
+  - id: brakes.pedal.washer-outer
+    name: Pivot plain washer, outboard
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 8 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      thickness: { in: 0.095, mm: 2.413, source: { label: D, method: "1/2 in plain washer" } }
+
+  - id: brakes.pedal.spacer-inner
+    name: Pivot spacer, inboard
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 7 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Between the inboard washer and the clutch pedal's distance tube. Lengths of the three spacers derived from the box width."
+    specs:
+      outside_diameter: { mm: 17.5, source: { label: D, method: "Over the bolt" } }
+      inside_diameter: { mm: 13.0, source: { label: D, method: "Over the 1/2 in bolt" } }
+
+  - id: brakes.pedal.spacer-centre
+    name: Pedal spacer (between the pedals)
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 7 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "The centre spacer of Sec 19 para 6, between the clutch and brake pedals' distance tubes."
+    specs:
+      outside_diameter: { mm: 17.5, source: { label: D, method: "Over the bolt" } }
+      inside_diameter: { mm: 13.0, source: { label: D, method: "Over the 1/2 in bolt" } }
+
+  - id: brakes.pedal.spacer-outer
+    name: Pivot spacer, outboard
+    haynes: { section: 24, figures: [{ figure: "9.16", legend: 7 }] }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 17.5, source: { label: D, method: "Over the bolt" } }
+      inside_diameter: { mm: 13.0, source: { label: D, method: "Over the 1/2 in bolt" } }

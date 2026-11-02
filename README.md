@@ -120,8 +120,23 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   12 tpi hub extensions with handed spinner threads, Welch plugs, screws). Datums for brakes (P8) and springs,
   dampers, straps and wheels (P9) are in `mgb/rear_axle_layout.py`.
 
-Next: P8, the brakes, on the axle datums (`rear_axle_layout.BACKPLATE_*`, `DRUM_FACE_Y`, `STUD_*`). The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
+- P8 (brakes) built: Lockheed single-line system, early RHD car (Haynes Ch 9, Figs 9.1, 9.6-9.11, 9.16). Front:
+  10.75 in hat discs with their bolts, two-piston calipers (mounting and rim halves with bridge bolts and the fluid
+  transfer seal, 54 mm pistons, fluid seals, dust seals and retainers, pads with anti-squeal shims, retaining clip
+  and split pins, bleed screw, plug), caliper bolts and tab washer, stone guards, flexible hoses with their brackets,
+  locking plates, nuts and washers, on the hub datums in `mgb/front_suspension_layout.py` (hub and swivel axle P9).
+  Rear: 10 x 1.75 in drums on P7's hub extension flanges with the four nyloc nuts; pressed backplates with shoe
+  platforms and ribs, the wheel cylinder (0.800 in) with pistons, seals, boots, E-clip, bleed screw and the
+  handbrake lever and boot; leading and trailing shoes with bonded linings, pull-off springs, steady pins, springs
+  and cups; the square-headed adjuster with its tappets and wedge. Master cylinder: GMC150 square-tank cylinder
+  (3/4 in) with every Fig 9.11 item on the pedal box beside the clutch cylinder; the pedal box with its cover and
+  fixings; the brake pedal and the common pivot bolt, spacers and washers. Pipes: master cylinder to the four-way
+  connection with its hydraulic stop lamp switch, pipes to both front hoses and back under the floor to the rear
+  hose, the three-way connection on P7's tab and the two axle pipes. Handbrake (early layout, Fig 9.10): lever,
+  ratchet, pawl and rod, operating lever, trunnion, brass adjusting nut and spring, the cable, the scissor
+  compensator on P7's pin, rods, clevis pins and clips. Datums: `mgb/brake_layout.py`.
+
+Next: P9 (suspension, steering, wheels, engine mountings) on `mgb/front_suspension_layout.py` and the axle datums;
+P10 electrical; P11 the body. The exhaust: the early cars have a one-piece welded system (Ch 3 Sec 46) that hangs
 from the body, so it goes in with the floor and the gearbox mountings, along with the fuel
-pump, tank and the rigid pipe from the pump to the feed union. The engine mountings (Fig 1.29) go in with the
-front crossmember, and the 18ACR alternator with the electrical system. The working standard is in
-`CLAUDE.md`.
+pump, tank and the rigid pipe from the pump to the feed union. The working standard is in `CLAUDE.md`.

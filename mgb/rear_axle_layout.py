@@ -192,7 +192,8 @@ REBOUND_SPINDLE_END = 522.0
 BREATHER = (0.0, -150.0)                     # (x, y) on the top of the right-hand neck
 FILLER = (40.0, -25.0)                       # (y, z) on the rear of the bowl
 DRAIN = (-40.0, 0.0)                         # (x, y) on the underside
-PIPE_BRACKET = (10.0, 150.0)                 # (x, y) tab on the top of the left-hand neck for the brake 3-way union (P8)
+PIPE_BRACKET = (10.0, -190.0)                # (x, y) tab on the top of the right-hand neck for the brake 3-way union (P8:
+                                             # Haynes Figs 9.1-9.3 draw the union right of the differential on RHD and LHD cars)
 BALANCE_PIVOT = (60.0, -78.0)                # (y, z) pin on the rear of the bowl for the handbrake balance lever (P8)
 
 

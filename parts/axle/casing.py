@@ -186,10 +186,10 @@ def case(spec) -> Part:
     dx, dy = A.DRAIN
     body = body + zc(14.0, -132.0, -116.0, dx, dy)
     body = body - zc(7.95, -133.0, -115.0, dx, dy)
-    # brake pipe three-way union tab (left neck top) and the balance lever pivot pin (rear)
+    # brake pipe three-way union tab (right neck top) and the balance lever pivot pin (rear)
     px, py = A.PIPE_BRACKET
     tab = box(px - 14.0, px + 14.0, py - 11.0, py + 11.0, 40.0, 52.0)
-    tab = tab - _neck(1, 0.0)
+    tab = tab - _neck(1 if py > 0 else -1, 0.0)
     tab = tab - zc(3.3, 39.0, 53.0, px, py)
     body = body + (tab & box(-200, 200, -700, 700, 30.0, 60.0))
     by_, bz = A.BALANCE_PIVOT
