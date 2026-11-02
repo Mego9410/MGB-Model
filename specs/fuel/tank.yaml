@@ -1,0 +1,237 @@
+# Early strap-mounted fuel tank, filler and gauge unit, 1963 roadster (cars to early 1965). Haynes Ch 3 Sec 12
+# (removal, early tourers), Sec 15 (filler spout), Sec 16 (gauge unit), Fig 3.9 (printed p71) items 1-12 and 25-33.
+# Outside references: MGOC Spares "MGB fuel tanks, fillers and sender units" (ARH176 tank to 1965, "a wedge-shaped
+# unit with a flat top and curved bottom", two straps with rear hangers and clevis pins; sender BHA4292, six-screw
+# cork gasket 2H1082B, screw 53K165; packing strip AHH5115; strap AHH6253; clevis pin CLZ427 1/4 in; split pin
+# GHF500 1/16 in; bolt 1/4 UNF x 2 1/4 BH604181; nyloc nut GHF221; washer GHF300; filler hose clips 2 in GHC1622;
+# filler neck seal AHH6268; early roadsters a lift-off cap on a chain); BritishCarForum "early MGB fuel tanks"
+# (two straps as the MGA; the later tank bolts up by a flange). Stations and sizes: mgb/fuel_supply_layout.py.
+defaults:
+  system: fuel
+  assembly: fuel.tank
+  haynes: { section: 12, spec_page: 71 }
+  variant: { factory_1963: true, as_fitted: true, tank: early_strap_mounted }
+  finish: paint_black
+
+parts:
+  - id: fuel.tank.tank
+    name: Fuel tank (earlier type)
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 1 }] }
+    quantity: 1
+    part_numbers:
+      - { number: ARH176, by: "MGOC Spares (fuel tank, up to 1965)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    notes: >
+      A wedge with a flat top and a curved bottom (MGOC), the two end plates rolled into a seam flange all round,
+      an X-shaped panel pressed in the top (Fig 3.9), the filler stub on top, the gauge unit's six-screw ring and
+      the outlet on the right-hand end (the gauge wires come off the right side, Sec 12 para 4), the drain plug
+      underneath (para 2). Held up under the boot floor by two straps (para 6). Plan size and depths derived for
+      the early cars' 10 Imp gal, the tank sitting between the right-hand road spring and the rear silencer.
+    specs:
+      length: { in: 18.0, mm: 457.2, source: { label: D, method: "Axle (bowl and compensator) to the rear spring shackles" } }
+      width: { mm: 575.0, source: { label: D, method: "Right-hand spring (33 mm clear) to the rear silencer (37 mm clear)" } }
+      depth_front: { mm: 142.0, source: { label: D, method: "Wedge, shallower at the front" } }
+      depth_rear: { mm: 200.0, source: { label: D, method: "Wedge, deeper at the rear" } }
+      capacity_litres: { count: [43, 48], source: { label: D, method: "10 Imp gal (45.5 litres), the early tank; computed from the side profile" } }
+
+  - id: fuel.tank.drain-plug
+    name: Drain plug
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 2 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Removed first, under the car, to drain the tank (Sec 12 para 2)."
+    specs:
+      thread_diameter: { mm: 14.0, source: { label: D, method: "Plug in the 14 mm boss" } }
+
+  - id: fuel.tank.drain-washer
+    name: Drain plug washer
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 3 }] }
+    quantity: 1
+    finish: copper
+    specs:
+      outside_diameter: { mm: 22.0, source: { label: D, method: "Sealing washer for the 14 mm plug" } }
+      thickness: { mm: 1.5, source: { label: D, method: "Sealing washer" } }
+
+  - id: fuel.tank.strap
+    name: Tank mounting strap
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 5 }] }
+    quantity: 2
+    part_numbers:
+      - { number: AHH6253, by: "MGOC Spares (tank strap, MGB)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    notes: >
+      Forked end pinned to a body tab ahead of the tank (P11b), down the front face, under the curved bottom and up
+      the rear face to an end tab under the rear hanger, drawn up by the strap bolt and nut ("undo the strap nuts
+      at the rear of the tank", Sec 12 para 6). Width and section derived.
+    specs:
+      width: { in: 1.0, mm: 25.4, source: { label: D, method: "Fig 3.9 proportion" } }
+      thickness: { mm: 1.6, source: { label: D, method: "Pressed strip" } }
+
+  - id: fuel.tank.packing-strip
+    name: Rubber packing strip
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 4 }] }
+    quantity: 2
+    finish: rubber
+    part_numbers:
+      - { number: AHH5115, by: "MGOC Spares (packing strip)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Rubber strip under the strap" } }
+
+  - id: fuel.tank.rear-hanger
+    name: Strap rear hanger
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 6 }] }
+    quantity: 2
+    notes: "A pressed channel on the clevis pin through the body tab (P11b), the strap bolt through its foot (Fig 3.9). Form derived."
+    specs:
+      height: { mm: 37.0, source: { label: D, method: "Pin to foot, Fig 3.9 proportion" } }
+
+  - id: fuel.tank.clevis-pin
+    name: Clevis pin
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 7 }] }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: CLZ427, by: "MGOC Spares (clevis pin 1/4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    notes: "Through each rear hanger and its body tab; the straps' forked front ends are pinned the same way (D)."
+    specs:
+      diameter: { in: 0.25, mm: 6.35, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units", note: "CLZ427 clevis pin 1/4" }, display_only: true }
+      length: { mm: 40.0, source: { label: D, method: "Through the hanger's two cheeks, the body tab and the washer" } }
+
+  - id: fuel.tank.split-pin
+    name: Split pin
+    haynes: { section: 12 }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF500, by: "MGOC Spares (split pin 1/16)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      diameter: { in: 0.0625, mm: 1.5875, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units", note: "GHF500 split pin 1/16" }, display_only: true }
+
+  - id: fuel.tank.pin-washer
+    name: Clevis pin washer
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 8 }] }
+    quantity: 4
+    finish: zinc_steel
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "1/4 in plain washer" } }
+      inside_diameter: { mm: 6.8, source: { label: D, method: "1/4 in plain washer" } }
+      thickness: { mm: 1.2, source: { label: D, method: "1/4 in plain washer" } }
+
+  - id: fuel.tank.strap-bolt
+    name: Strap bolt
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 9 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: BH604181, by: "MGOC Spares (bolt, hex head, 1/4 UNF x 2 1/4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      length: { in: 2.25, mm: 57.15, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units", note: "BH604181 1/4 UNF x 2 1/4" }, display_only: true }
+
+  - id: fuel.tank.strap-washer
+    name: Strap bolt washer
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 10 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF300, by: "MGOC Spares (washer, plain, 1/4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      outside_diameter: { mm: 13.0, source: { label: D, method: "1/4 in plain washer" } }
+      inside_diameter: { mm: 6.8, source: { label: D, method: "1/4 in plain washer" } }
+      thickness: { mm: 1.2, source: { label: D, method: "1/4 in plain washer" } }
+
+  - id: fuel.tank.strap-nut
+    name: Strap nut
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 11 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF221, by: "MGOC Spares (nut, nyloc, 1/4 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units", note: "1/4 UNF" }, display_only: true }
+
+  - id: fuel.tank.filler-seal
+    name: Rubber seal, tank to boot floor
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 12 }] }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: AHH6268, by: "MGOC Spares (filler neck seal)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    notes: 'Round the filler stub where it passes up through the boot floor (mgb.underbody_layout BOOT_FLOOR_Z); "pull out the extension and seal" (Sec 12 para 5).'
+    specs:
+      outside_diameter: { mm: 86.8, source: { label: D, method: "Two lips either side of the floor hole" } }
+
+  - id: fuel.tank.filler-hose
+    name: Filler connection hose
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 27 }] }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: BHH191, by: "MGOC Spares (filler hose, inlet)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      bore: { in: 2.0, mm: 50.8, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units", note: "2 in hose clips GHC1622 on the filler hose" }, display_only: true }
+
+  - id: fuel.tank.hose-clip
+    name: Filler hose clip
+    haynes: { section: 12, figures: [{ figure: "3.9", legend: 28 }] }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHC1622, by: "MGOC Spares (hose clip, 2 inch)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    notes: "Two clips on the filler neck hose (Sec 12 para 5)."
+    specs:
+      diameter: { mm: 63.0, source: { label: D, method: "Over the 2 in hose" } }
+      width: { mm: 9.0, source: { label: D, method: "Worm-drive band" } }
+
+  - id: fuel.tank.filler-tube
+    name: Filler tube (extension)
+    haynes: { section: 15, figures: [{ figure: "3.9", legend: 26 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: AHH6281, by: "MGOC Spares (filler tube, MGB)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    notes: >
+      A 90 degree elbow from the hose up and out to the cap (Fig 3.9). Its run to the body's filler housing is
+      derived: the elbow turns outward to the right; where the cap sits on the body is a question for Oliver
+      (PLAN.md) and for P11b.
+    specs:
+      outside_diameter: { in: 2.0, mm: 50.8, source: { label: D, method: "Inside the 2 in hose" } }
+
+  - id: fuel.tank.filler-cap
+    name: Filler cap
+    haynes: { section: 15, figures: [{ figure: "3.9", legend: 29 }] }
+    quantity: 1
+    finish: chrome
+    notes: "Lift-off cap with a fluted rim and a vent hole (earlier roadsters, MGOC Spares MGB fuel caps); a blocked vent starves the pump (Sec 9 para 3b)."
+    specs:
+      diameter: { mm: 72.0, source: { label: D, method: "Over the 2 in neck" } }
+
+  - id: fuel.tank.gauge-unit
+    name: Fuel gauge tank unit (early)
+    haynes: { section: 16, figures: [{ figure: "3.9", legend: 30 }] }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: BHA4292, by: "MGOC Spares (tank sender unit, up to 1965)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    notes: >
+      Six screws hold it to the right-hand end of the tank (Sec 16 para 1); the resistance housing and two terminals
+      outside, the float arm and float inside ("taking care not to damage the float lever"). Sizes derived.
+    specs:
+      screw_pcd: { mm: 66.0, source: { label: D, method: "Six screws on the ring, Fig 3.9 proportion" } }
+
+  - id: fuel.tank.gauge-gasket
+    name: Gauge unit gasket
+    haynes: { section: 16, figures: [{ figure: "3.9", legend: 32 }] }
+    quantity: 1
+    finish: cork
+    part_numbers:
+      - { number: 2H1082B, by: "MGOC Spares (sender gasket, six-screw, original cork type)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      thickness: { mm: 1.5, source: { label: D, method: "Cork gasket" } }
+
+  - id: fuel.tank.gauge-screw
+    name: Gauge unit screw
+    haynes: { section: 16, figures: [{ figure: "3.9", legend: 33 }] }
+    quantity: 6
+    finish: zinc_steel
+    part_numbers:
+      - { number: 53K165, by: "MGOC Spares (sender screw, pan head)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-tanks-fillers-sender-units" } }
+    specs:
+      length: { mm: 9.5, source: { label: D, method: "Through the unit, gasket and the tank's ring" } }

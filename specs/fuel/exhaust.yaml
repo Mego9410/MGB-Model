@@ -1,0 +1,272 @@
+# Early one-piece welded exhaust system, 18G engine, 3-synchro overdrive gearbox, chrome bumper roadster (1963).
+# Haynes Ch 3 Sec 46 (printed p92) and photo 46.2; Ch 1 Sec 6 para 14 and photos 6.14(a), (b) (printed p27);
+# Ch 8 Sec 3 para 6 (printed p142). Haynes gives no exploded figure of the early system; the layout is from
+# MGOC Spares "MGB exhaust systems" and "MGB OE exhaust systems", Rimmer Bros GRID019684 (one piece systems and
+# their fitting kits), Moss Motors 459-075 instructions. Routes and sizes not published: mgb/exhaust_layout.py.
+defaults:
+  system: fuel
+  assembly: fuel.exhaust
+  haynes: { section: 46, spec_page: 92 }
+  variant: { factory_1963: true, as_fitted: true, one_piece_system: true, gearbox: three_synchro }
+  finish: exhaust_steel
+
+parts:
+  - id: fuel.exhaust.front-pipe
+    name: Front pipe (twin downpipes and Y-piece)
+    haynes: { section: 46 }
+    quantity: 1
+    notes: >
+      Two downpipes, one from each manifold outlet (the front one carries cylinders 1 and 4 through the Y in the
+      casting, the rear one the siamesed 2/3 port: MGOC Spares "MGB exhaust systems"), each with a two-hole flange
+      welded below a flared spigot that carries the sealing ring (photo 46.2). They drop beside the bellhousing,
+      behind the engine rear plate, and run into a pressed breeches that necks down to the 1 7/8 in system pipe,
+      which passes under the gearbox crossmember (Moss Motors 459-075: the head pipe "may touch the transmission
+      cross member") to the centre silencer. Part of the one-piece welded system (Sec 46 para 1). Route and bends
+      derived; downpipe size derived from the outlets.
+    specs:
+      downpipe_od: { in: 1.5, mm: 38.1, source: { label: D, method: "Sized to the manifold outlets; not published" } }
+      flange_thickness: { mm: 5.0, source: { label: D, method: "Plate flange as photo 46.2" } }
+
+  - id: fuel.exhaust.centre-silencer
+    name: Centre silencer
+    haynes: { section: 46 }
+    quantity: 1
+    notes: >
+      Flattened oval case on chrome bumper cars (MGOC Spares "MGB exhaust systems"; twin perforated tube internals
+      from July 1963), with rolled lock seams round the end plates, two pressed beads and a lock seam along it.
+      Hangs under the left-hand floor beside the tunnel, 8 mm under the floor (mgb.underbody_layout FLOOR_Z), its
+      underside at the published 4.2 in minimum ground clearance. Size derived (18 x 8 in section 80 mm deep).
+    specs:
+      length: { in: 18.0, mm: 457.2, source: { label: D, method: "Proportion of the flattened oval box to the floor length behind the crossmember" } }
+      width: { in: 8.0, mm: 203.2, source: { label: D, method: "Flattened oval section beside the tunnel" } }
+      depth: { mm: 80.0, source: { label: D, method: "Floor height less 8 mm less the 4.2 in ground clearance" } }
+
+  - id: fuel.exhaust.inter-pipe
+    name: Intermediate pipe
+    haynes: { section: 46 }
+    quantity: 1
+    notes: >
+      From the centre silencer back between the tunnel and the left-hand battery carrier (P10), under the axle's
+      left neck (Moss Motors 459-075: the system passes under the rear axle), under the left-hand handbrake rod
+      behind the axle (P8) and out to the rear silencer. 1 7/8 in pipe (MGOC Spares GEX9008 U clamp 1 7/8 in).
+    specs:
+      outside_diameter: { in: 1.875, mm: 47.625, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems", note: "GEX9008 U clamp, exhaust 1 7/8 in" } }
+      wall: { mm: 1.6, source: { label: D, method: "16 swg mild steel" } }
+
+  - id: fuel.exhaust.rear-silencer
+    name: Rear silencer
+    haynes: { section: 46 }
+    quantity: 1
+    notes: >
+      Cylindrical (MGOC Spares: "the rear silencer was always a cylindrical type"), rolled end seams, dished end
+      plates, a centre bead and a lock seam. Lies fore and aft behind the axle on the left, between the fuel tank
+      and the left-hand road spring. Size derived.
+    specs:
+      length: { in: 15.0, mm: 381.0, source: { label: D, method: "Space between the axle and the rear mounting" } }
+      diameter: { in: 4.5, mm: 114.3, source: { label: D, method: "Gap between the tank and the road spring" } }
+
+  - id: fuel.exhaust.tail-pipe
+    name: Tail pipe
+    haynes: { section: 46 }
+    quantity: 1
+    notes: >
+      From the rear silencer to the bumper line on the left (MGOC Spares: the tail pipe exits on the left-hand
+      side; originally cut at 45 degrees). The rear mounting's pinch clamp grips it (Sec 46 para 3).
+    specs:
+      cut_angle: { deg: 45.0, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems", note: "Tailpipe originally cut at a 45 degree angle" }, display_only: true }
+
+  - id: fuel.exhaust.sealing-ring
+    name: Exhaust flange sealing ring
+    haynes: { section: 46 }
+    quantity: 2
+    finish: copper
+    part_numbers:
+      - { number: GEG753, by: "MGOC Spares (seal downpipe)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings" } }
+    notes: >
+      One on each downpipe's flared spigot, seating in the counterbore of each manifold outlet; "note the sealing
+      rings" (Sec 46 para 2, photo 46.2). Two per car (Rimmer Bros fitting kit: "downpipe seals"). Size derived.
+    specs:
+      outside_diameter: { mm: 43.5, source: { label: D, method: "Fits the 44 mm outlet counterbore" } }
+      height: { mm: 8.0, source: { label: D, method: "Photo 46.2 proportion" } }
+
+  - id: fuel.exhaust.manifold-stud
+    name: Downpipe stud
+    haynes: { section: 46 }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: CHS2513, by: "MGOC Spares (stud for the downpipe to manifold joint)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings" } }
+    notes: Two per outlet, screwed up into the manifold's outlet flange either side of the outlet, across the car (D).
+    specs:
+      length: { in: 1.625, mm: 41.275, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings", note: "CHS2513 stud 5/16 x 1 5/8" } }
+
+  - id: fuel.exhaust.flange-washer
+    name: Spring washer, downpipe flange
+    haynes: { section: 46 }
+    quantity: 4
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF332, by: "MGOC Spares", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings" } }
+    specs:
+      outside_diameter: { mm: 13.5, source: { label: D, method: "5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: fuel.exhaust.flange-nut
+    name: Nut, downpipe flange
+    haynes: { section: 46 }
+    quantity: 4
+    finish: brass
+    part_numbers:
+      - { number: GHF261, by: "MGOC Spares (nut, brass, deep, 5/16 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings" } }
+    notes: Brass so it does not seize on the hot stud (MGOC). Removed first; the pipe then drops away (Sec 46 para 2).
+    specs:
+      thread: { in: 0.3125, mm: 7.9375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/manifold-gasket-fixings", note: "5/16 UNF" }, display_only: true }
+
+  - id: fuel.exhaust.gearbox-bracket
+    name: Exhaust bracket, gearbox (3-synchro)
+    haynes: { section: 46 }
+    quantity: 1
+    finish: paint_black
+    part_numbers:
+      - { number: GEX7189, by: "MGOC Spares (bracket g/box 3sync); Rimmer Bros (exhaust bracket - downpipe to gearbox)", source: { label: S, ref: "https://rimmerbros.com/Item--i-GEX7189" } }
+    notes: >
+      The gearbox clip (Ch 1 Sec 6 para 14, photo 6.14(b): a flat bar to a strap round the pipe). Held under the
+      two lowest rear side cover bolts on the left of the gearbox, where the pipe runs (D: the side cover face is
+      the nearest machined face on the 3-synchro casing); its tongue joggles out to the strap. The two side cover
+      bolts lose 4 mm of thread engagement to it.
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "Flat bar as photo 6.14(b)" } }
+
+  - id: fuel.exhaust.gearbox-strap
+    name: Exhaust strap, gearbox clip
+    haynes: { section: 46 }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: GEX7194, by: "MGOC Spares (strap exh mount)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    notes: A band round the system pipe whose two ears are pinched against the bracket's tongue by the front support bolt (Sec 46 para 3).
+    specs:
+      width: { mm: 22.0, source: { label: D, method: "Photo 6.14(b) proportion" } }
+
+  - id: fuel.exhaust.strap-bolt
+    name: Front support bolt
+    haynes: { section: 46 }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF103, by: "MGOC Spares (screw, hex head, 5/16 UNF x 1)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    notes: Removed to free the system at the gearbox (Sec 46 para 3).
+    specs:
+      length: { in: 1.0, mm: 25.4, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems", note: "GHF103 5/16 UNF x 1" }, display_only: true }
+
+  - id: fuel.exhaust.strap-washer
+    name: Spring washer, front support
+    haynes: { section: 46 }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF332, by: "MGOC Spares", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    specs:
+      outside_diameter: { mm: 13.5, source: { label: D, method: "5/16 in spring washer" } }
+      inside_diameter: { mm: 8.2, source: { label: D, method: "5/16 in spring washer" } }
+      thickness: { mm: 2.0, source: { label: D, method: "5/16 in spring washer" } }
+
+  - id: fuel.exhaust.strap-nut
+    name: Nut, front support
+    haynes: { section: 46 }
+    quantity: 1
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF201, by: "MGOC Spares (nut, plain, 5/16 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    specs:
+      thread: { in: 0.3125, mm: 7.9375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems", note: "5/16 UNF" }, display_only: true }
+
+  - id: fuel.exhaust.rear-bracket
+    name: Rear mounting bracket (body)
+    haynes: { section: 46 }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Pressed angle screwed up under the boot floor behind the tank (P11b: two captive nuts), its tab hanging on
+      the outboard face of the rubber mounting with turned-out edges. Form derived; "the two brackets under the
+      car" (Ch 8 Sec 3 para 6) are this and the gearbox bracket.
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Pressed steel" } }
+
+  - id: fuel.exhaust.bracket-screw
+    name: Screw, rear bracket to body
+    haynes: { section: 46 }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF117, by: "MGOC Spares (screw, hex head, 1/4 UNF x 3/4)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    specs:
+      length: { in: 0.75, mm: 19.05, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems", note: "GHF117 1/4 UNF x 3/4" }, display_only: true }
+
+  - id: fuel.exhaust.rear-mounting
+    name: Rear mounting rubber
+    haynes: { section: 46 }
+    quantity: 1
+    finish: rubber
+    part_numbers:
+      - { number: GEX7275, by: "MGOC Spares (exh rr mount MGB)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    notes: >
+      Bonded rubber block with a steel tube through each end: the bracket bolt through the top, the pinch clamp's
+      ears and bolt through the bottom (cars to 1970: "a pinch clamp rear mounting arrangement", MGOC Spares).
+      Size derived.
+    specs:
+      height: { mm: 66.0, source: { label: D, method: "Two bolt holes 40 mm apart" } }
+
+  - id: fuel.exhaust.rear-clamp
+    name: Pinch clamp half, rear mounting
+    haynes: { section: 46 }
+    quantity: 2
+    finish: zinc_steel
+    notes: >
+      Two pressed halves round the tail pipe, their long ears either side of the rubber block's lower end. The
+      "rear mounting pipe bolt" is loosened to slide the pipe out (Sec 46 para 3). Form derived.
+    specs:
+      width: { mm: 25.0, source: { label: D, method: "Pinch clamp band" } }
+
+  - id: fuel.exhaust.clamp-bolt
+    name: Rear mounting pipe bolt
+    haynes: { section: 46 }
+    quantity: 1
+    finish: zinc_steel
+    notes: >
+      Pinches the clamp halves' ears and the rubber block's lower tube; loosened to slide the tail pipe out (Sec 46
+      para 3). MGOC lists a 1/4 UNF x 2 3/4 bolt (BH604221) with the rear mount; with the block drawn here a
+      1 1/4 in bolt fills the stack, so the length is derived.
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Two clamp ears, the rubber block's tube, washer and nut" } }
+
+  - id: fuel.exhaust.mount-bolt
+    name: Bolt, rubber to rear bracket
+    haynes: { section: 46 }
+    quantity: 1
+    finish: zinc_steel
+    specs:
+      length: { in: 1.25, mm: 31.75, source: { label: D, method: "Through the bracket tab and the block's upper tube" } }
+
+  - id: fuel.exhaust.small-washer
+    name: Spring washer, 1/4 in
+    haynes: { section: 46 }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF331, by: "MGOC Spares", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    specs:
+      outside_diameter: { mm: 11.0, source: { label: D, method: "1/4 in spring washer" } }
+      inside_diameter: { mm: 6.6, source: { label: D, method: "1/4 in spring washer" } }
+      thickness: { mm: 1.6, source: { label: D, method: "1/4 in spring washer" } }
+
+  - id: fuel.exhaust.small-nut
+    name: Nut, 1/4 UNF
+    haynes: { section: 46 }
+    quantity: 2
+    finish: zinc_steel
+    part_numbers:
+      - { number: GHF200, by: "MGOC Spares", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
+    specs:
+      thread: { in: 0.25, mm: 6.35, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems", note: "1/4 UNF" }, display_only: true }

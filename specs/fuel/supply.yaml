@@ -1,0 +1,96 @@
+# Fuel pipes and flexible hoses, tank to pump and pump to the engine bay feed union (P3 fuel.pipes.feed-union),
+# 1963 roadster. Haynes Ch 3 Sec 5 (inlet and outlet pipes on nuts or clips), Sec 9 (suction side leaks: "all the
+# connections from tank to pump are sound"), Sec 12 para 3 (the fuel pipe union at the tank). MGOC Spares "MGB fuel
+# lines - rear & main" (tank to pump pipe AHH6703, braided hoses in the rear fuel line area until July 1975, direct
+# pipe connections on early cars, P clips) and "Keeping on top of the MGB fuel system" parts 2 and 3 (the
+# underfloor steel pipe clipped under the right-hand floor with the battery cable, rear loom and brake pipe; it
+# enters the engine bay by the heater). Routes: mgb/fuel_supply_layout.py.
+defaults:
+  system: fuel
+  assembly: fuel.supply
+  haynes: { section: 5, spec_page: 67 }
+  variant: { factory_1963: true, as_fitted: true }
+  finish: zinc_steel
+
+parts:
+  - id: fuel.supply.tank-hose
+    name: Flexible hose, tank to pipe
+    haynes: { section: 12 }
+    quantity: 1
+    finish: braided
+    notes: Braided hose with crimped ferrules and union nuts from the tank's outlet stub to the tank-to-pump pipe (MGOC; run derived).
+    specs:
+      outside_diameter: { mm: 12.5, source: { label: D, method: "Braided 1/4 in bore hose" } }
+
+  - id: fuel.supply.tank-pipe
+    name: Fuel pipe, tank to pump
+    haynes: { section: 5 }
+    quantity: 1
+    part_numbers:
+      - { number: AHH6703, by: "MGOC Spares (pipe tank to pump, MGB to 1974)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-lines-rear-main" } }
+    notes: >
+      Across the tank's front face, up over the axle under the body's arch (mgb.underbody_layout ARCH_Z), forward
+      under the tonneau floor between the tunnel and P10's right-hand battery carrier, and into the pump's inlet
+      connection from behind. The suction side: an air leak here makes the pump run fast (Sec 9 para 1). Run derived.
+    specs:
+      outside_diameter: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in steel pipe, matching P3's 5/16 in hoses" } }
+
+  - id: fuel.supply.pump-hose
+    name: Flexible hose, pump to pipe
+    haynes: { section: 5 }
+    quantity: 1
+    finish: braided
+    part_numbers:
+      - { number: AHH7371, by: "MGOC Spares (braided pump hose MGB)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-lines-rear-main" } }
+    notes: From the outlet connection on top of the pump to the main pipe's union on the heelboard (run derived).
+    specs:
+      outside_diameter: { mm: 12.5, source: { label: D, method: "Braided 1/4 in bore hose" } }
+
+  - id: fuel.supply.feed-pipe
+    name: Fuel pipe, pump to carburettors
+    haynes: { section: 5 }
+    quantity: 1
+    part_numbers:
+      - { number: AHH6995, by: "MGOC Spares (fuel pipe pump to carb MGB chrome bumper)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-lines-rear-main" } }
+    notes: >
+      Down the heelboard, forward under the right-hand floor 22 mm outboard of P8's rear brake pipe, up the toe
+      board, up the bulkhead's engine-side face inboard of P8's left front brake pipe, across it above that pipe and
+      the bellhousing, and forward along the left of the engine to the feed union under the carburettors (P3).
+      Mild steel as standard (MGOC). Run derived.
+    specs:
+      outside_diameter: { in: 0.3125, mm: 7.9375, source: { label: D, method: "5/16 in steel pipe" } }
+
+  - id: fuel.supply.union-nut
+    name: Pipe union nut
+    haynes: { section: 5 }
+    quantity: 5
+    finish: brass
+    notes: Tank stub, both ends of the tank hose's pipe joint, the pump inlet, and both ends of the pump hose ("undoing the nuts", Sec 5 para 4).
+    specs:
+      across_flats: { mm: 17.5, source: { label: D, method: "7/16 in UNF union nut" } }
+
+  - id: fuel.supply.pipe-union
+    name: Main pipe union (engine end)
+    haynes: { section: 18 }
+    quantity: 1
+    finish: brass
+    notes: Screws into the feed union nut on P3's feed hose (fuel.pipes.feed-union).
+    specs:
+      across_flats: { mm: 17.5, source: { label: D, method: "7/16 in UNF union" } }
+
+  - id: fuel.supply.p-clip
+    name: Fuel pipe clip
+    haynes: { section: 5 }
+    quantity: 7
+    part_numbers:
+      - { number: PCR509, by: "MGOC Spares (P clip 5/16 in cable hole, 9/32 in fixing)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/fuel/fuel-lines-rear-main" } }
+    notes: "P clips to the floor, the bulkhead, the axle arch and the tonneau floor (MGOC: 'secured by clips to the floor and bulkhead'); stations derived."
+    specs:
+      width: { mm: 9.0, source: { label: D, method: "Strip width" } }
+
+  - id: fuel.supply.clip-screw
+    name: Clip screw
+    haynes: { section: 5 }
+    quantity: 7
+    specs:
+      length: { mm: 12.7, source: { label: D, method: "No 10 x 1/2 in self tapping screw" } }

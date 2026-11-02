@@ -5,10 +5,10 @@ frame: the manifold joint face of the head is the plane y = y_max (mgb.head_layo
 import math
 from pathlib import Path
 
-from build123d import (Axis, Box, Circle, Cylinder, FilletPolyline, Location, Part, Plane, SlotCenterToCenter, extrude,
+from build123d import (Align, Axis, Box, Circle, Cylinder, FilletPolyline, Location, Part, Plane, SlotCenterToCenter, extrude,
                        fillet, sweep)
 
-from mgb import fasteners as F, shapes as Sh, spec as S
+from mgb import exhaust_layout as EX, fasteners as F, shapes as Sh, spec as S
 from mgb.head_layout import layout as head_layout
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -46,20 +46,31 @@ def _rod(points, r, radius=24.0):
 
 
 def exhaust_manifold(spec) -> Part:
-    """Cast iron, three ports (the centre one siamesed) sweeping down and back to a
-    single outlet with a two-stud flange for the down pipe."""
+    """Cast iron, three ports (the centre one siamesed) sweeping down to two outlets side by side under the
+    centre port: cylinders 1 and 4 by a Y to the front outlet, the siamesed 2/3 port to the rear one (MGOC Spares
+    "MGB exhaust systems": twin downpipes). One flange carries both outlets, each with two studs across the car
+    and a counterbore for the downpipe's sealing ring (photo 46.2; P11a mgb.exhaust_layout)."""
     r, wall = spec.nom("branch_bore") / 2 + 4, 4.0
     y0, t = FLANGE_FACE, spec.nom("flange_thickness")
     cx, cy, cz = COLLECT
+    fz = EX.OUTLET_FACE_Z                       # underside of the outlet flange
     flange = None
     branches = None
+
+    def target(valves):
+        return EX.OUTLETS["rear" if len(valves) > 1 else "front"]
+
+    def route(x, z, valves, start):
+        tx, ty = target(valves)
+        outer = len(valves) == 1
+        return [(x, start, z), (x, y0 + 30, z - 6), (x * 0.55 + tx * 0.45, ty - 4 + (6 if outer else 0), z - 70),
+                (tx + x * 0.08, ty + (5 if outer else 0), cz)]
     for x, z, valves in HL.exhaust_ports:
         siamese = len(valves) > 1
         pad = _yslot(x, z, 64 if siamese else 46, 46, y0, t)
         flange = pad if flange is None else flange + pad
         rr = r + (3 if siamese else 0)
-        pts = [(x, y0, z), (x, y0 + 30, z - 6), (x * 0.55 + cx * 0.45, cy - 4, z - 70), (cx + x * 0.1, cy, cz)]
-        b = _rod(pts, rr)
+        b = _rod(route(x, z, valves, y0), rr)
         branches = b if branches is None else branches + b
     # ears: out to the end studs, and across to the lower centre studs
     for x, z, kind in HL.manifold_studs:
@@ -68,19 +79,23 @@ def exhaust_manifold(spec) -> Part:
             flange = flange + _yslot(x - sgn * 8, z, 42, 26, y0, t)
         elif z < 30:
             flange = flange + _yslot(x - sgn * 9, z + 2, 44, 24, y0, t)
-    collector = Cylinder(r + 4, 40).moved(Location((cx, cy, cz - 14)))
-    outlet = Location((cx, cy, cz - 34)) * Box(84, 46, 12)
-    outlet = fillet(outlet.edges().filter_by(Axis.Z), 14)
-    m = flange + branches + collector + outlet
-    # bores: ports, branches (hollow), outlet
+    m = flange + branches
+    ox = [p[0] for p in EX.OUTLETS.values()]
+    for x, y in EX.OUTLETS.values():                                   # the two outlet bosses
+        m = m + Location((x, y, fz + t)) * Cylinder(r + 3, cz - fz - t + 8, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    pad = Location(((max(ox) + min(ox)) / 2, cy, fz + t / 2)) * Box(max(ox) - min(ox) + 46, 2 * EX.STUD_DY + 22, t)
+    pad = fillet(pad.edges().filter_by(Axis.Z), 11)
+    m = m + pad
+    # bores: ports, branches (hollow), outlets with their sealing ring counterbores, stud holes
     for x, z, valves in HL.exhaust_ports:
         siamese = len(valves) > 1
         m = m - _yslot(x, z, 42 if siamese else 30, 30, y0 - 1, t + 2)
-        pts = [(x, y0 - 1, z), (x, y0 + 30, z - 6), (x * 0.55 + cx * 0.45, cy - 4, z - 70), (cx + x * 0.1, cy, cz)]
-        m = m - _rod(pts, (r + (3 if siamese else 0)) - wall)
-    m = m - Cylinder(r - wall + 3, 70).moved(Location((cx, cy, cz - 20)))
-    for sx in (-28, 28):
-        m = m - Cylinder(5.0, 30).moved(Location((cx + sx, cy, cz - 34)))
+        m = m - _rod(route(x, z, valves, y0 - 1), (r + (3 if siamese else 0)) - wall)
+    for x, y in EX.OUTLETS.values():
+        m = m - Location((x, y, fz - 1)) * Cylinder(EX.OUTLET_BORE / 2, cz - fz + 10, align=(Align.CENTER, Align.CENTER, Align.MIN))
+        m = m - Location((x, y, fz - 1)) * Cylinder(EX.SEAT_D / 2, EX.SEAT_DEPTH + 1, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    for x, y in EX.STUDS:
+        m = m - Location((x, y, fz - 1)) * Cylinder(3.6, t + 2, align=(Align.CENTER, Align.CENTER, Align.MIN))
     for x, z, kind in HL.manifold_studs:
         if kind == "end" or z < 30:
             m = m - _ycyl(4.6, x, z, y0 - 1, y0 + t + 1)
