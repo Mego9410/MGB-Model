@@ -32,6 +32,7 @@ PIPE_OD = 0.1875 * IN
 PIPE_ID = 0.125 * IN
 NUT_AF, NUT_L = 0.4375 * IN, 10.0          # 3/8 UNF tube nut
 BRK_T = 2.5
+SWITCH_WASHER_T = 1.0                       # specs/brakes/lines.yaml switch-washer
 
 
 def tube_nut(p, d):
@@ -89,7 +90,7 @@ def four_way(spec) -> Part:
         base = along(p, d, -4.0)
         boss = Plane(origin=base, z_dir=d).location * (chamfered_hex(14.0, 4.0) if name != "switch" else zc(8.0, 0, 4.0))
         b = b + boss
-        b = b - Plane(origin=p, z_dir=d).location * zc(4.0, -12.0, 1.0)       # tapped 3/8 UNF port
+        b = b - Plane(origin=p, z_dir=d).location * zc(4.65, -12.0, 1.0)      # tapped 3/8 UNF port
         b = b - Plane(origin=p, z_dir=d).location * zc(1.2, -20.0, 0.0)
     b = b - xcyl(4.2, X4[0] - 1, X4[1] + 1, FY4, FZ4)                     # bolt hole through the middle
     return lab(b, spec)
@@ -121,13 +122,13 @@ def stop_switch(spec) -> Part:
     for k in (-1, 1):
         s = s + box(k * 4.0 - 0.4, k * 4.0 + 0.4, -3.2, 3.2, 21.9, 31.0) - zc(1.0, 26, 32, k * 4.0, 0)
     s = s - Sh.revolved([(10.6, 14.0), (11.0, 14.0), (11.0, 15.0), (10.6, 15.0)])
-    return lab(Plane(origin=p, z_dir=d).location * s, spec)
+    return lab(Plane(origin=along(p, d, SWITCH_WASHER_T), z_dir=d).location * s, spec)
 
 
 def switch_washer(spec) -> Part:
     p, d = four_way_ports()["switch"]
     t = spec.nom("thickness")
-    return lab(Plane(origin=along(p, d, -t), z_dir=d).location * ring(4.8, 8.0, 0, t), spec)
+    return lab(Plane(origin=p, z_dir=d).location * ring(4.8, 8.0, 0, t), spec)
 
 
 # =================================================================================================
@@ -163,7 +164,7 @@ def front_pipe_points(side):
     leg = side * B.CHASSIS_LEG_Y
     pts = [p, along(p, d, 14.0)]
     if side > 0:
-        y_up = B.BOX_Y[1] + 10.0
+        y_up = B.BOX_Y[1] + B.BOX_FLANGE + 5.0
         pts += [(xb, y_up, FZ4), (xb, y_up, B.HEAT_CROSS_Z), (xb, -y_up, B.HEAT_CROSS_Z), (xb, -y_up, B.LEG_PIPE_Z),
                 (xb, leg, B.LEG_PIPE_Z)]
     else:
@@ -222,7 +223,7 @@ def union(spec) -> Part:
     b = b + box(U1 - 0.01, ex_ + 8.0, UY - 8.0, UY + 8.0, UZ0, UZ0 + 8.0) + zc(8.0, UZ0, UZ0 + 8.0, ex_, UY)
     for name, (p, d) in union_ports().items():
         b = b + Plane(origin=along(p, d, -3.0), z_dir=d).location * chamfered_hex(14.0, 3.0)
-        b = b - Plane(origin=p, z_dir=d).location * zc(4.0, -11.0, 1.0)
+        b = b - Plane(origin=p, z_dir=d).location * zc(4.65, -11.0, 1.0)
         b = b - Plane(origin=p, z_dir=d).location * zc(1.2, -18.0, 0.0)
     b = b - zc(3.3, UZ0 - 1, UZ0 + 9, ex_, UY)
     return lab(A.AF * b, spec)
@@ -250,7 +251,7 @@ def rear_hose(spec) -> Part:
     q = A.car(p)
     top = zc(6.2, hz - 46.0, hz - 21.0, hx, hy) + chamfered_hex(15.9, 13.0, hz - 21.0).moved(Location((hx, hy, 0))) + \
         zc(5.5, hz - 8.01, hz + BRK_T + 14.0, hx, hy)
-    top = top - zc(2.6, hz - 10.0, hz + BRK_T + 15.0, hx, hy)
+    top = top - zc(2.6, hz - 10.0, hz + BRK_T + 15.0, hx, hy) - zc(4.65, hz + BRK_T + 7.0, hz + BRK_T + 15.0, hx, hy)
     bot = zc(4.6, q[2] - 10.0, q[2] + 1.2, q[0], q[1]) + chamfered_hex(14.3, 11.0, q[2] + 1.2).moved(Location((q[0], q[1], 0)))
     bot = bot + zc(6.2, q[2] + 12.0, q[2] + 34.0, q[0], q[1])
     pts = [(hx, hy, hz - 45.0), (hx, hy, hz - 90.0), (q[0] + 70.0, q[1], q[2] + 90.0), (q[0], q[1], q[2] + 70.0),
@@ -329,8 +330,8 @@ def axle_pipe_points(side):
     if side > 0:
         pts += [(-70.0, UY + 40.0, 62.0), (-138.0, -40.0, 48.0), (-138.0, 60.0, 48.0), (-60.0, 150.0, 50.0)]
     y_run = side * 230.0
-    pts += [_tube_pt(y_run), _tube_pt(side * 470.0), _tube_pt(side * 500.0, 46.0, 30.0), _tube_pt(side * 515.0, 50.0, 100.0),
-            (8.0, side * 526.0, B.WC_INLET_Z + 2.0), (0.0, inlet[1] - side * 12.0, inlet[2]), inlet]
+    pts += [_tube_pt(y_run), _tube_pt(side * 470.0), _tube_pt(side * 484.0, 48.0, 0.0), _tube_pt(side * 491.0, 48.0, 45.0), _tube_pt(side * 498.0, 48.0, 90.0),
+            (40.0, side * 503.0, -70.0), (8.0, side * 518.0, B.WC_INLET_Z + 1.0), (0.0, inlet[1] - side * 10.0, inlet[2]), inlet]
     return pts
 
 
@@ -345,12 +346,12 @@ def axle_clip(spec) -> Part:
     right-hand one is turned half round z)."""
     y = 300.0
     w = spec.nom("width")
-    band = ring(A.TUBE_R, A.TUBE_R + 1.2, -w / 2, w / 2)
+    band = ring(A.TUBE_R + 1.5, A.TUBE_R + 2.7, -w / 2, w / 2)
     band = Location((0, y, 0)) * Rot(-90, 0, 0) * band
     px, _, pz = _tube_pt(y)
     loop = ycyl(PIPE_OD / 2 + 1.4, y - w / 2, y + w / 2, px, pz) - ycyl(PIPE_OD / 2 + 0.2, y - w / 2 - 1, y + w / 2 + 1, px, pz)
     web = box(px - 2.0, px + 2.0, y - w / 2, y + w / 2, pz - 8.0, pz - 2.0)
-    c = band + loop + (web - ycyl(PIPE_OD / 2 + 0.2, y - w, y + w, px, pz) - ycyl(A.TUBE_R + 0.01, y - w, y + w, 0, 0))
+    c = band + loop + (web - ycyl(PIPE_OD / 2 + 0.2, y - w, y + w, px, pz) - ycyl(A.TUBE_R + 1.6, y - w, y + w, 0, 0))
     return lab(A.AF * c, spec)
 
 

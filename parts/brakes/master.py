@@ -106,7 +106,7 @@ def mc_body(spec) -> Part:
     b = b + box(-CYL_R - 2.5, -CYL_R + 1.0, -3.0, 3.0, FLANGE_T - 0.01, TANK_Z[0] + 0.01)
     # bore, mouth recess for the circlip, outlet, feed and by-pass ports from the tank
     b = b - lzc(bore, -SPIGOT - 1.0, BORE_END)
-    b = b - lzc(12.0, -SPIGOT - 1.0, -SPIGOT + 3.5)
+    b = b - lzc(13.0, -SPIGOT - 1.0, -SPIGOT + 3.5)
     b = b - lzc(1.4, BORE_END - 1.0, BANJO_SEAT + 1.0) - lzc(4.9, BOSS_Z[1] - 10.0, BANJO_SEAT + 1.0)
     b = b - lxc(1.6, bore - 1.0, CYL_R + 1.0, 0.0, 44.0) - lxc(0.6, bore - 1.0, CYL_R + 1.0, 0.0, 52.0)
     for s in (-1, 1):
@@ -129,7 +129,7 @@ def mc_cap_seal(spec) -> Part:
     """Item 3: rubber seal under the cap."""
     nz, nr, nh = NECK
     t = spec.nom("thickness")
-    return lab(Location((TANK_X[1] + nh, 0, nz)) * Rot(0, 90, 0) * Sh.washer(2 * nr + 3.0, 2 * nr - 5.0, t), spec)
+    return lab(Location((TANK_X[1] + nh, 0, nz)) * Rot(0, 90, 0) * Sh.washer(2 * nr + 1.6, 2 * nr - 5.0, t), spec)
 
 
 def valve(spec) -> Part:
@@ -191,7 +191,7 @@ Y0, Y1 = B.BOX_Y
 Z0, Z1 = B.BOX_Z
 T = B.BOX_T
 BRAKE_PIPE_HOLE = (None, B.MC_Y)          # x filled from the banjo stub
-CLUTCH_PIPE_R = 4.0
+CLUTCH_PIPE_R = 6.0
 
 
 def _clutch_pipe_crossing():
@@ -259,7 +259,7 @@ def pedal_box(spec) -> Part:
 
 def box_bolts():
     """(y, z) of the six box-to-bulkhead bolts in the rear flange (Sec 19 para 7)."""
-    yo, yi = Y0 - B.BOX_FLANGE / 2, Y1 + B.BOX_FLANGE / 2
+    yo, yi = Y0 - B.BOX_FLANGE / 2 - 1.0, Y1 + B.BOX_FLANGE / 2 + 1.0
     zt = Z1 + B.BOX_FLANGE / 2
     return [(yo, Z0 + 12.0), (yo, (Z0 + Z1) / 2), (yi, Z0 + 12.0), (yi, (Z0 + Z1) / 2), (Y0 + 30.0, zt), (Y1 - 30.0, zt)]
 

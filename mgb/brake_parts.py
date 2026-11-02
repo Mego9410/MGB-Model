@@ -186,9 +186,10 @@ def mirror_y(p):
 
 
 def split_pin(d, L):
-    """Split pin: two half-round legs and an eye, along +z from the eye's underside."""
+    """Split pin of nominal size d (the hole it fits): two half-round legs side by side along x and an eye, along
+    +z from the eye's underside."""
     from build123d import Torus
-    r = d / 2
+    r = d / 4
     legs = zc(r * 0.98, 0, L, r, 0) + zc(r * 0.98, 0, L - 2.0, -r, 0)
     eye = Location((0, 0, -r * 1.6)) * Rot(90, 0, 0) * Torus(r * 1.6, r)
     return legs + eye

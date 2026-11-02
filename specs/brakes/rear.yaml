@@ -172,7 +172,7 @@ parts:
     finish: machined_steel
     notes: "Two per adjuster; inclined inner face on the wedge's cone, slotted outer end for the shoe web."
     specs:
-      length: { mm: 21.0, source: { label: D, method: "Bore to the web" } }
+      length: { mm: 34.0, source: { label: D, method: "Through the body to the shoe web, which ends square at the same distance from the centre at both ends (one shoe part, turned half round for the trailing shoe)" } }
 
   - id: brakes.rear.wedge
     name: Adjuster wedge (square-headed)

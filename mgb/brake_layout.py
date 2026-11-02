@@ -48,8 +48,8 @@ IN = 25.4
 BP_FACE_Y = A.BACKPLATE_FACE_Y                      # 562: backplate's inboard face on the case flange
 BP_T = 2.4
 # inboard surface of the pressing, (r, y), centre outward
-BP_PROFILE = [(30.0, BP_FACE_Y), (80.0, BP_FACE_Y), (91.0, 581.0), (111.0, 581.0), (117.0, 566.0), (123.5, 566.0),
-              (124.5, 567.5), (124.5, 575.0)]
+BP_PROFILE = [(30.0, BP_FACE_Y), (80.0, BP_FACE_Y), (91.0, 581.0), (111.0, 581.0), (116.0, 563.0), (122.5, 563.0),
+              (124.0, 564.5)]
 PLATEAU_Y = 581.0 + BP_T                            # outboard face of the raised annulus (shoe side)
 PLATFORM_H = 1.6                                    # pressed shoe platforms on it
 PLATFORM_ANGLES = [40.0, 90.0, 140.0]               # front shoe; the rear shoe's are mirrored (from up toward front)
@@ -60,7 +60,7 @@ DRUM_PLATE_Y = (A.DRUM_FACE_Y, A.DRUM_FACE_Y + 6.0)  # drum's plate on the hub e
 DRUM_OUT_R = 134.0
 LINING_W = 1.75 * IN                                # S: MGOC 10 x 1.75 in
 LINING_T = 4.8
-LINING_Y = (DRUM_PLATE_Y[0] - 1.5 - LINING_W, DRUM_PLATE_Y[0] - 1.5)
+LINING_Y = (DRUM_PLATE_Y[0] - 2.5 - LINING_W, DRUM_PLATE_Y[0] - 2.5)
 LINING_R = (DRUM_R - 0.3 - LINING_T, DRUM_R - 0.3)  # 0.3 mm running clearance
 TABLE_T = 2.5
 TABLE_R = (LINING_R[0] - TABLE_T, LINING_R[0])
@@ -77,10 +77,10 @@ WC_AXIS_Y = 594.0
 WC_BORE = 0.800 * IN                                # S: MGOC GWC1103
 WC_BODY_R = 13.5
 WC_HALF_L = 30.0
-WC_NECK = (22.0, 16.0)                              # neck through the backplate (x, z)
+WC_NECK = (22.0, 14.0)                              # neck through the backplate (x, z)
 WC_NECK_END_Y = 552.0
 WC_CLIP_Y = 581.0 - 1.6                             # E-clip on the neck behind the raised face
-WC_INLET_Z = WC_Z - 5.0                             # inlet on the neck's end face, pointing inboard
+WC_INLET_Z = WC_Z                             # inlet on the neck's end face, pointing inboard
 WC_BLEED_Y = 558.0                                  # bleed screw on top of the neck, behind the backplate
 PISTON_L = 14.0
 
@@ -98,8 +98,8 @@ ADJ_STUD_X = 13.0
 ADJ_WEDGE_HEAD_Y = (560.0, 572.0)                   # square head behind the backplate
 
 STEADY_R = 104.0                                    # steady pins at the middle of each shoe
-SPRING_TOP = (28.0, 88.0)                           # (x, z) web holes for the adjuster end pull-off spring
-SPRING_BOT = (44.0, -86.0)                          # cylinder end
+SPRING_TOP = (40.0, 79.0)                           # (x, z) web holes for the adjuster end pull-off spring
+SPRING_BOT = (40.0, -79.0)                          # cylinder end
 SPRING_Y = WEB_Y[1] + 3.0
 
 # =================================================================================================
@@ -121,7 +121,7 @@ BOX_Y = (-332.0, -184.0)                            # outer faces of the side wa
 BOX_Z = (-114.0, 16.0)                              # underside of the floor (front section), top rim
 BOX_T = 1.6
 BOX_FRONT_T = 2.0                                   # mounting wall (clutch_hydraulics BOX_WALL)
-BOX_FLANGE = 14.0                                   # rear flange and top rim widths
+BOX_FLANGE = 18.0                                   # rear flange and top rim widths
 COVER_TOP_Z = 58.0                                  # top of the protecting cover, over the brake cylinder's cap
 PIVOT_BOLT_Y = (BOX_Y[1], BOX_Y[0])                 # head on the inboard wall (Sec 24 para 3: head against the clutch pedal end)
 SPRING_ANCHOR_X = K.PEDAL_PIVOT[0] - 26.0           # pull-off spring anchor tabs just ahead of the rear flange (as parts/clutch/pedal.py)

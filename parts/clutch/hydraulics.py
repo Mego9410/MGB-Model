@@ -253,7 +253,7 @@ def stiffener(spec) -> Part:
     """Stiffener plate under the top bolt (Sec 5 para 11), built on its hole, face at z = 0."""
     t = spec.nom("thickness")
     p = extrude(Polygon((-8, -14), (-8, 14), (16, 18), (34, 12), (34, -12), (16, -18), align=None), t, dir=(0, 0, 1))
-    p = p + Location((26, 0, t)) * Box(14, 22, 1.2)                  # pressed rib
+    p = p + Location((26, 0, -0.6)) * Box(14, 22, 1.2)               # pressed rib, on the face away from the box wall
     return _l(p - zc(4.2, -1, t + 3), spec)
 
 

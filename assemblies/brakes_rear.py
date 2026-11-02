@@ -104,6 +104,6 @@ for s in (1, -1):
         add("backplate-bolt", F * Location((x, B.BP_FACE_Y + B.BP_T, z)) * Rot(90, 0, 0), explode=ex(out, 13, 90))
         wl = F * Location((x, B.BP_FACE_Y - A.BACKPLATE_FLANGE_T, z)) * Rot(90, 0, 0)
         add("backplate-spring-washer", wl, explode=ex(inn, 13, 30))
-        add("backplate-nut", wl * Location((0, 0, 1.0)), explode=ex(inn, 13, 50))
+        add("backplate-nut", wl * Location((0, 0, 1.2)), explode=ex(inn, 13, 50))
     add(f"backplate-{hand}", AF, groups=[f"backplate-{k}"])
 INSTANCES = I

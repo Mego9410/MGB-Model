@@ -131,10 +131,10 @@ def shield_washer(spec) -> Part:
 MOUTH = L.BORE_MOUTH
 HALF_OUT = MOUTH + L.HALF_DEPTH                     # |dy| of each half's outer face
 BV = 54.0                                           # half body width
-PAD_HALF = 36.6                                     # pad aperture, either side of the centre
-BBV = 46.0                                          # bridge bolts
+PAD_HALF = L.PAD_W / 2 + 0.8                        # pad aperture, either side of the centre
+BBV = L.BRIDGE_BOLT_V                               # bridge bolts either side of the pad aperture
 SEAL_GROOVE = (12.0, 15.6)                          # |dy| from the mouth inward... (distance into the bore)
-TRANSFER = (132.0, -46.0)                           # (u, v) of the fluid transfer port across the joint
+TRANSFER = (142.5, -50.0)                           # (u, v) of the fluid transfer port across the joint
 CLIP_T = 0.8                                        # pad retaining spring clip (spec)
 PAD_TOP_U = L.PISTON_R_AT + L.PAD_H / 2 + 4.0       # top of the pads' lugs, where the clip bears
 PIN_U = PAD_TOP_U + CLIP_T + 1.6 + 0.1              # pad retaining pins just over the clip (D: Fig 9.7, Sec 10 para 2)
@@ -151,9 +151,13 @@ def _half_left():
     blk = yprism([P(u, v) for u, v in outline], y_out, y_m)
     blk = blk + ucyl(24.0, y_out - 3.0, y_out + 0.01, pu, pv)                              # boss on the back
     # cheeks guiding the pads, bridge over the disc edge, bridge bolt bosses, pin ridge
+    y_disc = DM - L.DISC_T / 2 - 1.0                  # cheeks stop short of the disc face below the bridge
+    u_br = L.DISC_R + 3.0                              # the bridge meets the other half only outside the disc
     for s in (1, -1):
         blk = blk + yprism([P(u, v) for u, v in rounded([(u0 + 30.0, s * PAD_HALF), (b1, s * PAD_HALF), (b1, s * BV),
-                                                          (u0 + 30.0, s * BV)], 3.0, 2)], y_m - 0.01, y_j)
+                                                          (u0 + 30.0, s * BV)], 3.0, 2)], y_m - 0.01, y_disc)
+        blk = blk + yprism([P(u, v) for u, v in rounded([(u_br, s * PAD_HALF), (b1, s * PAD_HALF), (b1, s * BV),
+                                                          (u_br, s * BV)], 2.0, 2)], y_disc - 0.01, y_j)
         blk = blk + ucyl(9.0, y_out + 6.0, y_j, L.BRIDGE_BOLT_U, s * BBV)
     blk = blk + yprism([P(u, v) for u, v in rounded([(u1 - 1.0, -24.0), (u1 + 6.0, -24.0), (u1 + 6.0, 24.0), (u1 - 1.0, 24.0)], 3.0, 2)],
                        y_out + 0.01, y_m)                                                  # ridge carrying the pad pins
@@ -232,13 +236,13 @@ def piston(spec) -> Part:
 def fluid_seal(spec) -> Part:
     """Item 10: square-section seal in the bore groove."""
     r = L.PISTON_D / 2
-    return lab(ring(r - 0.3, r + 3.1, 0.0, SEAL_GROOVE[1] - SEAL_GROOVE[0] - 0.2), spec)
+    return lab(ring(r + 0.02, r + 3.1, 0.0, SEAL_GROOVE[1] - SEAL_GROOVE[0] - 0.2), spec)
 
 
 def dust_seal(spec) -> Part:
     """Item 11 (seal): rubber wiper between the retainer and the piston."""
     r = L.PISTON_D / 2
-    return lab(Sh.revolved([(r - 0.3, 0.0), (r + 2.4, 0.0), (r + 2.4, 3.6), (r + 0.6, 4.6), (r - 0.3, 4.6)]), spec)
+    return lab(Sh.revolved([(r + 0.02, 0.0), (r + 2.4, 0.0), (r + 2.4, 3.6), (r + 0.6, 4.6), (r + 0.02, 4.6)]), spec)
 
 
 def dust_seal_retainer(spec) -> Part:
@@ -372,13 +376,14 @@ def hose(spec, side=1) -> Part:
     x0, y0, z0 = _inlet_out()
     r = spec.nom("outside_diameter") / 2
     # bottom end fitting along -y from the union face
-    bot = ycyl(4.6, y0 + 1.2, y0 + 10.0, x0, z0) + Location((x0, y0 - 0.01, z0)) * Rot(90, 0, 0) * chamfered_hex(14.3, 11.0)
-    bot = bot + ycyl(6.2, y0 - 33.0, y0 - 10.5, x0, z0)
+    cw = 1.2                                                                                # copper washer
+    bot = ycyl(4.4, y0 - cw, y0 + 10.0, x0, z0) + Location((x0, y0 - cw, z0)) * Rot(90, 0, 0) * chamfered_hex(14.3, 11.0)
+    bot = bot + ycyl(6.2, y0 - cw - 33.0, y0 - cw - 10.5, x0, z0)
     # top end fitting below and through the bracket
     top = zc(6.2, hz - 46.0, hz - 21.0, hx, hy) + chamfered_hex(15.9, 13.0, hz - 21.0).moved(Location((hx, hy, 0))) + \
         zc(5.5, hz - 8.01, hz + BRK_T + 14.0, hx, hy)
-    top = top - zc(2.6, hz - 10.0, hz + BRK_T + 15.0, hx, hy)
-    pts = [(x0, y0 - 32.0, z0), (x0, y0 - 60.0, z0 + 10.0), (hx, hy, hz - 110.0), (hx, hy, hz - 45.0)]
+    top = top - zc(2.6, hz - 10.0, hz + BRK_T + 15.0, hx, hy) - zc(4.65, hz + BRK_T + 14.0 - 7.0, hz + BRK_T + 15.0, hx, hy)
+    pts = [(x0, y0 - 33.0, z0), (x0, y0 - 60.0, z0 + 10.0), (hx, hy, hz - 110.0), (hx, hy, hz - 45.0)]
     h = rod(pts, r, 40.0) + bot + top
     return lab(h if side > 0 else mirror_y(h), spec)
 
@@ -386,7 +391,7 @@ def hose(spec, side=1) -> Part:
 def hose_copper_washer(spec) -> Part:
     x0, y0, z0 = _inlet_out()
     t = spec.nom("thickness")
-    return lab(ycyl(7.0, y0, y0 + t, x0, z0) - ycyl(4.7, y0 - 1, y0 + t + 1, x0, z0), spec)
+    return lab(ycyl(7.0, y0 - t, y0, x0, z0) - ycyl(4.45, y0 - t - 1, y0 + 1, x0, z0), spec)
 
 
 def _bracket_left():

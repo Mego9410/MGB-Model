@@ -74,7 +74,7 @@ def _arc_band(r0, r1, a0, a1, y0, y1, n=40):
 # =================================================================================================
 def _backplate_left():
     inner = list(B.BP_PROFILE)
-    outer = _offset(inner, -B.BP_T)                     # toward +y (the shoe side) for a profile running outward
+    outer = _offset(inner, B.BP_T)                      # toward +y (the shoe side) for a profile running outward
     prof = inner + list(reversed(outer))
     p = yrev(prof)
     # shoe platforms (six) on the raised face, with the radial stiffening ribs between them on the back
@@ -152,6 +152,10 @@ def shoe(spec) -> Part:
     for a in (26.6, 153.4):
         x, z = _pt(111.8, a)
         s = s - (Location((x, B.WEB_MID_Y, z)) * Box(16.0, 12.0, 12.0))
+    # web tips cut square where they sit in the piston and tappet slots
+    x0 = _piston_x0()
+    s = s - box(-60.0, x0 + B.PISTON_L - 4.5, B.WEB_Y[0] - 1, B.WEB_Y[1] + 1, B.WC_Z - 16.0, B.WC_Z + 16.0)
+    s = s - box(-60.0, x0 + B.PISTON_L - 4.5, B.WEB_Y[0] - 1, B.WEB_Y[1] + 1, B.ADJ_Z - 12.0, B.ADJ_Z + 12.0)
     return lab(s, spec)
 
 
@@ -227,11 +231,11 @@ def adjuster_body(spec) -> Part:
 
 
 def tappet(spec) -> Part:
-    """Item 12: square-ish plunger in the cross bore, inclined inner face on the wedge, slotted outer end for the
+    """Item 12: round plunger in the cross bore, inclined inner face on the wedge, slotted outer end for the
     shoe web (front tappet drawn; the rear is turned half round z about the adjuster centre)."""
     L = spec.nom("length")
     x0 = 3.0
-    t = box(x0, x0 + L, B.WEB_MID_Y - 4.4, B.WEB_MID_Y + 4.4, B.ADJ_Z - 4.4, B.ADJ_Z + 4.4)
+    t = xcyl(4.4, x0, x0 + L, B.WEB_MID_Y, B.ADJ_Z)
     t = t - (Location((x0, B.WEB_MID_Y, B.ADJ_Z)) * Rot(0, 0, 0) * Rot(0, 45, 0) * Box(4.0, 12.0, 12.0))  # wedge face
     t = t - box(x0 + L - 5.0, x0 + L + 1, B.WEB_Y[0] - 0.3, B.WEB_Y[1] + 0.3, B.ADJ_Z - 6, B.ADJ_Z + 6)   # web slot
     return lab(t, spec)
@@ -270,7 +274,8 @@ def wc_body(spec) -> Part:
     b = xcyl(r, -L, L, yc, zc_) & box(-L - 1, L + 1, B.PLATEAU_Y, yc + r + 1, zc_ - r - 1, zc_ + r + 1)
     b = b + box(-L + 4.0, L - 4.0, B.PLATEAU_Y, yc, zc_ - r, zc_ + r)                   # flat base on the backplate
     for s in (1, -1):                                                                   # end lips the boots grip
-        b = b + xcyl(r + 1.2, s * L - (2.0 if s > 0 else 0.0), s * L + (0.0 if s > 0 else 2.0), yc, zc_)
+        b = b + (xcyl(r + 1.2, s * L - (2.0 if s > 0 else 0.0), s * L + (0.0 if s > 0 else 2.0), yc, zc_)
+                 & box(-L - 3, L + 3, B.PLATEAU_Y, yc + r + 3, zc_ - r - 3, zc_ + r + 3))
     nx, nz = B.WC_NECK
     b = b + box(-nx / 2, nx / 2, B.WC_NECK_END_Y, B.PLATEAU_Y + 0.01, zc_ - nz / 2, zc_ + nz / 2)
     b = b - box(-nx / 2 - 1, nx / 2 + 1, B.WC_CLIP_Y, B.WC_CLIP_Y + 1.6, zc_ - nz / 2 - 1, zc_ - nz / 2 + 1.2)   # clip groove
@@ -282,14 +287,19 @@ def wc_body(spec) -> Part:
     b = b - box(-L - 1, L + 1, B.HB_LEVER_Y - 5.5, yc + r + 2, zc_ - 3.0, zc_ + 3.0)
     for s in (1, -1):                                                                   # lever pivot pins
         b = b + zc(2.4, zc_ - 3.1, zc_ + 3.1, s * abs(B.HB_LEVER_PIVOT[0]), B.HB_LEVER_Y)
-    b = b - ycyl(4.4, B.WC_NECK_END_Y - 5.0, B.WC_NECK_END_Y + 9.0, 0.0, B.WC_INLET_Z)
+    b = b - ycyl(4.65, B.WC_NECK_END_Y - 5.0, B.WC_NECK_END_Y + 6.0, 0.0, B.WC_INLET_Z)
     b = b - ycyl(1.2, B.WC_NECK_END_Y, yc, 0.0, B.WC_INLET_Z)
     b = b - zc(3.1, zc_ + nz / 2 - 6.0, zc_ + nz / 2 + 7.1, 0.0, B.WC_BLEED_Y)
     return lab(b, spec)
 
 
 def _piston_x0():
-    return B.WC_HALF_L - B.PISTON_L + 4.0
+    return B.WC_HALF_L - B.PISTON_L + 8.0          # pistons stand 8 mm out of the body for the boots and shoe slots
+
+
+def _groove():
+    x0 = _piston_x0()
+    return x0 + B.PISTON_L - 7.0, x0 + B.PISTON_L - 5.5
 
 
 def wc_piston(spec) -> Part:
@@ -297,9 +307,10 @@ def wc_piston(spec) -> Part:
     r = spec.nom("diameter") / 2
     x0 = _piston_x0()
     p = xcyl(r, x0, x0 + B.PISTON_L, B.WC_AXIS_Y, B.WC_Z)
-    p = p - xcyl(r + 1, x0 + 3.0, x0 + 4.5, B.WC_AXIS_Y, B.WC_Z) + xcyl(r - 1.5, x0 + 2.9, x0 + 4.6, B.WC_AXIS_Y, B.WC_Z)   # boot groove
+    g0, g1 = _groove()
+    p = p - xcyl(r + 1, g0, g1, B.WC_AXIS_Y, B.WC_Z) + xcyl(r - 1.2, g0 - 0.1, g1 + 0.1, B.WC_AXIS_Y, B.WC_Z)   # boot groove
     p = p - box(x0 + B.PISTON_L - 5.0, x0 + B.PISTON_L + 1, B.WEB_Y[0] - 0.4, B.WEB_Y[1] + 0.4, B.WC_Z - r - 1, B.WC_Z + r + 1)
-    p = p - box(x0 - 1, x0 + 6, B.HB_LEVER_Y - 5.5, B.WC_AXIS_Y + r + 1, B.WC_Z - 3.0, B.WC_Z + 3.0)
+    p = p - box(x0 - 1, x0 + B.PISTON_L + 1, B.HB_LEVER_Y - 5.5, B.WC_AXIS_Y + r + 1, B.WC_Z - 3.0, B.WC_Z + 3.0)
     return lab(p, spec)
 
 
@@ -320,23 +331,26 @@ def wc_boot(spec) -> Part:
     r = B.WC_BODY_R
     x0 = _piston_x0()
     pr = B.WC_BORE / 2
-    o = xrev([(r + 0.2, L - 2.5), (r + 2.4, L - 2.5), (r + 2.4, L + 0.5), (pr + 3.0, x0 + 6.5), (pr - 0.4, x0 + 4.4),
-              (pr - 1.3, x0 + 4.4), (pr - 1.3, x0 + 3.1), (pr + 1.0, x0 + 3.1), (r + 0.2, L - 1.0)])
+    g0, g1 = _groove()
+    o = xrev([(r + 1.3, L - 3.0), (r + 2.6, L - 3.0), (r + 2.6, L + 1.0), (pr + 2.2, g1 + 1.2), (pr - 1.2, g1 + 1.2),
+              (pr - 1.2, g0), (pr + 0.9, g0), (r + 1.3, L + 0.2)])
     o = o.moved(Location((0, B.WC_AXIS_Y, B.WC_Z)))
-    o = o - box(L - 4, x0 + 8, B.WEB_Y[0] - 0.4, B.WEB_Y[1] + 0.4, B.WC_Z - 30, B.WC_Z + 30)
-    o = o - box(L - 4, x0 + 8, B.HB_LEVER_Y - 5.5, B.WC_AXIS_Y + r + 3, B.WC_Z - 3.0, B.WC_Z + 3.0)
+    o = o - box(L - 4, g1 + 3, B.HB_LEVER_Y - 5.5, B.WC_AXIS_Y + r + 4, B.WC_Z - 3.0, B.WC_Z + 3.0)
+    o = o - box(g0 - 1.0, g1 + 3, B.WEB_Y[0] - 0.4, B.WEB_Y[1] + 0.4, B.WC_Z - 30, B.WC_Z + 30)
     return lab(o, spec)
 
 
 def wc_clip(spec) -> Part:
-    """Item 20: E-clip (MGOC 17H7949) behind the backplate in the neck's grooves."""
+    """Item 20: E-clip (MGOC 17H7949) behind the backplate's raised face, its two legs in the neck's grooves."""
     nx, nz = B.WC_NECK
     t = spec.nom("thickness")
     zc_ = B.WC_Z
-    c = box(-17.0, 17.0, B.WC_CLIP_Y, B.WC_CLIP_Y + t, zc_ - 15.0, zc_ + 15.0)
-    c = c - box(-nx / 2 - 0.3, nx / 2 + 0.3, B.WC_CLIP_Y - 1, B.WC_CLIP_Y + t + 1, zc_ - nz / 2 + 1.2, zc_ + 20)
-    c = c - box(-nx / 2 + 1.0, nx / 2 - 1.0, B.WC_CLIP_Y - 1, B.WC_CLIP_Y + t + 1, zc_ - nz / 2 - 0.5, zc_ + 20)
-    c = c - ycyl(4.0, B.WC_CLIP_Y - 1, B.WC_CLIP_Y + t + 1, 11.0, zc_ + 12.0) - ycyl(4.0, B.WC_CLIP_Y - 1, B.WC_CLIP_Y + t + 1, -11.0, zc_ + 12.0)
+    y0, y1 = B.WC_CLIP_Y, B.WC_CLIP_Y + t
+    c = box(-17.0, 17.0, y0, y1, zc_ - nz / 2 - 3.0, zc_ + nz / 2 + 3.0)
+    c = c - box(-nx / 2 + 1.0, nx / 2 - 1.0, y0 - 1, y1 + 1, zc_ - nz / 2 - 0.5, zc_ + nz / 2 + 4.0)    # open top
+    c = c - box(-nx / 2 - 0.3, nx / 2 + 0.3, y0 - 1, y1 + 1, zc_ - nz / 2 + 1.2, zc_ + nz / 2 + 4.0)
+    for sx in (-1, 1):
+        c = c - ycyl(2.0, y0 - 1, y1 + 1, sx * 14.0, zc_ + nz / 2 + 0.5)                           # plier holes
     return lab(c, spec)
 
 
@@ -372,9 +386,9 @@ def hb_lever(side):
 
 def _boot_left():
     hx, hz = B.HB_SLOT
-    y0, y1 = 566.0, 578.5
+    y0, y1 = 566.0, 576.0
     o = None
-    for k, (w, h) in enumerate(((22.0, 16.0), (18.0, 13.0), (20.0, 14.5), (16.0, 11.0), (14.0, 9.5))):
+    for k, (w, h) in enumerate(((18.0, 13.0), (15.0, 11.0), (16.5, 12.0), (13.5, 9.5), (12.0, 8.5))):
         ya = y1 - k * (y1 - y0) / 5
         yb = ya - (y1 - y0) / 5 - 0.01
         seg = box(hx - w / 2, hx + w / 2, yb, ya, hz - h / 2, hz + h / 2)
@@ -399,7 +413,7 @@ def drum(spec) -> Part:
     p0, p1 = B.DRUM_PLATE_Y
     Ro = B.DRUM_OUT_R
     prof = [(R, y0), (Ro + 3.5, y0), (Ro + 3.5, y0 + 7.0), (Ro, y0 + 9.0), (Ro, p1 - 4.0), (Ro - 4.0, p1),
-            (37.0, p1), (37.0, p0), (R - 6.0, p0), (R, p0 - 6.0)]
+            (37.0, p1), (37.0, p0), (R - 2.0, p0), (R, p0 - 2.0)]
     d = yrev(prof)
     for yr in (583.0, 597.0):                                                           # ribs round the barrel
         d = d + yrev([(Ro - 0.5, yr), (Ro + 2.5, yr + 1.5), (Ro + 2.5, yr + 4.5), (Ro - 0.5, yr + 6.0)])
@@ -436,7 +450,7 @@ PARTS = {
     "brakes.rear.adjuster-nut": {"build": adjuster_nut},
     "brakes.rear.adjuster-spring-washer": {"build": adjuster_spring_washer},
     "brakes.rear.wheel-cylinder": {"build": wc_body, "probes": {"bore": lambda p: _bore(p, B.WC_BORE / 2)}},
-    "brakes.rear.wc-piston": {"build": wc_piston, "probes": {"diameter": lambda p: probes.bbox_size(p, "y")}},
+    "brakes.rear.wc-piston": {"build": wc_piston, "probes": {"diameter": lambda p: bore(p, B.WC_BORE / 2)}},
     "brakes.rear.wc-seal": {"build": wc_seal},
     "brakes.rear.wc-boot": {"build": wc_boot},
     "brakes.rear.wc-clip": {"build": wc_clip},

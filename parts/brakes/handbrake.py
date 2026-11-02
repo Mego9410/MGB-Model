@@ -60,8 +60,16 @@ def _handle_path():
     return [(PX, PZ), (PX + 120.0, PZ + 10.0), (PX + 175.0, PZ + 55.0), (GX, GZ)]
 
 
+def _bar_path():
+    """The steel bar stops 40 mm short of the grip end, leaving the grip's bore for the knob and its spring."""
+    pts = _handle_path()
+    (x0, z0), (x1, z1) = pts[-2:]
+    L = math.hypot(x1 - x0, z1 - z0)
+    return pts[:-1] + [(x1 - 40.0 * (x1 - x0) / L, z1 - 40.0 * (z1 - z0) / L)]
+
+
 def handle(spec) -> Part:
-    pts = [(x, PY, z) for x, z in _handle_path()]
+    pts = [(x, PY, z) for x, z in _bar_path()]
     h = flat_bar(pts, 22.0, TH, 40.0, up=(0, 1, 0))
     h = h + ycyl(16.0, PY - TH / 2, PY + TH / 2, PX, PZ)                      # rear end round the pivot
     h = h + ycyl(SPIGOT_R, PY + TH / 2 - 0.01, OPL - 9.0 + 0.01, PX, PZ)    # spigot welded through it
@@ -73,8 +81,8 @@ def handle(spec) -> Part:
     h = h + ycyl(2.5, PY + TH / 2 - 0.01, PLATE_Y[0], px_, pz_)
     for xg in (PX + 70.0, PX + 140.0):
         zg = _z_on_handle(xg)
-        h = h + box(xg - 4.0, xg + 4.0, PY - TH / 2 - 3.5, PY - TH / 2 + 0.01, zg + 5.0, zg + 11.0) - \
-            xcyl(1.8, xg - 5, xg + 5, PY - TH / 2 - 2.0, zg + 8.0)
+        h = h + box(xg - 4.0, xg + 4.0, PY - TH / 2 - 4.5, PY - TH / 2 + 0.01, zg + 5.0, zg + 11.0) - \
+            xcyl(1.8, xg - 5, xg + 5, PY - TH / 2 - 2.5, zg + 8.0)
     return lab(h, spec)
 
 
@@ -121,7 +129,7 @@ def knob_spring(spec) -> Part:
 def pawl_rod(spec) -> Part:
     """Item 4: rod from the knob back along the handle's outer face, through the guide lugs, hooked to the pawl."""
     e, d = _grip_axis()
-    yo = PY - TH / 2 - 2.0
+    yo = PY - TH / 2 - 2.5
     tx, tz = PAWL_TAIL
     pts = [(e[0] - 30.0 * d[0], yo, e[2] - 30.0 * d[2]), (PX + 175.0, yo, PZ + 63.0), (PX + 140.0, yo, _z_on_handle(PX + 140.0) + 8.0),
            (PX + 70.0, yo, _z_on_handle(PX + 70.0) + 8.0), (tx + 6.0, yo, tz + 1.0), (tx, yo, tz), (tx, PAWL_Y[1], tz)]
@@ -301,10 +309,10 @@ def axle_clip(spec) -> Part:
     """Item 29: clip round the right-hand tube holding the outer on top of it."""
     y = B.CABLE_CLIP_Y
     w = spec.nom("width")
-    band = Location((0, y + w / 2, 0)) * Rot(90, 0, 0) * ring(A.TUBE_R, A.TUBE_R + 1.2, 0.0, w)
+    band = Location((0, y + w / 2, 0)) * Rot(90, 0, 0) * ring(A.TUBE_R + 1.5, A.TUBE_R + 2.7, 0.0, w)
     xs = 20.0
     loop = ycyl(CABLE_OUTER_R + 1.4, y - w / 2, y + w / 2, xs, 58.0) - ycyl(CABLE_OUTER_R + 0.1, y - w, y + w, xs, 58.0)
-    web = box(xs - 2.5, xs + 2.5, y - w / 2, y + w / 2, A.TUBE_R - 1.0, 58.0 - CABLE_OUTER_R) - ycyl(A.TUBE_R, y - w, y + w, 0, 0)
+    web = box(xs - 2.5, xs + 2.5, y - w / 2, y + w / 2, A.TUBE_R, 58.0 - CABLE_OUTER_R) - ycyl(A.TUBE_R + 1.6, y - w, y + w, 0, 0)
     return lab(A.AF * (band + loop + web), spec)
 
 
