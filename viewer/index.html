@@ -45,8 +45,14 @@ nav.tree{grid-area:tree;overflow:auto;border-right:1px solid var(--edge);backgro
 .tree .all{display:flex;gap:4px}
 .tree .all button{font:11px var(--mono);color:var(--muted);background:none;border:1px solid var(--edge);border-radius:4px;padding:2px 6px;cursor:pointer}
 .tree .all button:hover{background:var(--chip)}
-main.stage{grid-area:stage;position:relative;background:var(--stage);min-width:0;min-height:0}
-main.stage canvas{display:block;width:100%;height:100%;touch-action:none}
+/* No text selection, blue tap flash or iOS long-press callout while orbiting, dragging the slider or tapping
+   the tree; only the part card's text stays selectable so specs can still be copied. */
+html{-webkit-tap-highlight-color:transparent}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+aside.card{-webkit-user-select:text;user-select:text}
+aside.card button,aside.card img,aside.card a{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+main.stage{grid-area:stage;position:relative;background:var(--stage);min-width:0;min-height:0;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+main.stage canvas{display:block;width:100%;height:100%;touch-action:none;outline:none}
 .labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .leg{position:absolute;transform:translate(-50%,-50%);font:600 11px var(--mono);background:var(--panel);border:1px solid var(--edge);border-radius:999px;padding:1px 6px;color:var(--fg)}
 .measure-tag{position:absolute;transform:translate(-50%,-130%);font:600 12px var(--mono);background:var(--accent);color:var(--accent-ink);border-radius:4px;padding:2px 6px;white-space:nowrap}
@@ -419,10 +425,25 @@ function placeMeasureTag(){
 
 // ---------- picking
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
-let down = null, lastTap = 0;
-renderer.domElement.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY }; });
+let down = null, lastTap = 0, multi = false;
+const fingers = new Set();
+// A drag that starts on the model never starts a text selection (mouse), and any selection left over is cleared.
+renderer.domElement.addEventListener('mousedown', e => e.preventDefault());
+document.getElementById('stage').addEventListener('selectstart', e => e.preventDefault());
+document.getElementById('stage').addEventListener('contextmenu', e => e.preventDefault());
+renderer.domElement.addEventListener('pointerdown', e => {
+  fingers.add(e.pointerId); if (fingers.size > 1) multi = true;
+  try { const s = getSelection(); if (s && s.rangeCount) s.removeAllRanges(); } catch (_) {}
+  down = { x: e.clientX, y: e.clientY, t: performance.now(), id: e.pointerId };
+});
+renderer.domElement.addEventListener('pointercancel', e => { fingers.delete(e.pointerId); if (!fingers.size) multi = false; down = null; });
 renderer.domElement.addEventListener('pointerup', e => {
-  if (!down || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6) return;
+  // Only a short, still, single-pointer tap picks a part: orbiting, pinching and long presses never select.
+  const wasMulti = multi; fingers.delete(e.pointerId); if (!fingers.size) multi = false;
+  const d = down; down = null;
+  if (wasMulti || !d || d.id !== e.pointerId) return;
+  if (Math.hypot(e.clientX - d.x, e.clientY - d.y) > (e.pointerType === 'mouse' ? 5 : 10)) return;
+  if (performance.now() - d.t > 500) return;
   const r = renderer.domElement.getBoundingClientRect();
   ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
   ray.setFromCamera(ptr, camera);
