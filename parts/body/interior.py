@@ -431,7 +431,9 @@ def winder(side):
         """Window regulator handle (Fig 12.17 item 11, handle and finisher) on the regulator's spindle."""
         x, h = -1180.0, 560.0
         y = _card_y(side, x, h)
-        boss = ycyl(18.0, min(y, y - side * 10.0), max(y, y - side * 10.0), x, H(h))
+        esc = ycyl(26.0, min(y, y - side * 3.0), max(y, y - side * 3.0), x, H(h))      # escutcheon (Fig 12.17 item 9)
+        washer = ycyl(14.0, min(y - side * 3.0, y - side * 4.5), max(y - side * 3.0, y - side * 4.5), x, H(h))   # fibre washer (10)
+        boss = esc + washer + ycyl(16.0, min(y - side * 4.5, y - side * 12.0), max(y - side * 4.5, y - side * 12.0), x, H(h))
         arm = rod((x, y - side * 10.0, H(h)), (x + 25.0, y - side * 12.0, H(h) + 70.0), 6.0)
         knob = ycyl(9.0, min(y - side * 12.0, y - side * 40.0), max(y - side * 12.0, y - side * 40.0), x + 25.0, H(h) + 70.0)
         return _c([boss, arm, knob], spec)

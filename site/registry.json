@@ -225,6 +225,8 @@
    },
    "children": [
     "body.brightwork",
+    "body.closure-fittings",
+    "body.door-mechanisms",
     "body.doors",
     "body.front",
     "body.glass",
@@ -381,7 +383,66 @@
     "body.brightwork.grille-badge"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 419953
+   "bytes": 419973
+  },
+  "body.closure-fittings": {
+   "id": "body.closure-fittings",
+   "kind": "assembly",
+   "name": "Bonnet and boot fittings",
+   "parent": "body",
+   "haynes": {
+    "section": 6
+   },
+   "children": [
+    "body.closure-fittings.bonnet-safety-catch",
+    "body.closure-fittings.bonnet-cable",
+    "body.closure-fittings.bonnet-knob",
+    "body.closure-fittings.bonnet-catch",
+    "body.closure-fittings.boot-stay",
+    "body.closure-fittings.boot-stay-guide",
+    "body.closure-fittings.boot-seal"
+   ],
+   "file": "models/body.closure-fittings.json",
+   "bytes": 799099
+  },
+  "body.door-mechanisms": {
+   "id": "body.door-mechanisms",
+   "kind": "assembly",
+   "name": "Door mechanisms",
+   "parent": "body",
+   "haynes": {
+    "section": 38
+   },
+   "children": [
+    "body.door-mechanisms.door-pull-l",
+    "body.door-mechanisms.card-clips-l",
+    "body.door-mechanisms.arm-stop-l",
+    "body.door-mechanisms.regulator-l",
+    "body.door-mechanisms.lift-arm-l",
+    "body.door-mechanisms.extension-arm-l",
+    "body.door-mechanisms.lower-channel-l",
+    "body.door-mechanisms.remote-control-l",
+    "body.door-mechanisms.lock-l",
+    "body.door-mechanisms.lock-barrel-l",
+    "body.door-mechanisms.check-strap-l",
+    "body.door-mechanisms.striker-backing-l",
+    "body.door-mechanisms.door-seal-l",
+    "body.door-mechanisms.door-pull-r",
+    "body.door-mechanisms.card-clips-r",
+    "body.door-mechanisms.arm-stop-r",
+    "body.door-mechanisms.regulator-r",
+    "body.door-mechanisms.lift-arm-r",
+    "body.door-mechanisms.extension-arm-r",
+    "body.door-mechanisms.lower-channel-r",
+    "body.door-mechanisms.remote-control-r",
+    "body.door-mechanisms.lock-r",
+    "body.door-mechanisms.lock-barrel-r",
+    "body.door-mechanisms.check-strap-r",
+    "body.door-mechanisms.striker-backing-r",
+    "body.door-mechanisms.door-seal-r"
+   ],
+   "file": "models/body.door-mechanisms.json",
+   "bytes": 789331
   },
   "body.doors": {
    "id": "body.doors",
@@ -398,7 +459,6 @@
     "body.doors.quarter-light-seal-l",
     "body.doors.glass-channel-l",
     "body.doors.pull-handle-l",
-    "body.doors.lock-l",
     "body.doors.skin-l",
     "body.doors.frame-l",
     "body.doors.hinge-lower-l",
@@ -410,7 +470,6 @@
     "body.doors.quarter-light-seal-r",
     "body.doors.glass-channel-r",
     "body.doors.pull-handle-r",
-    "body.doors.lock-r",
     "body.doors.skin-r",
     "body.doors.frame-r",
     "body.doors.hinge-lower-r",
@@ -420,7 +479,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 439313
+   "bytes": 438755
   },
   "body.front": {
    "id": "body.front",
@@ -444,7 +503,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1037199
+   "bytes": 1070796
   },
   "body.glass": {
    "id": "body.glass",
@@ -484,7 +543,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 743554
+   "bytes": 743506
   },
   "body.interior": {
    "id": "body.interior",
@@ -533,7 +592,7 @@
     "body.interior.speaker-grille"
    ],
    "file": "models/body.interior.json",
-   "bytes": 1054723
+   "bytes": 1065746
   },
   "body.rear": {
    "id": "body.rear",
@@ -563,7 +622,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 2714806
+   "bytes": 2768289
   },
   "body.structure": {
    "id": "body.structure",
@@ -623,7 +682,7 @@
     "body.structure.arch-liners"
    ],
    "file": "models/body.structure.json",
-   "bytes": 686610
+   "bytes": 687162
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -771,7 +830,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592681
+   "bytes": 592653
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1515,7 +1574,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 333609
+   "bytes": 333449
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -2168,7 +2227,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170556
+   "bytes": 170360
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2341,7 +2400,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 228763
+   "bytes": 228779
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2363,7 +2422,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139258
+   "bytes": 139354
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2418,7 +2477,7 @@
     "fuel.supply.clip-screw"
    ],
    "file": "models/fuel.supply.json",
-   "bytes": 226995
+   "bytes": 227087
   },
   "fuel.tank": {
    "id": "fuel.tank",
@@ -2949,7 +3008,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494178
+   "bytes": 494342
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -6806,6 +6865,1279 @@
    ],
    "derivedShare": 1.0
   },
+  "body.closure-fittings.bonnet-catch": {
+   "id": "body.closure-fittings.bonnet-catch",
+   "kind": "part",
+   "name": "Bonnet lock plate and catch",
+   "parent": "body.closure-fittings",
+   "haynes": {
+    "section": 6,
+    "spec_page": 220
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 6 para 4; Oliver's photo 13: the spring-loaded catch plate under the lock platform round the locating cup, two bolts, its return spring and the release lever with the control cable's clamp screw.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "plate",
+     "label": "Plate",
+     "value": "68.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 13 scaled on the cup",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.closure-fittings.bonnet-cable": {
+   "id": "body.closure-fittings.bonnet-cable",
+   "kind": "part",
+   "name": "Bonnet lock control cable",
+   "parent": "body.closure-fittings",
+   "haynes": {
+    "section": 6,
+    "spec_page": 220
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cable_black",
+   "notes": "Sec 6 para 4: the control cable in its sheath from the lock plate's clamp along the left inner wing, through the bulkhead, to the pull knob under the facia (D: the route; the knob's side is a question for Oliver).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.closure-fittings.bonnet-knob": {
+   "id": "body.closure-fittings.bonnet-knob",
+   "kind": "part",
+   "name": "Bonnet release pull knob",
+   "parent": "body.closure-fittings",
+   "haynes": {
+    "section": 6,
+    "spec_page": 220
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "Pull knob under the facia's left end on its bracket.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "knob_diameter",
+     "label": "Knob diameter",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.closure-fittings.bonnet-safety-catch": {
+   "id": "body.closure-fittings.bonnet-safety-catch",
+   "kind": "part",
+   "name": "Bonnet safety catch",
+   "parent": "body.closure-fittings",
+   "haynes": {
+    "section": 6,
+    "spec_page": 220
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Sec 6 para 3: the spring-steel hook on the bonnet frame behind the lock pin, three bolts.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "hook",
+     "label": "Hook",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.closure-fittings.boot-stay": {
+   "id": "body.closure-fittings.boot-stay",
+   "kind": "part",
+   "name": "Boot lid stay",
+   "parent": "body.closure-fittings",
+   "haynes": {
+    "section": 26,
+    "spec_page": 220
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 26 para 1 'erect the lid stay'; Oliver's photo 11: a formed rod on a pivot bracket on the lid frame's left side, shown stowed in its spring clip.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "rod_diameter",
+     "label": "Rod diameter",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D: 5/16 in rod",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.closure-fittings.boot-stay-guide": {
+   "id": "body.closure-fittings.boot-stay-guide",
+   "kind": "part",
+   "name": "Boot lid stay guide",
+   "parent": "body.closure-fittings",
+   "haynes": {
+    "section": 26,
+    "spec_page": 220
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "The slotted bracket on the boot's left side the stay's end drops into with the lid up.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "plate",
+     "label": "Plate",
+     "value": "80.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.closure-fittings.boot-seal": {
+   "id": "body.closure-fittings.boot-seal",
+   "kind": "part",
+   "name": "Boot aperture seal",
+   "parent": "body.closure-fittings",
+   "haynes": {
+    "section": 26,
+    "spec_page": 220
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Rubber on the boot opening's flange under the lid's edge.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "section",
+     "label": "Section",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.regulator-l": {
+   "id": "body.door-mechanisms.regulator-l",
+   "kind": "part",
+   "name": "Window regulator, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.15"
+     },
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fig 12.17 item 7, Fig 12.15 item 2: pressed mounting plate on the inner panel (four bolts), toothed quadrant on its pivot meshing with the pinion on the winder spindle, coiled balance spring at the pivot.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "quadrant_radius",
+     "label": "Quadrant radius",
+     "value": "98.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pivot to spindle less the pinion's pitch radius",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lift-arm-l": {
+   "id": "body.door-mechanisms.lift-arm-l",
+   "kind": "part",
+   "name": "Regulator lift arm, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fig 12.17: flat arm riveted to the quadrant, its stud and roller in the glass's lower channel (rear stud), the scissor pivot on the extension arm.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.17 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.extension-arm-l": {
+   "id": "body.door-mechanisms.extension-arm-l",
+   "kind": "part",
+   "name": "Regulator extension arm, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.15"
+     },
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fig 12.15 item 5: the second arm from its pivot plate (two set screws) to the front stud in the lower channel.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the lift arm",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.arm-stop-l": {
+   "id": "body.door-mechanisms.arm-stop-l",
+   "kind": "part",
+   "name": "Regulator arm stop and buffer, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.15"
+     },
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Fig 12.15 item 3, Fig 12.17 items 6, 12: the stop bracket and rubber buffer the lift arm rests on at the top of its travel.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "buffer",
+     "label": "Buffer",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.17 item 6",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lower-channel-l": {
+   "id": "body.door-mechanisms.lower-channel-l",
+   "kind": "part",
+   "name": "Door glass lower channel, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 39,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fig 12.17 items 2, 3: the channel on the glass's bottom edge the arms' studs run in.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "415.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Glass rear edge + 40 to the quarter-light post - 20",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lock-l": {
+   "id": "body.door-mechanisms.lock-l",
+   "kind": "part",
+   "name": "Door lock, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 35,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fig 12.13 item 15 (early Sports Tourer): the pressed lock case on the rear shut face, its latch through the face, three screws; the operating link (16) from the outside handle, the tension spring (18) and spring clips (17).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "case_height",
+     "label": "Case height",
+     "value": "96.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.13 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.remote-control-l": {
+   "id": "body.door-mechanisms.remote-control-l",
+   "kind": "part",
+   "name": "Door lock remote control, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 42,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fig 12.13 items 12, 13: the inner handle's bracket on the inner panel (elongated holes, Sec 35 para 3) and the lever bar to the lock with its anti-rattle sleeve.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bracket",
+     "label": "Bracket",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.13 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lock-barrel-l": {
+   "id": "body.door-mechanisms.lock-barrel-l",
+   "kind": "part",
+   "name": "Door lock housing and barrel, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 33,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "chrome",
+   "notes": "Fig 12.13 items 3-6: the lock housing and barrel in the pull handle's front boss (Oliver's photo 08), the retaining clip, the self-centring spring and the coupling cam inside.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "barrel_diameter",
+     "label": "Barrel diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 08 scaled on the handle",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.striker-backing-l": {
+   "id": "body.door-mechanisms.striker-backing-l",
+   "kind": "part",
+   "name": "Striker packing and tapping plate, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 27,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Fig 12.13 items 10, 11; Sec 27: the packing shims and the tapping plate behind the shut pillar, the striker's three screws.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "clearance",
+     "label": "Clearance",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sec 27: 0.03-0.06 in striker to lock plate",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.check-strap-l": {
+   "id": "body.door-mechanisms.check-strap-l",
+   "kind": "part",
+   "name": "Door check strap, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 32,
+    "spec_page": 230
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Steel strap on a pin in a bracket on the hinge pillar between the hinges, through the door's front shut face, its rubber stop inside the door (D: early MGB door check; not in the Haynes figures).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "strap_length",
+     "label": "Strap length",
+     "value": "92.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.door-pull-l": {
+   "id": "body.door-mechanisms.door-pull-l",
+   "kind": "part",
+   "name": "Interior door pull, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 29,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "chrome",
+   "notes": "Fig 12.13 item 8: chrome pull on two screwed bosses on the trim pad under the waist (Sec 29).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "110.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.13 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.card-clips-l": {
+   "id": "body.door-mechanisms.card-clips-l",
+   "kind": "part",
+   "name": "Trim pad clips, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 29,
+    "spec_page": 230
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sec 29: the spring clips round the trim pad's edge into the inner panel.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "count",
+     "label": "Count",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Seven along the top and seven along the bottom",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.door-seal-l": {
+   "id": "body.door-mechanisms.door-seal-l",
+   "kind": "part",
+   "name": "Door aperture seal, left",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 32,
+    "spec_page": 230
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Rubber draught excluder on the hinge pillar, along the sill and up the shut pillar, the door's shut faces closing on it.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "section",
+     "label": "Section",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.regulator-r": {
+   "id": "body.door-mechanisms.regulator-r",
+   "kind": "part",
+   "name": "Window regulator, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.15"
+     },
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "quadrant_radius",
+     "label": "Quadrant radius",
+     "value": "98.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pivot to spindle less the pinion's pitch radius",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lift-arm-r": {
+   "id": "body.door-mechanisms.lift-arm-r",
+   "kind": "part",
+   "name": "Regulator lift arm, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.17 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.extension-arm-r": {
+   "id": "body.door-mechanisms.extension-arm-r",
+   "kind": "part",
+   "name": "Regulator extension arm, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.15"
+     },
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "16.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the lift arm",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.arm-stop-r": {
+   "id": "body.door-mechanisms.arm-stop-r",
+   "kind": "part",
+   "name": "Regulator arm stop and buffer, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 38,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.15"
+     },
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "buffer",
+     "label": "Buffer",
+     "value": "20.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.17 item 6",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lower-channel-r": {
+   "id": "body.door-mechanisms.lower-channel-r",
+   "kind": "part",
+   "name": "Door glass lower channel, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 39,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.17"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "415.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Glass rear edge + 40 to the quarter-light post - 20",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lock-r": {
+   "id": "body.door-mechanisms.lock-r",
+   "kind": "part",
+   "name": "Door lock, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 35,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "case_height",
+     "label": "Case height",
+     "value": "96.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.13 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.remote-control-r": {
+   "id": "body.door-mechanisms.remote-control-r",
+   "kind": "part",
+   "name": "Door lock remote control, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 42,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bracket",
+     "label": "Bracket",
+     "value": "60.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.13 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.lock-barrel-r": {
+   "id": "body.door-mechanisms.lock-barrel-r",
+   "kind": "part",
+   "name": "Door lock housing and barrel, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 33,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "chrome",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "barrel_diameter",
+     "label": "Barrel diameter",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 08 scaled on the handle",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.striker-backing-r": {
+   "id": "body.door-mechanisms.striker-backing-r",
+   "kind": "part",
+   "name": "Striker packing and tapping plate, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 27,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "clearance",
+     "label": "Clearance",
+     "value": "1.2 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Sec 27: 0.03-0.06 in striker to lock plate",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.check-strap-r": {
+   "id": "body.door-mechanisms.check-strap-r",
+   "kind": "part",
+   "name": "Door check strap, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 32,
+    "spec_page": 230
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "strap_length",
+     "label": "Strap length",
+     "value": "92.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.door-pull-r": {
+   "id": "body.door-mechanisms.door-pull-r",
+   "kind": "part",
+   "name": "Interior door pull, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 29,
+    "spec_page": 230,
+    "figures": [
+     {
+      "figure": "12.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "chrome",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "110.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 12.13 proportions",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.card-clips-r": {
+   "id": "body.door-mechanisms.card-clips-r",
+   "kind": "part",
+   "name": "Trim pad clips, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 29,
+    "spec_page": 230
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "count",
+     "label": "Count",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Seven along the top and seven along the bottom",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.door-mechanisms.door-seal-r": {
+   "id": "body.door-mechanisms.door-seal-r",
+   "kind": "part",
+   "name": "Door aperture seal, right",
+   "parent": "body.door-mechanisms",
+   "haynes": {
+    "section": 32,
+    "spec_page": 230
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "section",
+     "label": "Section",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "D",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
   "body.doors.skin-l": {
    "id": "body.doors.skin-l",
    "kind": "part",
@@ -7566,88 +8898,6 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "As the left",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    }
-   ],
-   "derivedShare": 1.0
-  },
-  "body.doors.lock-l": {
-   "id": "body.doors.lock-l",
-   "kind": "part",
-   "name": "Door lock, left",
-   "parent": "body.doors",
-   "haynes": {
-    "section": 35,
-    "spec_page": 229,
-    "figures": [
-     {
-      "figure": "12.13",
-      "legend": 15
-     }
-    ]
-   },
-   "quantity": 1,
-   "partNumbers": [],
-   "material": null,
-   "finish": "zinc_steel",
-   "notes": "Lock on the rear shut face, the latch engaging the striker.",
-   "variant": {
-    "factory_1963": true,
-    "as_fitted": true,
-    "body": "roadster"
-   },
-   "explode": null,
-   "specs": [
-    {
-     "key": "height",
-     "label": "Height",
-     "value": "80.0 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "Lock body",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    }
-   ],
-   "derivedShare": 1.0
-  },
-  "body.doors.lock-r": {
-   "id": "body.doors.lock-r",
-   "kind": "part",
-   "name": "Door lock, right",
-   "parent": "body.doors",
-   "haynes": {
-    "section": 35,
-    "spec_page": 229,
-    "figures": [
-     {
-      "figure": "12.13",
-      "legend": 15
-     }
-    ]
-   },
-   "quantity": 1,
-   "partNumbers": [],
-   "material": null,
-   "finish": "zinc_steel",
-   "notes": "Mirror of the left.",
-   "variant": {
-    "factory_1963": true,
-    "as_fitted": true,
-    "body": "roadster"
-   },
-   "explode": null,
-   "specs": [
-    {
-     "key": "height",
-     "label": "Height",
-     "value": "80.0 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "Lock body",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -77167,6 +78417,930 @@
    "label": true,
    "fitted": null
   },
+  "body.closure-fittings.bonnet-safety-catch#1": {
+   "part": "body.closure-fittings.bonnet-safety-catch",
+   "assembly": "body.closure-fittings",
+   "node": "body--closure-fittings--bonnet-safety-catch__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 300,
+     "group": "bonnet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.closure-fittings.bonnet-cable#1": {
+   "part": "body.closure-fittings.bonnet-cable",
+   "assembly": "body.closure-fittings",
+   "node": "body--closure-fittings--bonnet-cable__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 300,
+     "group": "bonnet"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.closure-fittings.bonnet-knob#1": {
+   "part": "body.closure-fittings.bonnet-knob",
+   "assembly": "body.closure-fittings",
+   "node": "body--closure-fittings--bonnet-knob__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 300,
+     "group": "bonnet"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.closure-fittings.bonnet-catch#1": {
+   "part": "body.closure-fittings.bonnet-catch",
+   "assembly": "body.closure-fittings",
+   "node": "body--closure-fittings--bonnet-catch__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 300,
+     "group": "bonnet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.closure-fittings.boot-stay#1": {
+   "part": "body.closure-fittings.boot-stay",
+   "assembly": "body.closure-fittings",
+   "node": "body--closure-fittings--boot-stay__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 300,
+     "group": "boot"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1,
+     "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.closure-fittings.boot-stay-guide#1": {
+   "part": "body.closure-fittings.boot-stay-guide",
+   "assembly": "body.closure-fittings",
+   "node": "body--closure-fittings--boot-stay-guide__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 300,
+     "group": "boot"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.closure-fittings.boot-seal#1": {
+   "part": "body.closure-fittings.boot-seal",
+   "assembly": "body.closure-fittings",
+   "node": "body--closure-fittings--boot-seal__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 300,
+     "group": "boot"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.door-pull-l#1": {
+   "part": "body.door-mechanisms.door-pull-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--door-pull-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.card-clips-l#1": {
+   "part": "body.door-mechanisms.card-clips-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--card-clips-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.arm-stop-l#1": {
+   "part": "body.door-mechanisms.arm-stop-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--arm-stop-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.regulator-l#1": {
+   "part": "body.door-mechanisms.regulator-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--regulator-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lift-arm-l#1": {
+   "part": "body.door-mechanisms.lift-arm-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lift-arm-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.extension-arm-l#1": {
+   "part": "body.door-mechanisms.extension-arm-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--extension-arm-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lower-channel-l#1": {
+   "part": "body.door-mechanisms.lower-channel-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lower-channel-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 3,
+     "distance_mm": 200
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.remote-control-l#1": {
+   "part": "body.door-mechanisms.remote-control-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--remote-control-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 140
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lock-l#1": {
+   "part": "body.door-mechanisms.lock-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lock-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lock-barrel-l#1": {
+   "part": "body.door-mechanisms.lock-barrel-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lock-barrel-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.check-strap-l#1": {
+   "part": "body.door-mechanisms.check-strap-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--check-strap-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.striker-backing-l#1": {
+   "part": "body.door-mechanisms.striker-backing-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--striker-backing-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.door-seal-l#1": {
+   "part": "body.door-mechanisms.door-seal-l",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--door-seal-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "left"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.door-pull-r#1": {
+   "part": "body.door-mechanisms.door-pull-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--door-pull-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.card-clips-r#1": {
+   "part": "body.door-mechanisms.card-clips-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--card-clips-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.arm-stop-r#1": {
+   "part": "body.door-mechanisms.arm-stop-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--arm-stop-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.regulator-r#1": {
+   "part": "body.door-mechanisms.regulator-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--regulator-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lift-arm-r#1": {
+   "part": "body.door-mechanisms.lift-arm-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lift-arm-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.extension-arm-r#1": {
+   "part": "body.door-mechanisms.extension-arm-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--extension-arm-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 180
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lower-channel-r#1": {
+   "part": "body.door-mechanisms.lower-channel-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lower-channel-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 3,
+     "distance_mm": 200
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.remote-control-r#1": {
+   "part": "body.door-mechanisms.remote-control-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--remote-control-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 140
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lock-r#1": {
+   "part": "body.door-mechanisms.lock-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lock-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 120
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.lock-barrel-r#1": {
+   "part": "body.door-mechanisms.lock-barrel-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--lock-barrel-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.check-strap-r#1": {
+   "part": "body.door-mechanisms.check-strap-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--check-strap-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 100
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.striker-backing-r#1": {
+   "part": "body.door-mechanisms.striker-backing-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--striker-backing-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.door-mechanisms.door-seal-r#1": {
+   "part": "body.door-mechanisms.door-seal-r",
+   "assembly": "body.door-mechanisms",
+   "node": "body--door-mechanisms--door-seal-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 250,
+     "group": "right"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "body.doors.glass-l#1": {
    "part": "body.doors.glass-l",
    "assembly": "body.doors",
@@ -77326,34 +79500,6 @@
      "axis": [
       0,
       1,
-      0
-     ],
-     "order": 3,
-     "distance_mm": 120
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "body.doors.lock-l#1": {
-   "part": "body.doors.lock-l",
-   "assembly": "body.doors",
-   "node": "body--doors--lock-l__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      1,
-      0
-     ],
-     "order": 5,
-     "distance_mm": 400,
-     "group": "door-l"
-    },
-    {
-     "axis": [
-      -1,
-      0,
       0
      ],
      "order": 3,
@@ -77614,34 +79760,6 @@
      "axis": [
       0,
       -1,
-      0
-     ],
-     "order": 3,
-     "distance_mm": 120
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "body.doors.lock-r#1": {
-   "part": "body.doors.lock-r",
-   "assembly": "body.doors",
-   "node": "body--doors--lock-r__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      -1,
-      0
-     ],
-     "order": 5,
-     "distance_mm": 400,
-     "group": "door-r"
-    },
-    {
-     "axis": [
-      -1,
-      0,
       0
      ],
      "order": 3,
@@ -133315,7 +135433,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-03T10:16:43+00:00",
+ "built": "2026-11-03T10:49:52+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,

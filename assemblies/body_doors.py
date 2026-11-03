@@ -32,7 +32,6 @@ for n, s_, out in (("l", 1, LEFT), ("r", -1, RIGHT)):
     add(f"quarter-light-seal-{n}", groups=g, explode=ex(UP, 2, 300))
     add(f"glass-channel-{n}", groups=g, explode=ex(UP, 2, 300))
     add(f"pull-handle-{n}", groups=g, explode=ex(out, 3, 120))
-    add(f"lock-{n}", groups=g, explode=ex(BACK, 3, 120))
     add(f"skin-{n}", groups=g)
     add(f"frame-{n}", groups=g)
     add(f"hinge-lower-{n}", explode=ex(FWD, 6, 80))

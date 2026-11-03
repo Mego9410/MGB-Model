@@ -179,22 +179,6 @@ parts:
     specs:
       length: { mm: 128.0, source: { label: D, method: "As the left" } }
 
-  - id: body.doors.lock-l
-    name: Door lock, left
-    haynes: { section: 35, figures: [{ figure: "12.13", legend: 15 }] }
-    quantity: 1
-    finish: zinc_steel
-    notes: "Lock on the rear shut face, the latch engaging the striker."
-    specs:
-      height: { mm: 80.0, source: { label: D, method: "Lock body" } }
-  - id: body.doors.lock-r
-    name: Door lock, right
-    haynes: { section: 35, figures: [{ figure: "12.13", legend: 15 }] }
-    quantity: 1
-    finish: zinc_steel
-    notes: "Mirror of the left."
-    specs:
-      height: { mm: 80.0, source: { label: D, method: "Lock body" } }
   - id: body.doors.striker-l
     name: Door striker, left
     haynes: { section: 27, figures: [{ figure: "12.13", legend: 9 }] }

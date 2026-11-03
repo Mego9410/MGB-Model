@@ -164,7 +164,7 @@ GLASS_BOW = 5.0                                 # the glass is curved in its hei
 def _glass_ys(h):
     """|y| of the curved glass's outer face line at height h."""
     t = (h - (WAIST_H + GLASS_TOP_H) / 2) / ((GLASS_TOP_H - WAIST_H) / 2)
-    return _glass_y(h) + GLASS_BOW * (1.0 - t * t)
+    return _glass_y(h) + (GLASS_BOW * (1.0 - t * t) if h > WAIST_H else 0.0)     # flat inside the door
 
 
 def door_glass(side):
@@ -338,18 +338,6 @@ def pull_handle(side):
     return build
 
 
-def door_lock(side):
-    def build(spec):
-        """Door lock (Fig 12.13 item 15/47) on the rear shut face, its latch engaging the striker."""
-        x = _door_x(St.STRIKER_H, True)
-        y = side * (S.side_y(x, St.STRIKER_H) - 35.0)
-        z = H(St.STRIKER_H)
-        body = box(x + 0.6, x + 40.0, y - 18.0, y + 18.0, z - 40.0, z + 40.0)
-        latch = box(x - 6.0, x + 0.6, y - 8.0, y + 8.0, z - 12.0, z + 12.0)
-        return _c([body, latch], spec)
-    return build
-
-
 def striker(side):
     def build(spec):
         """Striker plate on the shut pillar (Sec 27), three screws, shimmed (Fig 12.14 item 11)."""
@@ -405,14 +393,24 @@ def bonnet_hinge(side):
 
 
 def bonnet_stay(spec):
-    """Bonnet stay (Sec 6 para 1: 'support it on the stay'), stowed along the left inner wing in its clip."""
-    x0, x1 = -300.0, 250.0
-    y = St.IW_Y - 12.0
-    z = St.inner_wing_top(0.0) - 30.0
-    rod_ = rod((x0, y, z), (x1, y, z + 8.0), 4.0)
-    pivot = ycyl(7.0, y - 2, y + 10, x0, z)
-    clip = box(x1 - 10.0, x1 + 10.0, y - 6.0, y + 10.0, z - 6.0, z + 14.0) - ycyl(4.4, y - 10, y + 12, x1, z + 8.0)
-    return _c([rod_, pivot, clip], spec)
+    """Bonnet stay (Sec 6 para 1: 'support it on the stay'; Oliver's photos 13, 28: a thin rod on the car's right,
+    from the front of the inner wing up to the bonnet's front corner): a 5/16 in rod with its end cranked into the
+    pivot bracket on the right inner wing's top near the front, the other end hooked for the bonnet's stay bracket;
+    shown stowed back along the inner wing in its spring clip."""
+    y = -(St.IW_Y - 14.0)
+    x0, x1 = 470.0, -120.0
+    z0, z1 = St.inner_wing_top(x0) - 2.0, St.inner_wing_top(x1) - 2.0
+    zr = lambda x: z0 + (z1 - z0) * (x0 - x) / (x0 - x1) + 14.0
+    rod_ = swept_rod([(x0, y - 14.0, z0 + 6.0), (x0 - 6.0, y - 6.0, zr(x0) - 2.0), (x0 - 40.0, y, zr(x0 - 40.0)),
+                      (x1 + 30.0, y, zr(x1 + 30.0)), (x1, y, zr(x1) + 10.0), (x1 - 8.0, y, zr(x1) + 16.0)], 4.0)
+    bracket = box(x0 - 18.0, x0 + 18.0, y - 20.0, y - 8.0, z0, z0 + 2.0) + box(x0 - 12.0, x0 + 12.0, y - 20.0, y - 18.0, z0, z0 + 22.0)
+    bracket = bracket - ycyl(2.2, y - 22, y - 16, x0, z0 + 6.0)
+    for dx in (-10.0, 10.0):
+        bracket = bracket - zcyl(2.8, z0 - 1, z0 + 3, x0 + dx, y - 14.0)
+    clip = box(x1 + 50.0, x1 + 62.0, y - 8.0, y + 8.0, z1, z1 + 2.0)
+    for dy in (-6.0, 6.0):
+        clip = clip + box(x1 + 50.0, x1 + 62.0, y + dy - 0.8, y + dy + 0.8, z1, zr(x1 + 56.0) + 3.0)
+    return _c([rod_, bracket, clip], spec)
 
 
 def bonnet_lock(spec):
@@ -424,8 +422,9 @@ def bonnet_lock(spec):
     thimble = zcyl(9.0, zp + 40.0, zp + 58.0, x, 0.0) - zcyl(4.2, zp + 39, zp + 59, x, 0.0)
     spring = Location((x, 0.0, zp + 20.0)) * __import__("mgb.shapes", fromlist=["coil_spring"]).coil_spring(1.2, 16.0, 20.0, 6.0)
     cup = zcyl(16.0, zp, zp + 8.0, x, 0.0) - zcyl(10.0, zp - 1, zp + 9, x, 0.0)
-    lock = box(x - 30.0, x + 30.0, -40.0, 40.0, zp - 22.0, zp - 1.2)
-    return _c([pin, thimble, spring, cup, lock], spec)
+    locknut = zprism([(x + 7.5 * math.cos(math.radians(60 * k + 30)), 7.5 * math.sin(math.radians(60 * k + 30))) for k in range(6)],
+                     zp + 58.0, zp + 64.0)
+    return _c([pin, thimble, spring, cup, locknut], spec)
 
 
 # =====================================================================================================================
@@ -491,11 +490,20 @@ def boot_lock(spec):
     """Boot lock body inside the lid's rear panel and the striker on the rear panel's top edge (Sec 25)."""
     h = S.BOOT_REAR_H + 40.0
     x = S.tail_x(0.0, h) + 30.0
-    body = box(x, x + 30.0, -30.0, 30.0, H(h) - 30.0, H(h) + 20.0)
+    case = box(x, x + 26.0, -34.0, 34.0, H(h) - 40.0, H(h) + 22.0) - box(x + 3.0, x + 27.0, -31.0, 31.0, H(h) - 37.0, H(h) + 19.0)
+    flange = box(x - 1.6, x, -44.0, 44.0, H(h) - 50.0, H(h) + 30.0)
+    for dy in (-36.0, 36.0):                                         # the lock's two securing screws (Fig 12.12 item 1)
+        flange = flange - xcyl(2.8, x - 3, x + 1, dy, H(h) + 18.0)
+    lever = box(x + 6.0, x + 10.0, -6.0, 6.0, H(h) - 70.0, H(h) - 20.0)            # operating lever (item 7)
+    claw = box(x + 2.0, x + 18.0, -10.0, 10.0, H(h) - 78.0, H(h) - 66.0) - box(x + 6.0, x + 19.0, -4.0, 4.0, H(h) - 79.0, H(h) - 70.0)
     hs = S.BOOT_REAR_H - 12.0
     xs = S.tail_x(0.0, hs) + 6.0
-    strk = box(xs, xs + 22.0, -20.0, 20.0, H(hs) - 2.0, H(hs) + 0.5) + box(xs + 8.0, xs + 14.0, -8.0, 8.0, H(hs), H(hs) + 14.0)
-    return _c([body, strk], spec)
+    base = box(xs, xs + 30.0, -24.0, 24.0, H(hs) - 2.0, H(hs) + 0.2)
+    for dy in (-16.0, 16.0):
+        base = base - zcyl(2.8, H(hs) - 3, H(hs) + 1, xs + 15.0, dy)
+    loop = swept_rod([(xs + 15.0, -9.0, H(hs)), (xs + 15.0, -9.0, H(hs) + 12.0), (xs + 15.0, 0.0, H(hs) + 18.0),
+                      (xs + 15.0, 9.0, H(hs) + 12.0), (xs + 15.0, 9.0, H(hs))], 3.0)       # striker loop
+    return _c([case, flange, lever, claw, base, loop], spec)
 
 
 PARTS = {"body.doors.mirror": {"build": door_mirror}, "body.doors.mirror-glass": {"build": door_mirror_glass}}
@@ -509,7 +517,6 @@ for s_, n in ((1, "l"), (-1, "r")):
     PARTS[f"body.doors.quarter-light-seal-{n}"] = {"build": ql_seal(s_)}
     PARTS[f"body.doors.glass-channel-{n}"] = {"build": glass_channel(s_)}
     PARTS[f"body.doors.pull-handle-{n}"] = {"build": pull_handle(s_)}
-    PARTS[f"body.doors.lock-{n}"] = {"build": door_lock(s_)}
     PARTS[f"body.doors.striker-{n}"] = {"build": striker(s_)}
     PARTS[f"body.front.bonnet-hinge-{n}"] = {"build": bonnet_hinge(s_)}
     PARTS[f"body.rear.boot-hinge-{n}"] = {"build": boot_hinge(s_)}

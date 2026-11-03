@@ -1,0 +1,66 @@
+# Bonnet and boot fittings: Haynes Ch 12 Secs 6, 25, 26 (printed pp 220, 226-227), Fig 12.12; Oliver's photos 11,
+# 13, 14, 28. The bonnet lock pin, stay and hinges and the boot lock, handle and hinges stay in body.front / body.rear.
+defaults:
+  system: body
+  assembly: body.closure-fittings
+  haynes: { section: 6, spec_page: 220 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: zinc_steel
+
+parts:
+  - id: body.closure-fittings.bonnet-catch
+    name: Bonnet lock plate and catch
+    haynes: { section: 6 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Sec 6 para 4; Oliver's photo 13: the spring-loaded catch plate under the lock platform round the locating cup, two bolts, its return spring and the release lever with the control cable's clamp screw."
+    specs:
+      plate: { mm: 68.0, display_only: true, source: { label: D, method: "Oliver's photo 13 scaled on the cup" } }
+  - id: body.closure-fittings.bonnet-cable
+    name: Bonnet lock control cable
+    haynes: { section: 6 }
+    quantity: 1
+    finish: cable_black
+    notes: "Sec 6 para 4: the control cable in its sheath from the lock plate's clamp along the left inner wing, through the bulkhead, to the pull knob under the facia (D: the route; the knob's side is a question for Oliver)."
+    specs:
+      diameter: { mm: 6.0, display_only: true, source: { label: D, method: "D" } }
+  - id: body.closure-fittings.bonnet-knob
+    name: Bonnet release pull knob
+    haynes: { section: 6 }
+    quantity: 1
+    finish: plastic_black
+    notes: "Pull knob under the facia's left end on its bracket."
+    specs:
+      knob_diameter: { mm: 22.0, display_only: true, source: { label: D, method: "D" } }
+  - id: body.closure-fittings.bonnet-safety-catch
+    name: Bonnet safety catch
+    haynes: { section: 6 }
+    quantity: 1
+    finish: spring_steel
+    notes: "Sec 6 para 3: the spring-steel hook on the bonnet frame behind the lock pin, three bolts."
+    specs:
+      hook: { mm: 60.0, display_only: true, source: { label: D, method: "D" } }
+  - id: body.closure-fittings.boot-stay
+    name: Boot lid stay
+    haynes: { section: 26 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Sec 26 para 1 'erect the lid stay'; Oliver's photo 11: a formed rod on a pivot bracket on the lid frame's left side, shown stowed in its spring clip."
+    specs:
+      rod_diameter: { mm: 8.0, display_only: true, source: { label: D, method: "D: 5/16 in rod" } }
+  - id: body.closure-fittings.boot-stay-guide
+    name: Boot lid stay guide
+    haynes: { section: 26 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "The slotted bracket on the boot's left side the stay's end drops into with the lid up."
+    specs:
+      plate: { mm: 80.0, display_only: true, source: { label: D, method: "D" } }
+  - id: body.closure-fittings.boot-seal
+    name: Boot aperture seal
+    haynes: { section: 26 }
+    quantity: 1
+    finish: rubber
+    notes: "Rubber on the boot opening's flange under the lid's edge."
+    specs:
+      section: { mm: 10.0, display_only: true, source: { label: D, method: "D" } }

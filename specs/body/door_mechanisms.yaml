@@ -1,0 +1,219 @@
+# Door mechanisms, early Sports Tourer ("pull-handle" roadster): Haynes Ch 12 Secs 27, 29, 33, 35, 38, 39, 42
+# (printed pp 227-231), Figs 12.13, 12.15, 12.17; MGOC / Moss parts lists for the early cars (regulator, lock pattern).
+# Geometry in parts/body/mechanisms.py, placed by the door's own geometry (closures, body_shell_layout); glass raised.
+defaults:
+  system: body
+  assembly: body.door-mechanisms
+  haynes: { section: 38, spec_page: 230 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: zinc_steel
+
+parts:
+  - id: body.door-mechanisms.regulator-l
+    name: Window regulator, left
+    haynes: { section: 38, figures: [{ figure: "12.15" }, { figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Fig 12.17 item 7, Fig 12.15 item 2: pressed mounting plate on the inner panel (four bolts), toothed quadrant on its pivot meshing with the pinion on the winder spindle, coiled balance spring at the pivot."
+    specs:
+      quadrant_radius: { mm: 98.0, display_only: true, source: { label: D, method: "Pivot to spindle less the pinion's pitch radius" } }
+  - id: body.door-mechanisms.lift-arm-l
+    name: Regulator lift arm, left
+    haynes: { section: 38, figures: [{ figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Fig 12.17: flat arm riveted to the quadrant, its stud and roller in the glass's lower channel (rear stud), the scissor pivot on the extension arm."
+    specs:
+      width: { mm: 16.0, display_only: true, source: { label: D, method: "Fig 12.17 proportions" } }
+  - id: body.door-mechanisms.extension-arm-l
+    name: Regulator extension arm, left
+    haynes: { section: 38, figures: [{ figure: "12.15" }, { figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Fig 12.15 item 5: the second arm from its pivot plate (two set screws) to the front stud in the lower channel."
+    specs:
+      width: { mm: 16.0, display_only: true, source: { label: D, method: "As the lift arm" } }
+  - id: body.door-mechanisms.arm-stop-l
+    name: Regulator arm stop and buffer, left
+    haynes: { section: 38, figures: [{ figure: "12.15" }, { figure: "12.17" }] }
+    quantity: 1
+    finish: rubber
+    notes: "Fig 12.15 item 3, Fig 12.17 items 6, 12: the stop bracket and rubber buffer the lift arm rests on at the top of its travel."
+    specs:
+      buffer: { mm: 20.0, display_only: true, source: { label: D, method: "Fig 12.17 item 6" } }
+  - id: body.door-mechanisms.lower-channel-l
+    name: Door glass lower channel, left
+    haynes: { section: 39, figures: [{ figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Fig 12.17 items 2, 3: the channel on the glass's bottom edge the arms' studs run in."
+    specs:
+      length: { mm: 415.0, display_only: true, source: { label: D, method: "Glass rear edge + 40 to the quarter-light post - 20" } }
+  - id: body.door-mechanisms.lock-l
+    name: Door lock, left
+    haynes: { section: 35, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Fig 12.13 item 15 (early Sports Tourer): the pressed lock case on the rear shut face, its latch through the face, three screws; the operating link (16) from the outside handle, the tension spring (18) and spring clips (17)."
+    specs:
+      case_height: { mm: 96.0, display_only: true, source: { label: D, method: "Fig 12.13 proportions" } }
+  - id: body.door-mechanisms.remote-control-l
+    name: Door lock remote control, left
+    haynes: { section: 42, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Fig 12.13 items 12, 13: the inner handle's bracket on the inner panel (elongated holes, Sec 35 para 3) and the lever bar to the lock with its anti-rattle sleeve."
+    specs:
+      bracket: { mm: 60.0, display_only: true, source: { label: D, method: "Fig 12.13 proportions" } }
+  - id: body.door-mechanisms.lock-barrel-l
+    name: Door lock housing and barrel, left
+    haynes: { section: 33, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: chrome
+    notes: "Fig 12.13 items 3-6: the lock housing and barrel in the pull handle's front boss (Oliver's photo 08), the retaining clip, the self-centring spring and the coupling cam inside."
+    specs:
+      barrel_diameter: { mm: 11.0, display_only: true, source: { label: D, method: "Oliver's photo 08 scaled on the handle" } }
+  - id: body.door-mechanisms.striker-backing-l
+    name: Striker packing and tapping plate, left
+    haynes: { section: 27, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Fig 12.13 items 10, 11; Sec 27: the packing shims and the tapping plate behind the shut pillar, the striker's three screws."
+    specs:
+      clearance: { mm: 1.2, display_only: true, source: { label: D, method: "Sec 27: 0.03-0.06 in striker to lock plate" } }
+  - id: body.door-mechanisms.check-strap-l
+    name: Door check strap, left
+    haynes: { section: 32 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Steel strap on a pin in a bracket on the hinge pillar between the hinges, through the door's front shut face, its rubber stop inside the door (D: early MGB door check; not in the Haynes figures)."
+    specs:
+      strap_length: { mm: 92.0, display_only: true, source: { label: D, method: "D" } }
+  - id: body.door-mechanisms.door-pull-l
+    name: Interior door pull, left
+    haynes: { section: 29, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: chrome
+    notes: "Fig 12.13 item 8: chrome pull on two screwed bosses on the trim pad under the waist (Sec 29)."
+    specs:
+      length: { mm: 110.0, display_only: true, source: { label: D, method: "Fig 12.13 proportions" } }
+  - id: body.door-mechanisms.card-clips-l
+    name: Trim pad clips, left
+    haynes: { section: 29 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Sec 29: the spring clips round the trim pad's edge into the inner panel."
+    specs:
+      count: { mm: 14.0, display_only: true, source: { label: D, method: "Seven along the top and seven along the bottom" } }
+  - id: body.door-mechanisms.door-seal-l
+    name: Door aperture seal, left
+    haynes: { section: 32 }
+    quantity: 1
+    finish: rubber
+    notes: "Rubber draught excluder on the hinge pillar, along the sill and up the shut pillar, the door's shut faces closing on it."
+    specs:
+      section: { mm: 10.0, display_only: true, source: { label: D, method: "D" } }
+  - id: body.door-mechanisms.regulator-r
+    name: Window regulator, right
+    haynes: { section: 38, figures: [{ figure: "12.15" }, { figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      quadrant_radius: { mm: 98.0, display_only: true, source: { label: D, method: "Pivot to spindle less the pinion's pitch radius" } }
+  - id: body.door-mechanisms.lift-arm-r
+    name: Regulator lift arm, right
+    haynes: { section: 38, figures: [{ figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      width: { mm: 16.0, display_only: true, source: { label: D, method: "Fig 12.17 proportions" } }
+  - id: body.door-mechanisms.extension-arm-r
+    name: Regulator extension arm, right
+    haynes: { section: 38, figures: [{ figure: "12.15" }, { figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      width: { mm: 16.0, display_only: true, source: { label: D, method: "As the lift arm" } }
+  - id: body.door-mechanisms.arm-stop-r
+    name: Regulator arm stop and buffer, right
+    haynes: { section: 38, figures: [{ figure: "12.15" }, { figure: "12.17" }] }
+    quantity: 1
+    finish: rubber
+    notes: "Mirror of the left."
+    specs:
+      buffer: { mm: 20.0, display_only: true, source: { label: D, method: "Fig 12.17 item 6" } }
+  - id: body.door-mechanisms.lower-channel-r
+    name: Door glass lower channel, right
+    haynes: { section: 39, figures: [{ figure: "12.17" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      length: { mm: 415.0, display_only: true, source: { label: D, method: "Glass rear edge + 40 to the quarter-light post - 20" } }
+  - id: body.door-mechanisms.lock-r
+    name: Door lock, right
+    haynes: { section: 35, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      case_height: { mm: 96.0, display_only: true, source: { label: D, method: "Fig 12.13 proportions" } }
+  - id: body.door-mechanisms.remote-control-r
+    name: Door lock remote control, right
+    haynes: { section: 42, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      bracket: { mm: 60.0, display_only: true, source: { label: D, method: "Fig 12.13 proportions" } }
+  - id: body.door-mechanisms.lock-barrel-r
+    name: Door lock housing and barrel, right
+    haynes: { section: 33, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: chrome
+    notes: "Mirror of the left."
+    specs:
+      barrel_diameter: { mm: 11.0, display_only: true, source: { label: D, method: "Oliver's photo 08 scaled on the handle" } }
+  - id: body.door-mechanisms.striker-backing-r
+    name: Striker packing and tapping plate, right
+    haynes: { section: 27, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      clearance: { mm: 1.2, display_only: true, source: { label: D, method: "Sec 27: 0.03-0.06 in striker to lock plate" } }
+  - id: body.door-mechanisms.check-strap-r
+    name: Door check strap, right
+    haynes: { section: 32 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      strap_length: { mm: 92.0, display_only: true, source: { label: D, method: "D" } }
+  - id: body.door-mechanisms.door-pull-r
+    name: Interior door pull, right
+    haynes: { section: 29, figures: [{ figure: "12.13" }] }
+    quantity: 1
+    finish: chrome
+    notes: "Mirror of the left."
+    specs:
+      length: { mm: 110.0, display_only: true, source: { label: D, method: "Fig 12.13 proportions" } }
+  - id: body.door-mechanisms.card-clips-r
+    name: Trim pad clips, right
+    haynes: { section: 29 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      count: { mm: 14.0, display_only: true, source: { label: D, method: "Seven along the top and seven along the bottom" } }
+  - id: body.door-mechanisms.door-seal-r
+    name: Door aperture seal, right
+    haynes: { section: 32 }
+    quantity: 1
+    finish: rubber
+    notes: "Mirror of the left."
+    specs:
+      section: { mm: 10.0, display_only: true, source: { label: D, method: "D" } }

@@ -347,6 +347,17 @@ round them and should check them against the car:
   post's channel to the rear shut line (`GLASS_REAR_X` = DOOR_REAR_X + 14), its rear edge raked forward 36 mm and
   rounded 75 into the top, curved 5 mm in its height, in a rear run channel inside the door
   (body.doors.glass-channel-*); the hood's rear quarters come down to the body right behind it.
+- Door, bonnet and boot mechanisms (assemblies body.door-mechanisms and body.closure-fittings, parts/body/mechanisms.py;
+  Haynes Ch 12 Secs 6, 25-27, 29, 33, 35, 38, 39, 42, Figs 12.12, 12.13, 12.15, 12.17; Oliver's photos 08, 11, 13, 14,
+  28): each door's window regulator (mounting plate, quadrant and pinion on the winder spindle, balance spring, lift
+  and extension arms with their studs in the glass's lower channel, the extension's pivot plate, arm stop and
+  buffer), the early lock with its operating link from the pull handle, the remote control from the inner handle,
+  the lock housing and barrel in the handle's front boss, a check strap, the interior pull, the trim clips, the
+  aperture seal and the striker's packing and tapping plate; the bonnet's lock plate and catch, control cable and
+  pull knob, safety catch, and the prop stay stowed on the right inner wing (photos 13, 28); the boot lid's stay
+  stowed in its clip on the lid, its guide, the boot lock with its operating lever and the striker loop, and the
+  aperture seal. Hide body.doors.skin-* and body.interior.door-card-* to see the regulator and lock. The doors, bonnet
+  and boot lid are modelled closed (the stays stowed).
 - Measured QA (scratchpad p11b/qa/qa-table.md): cameras solved for Oliver's photos from the number plate (520 x 111),
   lamps, wheels and screen; the straight front and rear views (15, 14, 18, 25, telephoto) measure the front and rear
   directly in mm off the plate. Moves from it: side/flasher lamps 495 -> 461 above the road (`SIDELAMP_Z`); rear
@@ -404,7 +415,10 @@ round them and should check them against the car:
 - Sump, sump gasket and block skirt: a recess round the starter yoke at the right rear (the sump's
   three right-hand rear flange bolts go; the block keeps a wall round the recess).
 
-## Questions for Oliver (asked at the end of the overnight run)
+## Questions for Oliver
+
+- Bonnet release: which side of the facia is the pull knob on (modelled under the left end, the cable along the left
+  inner wing, from the catch's lever in photo 13)? Is there a door check strap on your doors? (asked at the end of the overnight run)
 
 - Body (P11b): the shape is traced from your photos and from a side view of a sister car (photo 29). A tape measure on
   a few points would let it be checked: wheel arch tops above the road, the bonnet's front edge and the scuttle at the
