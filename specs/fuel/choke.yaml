@@ -1,0 +1,267 @@
+# Choke (mixture) control and the jet linkage on the twin SU HS4s, early car (1963). Haynes Ch 3: Fig 3.10 (printed p73)
+# items 46-72 (jet levers and links, their springs and pivot bolts, the interconnecting rod and its lever-and-pin
+# clamps, the cable lever); Fig 3.13 (p76: the choke interconnecting spindle); Sec 21 paras 3, 13-15 (p76-77); Sec 23
+# para 22 (p77: 1/16 in free movement of the wire); Ch 12 Sec 47 para 4 (p232: the cable nut behind the facia, the
+# cable through the air cleaner bracket). Factory parts list (F) plate 108-G2: choke control cable BHH526 (early),
+# choke control bracket AHH6731, outer cable abutment AHH6734. Suppliers (S): Rimmer Bros GRID019709 (AHH6734 abutment
+# with spring washer AJD7721, AUE34 cable nipple and screw with trunnion 150341 and 5BA screw 53K3503, grommet
+# 14A7033), MGOC Spares (the round "C" knob on chrome bumper cars 1962-69). Oliver's photo 16: the knob on the centre
+# panel right of the ignition. PDF page = printed page + 4. Positions: mgb/throttle_layout.py (D).
+defaults:
+  system: fuel
+  assembly: fuel.choke
+  haynes: { section: 21, spec_page: 66 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true }
+  finish: zinc_steel
+
+parts:
+  # ---- the control on the facia -----------------------------------------------------------------------------------
+  - id: fuel.choke.knob
+    name: Choke control knob
+    haynes: { section: 21 }
+    quantity: 1
+    finish: plastic_black
+    notes: >
+      Round black knob with the letter C on its face (MGOC Spares: the round 'C' knob of chrome bumper cars 1962-69;
+      Oliver's photo 16 shows it right of the ignition, twisted so the C reads reversed). Pulled out it draws the jets
+      down; pushed home it stands just off the bezel. The C is cut into the face.
+    specs:
+      diameter: { mm: 25.0, source: { label: D, method: "Photo 16 scaled on the ignition bezel" } }
+      length: { mm: 11.0, source: { label: D, method: "Photo 16" } }
+
+  - id: fuel.choke.knob-letter
+    name: Choke knob lettering
+    haynes: { section: 21 }
+    quantity: 1
+    finish: needle
+    notes: "The white C infilled in the knob's face (Oliver's photo 16; MGOC Spares: the 'C' motif of the 1962-69 knob)."
+    specs:
+      height: { mm: 13.0, source: { label: D, method: "Photo 16, about half the knob" } }
+
+  - id: fuel.choke.control
+    name: Choke control (bush and rod)
+    haynes: { section: 21 }
+    quantity: 1
+    finish: chrome
+    notes: >
+      BHH526 (F plate 108-G2 item 8, early cable). The control's head: a chrome bezel on the centre panel's face, the
+      threaded bush through the panel and facia, and the knob's rod sliding in it; the outer cable is crimped into the
+      bush's front end.
+    specs:
+      bush_diameter: { in: 0.4375, source: { label: D, method: "7/16 in bush, as the facia hole in photo 16" } }
+
+  - id: fuel.choke.facia-nut
+    name: Control nut behind the facia
+    haynes: { section: 47 }
+    quantity: 1
+    notes: "Haynes Ch 12 Sec 47 para 4 (p232): 'undo the choke cable nut behind the facia'."
+    specs:
+      across_flats: { in: 0.5625, source: { label: D, method: "Over the 7/16 in bush" } }
+
+  - id: fuel.choke.facia-washer
+    name: Control shakeproof washer
+    haynes: { section: 47 }
+    quantity: 1
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Shakeproof washer" } }
+
+  - id: fuel.choke.cable-outer
+    name: Choke cable outer
+    haynes: { section: 47 }
+    quantity: 1
+    finish: cable_black
+    notes: >
+      From the control's bush forward under the scuttle, through the grommet in the bulkhead left of the heater
+      opening, behind the cylinder head beside the throttle cable and down between the dashpots to the abutment on
+      the bracket. Route derived (mgb/throttle_layout.py CHOKE_OUTER).
+    specs:
+      outside_diameter: { mm: 6.0, source: { label: D, method: "As the throttle outer" } }
+
+  - id: fuel.choke.cable-inner
+    name: Choke cable inner
+    haynes: { section: 21 }
+    quantity: 1
+    finish: machined_steel
+    notes: "Solid wire: the exposed end from the abutment down to the trunnion; 1/16 in free movement before it pulls the jet levers (Sec 23 para 22)."
+    specs:
+      diameter: { mm: 1.6, source: { label: D, method: "Solid wire" } }
+      free_movement: { in: 0.0625, mm: 1.6, source: { label: H, page: 77, note: "Sec 23 para 22" }, display_only: true }
+
+  - id: fuel.choke.grommet
+    name: Bulkhead grommet
+    haynes: { section: 47 }
+    quantity: 1
+    finish: rubber
+    notes: "14A7033 (Rimmer Bros GRID019709: cable grommet 5/8 OD x 3/16 ID, chrome bumper cars)."
+    specs:
+      outside_diameter: { in: 0.625, source: { label: S, ref: "Rimmer Bros 14A7033" } }
+      inside_diameter: { in: 0.1875, source: { label: S, ref: "Rimmer Bros 14A7033" }, display_only: true }
+
+  - id: fuel.choke.abutment
+    name: Choke outer cable abutment
+    haynes: { section: 21 }
+    quantity: 1
+    finish: brass
+    notes: "AHH6734 (F plate 108-G2 item 11; Rimmer Bros 'abutment, choke cable'): threaded through the bracket, nut and twin-coil spring washer (AJD7721) under it; the outer's ferrule sits in its cup."
+    specs:
+      length: { mm: 14.0, source: { label: D, method: "Cup over the bracket, thread under it" } }
+
+  - id: fuel.choke.abutment-nut
+    name: Abutment nut
+    haynes: { section: 21 }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.4375, source: { label: D, method: "1/4 in thread" } }
+
+  - id: fuel.choke.abutment-washer
+    name: Abutment spring washer
+    haynes: { section: 21 }
+    quantity: 1
+    finish: spring_steel
+    notes: "AJD7721 twin-coil spring washer 3/16 in (Rimmer Bros)."
+    specs:
+      inside_diameter: { in: 0.1875, source: { label: S, ref: "Rimmer Bros AJD7721" }, display_only: true }
+
+  # ---- jet linkage (Fig 3.10) -------------------------------------------------------------------------------------
+  - id: fuel.choke.cable-lever
+    name: Choke cable lever
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 69 }] }
+    quantity: 1
+    notes: "Clamped on the interconnecting rod between the instruments by its bolt, spring washer and nut (items 70-72); the cable's trunnion in its upper end."
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.choke.cable-lever-bolt
+    name: Cable lever bolt
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 70 }] }
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.1875, source: { label: D, method: "Fig 3.10 proportion" } }
+
+  - id: fuel.choke.cable-lever-nut
+    name: Cable lever nut
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 72 }] }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.375, source: { label: D, method: "3/16 in nut" } }
+
+  - id: fuel.choke.cable-lever-washer
+    name: Cable lever spring washer
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 71 }] }
+    quantity: 1
+    finish: spring_steel
+    specs:
+      thickness: { mm: 1.0, source: { label: D, method: "Spring washer 3/16 in" } }
+
+  - id: fuel.choke.trunnion
+    name: Cable trunnion and screw
+    haynes: { section: 21 }
+    quantity: 1
+    finish: brass
+    notes: "AUE34 (Rimmer Bros: cable nipple and screw; trunnion 150341 with screw 53K3503, 5BA x 3/8 in): turns in the lever, cross-drilled for the wire, the screw in its end clamps it (Sec 45 para 12 frees 'the screw in the trunnion')."
+    specs:
+      screw_length: { in: 0.375, source: { label: S, ref: "Rimmer Bros 53K3503, 5BA x 3/8" }, display_only: true }
+
+  - id: fuel.choke.rod
+    name: Choke interconnecting rod
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 63 }, { figure: "3.13" }] }
+    quantity: 1
+    notes: "Plain rod between the two lever-and-pin clamps; the throttle shaft lever's stop rests just above it (Fig 3.13)."
+    specs:
+      diameter: { in: 0.25, source: { label: D, method: "Fig 3.10 proportion" } }
+
+  - id: fuel.choke.rod-clamp-front
+    name: Lever and pin assembly (front carburettor)
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 64 }] }
+    quantity: 1
+    notes: "A short lever clamped on the rod by its bolt and nut (items 66-68), the pin at its foot in the jet lever's outer hole; slacken the bolts to set the jets (Sec 21 para 3, 'the pinch-bolts on levers (64) and (65)')."
+    specs:
+      width: { mm: 8.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.choke.rod-clamp-rear
+    name: Lever and pin assembly (rear carburettor)
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 65 }] }
+    quantity: 1
+    notes: Handed to the front one.
+    specs:
+      width: { mm: 8.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.choke.rod-clamp-bolt
+    name: Lever and pin clamp bolt
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 66 }] }
+    quantity: 2
+    specs:
+      thread_diameter: { in: 0.1875, source: { label: D, method: "Fig 3.10 proportion" } }
+
+  - id: fuel.choke.rod-clamp-washer
+    name: Lever and pin clamp washer
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 67 }] }
+    quantity: 2
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.choke.rod-clamp-nut
+    name: Lever and pin clamp nut
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 68 }] }
+    quantity: 2
+    specs:
+      across_flats: { in: 0.375, source: { label: D, method: "3/16 in nut" } }
+
+  - id: fuel.choke.jet-lever-front
+    name: Jet lever and link (front carburettor)
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 46 }] }
+    quantity: 1
+    notes: >
+      A pressed lever rocking on its pivot bolt under the instrument, and the link riveted to its inner end, its foot
+      screwed to the jet head's lug (item 51): lifting the rod raises the lever's outer end and the link pushes the jet
+      down (richer). The jet spring returns it to the adjusting nut (Sec 21 para 13). Shape from Fig 3.10; the pivot
+      is drawn on a boss cast on the body (the float chamber bolt of item 26 has no room for it in this model).
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.choke.jet-lever-rear
+    name: Jet lever and link (rear carburettor)
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 47 }] }
+    quantity: 1
+    notes: Handed to the front one.
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.choke.link-screw
+    name: Link to jet screw
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 51 }] }
+    quantity: 2
+    specs:
+      length: { mm: 8.0, source: { label: D, method: "Through the link into the lug" } }
+
+  - id: fuel.choke.pivot-bolt
+    name: Jet lever pivot bolt
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 59 }] }
+    quantity: 2
+    specs:
+      thread_diameter: { in: 0.1875, source: { label: D, method: "Fig 3.10 proportion" } }
+      length: { mm: 28.0, source: { label: D, method: "Washers, spring, lever and boss" } }
+
+  - id: fuel.choke.pivot-tube
+    name: Jet lever pivot tube
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 60 }] }
+    quantity: 2
+    specs:
+      outside_diameter: { mm: 6.4, source: { label: D, method: "Fig 3.10" } }
+      length: { mm: 9.0, source: { label: D, method: "Through the spring and the lever" } }
+
+  - id: fuel.choke.pivot-washer
+    name: Jet lever pivot washer
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 61 }, { figure: "3.10", legend: 62 }] }
+    quantity: 2
+    specs:
+      thickness: { mm: 1.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.choke.jet-lever-spring
+    name: Jet lever spring
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 57 }, { figure: "3.10", legend: 58 }] }
+    quantity: 2
+    finish: spring_steel
+    notes: "Coil round the pivot tube under the bolt head, holding the lever against the jet's return."
+    specs:
+      outside_diameter: { mm: 10.0, source: { label: D, method: "Fig 3.10" } }

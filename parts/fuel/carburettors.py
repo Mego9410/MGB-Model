@@ -1,4 +1,5 @@
-"""Twin SU HS4 carburettors, heat shield, distance pieces, linkage and air cleaners.
+"""Twin SU HS4 carburettors, heat shield, distance pieces and air cleaners (the linkage is fuel.throttle and
+fuel.choke: parts/fuel/throttle.py, parts/fuel/choke.py).
 Haynes Ch 3, Figs 3.1, 3.10, 3.11, 3.12; photos 17.1(a)/(b), 17.7, 18.2-18.5.
 
 Handed parts (bodies, float chambers, jet assemblies) are built in the engine frame at
@@ -10,7 +11,7 @@ import math
 from build123d import (Align, Axis, Box, Circle, Cylinder, FilletPolyline, Location, Part, Plane, Rot,
                        SlotCenterToCenter, extrude, fillet, sweep)
 
-from mgb import carb_layout as K, fasteners as F, shapes as Sh
+from mgb import carb_layout as K, fasteners as F, shapes as Sh, throttle_layout as TL
 
 BASE = (Align.CENTER, Align.CENTER, Align.MIN)
 
@@ -81,11 +82,21 @@ def body(x):
         b = b + _xcyl(9, K.PISTON_Y, z - 50, x + s * 40, x + s * 46)
         b = b + _xcyl(6, K.SPINDLE_Y, z, x - 44, x + 44)                        # spindle bosses
         b = b + _xcyl(6, K.PISTON_Y, z + 28, x + s * 38, x + s * 48)           # piston lifting pin boss
+        # throttle stop lug under the throttle lever's adjusting screw, off the engine flange (fuel.throttle)
+        (l0, l1), (ly0, ly1), (lz0, lz1) = TL.STOP_LUG
+        b = b + Location(((2 * x + s * (l0 + l1)) / 2, (ly0 + ly1) / 2, (lz0 + lz1) / 2)) * Box(abs(l1 - l0), ly1 - ly0, lz1 - lz0)
+        # boss for the jet lever's pivot bolt under the barrel (fuel.choke; Fig 3.10 item 59 screws into the body)
+        qy, qz = TL.JET_PIVOT
+        bx0 = x - s * (TL.JET_LEVER_DX - TL.JET_LEVER_T / 2 - 0.1)
+        bx1 = x - s * TL.JET_BOSS_DX[1]
+        b = b + _xcyl(6.0, qy, qz, min(bx0, bx1), max(bx0, bx1))
+        b = b + Location(((bx0 + bx1) / 2, qy, (qz + z) / 2)) * Box(abs(bx1 - bx0) - 2.0, 6.0, z - qz)
         # bores and holes
         b = b - _ycyl(bore, x, z, y0 - 1, y0 + K.BODY_LEN + 1)
         b = b - _zcyl(34, x, K.PISTON_Y, z + 8, K.CHAMBER_BASE_Z + 1)          # piston well
         b = b - _zcyl(5.0, x, K.PISTON_Y, z - 60, z)                           # jet bearing bore
         b = b - _xcyl(4.2, K.SPINDLE_Y, z, x - 45, x + 45)
+        b = b - _xcyl(2.0, qy, qz, min(bx0, bx1) - 1, max(bx0, bx1) - 2)       # tapped for the pivot bolt
         b = b - _xcyl(3.4, K.PISTON_Y, z - 50, x + s * 10, x + s * 50)
         for dx in (-K.STUD_DX, K.STUD_DX):
             b = b - _ycyl(4.4, x + dx, z, y0 - 1, y0 + 10)
@@ -114,16 +125,6 @@ def throttle_spindle(spec) -> Part:
     s = _xcyl(4.0, 0, 0, -L / 2, L / 2)
     s = s - Box(10, 1.2, 9).moved(Location((0, 0, 0)))                         # slot for the disc
     return _l(s, spec)
-
-
-def throttle_lever(spec) -> Part:
-    """Lever on the inboard end of the spindle with the idle stop screw boss (Fig 3.12)."""
-    L = spec.nom("length")
-    arm = Location((0, 0, -L / 2)) * Box(2.4, 12, L)
-    arm = _tf(arm, arm.edges().filter_by(Axis.X), 5.5)
-    hub = _xcyl(7, 0, 0, -3, 3)
-    stop = _xcyl(4.5, 0, -L + 6, -6, 6)
-    return _l(arm + hub + stop - _xcyl(4.1, 0, 0, -4, 4), spec)
 
 
 # ---- suction chamber, piston, damper (items 6, 8, 10; Fig 3.11) -------------------------------------
@@ -243,6 +244,12 @@ def heat_shield(spec) -> Part:
     plate = _tf(plate, plate.edges().filter_by(Axis.Y), 16.0)
     lip = Location((0, y0 + 32, zb + t / 2)) * Box(300, 64, t)
     sh = plate + lip
+    for xc in K.CARB_X:                                     # notches in the lip round the jet heads and their links
+        sh = sh - Location((xc - K.side(xc) * 6.0, (226.0 + 244.0) / 2, zb + t / 2)) * Box(52.0, 18.0, t + 2)
+    for x in TL.SPRING_X:                                   # return spring holes in the lip (photo 17.1(b))
+        sh = sh - _zcyl(1.4, x, TL.SPRING_LIP_Y, zb - 1, zb + t + 1)
+    for x, zz in TL.BRACKET_SCREW_XZ:                       # the cable abutment bracket's screws (fuel.throttle)
+        sh = sh - _ycyl(3.4, x, zz, y0 - 1, y0 + t + 1)
     for xc in K.CARB_X:
         sh = sh - _ycyl(21, xc, K.AXIS_Z, y0 - 1, y0 + t + 1)
         for dx in (-K.STUD_DX, K.STUD_DX):
@@ -267,34 +274,7 @@ def flange_gasket(spec) -> Part:
     return _l(g, spec)
 
 
-# ---- linkage (items 46-72; photo 17.1) ----------------------------------------------------------------
-def coupling_shaft(spec) -> Part:
-    """Interconnecting throttle shaft between the spindles, with its two clamp couplings."""
-    x0 = K.CARB_X[1] + 54                                  # clamps grip the spindle ends inboard of the levers
-    x1 = K.CARB_X[0] - 54
-    y, z = K.SPINDLE_Y, K.AXIS_Z
-    s = _xcyl(spec.nom("diameter") / 2, y, z, x0, x1)
-    for xc in (x0, x1):
-        clamp = Location((xc, y, z)) * Box(14, 16, 16)
-        clamp = clamp + Location((xc, y, z + 11)) * Box(14, 5, 8)
-        s = s + _tf(clamp, clamp.edges().filter_by(Axis.X), 2.5)
-        s = s - _ycyl(1.6, xc, z + 11, y - 9, y + 9)
-    return _l(s, spec)
-
-
-def jet_rod(spec) -> Part:
-    """Rod linking the two jet levers to the choke cable lever below the instruments."""
-    z = K.AXIS_Z - 88
-    y = K.PISTON_Y + 14
-    r = _xcyl(spec.nom("diameter") / 2, y, z, K.CARB_X[1] + 10, K.CARB_X[0] - 10)
-    lever = Location((0, y, z - 14)) * Box(6, 4, 30)
-    return _l(r + lever, spec)
-
-
-def return_spring(spec) -> Part:
-    return _l(Sh.coil_spring(spec.nom("wire_diameter"), spec.nom("outside_diameter"), spec.nom("length"), 14, 1.5), spec)
-
-
+# ---- linkage: the throttle interconnection and the jet linkage are fuel.throttle and fuel.choke -----------------
 # ---- air cleaners (Fig 3.1) -------------------------------------------------------------------------
 def cleaner_adaptor(spec) -> Part:
     """Item 1: short stub on the carburettor intake flange. Built along +Y from y = 0."""
@@ -383,7 +363,6 @@ PARTS = {
     "fuel.carbs.throttle-disc-front": {"build": throttle_disc(FRONT)},
     "fuel.carbs.throttle-disc-rear": {"build": throttle_disc(REAR)},
     "fuel.carbs.throttle-spindle": {"build": throttle_spindle},
-    "fuel.carbs.throttle-lever": {"build": throttle_lever},
     "fuel.carbs.suction-chamber": {"build": suction_chamber},
     "fuel.carbs.piston": {"build": piston},
     "fuel.carbs.piston-spring": {"build": piston_spring},
@@ -404,9 +383,6 @@ PARTS = {
     "fuel.carbs.stud": {"build": stud},
     "fuel.carbs.nut": {"build": nut("5/16")},
     "fuel.carbs.washer": {"build": washer},
-    "fuel.carbs.coupling-shaft": {"build": coupling_shaft},
-    "fuel.carbs.jet-rod": {"build": jet_rod},
-    "fuel.carbs.return-spring": {"build": return_spring},
     "fuel.carbs.cleaner-adaptor": {"build": cleaner_adaptor},
     "fuel.carbs.cleaner-gasket": {"build": flange_gasket},
     "fuel.carbs.cleaner-baseplate": {"build": cleaner_baseplate},

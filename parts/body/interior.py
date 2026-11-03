@@ -12,7 +12,7 @@ import math
 from build123d import Axis, Compound, Location, Rot
 
 from mgb import body_geom as G, body_layout as BL, body_shell as B, body_shell_layout as S, gearbox_layout as GL
-from mgb import underbody_layout as U
+from mgb import throttle_layout as TL, underbody_layout as U
 from mgb.chassis_geom import box, rod, swept_rod, xcyl, xprism, ycyl, yprism, zcyl, zprism, zrev
 from mgb.elec_shapes import tryfillet
 from parts.body import closures as C, panels as Pn, structure as St
@@ -76,6 +76,7 @@ def facia(spec):
         p = p - xcyl(SIZE[k] + 0.5, x0 - 60, FX + 5, y, z)
     for k, (y, z) in BL.SWITCHES.items():
         p = p - xcyl(SW_R.get(k, 6.2), x0 - 60, FX + 5, y, z)
+    p = p - xcyl(TL.CHOKE_HOLE_R, x0 - 60, FX + 5, *TL.CHOKE_KNOB[1:])     # choke control (fuel.choke)
     for y, z in HEATER_KNOBS:
         p = p - xcyl(5.0, x0 - 5, FX + 5, y, z)
     y0, y1, h0, h1 = GLOVE
@@ -95,6 +96,7 @@ def centre_panel(spec):
     for k, (y, z) in BL.SWITCHES.items():               # clear of the switches' nuts and bezels on the facia
         if y1 < y < y0:
             p = p - xcyl(16.0 if k == "ignition" else 12.5, x0 - 5, FX + 5, y, z)
+    p = p - xcyl(TL.CHOKE_HOLE_R, x0 - 5, FX + 5, *TL.CHOKE_KNOB[1:])     # the choke control's bush (its bezel on the face)
     k = "dual-gauge"
     p = p - xcyl(SIZE[k] + 6.0, x0 - 5, FX + 5, *BL.INSTRUMENTS[k])
     for y, z in HEATER_KNOBS:

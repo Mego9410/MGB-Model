@@ -189,7 +189,7 @@ EDGES = [
     ("gr.bay", "gr.cab", [], True), ("gr.cab", "fa.in", [], True), ("fa.in", "fa.drv", [(-600.0, -350.0, 262.0)], True),
     ("fa.R", "fa.fuel", [], True), ("fa.fuel", "fa.tach", [], True), ("fa.tach", "fa.drv", [], True),
     ("fa.drv", "fa.speedo", [], True), ("fa.speedo", "fa.dual", [], True), ("fa.dual", "fa.map", [], True),
-    ("fa.map", "fa.panel", [], True), ("fa.panel", "fa.ign", [], True), ("fa.ign", "fa.heat", [], True),
+    ("fa.map", "fa.ign", [], True), ("fa.drv", "fa.panel", [], True), ("fa.ign", "fa.heat", [], True),
     ("fa.heat", "fa.light", [], True), ("fa.light", "fa.L", [(FX + 30.0, 220.0, FZ - 40.0)], True),
     ("fa.L", "wiper.n", [(BL.WIPER_MOTOR[0] + 60.0, BL.WIPER_MOTOR[1] + 40.0, 110.0)], True),
     ("fa.drv", "dip.n", [(FX + 70.0, BL.DRIVER_Y + 60.0, 120.0), (-470.0, DIP_SWITCH[1] + 6.0, -60.0)], True),

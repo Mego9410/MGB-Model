@@ -236,6 +236,12 @@ def bulkhead(spec):
         p = p - xcyl(2.2, x0 - 5, BH_X + 5, vy + dy, vz)
     # steering column (P9) through the panel, right of the pedals
     p = p - xcyl(30.0, x0 - 5, BH_X + 5, _column_y_at(BH_X), _column_z_at(BH_X))
+    # accelerator cable guide (hole and its two screws) and the choke cable grommet (fuel.throttle, fuel.choke)
+    from mgb import throttle_layout as TL
+    p = p - xcyl(3.0, x0 - 5, BH_X + 5, TL.GUIDE[1], TL.GUIDE[2])
+    for y, z in TL.GUIDE_SCREWS:
+        p = p - xcyl(2.5, x0 - 5, BH_X + 5, y, z)
+    p = p - xcyl(5.8, x0 - 5, BH_X + 5, TL.CHOKE_GROMMET[1], TL.CHOKE_GROMMET[2])
     # clip screw holes for the fuel pipe (P11a) and the brake pipes (P8) on the engine side
     for (pt, n) in FL.CLIPS["main"]:
         if abs(pt[0] - BH_X) < 30.0:

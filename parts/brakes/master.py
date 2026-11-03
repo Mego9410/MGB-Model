@@ -288,6 +288,9 @@ def cover(spec) -> Part:
     # pressed stiffening rib across the top
     ztop = B.COVER_TOP_Z + 0.6
     c = c + box(XW + 40.0, XF - 40.0, (Y0 + Y1) / 2 - 6.0, (Y0 + Y1) / 2 + 6.0, ztop - 0.01, ztop + 1.4)
+    # hole for the accelerator cable's P-clip screw (P3b, mgb/throttle_layout.py COVER_CLIP)
+    from mgb import throttle_layout as TL
+    c = c - zc(2.6, ztop - 6.0, ztop + 3.0, TL.COVER_CLIP[0] + TL.COVER_CLIP_SCREW_DX, TL.COVER_CLIP[1])
     return lab(c, spec)
 
 

@@ -100,13 +100,15 @@ WARNING_LAMPS = {
     "indicator-right": ("speedometer", INSTRUMENTS["speedometer"][0] - 20.0, IP_Z - 12.0),
 }
 # centre switch panel (Fig 10.9 items 1, 4, 5, 6/7, 8, 13; early cars), as on Oliver's car (photos 16, 22): three
-# toggles in a row under the plaque, the ignition and a push-pull knob beside them (P11b moved them).
+# toggles in a row under the plaque and the ignition (P11b moved them); the choke knob beside them (fuel.choke).
 SWITCHES = {
     "lighting": (120.0, IP_Z - 50.0),
     "wiper": (88.0, IP_Z - 50.0),
     "heater": (56.0, IP_Z - 50.0),
     "ignition": (8.0, IP_Z - 50.0),
-    "panel-lamp": (-36.0, IP_Z - 50.0),                  # push-pull knob right of the ignition
+    "panel-lamp": (DRIVER_Y + 17.0, IP_Z + 8.0),          # pull knob in the binnacle between the speedometer and the
+                                                         # tachometer (photo 22); the knob right of the ignition is the
+                                                         # choke (its "C", photo 16: mgb.throttle_layout CHOKE_KNOB)
     "map-lamp": (-84.0, IP_Z + 36.0),                    # small knob above the dual gauge
     "overdrive": (DRIVER_Y - 262.0, IP_Z - 10.0),        # toggle outboard of the fuel gauge
 }

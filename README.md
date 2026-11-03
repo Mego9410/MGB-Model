@@ -72,6 +72,19 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   leads and plug caps (Ch 4 Fig 4.3; Ch 1 Sec 16 and 63); the rocker cover breather pipe to
   the front air cleaner and the float chamber fuel hoses (Ch 3 Sec 3 and 18).
 
+- P3b (throttle and choke controls) built, early RHD car (Haynes Ch 3 Figs 3.10 and 3.13, photo 17.1(b), Secs 21 and
+  45; factory parts list plates 108-G2 and 108-G4): `fuel.throttle` - the pendant accelerator pedal (AHC135) on its
+  welded bracket with the distance tube, pivot bolt, washer and nyloc nut, the rubber pad, the RHD pedal stop on the toe
+  board with its stop screw and locknut, the cable guide and gasket on the bulkhead, the cable (outer with ferrules,
+  inner with its nipple and split pin at the pedal) P-clipped to the pedal box cover and run behind the head to an
+  abutment bracket on the heat shield, the swivel pin, washers and anti-rattle washer on the throttle shaft lever, the
+  interconnecting shaft in its two folded clamps, both throttle levers with their nuts, tab washers and adjusting
+  screws, and the three return springs to the heat shield's lip; `fuel.choke` - the round "C" knob on the centre panel
+  (Oliver's photo 16), the control's bezel and bush with its nut behind the facia, the cable through its bulkhead
+  grommet to the abutment on the bracket, the trunnion, the cable lever and the interconnecting rod with its two
+  lever-and-pin clamps, and each instrument's jet lever and link on its pivot bolt, tube, washers and spring, screwed to
+  the jet head. Datums: `mgb/throttle_layout.py`.
+
 - P4 (clutch) built: Borg & Beck 8 in diaphragm spring clutch, early type with the release
   plate and graphite bearing (Haynes Ch 5, Figs 5.1 and 5.2): cover with its drive straps and
   fulcrum rivets, diaphragm, release plate, pressure plate, driven plate (hub, centre, six

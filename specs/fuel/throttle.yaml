@@ -1,0 +1,408 @@
+# Accelerator pedal, cable and throttle interconnection, early RHD car (1963, chassis 101-138400). Haynes Ch 3: Fig 3.10
+# (printed p73) items 35-45 and 59-62; Fig 3.13 (p76); photo 17.1(b) (p72); Sec 21 (p76); Sec 45 (p92). Factory parts
+# list (F): MGB service parts list plates 108-G2 and 108-G4 (barneymg.chicagolandmgclub.com spl_mgb_203-214.pdf).
+# Suppliers (S): Rimmer Bros GRID019709 (MGB accelerator/choke cables and linkage, 4 cylinder), MGOC Spares "MGB pedals"
+# and "accelerator choke cables". PDF page = printed page + 4. Positions: mgb/throttle_layout.py (all D).
+# No photographs of the bare early parts could be opened from the build machine; forms are from the Haynes figures and
+# photos and the listings' descriptions, sizes derived.
+defaults:
+  system: fuel
+  assembly: fuel.throttle
+  haynes: { section: 45, spec_page: 66 }
+  variant: { factory_1963: true, as_fitted: true, rhd: true }
+  finish: zinc_steel
+
+parts:
+  # ---- pedal (plate 108-G2) ---------------------------------------------------------------------------------------
+  - id: fuel.throttle.pedal
+    name: Accelerator pedal (RHD)
+    haynes: { section: 45 }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      AHC135 (F plate 108-G2 item 2, RHD, chassis 101-138400). Pendant pressed-steel lever hung from its bracket on the
+      bulkhead's cabin face outboard of the brake pedal and the steering column: a short top arm above the pivot carries
+      the inner cable on a split pin (Haynes Sec 45 para 1, "the split pin at the end of the pedal"), the main arm runs
+      down and back clear of the toe board to the foot plate that takes the rubber pad. Pressing the pad swings the top
+      arm rearward and draws the inner out of the guide. Swaged rib down the arm, pressed boss round the pivot.
+      Shape and lengths derived (mgb/throttle_layout.py).
+    specs:
+      thickness: { mm: 6.0, source: { label: D, method: "Pressed arm, as the clutch and brake pedals' plates" } }
+      pivot_to_pad: { mm: 213.0, source: { label: D, method: "Pivot to pad centre in the layout" }, display_only: true }
+
+  - id: fuel.throttle.pad
+    name: Accelerator pedal rubber pad
+    haynes: { section: 45 }
+    quantity: 1
+    finish: rubber
+    notes: "GPR105 (F plate 108-G2 item 4; MGOC Spares 'pedal rubber, throttle'): ribbed pad stretched over the foot plate."
+    specs:
+      thickness: { mm: 7.0, source: { label: D, method: "As the clutch pad, thinner" } }
+
+  - id: fuel.throttle.pedal-bracket
+    name: Accelerator pedal bracket
+    haynes: { section: 45 }
+    quantity: 1
+    finish: underseal
+    notes: >
+      The pedal hangs from a pressed bracket on the bulkhead's cabin face: a flange spot-welded to the panel and a
+      single cheek reaching back to the pivot, with a raised pad round the pivot hole. The parts list gives no separate
+      bracket for the early pedal (plate 108-G2 lists only the pedal, its distance tube and the pivot bolt), so it is
+      drawn as part of the body shell. Form derived.
+    specs:
+      thickness: { mm: 2.0, source: { label: D, method: "Body pressing" } }
+
+  - id: fuel.throttle.distance-tube
+    name: Pedal distance tube
+    haynes: { section: 45 }
+    quantity: 1
+    notes: "AHH6504 (F plate 108-G2): the pedal turns on it, clamped between the bracket and the washer by the pivot bolt."
+    specs:
+      outside_diameter: { mm: 12.0, source: { label: D, method: "In the pedal's pivot boss" } }
+      inside_diameter: { mm: 8.3, source: { label: D, method: "Over the 5/16 in pivot bolt" } }
+      length: { mm: 14.0, source: { label: D, method: "Pedal boss width plus clearance" } }
+
+  - id: fuel.throttle.pivot-bolt
+    name: Pedal pivot bolt
+    haynes: { section: 45 }
+    quantity: 1
+    notes: "HBZ511 (F plate 108-G2: bolt, plain washer, self-locking nut); MGOC Spares lists the pedal bolt BH605111, 5/16 UNF x 1 3/8 in."
+    specs:
+      thread_diameter: { in: 0.3125, source: { label: S, ref: "MGOC Spares BH605111, bolt 5/16 UNF x 1 3/8" }, display_only: true }
+      length: { in: 1.375, source: { label: S, ref: "MGOC Spares BH605111" } }
+
+  - id: fuel.throttle.pivot-washer
+    name: Pedal pivot plain washer
+    haynes: { section: 45 }
+    quantity: 1
+    specs:
+      outside_diameter: { in: 0.688, source: { label: S, ref: "SAE plain washer 5/16 (F plate 108-G2 WA108051)" }, display_only: true }
+
+  - id: fuel.throttle.pivot-nut
+    name: Pedal pivot self-locking nut
+    haynes: { section: 45 }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.5, source: { label: S, ref: "ANSI B18.2.2, 5/16 UNF (F plate 108-G2 LNZ405)" }, display_only: true }
+
+  - id: fuel.throttle.pedal-stop
+    name: Accelerator pedal stop (RHD)
+    haynes: { section: 45 }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      AHB7162 (F plate 108-G2 item 6; MGOC Spares 'pedal stop, RHD'): a pressed angle bracket screwed to the toe board
+      ahead of the pedal arm by two pan-head screws and spring washers, its upright drilled and tapped for the stop
+      screw that sets full throttle. Form and position derived.
+    specs:
+      thickness: { mm: 2.5, source: { label: D, method: "Pressed bracket" } }
+
+  - id: fuel.throttle.stop-screw
+    name: Pedal stop screw
+    haynes: { section: 45 }
+    quantity: 1
+    notes: "HZS412 (F plate 108-G2); MGOC Spares SH604121, screw 1/4 UNF x 1 1/2 in, with locknut GHF200."
+    specs:
+      thread_diameter: { in: 0.25, source: { label: S, ref: "MGOC Spares SH604121" }, display_only: true }
+      length: { in: 1.5, source: { label: S, ref: "MGOC Spares SH604121" }, display_only: true }
+
+  - id: fuel.throttle.stop-locknut
+    name: Pedal stop screw locknut
+    haynes: { section: 45 }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.4375, source: { label: S, ref: "MGOC Spares GHF200, nut 1/4 UNF" }, display_only: true }
+
+  - id: fuel.throttle.stop-fixing-screw
+    name: Pedal stop fixing screw
+    haynes: { section: 45 }
+    quantity: 2
+    notes: "PMZ410 (F plate 108-G2); MGOC Spares SE604051, pan head 1/4 UNF x 5/8 in, with spring washers GHF331; into nuts under the toe board."
+    specs:
+      thread_diameter: { in: 0.25, source: { label: S, ref: "MGOC Spares SE604051" }, display_only: true }
+      length: { in: 0.625, source: { label: S, ref: "MGOC Spares SE604051" } }
+
+  - id: fuel.throttle.stop-spring-washer
+    name: Pedal stop spring washer
+    haynes: { section: 45 }
+    quantity: 2
+    specs:
+      inside_diameter: { mm: 6.7, source: { label: S, ref: "MGOC Spares GHF331, spring washer 1/4" }, display_only: true }
+
+  # ---- cable (plates 108-G2 and 108-G4) ---------------------------------------------------------------------------
+  - id: fuel.throttle.cable-guide
+    name: Accelerator cable guide
+    haynes: { section: 45 }
+    quantity: 1
+    finish: plastic_black
+    notes: >
+      AHH5308 (F plate 108-G2 item 7; MGOC Spares 'guide acc cable', bpnorthwest: it wears and roughens the throttle):
+      a moulded pedestal on the engine side of the bulkhead over the cable hole, two screws and spring washers (PMZ307,
+      LWZ203), a gasket (ACA5073) under it; the outer's ferrule seats in its nose, the inner passes through to the
+      pedal. Form derived.
+    specs:
+      flange_diameter: { mm: 31.0, source: { label: D, method: "Round the two screws" } }
+
+  - id: fuel.throttle.guide-gasket
+    name: Cable guide gasket
+    haynes: { section: 45 }
+    quantity: 1
+    finish: gasket
+    notes: "ACA5073 (MGOC Spares: gasket, accelerator cable guide/pedestal to bulkhead)."
+    specs:
+      thickness: { mm: 1.0, source: { label: D, method: "Not published" } }
+
+  - id: fuel.throttle.guide-screw
+    name: Cable guide screw
+    haynes: { section: 45 }
+    quantity: 2
+    notes: "PMZ307 (F plate 108-G2): pan head No 10 UNF x 7/16 in, nuts on the cabin side."
+    specs:
+      thread_diameter: { in: 0.19, source: { label: S, ref: "No 10 UNF (0.190 in), ANSI B1.1" }, display_only: true }
+      length: { in: 0.4375, source: { label: F, ref: "Plate 108-G2 PMZ307" } }
+
+  - id: fuel.throttle.guide-nut
+    name: Cable guide nut
+    haynes: { section: 45 }
+    quantity: 2
+    specs:
+      across_flats: { in: 0.375, source: { label: S, ref: "Rimmer Bros HN2005SS, nut 10-32 UNF, 3/8 AF" }, display_only: true }
+
+  - id: fuel.throttle.cable-outer
+    name: Accelerator cable outer
+    haynes: { section: 45 }
+    quantity: 1
+    finish: cable_black
+    notes: >
+      AHH6997 (F plate 108-G4, RHD, chassis 101-138400). From the guide's nose up outboard of the pedal box, over its
+      cover (P-clip), behind the cylinder head and forward between the rocker cover and the rear dashpot to the
+      abutment bracket on the heat shield between the instruments, from where the inner drops to the shaft lever
+      (Fig 3.13). Crimped ferrules at both ends. Route derived (mgb/throttle_layout.py THROTTLE_OUTER).
+    specs:
+      outside_diameter: { mm: 6.0, source: { label: D, method: "Spiral-wound outer with plastic covering" } }
+
+  - id: fuel.throttle.cable-inner
+    name: Accelerator cable inner
+    haynes: { section: 45 }
+    quantity: 1
+    finish: machined_steel
+    notes: >
+      The exposed ends of the inner: in the footwell from the guide to the pedal's top end, where its barrel nipple
+      passes the pedal and is held by a split pin (Sec 45 para 1); at the carburettors from the abutment down through
+      the swivel pin on the shaft lever (Rimmer ACC5062 'swivel pin, cable to lever'; Haynes photo 18.2, p75: the wire coming steeply down through the pin).
+    specs:
+      diameter: { mm: 1.6, source: { label: D, method: "Stranded inner" } }
+
+  - id: fuel.throttle.pedal-split-pin
+    name: Cable end split pin
+    haynes: { section: 45 }
+    quantity: 1
+    specs:
+      diameter: { in: 0.0625, source: { label: D, method: "1/16 in split pin" } }
+
+  - id: fuel.throttle.cover-clip
+    name: Cable P-clip on the pedal box cover
+    haynes: { section: 45 }
+    quantity: 1
+    notes: "PCR307 (Rimmer Bros GRID019709 item 18: P-clip, cable to pedal box cover; 3/16 cable hole, 7/32 fixing hole)."
+    specs:
+      fixing_hole: { in: 0.21875, source: { label: S, ref: "Rimmer Bros PCR307" }, display_only: true }
+
+  - id: fuel.throttle.cover-clip-screw
+    name: P-clip screw
+    haynes: { section: 45 }
+    quantity: 1
+    notes: "PMZ308 pan head No 10 UNF x 1/2 in with spring washer, repair washer and nut (Rimmer Bros GRID019709, single-line cars)."
+    specs:
+      length: { in: 0.5, source: { label: S, ref: "Rimmer Bros PMZ308" }, display_only: true }
+
+  - id: fuel.throttle.cover-clip-nut
+    name: P-clip nut
+    haynes: { section: 45 }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.375, source: { label: S, ref: "Rimmer Bros HN2005SS, 3/8 AF" }, display_only: true }
+
+  - id: fuel.throttle.abutment-bracket
+    name: Cable abutment bracket
+    haynes: { section: 21, figures: [{ figure: "3.13" }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Choke control bracket AHH6731 (F plate 108-G2 item 10): a pressed angle screwed to the heat shield's outboard face
+      between the instruments, its top flange turned out over the linkage with the two outer-cable ferrule holes (the
+      throttle outer seats in one, the choke abutment AHH6734 in the other), a stiffening bead along the bend. Haynes Ch
+      12 Sec 47 para 4 (p232) frees the early choke cable "from the air cleaner bracket"; the bracket is drawn on the
+      shield beside the air cleaners. Position and form derived.
+    specs:
+      thickness: { mm: 1.6, source: { label: D, method: "Pressing" } }
+
+  - id: fuel.throttle.bracket-screw
+    name: Bracket screw
+    haynes: { section: 21 }
+    quantity: 2
+    notes: "1/4 UNF x 5/8 in setscrew through the heat shield (as Rimmer SH604051 'bracket to heatshield' on the later bracket)."
+    specs:
+      thread_diameter: { in: 0.25, source: { label: S, ref: "Rimmer Bros SH604051" }, display_only: true }
+      length: { in: 0.625, source: { label: S, ref: "Rimmer Bros SH604051" } }
+
+  - id: fuel.throttle.bracket-nut
+    name: Bracket nut
+    haynes: { section: 21 }
+    quantity: 2
+    specs:
+      across_flats: { in: 0.4375, source: { label: S, ref: "Rimmer Bros GHF200, nut 1/4 UNF" }, display_only: true }
+
+  # ---- throttle interconnection (Fig 3.10, Fig 3.13) --------------------------------------------------------------
+  - id: fuel.throttle.throttle-lever-front
+    name: Throttle lever (front carburettor)
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 38 }] }
+    quantity: 1
+    notes: >
+      Flat steel lever on the inboard end of the throttle spindle, held by the nut and tab washer (items 42, 43): its arm
+      runs outboard under the spindle with the throttle adjusting screw (item 44) bearing on the stop lug cast on the
+      body, and the hole for the return spring at its end (photo 17.1(b)). Fig 3.10 shape; arm length derived.
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.throttle.throttle-lever-rear
+    name: Throttle lever (rear carburettor)
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 39 }] }
+    quantity: 1
+    notes: Handed to the front lever.
+    specs:
+      thickness: { mm: 3.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.throttle.lever-tab-washer
+    name: Throttle lever tab washer
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 43 }] }
+    quantity: 2
+    specs:
+      thickness: { mm: 0.8, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.throttle.lever-nut
+    name: Throttle spindle nut
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 42 }] }
+    quantity: 2
+    specs:
+      across_flats: { in: 0.3125, source: { label: D, method: "Small thin nut on the 5/16 in spindle end, Fig 3.10" } }
+
+  - id: fuel.throttle.adjusting-screw
+    name: Throttle adjusting screw
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 44 }, { figure: "3.12", legend: 1 }] }
+    quantity: 2
+    notes: "Sets the idle (Sec 21 para 8: turn the throttle screws equal amounts); a coil spring under its head locks it (item 45)."
+    specs:
+      length: { mm: 22.0, source: { label: D, method: "Fig 3.10 proportion" } }
+
+  - id: fuel.throttle.adjusting-spring
+    name: Throttle adjusting screw spring
+    haynes: { section: 21, figures: [{ figure: "3.10", legend: 45 }] }
+    quantity: 2
+    finish: spring_steel
+    specs:
+      outside_diameter: { mm: 6.0, source: { label: D, method: "Fig 3.10" } }
+
+  - id: fuel.throttle.coupling
+    name: Throttle spindle coupling (folded clamp)
+    haynes: { section: 21, figures: [{ figure: "3.13" }, { figure: "3.17" }] }
+    quantity: 2
+    notes: >
+      Folded metal clamp joining each spindle's inboard end to the interconnecting shaft, closed by a pinch bolt;
+      loosen it to let the instruments work independently (Sec 21 para 2, Fig 3.17 arrows). Form from Fig 3.13.
+    specs:
+      length: { mm: 19.0, source: { label: D, method: "Over the spindle end and the shaft end" } }
+
+  - id: fuel.throttle.coupling-bolt
+    name: Coupling pinch bolt
+    haynes: { section: 21, figures: [{ figure: "3.17" }] }
+    quantity: 2
+    specs:
+      thread_diameter: { in: 0.1875, source: { label: D, method: "Small pinch bolt, Fig 3.13 proportion" } }
+      length: { in: 0.5, source: { label: D, method: "Through both folds and the nut" } }
+
+  - id: fuel.throttle.coupling-nut
+    name: Coupling pinch bolt nut
+    haynes: { section: 21, figures: [{ figure: "3.17" }] }
+    quantity: 2
+    specs:
+      across_flats: { in: 0.375, source: { label: D, method: "3/16 in nut" } }
+
+  - id: fuel.throttle.shaft
+    name: Throttle interconnecting shaft
+    haynes: { section: 21, figures: [{ figure: "3.13" }] }
+    quantity: 1
+    notes: "Plain steel rod between the two couplings, carrying the throttle shaft lever (Sec 21 para 2: 'the interconnecting shaft')."
+    specs:
+      diameter: { in: 0.375, source: { label: D, method: "Fig 3.13 proportion" } }
+
+  - id: fuel.throttle.shaft-lever
+    name: Throttle shaft lever (accelerator lever)
+    haynes: { section: 21, figures: [{ figure: "3.13" }] }
+    quantity: 1
+    notes: >
+      12H715 (Rimmer Bros 'lever and link, accelerator'; F plate 108-G4 'accelerator lever and spindle'): clamped on the
+      interconnecting shaft between the instruments by a pinch bolt. Its arm runs outboard and down: the cable's swivel
+      pin and the centre return spring on the upper part, the stop at the foot resting just clear of the choke
+      interconnecting rod, so pulling the choke lifts the throttles for the fast idle (Fig 3.13; Sec 21 para 11:
+      0.012 in feeler between them, manual cars). Form from Fig 3.13.
+    specs:
+      fast_idle_gap: { in: 0.012, mm: 0.3, source: { label: H, page: 76, note: "Sec 21 para 11, manual transmission" }, display_only: true }
+
+  - id: fuel.throttle.shaft-lever-bolt
+    name: Shaft lever pinch bolt
+    haynes: { section: 21, figures: [{ figure: "3.13" }] }
+    quantity: 1
+    specs:
+      thread_diameter: { in: 0.1875, source: { label: D, method: "Small pinch bolt, Fig 3.13 proportion" } }
+      length: { in: 0.625, source: { label: D, method: "Through the clamp" } }
+
+  - id: fuel.throttle.shaft-lever-nut
+    name: Shaft lever pinch bolt nut
+    haynes: { section: 21, figures: [{ figure: "3.13" }] }
+    quantity: 1
+    specs:
+      across_flats: { in: 0.375, source: { label: D, method: "3/16 in nut" } }
+
+  - id: fuel.throttle.swivel-pin
+    name: Cable swivel pin
+    haynes: { section: 45 }
+    quantity: 1
+    notes: "ACC5062 (Rimmer Bros: swivel pin, cable to lever; F plate 108-G4 'accelerator lever pin'): cross-drilled for the inner, its clamp screw on the end; two plain washers (GHF301), anti-rattle washer (ACA5256) and split pin (PC34)."
+    specs:
+      diameter: { mm: 6.0, source: { label: D, method: "Through the lever" } }
+
+  - id: fuel.throttle.swivel-washer
+    name: Swivel pin plain washer
+    haynes: { section: 45 }
+    quantity: 2
+    specs:
+      inside_diameter: { in: 0.344, source: { label: S, ref: "Rimmer Bros GHF301, plain washer 5/16" }, display_only: true }
+
+  - id: fuel.throttle.anti-rattle-washer
+    name: Anti-rattle washer
+    haynes: { section: 45 }
+    quantity: 1
+    finish: spring_steel
+    notes: "ACA5256 (F plate 108-G4: anti-rattle washer, throttle cable to carburettor lever): a dished spring washer."
+    specs:
+      outside_diameter: { mm: 14.0, source: { label: D, method: "Over the swivel pin" } }
+
+  - id: fuel.throttle.swivel-split-pin
+    name: Swivel pin split pin
+    haynes: { section: 45 }
+    quantity: 1
+    specs:
+      diameter: { in: 0.09375, source: { label: S, ref: "Rimmer Bros PC34, split pin 3/32 x 1 1/2" }, display_only: true }
+
+  - id: fuel.throttle.return-spring
+    name: Throttle return spring
+    haynes: { section: 17, figures: [{ figure: "3.13" }] }
+    quantity: 3
+    finish: spring_steel
+    notes: >
+      AEC2075 (Rimmer Bros: throttle return spring HS, twin carbs, three for HS4 cars): one from each throttle lever and
+      one from the shaft lever, hooked down to holes in the heat shield's turned-out lip (photos 17.1(b), p72, and 18.3(a), p75).
+    specs:
+      outside_diameter: { mm: 8.0, source: { label: D, method: "Photo 17.1(b) proportion" } }
+      wire_diameter: { mm: 1.0, source: { label: D, method: "Photo 17.1(b) proportion" } }

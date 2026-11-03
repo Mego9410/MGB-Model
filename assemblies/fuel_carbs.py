@@ -1,7 +1,7 @@
 """Twin SU HS4 carburettors and air cleaners (Haynes Ch 3, Figs 3.1, 3.10-3.12).
 
 Explode stages follow Haynes: Sec 3 air cleaners off (bolts, cases, elements,
-baseplates, gaskets, adaptors); Sec 18 linkage and springs, flange nuts, the pair of
+baseplates, gaskets, adaptors); Sec 18 flange nuts (the linkage and its springs come off first: fuel.throttle, fuel.choke), the pair of
 instruments off together, distance pieces, gaskets and heat shield; then each
 instrument dismantled - damper, suction chamber, spring and piston, float chamber
 lid and float, float chamber, jet and its nuts.
@@ -45,8 +45,6 @@ def nom(part, key):
 O = Location((0, 0, 0))
 z = K.AXIS_Z
 add("heat-shield", O, explode=ex(OUT, 8, 40))
-add("coupling-shaft", O, explode=ex(UP, 4, 90))
-add("jet-rod", O, explode=ex(DOWN, 4, 90))
 for x, name in zip(K.CARB_X, ("front", "rear")):
     s = K.side(x)
     first = name == "front"
@@ -69,8 +67,6 @@ for x, name in zip(K.CARB_X, ("front", "rear")):
     add(f"body-{name}", O, groups=C)
     add(f"throttle-disc-{name}", O, groups=C, explode=ex(DOWN, 12, 30))
     add("throttle-spindle", Location((x, K.SPINDLE_Y, z)), groups=C, explode=ex([-s, 0, 0], 12, 80), label=first)
-    add("throttle-lever", Location((x - s * 46, K.SPINDLE_Y, z)), groups=C, explode=ex([-s, 0, 0], 11, 60), label=first)
-    add("return-spring", Location((x - s * 46, K.SPINDLE_Y, z - 88)), explode=ex(DOWN, 3, 60), label=first)
     add("suction-chamber", Location((x, K.PISTON_Y, K.CHAMBER_BASE_Z)), groups=C, explode=ex(UP, 9, 120), label=first)
     add("damper", Location((x, K.PISTON_Y, K.CHAMBER_BASE_Z + nom("suction-chamber", "height"))), groups=C,
         explode=ex(UP, 8, 220), label=first)

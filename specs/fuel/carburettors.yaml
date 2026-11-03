@@ -55,16 +55,7 @@ parts:
     quantity: 2
     finish: machined_steel
     specs:
-      length: { mm: 100.0, source: { label: D, method: "Through the body and out to the coupling" } }
-
-  - id: fuel.carbs.throttle-lever
-    name: Throttle lever
-    haynes: { figures: [{ figure: "3.10", legend: 38 }, { figure: "3.12", legend: 1 }] }
-    quantity: 2
-    finish: machined_steel
-    notes: Carries the throttle (idle speed) adjusting screw (Fig 3.12 item 1).
-    specs:
-      length: { mm: 34.0, source: { label: D, method: "Proportion from Fig 3.12" } }
+      length: { mm: 130.0, source: { label: D, method: "Through the body, the throttle lever, its nut and into the coupling (fuel.throttle)" } }
 
   - id: fuel.carbs.suction-chamber
     name: Suction chamber
@@ -248,33 +239,6 @@ parts:
       outside_diameter: { mm: 17.5, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
       inside_diameter: { mm: 8.7, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
       thickness: { mm: 1.65, source: { label: S, ref: "SAE plain washer, 5/16 in" } }
-
-  - id: fuel.carbs.coupling-shaft
-    name: Throttle interconnecting shaft
-    haynes: { figures: [{ figure: "3.10", legend: 60 }], section: 21 }
-    quantity: 1
-    finish: machined_steel
-    notes: Folded clamps with pinch bolts at each end; loosen them to adjust the instruments separately (Haynes Sec 21 para 2, photo 17.1(b)).
-    specs:
-      diameter: { mm: 9.5, source: { label: D, method: "Not published" } }
-
-  - id: fuel.carbs.jet-rod
-    name: Jet (choke) linkage rod
-    haynes: { figures: [{ figure: "3.10", legend: 63 }], section: 21 }
-    quantity: 1
-    finish: machined_steel
-    specs:
-      diameter: { mm: 6.4, source: { label: D, method: "Not published" } }
-
-  - id: fuel.carbs.return-spring
-    name: Throttle return spring
-    haynes: { figures: [{ figure: "3.10", legend: 56 }], section: 18 }
-    quantity: 2
-    finish: machined_steel
-    specs:
-      wire_diameter: { mm: 1.2, source: { label: D, method: "Not published" } }
-      outside_diameter: { mm: 9.0, source: { label: D, method: "Proportion from photo 17.1(b)" } }
-      length: { mm: 52.0, source: { label: D, method: "From the lever to the heat shield" } }
 
   - id: fuel.carbs.cleaner-adaptor
     name: Air cleaner adaptor

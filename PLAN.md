@@ -12,6 +12,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P1 Cylinder head | Ch 1 | done |
 | P2 Block, crank, timing, lube, flywheel, manifolds, cooling | Ch 1-2 | done |
 | P3 Carburettors, fuel hoses, breather, ignition | Ch 3-4 | done |
+| P3b Accelerator pedal and cable, throttle interconnection, choke control and jet linkage | Ch 3 | done |
 | P4 Clutch | Ch 5 | done |
 | P5a Gearbox (three-synchro, overdrive type), remote control | Ch 6 | done |
 | P5b Overdrive (Laycock type D), speedometer drive, rear mounting | Ch 6, Ch 1 | done |
@@ -368,6 +369,78 @@ round them and should check them against the car:
   `exhaust_layout.TAIL_END_X`).
 - Viewer note: the body hides the mechanicals; hide or isolate a system from the Parts tree.
 
+## P3b throttle and choke controls: what was built and assumed
+
+- Assemblies: `fuel.throttle` (accelerator pedal, pad, welded pivot bracket, distance tube, pivot bolt, washer and nyloc
+  nut; RHD pedal stop on the toe board with its stop screw, locknut, two pan screws and spring washers; cable guide and
+  gasket on the bulkhead with two screws and nuts; the cable outer with crimped ferrules and the inner's exposed ends,
+  the barrel nipple and split pin at the pedal; the P-clip, screw and nut on the pedal box cover; the abutment bracket
+  on the heat shield with its two screws and nuts; the throttle shaft lever with its pinch bolt and nut, the swivel pin,
+  two washers, anti-rattle washer and split pin; the interconnecting shaft, two folded clamps with their pinch bolts
+  and nuts; both throttle levers with nuts, tab washers, adjusting screws and springs; three return springs) and
+  `fuel.choke` (the "C" knob, the control's bezel and bush, nut and shakeproof washer behind the facia; the cable outer
+  and the inner's end; the bulkhead grommet; the abutment, nut and spring washer on the bracket; the trunnion; the
+  cable lever with its bolt, spring washer and nut; the interconnecting rod and its two lever-and-pin clamps with
+  bolts, washers and nuts; each instrument's jet lever and link with its screw to the jet head, pivot bolt, tube, two
+  washers and spring). Explode stages follow Haynes Sec 45 (cables) and Sec 21 (linkage). Datums:
+  `mgb/throttle_layout.py`.
+- References: Haynes Ch 3 Fig 3.10 (printed p73, items 35-72, rendered at 220 dpi and read item by item), Fig 3.13 (p76:
+  the cable coming down to the shaft lever between the instruments, the shaft lever's stop over the choke
+  interconnecting spindle, the clamps' pinch bolts), Fig 3.17 (p77), photo 17.1(b) (p72: the return springs hooked
+  down to the heat shield's lip), photos 18.2 and 18.3(a) (p75: the inner coming steeply down to the swivel pin, the
+  springs on the levers), Sec 21 (p76: 0.012 in fast idle feeler, the folded clamp), Sec 23 para 22 (p77: 1/16 in
+  free movement of the choke wire), Sec 45 (p92: pedal pivot bolt, split pin at the pedal's end, the choke trunnion's
+  screw); Ch 12 Sec 47 para 4 (p232: the choke cable nut behind the facia and the air cleaner bracket). The factory
+  service parts list (plates 108-G2 and 108-G4, chassis 101-138400, barneymg.chicagolandmgclub.com) for the early part
+  numbers: pedal AHC135 RHD, pad GPR105, distance tube AHH6504, pedal stop AHB7162 RHD, cable guide AHH5308, cable
+  AHH6997 RHD, choke cable BHH526, choke control bracket AHH6731, outer cable abutment AHH6734. Rimmer Bros
+  GRID019709 and MGOC Spares ("pedals", "accelerator choke cables", "carburettor linkages cables") for the fixings
+  and the three AEC2075 return springs, the P-clip to the pedal box cover on single-line cars, the swivel pin ACC5062,
+  the choke trunnion AUE34 and the round "C" choke knob of 1962-69 cars. Oliver's photo 16: the knob right of the
+  ignition is lettered C (zoomed: scratchpad p3b/knob16.png), so it is the choke.
+- Known P3b approximations (all positions D): no photographs of the early bare parts or of an early car's throttle
+  cable run could be opened from the build machine, so every form is from the Haynes figures and photos and the
+  listings' descriptions. Haynes covers the throttle pedal and cable only for cars from 41002 (Sec 45); the early
+  arrangement is inferred from the parts list: a pendant pedal with the inner on its top arm, the outer from the
+  bulkhead guide P-clipped to the pedal box cover, and (from Fig 3.13) coming down to the shaft lever between the
+  instruments, where it is drawn seating on the same bracket as the choke abutment. The cable route behind the head
+  is derived. Fig 3.10 draws the later HS4 linkage (cam levers, forked throttle levers); the model keeps its items 38-45,
+  46/47, 59-72 and Fig 3.13's stop-on-the-rod fast idle, without the cam levers 53/54 and their springs 55/56. The jet
+  levers pivot on a bolt into a boss cast on the body instead of on the float chamber bolt (item 26), which has no
+  room in the P3 carburettor model. The pedal's return relies on the three carburettor springs (plate 108-G2 lists no
+  pedal spring). The pedal and linkage are drawn at rest (closed throttle, choke home); the travel is not modelled, and
+  the pedal stop's screw (HZS412, 1/4 UNF x 1 1/2 in by its code) is drawn near the toe board's foot, 5 mm short of the
+  arm, because the drawn arm runs close to the toe board higher up. The choke knob's C is a white infill part.
+- Interference (scratchpad p3b/tools/clash2.py: every new instance against each other and against every instance whose
+  box meets it, built from source for fuel, the bulkhead, facia and pedal box cover, from the build's STEP files for the
+  rest; the body skins checked by distance instead - the cables pass 61 mm or more under the bonnet): no clashes with
+  the engine, heater-side fittings, wiring, brake and fuel pipes or the steering column. What remains is intended:
+  screws and nuts in their threads (pivot bolts into the bodies' bosses, the link screws into the jet lugs, the spindle
+  nuts, 9-70 mm3 each), the P-clip gripping the outer (47 mm3), and the pedal stop's fixing and stop screws passing the
+  toe board's carpet into the toe board (under 200 mm3 each). Along the way the check found and fixed: the heat shield's
+  lip through the jet heads and their feed tubes (the lip now has notches there), the cable P-clip and its screw in the
+  pedal box cover's lower step (moved onto the top), the cable over that step, the pinch bolts' nuts in the clamps' hubs,
+  the jet levers' bosses in the body bosses and washers, the lever-and-pin clamps against the barrels and intake flanges,
+  the pedal stop in the carpet and against the arm.
+
+## Changes P3b made to earlier phases
+
+- `fuel.carbs` (P3): the crude coupling shaft, jet rod, throttle levers and return springs are gone (rebuilt in
+  `fuel.throttle` and `fuel.choke`); the throttle spindle is 130 mm long (was 100) so its inboard end reaches the
+  coupling; each body has a throttle stop lug off the engine flange and a boss under the barrel for the jet lever's
+  pivot bolt; the heat shield has the three return spring holes in its lip and the bracket's two screw holes.
+- `mgb/body_layout.py` (P10/P11b): the push-pull knob right of the ignition (P10's "panel-lamp") is the choke; the
+  panel lamp pull switch moves to the pull knob in the binnacle between the speedometer and the tachometer (photo 22),
+  `SWITCHES["panel-lamp"]` = (DRIVER_Y + 17, IP_Z + 8). P10b's wiring follows it (`mgb/wiring_layout.py`: the facia
+  run's panel switch node now branches off the driver's node). This invalidates the body cache (`.cache/body/` is keyed
+  on body_layout.py).
+- `parts/body/interior.py` (P11b): the facia and the centre panel have the choke control's hole at
+  `throttle_layout.CHOKE_KNOB`. `parts/body/structure.py` (P11b): the bulkhead has the cable guide's hole and screw holes
+  and the choke grommet's hole.
+- `parts/brakes/master.py` (P8): the pedal box cover has a hole for the cable P-clip's screw.
+- `fuel.carbs` heat shield: notches in its lip round the jet heads (the lip ran through the jets' heads and feed tubes).
+- `viewer/index.html`: SYSTEM_EXPLODE for `fuel.throttle` and `fuel.choke` (no new finishes).
+
 ## Changes P11b made to earlier phases
 
 - `mgb/car_layout.py`: FRONT_OVERHANG 760 -> 681 mm (profile photo 29: the overriders 681 ahead of the front hub, the
@@ -419,6 +492,21 @@ round them and should check them against the car:
 
 - Bonnet release: which side of the facia is the pull knob on (modelled under the left end, the cable along the left
   inner wing, from the catch's lever in photo 13)? Is there a door check strap on your doors? (asked at the end of the overnight run)
+- Throttle and choke (P3b): the model hangs the accelerator pedal from a bracket on the bulkhead outboard of the brake
+  pedal, its cable through a guide in the bulkhead, up over the pedal box cover (P-clip), behind the cylinder head and
+  forward between the rocker cover and the rear dashpot to a bracket on the heat shield between the carburettors, where
+  it drops to a lever on the throttle interconnecting shaft. Photos of your engine bay looking down at the back of the
+  engine and at the linkage between the carburettors (air cleaners off), and one of the pedal in the footwell, would
+  fix the route, the bracket and the pedal's shape.
+- Choke: the knob right of the ignition reads "C", so the model makes it the choke (P10 had it as the panel lamp
+  switch) and moves the panel lamp switch to the small pull knob in the binnacle between the speedometer and the
+  tachometer (photo 22). Is that knob the panel lamp switch? Which is the small knob above the oil/water gauge (the
+  model keeps it as the map lamp switch), and the knob at the far left of the facia beside the glovebox (photo 04)?
+- Choke cable: does it pass the bulkhead left of the heater (as modelled) and is it clipped to an air cleaner bolt
+  (Haynes Ch 12 mentions an air cleaner bracket on early cars)? With your box-type air cleaners, where does it run?
+- Jet linkage: the model gives each carburettor a jet lever on a pivot bolt under the body joined by a rod, with a
+  lever on the rod for the choke cable, and the throttle shaft lever's stop resting on the rod for the fast idle
+  (Haynes Fig 3.13). If your carburettors have the later cam-lever linkage (Fig 3.10 items 53-56), say so.
 
 - Body (P11b): the shape is traced from your photos and from a side view of a sister car (photo 29). A tape measure on
   a few points would let it be checked: wheel arch tops above the road, the bonnet's front edge and the scuttle at the
@@ -426,9 +514,8 @@ round them and should check them against the car:
   front hub, the headlamp centre height.
 - Hood: is yours the early detachable hood (frame stowed in the boot) or a folding hood? The model shows it erected;
   photo 25 shows a tonneau, which is not modelled yet.
-- Facia: the push-pull knob right of the ignition is drawn as P10's panel lamp switch and the small knob above the
-  dual gauge as the map lamp switch; is either the choke instead? Which toggle is which (the model has lighting,
-  wipers, heater blower from left to right)?
+- Facia: which toggle is which (the model has lighting, wipers, heater blower from left to right)? (The knob right of
+  the ignition is the choke - its "C" - see the P3b question above.)
 - Radio: the console carries a speaker grille (photos 04, 22); is a radio fitted (where), or only the grille?
 - Grille badges: the model leaves off the club badges on the grille (AA and the MG car club). Should they be drawn?
 - Door mirror: only the driver's (right) quarter-light has a mirror in the photos. Is there one on the left too?
