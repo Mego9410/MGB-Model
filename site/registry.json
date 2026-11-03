@@ -62,11 +62,13 @@
    },
    "children": [
     "fuel.carbs",
+    "fuel.choke",
     "fuel.exhaust",
     "fuel.pipes",
     "fuel.pump",
     "fuel.supply",
-    "fuel.tank"
+    "fuel.tank",
+    "fuel.throttle"
    ]
   },
   "ignition": {
@@ -383,7 +385,7 @@
     "body.brightwork.grille-badge"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 420029
+   "bytes": 420157
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -403,7 +405,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 799691
+   "bytes": 799203
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -479,7 +481,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 437975
+   "bytes": 438211
   },
   "body.front": {
    "id": "body.front",
@@ -503,7 +505,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1071472
+   "bytes": 1071360
   },
   "body.glass": {
    "id": "body.glass",
@@ -543,7 +545,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 743854
+   "bytes": 743886
   },
   "body.interior": {
    "id": "body.interior",
@@ -592,7 +594,7 @@
     "body.interior.speaker-grille"
    ],
    "file": "models/body.interior.json",
-   "bytes": 1064990
+   "bytes": 1067022
   },
   "body.rear": {
    "id": "body.rear",
@@ -682,7 +684,7 @@
     "body.structure.arch-liners"
    ],
    "file": "models/body.structure.json",
-   "bytes": 687162
+   "bytes": 695202
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -788,7 +790,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468562
+   "bytes": 468658
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -830,7 +832,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592105
+   "bytes": 592093
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -879,7 +881,7 @@
     "brakes.master.pedal-box"
    ],
    "file": "models/brakes.master.json",
-   "bytes": 378072
+   "bytes": 378968
   },
   "brakes.pedal": {
    "id": "brakes.pedal",
@@ -1411,7 +1413,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 150130
+   "bytes": 150078
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -1574,7 +1576,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 333481
+   "bytes": 333607
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1632,7 +1634,7 @@
     "electrical.loom.bulkhead-grommet"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 94570
+   "bytes": 94630
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1813,7 +1815,7 @@
     "electrical.wiring-instruments.stabiliser"
    ],
    "file": "models/electrical.wiring-instruments.json",
-   "bytes": 184448
+   "bytes": 184252
   },
   "electrical.wiring-lighting": {
    "id": "electrical.wiring-lighting",
@@ -1872,7 +1874,7 @@
     "electrical.wiring-lighting.map-connector"
    ],
    "file": "models/electrical.wiring-lighting.json",
-   "bytes": 979720
+   "bytes": 1011535
   },
   "electrical.wiring-overdrive": {
    "id": "electrical.wiring-overdrive",
@@ -1898,7 +1900,7 @@
     "electrical.wiring-overdrive.relay-earth"
    ],
    "file": "models/electrical.wiring-overdrive.json",
-   "bytes": 300498
+   "bytes": 293182
   },
   "electrical.wiring-starting": {
    "id": "electrical.wiring-starting",
@@ -1932,7 +1934,7 @@
     "electrical.wiring-starting.g-joint-facia"
    ],
    "file": "models/electrical.wiring-starting.json",
-   "bytes": 582117
+   "bytes": 515012
   },
   "electrical.wiring-wipers-horn": {
    "id": "electrical.wiring-wipers-horn",
@@ -1966,7 +1968,7 @@
     "electrical.wiring-wipers-horn.heater-connector"
    ],
    "file": "models/electrical.wiring-wipers-horn.json",
-   "bytes": 424307
+   "bytes": 393837
   },
   "engine.block": {
    "id": "engine.block",
@@ -2227,7 +2229,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170296
+   "bytes": 170532
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2327,8 +2329,6 @@
    },
    "children": [
     "fuel.carbs.heat-shield",
-    "fuel.carbs.coupling-shaft",
-    "fuel.carbs.jet-rod",
     "fuel.carbs.flange-gasket",
     "fuel.carbs.distance-piece",
     "fuel.carbs.stud",
@@ -2337,8 +2337,6 @@
     "fuel.carbs.body-front",
     "fuel.carbs.throttle-disc-front",
     "fuel.carbs.throttle-spindle",
-    "fuel.carbs.throttle-lever",
-    "fuel.carbs.return-spring",
     "fuel.carbs.suction-chamber",
     "fuel.carbs.damper",
     "fuel.carbs.piston-spring",
@@ -2364,7 +2362,57 @@
     "fuel.carbs.cleaner-case-rear"
    ],
    "file": "models/fuel.carbs.json",
-   "bytes": 835730
+   "bytes": 642980
+  },
+  "fuel.choke": {
+   "id": "fuel.choke",
+   "kind": "assembly",
+   "name": "Choke control and jet linkage",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "3.10"
+     },
+     {
+      "figure": "3.13"
+     }
+    ],
+    "section": 21
+   },
+   "children": [
+    "fuel.choke.trunnion",
+    "fuel.choke.cable-inner",
+    "fuel.choke.facia-nut",
+    "fuel.choke.facia-washer",
+    "fuel.choke.control",
+    "fuel.choke.knob",
+    "fuel.choke.knob-letter",
+    "fuel.choke.cable-outer",
+    "fuel.choke.grommet",
+    "fuel.choke.abutment-nut",
+    "fuel.choke.abutment-washer",
+    "fuel.choke.abutment",
+    "fuel.choke.cable-lever-nut",
+    "fuel.choke.cable-lever-washer",
+    "fuel.choke.cable-lever-bolt",
+    "fuel.choke.cable-lever",
+    "fuel.choke.rod-clamp-nut",
+    "fuel.choke.rod-clamp-washer",
+    "fuel.choke.rod-clamp-bolt",
+    "fuel.choke.rod-clamp-front",
+    "fuel.choke.rod-clamp-rear",
+    "fuel.choke.rod",
+    "fuel.choke.link-screw",
+    "fuel.choke.pivot-bolt",
+    "fuel.choke.pivot-washer",
+    "fuel.choke.jet-lever-spring",
+    "fuel.choke.pivot-tube",
+    "fuel.choke.jet-lever-front",
+    "fuel.choke.jet-lever-rear"
+   ],
+   "file": "models/fuel.choke.json",
+   "bytes": 266213
   },
   "fuel.exhaust": {
    "id": "fuel.exhaust",
@@ -2400,7 +2448,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 228703
+   "bytes": 228763
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2422,7 +2470,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139258
+   "bytes": 139358
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2516,6 +2564,70 @@
    ],
    "file": "models/fuel.tank.json",
    "bytes": 185141
+  },
+  "fuel.throttle": {
+   "id": "fuel.throttle",
+   "kind": "assembly",
+   "name": "Accelerator pedal, cable and throttle linkage",
+   "parent": "fuel",
+   "haynes": {
+    "figures": [
+     {
+      "figure": "3.10"
+     },
+     {
+      "figure": "3.13"
+     }
+    ],
+    "section": 45
+   },
+   "children": [
+    "fuel.throttle.swivel-split-pin",
+    "fuel.throttle.swivel-washer",
+    "fuel.throttle.anti-rattle-washer",
+    "fuel.throttle.swivel-pin",
+    "fuel.throttle.return-spring",
+    "fuel.throttle.cover-clip-nut",
+    "fuel.throttle.cover-clip-screw",
+    "fuel.throttle.cover-clip",
+    "fuel.throttle.cable-outer",
+    "fuel.throttle.pedal-split-pin",
+    "fuel.throttle.cable-inner",
+    "fuel.throttle.pivot-nut",
+    "fuel.throttle.pivot-washer",
+    "fuel.throttle.pivot-bolt",
+    "fuel.throttle.pedal",
+    "fuel.throttle.distance-tube",
+    "fuel.throttle.pad",
+    "fuel.throttle.pedal-bracket",
+    "fuel.throttle.guide-nut",
+    "fuel.throttle.guide-screw",
+    "fuel.throttle.cable-guide",
+    "fuel.throttle.guide-gasket",
+    "fuel.throttle.shaft-lever-nut",
+    "fuel.throttle.shaft-lever-bolt",
+    "fuel.throttle.shaft-lever",
+    "fuel.throttle.coupling-nut",
+    "fuel.throttle.coupling-bolt",
+    "fuel.throttle.coupling",
+    "fuel.throttle.shaft",
+    "fuel.throttle.throttle-lever-front",
+    "fuel.throttle.throttle-lever-rear",
+    "fuel.throttle.lever-nut",
+    "fuel.throttle.lever-tab-washer",
+    "fuel.throttle.adjusting-screw",
+    "fuel.throttle.adjusting-spring",
+    "fuel.throttle.bracket-nut",
+    "fuel.throttle.bracket-screw",
+    "fuel.throttle.abutment-bracket",
+    "fuel.throttle.stop-locknut",
+    "fuel.throttle.stop-screw",
+    "fuel.throttle.stop-fixing-screw",
+    "fuel.throttle.stop-spring-washer",
+    "fuel.throttle.pedal-stop"
+   ],
+   "file": "models/fuel.throttle.json",
+   "bytes": 883153
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -3008,7 +3120,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494198
+   "bytes": 494102
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -55367,54 +55479,10 @@
     {
      "key": "length",
      "label": "Length",
-     "value": "100.0 mm",
+     "value": "130.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Through the body and out to the coupling",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    }
-   ],
-   "derivedShare": 1.0
-  },
-  "fuel.carbs.throttle-lever": {
-   "id": "fuel.carbs.throttle-lever",
-   "kind": "part",
-   "name": "Throttle lever",
-   "parent": "fuel.carbs",
-   "haynes": {
-    "section": 17,
-    "spec_page": 65,
-    "figures": [
-     {
-      "figure": "3.10",
-      "legend": 38
-     },
-     {
-      "figure": "3.12",
-      "legend": 1
-     }
-    ]
-   },
-   "quantity": 2,
-   "partNumbers": [],
-   "material": null,
-   "finish": "machined_steel",
-   "notes": "Carries the throttle (idle speed) adjusting screw (Fig 3.12 item 1).",
-   "variant": {
-    "factory_1963": true,
-    "as_fitted": true
-   },
-   "explode": null,
-   "specs": [
-    {
-     "key": "length",
-     "label": "Length",
-     "value": "34.0 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "Proportion from Fig 3.12",
+     "ref": "Through the body, the throttle lever, its nut and into the coupling (fuel.throttle)",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -56442,148 +56510,6 @@
    ],
    "derivedShare": 0.0
   },
-  "fuel.carbs.coupling-shaft": {
-   "id": "fuel.carbs.coupling-shaft",
-   "kind": "part",
-   "name": "Throttle interconnecting shaft",
-   "parent": "fuel.carbs",
-   "haynes": {
-    "section": 21,
-    "spec_page": 65,
-    "figures": [
-     {
-      "figure": "3.10",
-      "legend": 60
-     }
-    ]
-   },
-   "quantity": 1,
-   "partNumbers": [],
-   "material": null,
-   "finish": "machined_steel",
-   "notes": "Folded clamps with pinch bolts at each end; loosen them to adjust the instruments separately (Haynes Sec 21 para 2, photo 17.1(b)).",
-   "variant": {
-    "factory_1963": true,
-    "as_fitted": true
-   },
-   "explode": null,
-   "specs": [
-    {
-     "key": "diameter",
-     "label": "Diameter",
-     "value": "9.5 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "Not published",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    }
-   ],
-   "derivedShare": 1.0
-  },
-  "fuel.carbs.jet-rod": {
-   "id": "fuel.carbs.jet-rod",
-   "kind": "part",
-   "name": "Jet (choke) linkage rod",
-   "parent": "fuel.carbs",
-   "haynes": {
-    "section": 21,
-    "spec_page": 65,
-    "figures": [
-     {
-      "figure": "3.10",
-      "legend": 63
-     }
-    ]
-   },
-   "quantity": 1,
-   "partNumbers": [],
-   "material": null,
-   "finish": "machined_steel",
-   "notes": "",
-   "variant": {
-    "factory_1963": true,
-    "as_fitted": true
-   },
-   "explode": null,
-   "specs": [
-    {
-     "key": "diameter",
-     "label": "Diameter",
-     "value": "6.4 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "Not published",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    }
-   ],
-   "derivedShare": 1.0
-  },
-  "fuel.carbs.return-spring": {
-   "id": "fuel.carbs.return-spring",
-   "kind": "part",
-   "name": "Throttle return spring",
-   "parent": "fuel.carbs",
-   "haynes": {
-    "section": 18,
-    "spec_page": 65,
-    "figures": [
-     {
-      "figure": "3.10",
-      "legend": 56
-     }
-    ]
-   },
-   "quantity": 2,
-   "partNumbers": [],
-   "material": null,
-   "finish": "machined_steel",
-   "notes": "",
-   "variant": {
-    "factory_1963": true,
-    "as_fitted": true
-   },
-   "explode": null,
-   "specs": [
-    {
-     "key": "wire_diameter",
-     "label": "Wire diameter",
-     "value": "1.2 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "Not published",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    },
-    {
-     "key": "outside_diameter",
-     "label": "Outside diameter",
-     "value": "9.0 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "Proportion from photo 17.1(b)",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    },
-    {
-     "key": "length",
-     "label": "Length",
-     "value": "52.0 mm",
-     "source": "D",
-     "sourceName": "Derived",
-     "ref": "From the lever to the heat shield",
-     "note": "",
-     "erratum": false,
-     "printed_mm": null
-    }
-   ],
-   "derivedShare": 1.0
-  },
   "fuel.carbs.cleaner-adaptor": {
    "id": "fuel.carbs.cleaner-adaptor",
    "kind": "part",
@@ -56900,6 +56826,1189 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Through the case and baseplate into the intake flange",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.knob": {
+   "id": "fuel.choke.knob",
+   "kind": "part",
+   "name": "Choke control knob",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "Round black knob with the letter C on its face (MGOC Spares: the round 'C' knob of chrome bumper cars 1962-69; Oliver's photo 16 shows it right of the ignition, twisted so the C reads reversed). Pulled out it draws the jets down; pushed home it stands just off the bezel. The C is cut into the face.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "25.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Photo 16 scaled on the ignition bezel",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "11.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Photo 16",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.knob-letter": {
+   "id": "fuel.choke.knob-letter",
+   "kind": "part",
+   "name": "Choke knob lettering",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "needle",
+   "notes": "The white C infilled in the knob's face (Oliver's photo 16; MGOC Spares: the 'C' motif of the 1962-69 knob).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "height",
+     "label": "Height",
+     "value": "13.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Photo 16, about half the knob",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.control": {
+   "id": "fuel.choke.control",
+   "kind": "part",
+   "name": "Choke control (bush and rod)",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "chrome",
+   "notes": "BHH526 (F plate 108-G2 item 8, early cable). The control's head: a chrome bezel on the centre panel's face, the threaded bush through the panel and facia, and the knob's rod sliding in it; the outer cable is crimped into the bush's front end.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bush_diameter",
+     "label": "Bush diameter",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "7/16 in bush, as the facia hole in photo 16",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.facia-nut": {
+   "id": "fuel.choke.facia-nut",
+   "kind": "part",
+   "name": "Control nut behind the facia",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 47,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Haynes Ch 12 Sec 47 para 4 (p232): 'undo the choke cable nut behind the facia'.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.5625 in (14.29 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the 7/16 in bush",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.facia-washer": {
+   "id": "fuel.choke.facia-washer",
+   "kind": "part",
+   "name": "Control shakeproof washer",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 47,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Shakeproof washer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.cable-outer": {
+   "id": "fuel.choke.cable-outer",
+   "kind": "part",
+   "name": "Choke cable outer",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 47,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cable_black",
+   "notes": "From the control's bush forward under the scuttle, through the grommet in the bulkhead left of the heater opening, behind the cylinder head beside the throttle cable and down between the dashpots to the abutment on the bracket. Route derived (mgb/throttle_layout.py CHOKE_OUTER).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the throttle outer",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.cable-inner": {
+   "id": "fuel.choke.cable-inner",
+   "kind": "part",
+   "name": "Choke cable inner",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "Solid wire: the exposed end from the abutment down to the trunnion; 1/16 in free movement before it pulls the jet levers (Sec 23 para 22).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Solid wire",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "free_movement",
+     "label": "Free movement",
+     "value": "0.0625 in (1.60 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p77",
+     "note": "Sec 23 para 22",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.5
+  },
+  "fuel.choke.grommet": {
+   "id": "fuel.choke.grommet",
+   "kind": "part",
+   "name": "Bulkhead grommet",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 47,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "14A7033 (Rimmer Bros GRID019709: cable grommet 5/8 OD x 3/16 ID, chrome bumper cars).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.625 in (15.88 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros 14A7033",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros 14A7033",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.choke.abutment": {
+   "id": "fuel.choke.abutment",
+   "kind": "part",
+   "name": "Choke outer cable abutment",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "AHH6734 (F plate 108-G2 item 11; Rimmer Bros 'abutment, choke cable'): threaded through the bracket, nut and twin-coil spring washer (AJD7721) under it; the outer's ferrule sits in its cup.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Cup over the bracket, thread under it",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.abutment-nut": {
+   "id": "fuel.choke.abutment-nut",
+   "kind": "part",
+   "name": "Abutment nut",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/4 in thread",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.abutment-washer": {
+   "id": "fuel.choke.abutment-washer",
+   "kind": "part",
+   "name": "Abutment spring washer",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "AJD7721 twin-coil spring washer 3/16 in (Rimmer Bros).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros AJD7721",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.choke.cable-lever": {
+   "id": "fuel.choke.cable-lever",
+   "kind": "part",
+   "name": "Choke cable lever",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 69
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Clamped on the interconnecting rod between the instruments by its bolt, spring washer and nut (items 70-72); the cable's trunnion in its upper end.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.cable-lever-bolt": {
+   "id": "fuel.choke.cable-lever-bolt",
+   "kind": "part",
+   "name": "Cable lever bolt",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 70
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.cable-lever-nut": {
+   "id": "fuel.choke.cable-lever-nut",
+   "kind": "part",
+   "name": "Cable lever nut",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 72
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.cable-lever-washer": {
+   "id": "fuel.choke.cable-lever-washer",
+   "kind": "part",
+   "name": "Cable lever spring washer",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 71
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Spring washer 3/16 in",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.trunnion": {
+   "id": "fuel.choke.trunnion",
+   "kind": "part",
+   "name": "Cable trunnion and screw",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "brass",
+   "notes": "AUE34 (Rimmer Bros: cable nipple and screw; trunnion 150341 with screw 53K3503, 5BA x 3/8 in): turns in the lever, cross-drilled for the wire, the screw in its end clamps it (Sec 45 para 12 frees 'the screw in the trunnion').",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "screw_length",
+     "label": "Screw length",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros 53K3503, 5BA x 3/8",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.choke.rod": {
+   "id": "fuel.choke.rod",
+   "kind": "part",
+   "name": "Choke interconnecting rod",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 63
+     },
+     {
+      "figure": "3.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Plain rod between the two lever-and-pin clamps; the throttle shaft lever's stop rests just above it (Fig 3.13).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.rod-clamp-front": {
+   "id": "fuel.choke.rod-clamp-front",
+   "kind": "part",
+   "name": "Lever and pin assembly (front carburettor)",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 64
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "A short lever clamped on the rod by its bolt and nut (items 66-68), the pin at its foot in the jet lever's outer hole; slacken the bolts to set the jets (Sec 21 para 3, 'the pinch-bolts on levers (64) and (65)').",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.rod-clamp-rear": {
+   "id": "fuel.choke.rod-clamp-rear",
+   "kind": "part",
+   "name": "Lever and pin assembly (rear carburettor)",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 65
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Handed to the front one.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "width",
+     "label": "Width",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.rod-clamp-bolt": {
+   "id": "fuel.choke.rod-clamp-bolt",
+   "kind": "part",
+   "name": "Lever and pin clamp bolt",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 66
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.rod-clamp-washer": {
+   "id": "fuel.choke.rod-clamp-washer",
+   "kind": "part",
+   "name": "Lever and pin clamp washer",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 67
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.rod-clamp-nut": {
+   "id": "fuel.choke.rod-clamp-nut",
+   "kind": "part",
+   "name": "Lever and pin clamp nut",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 68
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.jet-lever-front": {
+   "id": "fuel.choke.jet-lever-front",
+   "kind": "part",
+   "name": "Jet lever and link (front carburettor)",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 46
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "A pressed lever rocking on its pivot bolt under the instrument, and the link riveted to its inner end, its foot screwed to the jet head's lug (item 51): lifting the rod raises the lever's outer end and the link pushes the jet down (richer). The jet spring returns it to the adjusting nut (Sec 21 para 13). Shape from Fig 3.10; the pivot is drawn on a boss cast on the body (the float chamber bolt of item 26 has no room for it in this model).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.jet-lever-rear": {
+   "id": "fuel.choke.jet-lever-rear",
+   "kind": "part",
+   "name": "Jet lever and link (rear carburettor)",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 47
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Handed to the front one.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.link-screw": {
+   "id": "fuel.choke.link-screw",
+   "kind": "part",
+   "name": "Link to jet screw",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 51
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the link into the lug",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.pivot-bolt": {
+   "id": "fuel.choke.pivot-bolt",
+   "kind": "part",
+   "name": "Jet lever pivot bolt",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 59
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "28.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Washers, spring, lever and boss",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.pivot-tube": {
+   "id": "fuel.choke.pivot-tube",
+   "kind": "part",
+   "name": "Jet lever pivot tube",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 60
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "6.4 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "9.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the spring and the lever",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.pivot-washer": {
+   "id": "fuel.choke.pivot-washer",
+   "kind": "part",
+   "name": "Jet lever pivot washer",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 61
+     },
+     {
+      "figure": "3.10",
+      "legend": 62
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.choke.jet-lever-spring": {
+   "id": "fuel.choke.jet-lever-spring",
+   "kind": "part",
+   "name": "Jet lever spring",
+   "parent": "fuel.choke",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 57
+     },
+     {
+      "figure": "3.10",
+      "legend": 58
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "Coil round the pivot tube under the bolt head, holding the lever against the jet's return.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -60158,6 +61267,1720 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Through the unit, gasket and the tank's ring",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.pedal": {
+   "id": "fuel.throttle.pedal",
+   "kind": "part",
+   "name": "Accelerator pedal (RHD)",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "AHC135 (F plate 108-G2 item 2, RHD, chassis 101-138400). Pendant pressed-steel lever hung from its bracket on the bulkhead's cabin face outboard of the brake pedal and the steering column: a short top arm above the pivot carries the inner cable on a split pin (Haynes Sec 45 para 1, \"the split pin at the end of the pedal\"), the main arm runs down and back clear of the toe board to the foot plate that takes the rubber pad. Pressing the pad swings the top arm rearward and draws the inner out of the guide. Swaged rib down the arm, pressed boss round the pivot. Shape and lengths derived (mgb/throttle_layout.py).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressed arm, as the clutch and brake pedals' plates",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "pivot_to_pad",
+     "label": "Pivot to pad",
+     "value": "213.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pivot to pad centre in the layout",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.pad": {
+   "id": "fuel.throttle.pad",
+   "kind": "part",
+   "name": "Accelerator pedal rubber pad",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "GPR105 (F plate 108-G2 item 4; MGOC Spares 'pedal rubber, throttle'): ribbed pad stretched over the foot plate.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the clutch pad, thinner",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.pedal-bracket": {
+   "id": "fuel.throttle.pedal-bracket",
+   "kind": "part",
+   "name": "Accelerator pedal bracket",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "underseal",
+   "notes": "The pedal hangs from a pressed bracket on the bulkhead's cabin face: a flange spot-welded to the panel and a single cheek reaching back to the pivot, with a raised pad round the pivot hole. The parts list gives no separate bracket for the early pedal (plate 108-G2 lists only the pedal, its distance tube and the pivot bolt), so it is drawn as part of the body shell. Form derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Body pressing",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.distance-tube": {
+   "id": "fuel.throttle.distance-tube",
+   "kind": "part",
+   "name": "Pedal distance tube",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "AHH6504 (F plate 108-G2): the pedal turns on it, clamped between the bracket and the washer by the pivot bolt.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "12.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "In the pedal's pivot boss",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "8.3 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the 5/16 in pivot bolt",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pedal boss width plus clearance",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.pivot-bolt": {
+   "id": "fuel.throttle.pivot-bolt",
+   "kind": "part",
+   "name": "Pedal pivot bolt",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "HBZ511 (F plate 108-G2: bolt, plain washer, self-locking nut); MGOC Spares lists the pedal bolt BH605111, 5/16 UNF x 1 3/8 in.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares BH605111, bolt 5/16 UNF x 1 3/8",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.375 in (34.92 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares BH605111",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.pivot-washer": {
+   "id": "fuel.throttle.pivot-washer",
+   "kind": "part",
+   "name": "Pedal pivot plain washer",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "0.688 in (17.48 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "SAE plain washer 5/16 (F plate 108-G2 WA108051)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.pivot-nut": {
+   "id": "fuel.throttle.pivot-nut",
+   "kind": "part",
+   "name": "Pedal pivot self-locking nut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "ANSI B18.2.2, 5/16 UNF (F plate 108-G2 LNZ405)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.pedal-stop": {
+   "id": "fuel.throttle.pedal-stop",
+   "kind": "part",
+   "name": "Accelerator pedal stop (RHD)",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "AHB7162 (F plate 108-G2 item 6; MGOC Spares 'pedal stop, RHD'): a pressed angle bracket screwed to the toe board ahead of the pedal arm by two pan-head screws and spring washers, its upright drilled and tapped for the stop screw that sets full throttle. Form and position derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "2.5 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressed bracket",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.stop-screw": {
+   "id": "fuel.throttle.stop-screw",
+   "kind": "part",
+   "name": "Pedal stop screw",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "HZS412 (F plate 108-G2); MGOC Spares SH604121, screw 1/4 UNF x 1 1/2 in, with locknut GHF200.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares SH604121",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "1.50 in (38.10 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares SH604121",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.stop-locknut": {
+   "id": "fuel.throttle.stop-locknut",
+   "kind": "part",
+   "name": "Pedal stop screw locknut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares GHF200, nut 1/4 UNF",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.stop-fixing-screw": {
+   "id": "fuel.throttle.stop-fixing-screw",
+   "kind": "part",
+   "name": "Pedal stop fixing screw",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "PMZ410 (F plate 108-G2); MGOC Spares SE604051, pan head 1/4 UNF x 5/8 in, with spring washers GHF331; into nuts under the toe board.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares SE604051",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.625 in (15.88 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares SE604051",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.stop-spring-washer": {
+   "id": "fuel.throttle.stop-spring-washer",
+   "kind": "part",
+   "name": "Pedal stop spring washer",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "6.7 mm (0.264 in)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "MGOC Spares GHF331, spring washer 1/4",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.cable-guide": {
+   "id": "fuel.throttle.cable-guide",
+   "kind": "part",
+   "name": "Accelerator cable guide",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "plastic_black",
+   "notes": "AHH5308 (F plate 108-G2 item 7; MGOC Spares 'guide acc cable', bpnorthwest: it wears and roughens the throttle): a moulded pedestal on the engine side of the bulkhead over the cable hole, two screws and spring washers (PMZ307, LWZ203), a gasket (ACA5073) under it; the outer's ferrule seats in its nose, the inner passes through to the pedal. Form derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "flange_diameter",
+     "label": "Flange diameter",
+     "value": "31.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Round the two screws",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.guide-gasket": {
+   "id": "fuel.throttle.guide-gasket",
+   "kind": "part",
+   "name": "Cable guide gasket",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "gasket",
+   "notes": "ACA5073 (MGOC Spares: gasket, accelerator cable guide/pedestal to bulkhead).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Not published",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.guide-screw": {
+   "id": "fuel.throttle.guide-screw",
+   "kind": "part",
+   "name": "Cable guide screw",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "PMZ307 (F plate 108-G2): pan head No 10 UNF x 7/16 in, nuts on the cabin side.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.19 in (4.83 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "No 10 UNF (0.190 in), ANSI B1.1",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "F",
+     "sourceName": "Factory manual",
+     "ref": "Plate 108-G2 PMZ307",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.guide-nut": {
+   "id": "fuel.throttle.guide-nut",
+   "kind": "part",
+   "name": "Cable guide nut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros HN2005SS, nut 10-32 UNF, 3/8 AF",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.cable-outer": {
+   "id": "fuel.throttle.cable-outer",
+   "kind": "part",
+   "name": "Accelerator cable outer",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "cable_black",
+   "notes": "AHH6997 (F plate 108-G4, RHD, chassis 101-138400). From the guide's nose up outboard of the pedal box, over its cover (P-clip), behind the cylinder head and forward between the rocker cover and the rear dashpot to the abutment bracket on the heat shield between the instruments, from where the inner drops to the shaft lever (Fig 3.13). Crimped ferrules at both ends. Route derived (mgb/throttle_layout.py THROTTLE_OUTER).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Spiral-wound outer with plastic covering",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.cable-inner": {
+   "id": "fuel.throttle.cable-inner",
+   "kind": "part",
+   "name": "Accelerator cable inner",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "machined_steel",
+   "notes": "The exposed ends of the inner: in the footwell from the guide to the pedal's top end, where its barrel nipple passes the pedal and is held by a split pin (Sec 45 para 1); at the carburettors from the abutment down through the swivel pin on the shaft lever (Rimmer ACC5062 'swivel pin, cable to lever'; Haynes photo 18.2, p75: the wire coming steeply down through the pin).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Stranded inner",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.pedal-split-pin": {
+   "id": "fuel.throttle.pedal-split-pin",
+   "kind": "part",
+   "name": "Cable end split pin",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.0625 in (1.59 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "1/16 in split pin",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.cover-clip": {
+   "id": "fuel.throttle.cover-clip",
+   "kind": "part",
+   "name": "Cable P-clip on the pedal box cover",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "PCR307 (Rimmer Bros GRID019709 item 18: P-clip, cable to pedal box cover; 3/16 cable hole, 7/32 fixing hole).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "fixing_hole",
+     "label": "Fixing hole",
+     "value": "0.21875 in (5.56 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros PCR307",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.cover-clip-screw": {
+   "id": "fuel.throttle.cover-clip-screw",
+   "kind": "part",
+   "name": "P-clip screw",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "PMZ308 pan head No 10 UNF x 1/2 in with spring washer, repair washer and nut (Rimmer Bros GRID019709, single-line cars).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.50 in (12.70 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros PMZ308",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.cover-clip-nut": {
+   "id": "fuel.throttle.cover-clip-nut",
+   "kind": "part",
+   "name": "P-clip nut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.375 in (9.52 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros HN2005SS, 3/8 AF",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.abutment-bracket": {
+   "id": "fuel.throttle.abutment-bracket",
+   "kind": "part",
+   "name": "Cable abutment bracket",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Choke control bracket AHH6731 (F plate 108-G2 item 10): a pressed angle screwed to the heat shield's outboard face between the instruments, its top flange turned out over the linkage with the two outer-cable ferrule holes (the throttle outer seats in one, the choke abutment AHH6734 in the other), a stiffening bead along the bend. Haynes Ch 12 Sec 47 para 4 (p232) frees the early choke cable \"from the air cleaner bracket\"; the bracket is drawn on the shield beside the air cleaners. Position and form derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Pressing",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.bracket-screw": {
+   "id": "fuel.throttle.bracket-screw",
+   "kind": "part",
+   "name": "Bracket screw",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "1/4 UNF x 5/8 in setscrew through the heat shield (as Rimmer SH604051 'bracket to heatshield' on the later bracket).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.25 in (6.35 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros SH604051",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.625 in (15.88 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros SH604051",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.bracket-nut": {
+   "id": "fuel.throttle.bracket-nut",
+   "kind": "part",
+   "name": "Bracket nut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.4375 in (11.11 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros GHF200, nut 1/4 UNF",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.throttle-lever-front": {
+   "id": "fuel.throttle.throttle-lever-front",
+   "kind": "part",
+   "name": "Throttle lever (front carburettor)",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 38
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Flat steel lever on the inboard end of the throttle spindle, held by the nut and tab washer (items 42, 43): its arm runs outboard under the spindle with the throttle adjusting screw (item 44) bearing on the stop lug cast on the body, and the hole for the return spring at its end (photo 17.1(b)). Fig 3.10 shape; arm length derived.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.throttle-lever-rear": {
+   "id": "fuel.throttle.throttle-lever-rear",
+   "kind": "part",
+   "name": "Throttle lever (rear carburettor)",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 39
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Handed to the front lever.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "3.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.lever-tab-washer": {
+   "id": "fuel.throttle.lever-tab-washer",
+   "kind": "part",
+   "name": "Throttle lever tab washer",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 43
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thickness",
+     "label": "Thickness",
+     "value": "0.8 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.lever-nut": {
+   "id": "fuel.throttle.lever-nut",
+   "kind": "part",
+   "name": "Throttle spindle nut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 42
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.3125 in (7.94 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Small thin nut on the 5/16 in spindle end, Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.adjusting-screw": {
+   "id": "fuel.throttle.adjusting-screw",
+   "kind": "part",
+   "name": "Throttle adjusting screw",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 44
+     },
+     {
+      "figure": "3.12",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Sets the idle (Sec 21 para 8: turn the throttle screws equal amounts); a coil spring under its head locks it (item 45).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "22.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.adjusting-spring": {
+   "id": "fuel.throttle.adjusting-spring",
+   "kind": "part",
+   "name": "Throttle adjusting screw spring",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.10",
+      "legend": 45
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.10",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.coupling": {
+   "id": "fuel.throttle.coupling",
+   "kind": "part",
+   "name": "Throttle spindle coupling (folded clamp)",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.13"
+     },
+     {
+      "figure": "3.17"
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Folded metal clamp joining each spindle's inboard end to the interconnecting shaft, closed by a pinch bolt; loosen it to let the instruments work independently (Sec 21 para 2, Fig 3.17 arrows). Form from Fig 3.13.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "19.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the spindle end and the shaft end",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.coupling-bolt": {
+   "id": "fuel.throttle.coupling-bolt",
+   "kind": "part",
+   "name": "Coupling pinch bolt",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.17"
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Small pinch bolt, Fig 3.13 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.50 in (12.70 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through both folds and the nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.coupling-nut": {
+   "id": "fuel.throttle.coupling-nut",
+   "kind": "part",
+   "name": "Coupling pinch bolt nut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.17"
+     }
+    ]
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.shaft": {
+   "id": "fuel.throttle.shaft",
+   "kind": "part",
+   "name": "Throttle interconnecting shaft",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "Plain steel rod between the two couplings, carrying the throttle shaft lever (Sec 21 para 2: 'the interconnecting shaft').",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Fig 3.13 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.shaft-lever": {
+   "id": "fuel.throttle.shaft-lever",
+   "kind": "part",
+   "name": "Throttle shaft lever (accelerator lever)",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "12H715 (Rimmer Bros 'lever and link, accelerator'; F plate 108-G4 'accelerator lever and spindle'): clamped on the interconnecting shaft between the instruments by a pinch bolt. Its arm runs outboard and down: the cable's swivel pin and the centre return spring on the upper part, the stop at the foot resting just clear of the choke interconnecting rod, so pulling the choke lifts the throttles for the fast idle (Fig 3.13; Sec 21 para 11: 0.012 in feeler between them, manual cars). Form from Fig 3.13.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "fast_idle_gap",
+     "label": "Fast idle gap",
+     "value": "0.012 in (0.30 mm)",
+     "source": "H",
+     "sourceName": "Haynes",
+     "ref": "p76",
+     "note": "Sec 21 para 11, manual transmission",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.shaft-lever-bolt": {
+   "id": "fuel.throttle.shaft-lever-bolt",
+   "kind": "part",
+   "name": "Shaft lever pinch bolt",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "thread_diameter",
+     "label": "Thread diameter",
+     "value": "0.1875 in (4.76 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Small pinch bolt, Fig 3.13 proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "0.625 in (15.88 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the clamp",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.shaft-lever-nut": {
+   "id": "fuel.throttle.shaft-lever-nut",
+   "kind": "part",
+   "name": "Shaft lever pinch bolt nut",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 21,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.13"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "across_flats",
+     "label": "Across flats",
+     "value": "0.375 in (9.52 mm)",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "3/16 in nut",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.swivel-pin": {
+   "id": "fuel.throttle.swivel-pin",
+   "kind": "part",
+   "name": "Cable swivel pin",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "ACC5062 (Rimmer Bros: swivel pin, cable to lever; F plate 108-G4 'accelerator lever pin'): cross-drilled for the inner, its clamp screw on the end; two plain washers (GHF301), anti-rattle washer (ACA5256) and split pin (PC34).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Through the lever",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.swivel-washer": {
+   "id": "fuel.throttle.swivel-washer",
+   "kind": "part",
+   "name": "Swivel pin plain washer",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 2,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "inside_diameter",
+     "label": "Inside diameter",
+     "value": "0.344 in (8.74 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros GHF301, plain washer 5/16",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.anti-rattle-washer": {
+   "id": "fuel.throttle.anti-rattle-washer",
+   "kind": "part",
+   "name": "Anti-rattle washer",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "ACA5256 (F plate 108-G4: anti-rattle washer, throttle cable to carburettor lever): a dished spring washer.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Over the swivel pin",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "fuel.throttle.swivel-split-pin": {
+   "id": "fuel.throttle.swivel-split-pin",
+   "kind": "part",
+   "name": "Swivel pin split pin",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 45,
+    "spec_page": 66
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "zinc_steel",
+   "notes": "",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "0.09375 in (2.38 mm)",
+     "source": "S",
+     "sourceName": "Supplier",
+     "ref": "Rimmer Bros PC34, split pin 3/32 x 1 1/2",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 0.0
+  },
+  "fuel.throttle.return-spring": {
+   "id": "fuel.throttle.return-spring",
+   "kind": "part",
+   "name": "Throttle return spring",
+   "parent": "fuel.throttle",
+   "haynes": {
+    "section": 17,
+    "spec_page": 66,
+    "figures": [
+     {
+      "figure": "3.13"
+     }
+    ]
+   },
+   "quantity": 3,
+   "partNumbers": [],
+   "material": null,
+   "finish": "spring_steel",
+   "notes": "AEC2075 (Rimmer Bros: throttle return spring HS, twin carbs, three for HS4 cars): one from each throttle lever and one from the shaft lever, hooked down to holes in the heat shield's turned-out lip (photos 17.1(b), p72, and 18.3(a), p75).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "rhd": true
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "outside_diameter",
+     "label": "Outside diameter",
+     "value": "8.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Photo 17.1(b) proportion",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "wire_diameter",
+     "label": "Wire diameter",
+     "value": "1.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Photo 17.1(b) proportion",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -117346,42 +120169,6 @@
    "label": true,
    "fitted": null
   },
-  "fuel.carbs.coupling-shaft#1": {
-   "part": "fuel.carbs.coupling-shaft",
-   "assembly": "fuel.carbs",
-   "node": "fuel--carbs--coupling-shaft__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      1
-     ],
-     "order": 4,
-     "distance_mm": 90
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "fuel.carbs.jet-rod#1": {
-   "part": "fuel.carbs.jet-rod",
-   "assembly": "fuel.carbs",
-   "node": "fuel--carbs--jet-rod__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 4,
-     "distance_mm": 90
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
   "fuel.carbs.flange-gasket#1": {
    "part": "fuel.carbs.flange-gasket",
    "assembly": "fuel.carbs",
@@ -117612,52 +120399,6 @@
      ],
      "order": 12,
      "distance_mm": 80
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "fuel.carbs.throttle-lever#1": {
-   "part": "fuel.carbs.throttle-lever",
-   "assembly": "fuel.carbs",
-   "node": "fuel--carbs--throttle-lever__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      1,
-      0
-     ],
-     "order": 6,
-     "distance_mm": 140,
-     "group": "carb-front"
-    },
-    {
-     "axis": [
-      -1.0,
-      0,
-      0
-     ],
-     "order": 11,
-     "distance_mm": 60
-    }
-   ],
-   "label": true,
-   "fitted": null
-  },
-  "fuel.carbs.return-spring#1": {
-   "part": "fuel.carbs.return-spring",
-   "assembly": "fuel.carbs",
-   "node": "fuel--carbs--return-spring__1",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 3,
-     "distance_mm": 60
     }
    ],
    "label": true,
@@ -118392,52 +121133,6 @@
    "label": false,
    "fitted": null
   },
-  "fuel.carbs.throttle-lever#2": {
-   "part": "fuel.carbs.throttle-lever",
-   "assembly": "fuel.carbs",
-   "node": "fuel--carbs--throttle-lever__2",
-   "stages": [
-    {
-     "axis": [
-      0,
-      1,
-      0
-     ],
-     "order": 6,
-     "distance_mm": 140,
-     "group": "carb-rear"
-    },
-    {
-     "axis": [
-      1.0,
-      0,
-      0
-     ],
-     "order": 11,
-     "distance_mm": 60
-    }
-   ],
-   "label": false,
-   "fitted": null
-  },
-  "fuel.carbs.return-spring#2": {
-   "part": "fuel.carbs.return-spring",
-   "assembly": "fuel.carbs",
-   "node": "fuel--carbs--return-spring__2",
-   "stages": [
-    {
-     "axis": [
-      0,
-      0,
-      -1
-     ],
-     "order": 3,
-     "distance_mm": 60
-    }
-   ],
-   "label": false,
-   "fitted": null
-  },
   "fuel.carbs.suction-chamber#2": {
    "part": "fuel.carbs.suction-chamber",
    "assembly": "fuel.carbs",
@@ -118930,6 +121625,892 @@
     }
    ],
    "label": false,
+   "fitted": null
+  },
+  "fuel.choke.trunnion#1": {
+   "part": "fuel.choke.trunnion",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--trunnion__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.cable-inner#1": {
+   "part": "fuel.choke.cable-inner",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--cable-inner__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 1.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.facia-nut#1": {
+   "part": "fuel.choke.facia-nut",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--facia-nut__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.facia-washer#1": {
+   "part": "fuel.choke.facia-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--facia-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2.2,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.control#1": {
+   "part": "fuel.choke.control",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--control__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 140,
+     "group": "control"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.knob#1": {
+   "part": "fuel.choke.knob",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--knob__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 140,
+     "group": "control"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.knob-letter#1": {
+   "part": "fuel.choke.knob-letter",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--knob-letter__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 140,
+     "group": "control"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.cable-outer#1": {
+   "part": "fuel.choke.cable-outer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--cable-outer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 140,
+     "group": "control"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2.6,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.grommet#1": {
+   "part": "fuel.choke.grommet",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--grommet__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 4,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.abutment-nut#1": {
+   "part": "fuel.choke.abutment-nut",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--abutment-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.abutment-washer#1": {
+   "part": "fuel.choke.abutment-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--abutment-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 4.6,
+     "distance_mm": 12
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.abutment#1": {
+   "part": "fuel.choke.abutment",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--abutment__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.cable-lever-nut#1": {
+   "part": "fuel.choke.cable-lever-nut",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--cable-lever-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 6,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.cable-lever-washer#1": {
+   "part": "fuel.choke.cable-lever-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--cable-lever-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 6.1,
+     "distance_mm": 12
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.cable-lever-bolt#1": {
+   "part": "fuel.choke.cable-lever-bolt",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--cable-lever-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 6.2,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.cable-lever#1": {
+   "part": "fuel.choke.cable-lever",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--cable-lever__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 60,
+     "group": "linkage"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 6.5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-nut#1": {
+   "part": "fuel.choke.rod-clamp-nut",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-nut#2": {
+   "part": "fuel.choke.rod-clamp-nut",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-washer#1": {
+   "part": "fuel.choke.rod-clamp-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7.1,
+     "distance_mm": 12
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-washer#2": {
+   "part": "fuel.choke.rod-clamp-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-washer__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 7.1,
+     "distance_mm": 12
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-bolt#1": {
+   "part": "fuel.choke.rod-clamp-bolt",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7.2,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-bolt#2": {
+   "part": "fuel.choke.rod-clamp-bolt",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 7.2,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-front#1": {
+   "part": "fuel.choke.rod-clamp-front",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-front__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 60,
+     "group": "linkage"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.rod-clamp-rear#1": {
+   "part": "fuel.choke.rod-clamp-rear",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod-clamp-rear__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 60,
+     "group": "linkage"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.rod#1": {
+   "part": "fuel.choke.rod",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--rod__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 8,
+     "distance_mm": 60,
+     "group": "linkage"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.link-screw#1": {
+   "part": "fuel.choke.link-screw",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--link-screw__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "front-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.link-screw#2": {
+   "part": "fuel.choke.link-screw",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--link-screw__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "rear-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.pivot-bolt#1": {
+   "part": "fuel.choke.pivot-bolt",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "front-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.2,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.pivot-bolt#2": {
+   "part": "fuel.choke.pivot-bolt",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "rear-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.2,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.pivot-washer#1": {
+   "part": "fuel.choke.pivot-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "front-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.4,
+     "distance_mm": 15
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.pivot-washer#2": {
+   "part": "fuel.choke.pivot-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-washer__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "front-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.4,
+     "distance_mm": 15
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.pivot-washer#3": {
+   "part": "fuel.choke.pivot-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-washer__3",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "rear-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.4,
+     "distance_mm": 15
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.pivot-washer#4": {
+   "part": "fuel.choke.pivot-washer",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-washer__4",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "rear-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.4,
+     "distance_mm": 15
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.jet-lever-spring#1": {
+   "part": "fuel.choke.jet-lever-spring",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--jet-lever-spring__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "front-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.jet-lever-spring#2": {
+   "part": "fuel.choke.jet-lever-spring",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--jet-lever-spring__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "rear-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.pivot-tube#1": {
+   "part": "fuel.choke.pivot-tube",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-tube__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "front-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.6,
+     "distance_mm": 10
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.pivot-tube#2": {
+   "part": "fuel.choke.pivot-tube",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--pivot-tube__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "rear-jet"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 9.6,
+     "distance_mm": 10
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.choke.jet-lever-front#1": {
+   "part": "fuel.choke.jet-lever-front",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--jet-lever-front__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "front-jet"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.choke.jet-lever-rear#1": {
+   "part": "fuel.choke.jet-lever-rear",
+   "assembly": "fuel.choke",
+   "node": "fuel--choke--jet-lever-rear__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 10,
+     "distance_mm": 40,
+     "group": "rear-jet"
+    }
+   ],
+   "label": true,
    "fitted": null
   },
   "fuel.exhaust.front-pipe#1": {
@@ -121982,6 +125563,1275 @@
     }
    ],
    "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.swivel-split-pin#1": {
+   "part": "fuel.throttle.swivel-split-pin",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--swivel-split-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.swivel-washer#1": {
+   "part": "fuel.throttle.swivel-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--swivel-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.swivel-washer#2": {
+   "part": "fuel.throttle.swivel-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--swivel-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.anti-rattle-washer#1": {
+   "part": "fuel.throttle.anti-rattle-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--anti-rattle-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1.6,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.swivel-pin#1": {
+   "part": "fuel.throttle.swivel-pin",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--swivel-pin__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 2,
+     "distance_mm": 50
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.return-spring#1": {
+   "part": "fuel.throttle.return-spring",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--return-spring__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.return-spring#2": {
+   "part": "fuel.throttle.return-spring",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--return-spring__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.return-spring#3": {
+   "part": "fuel.throttle.return-spring",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--return-spring__3",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3,
+     "distance_mm": 60
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.cover-clip-nut#1": {
+   "part": "fuel.throttle.cover-clip-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--cover-clip-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 3.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.cover-clip-screw#1": {
+   "part": "fuel.throttle.cover-clip-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--cover-clip-screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 120,
+     "group": "cable"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 3.6,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.cover-clip#1": {
+   "part": "fuel.throttle.cover-clip",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--cover-clip__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 120,
+     "group": "cable"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.cable-outer#1": {
+   "part": "fuel.throttle.cable-outer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--cable-outer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 120,
+     "group": "cable"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.pedal-split-pin#1": {
+   "part": "fuel.throttle.pedal-split-pin",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pedal-split-pin__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 3.8,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.cable-inner#1": {
+   "part": "fuel.throttle.cable-inner",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--cable-inner__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 4,
+     "distance_mm": 120,
+     "group": "cable"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 4.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.pivot-nut#1": {
+   "part": "fuel.throttle.pivot-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pivot-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.pivot-washer#1": {
+   "part": "fuel.throttle.pivot-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pivot-washer__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5.2,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.pivot-bolt#1": {
+   "part": "fuel.throttle.pivot-bolt",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pivot-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5.4,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.pedal#1": {
+   "part": "fuel.throttle.pedal",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pedal__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 110,
+     "group": "pedal"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.distance-tube#1": {
+   "part": "fuel.throttle.distance-tube",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--distance-tube__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 110,
+     "group": "pedal"
+    },
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 6.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.pad#1": {
+   "part": "fuel.throttle.pad",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pad__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 6,
+     "distance_mm": 110,
+     "group": "pedal"
+    },
+    {
+     "axis": [
+      -0.82,
+      0,
+      0.57
+     ],
+     "order": 7,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.pedal-bracket#1": {
+   "part": "fuel.throttle.pedal-bracket",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pedal-bracket__1",
+   "stages": [],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.guide-nut#1": {
+   "part": "fuel.throttle.guide-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--guide-nut__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.guide-nut#2": {
+   "part": "fuel.throttle.guide-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--guide-nut__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 7.5,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.guide-screw#1": {
+   "part": "fuel.throttle.guide-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--guide-screw__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 70,
+     "group": "guide"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7.8,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.guide-screw#2": {
+   "part": "fuel.throttle.guide-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--guide-screw__2",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 70,
+     "group": "guide"
+    },
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 7.8,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.cable-guide#1": {
+   "part": "fuel.throttle.cable-guide",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--cable-guide__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 70,
+     "group": "guide"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.guide-gasket#1": {
+   "part": "fuel.throttle.guide-gasket",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--guide-gasket__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 8,
+     "distance_mm": 70,
+     "group": "guide"
+    },
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 8.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.shaft-lever-nut#1": {
+   "part": "fuel.throttle.shaft-lever-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--shaft-lever-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.shaft-lever-bolt#1": {
+   "part": "fuel.throttle.shaft-lever-bolt",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--shaft-lever-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.shaft-lever#1": {
+   "part": "fuel.throttle.shaft-lever",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--shaft-lever__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 9.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.coupling-nut#1": {
+   "part": "fuel.throttle.coupling-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--coupling-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 9.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.coupling-nut#2": {
+   "part": "fuel.throttle.coupling-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--coupling-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 9.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.coupling-bolt#1": {
+   "part": "fuel.throttle.coupling-bolt",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--coupling-bolt__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.coupling-bolt#2": {
+   "part": "fuel.throttle.coupling-bolt",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--coupling-bolt__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 9.6,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.coupling#1": {
+   "part": "fuel.throttle.coupling",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--coupling__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.coupling#2": {
+   "part": "fuel.throttle.coupling",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--coupling__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.shaft#1": {
+   "part": "fuel.throttle.shaft",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--shaft__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 10.5,
+     "distance_mm": 70
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.throttle-lever-front#1": {
+   "part": "fuel.throttle.throttle-lever-front",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--throttle-lever-front__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "front-lever"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.throttle-lever-rear#1": {
+   "part": "fuel.throttle.throttle-lever-rear",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--throttle-lever-rear__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "rear-lever"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.lever-nut#1": {
+   "part": "fuel.throttle.lever-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--lever-nut__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "front-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10.8,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.lever-nut#2": {
+   "part": "fuel.throttle.lever-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--lever-nut__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "rear-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10.8,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.lever-tab-washer#1": {
+   "part": "fuel.throttle.lever-tab-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--lever-tab-washer__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "front-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10.9,
+     "distance_mm": 15
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.lever-tab-washer#2": {
+   "part": "fuel.throttle.lever-tab-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--lever-tab-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "rear-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 10.9,
+     "distance_mm": 15
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.adjusting-screw#1": {
+   "part": "fuel.throttle.adjusting-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--adjusting-screw__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "front-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 12,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.adjusting-screw#2": {
+   "part": "fuel.throttle.adjusting-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--adjusting-screw__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "rear-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 12,
+     "distance_mm": 40
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.adjusting-spring#1": {
+   "part": "fuel.throttle.adjusting-spring",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--adjusting-spring__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "front-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 12,
+     "distance_mm": 25
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.adjusting-spring#2": {
+   "part": "fuel.throttle.adjusting-spring",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--adjusting-spring__2",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 11,
+     "distance_mm": 50,
+     "group": "rear-lever"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 12,
+     "distance_mm": 25
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.bracket-nut#1": {
+   "part": "fuel.throttle.bracket-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--bracket-nut__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 13,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.bracket-nut#2": {
+   "part": "fuel.throttle.bracket-nut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--bracket-nut__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 13,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.bracket-screw#1": {
+   "part": "fuel.throttle.bracket-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--bracket-screw__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 13.2,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.bracket-screw#2": {
+   "part": "fuel.throttle.bracket-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--bracket-screw__2",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 13.2,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.abutment-bracket#1": {
+   "part": "fuel.throttle.abutment-bracket",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--abutment-bracket__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 13.5,
+     "distance_mm": 60
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.stop-locknut#1": {
+   "part": "fuel.throttle.stop-locknut",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--stop-locknut__1",
+   "stages": [
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14,
+     "distance_mm": 70,
+     "group": "stop"
+    },
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14.5,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.stop-screw#1": {
+   "part": "fuel.throttle.stop-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--stop-screw__1",
+   "stages": [
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14,
+     "distance_mm": 70,
+     "group": "stop"
+    },
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14.6,
+     "distance_mm": 40
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.stop-fixing-screw#1": {
+   "part": "fuel.throttle.stop-fixing-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--stop-fixing-screw__1",
+   "stages": [
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14,
+     "distance_mm": 70,
+     "group": "stop"
+    },
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 13.8,
+     "distance_mm": 30
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.stop-fixing-screw#2": {
+   "part": "fuel.throttle.stop-fixing-screw",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--stop-fixing-screw__2",
+   "stages": [
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14,
+     "distance_mm": 70,
+     "group": "stop"
+    },
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 13.8,
+     "distance_mm": 30
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.stop-spring-washer#1": {
+   "part": "fuel.throttle.stop-spring-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--stop-spring-washer__1",
+   "stages": [
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14,
+     "distance_mm": 70,
+     "group": "stop"
+    },
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 13.9,
+     "distance_mm": 20
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "fuel.throttle.stop-spring-washer#2": {
+   "part": "fuel.throttle.stop-spring-washer",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--stop-spring-washer__2",
+   "stages": [
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14,
+     "distance_mm": 70,
+     "group": "stop"
+    },
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 13.9,
+     "distance_mm": 20
+    }
+   ],
+   "label": false,
+   "fitted": null
+  },
+  "fuel.throttle.pedal-stop#1": {
+   "part": "fuel.throttle.pedal-stop",
+   "assembly": "fuel.throttle",
+   "node": "fuel--throttle--pedal-stop__1",
+   "stages": [
+    {
+     "axis": [
+      -0.9,
+      0,
+      0.45
+     ],
+     "order": 14,
+     "distance_mm": 70,
+     "group": "stop"
+    }
+   ],
+   "label": true,
    "fitted": null
   },
   "gearbox.casing.od-gasket#1": {
@@ -135433,7 +140283,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-03T11:22:38+00:00",
+ "built": "2026-11-03T11:51:38+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,
