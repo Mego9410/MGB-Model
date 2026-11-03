@@ -298,7 +298,8 @@ round them and should check them against the car:
   height and width functions (C2 splines through the traced stations): the side with its tumblehome and tuck-under,
   the top with the cambered bonnet, the front wing crowns standing proud of it and the bonnet swage, the nose (grille
   surround and valance at the centre, the wing fronts round the headlamps, swept back in plan) and the tail (the rear
-  panel, the raked lamp plinths on the wing ends), joined by cubic smooth maxima so the nose and tail roll into the
+  panel and the valance under the bumper down to the sill line, the flat raked lamp plinths on the square wing ends
+  with a crisp outer edge), joined by cubic smooth maxima so the nose and tail roll into the
   sides and top without creases. `mgb/body_shell.py` samples F along rays leaving a core ellipse in planes square to a
   spine that turns down round the nose and the tail (so the rays never cross and the crowns cannot shadow the bonnet),
   fits one least-squares bicubic B-spline face (150 x 110 poles, light smoothing; 0.1 mm mean, under 2 mm at the 99th
@@ -326,7 +327,8 @@ round them and should check them against the car:
   checked: the rear axle at full bump against the boot floor's hump, the propeller shaft at full bump against the
   tunnel (static clearance about 35 mm).
 - Known P11b approximations: no body drawing with dimensions; the shape is traced from photographs (about +/-10 mm on
-  the side elevation, more on the plan and sections, which come from oblique views). Arch lips, door and boot drip
+  the side elevation, more on the plan and sections, which come from oblique views). Arch lips are a dark return band
+  (body.structure.arch-liners) rather than a rolled flange; door and boot drip
   rails, the boot lid and bonnet return flanges are not drawn; the door glass is flat, the hood a smooth cover without
   seams; seat pleats are grooves; small fixing holes under about 3 mm radius in the skins are not cut. Lettering on
   the badges, plaque and plates is not modelled; the grille's club badges (AA and the MG car club) are not drawn.
@@ -344,8 +346,10 @@ round them and should check them against the car:
 - `mgb/body_layout.py` (P10's datums for the body), moved to Oliver's car: headlamp rim face FRONT_X - 95 -> - 186
   (x 645), centres |y| 561 -> 585, height 690 -> 632 above the road; side/flasher lamps to x 691, |y| 569, 495 high,
   and rectangular (136 x 52, amber inboard, clear outboard, chrome surround; P10 drew a 92 x 50 lozenge), the right
-  lamp turned over so the clear part is outboard on both sides; rear lamps onto the raked wing-end plinths (REAR_X +
-  197, 705 high, raked 31 deg, `REAR_LAMP_RAKE`), about 200 mm tall, amber on top and red below (P10 had red on top);
+  lamp turned over so the clear part is outboard on both sides; rear lamps onto the flat raked wing-end plinths (REAR_X +
+  195, |y| 661, 678 high, raked 33 deg, `REAR_LAMP_RAKE`), a tall rounded rectangle 236 mm on the rake (about 200 mm
+  high seen from behind) and 90 wide in a chrome rim, amber over the top third and red below (P10 had a 172 mm lamp
+  with red on top);
   rear overriders |y| 262 -> 340; the side strip 663 -> 690 above the road; the instruments and switches to the
   facia layout of photos 01, 04, 16, 22 (speedometer left and tachometer right in the binnacle over the column, fuel
   gauge further right, the dual gauge on the centre panel right of the plaque; three toggles, ignition and push-pull
@@ -357,11 +361,13 @@ round them and should check them against the car:
   the filler tube now runs back across the boot to a chrome locking cap on the rear panel right of the number plate
   (photos 11, 18, 21), 560 mm above the road, outboard of the right-hand overrider; P11a had it ending at the right of
   the boot. P11a's tail pipe now ends under the bumper blade (exhaust_layout TAIL_END_X = REAR_X + 70, profile photo
-  29).
+  29), about 55 mm behind the new rear valance, below its lower edge; the valance hides the tank and silencer from
+  behind (photo 18).
 - `viewer/index.html`: FINISH vinyl_black, carpet, hood_black, paint_body_red (#d8261c, the body), piping_red,
-  underseal (the floor pan, tunnel, toe boards, legs, rails, castles), glass_screen; SYSTEM_EXPLODE for the body
-  assemblies; the review hook `window.mgbCamera` also takes an exact camera ({pos, at, fov} in CAD mm) so renders can
-  be laid beside photographs. P10b `wiring_layout`: the facia run's nodes follow the moved instruments and switches,
+  underseal (the floor pan, tunnel, toe boards, legs, rails, castles), glass_screen (the windscreen, and the hood's rear window: a flat clear panel set into an opening
+  cut in the cover); SYSTEM_EXPLODE for the body
+  assemblies; the review hook `window.mgbCamera` also takes an exact camera ({pos, at, fov} in CAD mm) and a list of
+  nodes to hide ({hide: [ids]}), so renders can be laid beside photographs. P10b `wiring_layout`: the facia run's nodes follow the moved instruments and switches,
   and `smooth()` keeps a corner where a route folds straight back (it divided by zero). `build.py` uses an assembly's `LOD` (new "body" tessellation in `mgb/export.py`). `.gitignore`: .cache/.
 - P4's clutch hose bracket stays where P4 put it, carried by a new support on the bulkhead; P9's column bottom bracket
   sits on a body cup 40 mm behind the bulkhead.

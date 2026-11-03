@@ -125,16 +125,16 @@ CROWN_Y = [(700.0, BL.HEADLAMP_Y), (560.0, BL.HEADLAMP_Y + 2.0), (300.0, 610.0),
 CROWN_S = mono([(700.0, 88.0), (300.0, 85.0), (-300.0, 95.0), (-700.0, 120.0), (-2200.0, 120.0), (-2780.0, 75.0)])
 # Plan: half-width at the strip line (the widest), the shoulder half-width, the lower edge tuck-under.
 W_M = mono([(831.0, 380.0), (790.0, 520.0), (760.0, 600.0), (720.0, 664.0), (660.0, 702.0), (613.0, 716.0),
-       (500.0, 738.0), (350.0, 754.0), (200.0, HALF_W), (-2400.0, HALF_W), (-2600.0, 754.0), (-2750.0, 738.0),
-       (-2850.0, 718.0), (-2930.0, 690.0), (-2990.0, 640.0), (-3060.0, 520.0)])
-W_TUMBLE = mono([(700.0, 40.0), (500.0, 52.0), (0.0, 62.0), (-700.0, 70.0), (-2200.0, 72.0), (-2800.0, 70.0)])
-W_TUCK = mono([(800.0, 120.0), (600.0, 100.0), (300.0, 70.0), (0.0, 60.0), (-2300.0, 60.0), (-2600.0, 85.0), (-2900.0, 110.0)])
+       (500.0, 738.0), (350.0, 754.0), (200.0, HALF_W), (-2400.0, HALF_W), (-2600.0, 757.0), (-2750.0, 752.0),
+       (-2850.0, 746.0), (-2930.0, 739.0), (-2990.0, 730.0), (-3060.0, 705.0)])   # square tail (Oliver's photo 18)
+W_TUMBLE = mono([(700.0, 40.0), (500.0, 52.0), (0.0, 62.0), (-700.0, 70.0), (-2200.0, 72.0), (-2600.0, 58.0), (-2800.0, 42.0)])
+W_TUCK = mono([(800.0, 120.0), (600.0, 100.0), (300.0, 70.0), (0.0, 60.0), (-2300.0, 60.0), (-2600.0, 50.0), (-2900.0, 38.0)])
 H_M = ag(BL.SIDE_STRIP_Z)                   # widest point at the chrome strip
 SHOULDER_K = 105.0                          # blend radius where the side rolls into the top
 # Lower edge of the skin (trim line): front valance bottom, sills, rear valance (P11a REAR_PANEL_LOW_Z).
 Z_B = mono([(831.0, 250.0), (480.0, 245.0), (300.0, 246.0), (-260.0, 250.0), (-1000.0, 254.0), (-1700.0, 265.0),
-       (-1950.0, 278.0), (-2300.0, 300.0), (-2550.0, 330.0), (-2650.0, 352.0), (-2750.0, 372.0), (-2850.0, 366.0),
-       (-3060.0, 345.0)])         # the rear valance comes down behind the bumper (Oliver's photos 18, 24)
+       (-1950.0, 278.0), (-2300.0, 298.0), (-2550.0, 312.0), (-2650.0, 298.0), (-2750.0, 284.0), (-2850.0, 280.0),
+       (-3060.0, 280.0)])         # the rear valance comes down under the bumper to the sill line (Oliver's photos 18, 24)
 BLOB_BOTTOM = 182.0                         # the implicit body continues under the trim line to here
 # Bonnet swage: a low raised strip down the middle of the bonnet, continuing the grille badge's centre bar.
 RIB_A = mono([(760.0, 6.0), (600.0, 6.0), (100.0, 4.0), (-300.0, 0.0)])
@@ -165,19 +165,19 @@ HOOD_LIP = 0.0                              # the wing's hood stands this far ah
 
 # ---- tail (rear surface x as a function of |y| and height) ---------------------------------------------------------
 TAIL_PANEL_X = U.REAR_PANEL_X               # rear panel face behind the number plate (P11a, moved by P11b)
-TAIL_C = [(150.0, TAIL_PANEL_X + 120.0), (250.0, TAIL_PANEL_X + 40.0), (330.0, TAIL_PANEL_X + 8.0),
+TAIL_C = [(150.0, TAIL_PANEL_X + 75.0), (250.0, TAIL_PANEL_X + 16.0), (330.0, TAIL_PANEL_X + 3.0),
           (420.0, TAIL_PANEL_X), (600.0, TAIL_PANEL_X - 2.0), (640.0, TAIL_PANEL_X + 16.0),
           (690.0, TAIL_PANEL_X + 72.0), (740.0, TAIL_PANEL_X + 124.0), (800.0, TAIL_PANEL_X + 186.0), (880.0, TAIL_PANEL_X + 305.0)]
 # (the boot lid's rear falls with the lamp plinths' rake: nothing stands behind the lamps above the bumper in the side
 #  view, profile photo 29)
 # Wing ends (photo 29: the lamp plinth raked about 31 deg, top corner X -2774 h 803, foot X -2930 h 570, the wing end
 # under it X -2943 at h 511); the wing ends stand forward of the rear panel above the bumper ("wing kick").
-TAIL_W = [(150.0, TAIL_PANEL_X + 130.0), (300.0, TAIL_PANEL_X + 30.0), (420.0, TAIL_PANEL_X + 10.0),
+TAIL_W = [(150.0, TAIL_PANEL_X + 85.0), (300.0, TAIL_PANEL_X + 14.0), (420.0, TAIL_PANEL_X + 8.0),
           (511.0, -2943.0), (570.0, -2930.0), (690.0, -2858.0), (803.0, -2774.0), (880.0, -2700.0)]
-TAIL_PLAN = mono([(0.0, 0.0), (500.0, 2.0), (640.0, 6.0), (700.0, 22.0), (740.0, 60.0), (770.0, 120.0),
-                   (800.0, 220.0)])
-TAIL_K = 60.0
-PLINTH_Y = (BL.REAR_LAMP_Y - 85.0, BL.REAR_LAMP_Y - 45.0)   # wing-end zone (inner and outer edge of the blend)
+TAIL_PLAN = mono([(0.0, 0.0), (500.0, 2.0), (660.0, 5.0), (710.0, 12.0), (735.0, 26.0), (755.0, 55.0),
+                   (780.0, 130.0)])   # square wing ends in plan, crisp outer edge (Oliver's photos 18, 23)
+TAIL_K = 28.0
+PLINTH_Y = (BL.REAR_LAMP_Y - 95.0, BL.REAR_LAMP_Y - 60.0)   # wing-end zone (inner and outer edge of the blend)
 
 
 def crown_h(x):
@@ -273,7 +273,7 @@ def F(X, Y, Hh):
     plan = smax(smax(fs, fn, NOSE_K), fr, TAIL_K)
     ft = Hh - _top(X, Y)
     k_top = SHOULDER_K - (SHOULDER_K - 45.0) * _step((X - 480.0) / 80.0) * _step((Y - 470.0) / 60.0) \
-        - (SHOULDER_K - 55.0) * _step((-2100.0 - X) / 300.0)          # crisper rear wing tops into the lamp plinths
+        - (SHOULDER_K - 38.0) * _step((-2100.0 - X) / 300.0)          # crisper rear wing tops into the lamp plinths
     body = smax(plan, ft, k_top)
     fb = BLOB_BOTTOM - Hh
     return smax(body, fb, 60.0)
@@ -407,6 +407,19 @@ def sample_grid(n_psi=193, step=25.0, cap_n=36):
             b = np.where(pos, m, b)
             a = np.where(pos, a, m)
         t = 0.5 * (a + b)
+        out = f(np.zeros(n_psi)) > 0                                     # core point already outside (the caps' ends
+        if out.any():                                                    # under the tail): back along the ray to the skin
+            tn = np.repeat(np.linspace(0.0, -700.0, 141)[:, None], n_psi, axis=1)
+            inside = f(tn) < 0
+            kn = np.where(inside.any(0), inside.argmax(0), 0)
+            a2 = tn[kn, np.arange(n_psi)]                                # inside
+            b2 = tn[np.maximum(kn - 1, 0), np.arange(n_psi)]             # outside
+            for _ in range(40):
+                m = 0.5 * (a2 + b2)
+                pos = f(m) > 0
+                b2 = np.where(pos, m, b2)
+                a2 = np.where(pos, a2, m)
+            t = np.where(out & inside.any(0), 0.5 * (a2 + b2), t)
         P[i, :, 0] = x0 + dx * t
         P[i, :, 1] = y0 + dy * t
         P[i, :, 2] = z_of(h0 + dh * t)

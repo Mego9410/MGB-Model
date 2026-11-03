@@ -926,7 +926,20 @@ def harness_clips(spec):
     return _c(out, spec)
 
 
+def arch_liners(spec):
+    """Wheel arch returns (D: Oliver's photos 02, 09, 23 show the arches dark inside): a band just inside each wing's
+    arch opening, from the skin in toward the wheel house, finished in underseal like the wheel houses behind."""
+    out = []
+    for (ax, az, r) in (S.FRONT_ARCH, S.REAR_ARCH):
+        for s in (1, -1):
+            band = ycyl(r + 4.0, 470.0, 752.0, ax, az) - ycyl(r + 2.8, 460.0, 760.0, ax, az)
+            band = band & box(ax - r - 10.0, ax + r + 10.0, 470.0, 752.0, H(S.z_b(ax) + 6.0), az + r + 10.0)
+            out.append(_side(band, s))
+    return _c(out, spec)
+
+
 PARTS = {
+    "body.structure.arch-liners": {"build": arch_liners},
     "body.structure.tunnel": {"build": tunnel},
     "body.structure.floor-l": {"build": floor_half(1)},
     "body.structure.floor-r": {"build": floor_half(-1)},

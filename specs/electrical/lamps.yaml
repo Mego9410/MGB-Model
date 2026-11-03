@@ -102,7 +102,7 @@ parts:
     quantity: 2
     notes: "Earlier version (Sec 36 paras 1-3): the stop/tail and flasher bulbs one above the other (photo 36.1), body held by three screws, the lens hooked over the upper lip and held by one screw at the bottom. Outline from photo 36.1."
     specs:
-      height: { mm: 198.0, source: { label: D, method: "Oliver's photos 18, 23, 24: about 200 mm tall (P10 had 172 from photo 36.1)" } }
+      height: { mm: 248.0, source: { label: D, method: "Oliver's photos 18, 23, 24 and profile photo 29: a tall rounded rectangle about 200 mm high seen from behind (236 mm on the 33 deg plinth) and 90 mm wide, in a 6 mm chrome rim (P10 had 172 from photo 36.1)" } }
 
   - id: electrical.lamps.rear-lens-red
     name: Stop and tail lens (red)
@@ -111,7 +111,7 @@ parts:
     finish: lens_red
     notes: "Double filament bulb: tail, and the brighter stop light (Sec 36 para 1)."
     specs:
-      height: { mm: 112.0, source: { label: D, method: "Oliver's photos 18, 24: the lower part of the lens" } }
+      height: { mm: 158.0, source: { label: D, method: "Oliver's photos 18, 24: the lower two thirds of the lens" } }
 
   - id: electrical.lamps.rear-lens-amber
     name: Rear flasher lens (amber)
@@ -119,7 +119,7 @@ parts:
     quantity: 2
     finish: lens_amber
     specs:
-      height: { mm: 56.0, source: { label: D, method: "Oliver's photos 18, 24: the top of the lens" } }
+      height: { mm: 80.0, source: { label: D, method: "Oliver's photos 18, 24: the top third of the lens" } }
 
   - id: electrical.lamps.plate-lamp
     name: Number plate lamp (plinth and cover)

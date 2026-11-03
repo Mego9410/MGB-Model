@@ -355,6 +355,7 @@ parts:
   - id: body.structure.rear-wheelhouse-l
     name: Rear wheel house, left
     haynes: { section: 1 }
+    finish: underseal
     quantity: 1
     notes: "Inner wall at |y| 498 outboard of the rear rail, the arched band over the tyre (430 mm about the axle: the tyre at full bump) out to the outer wing."
     specs:
@@ -363,6 +364,7 @@ parts:
   - id: body.structure.rear-wheelhouse-r
     name: Rear wheel house, right
     haynes: { section: 1 }
+    finish: underseal
     quantity: 1
     notes: "Mirror of the left."
     specs:
@@ -473,3 +475,11 @@ parts:
     notes: "Mirror of the left."
     specs:
       seam_height: { mm: 255.0, source: { label: D, method: "Above the road" } }
+  - id: body.structure.arch-liners
+    name: Wheel arch returns
+    haynes: { section: 1 }
+    quantity: 1
+    finish: underseal
+    notes: "A band just inside each wing's arch opening, from the skin in toward the wheel house, in underseal (the arches read dark inside in Oliver's photos 02, 09, 23)."
+    specs:
+      depth: { mm: 282.0, source: { label: D, method: "Skin to the wheel house wall" } }

@@ -147,10 +147,10 @@ EARTH_POINTS = {
 # On the rear wing ends' raked plinths (profile photo 29: the plinth raked about 31 deg from vertical, its top corner
 # X -2774 h 803 and foot X -2930 h 570; Oliver's photos 18, 24: centres |y| 645). P11b moved the lamp back onto the
 # plinth and tilted it (P10 had it upright at REAR_X + 75, 640 high).
-REAR_LAMP_X = REAR_X + 204.0                           # lens face centre on the plinth
-REAR_LAMP_Y = HALF_W - 115.0
-REAR_LAMP_Z = above_ground(705.0)
-REAR_LAMP_RAKE = 31.0                                  # deg: the lamp's top leans forward with the plinth
+REAR_LAMP_X = REAR_X + 195.0                           # lens face centre on the plinth
+REAR_LAMP_Y = HALF_W - 100.0                           # Oliver's photo 18: lamp centre about 665 mm off the centre line
+REAR_LAMP_Z = above_ground(678.0)
+REAR_LAMP_RAKE = 33.0                                  # deg: the lamp's top leans forward with the plinth
 OVERRIDER_Y = 340.0                                    # rear overrider centre lines, either side of the plate (photos 18, 24)
 NUMBER_LAMP = (REAR_X + 38.0, OVERRIDER_Y - 26.0, above_ground(430.0))   # lamp base on the overrider's inner face
 

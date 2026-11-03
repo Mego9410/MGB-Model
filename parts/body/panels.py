@@ -64,7 +64,7 @@ def door_sd(X, Y, Z, side):
 
 
 def sill_sd(X, Y, Z, side):
-    return AND(X - (-190.0), (-1830.0) - X, Z - H(S.SILL_TOP_H), side_sd(Y, side, 300.0))
+    return AND(X - 40.0, (-1830.0) - X, Z - H(S.SILL_TOP_H), side_sd(Y, side, 300.0))   # from inside the front arch
 
 
 def boot_sd(X, Y, Z):

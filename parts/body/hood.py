@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import math
 
-from build123d import Compound, Face, thicken
+from build123d import Compound, Face, Plane, RectangleRounded, Vector, extrude, thicken
 
 from mgb import body_geom as G, body_shell_layout as S, car_layout as CL
 from mgb.chassis_geom import rod, swept_rod
@@ -72,7 +72,7 @@ def hood_pt(u, v):
 
 def cover(spec):
     """Hood cover: hood material from the top rail's fastener brackets back over the cockpit to the rear deck,
-    sitting on the door glass tops at the sides."""
+    sitting on the door glass tops at the sides, with the rear window's opening cut through its back."""
     from mgb import body_shell as B
     rows = [[hood_pt(0.02 + 0.97 * i / 24, -0.985 + 1.97 * j / 20) for j in range(21)] for i in range(25)]
     f = B._fit(rows, 0.3)
@@ -80,25 +80,49 @@ def cover(spec):
         try:
             th = thicken(f, t)
             if th.is_valid:
-                return _l(th, spec)
+                cut = th - extrude(_window_plane() * RectangleRounded(WIN_W, WIN_L, WIN_R), amount=60.0, both=True)
+                if cut.is_valid:
+                    return _l(cut, spec)
         except Exception:  # noqa: BLE001 - try the other side
             pass
     raise ValueError("hood cover offset failed")
 
 
+# Rear window: a flat clear rectangle with rounded corners low in the cover's back (Oliver's photos 18, 23: wide and
+# shallow, nearly the width of the deck between the hood's side curves).
+WIN_U = (0.69, 0.86)
+WIN_V = 0.60
+WIN_R = 28.0
+
+
+def _window_plane():
+    """Plane through the window's four corners on the cover: x across the car, y up the cover's back."""
+    a, b = [Vector(*hood_pt(u, -WIN_V)) for u in WIN_U], [Vector(*hood_pt(u, WIN_V)) for u in WIN_U]
+    o = (a[0] + a[1] + b[0] + b[1]) * 0.25
+    xd = ((b[0] + b[1]) - (a[0] + a[1])).normalized()
+    up = ((a[1] + b[1]) - (a[0] + b[0])).normalized()
+    n = xd.cross(up).normalized()
+    if n.Z < 0:
+        n = -n
+    return Plane(o, x_dir=xd, z_dir=n)
+
+
+def _win_size():
+    a0, a1 = Vector(*hood_pt(WIN_U[0], -WIN_V)), Vector(*hood_pt(WIN_U[1], -WIN_V))
+    b0 = Vector(*hood_pt(WIN_U[0], WIN_V))
+    return (b0 - a0).length, (a1 - a0).length
+
+
+WIN_W, WIN_L = _win_size()
+
+
 def rear_window(spec):
-    """Rear window: the clear panel sewn into the cover's back."""
-    def out(p, d=3.5):                     # stand just proud of the cover (no coincident faces)
-        x, y, z = p
-        zc = H(980.0)
-        L = math.hypot(y, z - zc) or 1.0
-        return (x - d * 0.35, y + d * y / L, z + d * (z - zc) / L)
-    rows = [[out(hood_pt(0.70 + 0.15 * i / 6, -0.62 + 1.24 * j / 8)) for j in range(9)] for i in range(7)]
-    f = Face.make_surface_from_array_of_points(rows, tol=0.1, min_deg=1, max_deg=3)
-    return _l(thicken(f, 1.5), spec)
+    """Rear window: a flat clear panel set into the opening in the cover's back."""
+    pl = _window_plane()
+    return _l(extrude(pl * RectangleRounded(WIN_W - 1.0, WIN_L - 1.0, WIN_R - 0.5), amount=1.6, both=True), spec)
 
 
-BOW_U = (0.28, 0.52, 0.76)
+BOW_U = (0.28, 0.50, 0.66)                   # the rear bow ahead of the rear window
 
 
 def bow(k):

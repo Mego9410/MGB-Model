@@ -149,19 +149,21 @@ def side_rim(spec) -> Part:
 
 
 # ---- rear lamp (stop/tail and flasher) -----------------------------------------------------------
+REAR_LEN, REAR_W = 236.0, 90.0                # about 200 mm tall seen from behind on the 33 deg plinth, 90 wide
+REAR_AMBER = REAR_LEN / 3.0                   # amber over the top third (Oliver's photos 18, 23, 24)
+
+
 def _rear_outline(grow=0.0):
-    # tall tapered lozenge, local x up, y across: wider at the top (photo 36.1)
-    k = 1.15                                     # Oliver's lamps are about 200 mm tall (photos 18, 23, 24)
-    kw = 1.4                                     # and broad (about 85 mm at the top)
-    pts = P2.circle_pts(52.0 * k, 0.0, 30.0 * kw + grow, 14, -90.0, 90.0) + P2.circle_pts(-62.0 * k, 0.0, 22.0 * kw + grow, 14, 90.0, 270.0)
-    return P2.hull(pts)
+    # tall rounded rectangle, local x up the plinth, y across (Oliver's photos 18, 23, 24)
+    return _rect(REAR_W + 2 * grow, REAR_LEN + 2 * grow, 16.0 + grow, 6)
 
 
 def rear_body(spec) -> Part:
     """Rear lamp body and chrome plinth (photo 36.1): two bulb holders one above the other,
     fixed by three screws (Sec 36 para 2), the lens hooked over the upper lip."""
-    p = X.poly_xy(_rear_outline(3.0), -9.0, 0.0)
-    p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 2.5)
+    p = X.poly_xy(_rear_outline(6.0), -9.0, 0.0)
+    p = p + (X.poly_xy(_rear_outline(6.0), -0.05, 4.0) - X.poly_xy(_rear_outline(1.5), -1.0, 5.0))   # chrome rim
+    p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 1.2)
     p = p - X.poly_xy(_rear_outline(-3.0), -5.0, 1.0)
     for x in (40.0, -40.0):
         p = p + zc(11.0, -8.0, -1.0, x, 0.0) - zc(8.0, -7.0, 0.0, x, 0.0)
@@ -177,10 +179,10 @@ def rear_lens(colour):
         draws the early lamp the other way up); one moulding held by the screw at the bottom (Sec 36 paras 1, 3)."""
         lens = X.poly_xy(_rear_outline(1.0), 0.05, 9.0)
         lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 4.5)
-        cut = 26.0                                                  # amber over the flasher at the top (Oliver's photos 18, 24)
-        half = box(cut, 140.0, -70, 70, -6, 9) if colour == "amber" else box(-140.0, cut, -70, 70, -6, 9)
+        cut = REAR_LEN / 2 - REAR_AMBER                             # amber over the flasher, the top third
+        half = box(cut, 180.0, -80, 80, -6, 9) if colour == "amber" else box(-180.0, cut, -80, 80, -6, 9)
         lens = lens & half
-        for k in range(-13, 14):                                    # horizontal prism ribs
+        for k in range(-17, 18):                                    # horizontal prism ribs
             lens = lens - box(k * 8.0 - 0.6, k * 8.0 + 0.6, -60, 60, 8.0, 10.0)
         if colour == "red":
             lens = lens + zc(4.5, 7.0, 10.0, -76.0, 0.0) - zc(1.8, -6, 11, -76.0, 0.0)   # lens screw boss

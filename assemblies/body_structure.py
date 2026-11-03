@@ -54,4 +54,5 @@ add("battery-cover-r", explode=ex(UP, 1, 120))
 add("cable-grommet", explode=ex(DOWN, 1, 80))
 add("harness-grommets", explode=ex(UP, 1, 60))
 add("harness-clips", explode=ex(UP, 1, 60))
+add("arch-liners", explode=ex(DOWN, 1, 200))
 INSTANCES = I

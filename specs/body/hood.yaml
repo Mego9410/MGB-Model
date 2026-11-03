@@ -21,9 +21,9 @@ parts:
     haynes: { section: 1 }
     quantity: 1
     finish: glass_screen
-    notes: "Clear panel sewn into the cover's back."
+    notes: "Flat clear panel with rounded corners set into an opening in the cover's back, wide and shallow, low in the back (Oliver's photos 18, 23)."
     specs:
-      width: { mm: 600.0, source: { label: D, method: "Middle of the cover's back" } }
+      width: { mm: 1000.0, display_only: true, source: { label: D, method: "Oliver's photo 18: nearly the width of the deck between the hood's side curves" } }
   - id: body.hood.bow-front
     name: Hood frame front bow
     haynes: { section: 1 }
