@@ -39,7 +39,7 @@ TONNEAU_Z = BL.TONNEAU_FLOOR_Z           # tonneau floor underside (D, P10)
 ARCH_Z = CL.WHEEL_Z + A.TUBE_R + 26.0 + 44.0 + 52.0   # body underside over the axle (D, P9 bump strike) = -122.5
 ARCH_X = (CL.REAR_AXLE_X + 180.0, CL.REAR_AXLE_X - 150.0)   # front and rear ends of the arch's flat roof (D)
 BOOT_FLOOR_Z = ARCH_Z - 50.0             # boot floor underside over the tank (D)
-REAR_PANEL_X = CL.REAR_X + 45.0          # rear valance face behind the bumper (D)
+REAR_PANEL_X = CL.REAR_X + 105.0         # rear panel face behind the number plate (D: P11b, profile photo 29)
 REAR_PANEL_LOW_Z = CL.GROUND_Z + 300.0   # lower edge of the rear valance (D)
 SILL_Y = 600.0                           # |y| of the inner sill faces (D, outside every P11a part)
 

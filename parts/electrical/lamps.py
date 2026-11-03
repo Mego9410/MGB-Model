@@ -92,46 +92,68 @@ def _stadium(w, h, n=14):
     return [(py, px) for px, py in pts]          # long axis along local y (across the car)
 
 
+def _rect(w, h, r=6.0, n=4):
+    """Rounded rectangle, long axis along local y (across the car): the side and flasher lamp (Oliver's photos 10,
+    20: a rectangular unit with a chrome surround)."""
+    r = min(r, h / 2 - 0.5, w / 2 - 0.5)
+    pts = []
+    for cx, cy, a0 in ((h / 2 - r, w / 2 - r, 0.0), (-(h / 2 - r), w / 2 - r, 90.0), (-(h / 2 - r), -(w / 2 - r), 180.0),
+                       (h / 2 - r, -(w / 2 - r), 270.0)):
+        pts += P2.circle_pts(cx, cy, r, n, a0, a0 + 90.0)
+    return pts
+
+
 def side_body(spec) -> Part:
-    """Side and flasher lamp body (photo 35.1): chrome plinth with the two bulb holders,
-    held by two nuts on studs behind the wing (Sec 35 para 2)."""
+    """Side and flasher lamp body (photo 35.1; Oliver's photos 10, 20): a rectangular chrome plinth with the two bulb
+    holders side by side, held by two nuts on studs behind the wing (Sec 35 para 2). Local +y is outboard (the
+    assembly turns the right-hand lamp over)."""
     w, h = spec.nom("width"), spec.nom("height")
-    p = X.poly_xy(_stadium(w, h), -10.0, 0.0)
-    p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 3.0)
-    p = p - X.poly_xy(_stadium(w - 8.0, h - 8.0), -4.0, 1.0)
+    p = X.poly_xy(_rect(w, h, 5.0), -10.0, 0.0)
+    p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 2.5)
+    p = p - X.poly_xy(_rect(w - 8.0, h - 8.0, 3.0), -4.0, 1.0)
     for dx in (-18.0, 18.0):                                        # bulb holders and studs
         p = p + zc(9.0, -9.0, -2.0, 0.0, dx) - zc(6.0, -8.0, -1.0, 0.0, dx)
         p = p + zc(2.4, -26.0, -10.0, 0.0, dx * 1.25)
     return label(p, spec)
 
 
+SIDE_SPLIT = 0.36                            # the clear (side lamp) part takes the outboard third (Oliver's photo 10)
+
+
 def side_lens(colour):
     def build(spec) -> Part:
-        """Lens half: clear for the side lamp (upper, local -x), amber for the flasher (lower)."""
+        """Lens: amber over the flasher (inboard two thirds), clear over the side lamp (outboard third), divided by
+        the rim's bar; moulded ribs across."""
         w, h = spec.nom("width"), spec.nom("height")
-        lens = X.poly_xy(_stadium(w - 12.0, h - 8.0), 0.05, 8.0)
-        lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 4.0)
-        half = box(-h, 0.0, -w, w, -6, 8) if colour == "clear" else box(0.0, h, -w, w, -6, 8)
+        lens = X.poly_xy(_rect(w - 12.0, h - 8.0, 3.0), 0.05, 7.0)
+        lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 3.0)
+        cut = (w - 12.0) * (0.5 - SIDE_SPLIT)
+        half = box(-h, h, cut + 1.5, w, -6, 8) if colour == "clear" else box(-h, h, -w, cut - 1.5, -6, 8)
         lens = lens & half
-        for k in range(-3, 4):                                      # moulded ribs
-            lens = lens - box(-h, h, k * 9.0 - 0.5, k * 9.0 + 0.5, 6.5, 9.0)
+        for k in range(-6, 7):                                      # moulded ribs
+            lens = lens - box(-h, h, k * 9.0 - 0.5, k * 9.0 + 0.5, 5.5, 8.0)
         return label(lens, spec)
     return build
 
 
 def side_rim(spec) -> Part:
-    """Chrome lens rim held by two screws (Sec 35 para 1)."""
+    """Chrome surround round the lens with the dividing bar between the amber and clear parts, held by two screws
+    (Sec 35 para 1; Oliver's photo 10)."""
     w, h = spec.nom("width"), spec.nom("height")
-    r = X.poly_xy(_stadium(w + 1.0, h + 1.0), 0.05, 4.0) - X.poly_xy(_stadium(w - 11.0, h - 7.0), -1.0, 5.0)
+    r = X.poly_xy(_rect(w + 1.0, h + 1.0, 6.0), 0.05, 5.0) - X.poly_xy(_rect(w - 11.0, h - 7.0, 3.0), -1.0, 6.0)
+    cut = (w - 12.0) * (0.5 - SIDE_SPLIT)
+    r = r + box(-h / 2 + 3.0, h / 2 - 3.0, cut - 1.5, cut + 1.5, 0.05, 6.0)
     for dy in (-(w / 2 - 2.5), w / 2 - 2.5):
-        r = r + zc(2.6, 3.0, 5.0, 0.0, dy) - zc(1.4, -2, 6, 0.0, dy)
+        r = r + zc(2.6, 4.0, 6.0, 0.0, dy) - zc(1.4, -2, 7, 0.0, dy)
     return label(r, spec)
 
 
 # ---- rear lamp (stop/tail and flasher) -----------------------------------------------------------
 def _rear_outline(grow=0.0):
     # tall tapered lozenge, local x up, y across: wider at the top (photo 36.1)
-    pts = P2.circle_pts(52.0, 0.0, 30.0 + grow, 14, -90.0, 90.0) + P2.circle_pts(-62.0, 0.0, 22.0 + grow, 14, 90.0, 270.0)
+    k = 1.15                                     # Oliver's lamps are about 200 mm tall (photos 18, 23, 24)
+    kw = 1.4                                     # and broad (about 85 mm at the top)
+    pts = P2.circle_pts(52.0 * k, 0.0, 30.0 * kw + grow, 14, -90.0, 90.0) + P2.circle_pts(-62.0 * k, 0.0, 22.0 * kw + grow, 14, 90.0, 270.0)
     return P2.hull(pts)
 
 
@@ -151,16 +173,16 @@ def rear_body(spec) -> Part:
 
 def rear_lens(colour):
     def build(spec) -> Part:
-        """Lens: red over the stop/tail bulb (upper), amber over the flasher (lower); one
-        moulding held by the screw at the bottom (Sec 36 paras 1, 3)."""
+        """Lens: amber over the flasher at the top, red over the stop/tail bulb below (Oliver's photos 18, 24; Haynes
+        draws the early lamp the other way up); one moulding held by the screw at the bottom (Sec 36 paras 1, 3)."""
         lens = X.poly_xy(_rear_outline(1.0), 0.05, 9.0)
         lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 4.5)
-        cut = 2.0
-        half = box(cut, 120.0, -60, 60, -6, 9) if colour == "red" else box(-120.0, cut, -60, 60, -6, 9)
+        cut = 26.0                                                  # amber over the flasher at the top (Oliver's photos 18, 24)
+        half = box(cut, 140.0, -70, 70, -6, 9) if colour == "amber" else box(-140.0, cut, -70, 70, -6, 9)
         lens = lens & half
-        for k in range(-10, 12):                                    # horizontal prism ribs
+        for k in range(-13, 14):                                    # horizontal prism ribs
             lens = lens - box(k * 8.0 - 0.6, k * 8.0 + 0.6, -60, 60, 8.0, 10.0)
-        if colour == "amber":
+        if colour == "red":
             lens = lens + zc(4.5, 7.0, 10.0, -76.0, 0.0) - zc(1.8, -6, 11, -76.0, 0.0)   # lens screw boss
         return label(lens, spec)
     return build

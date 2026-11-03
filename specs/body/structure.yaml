@@ -1,0 +1,475 @@
+# Body shell inner structure, 1962-67 roadster ("pull-handle" cars). Haynes Ch 12 Sec 1 (printed p216): the combined
+# body and underframe of welded steel construction; Sec 5 (p217) the shell is aligned on jigs (no jig dimensions are
+# given). Mountings for the earlier phases come from their layout modules (P8 brake_layout, P9 front/rear_suspension
+# and steering layouts, P10 body_layout, P11a underbody_layout and fuel_supply_layout). Outside text references: MGBs
+# Made in Australia "The MGB case of the bends" (boxed three-member sills tied into the front and rear bulkheads,
+# box front chassis members ending at the jacking aperture about a third of the way along the door, rear members
+# ending behind the doors, the tunnel lowest and narrowest behind the door apertures, a square-section tube under the
+# facia tying the kick panels together). No body drawing with dimensions and no photographs of a bare shell could be
+# opened from the build machine, so every station is derived (mgb/body_shell_layout.py, parts/body/structure.py).
+defaults:
+  system: body
+  assembly: body.structure
+  haynes: { section: 1, spec_page: 216 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: paint_body_red
+
+parts:
+  - id: body.structure.tunnel
+    name: Transmission tunnel
+    haynes: { section: 1 }
+    finish: underseal
+    quantity: 1
+    notes: >
+      Pressed in two lengths: wide and tall at the bulkhead round the bellhousing and the clutch lever, over the
+      gearbox, the overdrive's solenoid and the remote housing (P5a/P5b clearances in PLAN.md), narrowing behind the
+      overdrive to the cabin faces P8's handbrake needs (underbody_layout TUNNEL_Y 122) over the propeller shaft
+      ("lowest and narrowest behind the door apertures", MGBs Made in Australia). Flanges spot-welded to the floor
+      halves; the gear lever aperture with the grommet retainer's four screw holes (Fig 6.3 items 161-166); the
+      handbrake ratchet plate's three bolt holes and spigot hole in the right wall (P8 HB_PIVOT, ratchet_bolts); the
+      speedometer cable grommet hole low on the right.
+    specs:
+      cabin_half_width_rear: { mm: 122.0, source: { label: D, method: "P8 handbrake wall (brake_layout TUNNEL_SIDE_Y)" } }
+      top_at_bellhousing: { mm: -52.0, source: { label: D, method: "Car z: clears the bellhousing and remote housing tops (P5a)" } }
+      sheet_thickness: { mm: 1.2, source: { label: D, method: "18 swg pressing" } }
+
+  - id: body.structure.floor-l
+    name: Floor half, left
+    haynes: { section: 1 }
+    finish: underseal
+    quantity: 1
+    notes: >
+      Flat pan between the tunnel and the inner sill at underbody_layout FLOOR_Z, from the toe board to the heelboard,
+      flanged up both edges, three pressed transverse ribs, seat runner captive-nut holes, two drain holes with bungs
+      and the raised pad (5 mm) with the captive nuts for the gearbox crossmember's two left-hand 3/8 in UNF screws
+      (chassis_layout REAR_XMEMBER_BOLTS at the published-by-P5b body face z -381.2).
+    specs:
+      underside_z: { mm: -386.0, source: { label: D, method: "underbody_layout FLOOR_Z (P11a)" } }
+
+  - id: body.structure.floor-r
+    name: Floor half, right
+    haynes: { section: 1 }
+    finish: underseal
+    quantity: 1
+    notes: >
+      Mirror of the left half; also carries the screw holes for the P-clips of P8's rear brake pipe and P11a's fuel
+      pipe under the floor (fuel_supply_layout CLIPS, FLOOR_Y).
+    specs:
+      underside_z: { mm: -386.0, source: { label: D, method: "underbody_layout FLOOR_Z (P11a)" } }
+
+  - id: body.structure.floor-bung
+    name: Floor drain bung
+    haynes: { section: 2 }
+    quantity: 4
+    finish: rubber
+    notes: "Rubber bung in each floor drain hole (Sec 2 para 4: keep the drain holes clear)."
+    specs:
+      diameter: { mm: 25.0, source: { label: D, method: "Bung for a 20 mm drain hole" } }
+
+  - id: body.structure.toe-board-l
+    name: Toe board, left
+    haynes: { section: 1 }
+    finish: underseal
+    quantity: 1
+    notes: "Sloping footwell panel from the bulkhead's foot (underbody_layout TOE_TOP) to the floor (TOE_FOOT), tunnel to the inner sill."
+    specs:
+      foot_x: { mm: -485.0, source: { label: D, method: "underbody_layout TOE_FOOT (P11a, from P8's brake pipe run)" } }
+
+  - id: body.structure.toe-board-r
+    name: Toe board, right
+    haynes: { section: 1 }
+    finish: underseal
+    quantity: 1
+    notes: "Mirror of the left; the battery cable grommet hole (P10 CABLE_GROMMET)."
+    specs:
+      foot_x: { mm: -485.0, source: { label: D, method: "underbody_layout TOE_FOOT (P11a)" } }
+
+  - id: body.structure.bulkhead
+    name: Bulkhead (dash panel)
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      Engine-side face at car_layout BULKHEAD_X, from the toe boards to under the scuttle, between the hinge pillars,
+      arched over the tunnel mouth, two stiffening swages, the top flange turned back under the scuttle inner panel.
+      The pedal box aperture inside the box's rear flange with its six bolt holes (P8 parts/brakes/master.py
+      box_bolts; nuts behind the panel), the heater air opening on the centre line (early heater, Fig 12.27), the main
+      harness grommet (P10 HARNESS_GROMMET) and three smaller grommet holes for the speedometer cable, oil gauge pipe
+      and temperature capillary on the right, the four-way connection's bolt hole (P8 FOUR_WAY), the overdrive vacuum
+      switch's screw holes (P10), the steering column hole (P9) and the fuel pipe clip screws (P11a CLIPS).
+    specs:
+      engine_face_x: { mm: -400.0, source: { label: D, method: "car_layout BULKHEAD_X" } }
+      sheet_thickness: { mm: 1.2, source: { label: D, method: "18 swg pressing" } }
+
+  - id: body.structure.column-toe-mount
+    name: Steering column lower mounting cup
+    haynes: { section: 1, figures: [{ figure: "11.6", legend: 65 }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Pressed cup welded to the bulkhead's cabin face, its face square to the column at P9's COLUMN_TOE_PLATE (40 mm
+      behind the bulkhead), with the hole for the 1 1/2 in tube and the bottom bracket's two stud holes. P9 placed the
+      bracket on "the toe board"; the toe board (P11a datums) is lower here, so the body carries this cup.
+    specs:
+      face_offset: { mm: 40.0, source: { label: D, method: "steering_layout TOE_BOARD_T at BULKHEAD_X - 40" } }
+
+  - id: body.structure.clutch-hose-support
+    name: Clutch hose bracket support
+    haynes: { section: 1, figures: [{ figure: "5.3" }] }
+    quantity: 1
+    finish: paint_black
+    notes: >
+      Angle welded to the bulkhead's engine face under P4's pipe-to-hose bracket (clutch_layout HOSE_BRACKET), one 1/4
+      in screw. P9 suggested moving the bracket to the chassis leg; the leg is 160 mm outboard of it, so the bracket
+      keeps its place and the body supports it (see PLAN).
+    specs:
+      arm_length: { mm: 92.0, source: { label: D, method: "Bulkhead face to the bracket plus its foot" } }
+
+  - id: body.structure.scuttle-inner
+    name: Scuttle inner panel and facia rail
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      Closing panel under the scuttle top from the bulkhead flange back to ahead of P10's instrument cases, 58 mm under
+      the top, with the wiper wheelbox holes (P10 WIPER_SPINDLES), and the square-section rail under the scuttle's rear
+      edge, above the instruments, tying the kick panels together (MGBs Made in Australia).
+    specs:
+      depth_below_scuttle: { mm: 58.0, source: { label: D, method: "Room for the wheelboxes and rack tubes (P10)" } }
+
+  - id: body.structure.wiper-motor-bracket
+    name: Wiper motor bracket
+    haynes: { section: 54 }
+    quantity: 1
+    finish: paint_black
+    notes: "Hung from the scuttle inner panel on the left for P10's DR3A motor (WIPER_MOTOR), three screw holes."
+    specs:
+      screws: { count: 3, source: { label: D, method: "P10 motor bracket fixings" } }
+
+  - id: body.structure.column-top-bracket
+    name: Steering column upper bracket
+    haynes: { section: 1, figures: [{ figure: "11.6", legend: 59 }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Pressed channel hung from the facia rail; the column clamp (Fig 11.6 item 59) bolts under it at P9's COLUMN_TOP_CLAMP."
+    specs:
+      bolt_spacing: { mm: 76.0, source: { label: D, method: "Clamp's two bolts either side of the column" } }
+
+  - id: body.structure.front-leg-l
+    name: Front chassis leg, left
+    haynes: { section: 3, figures: [{ figure: "11.1" }] }
+    finish: underseal
+    quantity: 1
+    notes: >
+      Box-section member along the engine bay floor: level over the front crossmember with its underside on P9's upper
+      rubber pads (front_suspension_layout BODY_FACE_Z) and top at BODY_LEG_TOP_Z where the support bolt nuts sit,
+      holes and a spacer tube at both support bolts (BODY_BOLTS), forward to the front apron with the bumper spring
+      bar bolt holes, back under the toe board and the floor to a third of the way along the door ("case of the
+      bends": the front chassis member ends at the jacking aperture level). Ahead of and behind the crossmember the
+      leg steps inboard to |y| 338 and narrows to 62 mm: the tyre's shoulder at full lock (28 deg front in, 37 deg
+      rear in, for the published 32 ft turning circle) sweeps through the straight line, and P8's right front pipe
+      runs at y -300 beside it.
+    specs:
+      centre_y: { mm: 432.0, source: { label: D, method: "front_suspension_layout BODY_BOLT_Y (P9)" } }
+      width: { mm: 76.0, source: { label: D, method: "Over the crossmember shelf (P9 XM_SHELF_Y)" } }
+
+  - id: body.structure.front-leg-r
+    name: Front chassis leg, right
+    haynes: { section: 3, figures: [{ figure: "11.1" }] }
+    finish: underseal
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      centre_y: { mm: 432.0, source: { label: D, method: "front_suspension_layout BODY_BOLT_Y (P9)" } }
+
+  - id: body.structure.inner-wing-l
+    name: Inner wing and wheel house, left
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      Engine-bay valance at body_layout INNER_WING_Y from the bulkhead to the front apron, from the leg to the wing
+      bolting flange; the wheel house arched over the tyre (420 mm about the axle) out to the outer wing; the damper
+      arm opening (P9: the arm sweeps over the leg between |y| 305 and 499); the brake hose bracket hole (P9
+      HOSE_BRACKET); the overdrive relay's screws (P10 OD_RELAY).
+    specs:
+      face_y: { mm: 430.0, source: { label: D, method: "body_layout INNER_WING_Y (P10)" } }
+      wheel_house_radius: { mm: 420.0, source: { label: D, method: "Tyre radius 309 plus bump travel and clearance" } }
+
+  - id: body.structure.inner-wing-r
+    name: Inner wing and wheel house, right
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Mirror of the left with the screws for P10's control box, fuse block, flasher and starter solenoid."
+    specs:
+      face_y: { mm: 430.0, source: { label: D, method: "body_layout INNER_WING_Y (P10)" } }
+
+  - id: body.structure.front-apron
+    name: Front apron and radiator duct
+    haynes: { section: 7 }
+    quantity: 1
+    notes: >
+      The vertical cross panel behind the bumper the horns bolt to (P10 HORN_PANEL_X, HORN_POS), between the legs; the
+      radiator duct's floor running back from the grille opening to the radiator's front face with the grille's
+      three bottom bolt holes (Sec 7 para 1), and the duct's side panels.
+    specs:
+      horn_panel_x: { mm: 590.0, source: { label: D, method: "body_layout HORN_PANEL_X (P10)" } }
+
+  - id: body.structure.lock-platform
+    name: Bonnet lock platform
+    haynes: { section: 6 }
+    quantity: 1
+    notes: "Cross panel over the grille opening under the bonnet's front edge: the lock's three bolt holes and locating cup hole (Sec 6 para 4, photo 6.4), the grille steady brackets' three screw holes (Sec 7 para 1)."
+    specs:
+      lock_bolts: { count: 3, source: { label: H, page: 217, note: "Sec 6 para 4: three retaining bolts" }, display_only: true }
+
+  - id: body.structure.inner-sill-l
+    name: Inner sill, left
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Inner skin of the boxed sill at underbody_layout SILL_Y from below the floor to the tread, the tread turned out to the door shut line, the closing flange underneath, the jacking socket hole."
+    specs:
+      inner_y: { mm: 600.0, source: { label: D, method: "underbody_layout SILL_Y (P11a)" } }
+      tread_height: { mm: 330.0, source: { label: D, method: "Above the road: the door bottom shuts outboard of it" } }
+
+  - id: body.structure.inner-sill-r
+    name: Inner sill, right
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      inner_y: { mm: 600.0, source: { label: D, method: "underbody_layout SILL_Y (P11a)" } }
+
+  - id: body.structure.castle-l
+    name: Sill castle section, left
+    haynes: { section: 1 }
+    finish: underseal
+    quantity: 1
+    notes: "The sill's middle member (three-member boxed sills, 'case of the bends'): a vertical web with flanged castellations top and bottom."
+    specs:
+      tabs: { count: 14, source: { label: D, method: "Castellations each side along the sill" } }
+
+  - id: body.structure.castle-r
+    name: Sill castle section, right
+    haynes: { section: 1 }
+    finish: underseal
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      tabs: { count: 14, source: { label: D, method: "Castellations each side along the sill" } }
+
+  - id: body.structure.jack-socket-l
+    name: Jacking socket, left
+    haynes: { section: 1 }
+    quantity: 1
+    finish: underseal
+    notes: "Square tube through the sill box a third of the way along the door ('jacking apertures', case of the bends)."
+    specs:
+      bore: { mm: 25.0, source: { label: D, method: "Takes the jack's arm" } }
+
+  - id: body.structure.jack-socket-r
+    name: Jacking socket, right
+    haynes: { section: 1 }
+    quantity: 1
+    finish: underseal
+    notes: "Mirror of the left."
+    specs:
+      bore: { mm: 25.0, source: { label: D, method: "Takes the jack's arm" } }
+
+  - id: body.structure.hinge-pillar-l
+    name: Hinge pillar, left
+    haynes: { section: 32 }
+    quantity: 1
+    notes: "Shut face at the door's front shut line with the two hinges' three bolt holes each (Sec 32), the kick panel inboard."
+    specs:
+      hinge_heights: { mm: [420.0, 735.0], source: { label: D, method: "Above the road, lower and upper hinges" } }
+
+  - id: body.structure.hinge-pillar-r
+    name: Hinge pillar, right
+    haynes: { section: 32 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      hinge_heights: { mm: [420.0, 735.0], source: { label: D, method: "Above the road" } }
+
+  - id: body.structure.shut-pillar-l
+    name: Shut pillar, left
+    haynes: { section: 27 }
+    quantity: 1
+    notes: "Panel at the door's rear shut line with the striker plate's three screw holes (Sec 27)."
+    specs:
+      striker_height: { mm: 640.0, source: { label: D, method: "Above the road, at the lock" } }
+
+  - id: body.structure.shut-pillar-r
+    name: Shut pillar, right
+    haynes: { section: 27 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      striker_height: { mm: 640.0, source: { label: D, method: "Above the road" } }
+
+  - id: body.structure.heelboard
+    name: Heelboard
+    haynes: { section: 5 }
+    quantity: 1
+    notes: >
+      Riser behind the seats, rear face at underbody_layout HEELBOARD_X, floor to tonneau floor, sill to sill, the
+      propeller shaft's tunnel opening, a swage, the fuel pump bracket's two captive-nut holes (P11a pump.py
+      BRACKET_BOLT_Y/Z; Haynes Ch 3 Sec 5: the pump on the heelboard by the RH spring) and the fuel hose union's
+      hole (MAIN_START).
+    specs:
+      rear_face_x: { mm: -1450.0, source: { label: D, method: "underbody_layout HEELBOARD_X (P11a)" } }
+
+  - id: body.structure.tonneau-floor
+    name: Tonneau (rear) floor
+    haynes: { section: 2, figures: [{ figure: "photo 2.1" }] }
+    quantity: 1
+    notes: >
+      Floor behind the seats over P10's two battery carriers (body_layout TONNEAU_FLOOR_Z): an aperture over each
+      carrier, the carriers' four flange bolt holes each, the damper access grommet holes (Ch 11 photo 2.4 "access
+      grommet for rear hydraulic shock absorbers, adjacent to the battery access apertures"), two pressed ribs.
+    specs:
+      underside_z: { mm: -140.0, source: { label: D, method: "body_layout TONNEAU_FLOOR_Z (P10)" } }
+
+  - id: body.structure.battery-cover-l
+    name: Battery access cover, left
+    haynes: { section: 2, figures: [{ figure: "photo 2.1" }] }
+    quantity: 1
+    notes: "Cover over the left aperture with two quick-release screws (Ch 10 Sec 2 para 1)."
+    specs:
+      screws: { count: 2, source: { label: D, method: "Quick-release screws, photo 2.1" } }
+
+  - id: body.structure.battery-cover-r
+    name: Battery access cover, right
+    haynes: { section: 2, figures: [{ figure: "photo 2.1" }] }
+    quantity: 1
+    notes: "Mirror of the left (the 12 V battery's side)."
+    specs:
+      screws: { count: 2, source: { label: D, method: "Quick-release screws, photo 2.1" } }
+
+  - id: body.structure.rear-bulkhead
+    name: Rear bulkhead
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "The boot's front wall behind the hood stowage well, from the tonneau floor up under the rear deck, a swage."
+    specs:
+      x: { mm: -1955.0, source: { label: D, method: "Behind the dampers and battery carriers, ahead of the axle arch" } }
+
+  - id: body.structure.rear-wheelhouse-l
+    name: Rear wheel house, left
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Inner wall at |y| 498 outboard of the rear rail, the arched band over the tyre (430 mm about the axle: the tyre at full bump) out to the outer wing."
+    specs:
+      radius: { mm: 430.0, source: { label: D, method: "Tyre radius plus P9's bump travel (52 mm gap, 44 mm rubber) and clearance" } }
+
+  - id: body.structure.rear-wheelhouse-r
+    name: Rear wheel house, right
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      radius: { mm: 430.0, source: { label: D, method: "As the left" } }
+
+  - id: body.structure.boot-floor
+    name: Boot floor
+    haynes: { section: 12 }
+    quantity: 1
+    notes: >
+      Kick-up over the axle (underside at underbody_layout ARCH_Z, P9's bump strike) with a hump over the differential
+      that carries P8's rear hose bracket, stepping down behind the axle to the floor over the tank (BOOT_FLOOR_Z) to
+      the rear panel; the filler stub's hole (P11a FILLER; Fig 3.9 item 12 seal), the spare wheel's pressed locating
+      ring and clamp stud hole, the exhaust rear bracket's two captive-nut holes (P11a), two drain holes.
+    specs:
+      arch_underside_z: { mm: -122.5, source: { label: D, method: "underbody_layout ARCH_Z (P9 BUMP_STRIKE)" } }
+      floor_underside_z: { mm: -172.5, source: { label: D, method: "underbody_layout BOOT_FLOOR_Z (P11a)" } }
+
+  - id: body.structure.tank-tabs
+    name: Fuel tank strap tabs
+    haynes: { section: 12, figures: [{ figure: "3.9" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Pairs of tabs for P11a's strap front clevis pins on the boot floor step (STRAP_PIN_FRONT) and rear hanger pins under the floor (HANGER_PIN), at both straps."
+    specs:
+      pin_hole: { mm: 6.8, source: { label: D, method: "Clearance for the 1/4 in clevis pins (MGOC CLZ427)" } }
+
+  - id: body.structure.rear-rail-l
+    name: Rear chassis rail, left
+    haynes: { section: 13, figures: [{ figure: "11.4" }, { figure: "11.5" }] }
+    finish: underseal
+    quantity: 1
+    notes: >
+      Box section from the heelboard to the rear panel, kicked up over the axle (its underside the bump rubber strike
+      face, P9 BUMP_STRIKE, with a strike plate), with the damper doubler and its two bolt holes on the inner face (P9
+      DAMPER_MOUNT, DAMPER_FACE_Y 436), the spring's front hanger plates (FRONT_HANGER), the rear shackle bracket
+      (SHACKLE_BRACKET) and the rebound strap bracket (REBOUND_BOLT).
+    specs:
+      inner_face_y: { mm: 436.0, source: { label: D, method: "rear_suspension_layout DAMPER_FACE_Y (P9)" } }
+
+  - id: body.structure.rear-rail-r
+    name: Rear chassis rail, right
+    haynes: { section: 13, figures: [{ figure: "11.4" }, { figure: "11.5" }] }
+    finish: underseal
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      inner_face_y: { mm: 436.0, source: { label: D, method: "rear_suspension_layout DAMPER_FACE_Y (P9)" } }
+
+  - id: body.structure.rear-hose-bracket
+    name: Rear brake hose bracket
+    haynes: { section: 9, figures: [{ figure: "9.1" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Angle under the boot floor's differential hump at P8's REAR_HOSE_BRACKET; the hose's locknut hole."
+    specs:
+      hole: { mm: 13.0, source: { label: D, method: "Hose end's 3/8 in UNF thread and locknut" } }
+
+  - id: body.structure.handbrake-abutment
+    name: Handbrake cable abutment bracket
+    haynes: { section: 4, figures: [{ figure: "9.10" }] }
+    quantity: 1
+    finish: paint_black
+    notes: "Bracket inside the tunnel's right wall behind the operating lever, the outer cable's ferrule hole (P8 CABLE_ABUTMENT, 'A' in Fig 9.10)."
+    specs:
+      hole: { mm: 8.4, source: { label: D, method: "Ferrule spigot" } }
+
+  - id: body.structure.cable-grommet
+    name: Battery cable grommet
+    haynes: { section: 2 }
+    quantity: 1
+    finish: rubber
+    notes: "Rubber grommet in the right toe board for P10's battery cable (CABLE_GROMMET)."
+    specs:
+      bore: { mm: 10.0, source: { label: D, method: "Starter cable" } }
+
+  - id: body.structure.harness-grommets
+    name: Harness grommets (rear and tunnel)
+    haynes: { section: 1 }
+    quantity: 1
+    finish: rubber
+    notes: "Rubber grommets where P10b's wiring passes the body (mgb/wiring_layout.py routes): the rear harness through the rear bulkhead beside the right wheel house, the fuel pump lead through the heelboard, the tank unit lead down through the boot floor, the overdrive leads through the tunnel's front, the dip switch leads up through the right toe board. The main harness grommet in the bulkhead is P10b's (electrical.loom.bulkhead-grommet); the body has its hole."
+    specs:
+      bore: { mm: 10.0, source: { label: D, method: "Sized round the largest bundle through each" } }
+  - id: body.structure.harness-clips
+    name: Harness P-clips
+    haynes: { section: 1 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Steel P-clips holding P10b's harness to the body: along the inner wing tops (z 118, |y| 405), across the front panel behind the grille (x 560, z -40), behind the facia (x -655, z 277), down the right sill (y -591, z -350) and in the boot, each on a self-tapping screw (positions on the harness nodes, mgb/wiring_layout.py)."
+    specs:
+      band: { mm: 12.0, source: { label: D, method: "Common 1/2 in P-clip" } }
+
+  - id: body.structure.outer-sill-l
+    name: Outer sill, left
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      The sill's outer skin between the wheel arches below the door (the outer member of the three-member boxed sill),
+      the body surface below the sill seam (body_shell_layout SILL_TOP_H), tucked under to the closing flange.
+    specs:
+      seam_height: { mm: 255.0, source: { label: D, method: "Above the road; the door's bottom edge 7 mm above it" } }
+
+  - id: body.structure.outer-sill-r
+    name: Outer sill, right
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      seam_height: { mm: 255.0, source: { label: D, method: "Above the road" } }

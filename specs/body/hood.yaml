@@ -1,0 +1,66 @@
+# Hood (soft top), 1962-67 roadster, shown erected. Height with the hood up 49.4 in (mgexp.com specification, car_layout
+# HEIGHT_HOOD_UP); the early detachable 'build-up' hood stows with its frame in the boot. Shape derived from the screen,
+# door glass and rear deck datums.
+defaults:
+  system: body
+  assembly: body.hood
+  haynes: { section: 1, spec_page: 216 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: hood_black
+
+parts:
+  - id: body.hood.cover
+    name: Hood cover
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Hood cover from the screen's top rail fastener brackets over the cockpit to the rear deck, on the door glass tops at the sides."
+    specs:
+      top_height: { in: 49.4, mm: 1254.76, source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall height, hood up" }, display_only: true }
+  - id: body.hood.rear-window
+    name: Hood rear window
+    haynes: { section: 1 }
+    quantity: 1
+    finish: glass_screen
+    notes: "Clear panel sewn into the cover's back."
+    specs:
+      width: { mm: 600.0, source: { label: D, method: "Middle of the cover's back" } }
+  - id: body.hood.bow-front
+    name: Hood frame front bow
+    haynes: { section: 1 }
+    quantity: 1
+    finish: paint_black
+    notes: "Steel tube bow under the cover."
+    specs:
+      tube: { mm: 16.0, source: { label: D, method: "Frame tube" } }
+  - id: body.hood.bow-middle
+    name: Hood frame middle bow
+    haynes: { section: 1 }
+    quantity: 1
+    finish: paint_black
+    notes: "Steel tube bow under the cover."
+    specs:
+      tube: { mm: 16.0, source: { label: D, method: "Frame tube" } }
+  - id: body.hood.bow-rear
+    name: Hood frame rear bow
+    haynes: { section: 1 }
+    quantity: 1
+    finish: paint_black
+    notes: "Steel tube bow under the cover, its feet in the side rails."
+    specs:
+      tube: { mm: 16.0, source: { label: D, method: "Frame tube" } }
+  - id: body.hood.side-rail-l
+    name: Hood frame side rail, left
+    haynes: { section: 1 }
+    quantity: 1
+    finish: paint_black
+    notes: "Side rail along the cover's lower edge."
+    specs:
+      tube: { mm: 16.0, source: { label: D, method: "Frame tube" } }
+  - id: body.hood.side-rail-r
+    name: Hood frame side rail, right
+    haynes: { section: 1 }
+    quantity: 1
+    finish: paint_black
+    notes: "Mirror of the left."
+    specs:
+      tube: { mm: 16.0, source: { label: D, method: "Frame tube" } }

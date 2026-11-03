@@ -29,7 +29,7 @@ parts:
     name: Headlamp light unit, 7 in
     haynes: { figures: [{ figure: "10.8", legend: 4 }] }
     quantity: 2
-    finish: glass
+    finish: aluminium
     notes: "Sealed beam or bulb-type light unit (Sec 34 para 1); the lugs on a sealed beam allow one position only (para 10). Lens fluting simplified to vertical prisms."
     specs:
       diameter: { in: 7.0, mm: 177.8, source: { label: D, method: "Standard 7 in British headlamp unit (Lucas F700 class)" } }
@@ -62,30 +62,30 @@ parts:
     name: Side and flasher lamp body
     haynes: { section: 35 }
     quantity: 2
-    notes: "Wing-mounted type: the body held by two nuts behind the wing (Sec 35 para 2); photo 35.1. Lozenge outline derived from the photograph."
+    notes: "Wing-mounted type: the body held by two nuts behind the wing (Sec 35 para 2); photo 35.1. Rectangular on Oliver's car (photos 10, 20; P11b changed it from P10's lozenge): amber flasher inboard, clear side lamp outboard, chrome surround."
     specs:
-      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
-      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
+      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
 
   - id: electrical.lamps.side-lens-clear
     name: Side lamp lens (clear)
     haynes: { section: 35 }
     quantity: 2
     finish: lens_clear
-    notes: "Upper half of the lens, over the side (parking) lamp (Fig 10.26 items 11, 12)."
+    notes: "Outboard third of the lens, over the side (parking) lamp (Fig 10.26 items 11, 12; Oliver's photo 10)."
     specs:
-      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
-      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
+      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
 
   - id: electrical.lamps.side-lens-amber
     name: Front flasher lens (amber)
     haynes: { section: 35 }
     quantity: 2
     finish: lens_amber
-    notes: "Lower half of the lens, over the front flasher (Fig 10.26 items 28, 29)."
+    notes: "Inboard two thirds of the lens, over the front flasher (Fig 10.26 items 28, 29; Oliver's photo 10)."
     specs:
-      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
-      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
+      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
 
   - id: electrical.lamps.side-rim
     name: Side lamp lens rim
@@ -93,8 +93,8 @@ parts:
     quantity: 2
     notes: "Lens and sealing rubber held by the screws (Sec 35 para 1)."
     specs:
-      width: { mm: 92.0, source: { label: D, method: "Photo 35.1 proportion" } }
-      height: { mm: 50.0, source: { label: D, method: "Photo 35.1 proportion" } }
+      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
+      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
 
   - id: electrical.lamps.rear-body
     name: Rear lamp body and plinth
@@ -102,7 +102,7 @@ parts:
     quantity: 2
     notes: "Earlier version (Sec 36 paras 1-3): the stop/tail and flasher bulbs one above the other (photo 36.1), body held by three screws, the lens hooked over the upper lip and held by one screw at the bottom. Outline from photo 36.1."
     specs:
-      height: { mm: 172.0, source: { label: D, method: "Photo 36.1 proportion against the bulb holders" } }
+      height: { mm: 198.0, source: { label: D, method: "Oliver's photos 18, 23, 24: about 200 mm tall (P10 had 172 from photo 36.1)" } }
 
   - id: electrical.lamps.rear-lens-red
     name: Stop and tail lens (red)
@@ -111,7 +111,7 @@ parts:
     finish: lens_red
     notes: "Double filament bulb: tail, and the brighter stop light (Sec 36 para 1)."
     specs:
-      height: { mm: 98.0, source: { label: D, method: "Photo 36.1: the upper part of the lens" } }
+      height: { mm: 112.0, source: { label: D, method: "Oliver's photos 18, 24: the lower part of the lens" } }
 
   - id: electrical.lamps.rear-lens-amber
     name: Rear flasher lens (amber)
@@ -119,7 +119,7 @@ parts:
     quantity: 2
     finish: lens_amber
     specs:
-      height: { mm: 78.0, source: { label: D, method: "Photo 36.1: the lower part of the lens" } }
+      height: { mm: 56.0, source: { label: D, method: "Oliver's photos 18, 24: the top of the lens" } }
 
   - id: electrical.lamps.plate-lamp
     name: Number plate lamp (plinth and cover)

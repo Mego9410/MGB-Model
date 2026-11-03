@@ -159,7 +159,7 @@ def main():
                        else parts[i[1]])
                 inst.append((i[0], geo, i[2]))
             glb_path = OUT / "glb" / f"{a.ID}.glb"
-            export.glb(inst, glb_path, "detail")
+            export.glb(inst, glb_path, getattr(a, "LOD", "detail"))
             sizes[a.ID] = export.glb_to_embedded_gltf(glb_path, OUT / "viewer" / "models" / f"{a.ID}.json")
             print(f"  glb   {a.ID:<40} {sizes[a.ID] / 1024:.0f} KB")
         reg = build_registry(specs, assemblies, sizes)

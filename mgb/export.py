@@ -13,6 +13,7 @@ GLTFPACK = ROOT / "node_modules" / ".bin" / "gltfpack"
 LOD = {
     "detail": {"linear": 0.03, "angular": 0.3},
     "car": {"linear": 0.2, "angular": 0.5},
+    "body": {"linear": 0.25, "angular": 0.12},     # large thin panels (P11b): smooth curves, coarser chords on the flats
 }
 
 

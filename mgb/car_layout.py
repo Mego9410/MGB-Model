@@ -49,7 +49,8 @@ REAR_AXLE_X = FRONT_AXLE_X - WHEELBASE
 CRANK_HEIGHT = 330.0                   # crank axis above the ground
 GROUND_Z = _EL.crank_z - CRANK_HEIGHT  # road surface
 WHEEL_Z = GROUND_Z + ROLLING_R         # wheel centres, front and rear (static laden)
-FRONT_OVERHANG = 0.5 * (LENGTH - WHEELBASE) - 30.0   # bumper ahead of the front axle (D: rear overhang a little longer)
+FRONT_OVERHANG = 681.0                 # bumper (overriders) ahead of the front axle (D: profile photo 29 scaled on the
+                                       # wheelbase, depth-corrected; the rear overhang, 899, is the rest of the length)
 FRONT_X = FRONT_AXLE_X + FRONT_OVERHANG              # front of the bumper
 REAR_X = FRONT_X - LENGTH                             # rear of the bumper
 

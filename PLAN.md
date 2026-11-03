@@ -22,7 +22,7 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P10 Electrical: battery, 18ACR alternator, starter, coil, lamps, wipers, instruments, loom | Ch 10 | done |
 | P10b Wiring harness, wire by wire (every cable, its colour, terminals and route) | Ch 10, Ch 6 | done |
 | P11a Exhaust system; fuel tank, pump and pipes | Ch 3 | done |
-| P11b Body shell, panels, trim, fittings | Ch 12 | |
+| P11b Body shell, panels, trim, fittings | Ch 12 | done |
 
 ## Carried over
 
@@ -274,6 +274,82 @@ round them and should check them against the car:
   tube to the push; the real contact (slip ring or brush in the wheel boss) is not modelled.
 - Fuel (P11a built): the pump lead ends on the SU pump's end cover terminal stud and its earth lead goes from the
   cover to an earth screw on the heelboard; the tank unit's two blades take the green/black lead and its earth.
+## P11b body (done): what was built and what is left
+
+- Assemblies: `body.structure` (floor halves, tunnel, toe boards, bulkhead, scuttle inner panel and facia rail, front
+  legs, inner wings and wheel houses, front apron and radiator duct, lock platform, inner and outer sills, castle
+  sections, jacking sockets, hinge and shut pillars, heelboard, tonneau floor and battery covers, rear bulkhead, rear
+  wheel houses, boot floor, rear rails, tank tabs, the brackets for P4/P8/P9/P10/P11a, and P10b's wiring passes:
+  grommets and P-clips), `body.front` (wings, grille panel, valance, bonnet skin and frame, hinges, stay, lock,
+  scuttle), `body.doors` (skins, frames, hinges, wind-up glass, quarter-lights, pull handles, locks, strikers, the
+  driver's door mirror), `body.rear` (rear wings, deck, boot lid skin and frame, hinges, handle, lock, rear panel, the
+  spare wire wheel on the black boot carpet with its clamp, jack and mallet), `body.glass` (windscreen, pillars, rails,
+  centre rod, mirror), `body.brightwork` (bumpers with rubber-faced overriders, spring bars and brackets, the slatted
+  grille in its surround with the lower rail, centre bar and plain shield badge, the scuttle air intake, side strips,
+  plain octagon boot badge, blank plates and plinths), `body.interior` (facia, centre panel, plaque, heater knobs,
+  binnacle, crash roll, glovebox lid and strip, console with the speaker grille, seats with red piping, carpets, door
+  cards, handles, winders, cappings, gear lever grommet and retainer, dipstick plug), `body.hood` (hood erected).
+- The main reference is Oliver's own car (28 photos, scratchpad refs/oliver-car, not in the repo) and the
+  near-orthographic side view of a sister car (photo 29), scaled on the 91 in wheelbase: the side elevation (overhangs,
+  top line, waist, strip, door shut lines, sill, arches, screen rake and height, lamp rake) is traced from 29, the
+  front, rear and plan proportions and every fitting from Oliver's photos (cameras fitted to wheel, lamp and screen
+  points; comparisons in scratchpad p11b/cmp-*.png).
+- How the outer skin is made: `mgb/body_shell_layout.py` defines the body as an implicit solid F(x, y, h) < 0 from
+  height and width functions (C2 splines through the traced stations): the side with its tumblehome and tuck-under,
+  the top with the cambered bonnet, the front wing crowns standing proud of it and the bonnet swage, the nose (grille
+  surround and valance at the centre, the wing fronts round the headlamps, swept back in plan) and the tail (the rear
+  panel, the raked lamp plinths on the wing ends), joined by cubic smooth maxima so the nose and tail roll into the
+  sides and top without creases. `mgb/body_shell.py` samples F along rays leaving a core ellipse in planes square to a
+  spine that turns down round the nose and the tail (so the rays never cross and the crowns cannot shadow the bonnet),
+  fits one least-squares bicubic B-spline face (150 x 110 poles, light smoothing; 0.1 mm mean, under 2 mm at the 99th
+  percentile, from the samples on the skin) and trims each panel out of it with a signed-distance region along its
+  shut lines, then thickens it 1 mm inward. Results are cached in `.cache/body/` (git-ignored) keyed on the layout
+  files; bump `CACHE_VERSION` in body_shell.py when the trimming code changes.
+- Datums: `mgb/body_shell_layout.py` (body shape tables, shut lines, arches, screen, hood) and the moves listed under
+  "Changes P11b made to earlier phases" below.
+- Interference (scratchpad sweep and proximity checks, first draft of P11b): the front tyre at full lock (28 deg front
+  in, 37 deg rear in, from the 32 ft turning circle) clears every body part at static height; this needed the front
+  legs stepped inboard to |y| 338 ahead of and behind the crossmember and the inner wing's lower edge raised there
+  (tests/test_body.py checks the legs). With 60 mm of bump at full lock the tyre still reaches the inner wings and the
+  legs (P9 has not set a bump travel). The bonnet clears the radiator header tank (tests/test_body.py). Not checked:
+  the rear axle at full bump against the boot floor's hump, the propeller shaft at full bump against the tunnel
+  (static clearance about 35 mm).
+- Known P11b approximations: no body drawing with dimensions; the shape is traced from photographs (about +/-10 mm on
+  the side elevation, more on the plan and sections, which come from oblique views). Arch lips, door and boot drip
+  rails, the boot lid and bonnet return flanges are not drawn; the door glass is flat, the hood a smooth cover without
+  seams; seat pleats are grooves; small fixing holes under about 3 mm radius in the skins are not cut. Lettering on
+  the badges, plaque and plates is not modelled; the grille's club badges (AA and the MG car club) are not drawn.
+  The tonneau cover (photo 25) is not modelled (the hood is shown erected).
+- Leftovers: heater unit (Fig 12.27) and its ducts; windscreen washer; sun visors; tonneau cover; door check straps;
+  bonnet and boot seals.
+- Viewer note: the body hides the mechanicals; hide or isolate a system from the Parts tree.
+
+## Changes P11b made to earlier phases
+
+- `mgb/car_layout.py`: FRONT_OVERHANG 760 -> 681 mm (profile photo 29: the overriders 681 ahead of the front hub, the
+  rear 899 behind the rear hub; the published length is kept), so FRONT_X 909.9 -> 831 and REAR_X -2981 -> -3060. P11a's
+  tail pipe (exhaust_layout TAIL_END_X) follows REAR_X; P11a's REAR_PANEL_X is now REAR_X + 105 (the rear panel face,
+  photo 29).
+- `mgb/body_layout.py` (P10's datums for the body), moved to Oliver's car: headlamp rim face FRONT_X - 95 -> - 186
+  (x 645), centres |y| 561 -> 585, height 690 -> 632 above the road; side/flasher lamps to x 691, |y| 569, 495 high,
+  and rectangular (136 x 52, amber inboard, clear outboard, chrome surround; P10 drew a 92 x 50 lozenge), the right
+  lamp turned over so the clear part is outboard on both sides; rear lamps onto the raked wing-end plinths (REAR_X +
+  197, 705 high, raked 31 deg, `REAR_LAMP_RAKE`), about 200 mm tall, amber on top and red below (P10 had red on top);
+  rear overriders |y| 262 -> 340; the side strip 663 -> 690 above the road; the instruments and switches to the
+  facia layout of photos 01, 04, 16, 22 (speedometer left and tachometer right in the binnacle over the column, fuel
+  gauge further right, the dual gauge on the centre panel right of the plaque; three toggles, ignition and push-pull
+  knob in a row under the plaque; the overdrive toggle outboard); new `PLAQUE_*`, `HEATER_KNOB_*`. The P10 lamp and
+  instrument parts and P10b's terminals follow the datums; P10b's harness nodes at the headlamps and side lamps
+  (`wiring_layout` hl.*.n, side.*.n) moved with them. The headlamp light units are now drawn as a reflector
+  (aluminium) behind the lens.
+- P11a filler (`fuel_supply_layout` FILLER_CAP_X/Y, FILLER_TUBE_TOP_Z; `parts/fuel/tank.py`; `assemblies/fuel_tank.py`):
+  the filler tube now runs back across the boot to a chrome locking cap on the rear panel right of the number plate
+  (photos 11, 18, 21), 560 mm above the road; P11a had it ending at the right of the boot.
+- `viewer/index.html`: FINISH vinyl_black, carpet, hood_black, paint_body_red (#d8261c, the body), piping_red,
+  underseal (the floor pan, tunnel, toe boards, legs, rails, castles), glass_screen; SYSTEM_EXPLODE for the body
+  assemblies. `build.py` uses an assembly's `LOD` (new "body" tessellation in `mgb/export.py`). `.gitignore`: .cache/.
+- P4's clutch hose bracket stays where P4 put it, carried by a new support on the bulkhead; P9's column bottom bracket
+  sits on a body cup 40 mm behind the bulkhead.
 
 ## Changes P10 made to earlier phases
 
@@ -288,6 +364,34 @@ round them and should check them against the car:
   three right-hand rear flange bolts go; the block keeps a wall round the recess).
 
 ## Questions for Oliver (asked at the end of the overnight run)
+
+- Body (P11b): the shape is traced from your photos and from a side view of a sister car (photo 29). A tape measure on
+  a few points would let it be checked: wheel arch tops above the road, the bonnet's front edge and the scuttle at the
+  screen above the road, the front of the overriders to the front hub, the door's front and rear shut lines from the
+  front hub, the headlamp centre height.
+- Hood: is yours the early detachable hood (frame stowed in the boot) or a folding hood? The model shows it erected;
+  photo 25 shows a tonneau, which is not modelled yet.
+- Facia: the push-pull knob right of the ignition is drawn as P10's panel lamp switch and the small knob above the
+  dual gauge as the map lamp switch; is either the choke instead? Which toggle is which (the model has lighting,
+  wipers, heater blower from left to right)?
+- Radio: the console carries a speaker grille (photos 04, 22); is a radio fitted (where), or only the grille?
+- Grille badges: the model leaves off the club badges on the grille (AA and the MG car club). Should they be drawn?
+- Door mirror: only the driver's (right) quarter-light has a mirror in the photos. Is there one on the left too?
+
+
+- Hood: is it the early detachable "build-up" hood with the frame stowed in the boot, or a later folding hood? Do you
+  have a tonneau cover?
+- Door top height: the model puts the door top (waist) 870 mm (34.3 in) above the road, under P10's screen base at
+  915 mm (36 in) and the strip line at 663 mm (the published 14.25 in above the hub). No published waist height was
+  found; a review note suggested 38-39 in, which would put the door top above the scuttle. What does yours measure?
+- Body shape: the model puts the door's front and rear shut lines 922 and 1852 mm behind the front hub centre, the
+  door top 870 mm above the road, the bonnet's front edge about 720 mm and the scuttle at the screen 915 mm. A tape
+  measure on those (and the wheel arch tops) would let the shell be checked.
+- Front wheels at full lock: the model's tyre at full lock (and the king pin 132 mm inboard of the wheel centre plane,
+  P9) only clears the front chassis legs because they step inboard ahead of and behind the crossmember. How close
+  does your tyre come to the legs and the inner wings at full lock?
+- Starter solenoid: P10 put it on the right inner wing at x -60, z -70; at full lock with bump the right front tyre's
+  rear shoulder passes within the inner wing's line there. Where is the solenoid on your car?
 
 - Exhaust: is your car still on a one-piece system (early type) or a later three or five piece system, and how
   many hangers does it have (the model has the gearbox clip and the rear pinch clamp only, as Haynes describes)?
@@ -425,7 +529,6 @@ body only for now; these are to do later:
 - Cooling: an electric radiator fan in a plastic shroud on the radiator (photos 13, 28), not the engine-driven fan.
 - Tyres: 165/80 R14 radials (photo 03: 165/80R14 85T), not 5.60-14 crossplies.
 - Steering wheel: black rim, three spokes of three chrome wires each, octagon horn push (photos 01, 04, 17).
-- Front indicators: rectangular amber/clear units with chrome surrounds below the headlamps (photos 10, 20).
 - Engine bay: Smiths heater blower on the bulkhead, separate screen washer bottle on the left inner wing, black
   box-type air cleaners on the carbs (photos 13, 28).
 - Earth polarity: a sticker on the front slam panel reads "...wired POSITIVE EARTH" (photo 13). The wiring model

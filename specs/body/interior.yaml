@@ -1,0 +1,522 @@
+# Interior and trim, 1962-67 roadster. Haynes Ch 12 Sec 3 (upholstery and carpets), Sec 29 (early Sports Tourer door trim
+# pad), Sec 47 and Fig 12.19 (printed p233: the early facia, its fixing plates, glovebox and lid, crash roll), Sec 54
+# (seats), Ch 6 Fig 6.3 items 161-166 (gear lever grommet and retainer) and Sec 2 para 1 (rubber cover over the gearbox
+# dipstick). The facia is built round P10's instrument and switch datums (mgb/body_layout.py). Forms derived from the
+# figures and the cover cutaway; trim in black vinyl with red seat piping, carpets black (Oliver's photos 01, 04, 16, 17, 22).
+defaults:
+  system: body
+  assembly: body.interior
+  haynes:
+    section: 47
+    spec_page: 233
+  variant:
+    factory_1963: true
+    as_fitted: true
+    body: roadster
+  finish: vinyl_black
+
+parts:
+- id: body.interior.facia
+  name: Facia panel
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: vinyl_black
+  notes: Pressed steel facia in black crinkle finish, rear face at body_layout FACIA_X, holes for P10's instruments and switches
+    on their datums (moved by P11b to Oliver's photos 01, 04, 16, 17, 22), the glovebox opening on the left, fixing plates
+    at the ends (Fig 12.19 items 3, 4).
+  specs:
+    half_width:
+      mm: 610.0
+      source:
+        label: D
+        method: Oliver's photo 04, door to door
+- id: body.interior.crash-roll
+  name: Facia crash roll
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  notes: Padded black roll along the facia's top from door to door (Fig 12.19 item 21; Oliver's photos 01, 04, 22).
+  specs:
+    radius:
+      mm: 24.0
+      source:
+        label: D
+        method: Roll section
+- id: body.interior.glovebox-lid
+  name: Glovebox lid
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: vinyl_black
+  notes: Lid on the passenger (left) side, its lock at the top left (Fig 12.19 items 7, 8; Oliver's photos 04, 22).
+  specs:
+    width:
+      mm: 286.0
+      source:
+        label: D
+        method: Opening less clearance
+- id: body.interior.tunnel-carpet
+  name: Tunnel carpet
+  haynes:
+    section: 3
+  quantity: 1
+  finish: carpet
+  notes: Carpet moulded over the tunnel, the gear lever's opening.
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Carpet with underlay
+- id: body.interior.rear-carpet
+  name: Heelboard and tonneau carpets
+  haynes:
+    section: 3
+  quantity: 1
+  finish: carpet
+  notes: On the heelboard and over the tonneau floor (lifted for the battery covers, Ch 10 photo 2.1).
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Carpet
+- id: body.interior.lever-grommet
+  name: Gear lever grommet
+  haynes:
+    section: 2
+    figures:
+    - figure: '6.3'
+  quantity: 1
+  finish: rubber
+  notes: Rubber cone from the tunnel aperture up the lever (Fig 6.3 item 161).
+  specs:
+    height:
+      mm: 62.0
+      source:
+        label: D
+        method: Over the lever
+- id: body.interior.grommet-retainer
+  name: Gear lever grommet retainer
+  haynes:
+    section: 2
+    figures:
+    - figure: '6.3'
+  quantity: 1
+  finish: chrome
+  notes: Retainer ring and four screws (Fig 6.3 items 162-166).
+  specs:
+    screws:
+      count: 4
+      source:
+        label: D
+        method: Retainer fixings
+- id: body.interior.dipstick-plug
+  name: Gearbox dipstick plug
+  haynes:
+    section: 2
+  quantity: 1
+  finish: rubber
+  notes: Rubber cover over the gearbox dipstick hole in the tunnel (Ch 6 Sec 2 para 1).
+  specs:
+    diameter:
+      mm: 52.0
+      source:
+        label: D
+        method: Plug
+- id: body.interior.seat-cushion-l
+  name: Seat cushion, left
+  haynes:
+    section: 54
+  quantity: 1
+  notes: Black vinyl cushion, crowned and rolled, fluted centre panel between bolsters (Haynes Sec 54; Oliver's photos 04,
+    22).
+  specs:
+    width:
+      mm: 420.0
+      source:
+        label: D
+        method: Between the tunnel and the inner sill
+- id: body.interior.seat-squab-l
+  name: Seat squab, left
+  haynes:
+    section: 54
+  quantity: 1
+  notes: Black vinyl squab raked back, rounded top, fluted centre panel (Oliver's photos 04, 22).
+  specs:
+    rake:
+      deg: 18.0
+      source:
+        label: D
+        method: Cover cutaway
+- id: body.interior.seat-frame-l
+  name: Seat frame and runners, left
+  haynes:
+    section: 54
+  quantity: 1
+  finish: paint_black
+  notes: Tubular pan frame, legs, the two runners on the floor's captive nuts, the adjuster bar.
+  specs:
+    runner_spacing:
+      mm: 170.0
+      source:
+        label: D
+        method: Floor captive nuts at |y| 300 and 470
+- id: body.interior.floor-carpet-l
+  name: Floor carpet, left
+  haynes:
+    section: 3
+  quantity: 1
+  finish: carpet
+  notes: Carpet on the floor half and toe board, the heel pad.
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Carpet
+- id: body.interior.door-card-l
+  name: Door trim pad, left
+  haynes:
+    section: 29
+  quantity: 1
+  notes: Vinyl-covered board on the door's inner panel (Sec 29, early Sports Tourer), held by clips.
+  specs:
+    thickness:
+      mm: 3.0
+      source:
+        label: D
+        method: Hardboard and vinyl
+- id: body.interior.inner-handle-l
+  name: Inner door handle, left
+  haynes:
+    section: 35
+    figures:
+    - figure: '12.13'
+  quantity: 1
+  finish: chrome
+  notes: Inner handle on its escutcheon (Fig 12.13 item 21).
+  specs:
+    length:
+      mm: 90.0
+      source:
+        label: D
+        method: Lever
+- id: body.interior.winder-l
+  name: Window winder handle, left
+  haynes:
+    section: 38
+    figures:
+    - figure: '12.17'
+  quantity: 1
+  finish: chrome
+  notes: Regulator handle and finisher (Fig 12.17 item 11).
+  specs:
+    crank:
+      mm: 74.0
+      source:
+        label: D
+        method: Handle throw
+- id: body.interior.door-capping-l
+  name: Door top capping, left
+  haynes:
+    section: 29
+  quantity: 1
+  notes: Padded vinyl roll along the door's top over the glass slot.
+  specs:
+    radius:
+      mm: 13.0
+      source:
+        label: D
+        method: Roll
+- id: body.interior.seat-cushion-r
+  name: Seat cushion, right
+  haynes:
+    section: 54
+  quantity: 1
+  notes: Black vinyl cushion, crowned and rolled, fluted centre panel between bolsters (Haynes Sec 54; Oliver's photos 04,
+    22).
+  specs:
+    width:
+      mm: 420.0
+      source:
+        label: D
+        method: Between the tunnel and the inner sill
+- id: body.interior.seat-squab-r
+  name: Seat squab, right
+  haynes:
+    section: 54
+  quantity: 1
+  notes: Black vinyl squab raked back, rounded top, fluted centre panel (Oliver's photos 04, 22).
+  specs:
+    rake:
+      deg: 18.0
+      source:
+        label: D
+        method: Cover cutaway
+- id: body.interior.seat-frame-r
+  name: Seat frame and runners, right
+  haynes:
+    section: 54
+  quantity: 1
+  finish: paint_black
+  notes: Tubular pan frame, legs, the two runners on the floor's captive nuts, the adjuster bar.
+  specs:
+    runner_spacing:
+      mm: 170.0
+      source:
+        label: D
+        method: Floor captive nuts at |y| 300 and 470
+- id: body.interior.floor-carpet-r
+  name: Floor carpet, right
+  haynes:
+    section: 3
+  quantity: 1
+  finish: carpet
+  notes: Carpet on the floor half and toe board, the heel pad.
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Carpet
+- id: body.interior.door-card-r
+  name: Door trim pad, right
+  haynes:
+    section: 29
+  quantity: 1
+  notes: Vinyl-covered board on the door's inner panel (Sec 29, early Sports Tourer), held by clips.
+  specs:
+    thickness:
+      mm: 3.0
+      source:
+        label: D
+        method: Hardboard and vinyl
+- id: body.interior.inner-handle-r
+  name: Inner door handle, right
+  haynes:
+    section: 35
+    figures:
+    - figure: '12.13'
+  quantity: 1
+  finish: chrome
+  notes: Inner handle on its escutcheon (Fig 12.13 item 21).
+  specs:
+    length:
+      mm: 90.0
+      source:
+        label: D
+        method: Lever
+- id: body.interior.winder-r
+  name: Window winder handle, right
+  haynes:
+    section: 38
+    figures:
+    - figure: '12.17'
+  quantity: 1
+  finish: chrome
+  notes: Regulator handle and finisher (Fig 12.17 item 11).
+  specs:
+    crank:
+      mm: 74.0
+      source:
+        label: D
+        method: Handle throw
+- id: body.interior.door-capping-r
+  name: Door top capping, right
+  haynes:
+    section: 29
+  quantity: 1
+  notes: Padded vinyl roll along the door's top over the glass slot.
+  specs:
+    radius:
+      mm: 13.0
+      source:
+        label: D
+        method: Roll
+- id: body.interior.centre-panel
+  name: Facia centre switch panel
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: vinyl_black
+  notes: Raised black panel on the facia carrying the plaque, the toggles, the ignition, the push-pull knob, the heater knobs
+    and the dual gauge (Oliver's photos 16, 22).
+  specs:
+    height:
+      mm: 124.0
+      source:
+        label: D
+        method: Oliver's photo 16
+- id: body.interior.plaque
+  name: Facia plaque (chrome edge)
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: chrome
+  notes: Chrome-edged rectangular plaque above the switches (Oliver's photo 16); plain, its badge not modelled.
+  specs:
+    width:
+      mm: 250.0
+      source:
+        label: D
+        method: Oliver's photo 16 against the toggle spacing
+- id: body.interior.plaque-field
+  name: Facia plaque field
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: paint_black
+  notes: The plaque's black field.
+  specs:
+    height:
+      mm: 68.0
+      source:
+        label: D
+        method: Oliver's photo 16
+- id: body.interior.heater-knob-upper
+  name: Heater control knob, upper
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: plastic_black
+  notes: Round black fluted knob of the Smiths heater's controls, left of the plaque (Oliver's photos 16, 22).
+  specs:
+    diameter:
+      mm: 46.0
+      source:
+        label: D
+        method: Oliver's photo 16
+- id: body.interior.heater-knob-lower
+  name: Heater control knob, lower
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: plastic_black
+  notes: As the upper knob.
+  specs:
+    diameter:
+      mm: 46.0
+      source:
+        label: D
+        method: Oliver's photo 16
+- id: body.interior.heater-knob-caps
+  name: Heater knob centre caps
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: chrome
+  notes: Chrome centres of the two heater knobs (Oliver's photo 16).
+  specs:
+    diameter:
+      mm: 18.0
+      source:
+        label: D
+        method: Oliver's photo 16
+- id: body.interior.binnacle
+  name: Driver's binnacle cowl
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: vinyl_black
+  notes: Hooded cowl round the speedometer (left) and tachometer (right) over the steering column (Oliver's photos 01, 04,
+    17, 22).
+  specs:
+    depth:
+      mm: 63.0
+      source:
+        label: D
+        method: Oliver's photo 22, against the 80 mm dials
+- id: body.interior.glovebox-strip
+  name: Glovebox lid chrome strip
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: chrome
+  notes: Chrome strip along the glovebox lid's foot (Oliver's photos 04, 22).
+  specs:
+    height:
+      mm: 6.0
+      source:
+        label: D
+        method: Oliver's photo 22
+- id: body.interior.console
+  name: Centre console
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: vinyl_black
+  notes: Black panel under the centre switch panel down to the tunnel, carrying the radio speaker grille (Oliver's photos
+    04, 22).
+  specs:
+    half_width:
+      mm: 120.0
+      source:
+        label: D
+        method: Oliver's photo 22
+- id: body.interior.speaker-grille
+  name: Radio speaker grille
+  haynes:
+    section: 47
+    figures:
+    - figure: '12.19'
+  quantity: 1
+  finish: chrome
+  notes: Octagonal (chamfered rectangle) chrome frame and fine horizontal mesh in the console (Oliver's photos 04, 22).
+  specs:
+    width:
+      mm: 150.0
+      source:
+        label: D
+        method: Oliver's photo 22 against the console
+- id: body.interior.seat-piping-l
+  name: Seat piping, left
+  haynes:
+    section: 54
+  quantity: 1
+  finish: piping_red
+  notes: Red piping round the cushion's top edge and the squab's face (Oliver's photos 04, 22).
+  specs:
+    diameter:
+      mm: 6.4
+      source:
+        label: D
+        method: Oliver's photo 22
+- id: body.interior.seat-piping-r
+  name: Seat piping, right
+  haynes:
+    section: 54
+  quantity: 1
+  finish: piping_red
+  notes: Red piping round the cushion's top edge and the squab's face (Oliver's photos 04, 22).
+  specs:
+    diameter:
+      mm: 6.4
+      source:
+        label: D
+        method: Oliver's photo 22

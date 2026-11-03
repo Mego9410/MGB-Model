@@ -1,0 +1,114 @@
+# Front outer panels, bonnet and scuttle, 1962-67 roadster. Haynes Ch 12 Sec 6 (printed p217: the bonnet on two hinges,
+# two nuts and washers each side, a stay, the lock and safety catch on the lock platform, photo 6.4), Sec 7 (the early
+# grille, three top steady bracket screws and three bolts to the radiator duct panel, photo 7.1); intro photographs
+# (PDF pages 1 and 8) and the cover cutaway for the forms. The shape is the body surface of mgb/body_shell_layout.py
+# (sections, nose surface and shut lines, all derived); width from the published 59.9 in (mgexp.com specification).
+# No outside photographs could be opened from the build machine.
+defaults:
+  system: body
+  assembly: body.front
+  haynes: { section: 6, spec_page: 217 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: paint_body_red
+
+parts:
+  - id: body.front.front-wing-l
+    name: Front wing, left
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      Bolt-on front wing: from the door's front shut line to the nose, outboard of the bonnet gap and the scuttle seam,
+      wrapping round the headlamp nacelle (P10's 7 in lamp: opening for the bowl, the rim over it) and down the front
+      to the side lamp (its two stud holes and lead hole) and the valance seam; the wheel arch opening (356 mm about
+      the hub, its top just under the chrome strip line as the intro photograph shows); the crown rising into the
+      nacelle ahead of the bonnet's edge (the scalloped bonnet sits between the wings).
+    specs:
+      half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in over the body sides" } }
+      arch_radius: { mm: 371.0, source: { label: D, method: "profile photo 29 scaled on the wheelbase: a circle fitted to the arch edge, centre 8 mm behind the hub" } }
+
+  - id: body.front.front-wing-r
+    name: Front wing, right
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in" } }
+
+  - id: body.front.grille-panel
+    name: Grille panel (front panel)
+    haynes: { section: 7 }
+    quantity: 1
+    notes: "The front panel between the wing fronts and below the bonnet's front edge, round the grille opening (a wide shallow rounded rectangle, its top following the bonnet's front edge just below the headlamp centres, its foot behind the bumper blade; Oliver's photos 10, 15, 27, 28)."
+    specs:
+      opening_width: { mm: 864.0, source: { label: D, method: "Between the nacelles (body_shell_layout MOUTH_Y)" } }
+
+  - id: body.front.front-valance
+    name: Front valance
+    haynes: { section: 10 }
+    quantity: 1
+    notes: "The apron under the bumper across the front, from the valance seam down to the lower edge, the arches' fronts."
+    specs:
+      seam_height: { mm: 400.0, source: { label: D, method: "Above the road, behind the bumper blade (profile photo 29: blade 356-404)" } }
+
+  - id: body.front.bonnet-skin
+    name: Bonnet (outer skin)
+    haynes: { section: 6 }
+    quantity: 1
+    notes: >
+      The bonnet's outer panel between the wing crowns from the grille opening back to the scuttle, the 4 mm gaps all
+      round, crowned across with the low centre rib running back from the grille's centre bar (body_shell_layout
+      RIB_A), clearing the radiator header tank and the rocker cover (P2/P3 heights).
+    specs:
+      rear_edge_x: { mm: -392.0, source: { label: D, method: "Ahead of the scuttle, 8 mm ahead of the bulkhead's top" } }
+      gap: { mm: 4.0, source: { label: D, method: "Panel gap" } }
+
+  - id: body.front.scuttle
+    name: Scuttle top
+    haynes: { section: 18 }
+    quantity: 1
+    notes: "Scuttle top panel from the bonnet's rear gap to the cockpit's front edge over the facia, between the wing seams, rising to P10's screen base; the two wiper spindle holes (P10 WIPER_SPINDLES)."
+    specs:
+      screen_base_height: { mm: 915.0, source: { label: D, method: "body_layout WINDSCREEN_BASE_Z (P10), above the road" } }
+
+  - id: body.front.bonnet-frame
+    name: Bonnet inner frame
+    haynes: { section: 6 }
+    quantity: 1
+    notes: "Stiffening frame under the skin: a 54 mm perimeter band following the skin 22 mm under it, a cross brace over the rocker cover and a centre rib forward to the lock pin."
+    specs:
+      band_width: { mm: 54.0, source: { label: D, method: "Inside the 4 mm gap, 6 to 60 mm in from the edge" } }
+
+  - id: body.front.bonnet-hinge-l
+    name: Bonnet hinge, left
+    haynes: { section: 6 }
+    quantity: 1
+    finish: paint_black
+    notes: "Bracket on the scuttle under the bonnet's rear edge, the arm to the frame with two bolts, nuts and washers (Sec 6 para 1)."
+    specs:
+      bolts: { count: 2, source: { label: H, page: 217, note: "Sec 6 para 1: two nuts and washers each side" }, display_only: true }
+  - id: body.front.bonnet-hinge-r
+    name: Bonnet hinge, right
+    haynes: { section: 6 }
+    quantity: 1
+    finish: paint_black
+    notes: "Mirror of the left."
+    specs:
+      bolts: { count: 2, source: { label: H, page: 217, note: "Sec 6 para 1" }, display_only: true }
+
+  - id: body.front.bonnet-stay
+    name: Bonnet stay
+    haynes: { section: 6 }
+    quantity: 1
+    finish: paint_black
+    notes: "Prop rod stowed along the left inner wing in its clip (Sec 6 para 1)."
+    specs:
+      length: { mm: 550.0, source: { label: D, method: "Holds the bonnet open at the hinge's reach" } }
+
+  - id: body.front.bonnet-lock
+    name: Bonnet lock pin, cup and lock
+    haynes: { section: 6, figures: [{ figure: "photo 6.4" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "The pin, thimble and spring on the bonnet frame (Sec 6 para 3) and the lock with its locating cup on the platform (para 4, photo 6.4)."
+    specs:
+      pin_diameter: { mm: 8.0, source: { label: D, method: "5/16 in bonnet pin" } }

@@ -34,21 +34,24 @@ def above_ground(h):
 
 
 # ---- side reference (S) ------------------------------------------------------------------------
-SIDE_STRIP_Z = WHEEL_Z + 14.25 * IN                   # wing chrome strip height (mgexp survey, 1963 roadster)
+SIDE_STRIP_Z = above_ground(690.0)                    # wing chrome strip height (D: profile photo 29 and Oliver's photo
+                                                       # 09; the mgexp survey's 14.25 in above the hub would be 663)
 
 # ---- front lamps (D) -------------------------------------------------------------------------------
-# Headlamps in the wing nacelles: centres 200 mm in from the widest point of the body, the
-# rim's front face 95 mm behind the front of the bumper, centre 690 mm above the road (just
-# above the chrome strip line, as the side view shows the strip running back from the lower
-# half of the nacelle).
-HEADLAMP_RIM_X = FRONT_X - 95.0
-HEADLAMP_Y = HALF_W - 200.0
-HEADLAMP_Z = above_ground(690.0)
+# Headlamps in the wing nacelles (P11b moved these from P10's first estimates to Oliver's car): rim face 186 mm
+# behind the overriders' front (profile photo 29 scaled on the wheelbase: the rim's front at X 641-645, just above the front
+# tyre's leading edge), centres 585 mm either side (Oliver's photos 15 and 27 scaled on the 198 mm rim), centre 632
+# mm above the road (photos 09, 15, 29: the rim's top just under the wing crown, 731 high). P10 had the rim 95 mm behind the bumper, |y| 561, 690 high.
+HEADLAMP_RIM_X = FRONT_X - 186.0
+HEADLAMP_Y = 585.0
+HEADLAMP_Z = above_ground(632.0)
 HEADLAMP_BOWL_DEPTH = 118.0                            # the nacelle must take the bowl behind the rim
-# Side and flasher lamps below the headlamps, on the wing front above the bumper (photo 35.1).
-SIDELAMP_X = FRONT_X - 70.0
-SIDELAMP_Y = HEADLAMP_Y + 6.0
-SIDELAMP_Z = above_ground(545.0)
+# Side and flasher lamps (Oliver's photos 10, 15, 20): rectangular units with chrome surrounds below each headlamp,
+# just above the bumper beside the grille surround; centres |y| 569, 495 mm above the road, the face on the wing front
+# (P10 had a lozenge lamp at FRONT_X - 70, 545 high).
+SIDELAMP_X = FRONT_X - 140.0
+SIDELAMP_Y = 569.0
+SIDELAMP_Z = above_ground(495.0)
 # Horns: two on the front cross panel behind the grille, either side of the radiator (D).
 HORN_POS = [(600.0, s * 300.0, -205.0) for s in (1, -1)]   # (x, y, z) of the horn bracket bolt on the panel face
 HORN_PANEL_X = 590.0                                   # rear face of the panel the brackets bolt to
@@ -77,14 +80,14 @@ FACIA_X = -775.0                                       # rear (cockpit) face of 
 FACIA_T = 1.2
 DRIVER_Y = -350.0                                      # steering column / driver centre line (RHD)
 IP_Z = above_ground(830.0)                             # centre height of the large instruments
-# (name, y, z) on the facia rear face. Speedometer outboard of the tachometer for RHD (mirror of
-# the LHD layout); fuel gauge inboard, oil pressure / water temperature gauge outboard (Fig 10.9
-# draws two large dials flanked by two small ones over the column cut-out).
+# (name, y, z) on the facia rear face, as on Oliver's car (photos 01, 04, 17, 22; P11b moved them from P10's
+# Fig 10.9 layout): the speedometer on the left and the tachometer on the right in the binnacle over the column,
+# the fuel gauge further right, the dual oil/water gauge on the centre panel right of the plaque.
 INSTRUMENTS = {
-    "tachometer": (DRIVER_Y + 64.0, IP_Z),
-    "speedometer": (DRIVER_Y - 64.0, IP_Z),
-    "fuel-gauge": (DRIVER_Y + 186.0, IP_Z - 22.0),
-    "dual-gauge": (DRIVER_Y - 186.0, IP_Z - 22.0),
+    "speedometer": (DRIVER_Y + 112.0, IP_Z),
+    "tachometer": (DRIVER_Y - 78.0, IP_Z),
+    "fuel-gauge": (DRIVER_Y - 196.0, IP_Z - 14.0),
+    "dual-gauge": (DRIVER_Y + 266.0, IP_Z - 10.0),
 }
 # Warning lamps (P10b): on the early cars they are inside the instruments (Haynes Fig 10.26, printed
 # p190: the ignition warning lamp 44 in the tachometer 95, the main beam warning lamp 10 in the
@@ -96,16 +99,20 @@ WARNING_LAMPS = {
     "indicator-left": ("tachometer", INSTRUMENTS["tachometer"][0] + 20.0, IP_Z - 12.0),
     "indicator-right": ("speedometer", INSTRUMENTS["speedometer"][0] - 20.0, IP_Z - 12.0),
 }
-# centre switch panel (Fig 10.9 items 1, 4, 5, 6/7, 8, 13; early cars)
+# centre switch panel (Fig 10.9 items 1, 4, 5, 6/7, 8, 13; early cars), as on Oliver's car (photos 16, 22): three
+# toggles in a row under the plaque, the ignition and a push-pull knob beside them (P11b moved them).
 SWITCHES = {
-    "lighting": (-92.0, IP_Z - 10.0),
-    "wiper": (-40.0, IP_Z - 10.0),
-    "heater": (12.0, IP_Z - 10.0),
-    "panel-lamp": (64.0, IP_Z - 10.0),
-    "map-lamp": (116.0, IP_Z - 10.0),
-    "ignition": (-40.0, IP_Z - 72.0),
-    "overdrive": (DRIVER_Y - 250.0, IP_Z - 40.0),        # toggle on the facia to the right of the binnacle (Fig 10.9 item 2)
+    "lighting": (120.0, IP_Z - 50.0),
+    "wiper": (88.0, IP_Z - 50.0),
+    "heater": (56.0, IP_Z - 50.0),
+    "ignition": (8.0, IP_Z - 50.0),
+    "panel-lamp": (-36.0, IP_Z - 50.0),                  # push-pull knob right of the ignition
+    "map-lamp": (-84.0, IP_Z + 44.0),                    # small knob above the dual gauge
+    "overdrive": (DRIVER_Y - 262.0, IP_Z - 10.0),        # toggle outboard of the fuel gauge
 }
+# centre panel fittings (Oliver's photos 16, 22): the plaque above the switches, the two heater knobs left of it
+PLAQUE_Y, PLAQUE_Z = 48.0, IP_Z + 22.0
+HEATER_KNOB_Y, HEATER_KNOB_Z = 196.0, (IP_Z + 26.0, IP_Z - 44.0)
 # Wipers: two wheelboxes under the scuttle, spindles through it just ahead of the screen base,
 # axis square to the scuttle top; the DR3A motor under the passenger (left) side of the facia
 # (Haynes Ch 10 Sec 54 para 1).
@@ -137,10 +144,14 @@ EARTH_POINTS = {
 }
 
 # ---- rear lamps (D) ------------------------------------------------------------------------------------
-REAR_LAMP_X = REAR_X + 75.0                            # lens face, on the rear wing end above the bumper
+# On the rear wing ends' raked plinths (profile photo 29: the plinth raked about 31 deg from vertical, its top corner
+# X -2774 h 803 and foot X -2930 h 570; Oliver's photos 18, 24: centres |y| 645). P11b moved the lamp back onto the
+# plinth and tilted it (P10 had it upright at REAR_X + 75, 640 high).
+REAR_LAMP_X = REAR_X + 210.0                           # lens face centre on the plinth
 REAR_LAMP_Y = HALF_W - 115.0
-REAR_LAMP_Z = above_ground(640.0)
-OVERRIDER_Y = 262.0                                    # rear overrider centre lines (number plate lamps on their inner faces)
+REAR_LAMP_Z = above_ground(705.0)
+REAR_LAMP_RAKE = 31.0                                  # deg: the lamp's top leans forward with the plinth
+OVERRIDER_Y = 340.0                                    # rear overrider centre lines, either side of the plate (photos 18, 24)
 NUMBER_LAMP = (REAR_X + 38.0, OVERRIDER_Y - 26.0, above_ground(430.0))   # lamp base on the overrider's inner face
 
 # ---- battery carriers (D) ------------------------------------------------------------------------------

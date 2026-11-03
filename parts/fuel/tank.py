@@ -264,14 +264,16 @@ def hose_clip(spec) -> Part:
 
 
 def filler_tube(spec) -> Part:
-    """Fig 3.9 item 26: the filler extension, a 90 degree elbow from the hose up and out to the cap, a bead at
-    the hose end and the cap's neck at the other."""
+    """Fig 3.9 item 26: the filler extension, up from the hose and back across the boot to the cap on the rear
+    panel right of the number plate (Oliver's photos 11, 18, 21; P11b moved the cap there), a bead at the hose end and
+    the cap's neck and body flange at the rear panel."""
     from parts.fuel.exhaust import tube
     zt = L.FILLER_TUBE_TOP_Z
-    pts = [(FX, FY, ELBOW_Z0), (FX, FY, zt), (FX, L.FILLER_CAP_Y, zt)]
+    cx, cy = L.FILLER_CAP_X, L.FILLER_CAP_Y
+    pts = [(FX, FY, ELBOW_Z0), (FX, FY, zt), (cx + 150.0, cy, zt), (cx + 18.0, cy, zt)]
     t = tube(pts, L.FILLER_OD - 0.4, 1.2, radius=45.0)
     t = t + Location((FX, FY, ELBOW_Z0 + 6.0)) * Sh.tube(L.FILLER_OD + 1.0, L.FILLER_OD - 3.0, 3.0)     # hose bead
-    neck = Location(Plane(origin=(FX, L.FILLER_CAP_Y + 18.0, zt), z_dir=(0, -1, 0)))
+    neck = Location(Plane(origin=(cx + 18.0, cy, zt), z_dir=(-1, 0, 0)))
     t = t + neck * Sh.tube(L.FILLER_OD + 10.0, L.FILLER_OD - 3.0, 18.0)
     t = t + neck * Location((0, 0, 4.0)) * Sh.tube(L.FILLER_OD + 26.0, L.FILLER_OD + 9.0, 2.0)          # body flange
     return _l(t, spec)
@@ -286,6 +288,8 @@ def filler_cap(spec) -> Part:
         c = c - Location((0, 0, 6.0)) * Rot(0, 0, a) * Location((d / 2 + 0.6, 0, 0)) * Box(2.2, 2.4, 9.0)
     c = c + Location((0, 0, -10.0)) * Sh.tube(L.FILLER_OD - 4.0, L.FILLER_OD - 9.0, 10.0)               # spigot
     c = c - Location((9.0, 0, 15.0)) * Cylinder(1.0, 20.0)
+    # locking barrel in the centre (Oliver's photo 21: a chrome locking cap)
+    c = c + Location((0, 0, 21.0)) * Sh.cyl(16.0, 4.0) - Location((0, 0, 23.0)) * Box(2.0, 9.0, 6.0)
     return _l(c, spec)
 
 

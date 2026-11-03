@@ -1,0 +1,198 @@
+# Doors, 1962-67 roadster ("pull-handle" cars). Haynes Ch 12 Sec 29 (early tourer door trim), Sec 32 (doors and hinges:
+# three screws each hinge), Sec 34-35 and Fig 12.13 (printed p228-229: the early exterior pull handle and lock), Sec 39
+# and Fig 12.15 (printed p230: early tourer door interior: ventilator, regulator, glass channels), Sec 21 (quarter-light).
+# The 1963 roadster has wind-up glass and quarter-lights from launch (Fig 12.15), not sidescreens.
+defaults:
+  system: body
+  assembly: body.doors
+  haynes: { section: 32, spec_page: 229 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: paint_body_red
+
+parts:
+  - id: body.doors.skin-l
+    name: Door outer skin, left
+    haynes: { section: 32 }
+    quantity: 1
+    notes: "The door's outer panel inside the shut lines (4 mm gaps), its top rolling over to the waist; the pull handle's and lock's holes are in the door frame part."
+    specs:
+      half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in at the doors" } }
+      length: { mm: 928.0, source: { label: D, method: "profile photo 29 scaled on the wheelbase: shut lines X -695 and -1623 (body_shell_layout DOOR_*)" } }
+
+  - id: body.doors.skin-r
+    name: Door outer skin, right
+    haynes: { section: 32 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in" } }
+
+  - id: body.doors.frame-l
+    name: Door frame (inner panel and shut faces), left
+    haynes: { section: 39, figures: [{ figure: "12.15" }] }
+    quantity: 1
+    notes: >
+      The inner panel parallel to the skin 72 mm inboard with two access apertures (Fig 12.15: the regulator, its
+      extension and the remote control are reached through them), the front shut face with the two hinges' tapping
+      plate holes, the rear shut face with the lock's screw holes, the bottom closing the box, the waist reinforcement
+      under the glass slot.
+    specs:
+      depth: { mm: 72.0, source: { label: D, method: "Skin to inner panel: takes the wind-up glass and regulator" } }
+
+  - id: body.doors.frame-r
+    name: Door frame (inner panel and shut faces), right
+    haynes: { section: 39, figures: [{ figure: "12.15" }] }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      depth: { mm: 72.0, source: { label: D, method: "As the left" } }
+
+  - id: body.doors.hinge-lower-l
+    name: Door hinge, lower left
+    haynes: { section: 32 }
+    quantity: 1
+    finish: paint_body_red
+    notes: "Body leaf on the hinge pillar, door leaf on the front shut face, three screws each (Sec 32 para 1), on a pin."
+    specs:
+      pin_diameter: { mm: 6.4, source: { label: D, method: "1/4 in hinge pin" } }
+  - id: body.doors.hinge-upper-l
+    name: Door hinge, upper left
+    haynes: { section: 32 }
+    quantity: 1
+    notes: "As the lower."
+    specs:
+      pin_diameter: { mm: 6.4, source: { label: D, method: "1/4 in hinge pin" } }
+  - id: body.doors.hinge-lower-r
+    name: Door hinge, lower right
+    haynes: { section: 32 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      pin_diameter: { mm: 6.4, source: { label: D, method: "1/4 in hinge pin" } }
+  - id: body.doors.hinge-upper-r
+    name: Door hinge, upper right
+    haynes: { section: 32 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      pin_diameter: { mm: 6.4, source: { label: D, method: "1/4 in hinge pin" } }
+
+  - id: body.doors.glass-l
+    name: Door glass, left
+    haynes: { section: 39, figures: [{ figure: "12.17", legend: 1 }] }
+    quantity: 1
+    finish: glass_screen
+    notes: >
+      Wind-up toughened glass, shown raised: its front edge against the quarter-light's divider post, the rear edge
+      raked, the top under the hood, leaning in 7 deg with the tumblehome; the lower channel the regulator's arm studs
+      engage (Sec 39) at its bottom edge inside the door.
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "Toughened side glass" } }
+  - id: body.doors.glass-r
+    name: Door glass, right
+    haynes: { section: 39, figures: [{ figure: "12.17", legend: 1 }] }
+    quantity: 1
+    finish: glass_screen
+    notes: "Mirror of the left."
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "Toughened side glass" } }
+
+  - id: body.doors.quarter-light-frame-l
+    name: Quarter-light frame, left
+    haynes: { section: 21, figures: [{ figure: "12.15", legend: 1 }] }
+    quantity: 1
+    finish: chrome
+    notes: "Chrome frame of the pivoting ventilator at the door's front top corner, its front edge along the screen pillar's rake, the divider post down into the door to its securing nuts (Fig 12.15 item 1), the pivot and catch."
+    specs:
+      post_x: { mm: -1015.0, source: { label: D, method: "Divider post behind the screen pillar's top" } }
+  - id: body.doors.quarter-light-frame-r
+    name: Quarter-light frame, right
+    haynes: { section: 21, figures: [{ figure: "12.15", legend: 1 }] }
+    quantity: 1
+    finish: chrome
+    notes: "Mirror of the left."
+    specs:
+      post_x: { mm: -1015.0, source: { label: D, method: "As the left" } }
+  - id: body.doors.quarter-light-glass-l
+    name: Quarter-light glass, left
+    haynes: { section: 21 }
+    quantity: 1
+    finish: glass_screen
+    notes: "Ventilator glass in its frame."
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "As the door glass" } }
+  - id: body.doors.quarter-light-glass-r
+    name: Quarter-light glass, right
+    haynes: { section: 21 }
+    quantity: 1
+    finish: glass_screen
+    notes: "Mirror of the left."
+    specs:
+      thickness: { mm: 4.0, source: { label: D, method: "As the door glass" } }
+
+  - id: body.doors.pull-handle-l
+    name: Exterior pull handle, left
+    haynes: { section: 34, figures: [{ figure: "12.13", legend: 1 }] }
+    quantity: 1
+    finish: chrome
+    notes: "The early fixed pull handle (Fig 12.13 item 1, early Sports Tourer) on two bosses near the door's rear top, the lock barrel (3) in its rear boss; held by the spring clip (2) from inside."
+    specs:
+      length: { mm: 128.0, source: { label: D, method: "Grip between the bosses, scaled from Fig 12.13" } }
+  - id: body.doors.pull-handle-r
+    name: Exterior pull handle, right
+    haynes: { section: 34, figures: [{ figure: "12.13", legend: 1 }] }
+    quantity: 1
+    finish: chrome
+    notes: "Mirror of the left."
+    specs:
+      length: { mm: 128.0, source: { label: D, method: "As the left" } }
+
+  - id: body.doors.lock-l
+    name: Door lock, left
+    haynes: { section: 35, figures: [{ figure: "12.13", legend: 15 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Lock on the rear shut face, the latch engaging the striker."
+    specs:
+      height: { mm: 80.0, source: { label: D, method: "Lock body" } }
+  - id: body.doors.lock-r
+    name: Door lock, right
+    haynes: { section: 35, figures: [{ figure: "12.13", legend: 15 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      height: { mm: 80.0, source: { label: D, method: "Lock body" } }
+  - id: body.doors.striker-l
+    name: Door striker, left
+    haynes: { section: 27, figures: [{ figure: "12.13", legend: 9 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Striker plate on the shut pillar, three screws, adjustable on its tapping plate (Sec 27)."
+    specs:
+      screws: { count: 3, source: { label: D, method: "Striker fixings" } }
+  - id: body.doors.striker-r
+    name: Door striker, right
+    haynes: { section: 27, figures: [{ figure: "12.13", legend: 9 }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Mirror of the left."
+    specs:
+      screws: { count: 3, source: { label: D, method: "Striker fixings" } }
+  - id: body.doors.mirror
+    name: Door mirror (driver's side)
+    haynes: { section: 21 }
+    quantity: 1
+    finish: chrome
+    notes: "Rectangular chrome mirror head with rounded corners on a flat arm from a clamp on the right-hand quarter-light's rear post (Oliver's photos 08, 15, 23)."
+    specs:
+      head_height: { mm: 116.0, source: { label: D, method: "Oliver's photo 08 against the quarter-light post" } }
+      head_width: { mm: 76.0, source: { label: D, method: "Oliver's photo 08" } }
+  - id: body.doors.mirror-glass
+    name: Door mirror glass
+    haynes: { section: 21 }
+    quantity: 1
+    finish: glass_screen
+    notes: "The mirror's glass, facing rearward."
+    specs:
+      height: { mm: 106.0, source: { label: D, method: "Inside the head's rim" } }

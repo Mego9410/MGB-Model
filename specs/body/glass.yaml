@@ -1,0 +1,64 @@
+# Windscreen, 1962-67 roadster. Haynes Ch 12 Sec 18 (removal, dismantling, reassembly and refitting of the Sports Tourer
+# screen) and Figs 12.7-12.9 (printed p224-225): the screen assembly on two pillars whose feet bolt through the scuttle
+# with reinforcement plates and packing, the top and bottom rails, the glass in its glazing rubber, the centre rod and
+# brackets. Rake, curvature and heights derived (mgb/body_shell_layout.py screen_*) from P10's screen base and the
+# published 49.4 in hood-up height.
+defaults:
+  system: body
+  assembly: body.glass
+  haynes: { section: 18, spec_page: 224 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: chrome
+
+parts:
+  - id: body.glass.windscreen
+    name: Windscreen glass
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 14 }] }
+    quantity: 1
+    finish: glass_screen
+    notes: "Curved in plan, raked 33 deg, in the glazing rubber (item 15); base on P10's WINDSCREEN_BASE, swept back 70 mm to the pillar feet."
+    specs:
+      thickness: { mm: 6.0, source: { label: D, method: "Laminated screen" } }
+      rake: { deg: 33.0, source: { label: D, method: "Screen top rail under the published hood-up height" } }
+  - id: body.glass.top-rail
+    name: Screen top rail
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 4 }] }
+    quantity: 1
+    notes: "Chrome channel over the glass's top edge, the hood fastener brackets (item 6) underneath."
+    specs:
+      height: { mm: 1232.0, source: { label: D, method: "Above the road at the centre" } }
+  - id: body.glass.bottom-rail
+    name: Screen bottom rail
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 5 }] }
+    quantity: 1
+    notes: "Rail along the glass's lower edge on the scuttle, its seal (18)."
+    specs:
+      section: { mm: 18.0, source: { label: D, method: "Rail depth" } }
+  - id: body.glass.pillar-l
+    name: Screen pillar, left
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 3 }] }
+    quantity: 1
+    notes: "Chrome side post along the glass edge, its foot through the scuttle side onto the reinforcement (17) and packing (13)."
+    specs:
+      foot_half_width: { mm: 600.0, source: { label: D, method: "body_shell_layout SCREEN_HALF_W" } }
+  - id: body.glass.pillar-r
+    name: Screen pillar, right
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 2 }] }
+    quantity: 1
+    notes: "Mirror of the left (RH pillar, item 2)."
+    specs:
+      foot_half_width: { mm: 600.0, source: { label: D, method: "body_shell_layout SCREEN_HALF_W" } }
+  - id: body.glass.centre-rod
+    name: Screen centre rod
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 9 }] }
+    quantity: 1
+    notes: "Rod from the scuttle bracket (12) to the top rail's centre bracket, nut (10)."
+    specs:
+      diameter: { mm: 8.0, source: { label: D, method: "Scaled from Fig 12.7" } }
+  - id: body.glass.mirror
+    name: Interior mirror
+    haynes: { section: 18 }
+    quantity: 1
+    notes: "Mirror on a stem from the top rail's centre."
+    specs:
+      width: { mm: 190.0, source: { label: D, method: "Period rectangular mirror" } }

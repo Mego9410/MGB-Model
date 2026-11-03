@@ -124,8 +124,8 @@ NODES = {
     "eng.up": (-15.0, -305.0, 45.0), "eng.alt": (40.0, -246.0, -70.0), "eng.coil": (88.0, -165.0, 5.0),
     "eng.dist": (-38.0, -74.0, -20.0), "stop.n": (BRK.FOUR_WAY[0] + 46.0, -251.0, -150.0),
     "heater.n": (BL.HEATER_CONNECTOR[0] + 6.0, BL.HEATER_CONNECTOR[1] - 30.0, BL.HEATER_CONNECTOR[2] - 4.0),
-    "hl.R.n": (640.0, -505.0, 80.0), "hl.L.n": (640.0, 505.0, 80.0),
-    "side.R.n": (790.0, -548.0, -20.0), "side.L.n": (790.0, 548.0, -20.0),
+    "hl.R.n": (BL.HEADLAMP_RIM_X - 175.0, -520.0, BL.HEADLAMP_Z + 10.0), "hl.L.n": (BL.HEADLAMP_RIM_X - 175.0, 520.0, BL.HEADLAMP_Z + 10.0),
+    "side.R.n": (BL.SIDELAMP_X - 65.0, -555.0, BL.SIDELAMP_Z + 25.0), "side.L.n": (BL.SIDELAMP_X - 65.0, 555.0, BL.SIDELAMP_Z + 25.0),
     "horn.R.n": (FRONT_X + 6.0, -300.0, -92.0), "horn.L.n": (FRONT_X + 6.0, 300.0, -92.0),
     "relay.n": (BL.OD_RELAY[0] + 6.0, LY - 12.0, -36.0), "vac.n": (BL.BULKHEAD_X + 22.0, BL.OD_VACUUM_SWITCH[1], 2.0),
     "od.0": (BL.OD_RELAY[0] - 40.0, LY - 25.0, -70.0), "od.1": (BL.BULKHEAD_X + 30.0, 215.0, -35.0),
@@ -133,11 +133,15 @@ NODES = {
     "od.4": (-815.0, -112.0, -190.0), "odsol.n": (-885.0, -160.0, -250.0),
     # cabin: through the grommet to the facia
     "gr.cab": (GX - 12.0, GY, GZ), "fa.in": (GX - 120.0, -345.0, 200.0),
-    "fa.R": (FX, -600.0, FZ), "fa.dual": (FX, BL.INSTRUMENTS["dual-gauge"][0] + 31.0, FZ), "fa.speedo": (FX, BL.INSTRUMENTS["speedometer"][0] - 36.0, FZ),
+    # facia run, right to left along the instruments and switches (P11b moved them to Oliver's facia layout)
+    "fa.R": (FX, -600.0, FZ), "fa.fuel": (FX, BL.INSTRUMENTS["fuel-gauge"][0] + 30.0, FZ),
+    "fa.tach": (FX, BL.INSTRUMENTS["tachometer"][0], FZ), "fa.drv": (FX, BL.DRIVER_Y, FZ),
+    "fa.speedo": (FX, BL.INSTRUMENTS["speedometer"][0] - 36.0, FZ),
     "fa.speedo.n": (BL.FACIA_X + 107.0, BL.INSTRUMENTS["speedometer"][0] - 26.0, BL.IP_Z - 42.0),
-    "fa.drv": (FX, BL.DRIVER_Y, FZ), "fa.tach": (FX, BL.INSTRUMENTS["tachometer"][0], FZ), "fa.fuel": (FX, -170.0, FZ),
-    "fa.light": (FX, -92.0, FZ), "fa.ign": (FX, -40.0, FZ), "fa.heat": (FX, 12.0, FZ), "fa.panel": (FX, 64.0, FZ),
-    "fa.map": (FX, 116.0, FZ), "fa.L": (FX + 60.0, 300.0, 150.0),
+    "fa.dual": (FX, BL.INSTRUMENTS["dual-gauge"][0] - 26.0, FZ), "fa.map": (FX, BL.SWITCHES["map-lamp"][0] + 14.0, FZ),
+    "fa.panel": (FX, BL.SWITCHES["panel-lamp"][0], FZ), "fa.ign": (FX, BL.SWITCHES["ignition"][0], FZ),
+    "fa.heat": (FX, BL.SWITCHES["heater"][0], FZ), "fa.light": (FX, BL.SWITCHES["lighting"][0], FZ),
+    "fa.L": (FX + 60.0, 300.0, 150.0),
     "wiper.n": (BL.WIPER_MOTOR[0] + 55.0, BL.WIPER_MOTOR[1] + 82.0, 60.0),
     "dip.n": _add(_add(DIP_SWITCH, DIP_U, 62.0), DIP_N, 26.0),
     "col.n": _add(_add(COLUMN_SWITCH, COL_Y, 60.0), COL_AXIS, -30.0), "col.top": _add(COL_TOP, COL_AXIS, 30.0),
@@ -174,8 +178,8 @@ EDGES = [
     # down off the bulkhead face outboard of P11a's fuel pipe and the pedal box, under P9's column and P8's
     # master cylinder pipe, then up to the stop lamp switch from ahead of it
     ("gr.bay", "heater.n", [(BL.BULKHEAD_X + 18.0, -220.0, 175.0)], False),
-    ("bay.corner.R", "hl.R.n", [], False), ("hl.R.n", "side.R.n", [(700.0, -540.0, 20.0)], False),
-    ("bay.corner.L", "hl.L.n", [], False), ("hl.L.n", "side.L.n", [(700.0, 540.0, 20.0)], False),
+    ("bay.corner.R", "hl.R.n", [], False), ("hl.R.n", "side.R.n", [(BL.HEADLAMP_RIM_X - 110.0, -545.0, BL.SIDELAMP_Z + 70.0)], False),
+    ("bay.corner.L", "hl.L.n", [], False), ("hl.L.n", "side.L.n", [(BL.HEADLAMP_RIM_X - 110.0, 545.0, BL.SIDELAMP_Z + 70.0)], False),
     ("bay.front.R", "horn.R.n", [], False), ("bay.front.L", "horn.L.n", [], False),
     ("bay.relay", "relay.n", [(BL.OD_RELAY[0] + 34.0, LY - 12.0, 40.0)], False),
     ("bay.vac", "vac.n", [], False),
@@ -183,10 +187,10 @@ EDGES = [
     ("od.3", "iso.n", [], False), ("iso.n", "od.4", [], True), ("od.4", "odsol.n", [], True),
     # through the bulkhead grommet
     ("gr.bay", "gr.cab", [], True), ("gr.cab", "fa.in", [], True), ("fa.in", "fa.drv", [(-600.0, -350.0, 262.0)], True),
-    ("fa.R", "fa.dual", [], True), ("fa.dual", "fa.speedo", [], True), ("fa.speedo", "fa.drv", [], True),
-    ("fa.drv", "fa.tach", [], True), ("fa.tach", "fa.fuel", [], True), ("fa.fuel", "fa.light", [], True),
-    ("fa.light", "fa.ign", [], True), ("fa.ign", "fa.heat", [], True), ("fa.heat", "fa.panel", [], True),
-    ("fa.panel", "fa.map", [], True), ("fa.map", "fa.L", [(FX + 30.0, 220.0, FZ - 40.0)], True),
+    ("fa.R", "fa.fuel", [], True), ("fa.fuel", "fa.tach", [], True), ("fa.tach", "fa.drv", [], True),
+    ("fa.drv", "fa.speedo", [], True), ("fa.speedo", "fa.dual", [], True), ("fa.dual", "fa.map", [], True),
+    ("fa.map", "fa.panel", [], True), ("fa.panel", "fa.ign", [], True), ("fa.ign", "fa.heat", [], True),
+    ("fa.heat", "fa.light", [], True), ("fa.light", "fa.L", [(FX + 30.0, 220.0, FZ - 40.0)], True),
     ("fa.L", "wiper.n", [(BL.WIPER_MOTOR[0] + 60.0, BL.WIPER_MOTOR[1] + 40.0, 110.0)], True),
     ("fa.drv", "dip.n", [(FX + 70.0, BL.DRIVER_Y + 60.0, 120.0), (-470.0, DIP_SWITCH[1] + 6.0, -60.0)], True),
     ("fa.drv", "col.n", [(FX - 20.0, BL.DRIVER_Y - 50.0, FZ - 150.0), (BL.FACIA_X - 20.0, BL.DRIVER_Y - 60.0, 40.0),
@@ -237,7 +241,7 @@ TERM_NODE = [
     ("horn.R", "horn.R.n"), ("stop.", "stop.n"), ("iso.", "iso.n"), ("odsol.", "odsol.n"),
     ("hl.R", "hl.R.n"), ("hl.L", "hl.L.n"), ("side.R", "side.R.n"), ("side.L", "side.L.n"),
     ("rear.R", "rear.R.n"), ("rear.L", "rear.L.n"), ("plate.R", "plate.R.n"), ("plate.L", "plate.L.n"),
-    ("sw.lighting", "fa.light"), ("sw.wiper", "fa.ign"), ("sw.heater", "fa.heat"), ("sw.panel-lamp", "fa.panel"),
+    ("sw.lighting", "fa.light"), ("sw.wiper", "fa.light"), ("sw.heater", "fa.heat"), ("sw.panel-lamp", "fa.panel"),
     ("sw.map-lamp", "fa.map"), ("sw.overdrive", "fa.R"), ("ign.", "fa.ign"),
     ("speedometer.", "fa.speedo.n"), ("tachometer.", "fa.tach"), ("fuel-gauge.", "fa.fuel"), ("dual-gauge.", "fa.dual"),
     ("wiper.", "wiper.n"), ("dip.", "dip.n"), ("ind.horn", "col.top"), ("hornpush.", "col.top"), ("ind.", "col.n"), ("stab.", "fa.earth.n"),
@@ -571,6 +575,9 @@ def smooth(pts, od):
         cosang = max(-1.0, min(1.0, _dot(u, v)))
         ang = math.acos(cosang)                      # interior angle at b
         if ang > math.radians(176.0):
+            out.append(b)
+            continue
+        if ang < 1e-3:                               # the route folds straight back: keep the corner point
             out.append(b)
             continue
         turn = math.pi - ang

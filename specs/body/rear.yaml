@@ -1,0 +1,131 @@
+# Rear outer panels and boot lid, 1962-67 roadster. Haynes Ch 12 Sec 25-26 (printed p226-227: the boot lid on two hinges,
+# its lock, Fig 12.12); intro photographs for the forms. Shape from mgb/body_shell_layout.py (derived); width published.
+defaults:
+  system: body
+  assembly: body.rear
+  haynes: { section: 26, spec_page: 227 }
+  variant: { factory_1963: true, as_fitted: true, body: roadster }
+  finish: paint_body_red
+
+parts:
+  - id: body.rear.rear-wing-l
+    name: Rear wing, left
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      Welded rear wing from the door's rear shut line to the tail, outboard of the rear deck and boot lid, round the
+      tail corner to the rear panel seam; the wheel arch opening; the crown line standing a little proud of the deck;
+      the lamp fixings in the wing end (P10 REAR_LAMP_*: two bulb holder holes, three screw holes).
+    specs:
+      half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in" } }
+      arch_radius: { mm: 378.0, source: { label: D, method: "profile photo 29 scaled on the wheelbase: a circle fitted to the arch edge, centre 22 mm behind and 30 mm below the hub" } }
+
+  - id: body.rear.rear-wing-r
+    name: Rear wing, right
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "Mirror of the left."
+    specs:
+      half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in" } }
+
+  - id: body.rear.rear-deck
+    name: Rear deck (shroud)
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "The panel behind the cockpit over the hood stowage well, between the rear wings, to the boot lid's front gap."
+    specs:
+      cockpit_rear_x: { mm: -1905.0, source: { label: D, method: "Behind the hood stowage well over the dampers" } }
+
+  - id: body.rear.boot-skin
+    name: Boot lid (outer skin)
+    haynes: { section: 26 }
+    quantity: 1
+    notes: "Crowned boot lid between the rear wings, its front edge behind the rear deck, falling to its rear edge over the number plate; 4 mm gaps."
+    specs:
+      rear_edge_height: { mm: 640.0, source: { label: D, method: "Above the road, over the number plate (Oliver's photos 18, 24)" } }
+
+  - id: body.rear.rear-panel
+    name: Rear panel
+    haynes: { section: 14 }
+    quantity: 1
+    notes: "The tail panel below the boot lid between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21)."
+    specs:
+      face_x: { mm: -2955.3, source: { label: D, method: "underbody_layout REAR_PANEL_X (moved by P11b: profile photo 29)" } }
+
+  - id: body.rear.boot-frame
+    name: Boot lid inner frame
+    haynes: { section: 26 }
+    quantity: 1
+    notes: "Perimeter band following the skin 20 mm under it, one cross brace."
+    specs:
+      band_width: { mm: 49.0, source: { label: D, method: "6 to 55 mm in from the edge" } }
+
+  - id: body.rear.boot-hinge-l
+    name: Boot lid hinge, left
+    haynes: { section: 26 }
+    quantity: 1
+    finish: chrome
+    notes: "Cranked arm from the rear deck under the lid's front edge (Sec 26)."
+    specs:
+      bolts: { count: 2, source: { label: D, method: "Two bolts each leaf" } }
+  - id: body.rear.boot-hinge-r
+    name: Boot lid hinge, right
+    haynes: { section: 26 }
+    quantity: 1
+    finish: chrome
+    notes: "Mirror of the left."
+    specs:
+      bolts: { count: 2, source: { label: D, method: "Two bolts each leaf" } }
+
+  - id: body.rear.boot-handle
+    name: Boot lid handle and lock barrel
+    haynes: { section: 25, figures: [{ figure: "12.12" }] }
+    quantity: 1
+    finish: chrome
+    notes: "Chrome handle with the push button lock (Fig 12.12) on the lid's rear face over the number plate."
+    specs:
+      width: { mm: 150.0, source: { label: D, method: "Between the handle's feet, scaled from Fig 12.12" } }
+
+  - id: body.rear.boot-lock
+    name: Boot lock and striker
+    haynes: { section: 25, figures: [{ figure: "12.12" }] }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Lock inside the lid's rear panel; the striker on the rear panel's top edge."
+    specs:
+      body_width: { mm: 60.0, source: { label: D, method: "Lock body" } }
+
+  - id: body.rear.spare-clamp
+    name: Spare wheel clamp
+    haynes: { section: 12 }
+    quantity: 1
+    finish: zinc_steel
+    notes: "Stud from the boot floor through the spare wire wheel's centre, clamp bar and wing nut. The spare is P9's wheel, tyre and valve (wheels.road-wheels) lying on the boot floor's locating ring, without a spinner (PLAN: P9 carried over)."
+    specs:
+      stud: { mm: 9.5, source: { label: D, method: "3/8 in stud" } }
+
+  - id: body.rear.jack
+    name: Jack
+    haynes: { section: 1 }
+    quantity: 1
+    finish: paint_black
+    notes: "Side-lift screw jack whose arm enters the sill's jacking socket, stowed on the boot floor beside the spare (form derived)."
+    specs:
+      length: { mm: 360.0, source: { label: D, method: "Stowed length" } }
+
+  - id: body.rear.hammer
+    name: Spinner mallet
+    haynes: { section: 1 }
+    quantity: 1
+    finish: copper
+    notes: "Copper and hide mallet for the wire wheels' knock-off spinners (the wire wheel car's wheel brace), in the boot."
+    specs:
+      head_diameter: { mm: 52.0, source: { label: D, method: "Mallet head" } }
+  - id: body.rear.boot-carpet
+    name: Boot floor carpet
+    haynes: { section: 3 }
+    quantity: 1
+    finish: carpet
+    notes: "Black carpet on the boot floor under the spare wire wheel (Oliver's photo 26), cut round the wheel's locating ring."
+    specs:
+      thickness: { mm: 6.0, source: { label: D, method: "Carpet with its felt backing" } }

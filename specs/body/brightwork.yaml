@@ -1,0 +1,465 @@
+# Bright work, 1962-67 roadster. Haynes Ch 12 Sec 7 (early grille: three top steady bracket screws, three bolts to the
+# radiator duct panel; photo 7.1), Sec 10 and Fig 12.1 (printed p218: front bumper on two spring bars and a steady
+# bracket, overriders on nuts and distance pieces; the rear bar, its spring bar and mounting brackets, overriders with
+# the number plate lamps, P10), the wing chrome strip 14.25 in above the hub (mgexp.com ride height survey, 1963
+# roadster). Forms from Fig 12.1 and the intro photographs; sizes derived. Badges are plain shapes (no lettering) and
+# the number plates are blank.
+defaults:
+  system: body
+  assembly: body.brightwork
+  haynes:
+    section: 10
+    spec_page: 218
+  variant:
+    factory_1963: true
+    as_fitted: true
+    body: roadster
+  finish: chrome
+
+parts:
+- id: body.brightwork.front-bar
+  name: Front bumper bar
+  haynes:
+    section: 10
+    figures:
+    - figure: '12.1'
+      legend: 1
+  quantity: 1
+  notes: Chrome blade following the nose 48 mm off it at 350-405 mm above the road, wrapping round the corners back to the
+    wheel arches (ends X 528); holes for the overriders and spring bars. Oliver's photos 05, 10, 15, 20; profile photo 29.
+  specs:
+    height:
+      mm: 55.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: blade 350-405 above the road'
+    end_x:
+      mm: 528.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: blade ends X 518-528 at the front arch'
+- id: body.brightwork.rear-bar
+  name: Rear bumper bar
+  haynes:
+    section: 14
+    figures:
+    - figure: '12.1'
+      legend: 23
+  quantity: 1
+  notes: As the front, 70 mm off the rear panel at 430-495 mm above the road, wrapping round to the rear arches (ends X -2745).
+    Oliver's photos 18, 23, 24; profile photo 29.
+  specs:
+    height:
+      mm: 65.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: blade 430-495 above the road'
+- id: body.brightwork.front-overrider-l
+  name: Front overrider, left
+  haynes:
+    section: 10
+    figures:
+    - figure: '12.1'
+      legend: 11
+  quantity: 1
+  notes: 'Tall chrome overrider, rubber-faced (the strip is overrider-rubber-front), on the blade 330 mm either side of the
+    centre, its face at car_layout FRONT_X (Oliver''s photos 10, 15; profile photo 29: 282-520 mm above the road).'
+  specs:
+    height:
+      mm: 238.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: overrider 282-520 above the road'
+    centre_y:
+      mm: 330.0
+      source:
+        label: D
+        method: Oliver's photo 15 scaled on the headlamp rims
+- id: body.brightwork.front-overrider-r
+  name: Front overrider, right
+  haynes:
+    section: 10
+    figures:
+    - figure: '12.1'
+      legend: 11
+  quantity: 1
+  notes: 'Tall chrome overrider, rubber-faced (the strip is overrider-rubber-front), on the blade 330 mm either side of the
+    centre, its face at car_layout FRONT_X (Oliver''s photos 10, 15; profile photo 29: 282-520 mm above the road).'
+  specs:
+    height:
+      mm: 238.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: overrider 282-520 above the road'
+    centre_y:
+      mm: 330.0
+      source:
+        label: D
+        method: Oliver's photo 15 scaled on the headlamp rims
+- id: body.brightwork.rear-overrider-l
+  name: Rear overrider, left
+  haynes:
+    section: 14
+    figures:
+    - figure: '12.1'
+      legend: 27
+  quantity: 1
+  notes: On body_layout OVERRIDER_Y either side of the plate (Oliver's photos 18, 24), its face at REAR_X; the number plate
+    lamp's two screw holes in its inner face (P10 NUMBER_LAMP).
+  specs:
+    centre_y:
+      mm: 340.0
+      source:
+        label: D
+        method: body_layout OVERRIDER_Y from Oliver's photos 18, 24 (scaled on the 540 mm plate)
+    height:
+      mm: 210.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: overrider 395-605 above the road'
+- id: body.brightwork.rear-overrider-r
+  name: Rear overrider, right
+  haynes:
+    section: 14
+    figures:
+    - figure: '12.1'
+      legend: 26
+  quantity: 1
+  notes: On body_layout OVERRIDER_Y either side of the plate (Oliver's photos 18, 24), its face at REAR_X; the number plate
+    lamp's two screw holes in its inner face (P10 NUMBER_LAMP).
+  specs:
+    centre_y:
+      mm: 340.0
+      source:
+        label: D
+        method: body_layout OVERRIDER_Y from Oliver's photos 18, 24 (scaled on the 540 mm plate)
+    height:
+      mm: 210.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: overrider 395-605 above the road'
+- id: body.brightwork.front-spring-bar-l
+  name: Front bumper spring bar, left
+  haynes:
+    section: 10
+    figures:
+    - figure: '12.1'
+      legend: 3
+  quantity: 1
+  finish: paint_black
+  notes: Spring steel blade from the bar's back to the chassis leg's front end, two bolts at the leg.
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Spring blade
+- id: body.brightwork.front-spring-bar-r
+  name: Front bumper spring bar, right
+  haynes:
+    section: 10
+    figures:
+    - figure: '12.1'
+      legend: 2
+  quantity: 1
+  finish: paint_black
+  notes: Mirror of the left.
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Spring blade
+- id: body.brightwork.rear-bracket-l
+  name: Rear bumper mounting bracket, left
+  haynes:
+    section: 14
+    figures:
+    - figure: '12.1'
+      legend: 34
+  quantity: 1
+  finish: paint_black
+  notes: Bracket from the rear rail's end to the bar.
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Bracket plate
+- id: body.brightwork.rear-bracket-r
+  name: Rear bumper mounting bracket, right
+  haynes:
+    section: 14
+    figures:
+    - figure: '12.1'
+      legend: 34
+  quantity: 1
+  finish: paint_black
+  notes: Mirror of the left.
+  specs:
+    thickness:
+      mm: 6.0
+      source:
+        label: D
+        method: Bracket plate
+- id: body.brightwork.grille-surround
+  name: Grille surround
+  haynes:
+    section: 7
+    figures:
+    - figure: photo 7.1
+  quantity: 1
+  notes: 'Chrome frame round the grille opening (Sec 7; Oliver''s photos 10, 15, 27): a wide shallow rounded rectangle, 890
+    mm across, its top arching with the bonnet''s front edge, corners about 50 mm radius; three steady bracket tabs behind
+    the top.'
+  specs:
+    width:
+      mm: 890.0
+      source:
+        label: D
+        method: Oliver's photo 27 scaled on the headlamp rims
+- id: body.brightwork.grille-slats
+  name: Grille slats
+  haynes:
+    section: 7
+  quantity: 1
+  notes: 'Fine vertical slats set back in the surround on two rails (Oliver''s photos 10, 15: about 60 slats).'
+  specs:
+    pitch:
+      mm: 14.5
+      source:
+        label: D
+        method: Oliver's photo 10, slats counted across the opening
+- id: body.brightwork.grille-bar
+  name: Grille centre bar
+  haynes:
+    section: 7
+  quantity: 1
+  notes: Vertical centre bar under the badge (Oliver's photo 10).
+  specs:
+    width:
+      mm: 26.0
+      source:
+        label: D
+        method: Bar face
+- id: body.brightwork.grille-badge
+  name: Grille badge (shield)
+  haynes:
+    section: 7
+  quantity: 1
+  notes: Shield-shaped badge at the top centre of the surround, standing above it (Oliver's photos 10, 15); a plain shield,
+    no lettering or logo.
+  specs:
+    width:
+      mm: 58.0
+      source:
+        label: D
+        method: Oliver's photo 10 against the surround
+    height:
+      mm: 76.0
+      source:
+        label: D
+        method: Oliver's photo 10
+- id: body.brightwork.boot-badge
+  name: Boot lid badge
+  haynes:
+    section: 26
+  quantity: 1
+  notes: Plain octagon on the boot lid above the handle (Oliver's photos 06, 24; no lettering).
+  specs:
+    across:
+      mm: 52.0
+      source:
+        label: D
+        method: Octagon across flats, Oliver's photo 06
+- id: body.brightwork.front-plinth
+  name: Front number plate plinth
+  haynes:
+    section: 10
+  quantity: 1
+  finish: paint_black
+  notes: Pressed plinth on the valance under the bumper's centre carrying the plate (Oliver's photos 10, 15).
+  specs:
+    width:
+      mm: 532.0
+      source:
+        label: D
+        method: Plate plus border
+- id: body.brightwork.front-plate
+  name: Front number plate (blank)
+  haynes:
+    section: 10
+  quantity: 1
+  finish: paint_black
+  notes: Front number plate, blank (no characters drawn), 520 x 111, just under the blade on the valance.
+  specs:
+    width:
+      mm: 520.0
+      source:
+        label: S
+        ref: UK number plate 520 x 111 mm (BS AU 145)
+        note: Standard plate size
+      display_only: true
+- id: body.brightwork.rear-plinth
+  name: Rear number plate plinth
+  haynes:
+    section: 37
+  quantity: 1
+  finish: paint_body_red
+  notes: Rear plate plinth on the rear panel above the blade, between the overriders (Oliver's photos 18, 24).
+  specs:
+    width:
+      mm: 540.0
+      source:
+        label: D
+        method: Plate plus border
+- id: body.brightwork.rear-plate
+  name: Rear number plate (blank)
+  haynes:
+    section: 37
+  quantity: 1
+  finish: paint_black
+  notes: Rear number plate, blank (no characters drawn), above the rear blade.
+  specs:
+    width:
+      mm: 520.0
+      source:
+        label: S
+        ref: UK number plate 520 x 111 mm (BS AU 145)
+        note: Standard plate size
+      display_only: true
+- id: body.brightwork.strip-front-l
+  name: Chrome side strip, front left
+  haynes:
+    section: 1
+  quantity: 1
+  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  specs:
+    height:
+      mm: 690.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+- id: body.brightwork.strip-door-l
+  name: Chrome side strip, door left
+  haynes:
+    section: 1
+  quantity: 1
+  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  specs:
+    height:
+      mm: 690.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+- id: body.brightwork.strip-rear-l
+  name: Chrome side strip, rear left
+  haynes:
+    section: 1
+  quantity: 1
+  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  specs:
+    height:
+      mm: 690.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+- id: body.brightwork.strip-front-r
+  name: Chrome side strip, front right
+  haynes:
+    section: 1
+  quantity: 1
+  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  specs:
+    height:
+      mm: 690.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+- id: body.brightwork.strip-door-r
+  name: Chrome side strip, door right
+  haynes:
+    section: 1
+  quantity: 1
+  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  specs:
+    height:
+      mm: 690.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+- id: body.brightwork.strip-rear-r
+  name: Chrome side strip, rear right
+  haynes:
+    section: 1
+  quantity: 1
+  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  specs:
+    height:
+      mm: 690.0
+      source:
+        label: D
+        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+- id: body.brightwork.overrider-rubber-front
+  name: Front overrider rubber face
+  haynes:
+    section: 10
+    figures:
+    - figure: '12.1'
+      legend: 11
+  quantity: 2
+  finish: rubber
+  notes: Black rubber strip in the groove down each front overrider's face (Oliver's photo 10).
+  specs:
+    width:
+      mm: 11.0
+      source:
+        label: D
+        method: Oliver's photo 10
+- id: body.brightwork.overrider-rubber-rear
+  name: Rear overrider rubber face
+  haynes:
+    section: 14
+    figures:
+    - figure: '12.1'
+      legend: 27
+  quantity: 2
+  finish: rubber
+  notes: As the front (Oliver's photos 18, 25).
+  specs:
+    width:
+      mm: 11.0
+      source:
+        label: D
+        method: Oliver's photo 25
+- id: body.brightwork.grille-rail
+  name: Grille lower rail
+  haynes:
+    section: 7
+  quantity: 1
+  notes: Horizontal chrome rail across the grille opening's foot, just above the bumper blade (Oliver's photo 10).
+  specs:
+    height:
+      mm: 18.0
+      source:
+        label: D
+        method: Oliver's photo 10
+- id: body.brightwork.scuttle-vent
+  name: Scuttle air intake grille
+  haynes:
+    section: 1
+  quantity: 1
+  notes: 'Chrome slatted intake on the scuttle top at the windscreen base, over the heater''s air inlet (Oliver''s photos
+    15, 27): a frame and 13 slats.'
+  specs:
+    width:
+      mm: 300.0
+      source:
+        label: D
+        method: Oliver's photo 27 against the bonnet width

@@ -192,6 +192,20 @@ The CAD build needs OpenCascade, so it runs locally and its output is committed.
   (with P8's hub and brake datums), `mgb/rear_suspension_layout.py`, `mgb/steering_layout.py`, `mgb/wheel_layout.py`,
   `mgb/engine_mount_layout.py`, `mgb/chassis_layout.py` (stay rod); body mounting datums for P11 are listed in PLAN.md.
 
-Next: P11b, the body shell, built round `mgb/body_layout.py`, `mgb/underbody_layout.py`, the chassis datums P9
-left (body mountings for the crossmember, springs, dampers, straps, bump rubbers and the steering column, listed
-in PLAN.md) and the exhaust and fuel parts that hang from it. The working standard is in `CLAUDE.md`.
+- P11b (body) built to Oliver's car (his 28 photos and a near-orthographic side view of a sister car, scaled on the
+  wheelbase; Haynes Ch 12, Figs 12.1, 12.7, 12.12, 12.13, 12.15, 12.19 for the construction): the welded shell's
+  structure (floor, tunnel, toe boards, bulkhead with the pedal box aperture and grommets, scuttle inner and facia
+  rail, front legs on P9's crossmember mountings, inner wings and wheel houses, front apron and radiator duct, lock
+  platform, three-member sills with jacking sockets, hinge and shut pillars, heelboard with the fuel pump's captive
+  nuts, tonneau floor over P10's battery carriers with the access covers, rear bulkhead, rear wheel houses, boot floor
+  with P11a's tank tabs and exhaust bracket nuts, rear rails with P9's spring hangers, shackle brackets, damper
+  doublers, strap brackets and bump strike plates, P10b's wiring grommets and clips); the outer panels (bolt-on front
+  wings with the hooded headlamp nacelles, grille panel, front valance, the bonnet with its swage between the proud
+  wing crowns, scuttle, doors with frames, hinges, wind-up glass, quarter-lights, pull handles, locks, the driver's
+  mirror, outer sills, rear wings ending in the raked lamp plinths, rear deck, boot lid, rear panel with the filler
+  cap); the windscreen; chrome bumpers with rubber-faced overriders, the slatted grille with its plain shield badge,
+  the scuttle intake, side strips, plain badges and blank plates; the interior (black crinkle facia round P10's
+  instruments and switches with the plaque, heater knobs, binnacle, crash roll and glovebox; the console with its
+  speaker grille; black seats with red piping; carpets, door cards, cappings); the hood erected; the spare wire wheel
+  on the boot carpet. The outer skin is one B-spline face fitted to an implicit body (`mgb/body_shell_layout.py`,
+  `mgb/body_shell.py`, cached in `.cache/body/`).

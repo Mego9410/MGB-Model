@@ -42,12 +42,12 @@ for s in (-1, 1):
     for a in (0.0, 90.0, -90.0):
         add("adjusting-screw", hl * Rot(0, 0, a), explode=ex(FWD, 4, 30))
     add("headlamp-bowl", hl)
-    sl = Location((BL.SIDELAMP_X, s * BL.SIDELAMP_Y, BL.SIDELAMP_Z)) * FRONT
+    sl = Location((BL.SIDELAMP_X, s * BL.SIDELAMP_Y, BL.SIDELAMP_Z)) * FRONT * (Rot(0, 0, 180) if s < 0 else Rot(0, 0, 0))
     add("side-rim", sl, explode=ex(FWD, 5, 70))
     add("side-lens-clear", sl, explode=ex(FWD, 5.5, 50))
     add("side-lens-amber", sl, explode=ex(FWD, 5.5, 50))
     add("side-body", sl, explode=ex(FWD, 6, 25))
-    rl = Location((BL.REAR_LAMP_X, s * BL.REAR_LAMP_Y, BL.REAR_LAMP_Z)) * REAR
+    rl = Location((BL.REAR_LAMP_X, s * BL.REAR_LAMP_Y, BL.REAR_LAMP_Z)) * Rot(0, BL.REAR_LAMP_RAKE, 0) * REAR
     add("rear-lens-red", rl, explode=ex(BACK, 7, 70))
     add("rear-lens-amber", rl, explode=ex(BACK, 7, 70))
     add("rear-body", rl, explode=ex(BACK, 8, 30))
