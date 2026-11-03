@@ -44,7 +44,7 @@ BAR_DEPTH = 44.0
 FRONT_GAP, REAR_GAP = 34.0, 34.0
 FRONT_END_X, REAR_END_X = 528.0, -2745.0
 OVR_FRONT_Y = 330.0                          # front overriders (Oliver's photos 10, 15)
-OVR_H = {"front": (282.0, 520.0), "rear": (395.0, 605.0)}
+OVR_H = {"front": (292.0, 506.0), "rear": (395.0, 600.0)}
 
 
 def _plan_outline(h, front, gap, n=121):
@@ -429,6 +429,18 @@ def rear_plate(spec):
     return _c([plate, rim], spec)
 
 
+def rear_reflector(side):
+    def build(spec):
+        """Small round red reflector on the wing end below the rear lamp, in a chrome-edged plinth (Oliver's photos
+        18, 24)."""
+        y, h = side * BL.REAR_LAMP_Y, 548.0
+        x = S.tail_x(BL.REAR_LAMP_Y, h)
+        from mgb.chassis_geom import xrev
+        r = xrev([(0.0, 0.0), (20.0, 0.0), (20.0, -3.0), (18.0, -7.0), (0.0, -8.0)]).moved(Location((x + 1.0, y, H(h))))
+        return _l(r, spec)
+    return build
+
+
 PARTS = {
     "body.brightwork.front-bar": {"build": front_bar},
     "body.brightwork.rear-bar": {"build": rear_bar},
@@ -451,5 +463,6 @@ for s_, n in ((1, "l"), (-1, "r")):
     PARTS[f"body.brightwork.rear-overrider-{n}"] = {"build": rear_overrider(s_)}
     PARTS[f"body.brightwork.front-spring-bar-{n}"] = {"build": front_spring_bar(s_)}
     PARTS[f"body.brightwork.rear-bracket-{n}"] = {"build": rear_bracket(s_)}
+    PARTS[f"body.brightwork.rear-reflector-{n}"] = {"build": rear_reflector(s_)}
     for w in ("front", "door", "rear"):
         PARTS[f"body.brightwork.strip-{w}-{n}"] = {"build": strip(w, s_)}

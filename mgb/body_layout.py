@@ -49,7 +49,7 @@ HEADLAMP_BOWL_DEPTH = 118.0                            # the nacelle must take t
 # Side and flasher lamps (Oliver's photos 10, 15, 20): rectangular units with chrome surrounds below each headlamp,
 # just above the bumper beside the grille surround; centres |y| 569, 495 mm above the road, the face on the wing front
 # (P10 had a lozenge lamp at FRONT_X - 70, 545 high).
-SIDELAMP_X = FRONT_X - 140.0
+SIDELAMP_X = FRONT_X - 136.0
 SIDELAMP_Y = 569.0
 SIDELAMP_Z = above_ground(495.0)
 # Horns: two on the front cross panel behind the grille, either side of the radiator (D).
@@ -107,11 +107,11 @@ SWITCHES = {
     "heater": (56.0, IP_Z - 50.0),
     "ignition": (8.0, IP_Z - 50.0),
     "panel-lamp": (-36.0, IP_Z - 50.0),                  # push-pull knob right of the ignition
-    "map-lamp": (-84.0, IP_Z + 44.0),                    # small knob above the dual gauge
+    "map-lamp": (-84.0, IP_Z + 36.0),                    # small knob above the dual gauge
     "overdrive": (DRIVER_Y - 262.0, IP_Z - 10.0),        # toggle outboard of the fuel gauge
 }
 # centre panel fittings (Oliver's photos 16, 22): the plaque above the switches, the two heater knobs left of it
-PLAQUE_Y, PLAQUE_Z = 48.0, IP_Z + 22.0
+PLAQUE_Y, PLAQUE_Z = 62.0, IP_Z + 22.0
 HEATER_KNOB_Y, HEATER_KNOB_Z = 196.0, (IP_Z + 26.0, IP_Z - 44.0)
 # Wipers: two wheelboxes under the scuttle, spindles through it just ahead of the screen base,
 # axis square to the scuttle top; the DR3A motor under the passenger (left) side of the facia
@@ -147,7 +147,7 @@ EARTH_POINTS = {
 # On the rear wing ends' raked plinths (profile photo 29: the plinth raked about 31 deg from vertical, its top corner
 # X -2774 h 803 and foot X -2930 h 570; Oliver's photos 18, 24: centres |y| 645). P11b moved the lamp back onto the
 # plinth and tilted it (P10 had it upright at REAR_X + 75, 640 high).
-REAR_LAMP_X = REAR_X + 210.0                           # lens face centre on the plinth
+REAR_LAMP_X = REAR_X + 204.0                           # lens face centre on the plinth
 REAR_LAMP_Y = HALF_W - 115.0
 REAR_LAMP_Z = above_ground(705.0)
 REAR_LAMP_RAKE = 31.0                                  # deg: the lamp's top leans forward with the plinth

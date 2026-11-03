@@ -219,6 +219,8 @@ def bulkhead(spec):
     from parts.brakes import master as MS
     ap = G.rounded_rect(-328.0, -188.0, -98.0, 14.0, 10.0)
     p = p - xprism(ap, x0 - 5, BH_X + 5)
+    for yp in (-215.0, -290.0):                  # the pedal arms' slots below the aperture (P8: arms cross at z -140)
+        p = p - xprism(G.rounded_rect(yp - 17.0, yp + 17.0, -185.0, -96.0, 12.0), x0 - 5, BH_X + 5)
     for y, z in MS.box_bolts():
         p = p - xcyl(4.2, x0 - 5, BH_X + 5, y, z)
     # heater air opening and its four screw holes (early heater, Fig 12.27, on the bulkhead shelf)

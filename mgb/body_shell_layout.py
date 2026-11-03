@@ -198,7 +198,7 @@ def z_b(x):
 
 BONNET_CAMBER = mono([(745.0, 26.0), (300.0, 30.0), (-392.0, 32.0), (-700.0, 20.0), (-1650.0, 20.0), (-2100.0, 30.0),
                  (-2900.0, 30.0)])          # the top's fall from the centre to the crown line where no crown stands proud
-CROWN_KOUT = mono([(700.0, 0.0034), (300.0, 0.0032), (-700.0, 0.0030), (-2200.0, 0.0030), (-2900.0, 0.0032)])
+CROWN_KOUT = mono([(700.0, 0.0034), (300.0, 0.0032), (-700.0, 0.0030), (-1700.0, 0.0032), (-2200.0, 0.0040), (-2900.0, 0.0046)])
 
 
 def _top(X, Y):
@@ -273,7 +273,7 @@ def F(X, Y, Hh):
     plan = smax(smax(fs, fn, NOSE_K), fr, TAIL_K)
     ft = Hh - _top(X, Y)
     k_top = SHOULDER_K - (SHOULDER_K - 45.0) * _step((X - 480.0) / 80.0) * _step((Y - 470.0) / 60.0) \
-        - (SHOULDER_K - 70.0) * _step((-2550.0 - X) / 150.0)          # crisper wing tops into the lamp plinths
+        - (SHOULDER_K - 55.0) * _step((-2100.0 - X) / 300.0)          # crisper rear wing tops into the lamp plinths
     body = smax(plan, ft, k_top)
     fb = BLOB_BOTTOM - Hh
     return smax(body, fb, 60.0)
@@ -451,8 +451,8 @@ SILL_TOP_H = DOOR_BOTTOM_H - 6.0            # outer sill to wing seam (below the
 # Grille opening (Sec 7, early grille; Oliver's photos 10, 15, 27): a wide shallow rounded rectangle, 890 mm across
 # the surround, top following the bonnet's front edge, the bumper across its lower edge.
 MOUTH_Y = 432.0                             # half-width of the opening (the surround laps 13 mm round it)
-MOUTH_TOP_H = 600.0
-MOUTH_BOT_H = 420.0
+MOUTH_TOP_H = 596.0
+MOUTH_BOT_H = 428.0
 MOUTH_END_R = 52.0                          # corner radius
 MOUTH_BACK_X = 735.0                        # grille opening's back edge (the grille sits in it)
 

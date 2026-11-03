@@ -46,7 +46,7 @@ FACIA_SWEEP = 0.0                            # flat across (the crash roll and d
 SIZE = {"tachometer": 40.0, "speedometer": 40.0, "fuel-gauge": 26.0, "dual-gauge": 26.0}
 SW_R = {"panel-lamp": 5.5, "map-lamp": 5.5, "ignition": 10.0}
 GLOVE = (250.0, 575.0, 735.0, 868.0)        # (y0, y1, h0, h1) glovebox on the passenger side (left, RHD car)
-PLAQUE = (BL.PLAQUE_Y, BL.PLAQUE_Z, 250.0, 78.0)   # centre (y, z), width, height
+PLAQUE = (BL.PLAQUE_Y, BL.PLAQUE_Z, 214.0, 74.0)   # centre (y, z), width, height
 HEATER_KNOBS = [(BL.HEATER_KNOB_Y, z) for z in BL.HEATER_KNOB_Z]
 BINNACLE = (BL.INSTRUMENTS["speedometer"][0], BL.INSTRUMENTS["tachometer"][0], BL.IP_Z)
 
@@ -92,11 +92,11 @@ def centre_panel(spec):
     y0, y1 = BL.HEATER_KNOB_Y + 40.0, BL.INSTRUMENTS["dual-gauge"][0] - 40.0
     x0 = FX - BL.FACIA_T - 3.0
     p = xprism(G.rounded_rect(y1, y0, H(FACIA_H[0] + 28.0), H(FACIA_H[1] - 30.0), 16.0), x0, FX - BL.FACIA_T)
-    for k, (y, z) in BL.SWITCHES.items():
+    for k, (y, z) in BL.SWITCHES.items():               # clear of the switches' nuts and bezels on the facia
         if y1 < y < y0:
-            p = p - xcyl(SW_R.get(k, 6.2), x0 - 5, FX + 5, y, z)
+            p = p - xcyl(16.0 if k == "ignition" else 12.5, x0 - 5, FX + 5, y, z)
     k = "dual-gauge"
-    p = p - xcyl(SIZE[k] + 0.5, x0 - 5, FX + 5, *BL.INSTRUMENTS[k])
+    p = p - xcyl(SIZE[k] + 6.0, x0 - 5, FX + 5, *BL.INSTRUMENTS[k])
     for y, z in HEATER_KNOBS:
         p = p - xcyl(5.0, x0 - 5, FX + 5, y, z)
     return _l(p, spec)
@@ -166,7 +166,7 @@ def crash_roll(spec):
     """Crash roll (Fig 12.19 item 21; Oliver's photos 01, 04, 22): the padded black roll along the facia's top from
     door to door under the screen, curving back at its ends to the door shut faces."""
     ys = [-FACIA_W - 20.0 + (2 * FACIA_W + 40.0) * k / 16 for k in range(17)]
-    pts = [(_fx(y) - 24.0, y, H(FACIA_H[1] - 24.0 * (y / FACIA_W) ** 2) - 6.0) for y in ys]
+    pts = [(_fx(y) - 24.0, y, H(FACIA_H[1] - 24.0 * (y / FACIA_W) ** 2) + 2.0) for y in ys]
     r = swept_rod(pts, 27.0)
     cut = box(FX - 80.0, FX + 60.0, -FACIA_W - 60, FACIA_W + 60, H(FACIA_H[1]) - 40.0, H(FACIA_H[1]) + 60.0)
     return _l(r & cut, spec)
@@ -230,10 +230,10 @@ def speaker_grille(spec):
 SEAT_Y = 385.0                               # between the floor's runner captive nuts (y 300 and 470)
 SEAT_W = 430.0
 CUSH_X = (-1080.0, -1420.0)
-CUSH_H = (262.0, 352.0)
-SQUAB_RAKE = 14.0
-SQUAB_LEN = 600.0
-SQUAB_T = 110.0
+CUSH_H = (274.0, 364.0)
+SQUAB_RAKE = 12.0
+SQUAB_LEN = 590.0
+SQUAB_T = 100.0
 
 
 def _rr_wire(x0, x1, y0, y1, z, r, n=4):
@@ -269,7 +269,7 @@ def seat_cushion(side):
 
 
 def _squab_loc(side):
-    return Location((CUSH_X[1] + 30.0, side * SEAT_Y, H(CUSH_H[0] + 40.0))) * Rot(0, -SQUAB_RAKE, 0)
+    return Location((CUSH_X[1] + 110.0, side * SEAT_Y, H(CUSH_H[0] + 40.0))) * Rot(0, -SQUAB_RAKE, 0)   # clear of the heelboard
 
 
 def _squab_local():

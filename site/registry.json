@@ -352,6 +352,7 @@
     "body.brightwork.rear-overrider-l",
     "body.brightwork.front-spring-bar-l",
     "body.brightwork.rear-bracket-l",
+    "body.brightwork.rear-reflector-l",
     "body.brightwork.strip-front-l",
     "body.brightwork.strip-door-l",
     "body.brightwork.strip-rear-l",
@@ -359,6 +360,7 @@
     "body.brightwork.rear-overrider-r",
     "body.brightwork.front-spring-bar-r",
     "body.brightwork.rear-bracket-r",
+    "body.brightwork.rear-reflector-r",
     "body.brightwork.strip-front-r",
     "body.brightwork.strip-door-r",
     "body.brightwork.strip-rear-r",
@@ -379,7 +381,7 @@
     "body.brightwork.grille-badge"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 399512
+   "bytes": 414649
   },
   "body.doors": {
    "id": "body.doors",
@@ -414,7 +416,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 332286
+   "bytes": 332454
   },
   "body.front": {
    "id": "body.front",
@@ -438,7 +440,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1049199
+   "bytes": 1049196
   },
   "body.glass": {
    "id": "body.glass",
@@ -458,7 +460,7 @@
     "body.glass.pillar-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 183256
+   "bytes": 183236
   },
   "body.hood": {
    "id": "body.hood",
@@ -478,7 +480,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 545298
+   "bytes": 545302
   },
   "body.interior": {
    "id": "body.interior",
@@ -527,7 +529,7 @@
     "body.interior.speaker-grille"
    ],
    "file": "models/body.interior.json",
-   "bytes": 1041802
+   "bytes": 1054347
   },
   "body.rear": {
    "id": "body.rear",
@@ -557,7 +559,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 2597343
+   "bytes": 2625102
   },
   "body.structure": {
    "id": "body.structure",
@@ -616,7 +618,7 @@
     "body.structure.harness-clips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 672485
+   "bytes": 672501
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -722,7 +724,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468578
+   "bytes": 468658
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -764,7 +766,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 591865
+   "bytes": 593069
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1345,7 +1347,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 150130
+   "bytes": 150078
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -1508,7 +1510,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 333285
+   "bytes": 333533
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1566,7 +1568,7 @@
     "electrical.loom.bulkhead-grommet"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 94838
+   "bytes": 94658
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1722,7 +1724,7 @@
     "electrical.wiring-indicators.gp-joint-rear"
    ],
    "file": "models/electrical.wiring-indicators.json",
-   "bytes": 591565
+   "bytes": 585011
   },
   "electrical.wiring-instruments": {
    "id": "electrical.wiring-instruments",
@@ -1806,7 +1808,7 @@
     "electrical.wiring-lighting.map-connector"
    ],
    "file": "models/electrical.wiring-lighting.json",
-   "bytes": 974259
+   "bytes": 975391
   },
   "electrical.wiring-overdrive": {
    "id": "electrical.wiring-overdrive",
@@ -2161,7 +2163,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170532
+   "bytes": 170376
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2334,7 +2336,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 227963
+   "bytes": 228335
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2356,7 +2358,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139370
+   "bytes": 139258
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2449,7 +2451,7 @@
     "fuel.tank.strap-nut"
    ],
    "file": "models/fuel.tank.json",
-   "bytes": 185763
+   "bytes": 184983
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -2942,7 +2944,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494230
+   "bytes": 494326
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -6729,6 +6731,76 @@
    ],
    "derivedShare": 1.0
   },
+  "body.brightwork.rear-reflector-l": {
+   "id": "body.brightwork.rear-reflector-l",
+   "kind": "part",
+   "name": "Rear reflector, left",
+   "parent": "body.brightwork",
+   "haynes": {
+    "section": 14,
+    "spec_page": 218
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "lens_red",
+   "notes": "Small round red reflector on the wing end below the rear lamp (Oliver's photos 18, 24).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "40.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 24 against the lamp",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.brightwork.rear-reflector-r": {
+   "id": "body.brightwork.rear-reflector-r",
+   "kind": "part",
+   "name": "Rear reflector, right",
+   "parent": "body.brightwork",
+   "haynes": {
+    "section": 14,
+    "spec_page": 218
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "lens_red",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "40.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 24 against the lamp",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
   "body.doors.skin-l": {
    "id": "body.doors.skin-l",
    "kind": "part",
@@ -10094,7 +10166,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_body_red",
-   "notes": "Perimeter band following the skin 20 mm under it, one cross brace.",
+   "notes": "Perimeter band following the skin 20 mm under it and an X-shaped brace corner to corner (Oliver's photo 14).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -76296,6 +76368,24 @@
    "label": true,
    "fitted": null
   },
+  "body.brightwork.rear-reflector-l#1": {
+   "part": "body.brightwork.rear-reflector-l",
+   "assembly": "body.brightwork",
+   "node": "body--brightwork--rear-reflector-l__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "body.brightwork.strip-front-l#1": {
    "part": "body.brightwork.strip-front-l",
    "assembly": "body.brightwork",
@@ -76437,6 +76527,24 @@
      ],
      "order": 4,
      "distance_mm": 150
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.brightwork.rear-reflector-r#1": {
+   "part": "body.brightwork.rear-reflector-r",
+   "assembly": "body.brightwork",
+   "node": "body--brightwork--rear-reflector-r__1",
+   "stages": [
+    {
+     "axis": [
+      -1,
+      0,
+      0
+     ],
+     "order": 1,
+     "distance_mm": 80
     }
    ],
    "label": true,
@@ -132887,7 +132995,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-03T00:26:41+00:00",
+ "built": "2026-11-03T01:31:24+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,

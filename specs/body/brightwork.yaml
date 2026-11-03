@@ -463,3 +463,29 @@ parts:
       source:
         label: D
         method: Oliver's photo 27 against the bonnet width
+- id: body.brightwork.rear-reflector-l
+  name: Rear reflector, left
+  haynes:
+    section: 14
+  quantity: 1
+  finish: lens_red
+  notes: Small round red reflector on the wing end below the rear lamp (Oliver's photos 18, 24).
+  specs:
+    diameter:
+      mm: 40.0
+      source:
+        label: D
+        method: Oliver's photo 24 against the lamp
+- id: body.brightwork.rear-reflector-r
+  name: Rear reflector, right
+  haynes:
+    section: 14
+  quantity: 1
+  finish: lens_red
+  notes: Mirror of the left.
+  specs:
+    diameter:
+      mm: 40.0
+      source:
+        label: D
+        method: Oliver's photo 24 against the lamp

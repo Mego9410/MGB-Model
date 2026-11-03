@@ -31,6 +31,7 @@ for n, out in (("l", LEFT), ("r", RIGHT)):
     add(f"rear-overrider-{n}", groups=["rear"], explode=ex(BACK, 1, 120))
     add(f"front-spring-bar-{n}", explode=ex(FWD, 4, 150))
     add(f"rear-bracket-{n}", explode=ex(BACK, 4, 150))
+    add(f"rear-reflector-{n}", explode=ex(BACK, 1, 80))
     for w in ("front", "door", "rear"):
         add(f"strip-{w}-{n}", explode=ex(out, 1, 80))
 add("front-bar", groups=["front"])

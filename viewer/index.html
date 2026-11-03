@@ -566,7 +566,15 @@ controls.addEventListener('start', () => { fly.to = null; });
 
 window.mgbCameraPos = () => camera.position.toArray();
 // review hook: frame a part or the current assembly from a given direction (viewer Y-up)
-window.mgbCamera = ({ dir, part, zoom } = {}) => {
+window.mgbCamera = ({ dir, part, zoom, pos, at, fov, hide } = {}) => {
+  if (hide) { hidden.clear(); for (const id of hide) hidden.add(id); applyVisibility(); }
+  if (pos && at) {   // an exact camera in CAD mm (X forward, Y left, Z up), for side-by-side with a photograph
+    const v = p => new THREE.Vector3(p[0] / 1000, p[2] / 1000, -p[1] / 1000);
+    fly.to = null; camera.position.copy(v(pos)); controls.target.copy(v(at));
+    if (fov) camera.fov = fov;
+    camera.near = 0.05; camera.far = 200; camera.updateProjectionMatrix(); controls.update(); try { wake(); } catch (_) {}
+    return;
+  }
   const target = part ? instances.filter(i => i.partId === part).map(i => i.obj) : null;
   const g = new THREE.Group();
   const obj = target && target.length ? target[0] : (current && loaded[current]) || models;

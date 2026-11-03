@@ -56,7 +56,7 @@ parts:
     name: Boot lid inner frame
     haynes: { section: 26 }
     quantity: 1
-    notes: "Perimeter band following the skin 20 mm under it, one cross brace."
+    notes: "Perimeter band following the skin 20 mm under it and an X-shaped brace corner to corner (Oliver's photo 14)."
     specs:
       band_width: { mm: 49.0, source: { label: D, method: "6 to 55 mm in from the edge" } }
 

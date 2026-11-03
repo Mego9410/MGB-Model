@@ -307,13 +307,24 @@ round them and should check them against the car:
   files; bump `CACHE_VERSION` in body_shell.py when the trimming code changes.
 - Datums: `mgb/body_shell_layout.py` (body shape tables, shut lines, arches, screen, hood) and the moves listed under
   "Changes P11b made to earlier phases" below.
-- Interference (scratchpad sweep and proximity checks, first draft of P11b): the front tyre at full lock (28 deg front
-  in, 37 deg rear in, from the 32 ft turning circle) clears every body part at static height; this needed the front
-  legs stepped inboard to |y| 338 ahead of and behind the crossmember and the inner wing's lower edge raised there
-  (tests/test_body.py checks the legs). With 60 mm of bump at full lock the tyre still reaches the inner wings and the
-  legs (P9 has not set a bump travel). The bonnet clears the radiator header tank (tests/test_body.py). Not checked:
-  the rear axle at full bump against the boot floor's hump, the propeller shaft at full bump against the tunnel
-  (static clearance about 35 mm).
+- Interference: the front tyre at full lock (28 deg front in, 37 deg rear in, from the 32 ft turning circle) clears
+  every body part at static height; this needed the front legs stepped inboard to |y| 338 ahead of and behind the
+  crossmember and the inner wing's lower edge raised there (tests/test_body.py checks the legs). With 60 mm of bump at
+  full lock the tyre still reaches the inner wings and the legs (P9 has not set a bump travel). The bonnet skin clears
+  the radiator header tank (tests/test_body.py). A check of every body panel's surface points against every other
+  system's solids (scratchpad q/clash_body.py, from the build's STEP files) found these real clashes, now fixed: the
+  bonnet frame's side bands over the radiator's header tank (cut away there), the pedal arms through the bulkhead
+  (slots added below the pedal box aperture), the headlamp bowls and side lamp studs through the wing skin (the
+  openings followed P10's old lamp positions), the filler cap against the right rear overrider (cap moved to y -425),
+  the instruments' and switches' bezels and nuts in the raised centre panel (larger holes), the dual gauge under the
+  plaque (plaque narrowed), the map lamp switch under the crash roll, the seat squabs through the heelboard into the
+  fuel pump (squabs moved forward), the battery cable through the seat cushion's base (cushions raised 12 mm). The
+  rest are intended mountings (units and brackets on their panels, fasteners through holes, the tank's hangers on
+  their tabs, the handbrake ratchet plate on the tunnel, the dampers on the rail doublers, lamps seated on the wing,
+  the instruments' bezels on the facia face) and two small ones left: P9's front coil springs touch the front legs'
+  undersides (a few mm at |y| 428) and the speedometer cable passes the scuttle inner panel without a hole. Not
+  checked: the rear axle at full bump against the boot floor's hump, the propeller shaft at full bump against the
+  tunnel (static clearance about 35 mm).
 - Known P11b approximations: no body drawing with dimensions; the shape is traced from photographs (about +/-10 mm on
   the side elevation, more on the plan and sections, which come from oblique views). Arch lips, door and boot drip
   rails, the boot lid and bonnet return flanges are not drawn; the door glass is flat, the hood a smooth cover without
@@ -344,10 +355,14 @@ round them and should check them against the car:
   (aluminium) behind the lens.
 - P11a filler (`fuel_supply_layout` FILLER_CAP_X/Y, FILLER_TUBE_TOP_Z; `parts/fuel/tank.py`; `assemblies/fuel_tank.py`):
   the filler tube now runs back across the boot to a chrome locking cap on the rear panel right of the number plate
-  (photos 11, 18, 21), 560 mm above the road; P11a had it ending at the right of the boot.
+  (photos 11, 18, 21), 560 mm above the road, outboard of the right-hand overrider; P11a had it ending at the right of
+  the boot. P11a's tail pipe now ends under the bumper blade (exhaust_layout TAIL_END_X = REAR_X + 70, profile photo
+  29).
 - `viewer/index.html`: FINISH vinyl_black, carpet, hood_black, paint_body_red (#d8261c, the body), piping_red,
   underseal (the floor pan, tunnel, toe boards, legs, rails, castles), glass_screen; SYSTEM_EXPLODE for the body
-  assemblies. `build.py` uses an assembly's `LOD` (new "body" tessellation in `mgb/export.py`). `.gitignore`: .cache/.
+  assemblies; the review hook `window.mgbCamera` also takes an exact camera ({pos, at, fov} in CAD mm) so renders can
+  be laid beside photographs. P10b `wiring_layout`: the facia run's nodes follow the moved instruments and switches,
+  and `smooth()` keeps a corner where a route folds straight back (it divided by zero). `build.py` uses an assembly's `LOD` (new "body" tessellation in `mgb/export.py`). `.gitignore`: .cache/.
 - P4's clutch hose bracket stays where P4 put it, carried by a new support on the bulkhead; P9's column bottom bracket
   sits on a body cup 40 mm behind the bulkhead.
 

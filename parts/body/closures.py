@@ -282,7 +282,8 @@ def bonnet_frame_sd(X, Y, Z):
     inner = B.sd_poly(X, Y, B.bonnet_outline(0.0)) + G2 + 60.0
     cross = AND(np.abs(X - 180.0) - 30.0, Pn.bonnet_sd(X, Y, Z) + G2 + 6.0)
     centre = AND(np.abs(Y) - 28.0, Pn.bonnet_sd(X, Y, Z) + G2 + 6.0, X - 650.0)
-    return OR(AND(outer, -inner), cross, centre)
+    rad = AND(np.abs(X - 400.0) - 75.0, np.abs(Y) - 470.0)          # clear of the radiator's header tank (P2)
+    return AND(OR(AND(outer, -inner), cross, centre), -rad)
 
 
 def bonnet_frame(spec):
@@ -342,13 +343,20 @@ def bonnet_lock(spec):
 def boot_frame_sd(X, Y, Z):
     outer = Pn.boot_sd(X, Y, Z) + G2 + 6.0
     inner = B.sd_poly(X, Y, B.boot_outline(0.0)) + G2 + 55.0
-    cross = AND(np.abs(X + 2500.0) - 25.0, Pn.boot_sd(X, Y, Z) + G2 + 6.0)
+    # X-shaped brace corner to corner (Oliver's photo 14)
+    x0, x1, w = S.BOOT_FRONT_X - 60.0, -2880.0, S.BOOT_W[0][1] - 60.0
+
+    def seg(ax, ay, bx, by):
+        dx, dy = bx - ax, by - ay
+        t = np.clip(((X - ax) * dx + (Y - ay) * dy) / (dx * dx + dy * dy), 0.0, 1.0)
+        return np.hypot(X - ax - t * dx, Y - ay - t * dy) - 24.0
+    cross = AND(OR(seg(x0, w, x1, -w), seg(x0, -w, x1, w)), Pn.boot_sd(X, Y, Z) + G2 + 6.0)
     return OR(AND(outer, -inner), cross)
 
 
 def boot_frame(spec):
-    """Boot lid inner frame: perimeter band following the skin 20 mm under it, one cross brace; the hinges' and the
-    lock's fixings."""
+    """Boot lid inner frame: perimeter band following the skin 20 mm under it and an X-shaped brace from corner to
+    corner (Oliver's photo 14); the hinges' and the lock's fixings."""
     def make():
         return B.skin_sdf(boot_frame_sd, 1.0, shift=(0.0, 0.0, -20.0))
     return _l(_cached("boot-frame", make), spec)

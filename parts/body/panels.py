@@ -97,7 +97,7 @@ def circle_xy(X, Y, Z, x, y, r, z_min):
 def headlamp_sd(X, Y, Z):
     """Nacelle openings for P10's bowls: clear of the beam setting screws (92 mm radius), the bowl's 97 mm flange behind
     the face and the 99 mm rim over it."""
-    return OR(*[circle_yz(X, Y, Z, s * BL.HEADLAMP_Y, BL.HEADLAMP_Z, 96.0, 700.0) for s in (1, -1)])
+    return OR(*[circle_yz(X, Y, Z, s * BL.HEADLAMP_Y, BL.HEADLAMP_Z, 96.0, BL.HEADLAMP_RIM_X - 130.0) for s in (1, -1)])
 
 
 def sidelamp_sd(X, Y, Z):
@@ -105,7 +105,7 @@ def sidelamp_sd(X, Y, Z):
     out = []
     for s in (1, -1):
         for dy, r in ((-22.5, 2.6), (22.5, 2.6), (0.0, 6.0)):
-            out.append(circle_yz(X, Y, Z, s * BL.SIDELAMP_Y + dy, BL.SIDELAMP_Z, r, 760.0))
+            out.append(circle_yz(X, Y, Z, s * BL.SIDELAMP_Y + dy, BL.SIDELAMP_Z, r, BL.SIDELAMP_X - 60.0))
     return OR(*out)
 
 
