@@ -49,7 +49,7 @@ def mirror(p, side):
 WAIST_H = S.DOOR_TOP_H - 6.0                             # door top inner edge (below the roll) where the glass slot is
 DOOR_IN = 72.0                               # inner panel this far inboard of the skin
 QL_POST_X = -1104.0                         # quarter-light's rear post (divider) at the waist
-GLASS_TOP_H = 1092.0
+GLASS_TOP_H = 1100.0                          # the glass runs 8 mm up into the hood's edge (P11b QA)
 GLASS_T = 4.0
 
 
@@ -119,12 +119,36 @@ def hinge(side, which):
     return build
 
 
+GLASS_REAR_X = S.DOOR_REAR_X + 14.0            # the glass's rear edge at the waist, just inside the door's rear shut face
+GLASS_REAR_RAKE = 36.0                          # the rear edge leans forward this much up to the top (Oliver's photos 08, 23)
+
+
 def glass_outline():
-    """Door glass in side view (x, height): front edge at the quarter-light post, rear edge raked, top edge under the
-    hood; it runs down inside the door to the regulator channel."""
-    xf, xr = QL_POST_X - 4.0, S.DOOR_REAR_X + 40.0
-    return [(xf, 520.0), (xr, 520.0), (xr, WAIST_H + 20.0), (xr + 150.0, GLASS_TOP_H - 90.0),
-            (xr + 320.0, GLASS_TOP_H - 40.0), (xf - 10.0, GLASS_TOP_H)]
+    """Door glass in side view (x, height): front edge in the quarter-light post's channel, the top along the hood's
+    side edge, the rear edge at the door's rear shut line raked forward slightly and rounded into the top (Oliver's
+    photos 08, 09, 23; the glass runs the whole length of the door); it runs down inside the door to the regulator
+    channel."""
+    xf = QL_POST_X - 4.0
+    return [(xf, 520.0), (GLASS_REAR_X, 520.0), (GLASS_REAR_X, WAIST_H + 20.0),
+            (GLASS_REAR_X + GLASS_REAR_RAKE, GLASS_TOP_H - 14.0), (xf - 10.0, GLASS_TOP_H)]
+
+
+GLASS_RADII = [0, 0, 0, 75.0, 6.0]
+
+
+def glass_top_h(x):
+    """Height of the door glass's top (and raked rear) edge at x, from the rounded outline: the hood's side edge
+    follows it."""
+    pts = B.fillet_poly(glass_outline(), GLASS_RADII)
+    xr = GLASS_REAR_X
+    xtop = QL_POST_X - 14.0                       # the top front corner (the front edge leans back 10 mm)
+    x = min(max(x, xr), xtop)
+    best = None
+    for (x0, h0), (x1, h1) in zip(pts, pts[1:] + pts[:1]):       # upper envelope of the outline at x
+        if min(x0, x1) - 1e-6 <= x <= max(x0, x1) + 1e-6:
+            h = h0 if abs(x1 - x0) < 1e-9 else h0 + (h1 - h0) * (x - x0) / (x1 - x0)
+            best = h if best is None else max(best, h)
+    return best
 
 
 def _glass_y(h):
@@ -133,24 +157,51 @@ def _glass_y(h):
     return y0 - (h - WAIST_H) * math.tan(math.radians(7.0))
 
 
+GLASS_BOW = 5.0                                 # the glass is curved in its height, bowed out this much between the
+                                                # waist and the top (it is on the plane there)
+
+
+def _glass_ys(h):
+    """|y| of the curved glass's outer face line at height h."""
+    t = (h - (WAIST_H + GLASS_TOP_H) / 2) / ((GLASS_TOP_H - WAIST_H) / 2)
+    return _glass_y(h) + GLASS_BOW * (1.0 - t * t)
+
+
 def door_glass(side):
     def build(spec):
         """Wind-up door glass (Fig 12.15 / 12.17 item 1): toughened sheet in the door's slot, raised; its lower
         channel for the regulator's arm studs (Sec 39) at the bottom edge."""
-        pts = B.fillet_poly(glass_outline(), [0, 0, 0, 60.0, 60.0, 20.0])
+        pts = B.fillet_poly(glass_outline(), GLASS_RADII)
         g = None
         rows = []
-        hs = [520.0 + (GLASS_TOP_H - 520.0) * k / 10 for k in range(11)]
-        xs = [QL_POST_X - 4.0 - k * (QL_POST_X - 4.0 - S.DOOR_REAR_X - 40.0) / 10 for k in range(11)]
+        hs = [500.0 + (GLASS_TOP_H + 20.0 - 500.0) * k / 12 for k in range(13)]
+        xs = [QL_POST_X + 6.0 - k * (QL_POST_X + 6.0 - GLASS_REAR_X + 10.0) / 10 for k in range(11)]
         for x in xs:
-            rows.append([(x, side * _glass_y(h), H(h)) for h in hs])
+            rows.append([(x, side * _glass_ys(h), H(h)) for h in hs])
         f = Face.make_surface_from_array_of_points(rows, tol=0.05, min_deg=1, max_deg=3)
         slab = thicken(f, GLASS_T)
         clip = side_prism_xz(pts, -2000.0, 2000.0)
         g = slab & clip
-        chan = box(S.DOOR_REAR_X + 80.0, QL_POST_X - 30.0, side * _glass_y(540.0) - 6.0, side * _glass_y(540.0) + 6.0,
-                   H(520.0) - 10.0, H(540.0))
-        return _c([g, chan & side_prism_xz(G.rect(QL_POST_X - 40, S.DOOR_REAR_X + 60, 500, 560), -2000, 2000)], spec)
+        yc = side * _glass_ys(540.0)
+        chan = box(GLASS_REAR_X + 60.0, QL_POST_X - 30.0, yc - 6.0, yc + 6.0, H(520.0) - 10.0, H(540.0))
+        return _c([g, chan], spec)
+    return build
+
+
+def glass_channel(side):
+    def build(spec):
+        """Rear glass run channel inside the door (Fig 12.15): a felt-lined U channel the glass's rear edge runs in,
+        from the regulator's reach up to the waist, screwed to the door's rear shut face."""
+        x = GLASS_REAR_X
+        parts = []
+        for k in range(6):
+            h0 = 540.0 + (WAIST_H - 20.0 - 540.0) * k / 6
+            h1 = 540.0 + (WAIST_H - 20.0 - 540.0) * (k + 1) / 6
+            yc = side * _glass_ys((h0 + h1) / 2)
+            u = box(x - 6.0, x + 12.0, yc - 8.0, yc + 8.0, H(h0), H(h1) + 0.5) - \
+                box(x - 7.0, x + 10.0, yc - 4.5, yc + 4.5, H(h0) - 1.0, H(h1) + 1.5)
+            parts.append(u)
+        return _c([G.fuse(parts)], spec)
     return build
 
 
@@ -158,28 +209,50 @@ def side_prism_xz(pts_ag, y0, y1):
     return yprism([(x, H(h)) for x, h in pts_ag], y0, y1)
 
 
+QL_FRONT_X = -778.0                         # frame's front edge at the door top: just clear of the pillar, the seal between
+
+
 def ql_outline():
     """Quarter-light (ventilator) in side view: the front edge along the screen pillar's rake, the rear post at
     QL_POST_X, the bottom on the door top."""
-    xb = -770.0                                  # at the screen pillar's foot (profile photo 29)
+    xb = QL_FRONT_X                              # at the screen pillar's foot (profile photo 29)
     rake = math.tan(math.radians(S.SCREEN_RAKE_DEG))
-    xt = xb - (GLASS_TOP_H - 8.0 - WAIST_H) * rake
-    return [(xb, WAIST_H + 8.0), (QL_POST_X + 8.0, WAIST_H + 8.0), (QL_POST_X + 8.0, GLASS_TOP_H - 5.0),
-            (xt, GLASS_TOP_H - 8.0)]
+    xt = xb - (QL_TOP_H - WAIST_H) * rake
+    return [(xb, WAIST_H + 8.0), (QL_POST_X + 8.0, WAIST_H + 8.0), (QL_POST_X + 8.0, QL_TOP_H + 3.0), (xt, QL_TOP_H)]
+
+
+QL_TOP_H = GLASS_TOP_H - 16.0                    # the frame's top under the hood's edge
+QL_FRONT_Y = S.SCREEN_HALF_W + 13.0              # the frame's front edge closes on the screen pillar's rear (photos 09, 27)
+
+
+def ql_y(x, h):
+    """|y| of the quarter-light's plane: on the door glass's line at the rear post, toed in at the front so its front
+    edge closes on the windscreen pillar (Oliver's photos 09, 15, 27)."""
+    rake = math.tan(math.radians(S.SCREEN_RAKE_DEG))
+    xfront = QL_FRONT_X - (h - WAIST_H - 8.0) * rake
+    s = (x - QL_POST_X) / (xfront - QL_POST_X)
+    return _glass_ys(h) + (QL_FRONT_Y - _glass_ys(h)) * max(0.0, min(1.0, s))
+
+
+def _qp(x, h, side, dy=0.0):
+    return (x, side * (ql_y(x, h) + dy), H(h))
 
 
 def quarter_light_frame(side):
     def build(spec):
         """Quarter-light frame (Sec 21; Fig 12.15 item 1 'ventilator securing nuts'): chrome channel round the
-        pivoting ventilator glass, the divider post down into the door to its two securing nuts, the pivot and catch."""
+        pivoting ventilator glass, the divider post down into the door to its two securing nuts, the pivot and catch;
+        toed in at the front to close on the windscreen pillar, its rubber seal along the front edge."""
         pts = ql_outline()
         loop = pts + [pts[0]]
         yq = side * _glass_y(WAIST_H + 150.0)
         segs = []
         for a, b in zip(loop, loop[1:]):
-            segs.append(rod((a[0], yq, H(a[1])), (b[0], yq, H(b[1])), 6.5))
-        post = rod((QL_POST_X, yq, H(WAIST_H - 160.0)), (QL_POST_X, yq, H(GLASS_TOP_H - 5.0)), 6.0)
-        pivot = zcyl(4.0, H(WAIST_H + 8.0), H(WAIST_H + 30.0), QL_POST_X - 40.0, yq)
+            n = 4
+            line = [_qp(a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n, side) for k in range(n + 1)]
+            segs.append(swept_rod(line, 6.5))
+        post = rod((QL_POST_X, yq, H(WAIST_H - 160.0)), (QL_POST_X, side * _glass_y(QL_TOP_H), H(QL_TOP_H + 3.0)), 6.0)
+        pivot = zcyl(4.0, H(WAIST_H + 8.0), H(WAIST_H + 30.0), QL_POST_X - 40.0, side * ql_y(QL_POST_X - 40.0, WAIST_H + 20.0))
         catch = box(QL_POST_X + 4.0, QL_POST_X + 22.0, yq - side * 14.0 - 4, yq - side * 14.0 + 4, H(WAIST_H + 150.0), H(WAIST_H + 170.0))
         return _c(segs + [post, pivot, catch], spec)
     return build
@@ -188,11 +261,29 @@ def quarter_light_frame(side):
 def quarter_light_glass(side):
     def build(spec):
         pts = ql_outline()
-        yq = side * _glass_y(WAIST_H + 150.0)
         inset = [(pts[0][0] - 12, pts[0][1] + 8), (pts[1][0] + 8, pts[1][1] + 8), (pts[2][0] + 8, pts[2][1] - 10),
                  (pts[3][0] - 2, pts[3][1] - 10)]
-        g = side_prism_xz(inset, yq - 2.0, yq + 2.0)
-        return _l(g, spec)
+        a, b, c, d = inset                      # bottom front, bottom rear, top rear, top front
+        rows = []
+        for i in range(5):
+            t = i / 4
+            lo = (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+            hi = (d[0] + (c[0] - d[0]) * t, d[1] + (c[1] - d[1]) * t)
+            rows.append([_qp(lo[0] + (hi[0] - lo[0]) * k / 4, lo[1] + (hi[1] - lo[1]) * k / 4, side, -2.0)
+                         for k in range(5)])
+        f = Face.make_surface_from_array_of_points(rows, tol=0.05, min_deg=1, max_deg=3)
+        return _l(thicken(f, 4.0), spec)
+    return build
+
+
+def ql_seal(side):
+    def build(spec):
+        """Rubber seal along the quarter-light frame's front edge against the windscreen pillar."""
+        pts = ql_outline()
+        a, d = pts[0], pts[3]
+        line = [(a[0] + (d[0] - a[0]) * k / 4 + 10.0, side * (QL_FRONT_Y - 3.0), H(a[1] + (d[1] - a[1]) * k / 4))
+                for k in range(5)]
+        return _l(swept_rod(line, 6.0), spec)                  # touching both: no light between them
     return build
 
 
@@ -415,6 +506,8 @@ for s_, n in ((1, "l"), (-1, "r")):
     PARTS[f"body.doors.glass-{n}"] = {"build": door_glass(s_)}
     PARTS[f"body.doors.quarter-light-frame-{n}"] = {"build": quarter_light_frame(s_)}
     PARTS[f"body.doors.quarter-light-glass-{n}"] = {"build": quarter_light_glass(s_)}
+    PARTS[f"body.doors.quarter-light-seal-{n}"] = {"build": ql_seal(s_)}
+    PARTS[f"body.doors.glass-channel-{n}"] = {"build": glass_channel(s_)}
     PARTS[f"body.doors.pull-handle-{n}"] = {"build": pull_handle(s_)}
     PARTS[f"body.doors.lock-{n}"] = {"build": door_lock(s_)}
     PARTS[f"body.doors.striker-{n}"] = {"build": striker(s_)}

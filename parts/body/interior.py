@@ -162,10 +162,13 @@ def binnacle(spec):
     return _c([shell, visor], spec)
 
 
+ROLL_W = S.SCREEN_HALF_W - 12.0               # the roll's ends stop inside the screen pillars (not seen from outside)
+
+
 def crash_roll(spec):
     """Crash roll (Fig 12.19 item 21; Oliver's photos 01, 04, 22): the padded black roll along the facia's top from
     door to door under the screen, curving back at its ends to the door shut faces."""
-    ys = [-FACIA_W - 20.0 + (2 * FACIA_W + 40.0) * k / 16 for k in range(17)]
+    ys = [-ROLL_W + 2 * ROLL_W * k / 16 for k in range(17)]
     pts = [(_fx(y) - 24.0, y, H(FACIA_H[1] - 24.0 * (y / FACIA_W) ** 2) + 2.0) for y in ys]
     r = swept_rod(pts, 27.0)
     cut = box(FX - 80.0, FX + 60.0, -FACIA_W - 60, FACIA_W + 60, H(FACIA_H[1]) - 40.0, H(FACIA_H[1]) + 60.0)

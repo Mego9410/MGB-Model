@@ -57,8 +57,8 @@ STRAP_PIN_FRONT = (TANK_X[0] + 14.0, TANK_TOP_Z - 14.0)     # (x, z) front pin t
 HANGER_PIN = (TANK_X[1] - 26.0, U.BOOT_FLOOR_Z - 12.0)    # (x, z) rear hanger clevis pin through the body tab (P11)
 HANGER_FOOT_Z = TANK_TOP_Z - 46.0                         # strap end tab under the hanger's foot
 STRAP_BOLT_X = TANK_X[1] - 26.0
-FILLER_TUBE_TOP_Z = CL.GROUND_Z + 560.0                     # filler tube elbow's horizontal leg
-FILLER_CAP_Y = -425.0                          # P11b: the cap is on the rear panel right of the plate
+FILLER_TUBE_TOP_Z = CL.GROUND_Z + 588.0     # QA: Oliver's photos 14, 18 (26 mm under the plate's top)                     # filler tube elbow's horizontal leg
+FILLER_CAP_Y = -382.0                          # P11b: the cap is on the rear panel right of the plate (QA: photos 14, 18)
 FILLER_CAP_X = U.REAR_PANEL_X - 5.0                 # (Oliver's photos 11, 18, 21: a chrome locking cap), the tube's face there                         # cap end of the filler tube (P11: filler housing in the body)
 
 # ---- pump (SU HP, Fig 3.2) -------------------------------------------------------------------------------------

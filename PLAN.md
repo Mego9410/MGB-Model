@@ -335,6 +335,26 @@ round them and should check them against the car:
   The tonneau cover (photo 25) is not modelled (the hood is shown erected).
 - Leftovers: heater unit (Fig 12.27) and its ducts; windscreen washer; sun visors; tonneau cover; door check straps;
   bonnet and boot seals.
+- Window and screen closures (QA round 1, Oliver's photos 08, 09, 15, 23, 27): the quarter-light frame is toed in
+  so its front edge closes on the windscreen pillar's rear (closures `QL_FRONT_X`, `QL_FRONT_Y`, `ql_y`), with a
+  rubber seal (body.doors.quarter-light-seal-*) touching both; it swings clear of the pillar as the door opens (8 mm
+  at 2 deg). The screen pillars, top and bottom rails are flat chrome channels round the glass's edge (the glass
+  runs into them); the bottom rail has its seal to the scuttle. The door glass runs 8 mm up inside the hood's edge
+  (GLASS_TOP_H 1100); the hood's lower edge follows the quarter-light top, the glass's top and raked rear edge, and
+  then the body's top behind the door (the hood's rear quarters), and its back edge lies on the rear deck. The crash
+  roll ends inside the pillars and the facia rail follows the scuttle's fall (both showed through the skin).
+- Door glass (QA round 2, Oliver's photos 08, 09, 23): it runs the whole length of the door, from the quarter-light
+  post's channel to the rear shut line (`GLASS_REAR_X` = DOOR_REAR_X + 14), its rear edge raked forward 36 mm and
+  rounded 75 into the top, curved 5 mm in its height, in a rear run channel inside the door
+  (body.doors.glass-channel-*); the hood's rear quarters come down to the body right behind it.
+- Measured QA (scratchpad p11b/qa/qa-table.md): cameras solved for Oliver's photos from the number plate (520 x 111),
+  lamps, wheels and screen; the straight front and rear views (15, 14, 18, 25, telephoto) measure the front and rear
+  directly in mm off the plate. Moves from it: side/flasher lamps 495 -> 461 above the road (`SIDELAMP_Z`); rear
+  lamps |y| 661 -> 634, centre 678 -> 673 high, 292 x 84 mm with a pointed top, amber over the top 42 % and a chrome
+  bar 69 % down; filler cap |y| 425 -> 382 and 560 -> 588 high (P11a `fuel_supply_layout`); rear overrider tops
+  600 -> 572 and front 506 -> 519; rear bumper blade 430-495 -> 424-474 (the plate stays at 507-618); rear valance's
+  lower edge 280 -> 300; grille opening 596/428 -> 589/423; tail pipe end REAR_X + 70 -> + 95 (P11a
+  `exhaust_layout.TAIL_END_X`).
 - Viewer note: the body hides the mechanicals; hide or isolate a system from the Parts tree.
 
 ## Changes P11b made to earlier phases
@@ -344,12 +364,12 @@ round them and should check them against the car:
   tail pipe (exhaust_layout TAIL_END_X) follows REAR_X; P11a's REAR_PANEL_X is now REAR_X + 105 (the rear panel face,
   photo 29).
 - `mgb/body_layout.py` (P10's datums for the body), moved to Oliver's car: headlamp rim face FRONT_X - 95 -> - 186
-  (x 645), centres |y| 561 -> 585, height 690 -> 632 above the road; side/flasher lamps to x 691, |y| 569, 495 high,
+  (x 645), centres |y| 561 -> 585, height 690 -> 632 above the road; side/flasher lamps to x 691, |y| 569, 461 high,
   and rectangular (136 x 52, amber inboard, clear outboard, chrome surround; P10 drew a 92 x 50 lozenge), the right
   lamp turned over so the clear part is outboard on both sides; rear lamps onto the flat raked wing-end plinths (REAR_X +
-  195, |y| 661, 678 high, raked 33 deg, `REAR_LAMP_RAKE`), a tall rounded rectangle 236 mm on the rake (about 200 mm
-  high seen from behind) and 90 wide in a chrome rim, amber over the top third and red below (P10 had a 172 mm lamp
-  with red on top);
+  195, |y| 634, 673 high, raked 33 deg, `REAR_LAMP_RAKE`), 292 mm on the rake (250 mm high seen from behind) and 84
+  wide in a chrome rim with a pointed top, amber over the top 42 % and red below (P10 had a 172 mm lamp with red on
+  top);
   rear overriders |y| 262 -> 340; the side strip 663 -> 690 above the road; the instruments and switches to the
   facia layout of photos 01, 04, 16, 22 (speedometer left and tachometer right in the binnacle over the column, fuel
   gauge further right, the dual gauge on the centre panel right of the plaque; three toggles, ignition and push-pull

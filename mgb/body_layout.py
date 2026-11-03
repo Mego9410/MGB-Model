@@ -47,11 +47,11 @@ HEADLAMP_Y = 585.0
 HEADLAMP_Z = above_ground(632.0)
 HEADLAMP_BOWL_DEPTH = 118.0                            # the nacelle must take the bowl behind the rim
 # Side and flasher lamps (Oliver's photos 10, 15, 20): rectangular units with chrome surrounds below each headlamp,
-# just above the bumper beside the grille surround; centres |y| 569, 495 mm above the road, the face on the wing front
+# just above the bumper beside the grille surround; centres |y| 569, 461 mm above the road, the face on the wing front
 # (P10 had a lozenge lamp at FRONT_X - 70, 545 high).
 SIDELAMP_X = FRONT_X - 136.0
 SIDELAMP_Y = 569.0
-SIDELAMP_Z = above_ground(495.0)
+SIDELAMP_Z = above_ground(461.0)                       # Oliver's photos 15, 20 (QA): 28 mm above the bumper blade
 # Horns: two on the front cross panel behind the grille, either side of the radiator (D).
 HORN_POS = [(600.0, s * 300.0, -205.0) for s in (1, -1)]   # (x, y, z) of the horn bracket bolt on the panel face
 HORN_PANEL_X = 590.0                                   # rear face of the panel the brackets bolt to
@@ -148,8 +148,8 @@ EARTH_POINTS = {
 # X -2774 h 803 and foot X -2930 h 570; Oliver's photos 18, 24: centres |y| 645). P11b moved the lamp back onto the
 # plinth and tilted it (P10 had it upright at REAR_X + 75, 640 high).
 REAR_LAMP_X = REAR_X + 195.0                           # lens face centre on the plinth
-REAR_LAMP_Y = HALF_W - 100.0                           # Oliver's photo 18: lamp centre about 665 mm off the centre line
-REAR_LAMP_Z = above_ground(678.0)
+REAR_LAMP_Y = HALF_W - 127.0                           # Oliver's photos 14, 18 (QA, scaled on the plate): centre 634 off the centre line
+REAR_LAMP_Z = above_ground(673.0)                      # photos 14, 18: the lamp from 548 to 798 above the road
 REAR_LAMP_RAKE = 33.0                                  # deg: the lamp's top leans forward with the plinth
 OVERRIDER_Y = 340.0                                    # rear overrider centre lines, either side of the plate (photos 18, 24)
 NUMBER_LAMP = (REAR_X + 38.0, OVERRIDER_Y - 26.0, above_ground(430.0))   # lamp base on the overrider's inner face

@@ -39,12 +39,12 @@ def _c(parts, spec):
 # 10, 18): the front blade's face stands 48 mm off the valance at the centre, the rear 70 mm off the rear panel; both
 # wrap round the corners and run back along the sides to the wheel arches (photo 29: front ends X 518, rear X -2742).
 FRONT_BAR_H = (356.0, 404.0)
-REAR_BAR_H = (430.0, 495.0)
+REAR_BAR_H = (424.0, 474.0)                  # Oliver's photos 14, 18 (QA, scaled on the plate)
 BAR_DEPTH = 44.0
 FRONT_GAP, REAR_GAP = 34.0, 34.0
 FRONT_END_X, REAR_END_X = 528.0, -2745.0
 OVR_FRONT_Y = 330.0                          # front overriders (Oliver's photos 10, 15)
-OVR_H = {"front": (292.0, 506.0), "rear": (395.0, 600.0)}
+OVR_H = {"front": (292.0, 519.0), "rear": (395.0, 572.0)}   # tops: photos 15 and 14, 18 (QA)
 
 
 def _plan_outline(h, front, gap, n=121):
@@ -386,7 +386,7 @@ def strip(which, side):
 # ---- number plates ------------------------------------------------------------------------------------------------
 PLATE_W, PLATE_H = 520.0, 111.0
 FRONT_PLATE_H0 = FRONT_BAR_H[0] - PLATE_H + 4.0      # just under the blade (Oliver's photos 10, 15)
-REAR_PLATE_H0 = REAR_BAR_H[1] + 12.0                 # on the rear panel above the blade (photos 18, 24)
+REAR_PLATE_H0 = 507.0                                # on the rear panel above the blade (photos 14, 18, 24)
 
 
 def _front_plate_x():

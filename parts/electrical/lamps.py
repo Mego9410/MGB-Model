@@ -149,13 +149,31 @@ def side_rim(spec) -> Part:
 
 
 # ---- rear lamp (stop/tail and flasher) -----------------------------------------------------------
-REAR_LEN, REAR_W = 236.0, 90.0                # about 200 mm tall seen from behind on the 33 deg plinth, 90 wide
-REAR_AMBER = REAR_LEN / 3.0                   # amber over the top third (Oliver's photos 18, 23, 24)
+REAR_LEN, REAR_W = 292.0, 84.0                # Oliver's photos 14, 18: 250 mm tall seen from behind (on the 33 deg plinth) and
+REAR_AMBER = 0.42 * REAR_LEN                  # 97 wide over the rim, a pointed arch at the top; amber over the top 42 %,
+REAR_BAR = 0.69 * REAR_LEN                    # a chrome bar across 69 % down, the stop/tail section below it
+REAR_ARCH = 0.37 * REAR_LEN                   # the top's arch takes the upper 37 %
 
 
-def _rear_outline(grow=0.0):
-    # tall rounded rectangle, local x up the plinth, y across (Oliver's photos 18, 23, 24)
-    return _rect(REAR_W + 2 * grow, REAR_LEN + 2 * grow, 16.0 + grow, 6)
+def _rear_outline(grow=0.0, n=14):
+    """Lamp outline (local x up the plinth, y across), anticlockwise: straight sides, rounded bottom corners, the top
+    drawn in to a blunt point (Oliver's photos 11, 18)."""
+    L, W = REAR_LEN + 2 * grow, REAR_W + 2 * grow
+    xs = L / 2 - REAR_ARCH
+    r = 12.0 + grow
+    pts = []
+    for k in range(6):                                       # bottom corner at (-L/2, -W/2)
+        a = math.radians(180.0 + 90.0 * k / 5)
+        pts.append((-L / 2 + r + r * math.cos(a), -W / 2 + r + r * math.sin(a)))
+    pts = [(x, y) for x, y in pts]
+    pts = [(-L / 2 + r - r * math.cos(math.radians(90.0 * k / 5)), -W / 2 + r - r * math.sin(math.radians(90.0 * k / 5)))
+           for k in range(6)][::-1]
+    pts += [(-L / 2 + r - r * math.cos(math.radians(90.0 * k / 5)), W / 2 - r + r * math.sin(math.radians(90.0 * k / 5)))
+            for k in range(6)]
+    pts = [pts[5 - i] for i in range(6)][::-1] + pts[6:]
+    up = [(xs + (L / 2 - xs) * (k / n), (W / 2) * (1 - (k / n) ** 1.6) ** 0.7) for k in range(n + 1)]
+    down = [(x, -y) for x, y in reversed(up[:-1])]
+    return pts + up + down
 
 
 def rear_body(spec) -> Part:
@@ -165,6 +183,8 @@ def rear_body(spec) -> Part:
     p = p + (X.poly_xy(_rear_outline(6.0), -0.05, 4.0) - X.poly_xy(_rear_outline(1.5), -1.0, 5.0))   # chrome rim
     p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 1.2)
     p = p - X.poly_xy(_rear_outline(-3.0), -5.0, 1.0)
+    xb = REAR_LEN / 2 - REAR_BAR                                     # chrome bar over the stop/tail section
+    p = p + (box(xb - 2.5, xb + 2.5, -REAR_W / 2 - 2.0, REAR_W / 2 + 2.0, -1.0, 10.5) & X.poly_xy(_rear_outline(1.5), -2.0, 11.0))
     for x in (40.0, -40.0):
         p = p + zc(11.0, -8.0, -1.0, x, 0.0) - zc(8.0, -7.0, 0.0, x, 0.0)
     for x, y in ((80.0, 0.0), (-10.0, 24.0), (-10.0, -24.0)):
@@ -179,7 +199,7 @@ def rear_lens(colour):
         draws the early lamp the other way up); one moulding held by the screw at the bottom (Sec 36 paras 1, 3)."""
         lens = X.poly_xy(_rear_outline(1.0), 0.05, 9.0)
         lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 4.5)
-        cut = REAR_LEN / 2 - REAR_AMBER                             # amber over the flasher, the top third
+        cut = REAR_LEN / 2 - REAR_AMBER                             # amber over the flasher, the top 42 %
         half = box(cut, 180.0, -80, 80, -6, 9) if colour == "amber" else box(-180.0, cut, -80, 80, -6, 9)
         lens = lens & half
         for k in range(-17, 18):                                    # horizontal prism ribs

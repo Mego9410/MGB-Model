@@ -81,7 +81,7 @@ RS_Y = 304.0                                      # between the tank (y <= 210) 
 RS_Z = -362.0
 INTER_ROUTE = [(CS_X[1] - 2.0, CS_Y, CS_Z), (-1410.0, CS_Y, CS_Z), (-1560.0, IP_Y, IP_Z), (-2040.0, IP_Y, IP_Z),
                UNDER_AXLE, UNDER_ROD, (-2330.0, RS_Y - 20.0, -385.0), (RS_X[0] + 2.0, RS_Y, RS_Z)]
-TAIL_END_X = CL.REAR_X + 70.0                      # the tail pipe ends under the bumper blade (P11b: profile photo 29)
+TAIL_END_X = CL.REAR_X + 95.0                      # the tail pipe ends under the bumper blade (P11b: profile photo 29)
 TAIL_Z = -378.0
 TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (-2800.0, RS_Y, RS_Z), (-2860.0, RS_Y, TAIL_Z), (TAIL_END_X, RS_Y, TAIL_Z)]
 TAIL_CUT_DEG = 45.0                                # end cut, the long side underneath (S: MGOC)

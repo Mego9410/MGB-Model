@@ -311,7 +311,11 @@ def scuttle_inner(spec):
         plate = plate - zcyl(14.0, z - 140, z + 10, x, y)
     z0, z1 = facia_rail_z()
     r0, r1 = FACIA_RAIL_X
-    rail = box(r0, r1, -600.0, 600.0, z0, z1) - box(r0 + 1.2, r1 - 1.2, -601.0, 601.0, z0 + 1.2, z1 - 1.2)
+    ys = [-596.0 + 1192.0 * k / 24 for k in range(25)]               # the rail follows the scuttle's fall to the sides
+    top = [(y, min(z1, H(S.top_h(r1, abs(y))) - 6.0)) for y in ys]
+    outer = top + [(y, z - 26.0) for y, z in reversed(top)]
+    inner = [(y, z - 1.2) for y, z in top[1:-1]] + [(y, z - 24.8) for y, z in reversed(top[1:-1])]
+    rail = xprism(outer, r0, r1) - xprism(inner, r0 + 1.2, r1 - 1.2)
     return _c([plate, rail], spec)
 
 

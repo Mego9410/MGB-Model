@@ -6,14 +6,14 @@ from __future__ import annotations
 
 import math
 
-from build123d import Compound, Face, Location, thicken
+from build123d import Compound, Face, Location, Solid, Vector, Wire, thicken
 
 from mgb import body_geom as G, body_shell_layout as S
 from mgb.chassis_geom import box, rod, swept_rod, xcyl, zcyl
 
 H = S.z_of
 GLASS_T = 6.0                               # laminated screen (D)
-W = S.SCREEN_HALF_W - 22.0                  # glass edge inside the pillars
+W = S.SCREEN_HALF_W - 9.0                   # glass edge inside the pillars' channels (no light past it)
 
 
 def _l(p, spec):
@@ -32,7 +32,7 @@ def glass(spec):
     rows = []
     for k in range(13):
         y = -W + 2 * W * k / 12
-        rows.append([S.screen_pt(y, 0.03 + 0.94 * j / 8) for j in range(9)])
+        rows.append([S.screen_pt(y, 0.006 + 0.988 * j / 8) for j in range(9)])
     f = Face.make_surface_from_array_of_points(rows, tol=0.05, min_deg=1, max_deg=3)
     g = thicken(f, GLASS_T)
     return _l(g, spec)
@@ -42,32 +42,62 @@ def _edge(v, ys, off=0.0):
     return [tuple(a + b for a, b in zip(S.screen_pt(y, v), (0.0, 0.0, off))) for y in ys]
 
 
+def _channel(path, across, w_in, w_out, t, r=3.5):
+    """Chrome frame section swept along path (car points): a flat channel w_in over the glass edge and w_out beyond it
+    (across(point) gives the in-plane direction away from the glass), t thick normal to the glass, its corners
+    rounded r (Oliver's photos 09, 27: the frame is a flat chrome band about 30 mm wide round the glass)."""
+    wires = []
+    for i, p in enumerate(path):
+        q0, q1 = path[max(i - 1, 0)], path[min(i + 1, len(path) - 1)]
+        tng = Vector(*q1) - Vector(*q0)
+        tng = tng.normalized()
+        a = Vector(*across(p))
+        a = (a - tng * a.dot(tng)).normalized()
+        n = tng.cross(a).normalized()
+        sec = []
+        for (ca, cb, a0) in ((w_out - r, t / 2 - r, 0.0), (-w_in + r, t / 2 - r, 90.0), (-w_in + r, -t / 2 + r, 180.0),
+                             (w_out - r, -t / 2 + r, 270.0)):
+            for k in range(4):
+                ang = math.radians(a0 + 90.0 * k / 3)
+                sec.append(Vector(*p) + a * (ca + r * math.cos(ang)) + n * (cb + r * math.sin(ang)))
+        wires.append(Wire.make_polygon(sec, close=True))
+    return Solid.make_loft(wires, ruled=False)
+
+
+def _up(y):
+    (xb, hb), (xt, ht) = S.screen_base(y), S.screen_top(y)
+    return (xt - xb, 0.0, ht - hb)
+
+
 def top_rail(spec):
-    """Top rail (Fig 12.7 item 4): chrome channel over the glass's top edge from pillar to pillar, the hood's front
-    fastener brackets (6) underneath."""
+    """Top rail (Fig 12.7 item 4): flat chrome channel over the glass's top edge from pillar to pillar (about 26 mm
+    deep, Oliver's photos 09, 27), the hood's front fastener brackets (6) underneath."""
     ys = [-S.SCREEN_HALF_W + 2 * S.SCREEN_HALF_W * k / 16 for k in range(17)]
-    r = swept_rod(_edge(1.0, ys, 6.0), 11.0)
+    r = _channel(_edge(1.0, ys), lambda p: _up(p[1]), 12.0, 16.0, 13.0)
     brackets = [box(S.screen_top(y)[0] - 30.0, S.screen_top(y)[0] - 10.0, y - 20.0, y + 20.0, H(S.screen_top(y)[1]) - 6.0,
                     H(S.screen_top(y)[1]) + 2.0) for y in (-330.0, 330.0)]
     return _c([r] + brackets, spec)
 
 
 def bottom_rail(spec):
-    """Bottom rail (Fig 12.7 item 5) on the scuttle under the glass, its seal (18)."""
+    """Bottom rail (Fig 12.7 item 5) on the scuttle under the glass, its seal (18) closing it to the scuttle."""
     ys = [-S.SCREEN_HALF_W + 2 * S.SCREEN_HALF_W * k / 16 for k in range(17)]
-    return _l(swept_rod(_edge(0.0, ys, 2.0), 9.0), spec)
+    rail = _channel(_edge(0.0, ys), lambda p: tuple(-c for c in _up(p[1])), 12.0, 10.0, 12.0)
+    seal = swept_rod(_edge(0.0, ys, -8.0), 7.0)
+    return _c([rail, seal], spec)
 
 
 def pillar(side):
     def build(spec):
-        """Screen pillar (Fig 12.7 items 2, 3): the chrome side post along the glass's edge, its foot down through the
-        scuttle side to the reinforcement plate (16, 17) and the packing (12, 13)."""
+        """Screen pillar (Fig 12.7 items 2, 3): the flat chrome side post along the glass's edge (about 32 mm across,
+        Oliver's photos 09, 15, 27), its foot down through the scuttle side to the reinforcement plate (16, 17) and
+        the packing (12, 13)."""
         y = side * S.SCREEN_HALF_W
-        pts = [S.screen_pt(y, v) for v in (0.0, 0.35, 0.7, 1.0)]
-        post = swept_rod(pts, 12.0)
+        pts = [S.screen_pt(y, v) for v in (-0.02, 0.25, 0.5, 0.75, 1.03)]
+        post = _channel(pts, lambda p: (0.0, side * 1.0, 0.0), 12.0, 20.0, 14.0)
         bx, bh = S.screen_base(y)
-        foot = box(bx - 50.0, bx + 30.0, y - 16.0, y + 16.0, H(bh) - 70.0, H(bh))
-        plate = box(bx - 55.0, bx + 35.0, y - 22.0, y + 22.0, H(bh) - 76.0, H(bh) - 72.0)
+        foot = box(bx - 8.0, bx + 60.0, y - 16.0, y + 16.0, H(bh) - 70.0, H(bh))      # under the scuttle, ahead of the door
+        plate = box(bx - 12.0, bx + 65.0, y - 22.0, y + 22.0, H(bh) - 76.0, H(bh) - 72.0)
         return _c([post, foot, plate], spec)
     return build
 

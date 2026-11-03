@@ -45,28 +45,77 @@ def crown(u):
     return TOP_H - (TOP_H - REAR_H) * (t ** 1.6)
 
 
-def half_width(u, h):
-    """Half-width of the hood at u, from the door glass tops at the sides to the rounded crown."""
-    w0 = 600.0 - 20.0 * u                     # Oliver's photos 15, 18, 27: nearly the cockpit's width all the way back
-    return w0 if u < 0.86 else w0 - (u - 0.86) / 0.14 * 30.0
+SWEEP_SIDE = 1.15                             # (y / SCREEN_HALF_W)^2 at the hood's sides, for the sweep at its edge
+
+
+def _edge_x(u):
+    """x of the cover's lower edge at u (the screen top's sweep carried back and dying out at the rear)."""
+    x_front = S.screen_top(0.0)[0] - 18.0
+    return x_front + (REAR_X - x_front) * u - S.SCREEN_TOP_SWEEP * SWEEP_SIDE * (1 - u)
+
+
+def _edge(x):
+    """(|y|, height) of the cover's lower edge at x: over the screen pillar's top and the quarter-light frame at the
+    front, then along the door glass's top and raked rear edge (the glass runs up 8 mm inside it), then down on the
+    body's top along the cockpit edge behind the door to the rear deck (Oliver's photos 09, 15, 18, 27: no light
+    between the hood and the glass or the body)."""
+    xq0 = C.ql_outline()[3][0]                      # quarter-light top front corner
+    xf = C.QL_POST_X - 4.0                          # door glass front edge
+    xr = C.GLASS_REAR_X                             # door glass rear edge (at the door's rear shut line)
+    if x >= xq0:
+        return C.QL_FRONT_Y + 1.0, C.QL_TOP_H + 9.0
+    if x >= xf:
+        t = (xq0 - x) / (xq0 - xf)
+        h = C.QL_TOP_H + 9.0 + (C.GLASS_TOP_H - 8.0 - C.QL_TOP_H - 9.0) * t
+        return C.ql_y(x, h) + 8.0, h
+    if x >= xr:
+        h = C.glass_top_h(x) - 8.0
+        return C._glass_ys(h) + 8.0, h
+    # behind the door glass: on the body's top just outside the cockpit opening, to the rear corners
+    y0 = C._glass_ys(C.glass_top_h(xr) - 8.0) + 8.0
+    yw = _interp_y(x)
+    t = min(1.0, (xr - x) / 40.0)
+    y = y0 + (yw - y0) * t
+    return y, S.top_h(x, y) + 3.0
+
+
+def _interp_y(x):
+    tab = [(-1609.0, 690.0), (-1660.0, 678.0), (-1750.0, 664.0), (-1850.0, 636.0), (REAR_X, 596.0)]
+    if x >= tab[0][0]:
+        return tab[0][1]
+    for (x0, y0), (x1, y1) in zip(tab, tab[1:]):
+        if x1 <= x <= x0:
+            return y0 + (y1 - y0) * (x0 - x) / (x0 - x1)
+    return tab[-1][1]
+
+
+def half_width(u, h=None):
+    """Half-width of the hood at u: its lower edge's |y| (the sides drop vertically to it)."""
+    return _edge(_edge_x(u))[0]
+
+
+# Across the cover: v (-1 right side bottom .. +1 left side bottom); the samples crowd toward the edges, where the
+# section turns down into the vertical sides.
+_C_SIDE = (0.87, 0.75, 0.6, 0.45, 0.3, 0.15, 0.0)
+_T = sorted({round(v, 6) for v in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]} |
+            {round(math.acos(c ** (1 / 0.26)) / (math.pi / 2), 6) for c in _C_SIDE})
+V_SAMPLES = [-t for t in reversed(_T[1:])] + _T
 
 
 def hood_pt(u, v):
     """Cover point: u along the car (screen to deck), v across (-1 right side bottom .. +1 left side bottom)."""
     x_front = S.screen_top(0.0)[0] - 18.0
-    xs = [x_front, REAR_X]
-    side = 1.0 if v >= 0 else -1.0
-    a = abs(v)
     hc = crown(u)
-    hb = SIDE_H if u < 0.75 else SIDE_H - (SIDE_H - REAR_H) * ((u - 0.75) / 0.25) ** 1.2
+    w, hb = _edge(_edge_x(u))
     hb = min(hb, hc - 20.0)
-    w = half_width(u, hc)
-    # rounded section: elliptical across the top, steepening to the sides
     t = v * math.pi / 2
     y = w * math.sin(t)
     h = hb + (hc - hb) * max(math.cos(t), 0.0) ** 0.26          # flat top, tight corners (photos 15, 18)
     sweep = S.SCREEN_TOP_SWEEP * (y / S.SCREEN_HALF_W) ** 2 * (1 - u)
     x = x_front + (REAR_X - x_front) * u - sweep
+    if u > 0.9:                                                 # the back edge lies on the rear deck
+        s = ((u - 0.9) / 0.1) ** 2
+        h = h + (S.top_h(x, y) + 3.0 - h) * s
     return (x, y, H(h))
 
 
@@ -74,7 +123,7 @@ def cover(spec):
     """Hood cover: hood material from the top rail's fastener brackets back over the cockpit to the rear deck,
     sitting on the door glass tops at the sides, with the rear window's opening cut through its back."""
     from mgb import body_shell as B
-    rows = [[hood_pt(0.02 + 0.97 * i / 24, -0.985 + 1.97 * j / 20) for j in range(21)] for i in range(25)]
+    rows = [[hood_pt(0.005 + 0.995 * i / 96, v) for v in V_SAMPLES] for i in range(97)]
     f = B._fit(rows, 0.3)
     for t in (2.5, -2.5, 2.0, -2.0):
         try:
@@ -129,7 +178,7 @@ def bow(k):
     def build(spec):
         """Hood frame bow: a steel tube following the cover inside it, its feet in the side rails."""
         u = BOW_U[k]
-        pts = [hood_pt(u, -1.0 + 2.0 * j / 10) for j in range(11)]
+        pts = [hood_pt(u, -0.97 + 1.94 * j / 10) for j in range(11)]          # feet on the side rails, above the body
         pts = [(x, y * 0.985, z - 14.0) for x, y, z in pts]
         return _l(swept_rod(pts, 8.0), spec)
     return build

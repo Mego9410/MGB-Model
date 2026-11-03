@@ -133,8 +133,8 @@ H_M = ag(BL.SIDE_STRIP_Z)                   # widest point at the chrome strip
 SHOULDER_K = 105.0                          # blend radius where the side rolls into the top
 # Lower edge of the skin (trim line): front valance bottom, sills, rear valance (P11a REAR_PANEL_LOW_Z).
 Z_B = mono([(831.0, 250.0), (480.0, 245.0), (300.0, 246.0), (-260.0, 250.0), (-1000.0, 254.0), (-1700.0, 265.0),
-       (-1950.0, 278.0), (-2300.0, 298.0), (-2550.0, 312.0), (-2650.0, 298.0), (-2750.0, 284.0), (-2850.0, 280.0),
-       (-3060.0, 280.0)])         # the rear valance comes down under the bumper to the sill line (Oliver's photos 18, 24)
+       (-1950.0, 278.0), (-2300.0, 298.0), (-2550.0, 312.0), (-2650.0, 304.0), (-2750.0, 300.0), (-2850.0, 300.0),
+       (-3060.0, 300.0)])         # the rear valance comes down under the bumper to the sill line (Oliver's photos 18, 24)
 BLOB_BOTTOM = 182.0                         # the implicit body continues under the trim line to here
 # Bonnet swage: a low raised strip down the middle of the bonnet, continuing the grille badge's centre bar.
 RIB_A = mono([(760.0, 6.0), (600.0, 6.0), (100.0, 4.0), (-300.0, 0.0)])
@@ -173,7 +173,7 @@ TAIL_C = [(150.0, TAIL_PANEL_X + 75.0), (250.0, TAIL_PANEL_X + 16.0), (330.0, TA
 # Wing ends (photo 29: the lamp plinth raked about 31 deg, top corner X -2774 h 803, foot X -2930 h 570, the wing end
 # under it X -2943 at h 511); the wing ends stand forward of the rear panel above the bumper ("wing kick").
 TAIL_W = [(150.0, TAIL_PANEL_X + 85.0), (300.0, TAIL_PANEL_X + 14.0), (420.0, TAIL_PANEL_X + 8.0),
-          (511.0, -2943.0), (570.0, -2930.0), (690.0, -2858.0), (803.0, -2774.0), (880.0, -2700.0)]
+          (511.0, -2950.0), (548.0, -2947.0), (580.0, -2928.0), (690.0, -2858.0), (803.0, -2774.0), (880.0, -2700.0)]
 TAIL_PLAN = mono([(0.0, 0.0), (500.0, 2.0), (660.0, 5.0), (710.0, 12.0), (735.0, 26.0), (755.0, 55.0),
                    (780.0, 130.0)])   # square wing ends in plan, crisp outer edge (Oliver's photos 18, 23)
 TAIL_K = 28.0
@@ -464,8 +464,8 @@ SILL_TOP_H = DOOR_BOTTOM_H - 6.0            # outer sill to wing seam (below the
 # Grille opening (Sec 7, early grille; Oliver's photos 10, 15, 27): a wide shallow rounded rectangle, 890 mm across
 # the surround, top following the bonnet's front edge, the bumper across its lower edge.
 MOUTH_Y = 432.0                             # half-width of the opening (the surround laps 13 mm round it)
-MOUTH_TOP_H = 596.0
-MOUTH_BOT_H = 428.0
+MOUTH_TOP_H = 589.0                         # QA: Oliver's photo 15 scaled on the plate
+MOUTH_BOT_H = 423.0
 MOUTH_END_R = 52.0                          # corner radius
 MOUTH_BACK_X = 735.0                        # grille opening's back edge (the grille sits in it)
 

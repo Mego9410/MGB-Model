@@ -381,7 +381,7 @@
     "body.brightwork.grille-badge"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 418737
+   "bytes": 419889
   },
   "body.doors": {
    "id": "body.doors",
@@ -395,6 +395,8 @@
     "body.doors.glass-l",
     "body.doors.quarter-light-glass-l",
     "body.doors.quarter-light-frame-l",
+    "body.doors.quarter-light-seal-l",
+    "body.doors.glass-channel-l",
     "body.doors.pull-handle-l",
     "body.doors.lock-l",
     "body.doors.skin-l",
@@ -405,6 +407,8 @@
     "body.doors.glass-r",
     "body.doors.quarter-light-glass-r",
     "body.doors.quarter-light-frame-r",
+    "body.doors.quarter-light-seal-r",
+    "body.doors.glass-channel-r",
     "body.doors.pull-handle-r",
     "body.doors.lock-r",
     "body.doors.skin-r",
@@ -416,7 +420,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 332500
+   "bytes": 440705
   },
   "body.front": {
    "id": "body.front",
@@ -440,7 +444,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1038288
+   "bytes": 1036635
   },
   "body.glass": {
    "id": "body.glass",
@@ -460,7 +464,7 @@
     "body.glass.pillar-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 183256
+   "bytes": 101982
   },
   "body.hood": {
    "id": "body.hood",
@@ -480,7 +484,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 561773
+   "bytes": 743682
   },
   "body.interior": {
    "id": "body.interior",
@@ -529,7 +533,7 @@
     "body.interior.speaker-grille"
    ],
    "file": "models/body.interior.json",
-   "bytes": 1054403
+   "bytes": 1054715
   },
   "body.rear": {
    "id": "body.rear",
@@ -559,7 +563,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 2710714
+   "bytes": 2715270
   },
   "body.structure": {
    "id": "body.structure",
@@ -619,7 +623,7 @@
     "body.structure.arch-liners"
    ],
    "file": "models/body.structure.json",
-   "bytes": 685186
+   "bytes": 687162
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -725,7 +729,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468578
+   "bytes": 468674
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -767,7 +771,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592669
+   "bytes": 592541
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1348,7 +1352,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 150130
+   "bytes": 150078
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -1511,7 +1515,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 333669
+   "bytes": 333545
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1546,7 +1550,7 @@
     "electrical.lamps.plate-lamp"
    ],
    "file": "models/electrical.lamps.json",
-   "bytes": 230709
+   "bytes": 243088
   },
   "electrical.loom": {
    "id": "electrical.loom",
@@ -1569,7 +1573,7 @@
     "electrical.loom.bulkhead-grommet"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 94554
+   "bytes": 94570
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1725,7 +1729,7 @@
     "electrical.wiring-indicators.gp-joint-rear"
    ],
    "file": "models/electrical.wiring-indicators.json",
-   "bytes": 585093
+   "bytes": 594142
   },
   "electrical.wiring-instruments": {
    "id": "electrical.wiring-instruments",
@@ -1809,7 +1813,7 @@
     "electrical.wiring-lighting.map-connector"
    ],
    "file": "models/electrical.wiring-lighting.json",
-   "bytes": 978242
+   "bytes": 979720
   },
   "electrical.wiring-overdrive": {
    "id": "electrical.wiring-overdrive",
@@ -2164,7 +2168,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170508
+   "bytes": 170452
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2337,7 +2341,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 228335
+   "bytes": 228763
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2452,7 +2456,7 @@
     "fuel.tank.strap-nut"
    ],
    "file": "models/fuel.tank.json",
-   "bytes": 184983
+   "bytes": 185141
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -2945,7 +2949,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494278
+   "bytes": 494146
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -7204,7 +7208,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "chrome",
-   "notes": "Chrome frame of the pivoting ventilator at the door's front top corner, its front edge along the screen pillar's rake, the divider post down into the door to its securing nuts (Fig 12.15 item 1), the pivot and catch.",
+   "notes": "Chrome frame of the pivoting ventilator at the door's front top corner, its front edge along the screen pillar's rake and toed in to close on the pillar, the divider post down into the door to its securing nuts (Fig 12.15 item 1), the pivot and catch.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -7215,10 +7219,10 @@
     {
      "key": "post_x",
      "label": "Post x",
-     "value": "-1015.0 mm",
+     "value": "-1104.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Divider post behind the screen pillar's top",
+     "ref": "Divider post behind the screen pillar's top (closures QL_POST_X)",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -7256,7 +7260,7 @@
     {
      "key": "post_x",
      "label": "Post x",
-     "value": "-1015.0 mm",
+     "value": "-1104.0 mm",
      "source": "D",
      "sourceName": "Derived",
      "ref": "As the left",
@@ -7330,6 +7334,156 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "As the door glass",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.doors.glass-channel-l": {
+   "id": "body.doors.glass-channel-l",
+   "kind": "part",
+   "name": "Door glass rear run channel, left",
+   "parent": "body.doors",
+   "haynes": {
+    "section": 39,
+    "spec_page": 229,
+    "figures": [
+     {
+      "figure": "12.15"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Felt-lined U channel inside the door the glass's rear edge runs in, from the regulator's reach up to the waist, on the rear shut face (the glass runs the whole length of the door: Oliver's photos 08, 09, 23).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "286.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Waist less 20 down to 540 above the road",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.doors.glass-channel-r": {
+   "id": "body.doors.glass-channel-r",
+   "kind": "part",
+   "name": "Door glass rear run channel, right",
+   "parent": "body.doors",
+   "haynes": {
+    "section": 39,
+    "spec_page": 229,
+    "figures": [
+     {
+      "figure": "12.15"
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_black",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "length",
+     "label": "Length",
+     "value": "286.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the left",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.doors.quarter-light-seal-l": {
+   "id": "body.doors.quarter-light-seal-l",
+   "kind": "part",
+   "name": "Quarter-light front seal, left",
+   "parent": "body.doors",
+   "haynes": {
+    "section": 21,
+    "spec_page": 229
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Rubber seal along the quarter-light frame's front edge, closing on the windscreen pillar's rear (Oliver's photos 09, 27: no light between the pillar and the quarter-light).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 09: a dark line between the pillar and the frame",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.doors.quarter-light-seal-r": {
+   "id": "body.doors.quarter-light-seal-r",
+   "kind": "part",
+   "name": "Quarter-light front seal, right",
+   "parent": "body.doors",
+   "haynes": {
+    "section": 21,
+    "spec_page": 229
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Mirror of the left.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "10.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "As the left",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -33452,10 +33606,10 @@
     {
      "key": "height",
      "label": "Height",
-     "value": "248.0 mm",
+     "value": "304.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Oliver's photos 18, 23, 24 and profile photo 29: a tall rounded rectangle about 200 mm high seen from behind (236 mm on the 33 deg plinth) and 90 mm wide, in a 6 mm chrome rim (P10 had 172 from photo 36.1)",
+     "ref": "Oliver's photos 14, 18 (scaled on the 520 mm plate): 250 mm tall seen from behind on the 33 deg plinth (292 mm on the rake), 97 mm wide over the 6 mm chrome rim, the top drawn in to a blunt point, a chrome bar 69 % down",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -33485,10 +33639,10 @@
     {
      "key": "height",
      "label": "Height",
-     "value": "158.0 mm",
+     "value": "171.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Oliver's photos 18, 24: the lower two thirds of the lens",
+     "ref": "Oliver's photos 14, 18: the lower 58 % of the lens",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -33518,10 +33672,10 @@
     {
      "key": "height",
      "label": "Height",
-     "value": "80.0 mm",
+     "value": "123.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Oliver's photos 18, 24: the top third of the lens",
+     "ref": "Oliver's photos 14, 18: the top 42 % of the lens, the pointed arch",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -77097,6 +77251,62 @@
    "label": true,
    "fitted": null
   },
+  "body.doors.quarter-light-seal-l#1": {
+   "part": "body.doors.quarter-light-seal-l",
+   "assembly": "body.doors",
+   "node": "body--doors--quarter-light-seal-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 400,
+     "group": "door-l"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.doors.glass-channel-l#1": {
+   "part": "body.doors.glass-channel-l",
+   "assembly": "body.doors",
+   "node": "body--doors--glass-channel-l__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 400,
+     "group": "door-l"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "body.doors.pull-handle-l#1": {
    "part": "body.doors.pull-handle-l",
    "assembly": "body.doors",
@@ -77305,6 +77515,62 @@
    "part": "body.doors.quarter-light-frame-r",
    "assembly": "body.doors",
    "node": "body--doors--quarter-light-frame-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 400,
+     "group": "door-r"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.doors.quarter-light-seal-r#1": {
+   "part": "body.doors.quarter-light-seal-r",
+   "assembly": "body.doors",
+   "node": "body--doors--quarter-light-seal-r__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      -1,
+      0
+     ],
+     "order": 5,
+     "distance_mm": 400,
+     "group": "door-r"
+    },
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.doors.glass-channel-r#1": {
+   "part": "body.doors.glass-channel-r",
+   "assembly": "body.doors",
+   "node": "body--doors--glass-channel-r__1",
    "stages": [
     {
      "axis": [
@@ -133049,7 +133315,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-03T03:54:30+00:00",
+ "built": "2026-11-03T09:56:02+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,
