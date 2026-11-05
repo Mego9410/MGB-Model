@@ -14,7 +14,7 @@ from __future__ import annotations
 import math
 
 import numpy as np
-from build123d import Compound, Location, Solid, Vector, Wire
+from build123d import Compound, Location, Rot, Solid, Vector, Wire
 
 from mgb import body_geom as G, body_layout as BL, body_shell_layout as S, car_layout as CL
 from mgb.chassis_geom import box, rod, swept_rod, xcyl, xprism, ycyl, zcyl, zprism
@@ -39,9 +39,13 @@ def _c(parts, spec):
 # 10, 18): the front blade's face stands 48 mm off the valance at the centre, the rear 70 mm off the rear panel; both
 # wrap round the corners and run back along the sides to the wheel arches (photo 29: front ends X 518, rear X -2742).
 FRONT_BAR_H = (356.0, 404.0)
-REAR_BAR_H = (424.0, 474.0)                  # Oliver's photos 14, 18 (QA, scaled on the plate)
+REAR_BAR_H = (416.0, 481.0)                  # Oliver's photos 14, 18, 25 (QA, scaled on the plate)
 BAR_DEPTH = 44.0
-FRONT_GAP, REAR_GAP = 34.0, 34.0
+FRONT_GAP, REAR_GAP = 54.0, 34.0
+# the blades bow out at the middle (Oliver's scan: front blade face 830-850 at the centre and 770-780 at |y| 500, rear
+# -3025..-3031 at the centre and -2975..-2988 at |y| 500; the overriders at x 834-844 and -3042..-3048, the published
+# overall length 153.2 in over them)
+FRONT_BOW, REAR_BOW = 25.0, 36.0
 FRONT_END_X, REAR_END_X = 528.0, -2745.0
 OVR_FRONT_Y = 330.0                          # front overriders (Oliver's photos 10, 15)
 OVR_H = {"front": (292.0, 519.0), "rear": (395.0, 572.0)}   # tops: photos 15 and 14, 18 (QA)
@@ -64,13 +68,15 @@ def _plan_outline(h, front, gap, n=121):
         tx, ty = b[0] - a[0], b[1] - a[1]
         L = math.hypot(tx, ty) or 1.0
         nx, ny = (ty / L, -tx / L) if front else (ty / L, -tx / L)
-        out.append((pts[k][0] + nx * gap, pts[k][1] + ny * gap))
+        g = gap(pts[k][1]) if callable(gap) else gap
+        out.append((pts[k][0] + nx * g, pts[k][1] + ny * g))
     return out
 
 
 def _bar_path(front):
     h = sum(FRONT_BAR_H if front else REAR_BAR_H) / 2
-    pts = _plan_outline(h, front, FRONT_GAP if front else REAR_GAP)
+    base, bow = (FRONT_GAP, FRONT_BOW) if front else (REAR_GAP, REAR_BOW)
+    pts = _plan_outline(h, front, lambda y: base + bow * max(0.0, 1.0 - (y / 620.0) ** 2))
     end = FRONT_END_X if front else REAR_END_X
     keep = [p for p in pts if (p[0] > end if front else p[0] < end)]
     # smooth the path a little (it follows a smooth body but the offset doubles small wiggles)
@@ -163,17 +169,26 @@ def _overrider(x_face, y, h0, h1, front):
     if not o.is_valid:
         o = o.fix()
     hm = (h0 + h1) / 2
+    o = _rake(o, x_face, h0, front)
     groove = box(x_face - 7.0, x_face + 7.0, y - 6.5, y + 6.5, H(h0 + 40.0), H(h1 - 35.0)) if front else \
         box(x_face - 7.0, x_face + 7.0, y - 6.5, y + 6.5, H(h0 + 40.0), H(h1 - 35.0))
-    return o - groove
+    return o - _rake(groove, x_face, h0, front)
+
+
+OVR_RAKE = 8.0                                # deg: the overriders lean in at the top (Oliver's photos 05, 09, 10, 23)
+
+
+def _rake(p, x_face, h0, front):
+    a = -OVR_RAKE if front else OVR_RAKE
+    return Location((x_face, 0.0, H(h0))) * Rot(0, a, 0) * Location((-x_face, 0.0, -H(h0))) * p
 
 
 def _ovr_face(which, side):
     if which == "front":
         y = side * OVR_FRONT_Y
-        return CL.FRONT_X - 2.0, y
+        return CL.FRONT_X + 20.0, y         # the raked top at FRONT_X + 6 (Oliver's scan 834-844)
     y = side * BL.OVERRIDER_Y
-    return CL.REAR_X + 40.0, y
+    return CL.REAR_X + 4.0, y               # the raked top at REAR_X + 18 (Oliver's scan -3042..-3048)
 
 
 def front_overrider(side):
@@ -205,12 +220,12 @@ def overrider_rubber(which):
         """Rubber face strip in the overrider's groove (Oliver's photo 10), drawn on the car's centre line at the
         overrider's face; the assembly places it on the left and right overriders."""
         h0, h1 = OVR_H[which]
-        x = CL.FRONT_X - 2.0 if which == "front" else CL.REAR_X + 40.0
+        x = CL.FRONT_X + 20.0 if which == "front" else CL.REAR_X + 4.0
         r = box(x - 6.0, x + 3.0, -5.5, 5.5, H(h0 + 44.0), H(h1 - 39.0)) if which == "front" else \
             box(x - 3.0, x + 6.0, -5.5, 5.5, H(h0 + 44.0), H(h1 - 39.0))
         from mgb.elec_shapes import tryfillet
         r = tryfillet(r, r.edges(), 2.5)
-        return _l(r, spec)
+        return _l(_rake(r, x, h0, which == "front"), spec)
     return build
 
 
@@ -433,7 +448,7 @@ def rear_reflector(side):
     def build(spec):
         """Small round red reflector on the wing end below the rear lamp, in a chrome-edged plinth (Oliver's photos
         18, 24)."""
-        y, h = side * BL.REAR_LAMP_Y, 548.0
+        y, h = side * BL.REAR_LAMP_Y, 518.0                       # under the lamp (its foot at 548)
         x = S.tail_x(BL.REAR_LAMP_Y, h)
         from mgb.chassis_geom import xrev
         r = xrev([(0.0, 0.0), (20.0, 0.0), (20.0, -3.0), (18.0, -7.0), (0.0, -8.0)]).moved(Location((x + 1.0, y, H(h))))

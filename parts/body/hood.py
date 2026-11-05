@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import math
 
-from build123d import Compound, Face, Plane, RectangleRounded, Vector, extrude, thicken
+from build123d import Compound, Face, Location, Plane, RectangleRounded, Vector, extrude, thicken
 
 from mgb import body_geom as G, body_shell_layout as S, car_layout as CL
 from mgb.chassis_geom import rod, swept_rod
@@ -80,7 +80,7 @@ def _edge(x):
 
 
 def _interp_y(x):
-    tab = [(-1609.0, 690.0), (-1660.0, 678.0), (-1750.0, 664.0), (-1850.0, 636.0), (REAR_X, 596.0)]
+    tab = [(-1609.0, 692.0), (-1660.0, 686.0), (-1750.0, 678.0), (-1850.0, 652.0), (REAR_X, 614.0)]   # outside the cockpit rim roll
     if x >= tab[0][0]:
         return tab[0][1]
     for (x0, y0), (x1, y1) in zip(tab, tab[1:]):
@@ -193,7 +193,33 @@ def side_rail(side):
     return build
 
 
+SEAM_V = 0.79                                # the top panel's seams to the side quarters (Oliver's photos 15, 18, 27)
+
+
+def seams(spec):
+    """Hood seams: the welted seams down each side where the top panel meets the side quarters, from the screen rail
+    to the deck, and the binding stitched round the rear window (Oliver's photos 15, 18, 23, 27)."""
+    out = []
+    for v in (SEAM_V, -SEAM_V):
+        pts = []
+        for k in range(17):
+            u = 0.02 + 0.95 * k / 16
+            x, y, z = hood_pt(u, v)
+            L = math.hypot(y, z - H(980.0)) or 1.0
+            q = (x, y + 2.4 * y / L, z + 2.4 * (z - H(980.0)) / L)
+            if not pts or math.dist(q, pts[-1]) > 5.0:
+                pts.append(q)
+        out.append(swept_rod(pts, 2.2))
+    pl = _window_plane()
+    from build123d import RectangleRounded as RR
+    frame = extrude(pl * RR(WIN_W + 36.0, WIN_L + 36.0, WIN_R + 18.0), amount=1.4) - \
+        extrude(pl * RR(WIN_W - 4.0, WIN_L - 4.0, WIN_R - 2.0), amount=4.0, both=True)
+    out.append(frame.moved(Location(tuple(pl.z_dir * 1.3))))
+    return _c(out, spec)
+
+
 PARTS = {
+    "body.hood.seams": {"build": seams},
     "body.hood.cover": {"build": cover},
     "body.hood.rear-window": {"build": rear_window},
     "body.hood.bow-front": {"build": bow(0)},

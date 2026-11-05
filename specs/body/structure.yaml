@@ -483,3 +483,11 @@ parts:
     notes: "A band just inside each wing's arch opening, from the skin in toward the wheel house, in underseal (the arches read dark inside in Oliver's photos 02, 09, 23)."
     specs:
       depth: { mm: 282.0, source: { label: D, method: "Skin to the wheel house wall" } }
+  - id: body.structure.arch-lips
+    name: Wheel arch lips
+    haynes: { section: 1 }
+    quantity: 1
+    finish: paint_body_red
+    notes: "The wings' edges rolled under round the arch openings (Oliver's photos 02, 09, 23): a bead just inside each opening's edge."
+    specs:
+      bead: { mm: 7.0, display_only: true, source: { label: D, method: "Oliver's photo 09: the lip's highlight" } }

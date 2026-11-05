@@ -369,6 +369,17 @@ round them and should check them against the car:
   `exhaust_layout.TAIL_END_X`).
 - Viewer note: the body hides the mechanicals; hide or isolate a system from the Parts tree.
 
+- Scan QA (5 Nov 2026, Oliver's photogrammetry scans; not in the repo): registration in `mgb/scan_layout.py` (body scan
+  by its own symmetry plane and trimmed ICP of the red paint onto our panels, checked on the four wire wheel rims: scale
+  good to about 0.5 %, rims symmetric within 1 mm; engine scan on the rocker cover's corners and the inner wing flanges,
+  about +/-25 mm). Oliver's instruction: the scans give the layout, scale and flow; reflections on the glossy panels made
+  dents, blobs and holes, so only low-reflection regions that agree left and right are used, and parts are not moved to
+  match the scan except for minor appearance adjustments. Round 0 (pending work of the first scan pass): rear deck and
+  waist heights, door tops 862, rear width at the lamps, rear bumper height and bow, raked overriders, tail pipe end,
+  arch lips, the black cockpit-rim roll, hood seams, smooth surface normals on the body panels, the polished finned
+  rocker cover, chrome pancake air filters and the yellow fan (engine scan). The door glass's bow now starts tangent at
+  the waist (a kink there broke its thickening).
+
 ## P3b throttle and choke controls: what was built and assumed
 
 - Assemblies: `fuel.throttle` (accelerator pedal, pad, welded pivot bracket, distance tube, pivot bolt, washer and nyloc

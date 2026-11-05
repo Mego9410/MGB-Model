@@ -164,7 +164,8 @@ GLASS_BOW = 5.0                                 # the glass is curved in its hei
 def _glass_ys(h):
     """|y| of the curved glass's outer face line at height h."""
     t = (h - (WAIST_H + GLASS_TOP_H) / 2) / ((GLASS_TOP_H - WAIST_H) / 2)
-    return _glass_y(h) + (GLASS_BOW * (1.0 - t * t) if h > WAIST_H else 0.0)     # flat inside the door
+    return _glass_y(h) + (GLASS_BOW * (1.0 - t * t) ** 2 if h > WAIST_H else 0.0)   # flat inside the door, the bow
+    # starting tangent at the waist so the fitted face stays smooth (a kink there broke the thickening)
 
 
 def door_glass(side):

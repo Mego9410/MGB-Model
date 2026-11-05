@@ -40,9 +40,19 @@ def cover(spec) -> Part:
     c = c + (Location((bx, W / 2, bz)) * Rot(-90, 0, 0) * sp)
     c = c - (Location((bx, W / 2 - 3, bz)) * Rot(-90, 0, 0) * Sh.cyl(11, 6))
     c = c + (Location((bx, W / 2 + BREATHER_LEN - 3, bz)) * Rot(-90, 0, 0) * Sh.tube(17, 11, 2.5))   # hose bead
-    # pressed stiffening ribs along the top
-    for dy in (-30, 30):
-        c = c + Box(L - 120, 6, 2.2, align=BASE).moved(Location((-20, dy, H - 0.6)))
+    # Oliver's car (engine scan, photos 13, 28): a polished cast alloy cover, longitudinal fins along the top either
+    # side of a plain centre band carrying the raised MG octagon, the fins stopped round the filler and the studs
+    fins = None
+    for dy in (-48.0, -38.0, -28.0, 28.0, 38.0, 48.0):
+        f = Box(L - 70, 4.0, 5.0, align=BASE).moved(Location((-5, dy, H - 0.6)))
+        f = fillet(f.edges().group_by(Axis.Z)[-1], 1.6)
+        fins = f if fins is None else fins + f
+    fins = fins - Sh.cyl(46, 12, z0=H - 2).moved(Location((FILLER_X, 0, 0)))
+    for dx in STUD_DX:
+        fins = fins - Sh.cyl(30, 12, z0=H - 2).moved(Location((dx, STUD_DY, 0)))
+    from build123d import Plane, RegularPolygon, extrude
+    octa = extrude(Plane.XY.offset(H - 0.6) * RegularPolygon(22, 8), 4.0)
+    c = c + fins + octa.moved(Location((-60.0, 0, 0)))
     return _l(c, spec)
 
 

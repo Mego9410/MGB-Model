@@ -13,7 +13,8 @@ GLTFPACK = ROOT / "node_modules" / ".bin" / "gltfpack"
 LOD = {
     "detail": {"linear": 0.03, "angular": 0.3},
     "car": {"linear": 0.2, "angular": 0.5},
-    "body": {"linear": 0.25, "angular": 0.12},     # large thin panels (P11b): smooth curves, coarser chords on the flats
+    "body": {"linear": 0.25, "angular": 0.12, "exact_normals": True},   # large thin panels (P11b): smooth curves,
+                                                                        # coarser chords on the flats, the surface's own normals
 }
 
 
@@ -28,7 +29,36 @@ def node_name(inst_id: str) -> str:
     return inst_id.replace(".", "--").replace("#", "__")
 
 
-def _mesh_part(part: Part, linear: float, angular: float):
+def _surface_normals(face, approx):
+    """Exact surface normals at the face's mesh nodes (from their UV parameters), turned to agree with the mesh's
+    own normals: smooth shading on large, gently curved panels with long triangles (P11b body skins)."""
+    import numpy as np
+    from OCP.BRep import BRep_Tool
+    from OCP.BRepAdaptor import BRepAdaptor_Surface
+    from OCP.BRepLProp import BRepLProp_SLProps
+    from OCP.TopLoc import TopLoc_Location
+    loc = TopLoc_Location()
+    tri = BRep_Tool.Triangulation_s(face.wrapped, loc)
+    if tri is None or not tri.HasUVNodes() or tri.NbNodes() != len(approx):
+        return approx
+    surf = BRepAdaptor_Surface(face.wrapped)
+    props = BRepLProp_SLProps(surf, 1, 1e-6)
+    trsf = loc.Transformation()
+    out = approx.copy()
+    for i in range(tri.NbNodes()):
+        uv = tri.UVNode(i + 1)
+        props.SetParameters(uv.X(), uv.Y())
+        if not props.IsNormalDefined():
+            continue
+        d = props.Normal().Transformed(trsf)
+        v = np.array([d.X(), d.Y(), d.Z()])
+        if v @ approx[i] < 0:
+            v = -v
+        out[i] = v
+    return out
+
+
+def _mesh_part(part: Part, linear: float, angular: float, exact_normals: bool = False):
     """Tessellate face by face so normals stay sharp at edges and smooth within a face.
 
     Returns float32 positions (metres), float32 normals and uint32 indices.
@@ -54,6 +84,8 @@ def _mesh_part(part: Part, linear: float, angular: float):
             np.add.at(n, t[:, k], fn)
         ln = np.linalg.norm(n, axis=1, keepdims=True)
         n = np.divide(n, ln, out=np.zeros_like(n), where=ln > 0)
+        if exact_normals and len(v) > 12:
+            n = _surface_normals(face, n)
         pos.append(v)
         nrm.append(n)
         idx.append(t + base)
@@ -101,7 +133,7 @@ def glb(instances: list[tuple[str, Part, Location]], path: Path, lod: str) -> in
     for inst_id, part, loc in instances:
         key = id(part)
         if key not in mesh_of:
-            m = _mesh_part(part, q["linear"], q["angular"])
+            m = _mesh_part(part, q["linear"], q["angular"], q.get("exact_normals", False))
             if m is None:
                 continue
             p, n, ix = m

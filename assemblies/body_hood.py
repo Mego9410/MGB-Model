@@ -23,6 +23,7 @@ def add(part, loc=O, n=1, **o):
 
 add("cover", groups=["hood"])
 add("rear-window", groups=["hood"])
+add("seams", groups=["hood"])
 for p in ("bow-front", "bow-middle", "bow-rear", "side-rail-l", "side-rail-r"):
     add(p, explode=ex(UP, 3, 200))
 INSTANCES = I

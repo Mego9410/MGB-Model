@@ -385,7 +385,7 @@
     "body.brightwork.grille-badge"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 420065
+   "bytes": 382147
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -405,7 +405,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 799059
+   "bytes": 633534
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -444,7 +444,7 @@
     "body.door-mechanisms.door-seal-r"
    ],
    "file": "models/body.door-mechanisms.json",
-   "bytes": 789331
+   "bytes": 795161
   },
   "body.doors": {
    "id": "body.doors",
@@ -481,7 +481,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 437539
+   "bytes": 413213
   },
   "body.front": {
    "id": "body.front",
@@ -505,7 +505,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1071996
+   "bytes": 1072988
   },
   "body.glass": {
    "id": "body.glass",
@@ -525,7 +525,7 @@
     "body.glass.pillar-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 101982
+   "bytes": 85353
   },
   "body.hood": {
    "id": "body.hood",
@@ -538,6 +538,7 @@
    "children": [
     "body.hood.cover",
     "body.hood.rear-window",
+    "body.hood.seams",
     "body.hood.bow-front",
     "body.hood.bow-middle",
     "body.hood.bow-rear",
@@ -545,7 +546,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 743846
+   "bytes": 901658
   },
   "body.interior": {
    "id": "body.interior",
@@ -574,6 +575,7 @@
     "body.interior.seat-frame-r",
     "body.interior.seat-piping-r",
     "body.interior.floor-carpet-r",
+    "body.interior.cockpit-rim",
     "body.interior.tunnel-carpet",
     "body.interior.rear-carpet",
     "body.interior.lever-grommet",
@@ -594,7 +596,7 @@
     "body.interior.speaker-grille"
    ],
    "file": "models/body.interior.json",
-   "bytes": 1066950
+   "bytes": 1110539
   },
   "body.rear": {
    "id": "body.rear",
@@ -624,7 +626,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 2767841
+   "bytes": 2768494
   },
   "body.structure": {
    "id": "body.structure",
@@ -681,10 +683,11 @@
     "body.structure.cable-grommet",
     "body.structure.harness-grommets",
     "body.structure.harness-clips",
-    "body.structure.arch-liners"
+    "body.structure.arch-liners",
+    "body.structure.arch-lips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 694626
+   "bytes": 918375
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -790,7 +793,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468578
+   "bytes": 468562
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -832,7 +835,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592141
+   "bytes": 592573
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1413,7 +1416,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 150078
+   "bytes": 150130
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -1576,7 +1579,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 333443
+   "bytes": 333691
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1611,7 +1614,7 @@
     "electrical.lamps.plate-lamp"
    ],
    "file": "models/electrical.lamps.json",
-   "bytes": 243088
+   "bytes": 243092
   },
   "electrical.loom": {
    "id": "electrical.loom",
@@ -1874,7 +1877,7 @@
     "electrical.wiring-lighting.map-connector"
    ],
    "file": "models/electrical.wiring-lighting.json",
-   "bytes": 1011535
+   "bytes": 1013173
   },
   "electrical.wiring-overdrive": {
    "id": "electrical.wiring-overdrive",
@@ -2154,7 +2157,7 @@
     "engine.head.blanking-plate-screw"
    ],
    "file": "models/engine.head.json",
-   "bytes": 1021917
+   "bytes": 1030745
   },
   "engine.lube": {
    "id": "engine.lube",
@@ -2229,7 +2232,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170604
+   "bytes": 170520
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2362,7 +2365,7 @@
     "fuel.carbs.cleaner-case-rear"
    ],
    "file": "models/fuel.carbs.json",
-   "bytes": 642980
+   "bytes": 630735
   },
   "fuel.choke": {
    "id": "fuel.choke",
@@ -2448,7 +2451,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 228703
+   "bytes": 232513
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2470,7 +2473,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139358
+   "bytes": 139354
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2627,7 +2630,7 @@
     "fuel.throttle.pedal-stop"
    ],
    "file": "models/fuel.throttle.json",
-   "bytes": 883233
+   "bytes": 883293
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -3120,7 +3123,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494338
+   "bytes": 494266
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -9919,6 +9922,41 @@
    ],
    "derivedShare": 0.0
   },
+  "body.hood.seams": {
+   "id": "body.hood.seams",
+   "kind": "part",
+   "name": "Hood seams and rear window binding",
+   "parent": "body.hood",
+   "haynes": {
+    "section": 1,
+    "spec_page": 216
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "hood_black",
+   "notes": "The welted seams down each side of the cover where the top panel meets the side quarters, and the binding stitched round the rear window (Oliver's photos 15, 18, 23, 27).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "binding",
+     "label": "Binding",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 18 scaled on the plate",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
   "body.hood.rear-window": {
    "id": "body.hood.rear-window",
    "kind": "part",
@@ -11477,6 +11515,41 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Oliver's photo 22",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.interior.cockpit-rim": {
+   "id": "body.interior.cockpit-rim",
+   "kind": "part",
+   "name": "Cockpit rim trim",
+   "parent": "body.interior",
+   "haynes": {
+    "section": 1,
+    "spec_page": 233
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "vinyl_black",
+   "notes": "Padded black vinyl roll on the cockpit opening's edge behind the doors and round the rear of the cockpit (Oliver's scan, photos 04, 23).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "26.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's scan: as the door cappings",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -13783,6 +13856,41 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Skin to the wheel house wall",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.structure.arch-lips": {
+   "id": "body.structure.arch-lips",
+   "kind": "part",
+   "name": "Wheel arch lips",
+   "parent": "body.structure",
+   "haynes": {
+    "section": 1,
+    "spec_page": 216
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_body_red",
+   "notes": "The wings' edges rolled under round the arch openings (Oliver's photos 02, 09, 23): a bead just inside each opening's edge.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "bead",
+     "label": "Bead",
+     "value": "7.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 09: the lip's highlight",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -31200,7 +31308,7 @@
    "quantity": 1,
    "partNumbers": [],
    "material": null,
-   "finish": "paint_black",
+   "finish": "paint_yellow",
    "notes": "Three-blade metal fan, 12H1058, fitted from the earliest MGBs in 1962 (MG Owners' Club Spares, mechanical cooling fan listing). Belt-driven on the water pump pulley on early models (Haynes p55).",
    "variant": {
     "factory_1963": true,
@@ -48429,8 +48537,8 @@
    "quantity": 1,
    "partNumbers": [],
    "material": null,
-   "finish": "paint_engine",
-   "notes": "Pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long studs. The front breather spigot on the manifold side takes the hose to the front air cleaner (Ch 1 Sec 10 para 4, \"release the rocker cover front breather pipe\"; Ch 3 Sec 3 para 1). Spigot position and size derived (D).",
+   "finish": "polished_alloy",
+   "notes": "Oliver's car has a polished cast alloy cover with fins along the top and the MG octagon (engine scan, photos 13, 28; P11b scan QA), drawn on the original's footprint; the original is pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long studs. The front breather spigot on the manifold side takes the hose to the front air cleaner (Ch 1 Sec 10 para 4, \"release the rocker cover front breather pipe\"; Ch 3 Sec 3 para 1). Spigot position and size derived (D).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -56608,7 +56716,7 @@
    "quantity": 2,
    "partNumbers": [],
    "material": null,
-   "finish": "paint_black",
+   "finish": "chrome",
    "notes": "",
    "variant": {
     "factory_1963": true,
@@ -56648,7 +56756,7 @@
    "quantity": 2,
    "partNumbers": [],
    "material": null,
-   "finish": "paper",
+   "finish": "filter_mesh",
    "notes": "",
    "variant": {
     "factory_1963": true,
@@ -56699,7 +56807,7 @@
    "quantity": 1,
    "partNumbers": [],
    "material": null,
-   "finish": "paint_black",
+   "finish": "chrome",
    "notes": "The rocker cover breather pipe connects to the front air cleaner (Haynes Sec 3 para 1).",
    "variant": {
     "factory_1963": true,
@@ -56750,7 +56858,7 @@
    "quantity": 1,
    "partNumbers": [],
    "material": null,
-   "finish": "paint_black",
+   "finish": "chrome",
    "notes": "",
    "variant": {
     "factory_1963": true,
@@ -83118,6 +83226,25 @@
    "label": true,
    "fitted": null
   },
+  "body.hood.seams#1": {
+   "part": "body.hood.seams",
+   "assembly": "body.hood",
+   "node": "body--hood--seams__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 400,
+     "group": "hood"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "body.hood.bow-front#1": {
    "part": "body.hood.bow-front",
    "assembly": "body.hood",
@@ -83589,6 +83716,24 @@
      ],
      "order": 3,
      "distance_mm": 300
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.interior.cockpit-rim#1": {
+   "part": "body.interior.cockpit-rim",
+   "assembly": "body.interior",
+   "node": "body--interior--cockpit-rim__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 2,
+     "distance_mm": 150
     }
    ],
    "label": true,
@@ -85171,6 +85316,24 @@
      ],
      "order": 1,
      "distance_mm": 200
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.structure.arch-lips#1": {
+   "part": "body.structure.arch-lips",
+   "assembly": "body.structure",
+   "node": "body--structure--arch-lips__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      -1
+     ],
+     "order": 1,
+     "distance_mm": 220
     }
    ],
    "label": true,
@@ -140283,7 +140446,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-05T12:57:34+00:00",
+ "built": "2026-11-05T14:09:18+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,

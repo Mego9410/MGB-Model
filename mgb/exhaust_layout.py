@@ -82,8 +82,9 @@ RS_Z = -362.0
 INTER_ROUTE = [(CS_X[1] - 2.0, CS_Y, CS_Z), (-1410.0, CS_Y, CS_Z), (-1560.0, IP_Y, IP_Z), (-2040.0, IP_Y, IP_Z),
                UNDER_AXLE, UNDER_ROD, (-2330.0, RS_Y - 20.0, -385.0), (RS_X[0] + 2.0, RS_Y, RS_Z)]
 TAIL_END_X = CL.REAR_X + 95.0                      # the tail pipe ends under the bumper blade (P11b: profile photo 29)
-TAIL_Z = -378.0
-TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (-2800.0, RS_Y, RS_Z), (-2860.0, RS_Y, TAIL_Z), (TAIL_END_X, RS_Y, TAIL_Z)]
+TAIL_Z = CL.GROUND_Z + 270.0                      # QA: the tail pipe's end just under the valance (Oliver's photos 11, 14, 23)
+TAIL_Y = 352.0                                      # and out to |y| 352 (photos 11, 14)
+TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (-2790.0, RS_Y, RS_Z), (-2880.0, TAIL_Y, TAIL_Z), (TAIL_END_X, TAIL_Y, TAIL_Z)]
 TAIL_CUT_DEG = 45.0                                # end cut, the long side underneath (S: MGOC)
 
 # ---- gearbox clip (front support) ---------------------------------------------------------------------------------
@@ -94,7 +95,7 @@ STRAP_W, STRAP_T = 22.0, 2.5
 
 # ---- rear mounting (pinch clamp on a rubber block from a bracket under the boot floor) --------------------------
 REAR_MOUNT_X = -2885.0
-REAR_CLAMP = (REAR_MOUNT_X, RS_Y, TAIL_Z)          # pinch clamp round the tail pipe
+REAR_CLAMP = (REAR_MOUNT_X, TAIL_Y, TAIL_Z)        # pinch clamp round the tail pipe
 REAR_RUBBER_Z = (TAIL_Z + 52.0, TAIL_Z + 82.0)     # bonded rubber block, bottom and top plate faces
 REAR_BRACKET_Z = (REAR_RUBBER_Z[1], U.BOOT_FLOOR_Z)   # bracket from the block up to the boot floor
 

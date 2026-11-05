@@ -34,6 +34,7 @@ for n, out in (("l", LEFT), ("r", RIGHT)):
     add(f"seat-frame-{n}", groups=g)
     add(f"seat-piping-{n}", groups=g, explode=ex(UP, 1, 70))
     add(f"floor-carpet-{n}", explode=ex(UP, 3, 300))
+add("cockpit-rim", explode=ex(UP, 2, 150))
 add("tunnel-carpet", explode=ex(UP, 3, 380))
 add("rear-carpet", explode=ex(UP, 3, 300))
 add("lever-grommet", explode=ex(UP, 1, 200))

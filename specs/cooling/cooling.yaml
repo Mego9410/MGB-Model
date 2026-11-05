@@ -69,7 +69,7 @@ parts:
     name: Cooling fan (three blade)
     haynes: { figures: [{ figure: "2.6", legend: 37 }], section: 9 }
     quantity: 1
-    finish: paint_black
+    finish: paint_yellow                    # Oliver's car: a yellow fan (engine scan, P11b scan QA)
     notes: >
       Three-blade metal fan, 12H1058, fitted from the earliest MGBs in 1962 (MG Owners'
       Club Spares, mechanical cooling fan listing). Belt-driven on the water pump pulley on

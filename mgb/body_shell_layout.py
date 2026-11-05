@@ -111,22 +111,23 @@ H_WHEEL = ag(WZ)
 TOP_C = [(800.0, 560.0), (745.0, 625.0), (720.0, 641.0), (680.0, 668.0), (600.0, 716.0), (500.0, 756.0),
          (424.0, 778.0), (300.0, 795.0), (150.0, 808.0), (0.0, 823.0), (-100.0, 840.0), (-200.0, 856.0), (-392.0, 880.0), (-550.0, 896.0),
          (BL.WINDSCREEN_BASE_X, ag(BL.WINDSCREEN_BASE_Z)), (-900.0, 905.0), (-1300.0, 880.0), (-1650.0, 864.0),
-         (-1900.0, 868.0), (-2100.0, 876.0), (-2350.0, 880.0), (-2550.0, 864.0), (-2650.0, 852.0),
+         (-1900.0, 886.0), (-2100.0, 896.0), (-2350.0, 882.0), (-2550.0, 878.0), (-2650.0, 868.0),   # QA: Oliver's scan
          (-2750.0, 836.0), (-2850.0, 765.0), (-2950.0, 690.0), (-3050.0, 600.0)]
 # Wing crown / shoulder line (the side's top edge): the front wing crowns over the headlamps (photo 29 silhouette
 # X 567 h 729 at the hood front, 777 at X 372, 829 at X 48), the waist along the doors (h 849), the rear wings rising
 # a little to the deck and falling to the lamp plinths (h 803 at the plinth's top corner, X -2774).
 CROWN_H = [(730.0, 680.0), (672.0, 730.0), (645.0, 739.0), (600.0, 745.0), (540.0, 752.0), (470.0, 760.0),
            (372.0, 776.0), (178.0, 806.0), (48.0, 824.0), (-82.0, 836.0), (-277.0, 846.0), (-500.0, 851.0),
-           (-700.0, 852.0), (-1200.0, 852.0), (-1620.0, 855.0), (-1900.0, 860.0), (-2200.0, 862.0), (-2450.0, 855.0),
+           (-700.0, 852.0), (-1000.0, 860.0), (-1200.0, 863.0), (-1620.0, 866.0), (-1900.0, 878.0), (-2050.0, 884.0),
+           (-2200.0, 876.0), (-2450.0, 856.0),   # waist +11 and rear wing tops +16..24 (QA: Oliver's scan; profile 29 at the rear)
            (-2600.0, 846.0), (-2700.0, 838.0), (-2780.0, 812.0), (-2860.0, 760.0), (-2950.0, 700.0)]
 CROWN_Y = [(700.0, BL.HEADLAMP_Y), (560.0, BL.HEADLAMP_Y + 2.0), (300.0, 610.0), (0.0, 628.0), (-400.0, 655.0),
            (-700.0, 690.0), (-1620.0, 692.0), (-2200.0, 682.0), (-2780.0, BL.REAR_LAMP_Y), (-2950.0, BL.REAR_LAMP_Y)]
 CROWN_S = mono([(700.0, 88.0), (300.0, 85.0), (-300.0, 95.0), (-700.0, 120.0), (-2200.0, 120.0), (-2780.0, 75.0)])
 # Plan: half-width at the strip line (the widest), the shoulder half-width, the lower edge tuck-under.
 W_M = mono([(831.0, 380.0), (790.0, 520.0), (760.0, 600.0), (720.0, 664.0), (660.0, 702.0), (613.0, 716.0),
-       (500.0, 738.0), (350.0, 754.0), (200.0, HALF_W), (-2400.0, HALF_W), (-2600.0, 757.0), (-2750.0, 752.0),
-       (-2850.0, 746.0), (-2930.0, 739.0), (-2990.0, 730.0), (-3060.0, 705.0)])   # square tail (Oliver's photo 18)
+       (500.0, 738.0), (350.0, 754.0), (200.0, HALF_W), (-2300.0, HALF_W), (-2600.0, 746.0), (-2750.0, 737.0),
+       (-2850.0, 731.0), (-2930.0, 726.0), (-2990.0, 717.0), (-3060.0, 690.0)])   # QA: photos 14, 18 (729 at the lamps)
 W_TUMBLE = mono([(700.0, 40.0), (500.0, 52.0), (0.0, 62.0), (-700.0, 70.0), (-2200.0, 72.0), (-2600.0, 58.0), (-2800.0, 42.0)])
 W_TUCK = mono([(800.0, 120.0), (600.0, 100.0), (300.0, 70.0), (0.0, 60.0), (-2300.0, 60.0), (-2600.0, 50.0), (-2900.0, 38.0)])
 H_M = ag(BL.SIDE_STRIP_Z)                   # widest point at the chrome strip
@@ -434,7 +435,7 @@ def sample_grid(n_psi=193, step=25.0, cap_n=36):
 DOOR_FRONT_X = -695.0
 DOOR_REAR_X = -1623.0
 DOOR_BOTTOM_H = 362.0
-DOOR_TOP_H = 852.0
+DOOR_TOP_H = 862.0                          # QA: Oliver's scan, the door tops 860 both sides (photo 29 read 849-852)
 DOOR_FRONT_TOP_R = 95.0                     # radius of the door's top front corner (the shut line under the pillar)
 DOOR_REAR_LEAN = 8.0                        # rear shut line leans forward this much from the bottom to the top
 # Bonnet (Sec 6; Oliver's photos 05, 20, 27): front edge on the grille surround's top, rear edge ahead of the scuttle

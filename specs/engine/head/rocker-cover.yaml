@@ -10,9 +10,10 @@ parts:
     name: Rocker cover
     haynes: { figures: [{ figure: "1.6", legend: 54 }] }
     quantity: 1
-    finish: paint_engine
+    finish: polished_alloy
     notes: >
-      Pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long
+      Oliver's car has a polished cast alloy cover with fins along the top and the MG octagon (engine scan, photos 13,
+      28; P11b scan QA), drawn on the original's footprint; the original is pressed steel, oil filler at the front (Haynes Sec 2). Held by two nuts on the long
       studs. The front breather spigot on the manifold side takes the hose to the front
       air cleaner (Ch 1 Sec 10 para 4, "release the rocker cover front breather pipe";
       Ch 3 Sec 3 para 1). Spigot position and size derived (D).

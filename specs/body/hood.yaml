@@ -16,6 +16,14 @@ parts:
     notes: "Hood cover from the screen's top rail fastener brackets over the cockpit to the rear deck, on the door glass tops at the sides."
     specs:
       top_height: { in: 49.4, mm: 1254.76, source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall height, hood up" }, display_only: true }
+  - id: body.hood.seams
+    name: Hood seams and rear window binding
+    haynes: { section: 1 }
+    quantity: 1
+    finish: hood_black
+    notes: "The welted seams down each side of the cover where the top panel meets the side quarters, and the binding stitched round the rear window (Oliver's photos 15, 18, 23, 27)."
+    specs:
+      binding: { mm: 18.0, display_only: true, source: { label: D, method: "Oliver's photo 18 scaled on the plate" } }
   - id: body.hood.rear-window
     name: Hood rear window
     haynes: { section: 1 }

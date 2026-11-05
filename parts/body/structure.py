@@ -19,7 +19,7 @@ from build123d import Compound, Location, Rot
 from mgb import (body_geom as G, body_layout as BL, body_shell as B, body_shell_layout as S, brake_layout as BK,
                  car_layout as CL, chassis_layout as CH, clutch_layout as CLU, front_suspension_layout as FS,
                  fuel_supply_layout as FL, rear_suspension_layout as RS, steering_layout as ST, underbody_layout as U)
-from mgb.chassis_geom import box, xcyl, xprism, ycyl, yprism, zcyl, zprism
+from mgb.chassis_geom import box, swept_rod, xcyl, xprism, ycyl, yprism, zcyl, zprism
 
 T = 1.2
 H = S.z_of
@@ -948,7 +948,26 @@ def arch_liners(spec):
     return _c(out, spec)
 
 
+def arch_lips(spec):
+    """Wheel arch lips: the skin's edge rolled under round each arch opening (Oliver's photos 02, 09, 23), a bead just
+    inside the opening's edge where the wing turns in to the return."""
+    out = []
+    for (ax, az, r) in (S.FRONT_ARCH, S.REAR_ARCH):
+        zb = H(S.z_b(ax)) + 8.0
+        pts = []
+        for k in range(19):
+            a = math.radians(180.0 - 180.0 * k / 18)
+            x, z = ax + (r + 3.0) * math.cos(a), az + (r + 3.0) * math.sin(a)
+            if z < zb:
+                continue
+            pts.append((x, S.side_y(x, z - S.z_of(0.0)) - 4.0, z))
+        for s in (1, -1):
+            out.append(_side(swept_rod(pts, 3.5), s))
+    return _c(out, spec)
+
+
 PARTS = {
+    "body.structure.arch-lips": {"build": arch_lips},
     "body.structure.arch-liners": {"build": arch_liners},
     "body.structure.tunnel": {"build": tunnel},
     "body.structure.floor-l": {"build": floor_half(1)},

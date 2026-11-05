@@ -315,17 +315,17 @@ def cleaner_element(spec) -> Part:
 
 def cleaner_case(x):
     def build(spec) -> Part:
-        """Item 5: drawn steel case with the intake tube turned down and forward."""
+        """Item 5 as on Oliver's car (engine scan, P11b scan QA): an open pancake filter, a chrome top cap over the
+        exposed element and a chrome band at the base, in place of the original drawn steel case with its intake
+        tube; the strap under the front case's breather spigot."""
         d, depth = spec.nom("diameter"), spec.nom("depth")
-        s = K.side(x)
-        c = _ycyl(d / 2, 0, 0, 0, depth)
-        c = _tf(c, c.edges().group_by(Axis.Y)[-1], 14.0)
-        c = c - (_ycyl(d / 2 - 1.2, 0, 0, -1, depth - 1.2))
-        tube = _rod([(s * (d / 2 - 14), depth * 0.45, -d / 2 + 12), (s * (d / 2 + 10), depth * 0.45, -d / 2 - 14),
-                     (s * (d / 2 + 22), depth * 0.45, -d / 2 - 44)], 20.0, 18.0)
-        tube = tube - _rod([(s * (d / 2 - 14), depth * 0.45, -d / 2 + 12), (s * (d / 2 + 10), depth * 0.45, -d / 2 - 14),
-                            (s * (d / 2 + 22.5), depth * 0.45, -d / 2 - 45)], 18.5, 18.0)
-        c = c + tube
+        c = _ycyl(d / 2, 0, 0, depth - 7.0, depth)
+        c = _tf(c, c.edges().group_by(Axis.Y)[-1], 5.0)
+        c = c + (_ycyl(d / 2, 0, 0, 0, 9.0) - _ycyl(d / 2 - 1.5, 0, 0, -1, 10.0))
+        if x > 0:
+            bx, by = K.BREATHER_SPIGOT
+            strap = Location((bx, depth / 2, d / 2 - 0.8)) * Box(26.0, depth, 1.6)
+            c = c + strap
         for dx in (-K.CLEANER_BOLT_DX, K.CLEANER_BOLT_DX):
             c = c + _ycyl(7, dx, 0, depth - 3, depth + 1) - _ycyl(3.4, dx, 0, depth - 4, depth + 2)
         if x > 0:                                    # rocker cover breather spigot on the front case (Sec 3 para 1)

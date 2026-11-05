@@ -259,7 +259,7 @@ parts:
     name: Air cleaner baseplate
     haynes: { figures: [{ figure: "3.1", legend: 3 }], section: 3 }
     quantity: 2
-    finish: paint_black
+    finish: chrome
     specs:
       diameter: { mm: 150.0, source: { label: D, method: "Proportion from Fig 3.1" } }
 
@@ -267,7 +267,7 @@ parts:
     name: Air cleaner element
     haynes: { figures: [{ figure: "3.1", legend: 4 }], section: 3 }
     quantity: 2
-    finish: paper
+    finish: filter_mesh
     specs:
       diameter: { mm: 134.0, source: { label: D, method: "Inside the case" } }
       length: { mm: 70.0, source: { label: D, method: "Proportion from Fig 3.1" } }
@@ -276,7 +276,7 @@ parts:
     name: Air cleaner case (front)
     haynes: { figures: [{ figure: "3.1", legend: 5 }], section: 3 }
     quantity: 1
-    finish: paint_black
+    finish: chrome
     notes: The rocker cover breather pipe connects to the front air cleaner (Haynes Sec 3 para 1).
     specs:
       diameter: { mm: 150.0, source: { label: D, method: "Proportion from Fig 3.1" } }
@@ -286,7 +286,7 @@ parts:
     name: Air cleaner case (rear)
     haynes: { figures: [{ figure: "3.1", legend: 5 }], section: 3 }
     quantity: 1
-    finish: paint_black
+    finish: chrome
     specs:
       diameter: { mm: 150.0, source: { label: D, method: "Proportion from Fig 3.1" } }
       depth: { mm: 84.0, source: { label: D, method: "Proportion from Fig 3.1" } }

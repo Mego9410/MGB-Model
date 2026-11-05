@@ -520,3 +520,11 @@ parts:
       source:
         label: D
         method: Oliver's photo 22
+- id: body.interior.cockpit-rim
+  name: Cockpit rim trim
+  haynes: { section: 1 }
+  quantity: 1
+  finish: vinyl_black
+  notes: "Padded black vinyl roll on the cockpit opening's edge behind the doors and round the rear of the cockpit (Oliver's scan, photos 04, 23)."
+  specs:
+    diameter: { mm: 26.0, display_only: true, source: { label: D, method: "Oliver's scan: as the door cappings" } }

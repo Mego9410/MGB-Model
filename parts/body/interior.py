@@ -442,6 +442,24 @@ def winder(side):
     return build
 
 
+def cockpit_rim(spec):
+    """Cockpit rim trim: the padded black vinyl roll on the cockpit opening's edge behind the doors and round the rear
+    of the cockpit (Oliver's scan and photos 04, 23: black all round the opening with the hood down)."""
+    pts = B.cockpit_outline(-6.0)
+    xr = S.DOOR_REAR_X - 14.0
+    path = [(x, y) for x, y in pts if x < xr]
+    # order from the left side's front end round the rear to the right side's front end
+    left = sorted([p for p in path if p[1] > 0], key=lambda p: -p[0])
+    right = sorted([p for p in path if p[1] <= 0], key=lambda p: p[0])
+    seq = left + right
+    out = []
+    for x, y in seq:
+        q = (x, y, H(S.top_h(x, abs(y) - 12.0)) - 2.0)
+        if not out or math.dist(q, out[-1]) > 12.0:
+            out.append(q)
+    return _l(swept_rod(out, 13.0), spec)
+
+
 def door_capping(side):
     def build(spec):
         """Door top capping: the padded vinyl roll along the door's top over the glass slot."""
@@ -526,6 +544,7 @@ for s_, n in ((1, "l"), (-1, "r")):
     PARTS[f"body.interior.inner-handle-{n}"] = {"build": inner_handle(s_)}
     PARTS[f"body.interior.winder-{n}"] = {"build": winder(s_)}
     PARTS[f"body.interior.door-capping-{n}"] = {"build": door_capping(s_)}
+PARTS["body.interior.cockpit-rim"] = {"build": cockpit_rim}
 
 
 # ---- tools in the boot ------------------------------------------------------------------------------------------

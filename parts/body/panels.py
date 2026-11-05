@@ -64,7 +64,8 @@ def door_sd(X, Y, Z, side):
 
 
 def sill_sd(X, Y, Z, side):
-    return AND(X - 40.0, (-1830.0) - X, Z - H(S.SILL_TOP_H), side_sd(Y, side, 300.0))   # from inside the front arch
+    return AND(X - (S.DOOR_FRONT_X - G2), (S.DOOR_REAR_X + G2) - X, Z - H(S.SILL_TOP_H), side_sd(Y, side, 300.0))   # under the door only: the
+    # wings come down to the bottom ahead of and behind the door (Oliver's photo 09, profile 29)
 
 
 def boot_sd(X, Y, Z):

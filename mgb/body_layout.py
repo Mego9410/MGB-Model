@@ -153,8 +153,8 @@ REAR_LAMP_X = REAR_X + 195.0                           # lens face centre on the
 REAR_LAMP_Y = HALF_W - 127.0                           # Oliver's photos 14, 18 (QA, scaled on the plate): centre 634 off the centre line
 REAR_LAMP_Z = above_ground(673.0)                      # photos 14, 18: the lamp from 548 to 798 above the road
 REAR_LAMP_RAKE = 33.0                                  # deg: the lamp's top leans forward with the plinth
-OVERRIDER_Y = 340.0                                    # rear overrider centre lines, either side of the plate (photos 18, 24)
-NUMBER_LAMP = (REAR_X + 38.0, OVERRIDER_Y - 26.0, above_ground(430.0))   # lamp base on the overrider's inner face
+OVERRIDER_Y = 333.0                                    # rear overrider centre lines (QA: photos 14, 25 scaled on the plate)
+NUMBER_LAMP = (REAR_X + 2.0, OVERRIDER_Y - 26.0, above_ground(430.0))   # lamp base on the overrider's inner face, moved back with the overriders (Oliver's scan)
 
 # ---- battery carriers (D) ------------------------------------------------------------------------------
 # Two boxes hang under the tonneau floor behind the seats, either side of the tunnel, ahead
