@@ -766,20 +766,27 @@ asked; each needs his word (or a tape measure) before parts move:
 
 ## Engine set-back: open conflict (P12, 5 Nov 2026)
 
-Oliver chose to move the engine, gearbox and everything on them back to match his engine-bay scan. Measured: a trimmed
-ICP of the scan's polished rocker cover top onto our cover (engine scan as registered on the wings and headlamps) puts
-his engine 156.6 mm further back in the body (y -4.7, z +13.6 mm, residual 1.6 mm); FRONT_AXLE_X would become 307.
-The move was not applied because the propeller shaft cannot fit: the gearbox (overdrive) flange to pinion flange
-distance falls from 788.5 to 631.5 mm, an installed shaft of 634 mm (24.97 in) against the Haynes overdrive shaft's
-fully compressed 30 3/16 in (766.8 mm) and the MGOC/Rimmer AHH7487 31 1/8 in (every MGB shaft listed is 30-32 in). The
-pinion flange (D, 354.1 mm ahead of the axle centre, fitted to the shaft) cannot come back far enough: at the carrier
-nose (about 290) the shaft would still be 69 mm too long fully compressed. So one of these is wrong and needs checking
-before the engine moves: the gearbox and overdrive length in the model (engine rear plate to the overdrive flange
-793 mm, D from the Haynes figures), the banjo axle's nose and pinion flange station, or the engine scan's registration
-(supported by the radiator and headlamps lining up with the whole-car scan). Other numbers for the move as asked: fan
-to radiator core 185 mm (now 28); bulkhead 17 mm behind the engine rear plate
-(now 174); gear lever knob 271 mm behind the facia (now 114); the front crossmember's engine mounting pads would have
-to reach about 50 mm behind the beam's rear face to stay under the engine brackets.
+Oliver chose to move the engine, gearbox and everything on them back to match his engine-bay scan. P12 measured how far
+and stopped on a conflict with the drivetrain (sheets cmp-engine-position-1755.png, cmp-propshaft-conflict-1733.png).
+- Position (body side). The scan's polished rocker cover top runs x -325..+100 against our cover's -200..+195 (height
+  profiles along the cover; a first ICP of the cover top gave 157 but slid along the cover's length). With the engine
+  scan registered on the wings and headlamps (checked against the whole-car scan: headlamp fronts -4/+11 mm, scuttle vent
+  -591 against our -632, grille +51; no slip) the cover ends lie 125 and 95 mm behind ours, centre 111. Inside the scan,
+  needing no registration, the cover's rear edge is 266 mm from the scuttle vent against our 432: 166 mm further back.
+  Oliver's photo 13 with a camera fitted on body landmarks only (13 px mean) puts the cover's rear end at least as far
+  back (weak: 10 px is about 50 mm there). Haynes Ch 1 Sec 6 para 24 (engine-only removal: draw it forward clear of the
+  bellhousing, "then tilt it upwards to clear the front crossmember") puts the crossmember ahead of the sump, not under
+  it as in the model; para 21 (the starter cannot come out until the engine is drawn forward) fits a set-back too.
+- Drivetrain. The overdrive propeller shaft is published: Haynes Ch 7 fully compressed 30 3/16 in (766.8 mm), extended
+  31 7/8 in; MGOC/Rimmer AHH7487 31 1/8 in (every MGB shaft listed is 30-32 in). With the model's gearbox and overdrive
+  (rear plate to output flange 793 mm, D from Haynes figures; no published length found) and its pinion flange (D, 354.1
+  mm ahead of the axle centre, fitted to the shaft), a set-back over 24 mm makes the shaft shorter than fully compressed
+  (111 mm: 680 mm installed; 157 mm: 634); pulling the pinion flange back to the carrier nose (about 290) allows 88 mm.
+- So the model's gearbox + overdrive is probably 70-140 mm too long, or the scan and Haynes mislead us about the engine.
+  One tape measurement on the car settles it: the propeller shaft flange to flange (or the front hub centre to the crank
+  pulley, or the engine rear plate to the gearbox output flange). Other numbers for a 157 mm move: fan to radiator core
+  185 mm (now 28); bulkhead 17 mm behind the engine rear plate (now 174); gear lever knob 271 mm behind the facia (now
+  114); the front crossmember's engine mounting pads would have to reach about 50 mm behind the beam's rear face.
 
 Done in P12 so the move stays a small change once decided: the layout modules write body, chassis and running-gear
 fore-aft positions as body stations through `car_layout.bx()` (front wheel axis at station 150; a no-op today, checked
@@ -787,7 +794,7 @@ by diffing every layout datum and the body surface). Still to do for the move: t
 stations (parts/body, parts/chassis, parts/brakes, parts/fuel, wiring), the bridging runs (hoses, fuel pipe end,
 exhaust interpipe crossing ahead of the left battery carrier, clutch hose, cables, harness), the crossmember's
 engine mounting pads (they should stay with the engine), and the scan registrations (BODY_TRANS and ENGINE_TRANS x
-+157 with it).
+plus the set-back with it).
 
 ## From Oliver's photos of his car (2 Nov 2026), mechanical items left for later
 

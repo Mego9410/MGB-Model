@@ -14,11 +14,12 @@ data sheet MG MGB 1962-73, motorsport.org.au). Tyre size 5.60-14 and wire wheel 
 Derived (D): the fore-aft position of the engine against the front wheels and its
 height above the ground are not published. The front wheel axis is set just behind the
 front main bearing (cutaway drawings of the MGB put the front hubs level with the front of the
-block). Oliver's engine-bay scan (registered on the wings and headlamps onto the whole-car scan)
-puts his engine 156.6 mm further back in the body than this (trimmed ICP of the polished rocker
-cover's top onto ours: x -156.6, y -4.7, z +13.6 mm, residual 1.6 mm), which would make
-FRONT_AXLE_X 307. P12 found that move conflicts with the published propeller shaft (see PLAN.md,
-"Engine set-back: open conflict"), so the datum is not moved yet. The crank height comes from the
+block). Oliver's engine-bay scan puts his engine 95-166 mm further back in the body than this
+(the polished rocker cover's top runs x -325..+100 against our -200..+195: 95-125 mm behind ours
+with the scan registered on the wings and headlamps, 166 mm against the scan's own scuttle vent).
+P12 found that any set-back over 24 mm (88 mm with the pinion flange at the carrier nose)
+conflicts with the published propeller shaft (see PLAN.md, "Engine set-back: open conflict"), so
+the datum is not moved. The crank height comes from the
 wheel centre height plus the sump clearing the ground by a little more than the published 4.2 in
 minimum clearance.
 
@@ -57,7 +58,7 @@ ROLLING_R = TYRE_D / 2 - 8.0                 # laden deflection (D)
 
 # ---- derived datums in the engine frame (D) -----------------------------------------------
 FRONT_AXLE_X = 150.0                   # front wheel axis, just behind the front main bearing (x 205); Oliver's scan
-                                       # says 307 (P12, above), not applied: propeller shaft conflict
+                                       # says 245-316 (P12, above), not applied: propeller shaft conflict
 BODY_STATION_FRONT_AXLE = 150.0        # the front wheel axis in body stations (the frame the body was drawn in)
 BODY_DX = FRONT_AXLE_X - BODY_STATION_FRONT_AXLE     # car x of a body station minus the station
 
@@ -99,8 +100,7 @@ def rear_wheel(side):
 SUMP_BOTTOM_Z = _EL.sump_z - 118.0     # lowest point of the sump (specs/engine/lube)
 
 # Engine-side face of the bulkhead (dash panel) behind the engine (D). Not published. Set
-# 550 mm behind the front wheel axis, 174 mm behind the engine rear plate (17 mm if the engine were moved
-# back to Oliver's scan, P12): room for the
+# 550 mm behind the front wheel axis, 174 mm behind the engine rear plate: room for the
 # pedal box and the master cylinders behind the right-hand rear of the cylinder head (Haynes
 # Fig 5.3; Ch 5 Sec 5 reaches them from the engine bay), with the gearbox bellhousing
 # running back under it into the tunnel. The body phase (P11) builds the bulkhead on it.
