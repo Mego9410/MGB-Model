@@ -55,7 +55,9 @@ parts:
     - figure: '12.19'
   quantity: 1
   finish: vinyl_black
-  notes: Lid on the passenger (left) side, its lock at the top left (Fig 12.19 items 7, 8; Oliver's photos 04, 22).
+  notes: >
+    Glovebox lid (Fig 12.19 item 7) closing the opening, the lock mid-width near its top (Oliver's kf128, kf143,
+    kf145; QA fix round 1: was at the outboard end); its chrome strip and lock are separate parts.
   specs:
     width:
       mm: 286.0
@@ -81,7 +83,12 @@ parts:
     section: 3
   quantity: 1
   finish: carpet
-  notes: On the heelboard and over the tonneau floor (lifted for the battery covers, Ch 10 photo 2.1).
+  notes: >
+    Black carpet behind the seats (Oliver's kf134, kf156, kf157): over the heelboard's lower riser, the step under
+    the squabs' feet and the tunnel's carry-on through it, up the upper riser and over the shelf (tonneau floor;
+    lifted to reach the battery access covers, Haynes photo 2.1) out to the side trim ahead of the wheel house
+    humps. QA fix round 1, cockpit (the shelf raised to Oliver's scan, 560-580 above the road, its front edge at x
+    -1680).
   specs:
     thickness:
       mm: 6.0
@@ -96,10 +103,11 @@ parts:
     - figure: '6.3'
   quantity: 1
   finish: rubber
-  notes: Rubber cone from the tunnel aperture up the lever (Fig 6.3 item 161).
+  notes: Short black rubber bellows filling the chrome retainer's oval opening, three convolutions narrowing to a collar
+    on the lever (Fig 6.3 item 161; Oliver's kf122, kf145; QA fix round 1, was a tall 62 mm cone).
   specs:
     height:
-      mm: 62.0
+      mm: 50.0
       source:
         label: D
         method: Over the lever
@@ -136,26 +144,48 @@ parts:
   haynes:
     section: 54
   quantity: 1
-  notes: Black vinyl cushion, crowned and rolled, fluted centre panel between bolsters (Haynes Sec 54; Oliver's photos 04,
-    22).
+  finish: leather_black
+  notes: >
+    Black leather cushion, semi-gloss and creased with use (Oliver's kf120, kf129), deep and rising from about 405 mm
+    above the road at the squab to a rolled front edge at about 512 (his body scan, sections at y -350 and 385); a piped
+    centre panel of six fore-and-aft pleats, plain bolsters, a plain front roll ahead of the panel (kf075, kf131, kf140).
+    Haynes Sec 54. QA fix round 1, cockpit (was a short flat vinyl cushion).
   specs:
     width:
-      mm: 420.0
+      mm: 430.0
       source:
         label: D
         method: Between the tunnel and the inner sill
+    front_height:
+      mm: 512.0
+      display_only: true
+      source:
+        label: D
+        method: "Oliver's body scan, sections y -350 and 385 (about 515, +-20)"
 - id: body.interior.seat-squab-l
   name: Seat squab, left
   haynes:
     section: 54
   quantity: 1
-  notes: Black vinyl squab raked back, rounded top, fluted centre panel (Oliver's photos 04, 22).
+  finish: leather_black
+  notes: >
+    Black leather squab, semi-gloss and creased (Oliver's kf120, kf129), shield-shaped with a large-radius rounded
+    top, raked back 24 deg from the cushion's rear (his body scan: front face from about x -1450 at the cushion to -1640
+    at the top, 885 above the road); a piped centre panel of six vertical pleats in the lower two-thirds, a plain upper
+    panel, piping round the face and a top roll piped on both edges (kf075, kf130, kf135). Its feet lean back over the
+    heelboard's step (mgb/underbody_layout HEEL_STEP_Z). QA fix round 1, cockpit (was a 12 deg near-rectangular slab).
   specs:
     rake:
-      deg: 18.0
+      deg: 24.0
       source:
         label: D
-        method: Cover cutaway
+        method: "Oliver's body scan, sections y -350 and 385"
+    top_radius:
+      mm: 150.0
+      display_only: true
+      source:
+        label: D
+        method: "Oliver's kf075, kf130, kf135"
 - id: body.interior.seat-frame-l
   name: Seat frame and runners, left
   haynes:
@@ -187,7 +217,11 @@ parts:
   haynes:
     section: 29
   quantity: 1
-  notes: Vinyl-covered board on the door's inner panel (Sec 29, early Sports Tourer), held by clips.
+  notes: >
+    Door trim pad (Sec 29, early Sports Tourer; Oliver's kf128, kf131, kf137): one black vinyl-covered hardboard
+    over the inner panel's whole face from the sill to under the capping, flat where the inner panel is upright
+    (inboard of the regulator and remote control plates behind it) and following the tumblehome above and below; its
+    seam piping and stitch lines are separate parts. QA fix round 1, cockpit (the red door frame showed round it).
   specs:
     thickness:
       mm: 3.0
@@ -202,7 +236,11 @@ parts:
     - figure: '12.13'
   quantity: 1
   finish: chrome
-  notes: Inner handle on its escutcheon (Fig 12.13 item 21).
+  notes: >
+    Inner door release (Fig 12.13 item 21, early cars): a chrome lever at the card's front top under the capping,
+    pivoted at the front on its round escutcheon and lying back along the door (Oliver's kf128, kf131;
+    mgb/cockpit_layout INNER_HANDLE; the remote control behind follows it). QA fix round 1, cockpit (was at the
+    rear).
   specs:
     length:
       mm: 90.0
@@ -217,7 +255,10 @@ parts:
     - figure: '12.17'
   quantity: 1
   finish: chrome
-  notes: Regulator handle and finisher (Fig 12.17 item 11).
+  notes: >
+    Regulator handle and finisher (Fig 12.17 items 9-11) on the regulator's spindle at the door's front just below
+    the seam, the crank pointing down and back (Oliver's kf128, kf131; mgb/cockpit_layout WINDER, which the
+    regulator in parts/body/mechanisms.py follows). QA fix round 1, cockpit (was mid-door).
   specs:
     crank:
       mm: 74.0
@@ -229,7 +270,9 @@ parts:
   haynes:
     section: 29
   quantity: 1
-  notes: Padded vinyl roll along the door's top over the glass slot.
+  notes: >
+    Padded black vinyl roll along the door's top over the glass slot; its red piping is door-capping-piping
+    (Oliver's kf128, kf131).
   specs:
     radius:
       mm: 13.0
@@ -241,26 +284,48 @@ parts:
   haynes:
     section: 54
   quantity: 1
-  notes: Black vinyl cushion, crowned and rolled, fluted centre panel between bolsters (Haynes Sec 54; Oliver's photos 04,
-    22).
+  finish: leather_black
+  notes: >
+    Black leather cushion, semi-gloss and creased with use (Oliver's kf120, kf129), deep and rising from about 405 mm
+    above the road at the squab to a rolled front edge at about 512 (his body scan, sections at y -350 and 385); a piped
+    centre panel of six fore-and-aft pleats, plain bolsters, a plain front roll ahead of the panel (kf075, kf131, kf140).
+    Haynes Sec 54. QA fix round 1, cockpit (was a short flat vinyl cushion).
   specs:
     width:
-      mm: 420.0
+      mm: 430.0
       source:
         label: D
         method: Between the tunnel and the inner sill
+    front_height:
+      mm: 512.0
+      display_only: true
+      source:
+        label: D
+        method: "Oliver's body scan, sections y -350 and 385 (about 515, +-20)"
 - id: body.interior.seat-squab-r
   name: Seat squab, right
   haynes:
     section: 54
   quantity: 1
-  notes: Black vinyl squab raked back, rounded top, fluted centre panel (Oliver's photos 04, 22).
+  finish: leather_black
+  notes: >
+    Black leather squab, semi-gloss and creased (Oliver's kf120, kf129), shield-shaped with a large-radius rounded
+    top, raked back 24 deg from the cushion's rear (his body scan: front face from about x -1450 at the cushion to -1640
+    at the top, 885 above the road); a piped centre panel of six vertical pleats in the lower two-thirds, a plain upper
+    panel, piping round the face and a top roll piped on both edges (kf075, kf130, kf135). Its feet lean back over the
+    heelboard's step (mgb/underbody_layout HEEL_STEP_Z). QA fix round 1, cockpit (was a 12 deg near-rectangular slab).
   specs:
     rake:
-      deg: 18.0
+      deg: 24.0
       source:
         label: D
-        method: Cover cutaway
+        method: "Oliver's body scan, sections y -350 and 385"
+    top_radius:
+      mm: 150.0
+      display_only: true
+      source:
+        label: D
+        method: "Oliver's kf075, kf130, kf135"
 - id: body.interior.seat-frame-r
   name: Seat frame and runners, right
   haynes:
@@ -292,7 +357,11 @@ parts:
   haynes:
     section: 29
   quantity: 1
-  notes: Vinyl-covered board on the door's inner panel (Sec 29, early Sports Tourer), held by clips.
+  notes: >
+    Door trim pad (Sec 29, early Sports Tourer; Oliver's kf128, kf131, kf137): one black vinyl-covered hardboard
+    over the inner panel's whole face from the sill to under the capping, flat where the inner panel is upright
+    (inboard of the regulator and remote control plates behind it) and following the tumblehome above and below; its
+    seam piping and stitch lines are separate parts. QA fix round 1, cockpit (the red door frame showed round it).
   specs:
     thickness:
       mm: 3.0
@@ -307,7 +376,11 @@ parts:
     - figure: '12.13'
   quantity: 1
   finish: chrome
-  notes: Inner handle on its escutcheon (Fig 12.13 item 21).
+  notes: >
+    Inner door release (Fig 12.13 item 21, early cars): a chrome lever at the card's front top under the capping,
+    pivoted at the front on its round escutcheon and lying back along the door (Oliver's kf128, kf131;
+    mgb/cockpit_layout INNER_HANDLE; the remote control behind follows it). QA fix round 1, cockpit (was at the
+    rear).
   specs:
     length:
       mm: 90.0
@@ -322,7 +395,10 @@ parts:
     - figure: '12.17'
   quantity: 1
   finish: chrome
-  notes: Regulator handle and finisher (Fig 12.17 item 11).
+  notes: >
+    Regulator handle and finisher (Fig 12.17 items 9-11) on the regulator's spindle at the door's front just below
+    the seam, the crank pointing down and back (Oliver's kf128, kf131; mgb/cockpit_layout WINDER, which the
+    regulator in parts/body/mechanisms.py follows). QA fix round 1, cockpit (was mid-door).
   specs:
     crank:
       mm: 74.0
@@ -334,7 +410,9 @@ parts:
   haynes:
     section: 29
   quantity: 1
-  notes: Padded vinyl roll along the door's top over the glass slot.
+  notes: >
+    Padded black vinyl roll along the door's top over the glass slot; its red piping is door-capping-piping
+    (Oliver's kf128, kf131).
   specs:
     radius:
       mm: 13.0
@@ -380,7 +458,9 @@ parts:
     - figure: '12.19'
   quantity: 1
   finish: paint_black
-  notes: The plaque's black field.
+  notes: >
+    The plaque's black field inside its chrome edge; the chrome MG badge with its speed lines is plaque-badge
+    (Oliver's kf122, kf145).
   specs:
     height:
       mm: 68.0
@@ -395,7 +475,10 @@ parts:
     - figure: '12.19'
   quantity: 1
   finish: plastic_black
-  notes: Round black fluted knob of the Smiths heater's controls, left of the plaque (Oliver's photos 16, 22).
+  notes: >
+    Heater control knob (Oliver's kf145 zoomed): a black disc with a fluted rim and six raised vanes across its
+    face, the chrome centre cap, on its spindle through the centre panel (the Smiths heater's temperature and air
+    controls); the white lettering is heater-knob-print.
   specs:
     diameter:
       mm: 46.0
@@ -410,7 +493,10 @@ parts:
     - figure: '12.19'
   quantity: 1
   finish: plastic_black
-  notes: As the upper knob.
+  notes: >
+    Heater control knob (Oliver's kf145 zoomed): a black disc with a fluted rim and six raised vanes across its
+    face, the chrome centre cap, on its spindle through the centre panel (the Smiths heater's temperature and air
+    controls); the white lettering is heater-knob-print.
   specs:
     diameter:
       mm: 46.0
@@ -456,7 +542,7 @@ parts:
     - figure: '12.19'
   quantity: 1
   finish: chrome
-  notes: Chrome strip along the glovebox lid's foot (Oliver's photos 04, 22).
+  notes: Chrome strip across the glovebox lid about 57 % up it (Oliver's kf143, kf145; QA fix round 1, was at the foot).
   specs:
     height:
       mm: 6.0
@@ -487,7 +573,8 @@ parts:
     - figure: '12.19'
   quantity: 1
   finish: chrome
-  notes: Octagonal (chamfered rectangle) chrome frame and fine horizontal mesh in the console (Oliver's photos 04, 22).
+  notes: Octagonal (chamfered rectangle) chrome frame in the console (Oliver's photos 04, 22; kf122, kf145); the mesh is
+    body.interior.speaker-mesh.
   specs:
     width:
       mm: 150.0
@@ -525,6 +612,330 @@ parts:
   haynes: { section: 1 }
   quantity: 1
   finish: vinyl_black
-  notes: "Padded black vinyl roll on the cockpit opening's edge behind the doors and round the rear of the cockpit (Oliver's scan, photos 04, 23)."
+  notes: >
+    Flat padded black vinyl roll on the cockpit opening's edge behind the doors and round the rear of the cockpit,
+    its top flush with the deck and wing tops (Oliver's kf069, kf070, kf134, kf156; QA fix round 1: was a 26 mm
+    round tube standing proud). Follows body_shell_layout COCKPIT_W and COCKPIT_REAR_X.
   specs:
     diameter: { mm: 26.0, display_only: true, source: { label: D, method: "Oliver's scan: as the door cappings" } }
+- id: body.interior.door-card-piping-l
+  name: Door card seam piping (left)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: piping_red
+  notes: "Red piping in the card's seam across the door about 22 % down it (Oliver's kf128, kf131; mgb/cockpit_layout CARD_SEAM_H). QA fix round 1, cockpit."
+  specs:
+    seam_height: { mm: 712.0, display_only: true, source: { label: D, method: "Oliver's kf128 and kf131 scaled on the door's height" } }
+- id: body.interior.door-card-stitch-l
+  name: Door card stitch lines (left)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: vinyl_black
+  notes: "The two stitched lines across the card's upper panel, drawn as fine raised lines (Oliver's kf128, kf131)."
+  specs:
+    line_spacing: { mm: 36.0, display_only: true, source: { label: D, method: "Oliver's kf128 scaled on the door's height" } }
+- id: body.interior.pull-handle-l
+  name: Door pull handle grip (left)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: plastic_black
+  notes: "Black grip of the door pull handle mid-door below the seam (Oliver's kf128, kf131; mgb/cockpit_layout PULL_HANDLE)."
+  specs:
+    length: { mm: 150.0, display_only: true, source: { label: D, method: "Oliver's kf131 scaled on the door's length" } }
+- id: body.interior.pull-handle-ends-l
+  name: Door pull handle end bosses (left)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: chrome
+  notes: "The pull handle's two chrome end bosses and stand-offs to the card (Oliver's kf128, kf131)."
+  specs:
+    boss_diameter: { mm: 22.0, display_only: true, source: { label: D, method: "Oliver's kf128 scaled on the door" } }
+- id: body.interior.door-capping-piping-l
+  name: Door capping piping (left)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: piping_red
+  notes: "Red piping along the door capping's inboard top edge (Oliver's kf128, kf131)."
+  specs:
+    diameter: { mm: 4.8, display_only: true, source: { label: D, method: "Oliver's kf128 against the capping roll" } }
+- id: body.interior.kick-panel-l
+  name: Kick panel (left)
+  quantity: 1
+  finish: vinyl_black
+  notes: "Black vinyl-covered board closing the footwell's side from the bulkhead back to the hinge pillar, from the floor up under the facia, and over the hinge pillar's inner face beside the facia's end (Oliver's kf121, kf151, kf153: black, where the model showed the red wing inside). QA fix round 1, cockpit."
+  specs:
+    thickness: { mm: 3.0, display_only: true, source: { label: D, method: "Hardboard, D" } }
+- id: body.interior.sill-cover-l
+  name: Inner sill carpet (left)
+  quantity: 1
+  finish: carpet
+  notes: "Black carpet over the inner sill's cockpit face and tread, its outer edge bound in black vinyl (Oliver's kf128, kf131, kf151, kf153)."
+  specs:
+    thickness: { mm: 6.0, display_only: true, source: { label: D, method: "As the floor carpets" } }
+- id: body.interior.quarter-trim-l
+  name: Rear quarter trim (left)
+  quantity: 1
+  finish: vinyl_black
+  notes: "Black vinyl boards lining the cockpit's side from the shut pillar back to the rear corner, from the sill (ahead of the shelf) or the shelf and wheel house hump up under the rim roll, with a finisher down the shut pillar's inboard edge (Oliver's kf069, kf075, kf134). Placed from body_shell_layout COCKPIT_W and COCKPIT_REAR_X."
+  specs:
+    inset: { mm: 14.0, display_only: true, source: { label: D, method: "Inside the cockpit opening's edge, from Oliver's kf134" } }
+- id: body.interior.arch-carpet-l
+  name: Wheel house hump carpet (left)
+  quantity: 1
+  finish: carpet
+  notes: "Black carpet over the rear wheel house's hump where it rises through the shelf at the cockpit's rear corner, down its inner wall to the shelf (Oliver's kf134, kf156)."
+  specs:
+    thickness: { mm: 6.0, display_only: true, source: { label: D, method: "As the floor carpets" } }
+- id: body.interior.door-card-piping-r
+  name: Door card seam piping (right)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: piping_red
+  notes: "Red piping in the card's seam across the door about 22 % down it (Oliver's kf128, kf131; mgb/cockpit_layout CARD_SEAM_H). QA fix round 1, cockpit."
+  specs:
+    seam_height: { mm: 712.0, display_only: true, source: { label: D, method: "Oliver's kf128 and kf131 scaled on the door's height" } }
+- id: body.interior.door-card-stitch-r
+  name: Door card stitch lines (right)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: vinyl_black
+  notes: "The two stitched lines across the card's upper panel, drawn as fine raised lines (Oliver's kf128, kf131)."
+  specs:
+    line_spacing: { mm: 36.0, display_only: true, source: { label: D, method: "Oliver's kf128 scaled on the door's height" } }
+- id: body.interior.pull-handle-r
+  name: Door pull handle grip (right)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: plastic_black
+  notes: "Black grip of the door pull handle mid-door below the seam (Oliver's kf128, kf131; mgb/cockpit_layout PULL_HANDLE)."
+  specs:
+    length: { mm: 150.0, display_only: true, source: { label: D, method: "Oliver's kf131 scaled on the door's length" } }
+- id: body.interior.pull-handle-ends-r
+  name: Door pull handle end bosses (right)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: chrome
+  notes: "The pull handle's two chrome end bosses and stand-offs to the card (Oliver's kf128, kf131)."
+  specs:
+    boss_diameter: { mm: 22.0, display_only: true, source: { label: D, method: "Oliver's kf128 scaled on the door" } }
+- id: body.interior.door-capping-piping-r
+  name: Door capping piping (right)
+  haynes:
+    section: 29
+  quantity: 1
+  finish: piping_red
+  notes: "Red piping along the door capping's inboard top edge (Oliver's kf128, kf131)."
+  specs:
+    diameter: { mm: 4.8, display_only: true, source: { label: D, method: "Oliver's kf128 against the capping roll" } }
+- id: body.interior.kick-panel-r
+  name: Kick panel (right)
+  quantity: 1
+  finish: vinyl_black
+  notes: "Black vinyl-covered board closing the footwell's side from the bulkhead back to the hinge pillar, from the floor up under the facia, and over the hinge pillar's inner face beside the facia's end (Oliver's kf121, kf151, kf153: black, where the model showed the red wing inside). QA fix round 1, cockpit."
+  specs:
+    thickness: { mm: 3.0, display_only: true, source: { label: D, method: "Hardboard, D" } }
+- id: body.interior.sill-cover-r
+  name: Inner sill carpet (right)
+  quantity: 1
+  finish: carpet
+  notes: "Black carpet over the inner sill's cockpit face and tread, its outer edge bound in black vinyl (Oliver's kf128, kf131, kf151, kf153)."
+  specs:
+    thickness: { mm: 6.0, display_only: true, source: { label: D, method: "As the floor carpets" } }
+- id: body.interior.quarter-trim-r
+  name: Rear quarter trim (right)
+  quantity: 1
+  finish: vinyl_black
+  notes: "Black vinyl boards lining the cockpit's side from the shut pillar back to the rear corner, from the sill (ahead of the shelf) or the shelf and wheel house hump up under the rim roll, with a finisher down the shut pillar's inboard edge (Oliver's kf069, kf075, kf134). Placed from body_shell_layout COCKPIT_W and COCKPIT_REAR_X."
+  specs:
+    inset: { mm: 14.0, display_only: true, source: { label: D, method: "Inside the cockpit opening's edge, from Oliver's kf134" } }
+- id: body.interior.arch-carpet-r
+  name: Wheel house hump carpet (right)
+  quantity: 1
+  finish: carpet
+  notes: "Black carpet over the rear wheel house's hump where it rises through the shelf at the cockpit's rear corner, down its inner wall to the shelf (Oliver's kf134, kf156)."
+  specs:
+    thickness: { mm: 6.0, display_only: true, source: { label: D, method: "As the floor carpets" } }
+- id: body.interior.rear-wall-trim
+  name: Rear wall trim
+  quantity: 1
+  finish: vinyl_black
+  notes: "Black vinyl board across the back of the cockpit on the rear bulkhead, from the shelf and the humps up under the deck's edge (Oliver's kf134, kf156, kf157; placed from body_shell_layout REAR_BULKHEAD_X and COCKPIT_REAR_X)."
+  specs:
+    thickness: { mm: 3.0, display_only: true, source: { label: D, method: "Hardboard, D" } }
+- id: body.interior.dash-top
+  name: Padded dash top
+  quantity: 1
+  finish: vinyl_black
+  notes: "Padded black top over the scuttle from the crash roll forward to the screen's foot, a thin vinyl pad following the scuttle's surface (Oliver's kf121, kf143; his scan, 900-930 above the road from x -800 to -600). QA fix round 1, cockpit (the red scuttle showed behind the roll)."
+  specs:
+    thickness: { mm: 6.6, display_only: true, source: { label: D, method: "Over the scuttle's outer surface (body_shell_layout top_h)" } }
+- id: body.interior.plaque-badge
+  name: Facia plaque MG badge
+  quantity: 1
+  finish: chrome
+  notes: "Chrome MG badge on the plaque's black field: the MG octagon's edge and letters with three chrome speed lines each side, the middle one longest (Oliver's kf122, kf145 zoomed). QA fix round 1, cockpit."
+  specs:
+    octagon_across_flats: { mm: 40.0, display_only: true, source: { label: D, method: "kf145 scaled on the plaque (214 mm wide)" } }
+- id: body.interior.heater-knob-print
+  name: Heater knob lettering
+  quantity: 1
+  finish: print_white
+  notes: "White lettering and position ticks on the heater knobs' faces (Oliver's kf145: WARM legible on the upper knob; COLD, AIR and OFF are assumed Smiths heater positions)."
+  specs:
+    letter_height: { mm: 4.2, display_only: true, source: { label: D, method: "kf145 scaled on the knob (46 mm)" } }
+- id: body.interior.speaker-mesh
+  name: Speaker grille mesh
+  quantity: 1
+  finish: mesh_champagne
+  notes: "Fine champagne-silver mesh of close vertical ribs inside the grille's chrome frame (Oliver's kf122, kf145 zoomed). QA fix round 1, cockpit (was horizontal chrome bars)."
+  specs:
+    rib_pitch: { mm: 2.6, display_only: true, source: { label: D, method: "kf145 zoomed, counted across the grille" } }
+- id: body.interior.console-knobs
+  name: Console knobs
+  quantity: 1
+  finish: plastic_black
+  notes: "The console's black knobs round the speaker grille: a small round knob top left and a pull knob bottom right (Oliver's kf122, kf145)."
+  specs:
+    knob_diameter: { mm: 14.0, display_only: true, source: { label: D, method: "kf145 scaled on the grille" } }
+- id: body.interior.console-toggle
+  name: Console toggle switch
+  quantity: 1
+  finish: chrome
+  notes: "Small chrome toggle switch at the console's bottom left (Oliver's kf122, kf145)."
+  specs:
+    lever_length: { mm: 17.0, display_only: true, source: { label: D, method: "kf145 scaled on the grille" } }
+- id: body.interior.glovebox-lock
+  name: Glovebox lock
+  quantity: 1
+  finish: chrome
+  notes: "Chrome lock bezel and barrel mid-width near the top of the glovebox lid (Oliver's kf128, kf143, kf145). QA fix round 1, cockpit."
+  specs:
+    diameter: { mm: 22.0, display_only: true, source: { label: D, method: "kf145 scaled on the lid" } }
+- id: body.interior.facia-end-dome
+  name: Facia end domed fitting
+  quantity: 1
+  finish: chrome
+  notes: "Chrome domed fitting on the facia's left end beside the door (Oliver's kf127, kf128, kf154)."
+  specs:
+    diameter: { mm: 22.0, display_only: true, source: { label: D, method: "kf128 scaled on the facia" } }
+- id: body.interior.facia-end-knob
+  name: Facia end knob
+  quantity: 1
+  finish: plastic_black
+  notes: "Small black knob above the domed fitting on the facia's left end (Oliver's kf127, kf128, kf154)."
+  specs:
+    diameter: { mm: 13.0, display_only: true, source: { label: D, method: "kf128 scaled on the facia" } }
+- id: body.interior.belt-reel-l
+  name: Seat belt inertia reel (left)
+  quantity: 1
+  finish: paint_black
+  notes: "Inertia reel (a later fitment on Oliver's car): the black drum housing on its bracket on the rear wheel house hump in the cockpit's rear corner, axis fore and aft (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157). QA fix round 1, cockpit."
+  specs:
+    drum_diameter: { mm: 68.0, display_only: true, source: { label: D, method: "kf136, kf157 scaled on the hump" } }
+- id: body.interior.belt-reel-cap-l
+  name: Seat belt reel cap (left)
+  quantity: 1
+  finish: zinc_steel
+  notes: "The reel's grey mechanism cap on its front end (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    diameter: { mm: 72.0, display_only: true, source: { label: D, method: "kf157 scaled on the reel" } }
+- id: body.interior.belt-webbing-l
+  name: Seat belt webbing (left)
+  quantity: 1
+  finish: webbing_grey
+  notes: "Grey webbing from the reel's top up and forward to the upper anchor's loop just behind the door, down past the squab's outer side to the lower anchor on the sill (stowed) (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    width: { mm: 48.0, display_only: true, source: { label: D, method: "Standard belt webbing, kf130 scaled" } }
+- id: body.interior.belt-anchors-l
+  name: Seat belt anchors (left)
+  quantity: 1
+  finish: zinc_steel
+  notes: "Upper anchor plate, bolt and webbing loop on the cockpit's side behind the door; the lower anchor plate and bolt on the sill (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    plate_width: { mm: 44.0, display_only: true, source: { label: D, method: "kf130 scaled on the door" } }
+- id: body.interior.belt-buckle-l
+  name: Seat belt buckle and stalk (left)
+  quantity: 1
+  finish: plastic_black
+  notes: "Buckle on a short black sleeved stalk from the step beside the tunnel between the seats (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    stalk_length: { mm: 155.0, display_only: true, source: { label: D, method: "kf130, kf140 scaled on the seat" } }
+- id: body.interior.belt-button-l
+  name: Seat belt buckle button (left)
+  quantity: 1
+  finish: enamel_red
+  notes: "The buckle's red release button (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    width: { mm: 22.0, display_only: true, source: { label: D, method: "kf140 scaled on the buckle" } }
+- id: body.interior.belt-reel-r
+  name: Seat belt inertia reel (right)
+  quantity: 1
+  finish: paint_black
+  notes: "Inertia reel (a later fitment on Oliver's car): the black drum housing on its bracket on the rear wheel house hump in the cockpit's rear corner, axis fore and aft (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157). QA fix round 1, cockpit."
+  specs:
+    drum_diameter: { mm: 68.0, display_only: true, source: { label: D, method: "kf136, kf157 scaled on the hump" } }
+- id: body.interior.belt-reel-cap-r
+  name: Seat belt reel cap (right)
+  quantity: 1
+  finish: zinc_steel
+  notes: "The reel's grey mechanism cap on its front end (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    diameter: { mm: 72.0, display_only: true, source: { label: D, method: "kf157 scaled on the reel" } }
+- id: body.interior.belt-webbing-r
+  name: Seat belt webbing (right)
+  quantity: 1
+  finish: webbing_grey
+  notes: "Grey webbing from the reel's top up and forward to the upper anchor's loop just behind the door, down past the squab's outer side to the lower anchor on the sill (stowed) (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    width: { mm: 48.0, display_only: true, source: { label: D, method: "Standard belt webbing, kf130 scaled" } }
+- id: body.interior.belt-anchors-r
+  name: Seat belt anchors (right)
+  quantity: 1
+  finish: zinc_steel
+  notes: "Upper anchor plate, bolt and webbing loop on the cockpit's side behind the door; the lower anchor plate and bolt on the sill (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    plate_width: { mm: 44.0, display_only: true, source: { label: D, method: "kf130 scaled on the door" } }
+- id: body.interior.belt-buckle-r
+  name: Seat belt buckle and stalk (right)
+  quantity: 1
+  finish: plastic_black
+  notes: "Buckle on a short black sleeved stalk from the step beside the tunnel between the seats (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    stalk_length: { mm: 155.0, display_only: true, source: { label: D, method: "kf130, kf140 scaled on the seat" } }
+- id: body.interior.belt-button-r
+  name: Seat belt buckle button (right)
+  quantity: 1
+  finish: enamel_red
+  notes: "The buckle's red release button (Oliver's kf069, kf070, kf130, kf132, kf135, kf136, kf140, kf156, kf157)."
+  specs:
+    width: { mm: 22.0, display_only: true, source: { label: D, method: "kf140 scaled on the buckle" } }
+- id: body.interior.heel-mat
+  name: Heel mat
+  quantity: 1
+  finish: rubber
+  notes: "Black ribbed rubber heel mat on the driver's floor carpet under the pedals (Oliver's kf151). QA fix round 1, cockpit."
+  specs:
+    length: { mm: 330.0, display_only: true, source: { label: D, method: "kf151 scaled on the pedal pads" } }
+- id: body.interior.floor-binding-l
+  name: Floor carpet binding (left)
+  quantity: 1
+  finish: vinyl_black
+  notes: "Black vinyl binding along the floor carpet's rear edge at the heelboard and the toe carpet's top edge (Oliver's kf151, kf153)."
+  specs:
+    diameter: { mm: 7.0, display_only: true, source: { label: D, method: "kf151 against the carpet" } }
+- id: body.interior.floor-binding-r
+  name: Floor carpet binding (right)
+  quantity: 1
+  finish: vinyl_black
+  notes: "Black vinyl binding along the floor carpet's rear edge at the heelboard and the toe carpet's top edge (Oliver's kf151, kf153)."
+  specs:
+    diameter: { mm: 7.0, display_only: true, source: { label: D, method: "kf151 against the carpet" } }

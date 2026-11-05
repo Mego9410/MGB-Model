@@ -819,7 +819,8 @@ def hinge_pillar(side):
         xh = lambda h: S.door_front_x(h) - S.GAP / 2                         # noqa: E731
         hs = [TREAD_H] + [TREAD_H + (850.0 - TREAD_H) * k / 12 for k in range(1, 13)]
         face = shut_face(xh, lambda h: S.SILL_INNER_Y, lambda h: S.side_y(xh(h), h) - 2.0, hs, T)
-        kick = box(xf - 120.0, xf, S.SILL_INNER_Y, S.SILL_INNER_Y + T, H(TREAD_H), H(850.0))
+        kick = box(xf, xf + 120.0, S.SILL_INNER_Y, S.SILL_INNER_Y + T, H(TREAD_H), H(780.0))   # ahead of the shut line,
+        # under the scuttle (QA fix round 1, cockpit: behind it, it hid the door card's front)
         p = face + kick
         for hh in HINGE_H:
             xx = xh(hh)
@@ -856,30 +857,48 @@ HB_X = U.HEELBOARD_X
 TON_Z = U.TONNEAU_Z
 RB_X = S.REAR_BULKHEAD_X
 SHELF_STEP_X = CL.bx(-1880.0)              # the tonneau floor steps up here (ahead of the fuel pipe's climb to the arch)
-SHELF_Z = U.ARCH_Z + 22.0                  # to a shelf over the axle (above its bump stop line) back to the rear wall
+SHELF_Z = max(U.ARCH_Z + 22.0, TON_Z)      # the shelf over the axle (above its bump stop line) back to the rear wall: the
+                                           # tonneau floor itself since QA fix round 1, cockpit
 RWH_Y = 498.0                              # rear wheel house inner walls
 RAIL_Y = (RS.DAMPER_FACE_Y, 500.0)         # rear rails: inner face (P9 damper face) to outer face
 
 
+STEP_Z = U.HEEL_STEP_Z
+SF_X = U.SHELF_FRONT_X
+
+
+def _tunnel_above(z0):
+    """The heelboard station's tunnel profile above height z0, from +y over the top to -y (the tunnel carried on
+    through the heelboard's step to the upper riser)."""
+    tun = tunnel_profile(TUNNEL[-1], flange=0.0)
+    return [(y, z) for y, z in tun if z > z0 + 0.5]
+
+
 def heelboard(spec):
-    """Heelboard: the riser behind the seats from the floor up to the tonneau floor (rear face at underbody_layout
-    HEELBOARD_X), sill to sill, with the propeller shaft's tunnel opening, a stiffening swage, the fuel pump
-    bracket's two captive-nut holes (P11a parts/fuel/pump.py BRACKET_BOLT_Y/Z) and the fuel hose union's hole
-    (fuel_supply_layout MAIN_START)."""
+    """Heelboard (QA fix round 1, cockpit: two risers and a step, Oliver's body scan and kf134, kf156): the lower
+    riser behind the seats' front feet from the floor up to the step (rear face at underbody_layout HEELBOARD_X), sill
+    to sill, with the propeller shaft's tunnel opening, a stiffening swage, the fuel pump bracket's two captive-nut
+    holes (P11a parts/fuel/pump.py BRACKET_BOLT_Y/Z) and the fuel hose union's hole (fuel_supply_layout MAIN_START);
+    the step back over the rear springs' front hangers (HEEL_STEP_Z) under the squabs' feet; the tunnel carried on
+    over the propeller shaft through the step; the upper riser (SHELF_FRONT_X) from the step up to the shelf
+    (tonneau floor, TONNEAU_Z)."""
     x0 = HB_X
     yo = S.SILL_INNER_Y
     t = TUNNEL[-1]
     tun = [(y, z) for y, z in tunnel_profile(t, flange=0.0)]
-    pts = [(yo, FLOOR_TOP)] + [(y, z) for y, z in tun] + [(-yo, FLOOR_TOP), (-yo, TON_Z), (yo, TON_Z)]
-    p = xprism(pts, x0, x0 + T)
-    p = p + (box(x0 - 3.0, x0, -yo + 40.0, yo - 40.0, -290.0, -276.0) - box(x0 - 4, x0 + 1, -t[1] - 20, t[1] + 20, -300, -270))
+    lower = box(x0, x0 + T, -yo, yo, FLOOR_TOP, STEP_Z + T) - xprism(tun, x0 - 1.0, x0 + T + 1.0)
+    p = lower + (box(x0 - 3.0, x0, -yo + 40.0, yo - 40.0, -290.0, -276.0) - box(x0 - 4, x0 + 1, -t[1] - 20, t[1] + 20, -300, -270))
     from parts.fuel import pump as PU
     for y in PU.BRACKET_BOLT_Y:
         p = p - xcyl(4.2, x0 - 5, x0 + 5, y, PU.BRACKET_BOLT_Z)
     mx, my, mz = FL.MAIN_START
     p = p - xcyl(6.0, x0 - 5, x0 + 5, my, mz)
     p = _pass_cut(p, "heelboard")
-    return _l(p, spec)
+    above = _tunnel_above(STEP_Z)
+    step_prof = [(yo, STEP_Z)] + [(y, z) for y, z in above] + [(-yo, STEP_Z)]
+    step = G.sheet_x(step_prof, T, SF_X, x0 + T, 3.0)
+    riser = xprism([(yo, STEP_Z)] + above + [(-yo, STEP_Z), (-yo, TON_Z + T), (yo, TON_Z + T)], SF_X, SF_X + T)
+    return _c([p, step, riser], spec)
 
 
 def tonneau_floor(spec):
@@ -889,10 +908,9 @@ def tonneau_floor(spec):
     each, the damper access grommet holes beside them (Haynes photo 2.4) and the rear spring hanger reinforcement
     plates."""
     z = TON_Z
-    p = box(SHELF_STEP_X, HB_X, -RWH_Y, RWH_Y, z, z + T)
-    # QA fix 1: with the rear wall moved back to Oliver's scan (REAR_BULKHEAD_X) the floor steps up over the axle
-    # and the fuel pipe's climb (fuel_supply_layout MAIN) to a shelf at SHELF_Z back to the wall
-    p = p + box(SHELF_STEP_X - T, SHELF_STEP_X, -RWH_Y, RWH_Y, z, SHELF_Z + T) + box(RB_X, SHELF_STEP_X, -RWH_Y, RWH_Y, SHELF_Z, SHELF_Z + T)
+    # QA fix round 1, cockpit: the shelf is at Oliver's scan height (TONNEAU_FLOOR_Z, above the axle's bump line
+    # and the fuel pipe's climb), flat from the heelboard's upper riser back to the rear wall
+    p = box(RB_X, SF_X, -RWH_Y, RWH_Y, z, z + T)
     ix, iy, idp = BL.BATTERY_BOX_INNER
     fl = BL.BATTERY_BOX_FLANGE
     for s in (1, -1):
@@ -901,11 +919,10 @@ def tonneau_floor(spec):
         for sx in (-1, 1):
             for sy in (-1, 1):
                 p = p - zcyl(3.3, z - 5, z + 5, cx + sx * (ix / 2 + fl / 2), cy + sy * (iy / 2 - 20.0))
-        zd = z if RS.DAMPER_SHAFT[0] > SHELF_STEP_X else SHELF_Z
-        p = p - zcyl(14.0, zd - 5, zd + 5, RS.DAMPER_SHAFT[0], s * 400.0)
+        p = p - zcyl(14.0, z - 5, z + 5, RS.DAMPER_SHAFT[0], s * 400.0)
     # pressed stiffening ribs fore and aft between the apertures
     for yy in (-60.0, 60.0):
-        p = p + G.sheet_y([(HB_X - 30.0, z + T), (HB_X - 40.0, z + T + 6.0), (RB_X + 40.0, z + T + 6.0),
+        p = p + G.sheet_y([(SF_X - 30.0, z + T), (SF_X - 40.0, z + T + 6.0), (RB_X + 40.0, z + T + 6.0),
                            (RB_X + 30.0, z + T)], T, yy - 10.0, yy + 10.0, 3.0)
     return _l(p, spec)
 

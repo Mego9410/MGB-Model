@@ -114,7 +114,7 @@ parts:
     name: Caliper mounting half, LH
     haynes: { section: 12, figures: [{ figure: "9.8", legend: 1 }, { figure: "9.7", legend: 8 }] }
     quantity: 1
-    finish: cast_iron
+    finish: caliper_red
     part_numbers:
       - { number: 27H4651, by: "MGOC Spares (caliper L/H, new, complete)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
     notes: >
@@ -123,7 +123,7 @@ parts:
       the two mounting lugs (tapped for the caliper bolts from behind the swivel axle), the hose union on its
       inboard face, the bleed screw on top, the fluid port across the joint with its seal. The caliper sits
       behind the axle (Figs 9.2, 9.3). Shape from Figs 9.7 and 9.8; outside sizes derived; the halves are never
-      to be separated in service.
+      to be separated in service. Painted red on Oliver's car (kf160, kf226, kf228, kf229; QA fix round 1).
     specs:
       bore: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm caliper piston for MGB (8G8642 / 17H7989)" } }
       bolt_torque: { lbf_ft: [40, 45], nm: [54, 61], source: { label: H, page: 146, note: "Caliper securing bolts" } }
@@ -132,7 +132,7 @@ parts:
     name: Caliper mounting half, RH
     haynes: { section: 12, figures: [{ figure: "9.8", legend: 1 }, { figure: "9.7", legend: 8 }] }
     quantity: 1
-    finish: cast_iron
+    finish: caliper_red
     part_numbers:
       - { number: 27H4650, by: "MGOC Spares (caliper R/H, new, complete)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/1_3_4_16_1481/front-brakes" } }
     notes: Mirror image of the LH half (Fig 9.7 draws the RH caliper).
@@ -143,7 +143,7 @@ parts:
     name: Caliper rim half, LH
     haynes: { section: 12, figures: [{ figure: "9.8", legend: 2 }] }
     quantity: 1
-    finish: cast_iron
+    finish: caliper_red
     notes: "Outboard half: as the mounting half without the lugs and union, clearance holes and spot faces for the bridge bolt heads, the plug (14) in its top boss."
     specs:
       bore: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm" }, display_only: true }
@@ -152,7 +152,7 @@ parts:
     name: Caliper rim half, RH
     haynes: { section: 12, figures: [{ figure: "9.8", legend: 2 }] }
     quantity: 1
-    finish: cast_iron
+    finish: caliper_red
     notes: Mirror image of the LH rim half.
     specs:
       bore: { mm: 54.0, source: { label: S, ref: "https://bpnorthwest.com/mg/caliper-piston-mgb-tr8", note: "54 mm" }, display_only: true }

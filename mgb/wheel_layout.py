@@ -1,19 +1,20 @@
-"""Road wheels (P9): 4 1/2J x 14 centre-lock wire wheels, 5.60-14 crossply tyres, two-eared knock-on spinners.
+"""Road wheels (P9): 4 1/2J x 14 centre-lock wire wheels, 165/80R14 radial tyres (Oliver's car), two-eared knock-on spinners.
 
 Wheel frame (WF): origin on the wheel axis at the start of the hub's inner cone (front: front_suspension_layout
 EXT_COLLAR_Y[0]; rear: rear_axle_layout EXT_COLLAR_Y[0]), local +y outboard along the axis, x forward, z up. The
 same wheel sits on all four hubs: the front hubs' cone, splines and thread stations were set to match the rear hub
 extensions (P7). Right-hand wheels are the same part turned half round the vertical axis.
 
-What is fixed: rim 4 1/2J x 14 and tyre 5.60 x 14 tubed crossply on early cars (Haynes Ch 11 specifications, printed
+What is fixed: rim 4 1/2J x 14 (and tyre 5.60 x 14 tubed crossply as the factory fitted, now 165/80R14 radials on Oliver's
+car) on early cars (Haynes Ch 11 specifications, printed
 p203; tyre pressures 18-19 front, 18-22 rear lbf/in2); 60-spoke centre-lock wheels, painted aluminium on early
 cars, chrome from October 1965 (MGOC Spares "MGB OE steel & wire wheels"); 42 mm series splines and 12 tpi spinner
 threads to GHN3-30850, left-hand threads on the car's right-hand side (MGOC). Rim contour: the J flange (17.5 mm)
 and 14 in bead seat diameter are the standard (ETRTO/TRA) figures for a J rim.
 
 Derived (D): the hub shell's flanges, the spoke lacing (inner flange to the rim's outer row, outer flange to the
-inner row, alternately leading and trailing, tangential), the drop centre, the tyre's section shape (5.60 in
-section, 92 % profile as car_layout) and tread pattern (zig-zag ribs in the manner of the period Dunlop crossply),
+inner row, alternately leading and trailing, tangential), the drop centre, the tyre's section shape (165/80R14
+as car_layout, a radial's flat sidewall) and tread pattern (four straight grooves and blocked shoulders, Falken SN832),
 the spinner's size.
 """
 from __future__ import annotations
@@ -49,13 +50,14 @@ SPOKE_D = 0.128 * IN                      # 10 SWG
 RIM_ROWS = (CENTRE_PLANE + 9.0, CENTRE_PLANE - 9.0)   # outer row (inner flange spokes), inner row (outer flange spokes)
 LACE_ANGLE = 30.0                         # tangential offset of a spoke's hub end from its rim hole (deg)
 
-# ---- tyre (5.60-14 crossply) ---------------------------------------------------------------------------------------------
-TYRE_R = CL.TYRE_D / 2                    # 308.7 overall radius (unladen)
-SECTION_W = 5.60 * IN
-TREAD_W = 104.0
-TREAD_DEPTH = 7.0
-TREAD_PITCHES = 72
-TREAD_RIBS = 5
+# ---- tyre (165/80R14 radial, Oliver's car) --------------------------------------------------------------------------------
+TYRE_R = CL.TYRE_D / 2                    # 309.8 overall radius (unladen)
+SECTION_W = CL.TYRE_SECTION               # 165
+TREAD_W = 128.0                           # tread across the shoulders (D: kf182-185, kf229 against the section)
+TREAD_DEPTH = 7.5
+TREAD_PITCHES = 64                        # shoulder blocks round the tyre
+TREAD_GROOVES = 4                         # straight circumferential grooves (Falken Sincera SN832)
+TREAD_GROOVE_W = 8.0
 
 # ---- spinner (two-eared knock-on) -----------------------------------------------------------------------------------------
 SPINNER_Y = (SHELL_Y[1] - 4.0, A.EXT_END_Y - A.EXT_COLLAR_Y[0] + 3.0)   # boss from the shell's outer cone past the thread

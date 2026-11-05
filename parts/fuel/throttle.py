@@ -19,6 +19,7 @@ from mgb import carb_layout as K, fasteners as F, throttle_layout as T
 from mgb.brake_parts import (IN, box, chamfered_hex, lab, nyloc, plain_washer, rod, spring_washer, split_pin,
                              tension_spring, tube_rod, xcyl, xprism, ycyl, yprism, zc)
 from mgb.poly2d import circle_pts, hull
+from mgb.chassis_geom import zcyl, zrev
 
 PY = T.PEDAL_Y
 
@@ -96,25 +97,22 @@ def pedal(spec) -> Part:
     # foot plate under the pad
     n, up = _pad_frame()
     pl = Plane(origin=(T.PAD[0] - n[0] * 7.0, PY, T.PAD[2] - n[2] * 7.0), x_dir=(0, 1, 0), z_dir=n)
-    from build123d import Align, Box
-    p = p + pl.location * Box(52.0, 74.0, 3.0, align=(Align.CENTER, Align.CENTER, Align.MAX))
+    p = p + pl.location * zcyl(11.0, -9.0, 0.0)                   # boss for the stub (Oliver's kf151: no foot plate)
     p = p - ycyl(6.1, PY - 9.0, PY + 5.0, px, pz)                               # boss bore
     p = p - xcyl(1.2, cx - 4.0, cx + 1.0, PY, cz)                               # cable hole in the tab
     return lab(p, spec)
 
 
 def pad(spec) -> Part:
-    """GPR105: rubber pad over the foot plate, ribbed tread, lip round the plate's edge."""
-    from build123d import Align, Box
-    t = spec.nom("thickness")
+    """The accelerator's foot stub on Oliver's car (kf151): a short round chromed roller on the end of the pedal's
+    arm, square to the foot, where the standard car has the GPR105 rubber pad on a plate."""
     n, up = _pad_frame()
     pl = Plane(origin=(T.PAD[0] - n[0] * 7.0, PY, T.PAD[2] - n[2] * 7.0), x_dir=(0, 1, 0), z_dir=n)
-    w, h = 58.0, 80.0
-    body = Box(w, h, t + 3.5, align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((0, 0, -3.5)))
-    body = body - Box(52.3, 74.3, 3.6, align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((0, 0, -3.6)))
-    for k in range(-6, 7):
-        body = body - Location((0, k * 5.6, t + 0.6)) * Box(w - 10.0, 2.4, 2.4)
-    return lab(pl.location * body, spec)
+    L = spec.nom("thickness")
+    stub = zcyl(12.5, 0.0, L - 3.0) + zrev([(0.0, L - 3.0), (12.5, L - 3.0), (11.0, L - 0.5), (9.0, L), (0.0, L)])
+    for k in range(3):                                            # knurled grooves round it
+        stub = stub - (zcyl(13.0, 4.0 + 6.0 * k, 5.2 + 6.0 * k) - zcyl(12.0, 3.0 + 6.0 * k, 6.2 + 6.0 * k))
+    return lab(pl.location * stub, spec)
 
 
 def pedal_bracket(spec) -> Part:

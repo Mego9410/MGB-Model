@@ -31,13 +31,13 @@ parts:
       pivot_to_pad: { mm: 213.0, source: { label: D, method: "Pivot to pad centre in the layout" }, display_only: true }
 
   - id: fuel.throttle.pad
-    name: Accelerator pedal rubber pad
+    name: Accelerator foot stub
     haynes: { section: 45 }
     quantity: 1
-    finish: rubber
-    notes: "GPR105 (F plate 108-G2 item 4; MGOC Spares 'pedal rubber, throttle'): ribbed pad stretched over the foot plate."
+    finish: chrome
+    notes: "On Oliver's car the accelerator ends in a short round chromed stub (roller) on the arm beside the brake pedal, not the standard GPR105 rubber pad on a plate (F plate 108-G2 item 4) (kf151; QA fix round 1, cockpit)."
     specs:
-      thickness: { mm: 7.0, source: { label: D, method: "As the clutch pad, thinner" } }
+      thickness: { mm: 28.0, source: { label: D, method: "Oliver's kf151 scaled on the brake pedal's pad" } }
 
   - id: fuel.throttle.pedal-bracket
     name: Accelerator pedal bracket

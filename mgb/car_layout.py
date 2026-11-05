@@ -52,9 +52,11 @@ GROUND_CLEARANCE = 4.2 * IN            # 106.7
 
 # ---- tyres (H Ch 11 specs; section ratio D) -------------------------------------------------
 RIM_D = 14.0 * IN
-TYRE_SECTION = 5.60 * IN
-TYRE_D = RIM_D + 2 * 0.92 * TYRE_SECTION     # 5.60-14 crossply, ~92 % profile (D)
-ROLLING_R = TYRE_D / 2 - 8.0                 # laden deflection (D)
+TYRE_SECTION = 165.0                         # Oliver's car: 165/80R14 85T radials (Falken Sincera SN832 Ecorun, kf182-185,
+TYRE_ASPECT = 0.80                           # kf229; QA fix round 1). The factory tyre was the 5.60-14 crossply (H p203).
+TYRE_D = RIM_D + 2 * TYRE_ASPECT * TYRE_SECTION    # 619.6 (ETRTO nominal)
+ROLLING_R = TYRE_D / 2 - 9.15                # laden deflection (D): a radial's softer sidewall; holds the wheel centres
+                                             # where the crossply's (308.65 - 8.0) put them, on Oliver's scan
 
 # ---- derived datums in the engine frame (D) -----------------------------------------------
 FRONT_AXLE_X = 150.0                   # front wheel axis, just behind the front main bearing (x 205); Oliver's scan

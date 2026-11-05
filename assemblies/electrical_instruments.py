@@ -50,6 +50,10 @@ for k, (y, z) in BL.INSTRUMENTS.items():
     f = at(y, z)
     add(f"{k}-case", f, explode=ex(REARWARD, 3, 140))
     add(f"{k}-dial", f, explode=ex(REARWARD, 3, 140))
+    add(f"{k}-print", f, explode=ex(REARWARD, 3, 140))
+    if k == "tachometer":
+        add("tach-sector-amber", f, explode=ex(REARWARD, 3, 140))
+        add("tach-sector-red", f, explode=ex(REARWARD, 3, 140))
     add(f"{k}-needle", f, explode=ex(REARWARD, 3, 140))
     add(f"glass-{SIZE[k]}", f, explode=ex(REARWARD, 2, 190))
     add(f"bezel-{SIZE[k]}", f, explode=ex(REARWARD, 2, 230))
@@ -65,4 +69,5 @@ for k, (y, z) in BL.SWITCHES.items():
         add("ignition-switch", f, explode=ex(FWD, 6, 80))
     else:
         add("toggle-switch", f, explode=ex(FWD, 6, 70))
+        add("toggle-tip", f, explode=ex(FWD, 6, 70))
 INSTANCES = I

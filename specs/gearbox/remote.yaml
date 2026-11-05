@@ -130,6 +130,16 @@ parts:
       height: { mm: 52.0, source: { label: D, method: "Fig 6.4 item 15" } }
       diameter: { mm: 44.0, source: { label: D, method: "Fig 6.4 item 15" } }
 
+  - id: gearbox.remote.knob-print
+    name: Gear lever knob shift pattern fill
+    haynes: { section: 4, figures: [{ figure: "6.4", legend: 15 }] }
+    quantity: 1
+    finish: print_white
+    notes: "White fill of the shift pattern engraved in the knob's top (Oliver's kf122, kf145 zoomed; QA fix round 1, cockpit)."
+    specs:
+      height: { mm: 52.0, source: { label: D, method: "As the knob (Fig 6.4 item 15)" } }
+      diameter: { mm: 44.0, source: { label: D, method: "As the knob (Fig 6.4 item 15)" } }
+
   - id: gearbox.remote.knob-locknut
     name: Knob locknut
     haynes: { section: 4 }

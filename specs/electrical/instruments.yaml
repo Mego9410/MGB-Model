@@ -26,9 +26,18 @@ parts:
     haynes: { section: 46, figures: [{ figure: "45" }] }
     quantity: 1
     finish: instrument_face
-    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    notes: "Black face; its white print is the -print part. The speedometer has the trip window above the centre and the total odometer below it (Oliver's kf121, kf148)."
     specs:
       diameter: { mm: 77.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.speedometer-print
+    name: "Speedometer dial print"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: print_white
+    notes: "White print on the black face, drawn as a 0.25 mm film: 0-120 MPH over 270 deg (0 at the lower left, 60 at the top), figures every 10 mph, graduations every 2 and 10, the scale line, MPH over the trip window, the window frames, SMITHS, HIGH BEAM at the foot over the blue lamp. As on Oliver's car (kf121, kf148 zoomed) and the period Smiths dials of the 1962-64 MGB; figures in a plain sans-serif (the Smiths face is a condensed grotesque)."
+    specs:
+      print_thickness: { mm: 0.25, display_only: true, source: { label: D, method: "A film on the face so the print renders; real print is ink" } }
 
   - id: electrical.instruments.speedometer-needle
     name: "Speedometer needle"
@@ -53,9 +62,18 @@ parts:
     haynes: { section: 46, figures: [{ figure: "95" }] }
     quantity: 1
     finish: instrument_face
-    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    notes: "Black face; its white print is the -print part. The speedometer has the trip window above the centre and the total odometer below it (Oliver's kf121, kf148)."
     specs:
       diameter: { mm: 77.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.tachometer-print
+    name: "Tachometer dial print"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: print_white
+    notes: "White print on the black face, drawn as a 0.25 mm film: 0-70 x100 RPM over 270 deg, figures every 5, graduations every 100 and 500 rpm, the scale line, RPM and X 100 above the centre, SMITHS, IGNITION at the foot over the red lamp; the amber and red wedge is tach-sector-amber and -red. As on Oliver's car (kf121, kf148 zoomed) and the period Smiths dials of the 1962-64 MGB; figures in a plain sans-serif (the Smiths face is a condensed grotesque)."
+    specs:
+      print_thickness: { mm: 0.25, display_only: true, source: { label: D, method: "A film on the face so the print renders; real print is ink" } }
 
   - id: electrical.instruments.tachometer-needle
     name: "Tachometer needle"
@@ -80,9 +98,18 @@ parts:
     haynes: { section: 46, figures: [{ figure: "42" }] }
     quantity: 1
     finish: instrument_face
-    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    notes: "Black face; its white print is the -print part. The speedometer has the trip window above the centre and the total odometer below it (Oliver's kf121, kf148)."
     specs:
       diameter: { mm: 49.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.dual-gauge-print
+    name: "Oil pressure and water temperature gauge print"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: print_white
+    notes: "White print on the black face, drawn as a 0.25 mm film: OIL 0-100 psi over the top half (figures every 20, graduations every 10) and WATER 90-230 F round the bottom half (90 120 160 190 212 230). As on Oliver's car (kf121, kf148 zoomed) and the period Smiths dials of the 1962-64 MGB; figures in a plain sans-serif (the Smiths face is a condensed grotesque)."
+    specs:
+      print_thickness: { mm: 0.25, display_only: true, source: { label: D, method: "A film on the face so the print renders; real print is ink" } }
 
   - id: electrical.instruments.dual-gauge-needle
     name: "Oil pressure and water temperature gauge needle"
@@ -107,9 +134,18 @@ parts:
     haynes: { section: 46, figures: [{ figure: "34" }] }
     quantity: 1
     finish: instrument_face
-    notes: "Black dial with raised graduations (simplified: figures not drawn)."
+    notes: "Black face; its white print is the -print part. The speedometer has the trip window above the centre and the total odometer below it (Oliver's kf121, kf148)."
     specs:
       diameter: { mm: 49.0, source: { label: D, method: "Inside the case" } }
+
+  - id: electrical.instruments.fuel-gauge-print
+    name: "Fuel gauge print"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: print_white
+    notes: "White print on the black face, drawn as a 0.25 mm film: SMITHS and FUEL above the scale; E, 1/4, (1/2 under the needle), 3/4, F on a shallow arc across the middle round the needle pivot below the centre. As on Oliver's car (kf121, kf148 zoomed) and the period Smiths dials of the 1962-64 MGB; figures in a plain sans-serif (the Smiths face is a condensed grotesque)."
+    specs:
+      print_thickness: { mm: 0.25, display_only: true, source: { label: D, method: "A film on the face so the print renders; real print is ink" } }
 
   - id: electrical.instruments.fuel-gauge-needle
     name: "Fuel gauge needle"
@@ -261,3 +297,29 @@ parts:
     specs:
       gland_af: { mm: 17.3, source: { label: D, method: "Gland nut" } }
 
+  - id: electrical.instruments.tach-sector-amber
+    name: "Tachometer amber sector"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: print_amber
+    notes: "Amber part of the warning wedge inside the tachometer's scale, 5000-5500 rpm, from 0.30 to 0.62 of the face radius (Oliver's kf121 zoomed: an amber and red wedge between 50 and 63)."
+    specs:
+      start_rpm: { count: 5000, display_only: true, source: { label: D, method: "Oliver's kf121 zoomed, read against the dial figures" } }
+
+  - id: electrical.instruments.tach-sector-red
+    name: "Tachometer red sector"
+    haynes: { section: 46 }
+    quantity: 1
+    finish: enamel_red
+    notes: "Red part of the warning wedge, 5500-6300 rpm (Oliver's kf121 zoomed)."
+    specs:
+      start_rpm: { count: 5500, display_only: true, source: { label: D, method: "Oliver's kf121 zoomed, read against the dial figures" } }
+
+  - id: electrical.instruments.toggle-tip
+    name: "Toggle switch lever tip"
+    haynes: { section: 45, figures: [{ figure: "10.9", legend: 2 }] }
+    quantity: 5
+    finish: plastic_black
+    notes: "Black moulded tip on each toggle lever (Oliver's kf145: chrome levers with black tips)."
+    specs:
+      length: { mm: 12.0, display_only: true, source: { label: D, method: "kf145 scaled on the facia's switch spacing" } }

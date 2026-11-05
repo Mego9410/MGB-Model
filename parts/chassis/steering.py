@@ -413,31 +413,83 @@ def draught_excluder(spec) -> Part:
 # =================================================================================================
 # steering wheel (57), nut (58), horn push
 # =================================================================================================
+def _spoke_dir(ang):
+    return math.cos(math.radians(ang)), math.sin(math.radians(ang))
+
+
+def _wire_ends(i):
+    """(hub end, rim end) of each wire of spoke i, in the column frame (local x up, y the driver's left, z toward the
+    driver): the wires leave the hub arm's socket close together and fan out a little to the rim clamp."""
+    R = S.WHEEL_D / 2 - S.RIM_SECTION[0] / 2
+    ang, n, r0 = S.SPOKE_ANGLES[i], S.SPOKE_WIRES[i], S.HUB_ARM_R[i]
+    ca, sa = _spoke_dir(ang)
+    r1 = R - S.RIM_SECTION[0] / 2 - S.CLAMP_LEN + 6.0
+    out = []
+    for k in range(n):
+        off = k - (n - 1) / 2
+        o0, o1 = off * 7.5, off * 10.5
+        p0 = (r0 * ca - o0 * sa, r0 * sa + o0 * ca, 17.0)
+        p1 = (r1 * ca - o1 * sa, r1 * sa + o1 * ca, S.DISH - 4.0)
+        out.append((p0, p1))
+    return out
+
+
 def steering_wheel(spec) -> Part:
-    """Drawn on the column axis with the hub face at z 0, the rim dished toward the driver (+z); spokes of four
-    wires each; local x is 'up' with the wheels straight ahead."""
+    """Drawn on the column axis with the hub face at z 0, the rim dished toward the driver (+z), local x 'up' with the
+    wheels straight ahead. The black parts: the acetate rim with its finger grips, the cast hub boss with its three
+    arms (a Y; the wire sockets at their ends) and the clamp blocks gripping the wires inside the rim. The polished
+    wires are the separate part wheel-spokes."""
+    from build123d import Sphere
     R = spec.nom("diameter") / 2 - S.RIM_SECTION[0] / 2
     a, b = S.RIM_SECTION[0] / 2, S.RIM_SECTION[1] / 2
-    from build123d import Ellipse, Face, Wire, revolve, Axis
-    from build123d import Plane as Pl
     rim = zrev([(R + a * math.cos(2 * math.pi * k / 28), S.DISH + b * math.sin(2 * math.pi * k / 28)) for k in range(28)])
-    # finger grips under the rim
-    for k in range(36):
-        ang = 360.0 * k / 36
-        rim = rim - Rot(0, 0, ang) * Location((R - a * 0.55, 0, S.DISH - b * 0.6)) * __import__("build123d").Sphere(2.2)
-    hub = zrev([(0, -6.0), (24.0, -6.0), (30.0, 0.0), (33.0, 14.0), (27.0, 26.0), (0, 26.0)])
-    hub = hub - zcyl(12.3, -7.0, 27.0) - zcyl(16.0, 6.0, 27.0)               # splined bore (drawn plain), nut recess
-    w = hub + rim
-    # banjo spokes: four spring steel wires each, from the hub's flange to the rim
-    for ang in S.SPOKE_ANGLES:
-        for k in range(S.SPOKE_WIRES):
-            off = (k - (S.SPOKE_WIRES - 1) / 2) * 6.5
-            ca, sa = math.cos(math.radians(ang)), math.sin(math.radians(ang))
-            x0, y0 = 27.0, off * 0.55
-            x1, y1 = R - a * 0.85, off
-            w = w + rod((x0 * ca - y0 * sa, x0 * sa + y0 * ca, 10.0), (x1 * ca - y1 * sa, x1 * sa + y1 * ca, S.DISH - 2.0), 1.3)
-        # the boss the wires are anchored in at the hub
-        w = w + Rot(0, 0, ang) * Location((24.0, 0, 10.0)) * box(-3.0, 10.0, -12.0, 12.0, -5.0, 5.0)
+    for k in range(36):                                                       # finger grips under the rim
+        rim = rim - Rot(0, 0, 360.0 * k / 36) * Location((R - a * 0.55, 0, S.DISH - b * 0.6)) * Sphere(2.2)
+    # hub boss: a waisted cone from the splined bore up to the horn push's seat
+    hub = zrev([(0, -6.0), (26.0, -6.0), (33.0, 2.0), (35.0, 14.0), (33.0, 24.0), (0, 24.0)])
+    hub = hub - zcyl(12.3, -7.0, 25.0) - zcyl(17.0, 6.0, 25.0)              # splined bore (drawn plain), nut recess
+    parts = [rim, hub]
+    for i, ang in enumerate(S.SPOKE_ANGLES):
+        ca, sa = _spoke_dir(ang)
+        n, r0 = S.SPOKE_WIRES[i], S.HUB_ARM_R[i]
+        w0, w1 = 15.0 + 5.0 * n, 8.0 + 5.0 * n                               # arm width at the boss and at the socket
+        # cast arm: a flat blade rising from the boss to the socket block the wires leave from
+        prof = [(20.0, -w0 / 2), (r0 - 6.0, -w1 / 2), (r0 + 4.0, -w1 / 2 + 1.5), (r0 + 4.0, w1 / 2 - 1.5), (r0 - 6.0, w1 / 2),
+                (20.0, w0 / 2)]
+        arm = zprism(prof, 4.0, 18.0)
+        arm = arm - Location((r0 + 4.0, 0, 18.0)) * Rot(0, 30, 0) * box(-30.0, 0.0, -20.0, 20.0, 0.0, 12.0)   # sloped back
+        parts.append(Rot(0, 0, ang) * arm)
+        sock = Location((r0 - 2.0, 0.0, 15.5)) * Rot(0, 90 - math.degrees(math.atan2(S.DISH - 21.0, R - r0)), 0) * \
+            zcyl(w1 / 2 + 0.5, -8.0, 8.0)
+        parts.append(Rot(0, 0, ang) * sock)
+        # clamp block inside the rim: a black moulding round the wires' ends, merging into the rim's inner face
+        r1 = R - a + 2.0
+        cw = 10.5 * (n - 1) + 14.0
+        blk = box(r1 - S.CLAMP_LEN, r1, -cw / 2, cw / 2, S.DISH - 9.0, S.DISH + 5.0)
+        blk = tryfillet_(blk, 3.0)
+        parts.append(Rot(0, 0, ang) * blk)
+    w = parts[0]
+    for p in parts[1:]:
+        w = w + p
+    return lab(w, spec)
+
+
+def tryfillet_(p, r):
+    try:
+        q = p.fillet(r, p.edges())
+        return q if q.is_valid else p
+    except Exception:
+        return p
+
+
+def wheel_spokes(spec) -> Part:
+    """The banjo spokes' polished spring steel wires: three on each side spoke, two on the lower one, from the hub
+    arms' sockets to the rim clamps (column frame as the wheel)."""
+    w = None
+    for i in range(len(S.SPOKE_ANGLES)):
+        for p0, p1 in _wire_ends(i):
+            r = rod(p0, p1, S.WIRE_R)
+            w = r if w is None else w + r
     return lab(w, spec)
 
 
@@ -446,19 +498,62 @@ def wheel_nut(spec):
     return lab(hexagon(F.NUT["9/16"][0] * IN, F.NUT["9/16"][1] * IN) - zcyl(d / 2 * 0.92, -1, 20), spec)
 
 
-def horn_push(spec) -> Part:
-    """Central horn push: a domed black cap carrying the MG badge - an octagon in a bezel (drawn on +z from its
-    seat in the hub)."""
-    d = spec.nom("diameter")
-    c = zrev([(0, 0), (d / 2, 0), (d / 2, 4.0), (d / 2 - 3.0, 9.0), (0, 11.0)])
+# horn push (drawn on +z from its seat in the hub): a black moulded cone, a broad chrome ring round a domed centre, the
+# MG badge - a red enamel octagon with a chrome octagon edge and chrome letters (Oliver's kf121, kf148; MGOC)
+HORN_RING_R = 37.5                                   # chrome ring outer radius (D: kf121, kf148 scaled on the rim)
+BADGE_AF = 42.0                                      # badge octagon across flats (D)
+HORN_FACE_Z = 24.0                                   # badge face above the push's seat
+
+
+def _octagon(af, z0, z1):
     from build123d import RegularPolygon, extrude
-    oct_ = extrude(RegularPolygon(d * 0.30, 8), 2.2).moved(Location((0, 0, 10.0)))
-    oct_ = oct_ - extrude(RegularPolygon(d * 0.30 - 2.0, 8), 3.0).moved(Location((0, 0, 11.4)))
-    c = c + oct_
-    # raised "MG" bars inside the octagon (two blocks standing for the letters)
-    for x in (-4.5, 4.5):
-        c = c + box(x - 3.0, x + 3.0, -5.0, 5.0, 10.0, 12.6)
+    r = af / 2 / math.cos(math.pi / 8)
+    return extrude(RegularPolygon(r, 8, rotation=22.5), z1 - z0).moved(Location((0, 0, z0)))
+
+
+def _mg_letters(h, z0, t):
+    """Block 'M' and 'G' (the MG octagon badge lettering) as raised strokes h mm tall, t thick, on z0."""
+    s = h / 10.0
+    st = 1.6 * s
+    pieces = []
+    mx = -4.6 * s                                                            # M: two uprights and the V
+    for x in (mx - 3.4 * s, mx + 3.4 * s):
+        pieces.append(box(x - st / 2, x + st / 2, -5 * s, 5 * s, 0, t))
+    for sgn in (-1, 1):
+        pieces.append(Location((mx + sgn * 1.7 * s, 1.0 * s, 0)) * Rot(0, 0, sgn * 28) * box(-st / 2, st / 2, -4.6 * s, 4.6 * s, 0, t))
+    gx = 4.6 * s                                                             # G: a C with the bar
+    ring = zcyl(4.6 * s, 0, t, gx, 0) - zcyl(4.6 * s - st, -1, t + 1, gx, 0) - box(gx, gx + 6 * s, 0.4 * s, 2.6 * s, -1, t + 1)
+    pieces += [ring, box(gx + 0.6 * s, gx + 4.6 * s, -0.4 * s, 0.4 * s + st * 0.5, 0, t)]
+    # letters in the frame: local x up, y the driver's left - the strokes above are drawn with x across, so turn them
+    out = None
+    for p in pieces:
+        q = Location((0, 0, z0)) * Rot(0, 0, -90) * p
+        out = q if out is None else out + q
+    return out
+
+
+def horn_push(spec) -> Part:
+    """Central horn push, black parts: the moulded cone on the hub and the domed centre behind the badge."""
+    d = spec.nom("diameter")
+    c = zrev([(0, 0), (d / 2, 0), (d / 2 - 1.0, 4.0), (HORN_RING_R - 4.0, 12.0), (HORN_RING_R - 7.0, 16.0), (0, 16.0)])
     return lab(c, spec)
+
+
+def horn_ring(spec) -> Part:
+    """Chrome parts of the horn push: the broad rolled ring round the badge, the badge's octagon edge and its MG
+    letters."""
+    ring = zrev([(HORN_RING_R - 13.0, 14.0), (HORN_RING_R - 1.5, 14.0), (HORN_RING_R, 17.0), (HORN_RING_R - 1.0, 21.0),
+                 (HORN_RING_R - 5.0, HORN_FACE_Z + 1.5), (HORN_RING_R - 11.0, HORN_FACE_Z + 1.0), (HORN_RING_R - 13.0, HORN_FACE_Z - 1.0)])
+    edge = _octagon(BADGE_AF + 4.0, HORN_FACE_Z - 1.0, HORN_FACE_Z + 1.2) - _octagon(BADGE_AF, HORN_FACE_Z - 2.0, HORN_FACE_Z + 2.0)
+    letters = _mg_letters(24.0, HORN_FACE_Z + 0.4, 1.0)
+    return lab(ring + edge + letters, spec)
+
+
+def horn_badge(spec) -> Part:
+    """Red enamel field of the MG badge inside its chrome octagon (MGOC: silver letters and octagon on red)."""
+    b = _octagon(BADGE_AF + 0.4, HORN_FACE_Z - 2.0, HORN_FACE_Z + 0.5)
+    b = b + zcyl(HORN_RING_R - 12.5, HORN_FACE_Z - 4.0, HORN_FACE_Z - 1.0)
+    return lab(b, spec)
 
 
 PARTS = {
@@ -508,4 +603,7 @@ PARTS = {
     "chassis.steering.wheel": {"build": steering_wheel, "probes": {"diameter": lambda p: max(probes.bbox_size(p, "x"), probes.bbox_size(p, "y"))}},
     "chassis.steering.wheel-nut": {"build": wheel_nut},
     "chassis.steering.horn-push": {"build": horn_push},
+    "chassis.steering.horn-ring": {"build": horn_ring},
+    "chassis.steering.horn-badge": {"build": horn_badge},
+    "chassis.steering.wheel-spokes": {"build": wheel_spokes},
 }

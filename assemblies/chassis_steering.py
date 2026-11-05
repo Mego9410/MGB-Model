@@ -120,5 +120,8 @@ for y in (44.0, -44.0):
 # ---- steering wheel ----------------------------------------------------------------------------------------------
 add("wheel", CF(S.WHEEL_T), groups=["wheel"])
 add("wheel-nut", CF(S.WHEEL_T + 9.0), groups=["wheel"], explode=ex(COL, 61, 60))
-add("horn-push", CF(S.WHEEL_T + 26.2), groups=["wheel"], explode=ex(COL, 60, 120))
+add("wheel-spokes", CF(S.WHEEL_T), groups=["wheel"])
+add("horn-push", CF(S.WHEEL_T + 24.2), groups=["wheel"], explode=ex(COL, 60, 120))
+add("horn-ring", CF(S.WHEEL_T + 24.2), groups=["wheel"], explode=ex(COL, 60, 120))
+add("horn-badge", CF(S.WHEEL_T + 24.2), groups=["wheel"], explode=ex(COL, 60, 120))
 INSTANCES = I

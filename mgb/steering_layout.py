@@ -46,7 +46,16 @@ PINION_TEETH = 7
 PINION_Y = -278.0
 PINION_MESH = (RACK_X, PINION_Y, RACK_Z + RACK_R + PINION_PITCH_R + 4.0)   # where the pinion axis passes over the rack
 from mgb import body_layout as BL  # noqa: E402  (P10: facia, instruments over the column)
-WHEEL_CENTRE = (-990.0, BL.DRIVER_Y, 10.0)                # steering wheel centre (hub face plane), RHD
+# The wheel is placed on Oliver's car (QA fix round 1, cockpit): a circle fitted to 678 points of the rim in his body
+# scan (mgb.scan_layout registration) has its centre at x -981, y -294, 830 mm above the road, radius 198.8 (the
+# 16 1/2 in rim's centre line) and its axis 20 deg to the horizontal. The rim centre is held; the hub face lies
+# DISH mm ahead of it on the one pinion/column axis (Sec 20), which then rises at about 24 deg. The wheel sits
+# 56 mm inboard of P10's driver line (the binnacle's centre), as in the scan.
+RIM_CENTRE = (-981.0, -294.0, CL.GROUND_Z + 830.0)       # D: Oliver's body scan, rim circle fit
+DISH = 62.0                                              # rim plane above (toward the driver) the hub face
+_r = [RIM_CENTRE[i] - PINION_MESH[i] for i in range(3)]
+_rl = math.sqrt(sum(v * v for v in _r))
+WHEEL_CENTRE = tuple(RIM_CENTRE[i] - DISH * _r[i] / _rl for i in range(3))   # steering wheel centre (hub face plane)
 _d = [WHEEL_CENTRE[i] - PINION_MESH[i] for i in range(3)]
 _L = math.sqrt(sum(v * v for v in _d))
 COLUMN_DIR = tuple(v / _L for v in _d)               # up the column, rearward
@@ -78,10 +87,14 @@ CROSSMEMBER_TUBE_R = 36.0                            # tube through the RHD cros
 # ---- steering wheel (MGOC: 16 1/2 in three-spoke banjo wheel) ---------------------------------------------------
 WHEEL_D = 16.5 * IN
 RIM_SECTION = (22.0, 26.0)                           # rim grip section: across, along the axis
-DISH = 62.0                                          # rim plane above (toward the driver) the hub face
 SPOKES = 3
-SPOKE_WIRES = 4                                      # banjo spokes: four spring steel wires each
-SPOKE_ANGLES = [90.0, 210.0, 330.0]                  # from the wheel's "up" with the wheels straight ahead (D: T-shape)
+SPOKE_ANGLES = [105.0, 180.0, 255.0]                 # from the wheel's "up" toward the driver's left, wheels straight
+                                                     # ahead (D: Oliver's kf121, kf148 - two side spokes 15 deg below
+                                                     # the horizontal and one straight down)
+SPOKE_WIRES = [3, 2, 3]                              # polished spring steel wires per spoke (D: kf121, kf148)
+WIRE_R = 2.0                                         # wire radius (D: kf121 scaled on the rim)
+HUB_ARM_R = [78.0, 60.0, 78.0]                       # reach of the black cast hub's arms (wire sockets) per spoke (D)
+CLAMP_LEN = 34.0                                     # black clamp blocks where the wires meet the rim (D)
 
 # ---- body datums for P11 (car frame) -------------------------------------------------------------------------------
 COLUMN_TOP_CLAMP = col(UPPER_CLAMP_T)                # upper clamp (59) on the body bracket under the dash; packing washers

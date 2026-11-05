@@ -19,11 +19,12 @@ parts:
     haynes: { section: 30 }
     quantity: 4
     notes: >
-      Well-base rim with the valve hole, the hub shell (inner cone onto the hub, 42 mm series splines, two spoke
-      flanges, outer cone for the spinner) and 60 spokes laced tangentially - inner flange to the rim's outer row,
-      outer flange to the inner row, alternately leading and trailing - with their nipples in the well. Painted
-      aluminium as on early cars (chrome from October 1965, MGOC). Spokes can be re-tensioned at the rim nipples
-      (Sec 30 para 4). Rim contour from the standard J rim; shell and lacing derived.
+      Well-base rim with the valve hole and the raised dimples round each spoke nipple's seat (Oliver's kf184), the
+      hub shell (inner cone onto the hub, 42 mm series splines, a smooth barrel between the two spoke flanges, outer
+      cone for the spinner; kf184) and 60 spokes laced tangentially - inner flange to the rim's outer row, outer
+      flange to the inner row, alternately leading and trailing - with their nipples in the well. Painted aluminium as
+      on early cars (chrome from October 1965, MGOC; silver on Oliver's car). Spokes can be re-tensioned at the rim
+      nipples (Sec 30 para 4). Rim contour from the standard J rim; shell and lacing derived.
     specs:
       rim_diameter: { in: 14.0, mm: 355.6, source: { label: H, page: 203, note: "Wire wheels 4 1/2J x 14" }, display_only: true }
       rim_width: { in: 4.5, mm: 114.3, source: { label: H, page: 203, note: "Wire wheels 4 1/2J x 14" }, display_only: true }
@@ -31,19 +32,23 @@ parts:
       flange_height: { mm: 17.5, source: { label: D, method: "Standard J rim flange contour (17.5 mm)" } }
 
   - id: wheels.road-wheels.tyre
-    name: Tyre, 5.60-14 crossply (tubed)
+    name: Tyre, 165/80R14 85T radial
     haynes: { section: 30 }
     quantity: 4
     finish: tyre
     notes: >
-      Early models: 5.60 x 14 tubed crossply (H p203). Section 5.60 in; overall diameter from a 92 % profile
-      (car_layout TYRE_D, D); shoulders, sidewall with a rim guard rib, five zig-zag tread ribs with sipes in the
-      manner of the period crossply pattern (D). Pressures: front 18-19, rear 18-22 lbf/in2 (H p203); do not mix
-      crossply and radial (Sec 31). Drawn unladen; the car stands on its laden rolling radius.
+      Oliver's car runs 165/80R14 85T radials, Falken Sincera SN832 Ecorun (kf182-185, kf229: the size, make and
+      pattern moulded on the sidewalls); the factory fitted 5.60 x 14 tubed crossplies (H p203). Section 165 mm, 80 %
+      profile (car_layout TYRE_D 619.6); a radial's flat sidewall bulging to the section width a little below mid
+      height, the rim guard rib, tight shoulders; tread of four straight circumferential grooves between three
+      continuous ribs and two blocked shoulders with sipes (the SN832's pattern, simplified: the ribs' fine sipes are
+      not drawn); FALKEN, SINCERA SN832, ECORUN and the size moulded on the outboard sidewall. Drawn unladen; the car
+      stands on its laden rolling radius (car_layout ROLLING_R, the wheel centres held where the scan has them).
+      Do not mix crossply and radial (Sec 31). QA fix round 1 (was the 5.60-14 crossply).
     specs:
-      section_width: { in: 5.6, mm: 142.24, source: { label: H, page: 203, note: "5.60 x 14 tubed crossply" } }
-      overall_diameter: { mm: [617.0, 618.0], source: { label: D, method: "14 in rim + 2 x 0.92 x 5.60 in (car_layout TYRE_D), tread blocks to it" } }
-      pressure_front: { count: [18, 19], source: { label: H, page: 203, note: "lbf/in2, tubed crossply, front" } }
+      section_width: { mm: [160.0, 168.0], source: { label: D, method: "165/80R14 moulded on Oliver's tyres (kf229); 165 mm nominal section, the probe reads the sidewall's mesh" } }
+      overall_diameter: { mm: [619.0, 620.2], source: { label: D, method: "14 in rim + 2 x 0.80 x 165 mm (car_layout TYRE_D)" } }
+      pressure_front: { count: [18, 19], source: { label: H, page: 203, note: "lbf/in2, tubed crossply, front (the factory tyre; radial pressures are the tyre maker's)" } }
       pressure_rear: { count: [18, 22], source: { label: H, page: 203, note: "lbf/in2, tubed crossply, rear" } }
 
   - id: wheels.road-wheels.valve
@@ -61,9 +66,11 @@ parts:
     quantity: 2
     finish: chrome
     notes: >
-      Two-eared knock-on spinner (D: two-eared type with the side and UNDO lettered on its face and an arrow showing the
-      way to undo it). On the left-hand hubs: right-hand 12 tpi thread, so forward rotation tightens it (MGOC; P7
-      SPINNER_HAND); tightened with a copper mallet. Span and boss size derived.
+      Two-eared knock-on spinner as on Oliver's car (kf182-185, kf229 zoomed): the boss with a smooth domed face, two
+      flat tapered ears swept back toward the wheel, about 40 mm deep at the boss narrowing to a rounded 15 mm tip,
+      and lettered round the dome's edge UNDO, the undoing arrow, UNDO and LEFT SIDE opposite. On the left-hand hubs:
+      right-hand 12 tpi thread, so forward rotation tightens it (MGOC; P7 SPINNER_HAND); tightened with a copper
+      mallet. Span and boss size derived. QA fix round 1 (was round bars and a flat face).
     specs:
       thread_tpi: { count: 12, source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html", note: "12 tpi to GHN3-30850" } }
       span: { in: 7.0, mm: 177.8, source: { label: D, method: "Ear tip to ear tip, against the 14 in wheel" } }
@@ -73,6 +80,8 @@ parts:
     haynes: { section: 30 }
     quantity: 2
     finish: chrome
-    notes: "As the left-hand spinner with a left-hand thread and the arrow the other way (right-hand side of the car)."
+    notes: >
+      As the left-hand spinner with a left-hand thread, RIGHT SIDE lettered and the arrow the other way (right-hand
+      side of the car).
     specs:
       thread_tpi: { count: 12, source: { label: S, ref: "https://www.mgocspares.co.uk/acatalog/MGOC_SPARES_STUB_AXLES__MGB__40.html", note: "12 tpi to GHN3-30850" } }

@@ -288,6 +288,30 @@ def knob(spec) -> Part:
     return _l(base * k, spec)
 
 
+def knob_print(spec) -> Part:
+    """White fill in the knob top's engraved shift pattern (Oliver's kf122, kf145): the H with reverse, filled flush
+    with the top so it reads white on the black knob."""
+    top = G.to_local(G.KNOB)
+    pts, _ = _lever_path()
+    import numpy as np
+    axis = np.array(top) - np.array(pts[-1])
+    axis = axis / np.linalg.norm(axis)
+    H = spec.nom("height")
+    D = spec.nom("diameter")
+    prof = [(0, 0), (D * 0.24, 0), (D * 0.30, H * 0.12), (D * 0.36, H * 0.42), (D * 0.47, H * 0.70), (D * 0.50, H * 0.84),
+            (D * 0.44, H * 0.96), (D * 0.25, H), (0, H)]
+    body = Sh.revolved(prof)
+    fill = None
+    for x0, y0, x1, y1 in ((-8, -6, 8, -6), (-8, 6, 8, 6), (0, -6, 0, 6), (-8, -6, -8, -12)):
+        L = math.hypot(x1 - x0, y1 - y0) + 1.6
+        ang = math.degrees(math.atan2(y1 - y0, x1 - x0))
+        b = Location(((x0 + x1) / 2, (y0 + y1) / 2, H - 0.7)) * Rot(0, 0, ang) * Box(L, 1.2, 1.2)
+        fill = b if fill is None else fill + b
+    fill = fill & body
+    base = Location(tuple(np.array(top) - axis * (H * 0.40))) * Plane(origin=(0, 0, 0), z_dir=tuple(axis)).location
+    return _l(base * fill, spec)
+
+
 def knob_locknut(spec) -> Part:
     """Thin locknut under the knob (MGOC FNP205, 5/16 UNF)."""
     top = G.to_local(G.KNOB)
@@ -534,6 +558,7 @@ PARTS = {
     "gearbox.remote.rear-screw": {"build": rear_screw},
     "gearbox.remote.gear-lever": {"build": gear_lever},
     "gearbox.remote.knob": {"build": knob},
+    "gearbox.remote.knob-print": {"build": knob_print},
     "gearbox.remote.knob-locknut": {"build": knob_locknut},
     "gearbox.remote.ball-spring": {"build": ball_spring},
     "gearbox.remote.cover": {"build": cover},

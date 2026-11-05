@@ -37,7 +37,7 @@ parts:
     haynes: { section: 8, figures: [{ figure: "5.3", legend: 3 }] }
     quantity: 1
     finish: rubber
-    notes: Ribbed rubber pad stretched over the foot plate (Fig 5.3).
+    notes: "Ribbed rubber pad stretched over the foot plate (Fig 5.3): tapered, narrower at the top, with ribs running up its face, as on Oliver's car (kf151; QA fix round 1, cockpit). The brake pedal's pad is the same part."
     specs:
       thickness: { mm: 8.0, source: { label: D, method: "Fig 5.3" } }
 

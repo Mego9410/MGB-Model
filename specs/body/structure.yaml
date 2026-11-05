@@ -313,10 +313,12 @@ parts:
     haynes: { section: 5 }
     quantity: 1
     notes: >
-      Riser behind the seats, rear face at underbody_layout HEELBOARD_X, floor to tonneau floor, sill to sill, the
-      propeller shaft's tunnel opening, a swage, the fuel pump bracket's two captive-nut holes (P11a pump.py
-      BRACKET_BOLT_Y/Z; Haynes Ch 3 Sec 5: the pump on the heelboard by the RH spring) and the fuel hose union's
-      hole (MAIN_START).
+      Heelboard behind the seats in two risers and a step (QA fix round 1, cockpit; Oliver's body scan sections y -300
+      to 300, kf134, kf156): the lower riser (rear face underbody_layout HEELBOARD_X) from the floor to the step, sill
+      to sill, with the tunnel's opening, a stiffening swage, the fuel pump bracket's captive-nut holes and the fuel
+      hose union's hole (Haynes Ch 3 Sec 5: the pump on the heelboard by the right spring's front); the step back over
+      the rear springs' front hangers (HEEL_STEP_Z) that the squabs' feet lean over, the tunnel carried on through it
+      over the propeller shaft; the upper riser (SHELF_FRONT_X, scan x -1680) up to the shelf.
     specs:
       rear_face_x: { mm: -1450.0, source: { label: D, method: "underbody_layout HEELBOARD_X (P11a)" } }
 
@@ -325,9 +327,11 @@ parts:
     haynes: { section: 2, figures: [{ figure: "photo 2.1" }] }
     quantity: 1
     notes: >
-      Floor behind the seats over P10's two battery carriers (body_layout TONNEAU_FLOOR_Z): an aperture over each
-      carrier, the carriers' four flange bolt holes each, the damper access grommet holes (Ch 11 photo 2.4 "access
-      grommet for rear hydraulic shock absorbers, adjacent to the battery access apertures"), two pressed ribs.
+      Tonneau floor (the shelf behind the seats) from the heelboard's upper riser back to the rear bulkhead between
+      the wheel houses, at the scan's height (body_layout TONNEAU_FLOOR_Z: its carpet about 568 above the road; QA fix
+      round 1, was 443), the battery carriers hanging under it (TONNEAU_FLOOR_Z); access apertures over the carriers
+      with the covers' screw holes (Haynes photo 2.1), the carriers' flange bolt holes, the damper access grommet
+      holes (photo 2.4), stiffening ribs.
     specs:
       underside_z: { mm: -140.0, source: { label: D, method: "body_layout TONNEAU_FLOOR_Z (P10)" } }
 

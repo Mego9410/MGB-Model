@@ -355,11 +355,27 @@ parts:
     quantity: 1
     finish: steering_wheel
     notes: >
-      Early wheel with an integral boss (Sec 18 para 2): acetate rim with finger grips, three banjo spokes of four
-      spring-steel wires each (MGOC: three-spoke banjo wheel; four wires per spoke D from the banjo pattern), the black
-      hub boss. Spokes set in a T with the wheels straight ahead (D). Dish derived.
+      Early wheel with an integral boss (Sec 18 para 2): black acetate rim with finger grips, the black cast hub boss
+      with three flat arms in a Y (the wire sockets at their ends) and black clamp blocks gripping the wires inside the
+      rim (Oliver's kf121, kf148 zoomed; MGOC: three-spoke banjo wheel, black rim and hub). The polished wires are
+      chassis.steering.wheel-spokes. Placed on Oliver's car: rim centre, size and tilt from a circle fitted to the rim
+      in his body scan (mgb.steering_layout RIM_CENTRE); spokes two 15 deg below the horizontal and one straight down
+      (kf121). Dish, arm and clamp sizes derived from kf121 scaled on the rim.
     specs:
       diameter: { in: 16.5, mm: 419.1, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/interior/steering-wheels/oe-steering-wheel", note: "16 1/2 in three-spoke banjo wheel, 1962-69" } }
+      rim_centre_height: { mm: 830.0, display_only: true, source: { label: D, method: "Oliver's body scan: circle fitted to 678 rim points, centre 830 mm above the road, radius 198.8, axis 20 deg to the horizontal" } }
+
+  - id: chassis.steering.wheel-spokes
+    name: Steering wheel spoke wires
+    haynes: { section: 18, figures: [{ figure: "11.6", legend: 57 }] }
+    quantity: 1
+    finish: polished_alloy
+    notes: >
+      Polished spring steel banjo wires: three on each side spoke, two on the lower spoke, from the hub arms' sockets to
+      the clamp blocks in the rim, fanning slightly toward the rim (Oliver's kf121, kf148 zoomed: bright steel, not
+      black).
+    specs:
+      wire_diameter: { mm: 4.0, display_only: true, source: { label: D, method: "kf121 scaled on the 16 1/2 in rim" } }
 
   - id: chassis.steering.wheel-nut
     name: Steering wheel nut
@@ -371,10 +387,35 @@ parts:
       torque: { lbf_ft: [41, 43], nm: [56, 58], source: { label: H, page: 203, note: "Steering wheel nut" } }
 
   - id: chassis.steering.horn-push
-    name: Horn push with MG badge
+    name: Horn push with MG badge (moulding)
     haynes: { section: 18 }
     quantity: 1
     finish: plastic_black
-    notes: "Central horn push carrying the MG badge - silver letters and octagon on red wavy lines (MGOC); drawn with the octagon bezel and the letters as raised blocks. The horn contact is P10."
+    notes: >
+      Central horn push, black moulding: the cone on the hub boss and the centre behind the badge. The chrome ring and
+      letters are chassis.steering.horn-ring, the red enamel field chassis.steering.horn-badge (Oliver's kf121, kf148:
+      a broad chrome ring about 75 mm across round a red enamel MG octagon with chrome letters and edge; MGOC: silver
+      letters and octagon on red). The horn contact is P10.
     specs:
       diameter: { mm: 60.0, source: { label: D, method: "Inside the hub boss" } }
+
+  - id: chassis.steering.horn-ring
+    name: Horn push chrome ring and badge letters
+    haynes: { section: 18 }
+    quantity: 1
+    finish: chrome
+    notes: >
+      The horn push's broad rolled chrome ring, the badge's chrome octagon edge and the raised MG letters (Oliver's
+      kf121, kf148 zoomed).
+    specs:
+      ring_diameter: { mm: 75.0, display_only: true, source: { label: D, method: "kf121 and kf148 scaled on the 16 1/2 in rim" } }
+
+  - id: chassis.steering.horn-badge
+    name: Horn push badge enamel
+    haynes: { section: 18 }
+    quantity: 1
+    finish: enamel_red
+    notes: "Red enamel field of the MG octagon badge on the horn push (Oliver's kf121, kf148; MGOC: red)."
+    specs:
+      across_flats: { mm: 42.0, display_only: true, source: { label: D, method: "kf121 scaled on the rim" } }
+

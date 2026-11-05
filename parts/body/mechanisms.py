@@ -20,7 +20,7 @@ import math
 
 from build123d import Compound, Location, Rot
 
-from mgb import body_geom as G, body_shell as B, body_shell_layout as S
+from mgb import body_geom as G, body_shell as B, body_shell_layout as S, cockpit_layout as CK
 from mgb.chassis_geom import box, rod, swept_rod, xcyl, xprism, ycyl, yprism, zcyl, zprism
 from mgb.shapes import coil_spring
 from parts.body import closures as C
@@ -61,8 +61,8 @@ def inner_y(x, h):
 GLASS_BOTTOM_H = 520.0                           # the glass's lower edge, raised (closures.glass_outline)
 STUD_H = 530.0                                   # the arms' studs in the lower channel
 STUDS_X = (-1215.0, -1470.0)                     # front stud (extension arm), rear stud (lift arm)
-SPINDLE = (-1180.0, 560.0)                       # winder spindle (interior.winder)
-QUAD_PIVOT = (-1250.0, 470.0)                    # quadrant and lift arm pivot on the regulator plate
+SPINDLE = CK.WINDER                              # winder spindle (interior.winder; at the door's front, Oliver's kf131)
+QUAD_PIVOT = (SPINDLE[0] - 70.0, SPINDLE[1] - 90.0)   # quadrant and lift arm pivot on the regulator plate
 EXT_PIVOT = (-1470.0, 430.0)                     # the extension arm's pivot plate (Fig 12.15 item 5)
 ARM_Y = 10.0                                     # arms' plane this far out from the inner panel
 WINDER_X, WINDER_H = SPINDLE
@@ -230,7 +230,7 @@ def remote_control(side):
     def build(spec):
         """Remote control lock (Fig 12.13 item 12) with its anti-rattle sleeve (13): the inner handle's spindle
         bracket on the inner panel and the flat lever bar to the lock's lever, held by spring clips (Sec 42, 35)."""
-        xi, hi = S.DOOR_REAR_X + 200.0, 720.0                    # interior.inner_handle
+        xi, hi = CK.INNER_HANDLE                                 # interior.inner_handle (front top, Oliver's kf131)
         y0 = inner_y(xi, hi)
         bracket = yprism(G.rounded_rect(xi - 30.0, xi + 30.0, H(hi - 34.0), H(hi + 34.0), 8.0), y0, y0 + 1.6)
         for dh in (-24.0, 24.0):

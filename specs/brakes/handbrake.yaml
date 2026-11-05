@@ -16,12 +16,13 @@ parts:
     name: Handbrake lever (handle)
     haynes: { section: 16, figures: [{ figure: "9.10", legend: 2 }] }
     quantity: 1
-    finish: paint_black
+    finish: chrome
     notes: >
       Flat steel lever on the right of the tunnel, pivoted at its rear end on the spigot welded through it, cranked
       up to the grip at the front; pulling it up swings the operating lever's lower end forward and draws the cable
       inner. The pawl pivots on its inner face, the pawl rod's guides on its outer face. Shape from Fig 9.10;
-      length and position derived (the seats and tunnel are P11).
+      length and position derived (the seats and tunnel are P11). Polished chrome on Oliver's car (kf122, kf140; QA fix
+      round 1, cockpit).
     specs:
       thickness: { mm: 6.0, source: { label: D, method: "Fig 9.10" } }
 
@@ -29,7 +30,8 @@ parts:
     name: Handle grip
     haynes: { section: 16, figures: [{ figure: "9.10", legend: 3 }] }
     quantity: 1
-    finish: plastic_black
+    finish: chrome
+    notes: "Polished chrome grip end of the lever round the chrome release button, as on Oliver's car (kf122, kf140)."
     specs:
       length: { mm: 110.0, source: { label: D, method: "Fig 9.10" } }
 

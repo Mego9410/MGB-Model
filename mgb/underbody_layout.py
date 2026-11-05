@@ -36,8 +36,15 @@ FLOOR_Z = -386.0                         # cockpit floor underside beside the tu
 TOE_FOOT = (CL.bx(-485.0), FLOOR_Z)            # (x, z) where the toe board meets the floor (D)
 TOE_TOP = (CL.BULKHEAD_X, -215.0)        # (x, z) where the toe board meets the bulkhead's engine-side face (D)
 TUNNEL_Y = 122.0                         # |y| of the tunnel side walls, cabin face (D, P8)
-HEELBOARD_X = CL.bx(-1450.0)                  # rear (axle side) face of the heelboard (D)
-TONNEAU_Z = BL.TONNEAU_FLOOR_Z           # tonneau floor underside (D, P10)
+HEELBOARD_X = CL.bx(-1450.0)                  # rear (axle side) face of the heelboard's lower riser (D)
+TONNEAU_Z = BL.TONNEAU_FLOOR_Z           # tonneau floor (the shelf behind the seats) underside (D, P10; Oliver's scan)
+# The heelboard steps up in two risers (QA fix round 1, cockpit; Oliver's body scan sections y -300 to 300 and photos
+# kf134, kf156, kf157): the lower riser at HEELBOARD_X carries the fuel pump behind it (Haynes Ch 3 Sec 5) and rises
+# to a step over the rear springs' front hangers (rear_suspension_layout FRONT_EYE, z -299) that the squabs' feet lean
+# back over; the upper riser at SHELF_FRONT_X (scan: the shelf's front edge at x -1680 to -1690) rises from the step
+# to the shelf. The tunnel carries on through the step to the upper riser over the propeller shaft.
+HEEL_STEP_Z = -245.0                     # the step's underside (338 above the road; 46 mm over the spring eyes)
+SHELF_FRONT_X = CL.bx(-1682.0)           # rear (axle side) face of the upper riser
 ARCH_Z = CL.WHEEL_Z + A.TUBE_R + 26.0 + 44.0 + 52.0   # body underside over the axle (D, P9 bump strike) = -122.5
 ARCH_X = (CL.REAR_AXLE_X + 180.0, CL.REAR_AXLE_X - 150.0)   # front and rear ends of the arch's flat roof (D)
 BOOT_FLOOR_Z = ARCH_Z - 50.0             # boot floor underside over the tank (D)

@@ -72,6 +72,7 @@ add("ball-spring", GF, groups=LV, explode=ex(UP, 48.5, 20))
 add("gear-lever", GF, groups=LV)
 add("knob-locknut", GF, groups=LV, explode=ex(UP, 48.7, 40))
 add("knob", GF, groups=LV, explode=ex(UP, 48.7, 70))
+add("knob-print", GF, groups=LV, explode=ex(UP, 48.7, 70))
 
 # plungers and detents (Sec 5 para 30)
 add("retainer-plug", GF, groups=RM, explode=ex(DOWN, 49, 50))

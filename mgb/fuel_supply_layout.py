@@ -92,8 +92,10 @@ TANK_STUB_END = (CL.bx(-2337.0), TANK_Y[0] - 14.0, OUTLET[1])     # outlet stub,
 TANK_HOSE = [TANK_STUB_END, (CL.bx(-2316.0), TANK_Y[0] - 14.0, OUTLET[1]), (CL.bx(-2307.0), -330.0, OUTLET[1])]
 PIPE_IN_Y = -136.0                              # between the tunnel and the right-hand battery carrier
 TP_ROUTE = CL.bxt([(-2307.0, -330.0, OUTLET[1]), (-2307.0, PIPE_IN_Y, OUTLET[1]), (-2307.0, PIPE_IN_Y, U.ARCH_Z - 9.0),
-            (-1990.0, PIPE_IN_Y, U.ARCH_Z - 9.0), (-1890.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0),
-            (-1592.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0), (-1592.0, INLET_TIP[1], INLET_TIP[2])]) + [
+            (-1990.0, PIPE_IN_Y, U.ARCH_Z - 9.0), (-1945.0, PIPE_IN_Y, U.ARCH_Z - 9.0), (-1880.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0),
+            (-1712.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0), (-1712.0, PIPE_IN_Y, U.HEEL_STEP_Z - 14.0),
+            (-1592.0, PIPE_IN_Y, U.HEEL_STEP_Z - 14.0), (-1592.0, INLET_TIP[1], INLET_TIP[2])]) + [   # under the shelf,
+            # down behind the heelboard's upper riser and forward under the step (QA fix round 1, cockpit)
             (INLET_TIP[0] - 2.0, INLET_TIP[1], INLET_TIP[2])]
 MAIN_START = (U.HEELBOARD_X - 8.0, -352.0, -262.0)        # union on the heelboard outboard of the pump's end cover
 HOSE_Z = OUTLET_TIP[2] + 26.0                    # the pump hose's run over the pump to the heelboard

@@ -41,7 +41,7 @@ def test_wheels_sit_on_the_hub_cones_front_and_rear():
 
 def test_tyre_is_the_car_layout_tyre():
     assert abs(2 * W.TYRE_R - CL.TYRE_D) < 1e-6
-    assert abs(W.SECTION_W - 5.60 * IN) < 1e-6
+    assert abs(W.SECTION_W - 165.0) < 1e-6                             # Oliver's 165/80R14 radials
 
 
 def test_rear_spring_sits_on_the_axle_seat():
@@ -57,5 +57,5 @@ def test_pinion_and_column_share_one_axis():
     assert all(abs(d[i] / n - S.COLUMN_DIR[i]) < 1e-9 for i in range(3))
     assert S.WHEEL_CENTRE[1] < 0                                       # right-hand drive
     from mgb import body_layout as BL
-    assert S.WHEEL_CENTRE[1] == BL.DRIVER_Y                            # under P10's instruments
+    assert abs(S.WHEEL_CENTRE[1] - BL.DRIVER_Y) < 70.0                # under P10's instruments (Oliver's scan: 56 mm inboard)
     assert S.WHEEL_CENTRE[0] < BL.FACIA_X < S.COLUMN_TOP_CLAMP[0] + 20.0

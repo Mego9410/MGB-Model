@@ -56,10 +56,13 @@ def test_headlamps_sit_in_the_nacelles():
 
 def _tyre_envelope(front_in=28.0, rear_in=37.0):
     """Points of the left front tyre swept through the lock range about P9's king pin (32 ft turning circle)."""
-    R, W = CL.TYRE_D / 2, 0.92 * 5.6 * 25.4 / 2 + 4.0
+    from mgb import wheel_layout as WL
+    # the radial's envelope: the tread's width at the crown, the full section width round the sidewall's bulge
+    R = CL.TYRE_D / 2
+    rings = [(R, WL.TREAD_W / 2 + 4.0), ((R + CL.RIM_D / 2) / 2 + 10.0, CL.TYRE_SECTION / 2 + 4.0)]
     c = np.array([CL.FRONT_AXLE_X, CL.TRACK_FRONT / 2, CL.WHEEL_Z])
-    T = np.array([[c[0] + R * math.cos(t), c[1] + w, c[2] + R * math.sin(t)]
-                  for t in np.linspace(0, 2 * math.pi, 240) for w in np.linspace(-W, W, 7)])
+    T = np.array([[c[0] + r * math.cos(t), c[1] + w, c[2] + r * math.sin(t)]
+                  for r, W in rings for t in np.linspace(0, 2 * math.pi, 240) for w in np.linspace(-W, W, 7)])
     k0, kd = np.array(FS.kp(0.0)), np.array(FS.KP_DIR)
     out = [T]
     for a in list(np.arange(-front_in, 0.0, 2.0)) + list(np.arange(2.0, rear_in + 0.1, 2.0)):

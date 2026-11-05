@@ -78,14 +78,19 @@ def distance_tube(spec) -> Part:
 
 
 def pad(spec) -> Part:
-    """Item 3: rubber pad over the foot plate, ribbed across its face."""
+    """Item 3: rubber pad over the foot plate, tapered (narrower at the top) and ribbed up its face (Oliver's kf151:
+    vertical ribs, a rounded foot)."""
+    from build123d import Polygon, extrude
     t = spec.nom("thickness")
-    w, h = 56.0, 70.0
     pl = Plane(origin=(AX, PY, AZ), x_dir=(0, 1, 0), z_dir=PAD_N)
-    body = Box(w, h, t + 3.5, align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((0, 0, -3.5)))
+    wb, wt, h = 62.0, 50.0, 72.0
+    outline = [(-wb / 2, -h / 2), (wb / 2, -h / 2), (wt / 2, h / 2), (-wt / 2, h / 2)]
+    from mgb.body_shell import fillet_poly
+    outline = fillet_poly(outline, [16.0, 16.0, 6.0, 6.0], 6)
+    body = extrude(Polygon(*outline, align=None), t + 3.5, dir=(0, 0, 1)).moved(Location((0, 0, -3.5)))
     body = body - Box(51.0, 63.0, 3.6, align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((0, 0, -3.6)))
-    for k in range(-5, 6):                                            # ribs across the tread
-        body = body - Location((0, k * 5.6, t)) * Box(w - 8.0, 2.4, 2.4)
+    for k in range(-4, 5):                                            # ribs up the tread
+        body = body - Location((k * 5.4, 0.0, t)) * Box(2.2, h - 12.0, 2.4)
     return _l(pl.location * body, spec)
 
 
