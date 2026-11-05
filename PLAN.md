@@ -735,6 +735,7 @@ asked; each needs his word (or a tape measure) before parts move:
   sits about 160 mm further back in the body than the model's. This agrees with the open question about the front axle
   line (the model's sump well over the axle, its crossmember dipping under the sump). Moving the engine, gearbox, propeller
   shaft and everything hung on them is a large change across phases P1-P6, P9, P10.
+  P12 (5 Nov) measured it and stopped on a conflict: see "Engine set-back: open conflict" below.
 - Cooling: the radiator carries a black plastic shroud with an electric fan (scan, photos 13, 28); the model has the
   engine-driven three-blade fan (now yellow, the colour of the scan's fan hub/pulley). An electric fan and shroud are
   not modelled.
@@ -762,6 +763,31 @@ asked; each needs his word (or a tape measure) before parts move:
   higher in the body, its road 24 mm higher at the rear and 6 mm at the front): tired or lowered rear springs, or a
   different tyre size. The model keeps the standard height and the body's rear fittings follow the body.
 - Tyres: 165/80R14 radials (photo 03; the scan's tyre is about 10 mm larger in radius than the model's 5.60-14).
+
+## Engine set-back: open conflict (P12, 5 Nov 2026)
+
+Oliver chose to move the engine, gearbox and everything on them back to match his engine-bay scan. Measured: a trimmed
+ICP of the scan's polished rocker cover top onto our cover (engine scan as registered on the wings and headlamps) puts
+his engine 156.6 mm further back in the body (y -4.7, z +13.6 mm, residual 1.6 mm); FRONT_AXLE_X would become 307.
+The move was not applied because the propeller shaft cannot fit: the gearbox (overdrive) flange to pinion flange
+distance falls from 788.5 to 631.5 mm, an installed shaft of 634 mm (24.97 in) against the Haynes overdrive shaft's
+fully compressed 30 3/16 in (766.8 mm) and the MGOC/Rimmer AHH7487 31 1/8 in (every MGB shaft listed is 30-32 in). The
+pinion flange (D, 354.1 mm ahead of the axle centre, fitted to the shaft) cannot come back far enough: at the carrier
+nose (about 290) the shaft would still be 69 mm too long fully compressed. So one of these is wrong and needs checking
+before the engine moves: the gearbox and overdrive length in the model (engine rear plate to the overdrive flange
+793 mm, D from the Haynes figures), the banjo axle's nose and pinion flange station, or the engine scan's registration
+(supported by the radiator and headlamps lining up with the whole-car scan). Other numbers for the move as asked: fan
+to radiator core 185 mm (now 28); bulkhead 17 mm behind the engine rear plate
+(now 174); gear lever knob 271 mm behind the facia (now 114); the front crossmember's engine mounting pads would have
+to reach about 50 mm behind the beam's rear face to stay under the engine brackets.
+
+Done in P12 so the move stays a small change once decided: the layout modules write body, chassis and running-gear
+fore-aft positions as body stations through `car_layout.bx()` (front wheel axis at station 150; a no-op today, checked
+by diffing every layout datum and the body surface). Still to do for the move: the part modules' own hard-coded
+stations (parts/body, parts/chassis, parts/brakes, parts/fuel, wiring), the bridging runs (hoses, fuel pipe end,
+exhaust interpipe crossing ahead of the left battery carrier, clutch hose, cables, harness), the crossmember's
+engine mounting pads (they should stay with the engine), and the scan registrations (BODY_TRANS and ENGINE_TRANS x
++157 with it).
 
 ## From Oliver's photos of his car (2 Nov 2026), mechanical items left for later
 

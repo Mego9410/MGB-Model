@@ -3,13 +3,14 @@
 Haynes Ch 2: Figs 2.2, 2.4, 2.6; photos 7.6, 9.3, 9.5. The pump bolts to the top of
 the block front face in the notch of the front plate; its pulley lines up with the
 crankshaft pulley groove (mgb.timing_layout); the radiator sits ahead of the fan.
-Positions are derived (D).
+Positions are derived (D). The radiator is on the body (its x in body stations, car_layout.bx); the pump, fan and
+hose spigots are on the engine, so the hoses bridge the two.
 """
 from __future__ import annotations
 
 import math
 
-from mgb import timing_layout as T
+from mgb import car_layout as CL, timing_layout as T
 
 PUMP_FACE_X = T.BLOCK_FRONT                # pump flange on the block front face
 PUMP_AXIS = (-8.0, -42.0)                  # (y, z) of the spindle
@@ -18,7 +19,7 @@ PULLEY_PITCH = {"crank": 60.0, "pump": 50.0, "alternator": 32.0}   # alternator:
 ALTERNATOR_AXIS = (-198.0, -106.0)         # 18ACR on the right-hand side (P10, mgb.electrical_layout): its 2 3/4 in
                                            # pulley 200 mm from the pump spindle clears the fan blades
 
-RAD_CORE = (362.0, 424.0)                  # core x from/to (rear and front faces)
+RAD_CORE = (CL.bx(362.0), CL.bx(424.0))    # core x from/to (rear and front faces): body-mounted, body stations (car_layout.bx)
 RAD_Y = (-215.0, 215.0)
 RAD_CORE_Z = (-200.0, 120.0)
 RAD_TOP_TANK = (120.0, 178.0)

@@ -28,6 +28,10 @@ the tank's front face, over the axle under the arch and forward between the tunn
 main pipe down the heelboard, forward under the floor beside P8's rear brake pipe, up the toe board, up and
 across the bulkhead's engine-side face above the bellhousing and forward along the left of the engine to the
 feed union under the carburettors.
+
+Frames: fore-aft numbers are body stations (car_layout.bx), except the last run from the bulkhead to P3's feed union
+under the carburettors, which follows the engine (engine frame). If the engine moves back in the body (P12, Oliver's
+scan), that run's first two points (behind the head) have to be re-fitted ahead of the moved bulkhead.
 """
 from __future__ import annotations
 
@@ -38,16 +42,16 @@ PIPE_OD = 5.0 / 16.0 * IN                      # 5/16 in steel pipe (D: matches 
 PIPE_WALL = 0.7
 
 # ---- tank (Fig 3.9 item 1, earlier type) -----------------------------------------------------------------------
-TANK_X = (-2322.0, -2779.2)                    # front and rear faces (18 in)
+TANK_X = (CL.bx(-2322.0), CL.bx(-2779.2))                   # front and rear faces (18 in)
 TANK_Y = (-365.0, 210.0)                       # right-hand and left-hand end faces
 TANK_TOP_Z = U.BOOT_FLOOR_Z - 3.0              # held up under the boot floor by the straps
 DEPTH_FRONT, DEPTH_REAR = 142.0, 200.0         # the wedge: deeper at the rear (D)
 SEAM_W = 9.0                                   # rolled seam flange round each end plate
-SENDER = (-2560.0, -262.0)                     # (x, z) of the gauge unit on the right-hand end face
+SENDER = (CL.bx(-2560.0), -262.0)                    # (x, z) of the gauge unit on the right-hand end face
 SENDER_PCD, SENDER_BORE = 66.0, 46.0
-OUTLET = (-2385.0, -318.0)                     # (x, z) of the outlet stub on the right-hand end face
-DRAIN = (-2610.0, -310.0)                      # (x, y) of the drain plug boss under the tank
-FILLER = (-2470.0, -205.0)                     # (x, y) of the filler stub on the top
+OUTLET = (CL.bx(-2385.0), -318.0)                    # (x, z) of the outlet stub on the right-hand end face
+DRAIN = (CL.bx(-2610.0), -310.0)                     # (x, y) of the drain plug boss under the tank
+FILLER = (CL.bx(-2470.0), -205.0)                    # (x, y) of the filler stub on the top
 FILLER_OD = 2.0 * IN                           # 2 in hose clips (S: MGOC GHC1622)
 FILLER_STUB_H = 34.0                           # up through the boot floor
 STRAP_Y = (-232.0, 78.0)                       # the two straps
@@ -84,12 +88,12 @@ INLET_TIP = pump_pt(PORT_S, dx=-68.0)          # inlet union's end, facing the r
 OUTLET_TIP = pump_pt(PORT_S, dz=74.0)          # outlet connection's end, facing up
 
 # ---- pipes ---------------------------------------------------------------------------------------------------
-TANK_STUB_END = (-2337.0, TANK_Y[0] - 14.0, OUTLET[1])     # outlet stub, turned forward on the tank
-TANK_HOSE = [TANK_STUB_END, (-2316.0, TANK_Y[0] - 14.0, OUTLET[1]), (-2307.0, -330.0, OUTLET[1])]
+TANK_STUB_END = (CL.bx(-2337.0), TANK_Y[0] - 14.0, OUTLET[1])     # outlet stub, turned forward on the tank
+TANK_HOSE = [TANK_STUB_END, (CL.bx(-2316.0), TANK_Y[0] - 14.0, OUTLET[1]), (CL.bx(-2307.0), -330.0, OUTLET[1])]
 PIPE_IN_Y = -136.0                              # between the tunnel and the right-hand battery carrier
-TP_ROUTE = [(-2307.0, -330.0, OUTLET[1]), (-2307.0, PIPE_IN_Y, OUTLET[1]), (-2307.0, PIPE_IN_Y, U.ARCH_Z - 9.0),
+TP_ROUTE = CL.bxt([(-2307.0, -330.0, OUTLET[1]), (-2307.0, PIPE_IN_Y, OUTLET[1]), (-2307.0, PIPE_IN_Y, U.ARCH_Z - 9.0),
             (-1990.0, PIPE_IN_Y, U.ARCH_Z - 9.0), (-1890.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0),
-            (-1592.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0), (-1592.0, INLET_TIP[1], INLET_TIP[2]),
+            (-1592.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0), (-1592.0, INLET_TIP[1], INLET_TIP[2])]) + [
             (INLET_TIP[0] - 2.0, INLET_TIP[1], INLET_TIP[2])]
 MAIN_START = (U.HEELBOARD_X - 8.0, -352.0, -262.0)        # union on the heelboard outboard of the pump's end cover
 HOSE_Z = OUTLET_TIP[2] + 26.0                    # the pump hose's run over the pump to the heelboard
@@ -103,16 +107,17 @@ CROSS_Z = 70.0                                   # across the bulkhead above the
 BULK_X = CL.BULKHEAD_X + 9.0
 FEED_END_X = -70.0                               # P3's feed union nut on the hose end (parts/fuel/pipes FEED_END)
 FEED_Y, FEED_Z = 204.0, -82.0
-TOE_UP_X = -425.0                                # top of the run up the toe board
+TOE_UP_X = CL.bx(-425.0)                               # top of the run up the toe board
 MAIN_ROUTE = [MAIN_START, (MAIN_START[0], MAIN_START[1], -330.0), (MAIN_START[0], FLOOR_Y, -365.0),
-              (MAIN_START[0], FLOOR_Y, FLOOR_PIPE_Z), (-520.0, FLOOR_Y, FLOOR_PIPE_Z),
-              (-470.0, FLOOR_Y, U.toe_z(-470.0) - 10.0), (TOE_UP_X, FLOOR_Y, U.toe_z(TOE_UP_X) - 10.0),
+              (MAIN_START[0], FLOOR_Y, FLOOR_PIPE_Z), (CL.bx(-520.0), FLOOR_Y, FLOOR_PIPE_Z),
+              (CL.bx(-470.0), FLOOR_Y, U.toe_z(CL.bx(-470.0)) - 10.0), (TOE_UP_X, FLOOR_Y, U.toe_z(TOE_UP_X) - 10.0),
               (BULK_X, UP_Y, U.toe_z(TOE_UP_X) - 4.0), (BULK_X, UP_Y, CROSS_Z), (BULK_X, 150.0, CROSS_Z),
+              # engine frame from here: forward from the bulkhead along the left of the engine to the feed union
               (-300.0, 196.0, 30.0), (-245.0, FEED_Y, -60.0), (-200.0, FEED_Y, FEED_Z), (FEED_END_X - 18.0, FEED_Y, FEED_Z)]
 # P-clips: (route name, point, unit normal of the body face the clip screws to)
 CLIPS = {
-    "main": [((-1250.0, FLOOR_Y, FLOOR_PIPE_Z), (0, 0, 1)), ((-950.0, FLOOR_Y, FLOOR_PIPE_Z), (0, 0, 1)),
-             ((-650.0, FLOOR_Y, FLOOR_PIPE_Z), (0, 0, 1)), ((BULK_X, UP_Y, -100.0), (-1, 0, 0)),
+    "main": [((CL.bx(-1250.0), FLOOR_Y, FLOOR_PIPE_Z), (0, 0, 1)), ((CL.bx(-950.0), FLOOR_Y, FLOOR_PIPE_Z), (0, 0, 1)),
+             ((CL.bx(-650.0), FLOOR_Y, FLOOR_PIPE_Z), (0, 0, 1)), ((BULK_X, UP_Y, -100.0), (-1, 0, 0)),
              ((BULK_X, -60.0, CROSS_Z), (-1, 0, 0))],
-    "tank": [((-2150.0, PIPE_IN_Y, U.ARCH_Z - 9.0), (0, 0, 1)), ((-1860.0, PIPE_IN_Y, U.TONNEAU_Z - 12.0), (0, 0, 1))],
+    "tank": [((CL.bx(-2150.0), PIPE_IN_Y, U.ARCH_Z - 9.0), (0, 0, 1)), ((CL.bx(-1860.0), PIPE_IN_Y, U.TONNEAU_Z - 12.0), (0, 0, 1))],
 }

@@ -27,6 +27,12 @@ carrier, under the axle's left neck and under the left-hand handbrake rod (P8) b
 beside the tank (between it and the left road spring); the tail pipe ends at the bumper line. The gearbox clip
 hangs on a bracket under the two lowest rear side-cover bolts (3-synchro gearboxes have the side cover on the
 left, where the pipe runs); the rear mounting hangs from the boot floor.
+
+Frames: the downpipes, the front pipe, the gearbox clip and the centre silencer are placed from the engine and
+gearbox (engine frame: the silencer follows the gearbox crossmember); the interpipe's run under the cockpit and boot,
+the rear silencer, the tail pipe and the rear mounting are placed from the body (body stations, car_layout.bx). If the
+engine moves back in the body (P12, Oliver's scan), the interpipe's crossing from beside the tunnel to IP_Y ahead of
+the left-hand battery carrier has to be re-fitted: the silencer's rear end then lies within 90 mm of the carrier.
 """
 from __future__ import annotations
 
@@ -75,16 +81,16 @@ IP_Y = 110.0                                      # interpipe between the tunnel
 IP_Z = -425.0
 UNDER_AXLE = (A.AX + 20.0, 132.0, -405.0)         # under the left neck
 UNDER_ROD = (A.AX - 95.0, 214.0, -442.0)          # under the left handbrake rod (P8 comp_tip to the lever)
-RS_X = (-2385.0, -2766.0)                         # rear silencer case (15 in)
+RS_X = (CL.bx(-2385.0), CL.bx(-2766.0))                       # rear silencer case (15 in)
 RS_D = 4.5 * IN
 RS_Y = 304.0                                      # between the tank (y <= 210) and the left spring (inner edge 398)
 RS_Z = -362.0
-INTER_ROUTE = [(CS_X[1] - 2.0, CS_Y, CS_Z), (-1410.0, CS_Y, CS_Z), (-1560.0, IP_Y, IP_Z), (-2040.0, IP_Y, IP_Z),
-               UNDER_AXLE, UNDER_ROD, (-2330.0, RS_Y - 20.0, -385.0), (RS_X[0] + 2.0, RS_Y, RS_Z)]
+INTER_ROUTE = [(CS_X[1] - 2.0, CS_Y, CS_Z), (CL.bx(-1410.0), CS_Y, CS_Z), (CL.bx(-1560.0), IP_Y, IP_Z), (CL.bx(-2040.0), IP_Y, IP_Z),
+               UNDER_AXLE, UNDER_ROD, (CL.bx(-2330.0), RS_Y - 20.0, -385.0), (RS_X[0] + 2.0, RS_Y, RS_Z)]
 TAIL_END_X = CL.REAR_X + 95.0                      # the tail pipe ends under the bumper blade (P11b: profile photo 29)
 TAIL_Z = CL.GROUND_Z + 292.0                      # QA: the tail pipe's end just under the valance (Oliver's photos 11, 14, 23)
 TAIL_Y = 352.0                                      # and out to |y| 352 (photos 11, 14)
-TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (-2790.0, RS_Y, RS_Z), (-2880.0, TAIL_Y, TAIL_Z), (TAIL_END_X, TAIL_Y, TAIL_Z)]
+TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (CL.bx(-2790.0), RS_Y, RS_Z), (CL.bx(-2880.0), TAIL_Y, TAIL_Z), (TAIL_END_X, TAIL_Y, TAIL_Z)]
 TAIL_CUT_DEG = 45.0                                # end cut, the long side underneath (S: MGOC)
 
 # ---- gearbox clip (front support) ---------------------------------------------------------------------------------
@@ -94,7 +100,7 @@ CLIP_X = -523.0                                    # strap round the system pipe
 STRAP_W, STRAP_T = 22.0, 2.5
 
 # ---- rear mounting (pinch clamp on a rubber block from a bracket under the boot floor) --------------------------
-REAR_MOUNT_X = -2885.0
+REAR_MOUNT_X = CL.bx(-2885.0)
 REAR_CLAMP = (REAR_MOUNT_X, TAIL_Y, TAIL_Z)        # pinch clamp round the tail pipe
 REAR_RUBBER_Z = (TAIL_Z + 52.0, TAIL_Z + 82.0)     # bonded rubber block, bottom and top plate faces
 REAR_BRACKET_Z = (REAR_RUBBER_Z[1], U.BOOT_FLOOR_Z)   # bracket from the block up to the boot floor

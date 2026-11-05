@@ -25,16 +25,18 @@ that hang from the body already agree with each other:
 - BOOT_FLOOR_Z, the boot floor's underside over the tank: 50 mm below the arch, so the tank's filler neck
   passes up through it into the boot (Fig 3.9 item 12, rubber seal tank to boot floor).
 - REAR_PANEL: the lower edge of the rear valance under the bumper, where the tail pipe leaves the car.
+
+Fore-aft numbers here and in the notes above are body stations (mgb.car_layout bx: the front wheel axis at 150).
 """
 from __future__ import annotations
 
 from mgb import body_layout as BL, car_layout as CL, rear_axle_layout as A
 
 FLOOR_Z = -386.0                         # cockpit floor underside beside the tunnel (D)
-TOE_FOOT = (-485.0, FLOOR_Z)             # (x, z) where the toe board meets the floor (D)
+TOE_FOOT = (CL.bx(-485.0), FLOOR_Z)            # (x, z) where the toe board meets the floor (D)
 TOE_TOP = (CL.BULKHEAD_X, -215.0)        # (x, z) where the toe board meets the bulkhead's engine-side face (D)
 TUNNEL_Y = 122.0                         # |y| of the tunnel side walls, cabin face (D, P8)
-HEELBOARD_X = -1450.0                    # rear (axle side) face of the heelboard (D)
+HEELBOARD_X = CL.bx(-1450.0)                  # rear (axle side) face of the heelboard (D)
 TONNEAU_Z = BL.TONNEAU_FLOOR_Z           # tonneau floor underside (D, P10)
 ARCH_Z = CL.WHEEL_Z + A.TUBE_R + 26.0 + 44.0 + 52.0   # body underside over the axle (D, P9 bump strike) = -122.5
 ARCH_X = (CL.REAR_AXLE_X + 180.0, CL.REAR_AXLE_X - 150.0)   # front and rear ends of the arch's flat roof (D)

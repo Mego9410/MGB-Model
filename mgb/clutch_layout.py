@@ -76,4 +76,4 @@ MC_Y, MC_Z = -215.0, -70.0                      # clutch master cylinder axis
 PEDAL_PIVOT = (C.BULKHEAD_X + 30.0, MC_Y, MC_Z + 45.0)   # pedal pivot in the box, axis along Y
 PEDAL_CLEVIS = (C.BULKHEAD_X + 30.0, MC_Y, MC_Z)          # pushrod clevis pin on the pedal
 PEDAL_PAD = (C.BULKHEAD_X - 165.0, MC_Y, MC_Z - 215.0)    # centre of the pad face, in the footwell
-HOSE_BRACKET = (-330.0, -268.0, -150.0)         # pipe-to-hose bracket on the right-hand chassis leg
+HOSE_BRACKET = (C.bx(-330.0), -268.0, -150.0)   # pipe-to-hose bracket on the right-hand chassis leg (body station)

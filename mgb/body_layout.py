@@ -53,30 +53,31 @@ SIDELAMP_X = FRONT_X - 136.0
 SIDELAMP_Y = 569.0
 SIDELAMP_Z = above_ground(461.0)                       # Oliver's photos 15, 20 (QA): 28 mm above the bumper blade
 # Horns: two on the front cross panel behind the grille, either side of the radiator (D).
-HORN_POS = [(600.0, s * 300.0, -205.0) for s in (1, -1)]   # (x, y, z) of the horn bracket bolt on the panel face
-HORN_PANEL_X = 590.0                                   # rear face of the panel the brackets bolt to
+HORN_POS = [(CL.bx(600.0), s * 300.0, -205.0) for s in (1, -1)]   # (x, y, z) of the horn bracket bolt on the panel face
+HORN_PANEL_X = CL.bx(590.0)                                  # rear face of the panel the brackets bolt to
 
 # ---- engine bay: inner wing valances and bulkhead (D) ---------------------------------------------
 INNER_WING_Y = 430.0                                   # |y| of the engine-bay face of each inner wing valance
-INNER_WING_X = (CL.BULKHEAD_X, 330.0)
+INNER_WING_X = (CL.BULKHEAD_X, CL.bx(330.0))
 BULKHEAD_X = CL.BULKHEAD_X                             # engine side face (car_layout)
 # items on the right-hand valance (Lucas RB340 and the 4FJ fuse block beside it: MGOC Spares)
-CONTROL_BOX = (-175.0, -INNER_WING_Y, 40.0)            # (x, y, z) of the base's centre on the valance face
-FUSE_BOX = (-300.0, -INNER_WING_Y, 40.0)
-SOLENOID = (-60.0, -INNER_WING_Y, -70.0)               # starter solenoid, ahead of and below the control box
-FLASHER = (-365.0, -INNER_WING_Y, 10.0)
-OD_RELAY = (-240.0, INNER_WING_Y, 30.0)                # overdrive relay on the left-hand valance
+CONTROL_BOX = (CL.bx(-175.0), -INNER_WING_Y, 40.0)            # (x, y, z) of the base's centre on the valance face
+FUSE_BOX = (CL.bx(-300.0), -INNER_WING_Y, 40.0)
+SOLENOID = (CL.bx(-60.0), -INNER_WING_Y, -70.0)               # starter solenoid, ahead of and below the control box
+FLASHER = (CL.bx(-365.0), -INNER_WING_Y, 10.0)
+OD_RELAY = (CL.bx(-240.0), INNER_WING_Y, 30.0)                # overdrive relay on the left-hand valance
 OD_VACUUM_SWITCH = (BULKHEAD_X, 300.0, 60.0)           # on the left of the bulkhead (MGOC: P5b note)
 HARNESS_GROMMET = (BULKHEAD_X, -330.0, 120.0)          # main harness through the bulkhead, right side, high
 CABLE_GROMMET = (BULKHEAD_X - 40.0, -355.0, -330.0)    # battery cable up through the toe board beside the footwell
 
 # ---- scuttle, windscreen and facia (D) ---------------------------------------------------------------
 # Scuttle top at the windscreen base 915 mm above the road; facia rear face 375 mm behind the
-# bulkhead, ahead of the gear lever knob (gearbox_layout.KNOB x -889); driver on the right.
-WINDSCREEN_BASE_X = -700.0
+# bulkhead, ahead of the gear lever knob (gearbox_layout.KNOB x -889, 114 mm behind it; 271 mm with the engine moved
+# back to Oliver's scan, P12); driver on the right. Fore-aft positions here are body stations (car_layout.bx).
+WINDSCREEN_BASE_X = CL.bx(-700.0)
 WINDSCREEN_BASE_Z = above_ground(915.0)
 SCUTTLE_TILT_DEG = 14.0                                # scuttle top falls toward the front at this angle
-FACIA_X = -775.0                                       # rear (cockpit) face of the facia panel
+FACIA_X = CL.bx(-775.0)                                      # rear (cockpit) face of the facia panel
 FACIA_T = 1.2
 DRIVER_Y = -350.0                                      # steering column / driver centre line (RHD)
 IP_Z = above_ground(830.0)                             # centre height of the large instruments
@@ -120,7 +121,7 @@ HEATER_KNOB_Y, HEATER_KNOB_Z = 196.0, (IP_Z + 26.0, IP_Z - 44.0)
 # (Haynes Ch 10 Sec 54 para 1).
 WIPER_SPINDLES = [(WINDSCREEN_BASE_X + 22.0, y, WINDSCREEN_BASE_Z - 4.0) for y in (240.0, -240.0)]   # left, right
 WIPER_AXIS = (math.sin(math.radians(SCUTTLE_TILT_DEG)), 0.0, math.cos(math.radians(SCUTTLE_TILT_DEG)))
-WIPER_MOTOR = (-560.0, 470.0, 150.0)                   # motor bracket bolts to the scuttle side, left
+WIPER_MOTOR = (CL.bx(-560.0), 470.0, 150.0)                   # motor bracket bolts to the scuttle side, left
 WIPER_PARK_SIDE = -1                                   # arms park toward the right (-y), along the screen base
 
 # ---- wiring harness fittings (P10b, D) ------------------------------------------------------------------
@@ -137,12 +138,12 @@ MAP_LAMP_CONNECTOR = (FACIA_X + 60.0, 30.0, IP_Z + 70.0)
 # Earth points: a self-tapping screw into the body with the eyelets under its head; (point on the panel
 # face, outward normal of the face).
 EARTH_POINTS = {
-    "headlamp-right": ((560.0, -INNER_WING_Y - 30.0, 95.0), (0.0, 1.0, 0.0)),
-    "headlamp-left": ((560.0, INNER_WING_Y + 30.0, 95.0), (0.0, -1.0, 0.0)),
-    "relay": ((-195.0, INNER_WING_Y, 0.0), (0.0, -1.0, 0.0)),
+    "headlamp-right": ((CL.bx(560.0), -INNER_WING_Y - 30.0, 95.0), (0.0, 1.0, 0.0)),
+    "headlamp-left": ((CL.bx(560.0), INNER_WING_Y + 30.0, 95.0), (0.0, -1.0, 0.0)),
+    "relay": ((CL.bx(-195.0), INNER_WING_Y, 0.0), (0.0, -1.0, 0.0)),
     "facia": ((FACIA_X + FACIA_T, -225.0, IP_Z - 95.0), (1.0, 0.0, 0.0)),
-    "scuttle": ((-640.0, INNER_WING_Y + 10.0, 120.0), (0.0, -1.0, 0.0)),
-    "boot": ((-2470.0, -HALF_W + 190.0, -150.0), (0.0, 1.0, 0.0)),
+    "scuttle": ((CL.bx(-640.0), INNER_WING_Y + 10.0, 120.0), (0.0, -1.0, 0.0)),
+    "boot": ((CL.bx(-2470.0), -HALF_W + 190.0, -150.0), (0.0, 1.0, 0.0)),
 }
 
 # ---- rear lamps (D) ------------------------------------------------------------------------------------
@@ -161,7 +162,7 @@ NUMBER_LAMP = (REAR_X + 2.0, OVERRIDER_Y - 26.0, above_ground(452.0))   # lamp b
 # ---- battery carriers (D) ------------------------------------------------------------------------------
 # Two boxes hang under the tonneau floor behind the seats, either side of the tunnel, ahead
 # of the rear axle and inboard of the rear springs (rear_axle_layout SPRING_Y 420).
-BATTERY_BOX_X = -1700.0                                # box centre (x)
+BATTERY_BOX_X = CL.bx(-1700.0)                               # box centre (x)
 BATTERY_BOX_Y = 268.0                                  # |y| of each box centre
 TONNEAU_FLOOR_Z = -140.0                               # floor (box flange) under side: the boxes' bottoms clear P8's rear brake
                                                        # pipe (z -394) and handbrake cable (z -387) that run under them

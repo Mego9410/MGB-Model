@@ -134,14 +134,14 @@ PEDAL_T = 8.0                                       # pedal plate thickness (as 
 # forward, so pulling it up swings the operating lever's lower end (inside the tunnel, under the floor line)
 # forward; the cable's inner passes through the trunnion there with the brass adjusting nut on its front side
 # (Sec 4 para 2), the cable spring behind it, and the outer runs from the front abutment A back to the axle.
-HB_PIVOT = (-1420.0, -129.0, -300.0)                # lever pivot (handle mid-plane), axis along y
+HB_PIVOT = (CL.bx(-1420.0), -129.0, -300.0)                # lever pivot (handle mid-plane), axis along y
 TUNNEL_SIDE_Y = -122.0                              # tunnel's right wall, cabin face (P11): the spigot passes through it
 HB_PLATE_T = 2.5                                    # ratchet plate on the tunnel wall
 OP_LEVER_Y = -106.0                                 # operating lever inside the tunnel (mid-plane)
 OP_LEVER_LEN = 92.0                                 # pivot to the trunnion, straight down
-HB_GRIP = (-1110.0, -129.0, -215.0)                 # front end of the handle, off position
+HB_GRIP = (CL.bx(-1110.0), -129.0, -215.0)                 # front end of the handle, off position
 HB_HANDLE_T = 6.0
-CABLE_ABUTMENT = (-1490.0, OP_LEVER_Y, HB_PIVOT[2] - OP_LEVER_LEN)   # A: front abutment behind the trunnion (P11 bracket)
+CABLE_ABUTMENT = (CL.bx(-1490.0), OP_LEVER_Y, HB_PIVOT[2] - OP_LEVER_LEN)   # A: front abutment behind the trunnion (P11 bracket)
 CABLE_FLOOR = (-150.0, -405.0)                      # (y, z) cable outer under the floor beside the tunnel
 CABLE_CLIP_Y = -330.0                               # clip 29 on top of the right-hand axle tube (AF |y|)
 
