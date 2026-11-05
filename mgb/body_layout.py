@@ -149,7 +149,7 @@ EARTH_POINTS = {
 # On the rear wing ends' raked plinths (profile photo 29: the plinth raked about 31 deg from vertical, its top corner
 # X -2774 h 803 and foot X -2930 h 570; Oliver's photos 18, 24: centres |y| 645). P11b moved the lamp back onto the
 # plinth and tilted it (P10 had it upright at REAR_X + 75, 640 high).
-REAR_LAMP_X = REAR_X + 195.0                           # lens face centre on the plinth
+REAR_LAMP_X = REAR_X + 191.0                           # lens face centre on the plinth
 REAR_LAMP_Y = HALF_W - 127.0                           # Oliver's photos 14, 18 (QA, scaled on the plate): centre 634 off the centre line
 REAR_LAMP_Z = above_ground(695.0)                      # photos 14, 18: 548 to 798 above Oliver's road; his car sits 18-24 mm
 # lower at the back than the model (scan: rear rims 20 mm higher in the body), so on the body 22 mm higher (Oliver's scan:

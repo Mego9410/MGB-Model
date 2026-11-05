@@ -419,6 +419,14 @@ round them and should check them against the car:
   plates standing on the shelf (body.structure.bulkhead-brackets); the bonnet stay and release cable follow the new
   wall. The bigger differences (engine 160 mm further back on the car, electric fan, heater, washer bottle, unit
   positions) are listed under "Differences seen in Oliver's scans".
+  Clash check after it (scratchpad q/clash_body.py against every other system): the new contacts are the intended
+  mountings (P10's units, the grommets, the vacuum switch's screws, the choke grommet and the fuel pipe clip on their
+  new brackets and plates, P10b's wires lying on the brackets where they lay on the old panel, P9's hose on its gusset).
+  Fixed: the radiator's bottom tank through the front pan (an opening for its foot), the headlamp bowls' backs and the
+  wiper motor through the inner wings and the upper bulkhead (clearances), the front arch liners showing inside the
+  sloping inner wings (moved outboard), the rear lamps' lower ends sunk 4 mm into the steeper plinths (lamps 4 mm back).
+  Left: P9's front dampers touching the closed domes (see the differences list), the filler tube at the rear panel's
+  hole edge (36 points).
 
 ## P3b throttle and choke controls: what was built and assumed
 

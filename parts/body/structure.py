@@ -283,7 +283,7 @@ def bulkhead_upper(spec):
         tube = zcyl(9.0, Z_SHELF - 60.0, Z_SHELF + T, BH2_X + 40.0, yy) - zcyl(7.5, Z_SHELF - 61.0, Z_SHELF + T + 1, BH2_X + 40.0, yy)
         p = p - zcyl(7.5, Z_SHELF - 2, Z_SHELF + 3, BH2_X + 40.0, yy) + tube
     mx, my, mz = BL.WIPER_MOTOR
-    p = p - xprism(G.rounded_rect(my - 70.0, my + 70.0, mz - 60.0, mz + 60.0, 20.0), BH2_X - 5, BH2_X + 5)
+    p = p - xprism(G.rounded_rect(my - 80.0, my + 110.0, mz - 80.0, mz + 70.0, 20.0), BH2_X - 5, BH2_X + 5)
     p = p - xcyl(6.0, BH2_X - 5, BH2_X + 5, 470.0, H(700.0))              # bonnet release cable grommet
     return _l(p, spec)
 
@@ -605,6 +605,11 @@ def inner_wing(side):
         # drain holes low in the dome ahead of the wheel
         for x in (530.0, 570.0):
             p = p - ycyl(14.0, 300.0, 600.0, x, H(470.0))
+        # clearance for P10's headlamp bowl at the front top (the bowl's back passes the wall's front end)
+        p = p - xcyl(102.0, 500.0, 700.0, BL.HEADLAMP_Y, BL.HEADLAMP_Z)
+        if side > 0:                                            # and for the wiper motor above the shelf (left)
+            mx, my, mz = BL.WIPER_MOTOR
+            p = p - box(mx - 60.0, mx + 60.0, my - 40.0, 640.0, mz - 80.0, mz + 70.0)
         return _l(_side(p, side), spec)
     return build
 
@@ -658,8 +663,9 @@ def front_pan(spec):
         floor = floor + (xprism([(-yi + 30.0, zf + T), (yi - 30.0, zf + T), (yi - 30.0, zf + T + 4.0), (-yi + 30.0, zf + T + 4.0)],
                                 xs - 9.0, xs + 9.0))
     floor = floor - zcyl(15.0, zf - 5, zf + 5, 470.0, 0.0)                  # drain
-    out = [floor]
     rx0, rx1 = CO.RAD_CORE
+    floor = floor - box(rx0 - 12.0, rx1 + 14.0, CO.RAD_Y[0] - 22.0, CO.RAD_Y[1] + 22.0, zf - 5, zf + 10)   # the radiator's
+    out = [floor]                                                                                           # foot through it
     y1 = CO.RAD_Y[1] + 9.0 + 6.0
     zt = CO.RAD_TOP_TANK[1] - 30.0
     for s_ in (1, -1):
@@ -1163,8 +1169,9 @@ def arch_liners(spec):
     out = []
     for which, (ax, az, r) in (("front", S.FRONT_ARCH), ("rear", S.REAR_ARCH)):
         zl = H(S.z_b(ax)) - 40.0
-        ring = yprism(S.arch_outline(which, 4.0, zl), 470.0, 752.0) - yprism(S.arch_outline(which, 2.8, zl - 5.0), 460.0, 760.0)
-        band = ring & box(ax - 500.0, ax + 500.0, 470.0, 752.0, H(S.z_b(ax) + 6.0), az + r + 300.0)
+        y0 = 550.0 if which == "front" else 470.0          # the front one outboard of the sloping inner wing
+        ring = yprism(S.arch_outline(which, 4.0, zl), y0, 752.0) - yprism(S.arch_outline(which, 2.8, zl - 5.0), y0 - 10.0, 760.0)
+        band = ring & box(ax - 500.0, ax + 500.0, y0, 752.0, H(S.z_b(ax) + 6.0), az + r + 300.0)
         for s in (1, -1):
             out.append(_side(band, s))
     return _c(out, spec)
