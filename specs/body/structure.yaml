@@ -185,12 +185,15 @@ parts:
     haynes: { section: 1 }
     quantity: 1
     notes: >
-      Engine-bay valance at body_layout INNER_WING_Y from the bulkhead to the front apron, from the leg to the wing
-      bolting flange; the wheel house arched over the tyre (420 mm about the axle) out to the outer wing; the damper
-      arm opening (P9: the arm sweeps over the leg between |y| 305 and 499); the brake hose bracket hole (P9
-      HOSE_BRACKET); the overdrive relay's screws (P10 OD_RELAY).
+      Engine-bay valance and wheel arch dome as Oliver's engine-bay scan shows it (sections every 25 mm, both sides):
+      from the chassis leg's top it slopes out and up as the inside of the dome to about |y| 520 at 640 above the road,
+      then rises nearly vertical to a flange turned outward under the outer wing's top, where the wing bolts down
+      through it; a stiffening swage along the wall; from the upper bulkhead face (above the shelf) to the front
+      apron. The damper arm opening and the full-lock tyre openings P9's geometry needs are kept; the wheel house
+      arches over the tyre (420 mm about the axle) out to the outer wing; two drain holes ahead of the wheel. The units
+      hang on body.structure.inner-wing-brackets.
     specs:
-      face_y: { mm: 430.0, source: { label: D, method: "body_layout INNER_WING_Y (P10)" } }
+      wall_y_640: { mm: 518.0, display_only: true, source: { label: D, method: "Oliver's engine-bay scan: the wall 640 above the road, x -300 to 250" } }
       wheel_house_radius: { mm: 420.0, source: { label: D, method: "Tyre radius 309 plus bump travel and clearance" } }
 
   - id: body.structure.inner-wing-r
@@ -199,7 +202,7 @@ parts:
     quantity: 1
     notes: "Mirror of the left with the screws for P10's control box, fuse block, flasher and starter solenoid."
     specs:
-      face_y: { mm: 430.0, source: { label: D, method: "body_layout INNER_WING_Y (P10)" } }
+      wall_y_640: { mm: 518.0, display_only: true, source: { label: D, method: "Oliver's engine-bay scan: the wall 640 above the road, x -300 to 250" } }
 
   - id: body.structure.front-apron
     name: Front apron and radiator duct
@@ -207,8 +210,8 @@ parts:
     quantity: 1
     notes: >
       The vertical cross panel behind the bumper the horns bolt to (P10 HORN_PANEL_X, HORN_POS), between the legs; the
-      radiator duct's floor running back from the grille opening to the radiator's front face with the grille's
-      three bottom bolt holes (Sec 7 para 1), and the duct's side panels.
+      grille's bottom ledge behind the mouth with its three bottom bolt holes (Sec 7 para 1); below and behind it the
+      bay is open down to the front pan (Oliver's engine-bay scan), the duct's sides being the inner wings' fronts.
     specs:
       horn_panel_x: { mm: 590.0, source: { label: D, method: "body_layout HORN_PANEL_X (P10)" } }
 
@@ -491,3 +494,55 @@ parts:
     notes: "The wings' edges rolled under round the arch openings (Oliver's photos 02, 09, 23): a bead just inside each opening's edge."
     specs:
       bead: { mm: 7.0, display_only: true, source: { label: D, method: "Oliver's photo 09: the lip's highlight" } }
+  - id: body.structure.inner-wing-brackets
+    name: Inner wing unit brackets and hose bracket gussets
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      Plates in P10's units' mounting plane (control box, fuse block, flasher and starter solenoid on the right, the
+      overdrive relay on the left), their top and bottom edges turned out to the sloping inner wing and welded on, with
+      the units' screw holes; gussets from the leg's top to P9's brake hose brackets. The scan shows the units further
+      outboard, on the wall itself (PLAN: Differences seen in Oliver's scans).
+    specs:
+      sheet: { mm: 1.6, display_only: true, source: { label: D, method: "Bracket gauge, as the other body brackets" } }
+  - id: body.structure.bulkhead-upper
+    name: Bulkhead shelf and upper face
+    haynes: { section: 1, figures: [{ figure: "12.27", legend: 1 }] }
+    quantity: 1
+    notes: >
+      The bulkhead steps back at a shelf 625 above the road to an upper face 155 mm behind the lower one, under the
+      scuttle's front edge (Oliver's engine-bay scan: the shelf at 600-650 across the bay between x -400 and -555, the
+      heater box standing on it; Haynes Fig 12.27, the early heater on the bulkhead shelf). The heater's air opening and
+      screw holes, a stiffening swage, the scuttle drain tubes, a clearance hole for P10's wiper motor.
+    specs:
+      shelf_height: { mm: 625.0, display_only: true, source: { label: D, method: "Oliver's engine-bay scan, sections across the shelf" } }
+      step: { mm: 155.0, display_only: true, source: { label: D, method: "Oliver's engine-bay scan, the shelf's depth" } }
+  - id: body.structure.bulkhead-brackets
+    name: Bulkhead fitting plates
+    haynes: { section: 1 }
+    quantity: 1
+    notes: >
+      Plates standing on the bulkhead shelf in the lower face's plane carrying the fittings earlier phases put above
+      the shelf's height on the old flat bulkhead: the main harness grommet with the speedometer, oil gauge and
+      capillary grommets, the choke cable grommet, the overdrive vacuum switch. On Oliver's car these go through the
+      upper face (PLAN: Differences seen in Oliver's scans).
+    specs:
+      sheet: { mm: 1.6, display_only: true, source: { label: D, method: "Bracket gauge" } }
+  - id: body.structure.front-pan
+    name: Front pan and radiator mountings
+    haynes: { section: 1, figures: [{ figure: "2.6", legend: 1 }] }
+    quantity: 1
+    notes: >
+      The floor between the front legs' feet under the radiator, from ahead of the engine to the front apron (Oliver's
+      engine-bay scan: 330-350 above the road, its sides turned up to the inner wings), two swages and a drain; the
+      radiator's two side brackets bolted through its channels (P2 cooling_layout RAD_Y, two bolts each) and the duct
+      side panels from them out to the inner wings in the radiator's front plane.
+    specs:
+      floor_height: { mm: 357.0, display_only: true, source: { label: D, method: "On the front legs' bottom (scan: 330-350)" } }
+  - id: body.structure.slam-stays
+    name: Bonnet slam panel stays
+    haynes: { section: 1 }
+    quantity: 1
+    notes: "A stay each side from the lock platform's rear corner up and back to the inner wing's top (Oliver's photo 13 and engine-bay scan)."
+    specs:
+      diameter: { mm: 14.0, display_only: true, source: { label: D, method: "Oliver's photo 13, against the radiator" } }

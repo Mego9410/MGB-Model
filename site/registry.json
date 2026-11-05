@@ -385,7 +385,7 @@
     "body.brightwork.grille-badge"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 316915
+   "bytes": 316535
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -405,7 +405,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 596697
+   "bytes": 991647
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -481,7 +481,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 367175
+   "bytes": 367227
   },
   "body.front": {
    "id": "body.front",
@@ -505,7 +505,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1117302
+   "bytes": 1117469
   },
   "body.glass": {
    "id": "body.glass",
@@ -526,7 +526,7 @@
     "body.glass.pillar-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 85361
+   "bytes": 84929
   },
   "body.hood": {
    "id": "body.hood",
@@ -547,7 +547,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 1177251
+   "bytes": 1176979
   },
   "body.interior": {
    "id": "body.interior",
@@ -597,7 +597,7 @@
     "body.interior.speaker-grille"
    ],
    "file": "models/body.interior.json",
-   "bytes": 1105035
+   "bytes": 1104551
   },
   "body.rear": {
    "id": "body.rear",
@@ -627,7 +627,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 2765791
+   "bytes": 2821157
   },
   "body.structure": {
    "id": "body.structure",
@@ -657,6 +657,11 @@
     "body.structure.inner-wing-r",
     "body.structure.front-apron",
     "body.structure.lock-platform",
+    "body.structure.bulkhead-upper",
+    "body.structure.bulkhead-brackets",
+    "body.structure.inner-wing-brackets",
+    "body.structure.front-pan",
+    "body.structure.slam-stays",
     "body.structure.outer-sill-l",
     "body.structure.outer-sill-r",
     "body.structure.inner-sill-l",
@@ -688,7 +693,7 @@
     "body.structure.arch-lips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 973645
+   "bytes": 1239486
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -794,7 +799,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468658
+   "bytes": 468562
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -836,7 +841,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592625
+   "bytes": 592897
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1417,7 +1422,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 150078
+   "bytes": 150130
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -1580,7 +1585,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 333479
+   "bytes": 333387
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -2233,7 +2238,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170484
+   "bytes": 170452
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2366,7 +2371,7 @@
     "fuel.carbs.cleaner-case-rear"
    ],
    "file": "models/fuel.carbs.json",
-   "bytes": 630735
+   "bytes": 642403
   },
   "fuel.choke": {
    "id": "fuel.choke",
@@ -2416,7 +2421,7 @@
     "fuel.choke.jet-lever-rear"
    ],
    "file": "models/fuel.choke.json",
-   "bytes": 266213
+   "bytes": 266197
   },
   "fuel.exhaust": {
    "id": "fuel.exhaust",
@@ -2452,7 +2457,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 234124
+   "bytes": 234148
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2474,7 +2479,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139258
+   "bytes": 139370
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2631,7 +2636,7 @@
     "fuel.throttle.pedal-stop"
    ],
    "file": "models/fuel.throttle.json",
-   "bytes": 883233
+   "bytes": 883293
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -3124,7 +3129,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494226
+   "bytes": 494102
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -12684,7 +12689,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_body_red",
-   "notes": "Engine-bay valance at body_layout INNER_WING_Y from the bulkhead to the front apron, from the leg to the wing bolting flange; the wheel house arched over the tyre (420 mm about the axle) out to the outer wing; the damper arm opening (P9: the arm sweeps over the leg between |y| 305 and 499); the brake hose bracket hole (P9 HOSE_BRACKET); the overdrive relay's screws (P10 OD_RELAY).",
+   "notes": "Engine-bay valance and wheel arch dome as Oliver's engine-bay scan shows it (sections every 25 mm, both sides): from the chassis leg's top it slopes out and up as the inside of the dome to about |y| 520 at 640 above the road, then rises nearly vertical to a flange turned outward under the outer wing's top, where the wing bolts down through it; a stiffening swage along the wall; from the upper bulkhead face (above the shelf) to the front apron. The damper arm opening and the full-lock tyre openings P9's geometry needs are kept; the wheel house arches over the tyre (420 mm about the axle) out to the outer wing; two drain holes ahead of the wheel. The units hang on body.structure.inner-wing-brackets.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -12693,12 +12698,12 @@
    "explode": null,
    "specs": [
     {
-     "key": "face_y",
-     "label": "Face y",
-     "value": "430.0 mm",
+     "key": "wall_y_640",
+     "label": "Wall y 640",
+     "value": "518.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "body_layout INNER_WING_Y (P10)",
+     "ref": "Oliver's engine-bay scan: the wall 640 above the road, x -300 to 250",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -12739,12 +12744,12 @@
    "explode": null,
    "specs": [
     {
-     "key": "face_y",
-     "label": "Face y",
-     "value": "430.0 mm",
+     "key": "wall_y_640",
+     "label": "Wall y 640",
+     "value": "518.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "body_layout INNER_WING_Y (P10)",
+     "ref": "Oliver's engine-bay scan: the wall 640 above the road, x -300 to 250",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -12765,7 +12770,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_body_red",
-   "notes": "The vertical cross panel behind the bumper the horns bolt to (P10 HORN_PANEL_X, HORN_POS), between the legs; the radiator duct's floor running back from the grille opening to the radiator's front face with the grille's three bottom bolt holes (Sec 7 para 1), and the duct's side panels.",
+   "notes": "The vertical cross panel behind the bumper the horns bolt to (P10 HORN_PANEL_X, HORN_POS), between the legs; the grille's bottom ledge behind the mouth with its three bottom bolt holes (Sec 7 para 1); below and behind it the bay is open down to the front pan (Oliver's engine-bay scan), the duct's sides being the inner wings' fronts.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -13933,6 +13938,204 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Oliver's photo 09: the lip's highlight",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.structure.inner-wing-brackets": {
+   "id": "body.structure.inner-wing-brackets",
+   "kind": "part",
+   "name": "Inner wing unit brackets and hose bracket gussets",
+   "parent": "body.structure",
+   "haynes": {
+    "section": 1,
+    "spec_page": 216
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_body_red",
+   "notes": "Plates in P10's units' mounting plane (control box, fuse block, flasher and starter solenoid on the right, the overdrive relay on the left), their top and bottom edges turned out to the sloping inner wing and welded on, with the units' screw holes; gussets from the leg's top to P9's brake hose brackets. The scan shows the units further outboard, on the wall itself (PLAN: Differences seen in Oliver's scans).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "sheet",
+     "label": "Sheet",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bracket gauge, as the other body brackets",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.structure.bulkhead-upper": {
+   "id": "body.structure.bulkhead-upper",
+   "kind": "part",
+   "name": "Bulkhead shelf and upper face",
+   "parent": "body.structure",
+   "haynes": {
+    "section": 1,
+    "spec_page": 216,
+    "figures": [
+     {
+      "figure": "12.27",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_body_red",
+   "notes": "The bulkhead steps back at a shelf 625 above the road to an upper face 155 mm behind the lower one, under the scuttle's front edge (Oliver's engine-bay scan: the shelf at 600-650 across the bay between x -400 and -555, the heater box standing on it; Haynes Fig 12.27, the early heater on the bulkhead shelf). The heater's air opening and screw holes, a stiffening swage, the scuttle drain tubes, a clearance hole for P10's wiper motor.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "shelf_height",
+     "label": "Shelf height",
+     "value": "625.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's engine-bay scan, sections across the shelf",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    },
+    {
+     "key": "step",
+     "label": "Step",
+     "value": "155.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's engine-bay scan, the shelf's depth",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.structure.bulkhead-brackets": {
+   "id": "body.structure.bulkhead-brackets",
+   "kind": "part",
+   "name": "Bulkhead fitting plates",
+   "parent": "body.structure",
+   "haynes": {
+    "section": 1,
+    "spec_page": 216
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_body_red",
+   "notes": "Plates standing on the bulkhead shelf in the lower face's plane carrying the fittings earlier phases put above the shelf's height on the old flat bulkhead: the main harness grommet with the speedometer, oil gauge and capillary grommets, the choke cable grommet, the overdrive vacuum switch. On Oliver's car these go through the upper face (PLAN: Differences seen in Oliver's scans).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "sheet",
+     "label": "Sheet",
+     "value": "1.6 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Bracket gauge",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.structure.front-pan": {
+   "id": "body.structure.front-pan",
+   "kind": "part",
+   "name": "Front pan and radiator mountings",
+   "parent": "body.structure",
+   "haynes": {
+    "section": 1,
+    "spec_page": 216,
+    "figures": [
+     {
+      "figure": "2.6",
+      "legend": 1
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_body_red",
+   "notes": "The floor between the front legs' feet under the radiator, from ahead of the engine to the front apron (Oliver's engine-bay scan: 330-350 above the road, its sides turned up to the inner wings), two swages and a drain; the radiator's two side brackets bolted through its channels (P2 cooling_layout RAD_Y, two bolts each) and the duct side panels from them out to the inner wings in the radiator's front plane.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "floor_height",
+     "label": "Floor height",
+     "value": "357.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "On the front legs' bottom (scan: 330-350)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.structure.slam-stays": {
+   "id": "body.structure.slam-stays",
+   "kind": "part",
+   "name": "Bonnet slam panel stays",
+   "parent": "body.structure",
+   "haynes": {
+    "section": 1,
+    "spec_page": 216
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "paint_body_red",
+   "notes": "A stay each side from the lock platform's rear corner up and back to the inner wing's top (Oliver's photo 13 and engine-bay scan).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "diameter",
+     "label": "Diameter",
+     "value": "14.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 13, against the radiator",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -84856,6 +85059,101 @@
    "label": true,
    "fitted": null
   },
+  "body.structure.bulkhead-upper#1": {
+   "part": "body.structure.bulkhead-upper",
+   "assembly": "body.structure",
+   "node": "body--structure--bulkhead-upper__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 500,
+     "group": "front"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.structure.bulkhead-brackets#1": {
+   "part": "body.structure.bulkhead-brackets",
+   "assembly": "body.structure",
+   "node": "body--structure--bulkhead-brackets__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 500,
+     "group": "front"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.structure.inner-wing-brackets#1": {
+   "part": "body.structure.inner-wing-brackets",
+   "assembly": "body.structure",
+   "node": "body--structure--inner-wing-brackets__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 500,
+     "group": "front"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.structure.front-pan#1": {
+   "part": "body.structure.front-pan",
+   "assembly": "body.structure",
+   "node": "body--structure--front-pan__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 500,
+     "group": "front"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.structure.slam-stays#1": {
+   "part": "body.structure.slam-stays",
+   "assembly": "body.structure",
+   "node": "body--structure--slam-stays__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 500,
+     "group": "front"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "body.structure.outer-sill-l#1": {
    "part": "body.structure.outer-sill-l",
    "assembly": "body.structure",
@@ -140507,7 +140805,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-05T15:18:10+00:00",
+ "built": "2026-11-05T16:01:29+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,

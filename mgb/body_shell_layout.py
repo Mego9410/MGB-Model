@@ -206,14 +206,24 @@ def z_b(x):
 
 BONNET_CAMBER = mono([(745.0, 26.0), (300.0, 30.0), (-392.0, 32.0), (-700.0, 20.0), (-1650.0, 20.0), (-2100.0, 30.0),
                  (-2400.0, 36.0), (-2900.0, 40.0)])          # the top's fall from the centre to the crown line where no crown stands proud
-# Rear deck valleys (Oliver's scan, transverse sections every 50 mm from the cockpit's rear to the tail, robust upper
-# envelope; photos 23, 24): the boot lid is a broad, flat-topped dome falling to a gutter along its edges inboard of each
-# rear wing crown, so the wings stand proud of the lid and the lid sits below the lamp tops; deepest (about 45 mm under
-# the crown line) over the lamps' tops. (The scan's left side reads deeper and its right side shallower ahead of x -2650;
-# the reflections differ side to side, so the depth is taken between them.)
-VALLEY_D = mono([(-2250.0, 0.0), (-2350.0, 14.0), (-2450.0, 24.0), (-2550.0, 33.0), (-2650.0, 41.0), (-2750.0, 46.0),
-                 (-2800.0, 47.0), (-2850.0, 41.0), (-2900.0, 25.0), (-2960.0, 6.0)])
-VALLEY_Y, VALLEY_W = 465.0, 115.0
+# Rear deck and boot lid (Oliver's scan and photos 11, 14, 18, 23, 24, 25; his correction of 5 Nov): the rear wing
+# crowns are the highest points; from each crown the surface drops inboard into a dip, and the deck and boot lid stay
+# at that level right across between the dips (a camber of only 8 mm), falling gently from the cockpit's rear and
+# rounding off at the back to the rear panel along the dips' own curve. The scan's dip heights (its deeper left side;
+# the high centre points on the glossy lid are reflection lift) set DECK_H.
+DECK_H = mono([(-1950.0, 881.0), (-2100.0, 866.0), (-2200.0, 847.0), (-2300.0, 825.0), (-2400.0, 803.0),
+               (-2500.0, 790.0), (-2600.0, 779.0), (-2700.0, 766.0), (-2750.0, 755.0), (-2800.0, 735.0),
+               (-2850.0, 707.0), (-2900.0, 680.0), (-2960.0, 645.0)])
+DECK_Y = 505.0                              # the deck is flat (8 mm camber) to here, then rises to the wing crowns
+DECK_CAMBER = 8.0
+DECK_RISE = 0.0075                          # how quickly it climbs to the crowns outboard of DECK_Y (per mm^2)
+DECK_X = (-1950.0, -2100.0)                 # blends in behind the cockpit's rear
+
+
+def _smin(a, b, k):
+    return -smax(-a, -b, k)
+
+
 CROWN_KOUT = mono([(700.0, 0.0034), (300.0, 0.0032), (-700.0, 0.0030), (-1700.0, 0.0032), (-2200.0, 0.0040), (-2900.0, 0.0046)])
 
 
@@ -236,8 +246,11 @@ def _top(X, Y):
     top = np.where(Y <= cy, inner, outer)
     drop = _interp(BONNET_DROP, X) * np.exp(-((Y - (cy - 120.0)) / 60.0) ** 2)
     rib = _interp(RIB_A, X) / (1.0 + (Y / RIB_W) ** 8)
-    valley = _interp(VALLEY_D, X) * np.exp(-((Y - VALLEY_Y) / VALLEY_W) ** 2)
-    return top - drop + rib - valley
+    top = top - drop + rib
+    w = _step((DECK_X[0] - X) / (DECK_X[0] - DECK_X[1]))
+    deck = _interp(DECK_H, X) + DECK_CAMBER * (1.0 - np.minimum(Y / DECK_Y, 1.0) ** 2) \
+        + DECK_RISE * np.maximum(Y - DECK_Y, 0.0) ** 2
+    return top + w * (_smin(top, deck, 30.0) - top)
 
 
 def _side_w(X, Hh):

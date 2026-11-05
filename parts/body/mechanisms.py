@@ -364,10 +364,8 @@ def _cable_route():
     wing's top to the bulkhead, through it, and to the knob under the facia's left end (D: the cable's route; the knob
     position is a question for Oliver)."""
     z = H(S.MOUTH_TOP_H) - 30.0
-    iw = St.IW_Y - 20.0
-    return [(LOCK_X, 108.0, z - 9.0), (LOCK_X - 40.0, 200.0, z - 20.0), (560.0, iw - 30.0, St.inner_wing_top(560.0) - 25.0),
-            (300.0, iw, St.inner_wing_top(300.0) - 25.0), (0.0, iw, St.inner_wing_top(0.0) - 25.0),
-            (S.BULKHEAD_X if hasattr(S, "BULKHEAD_X") else -400.0, iw - 20.0, St.inner_wing_top(-300.0) - 40.0),
+    a = lambda x, b=70.0: (x, St.iw_along(x, b, 10.0)[0], St.iw_along(x, b)[1])     # along the left wing's upper wall
+    return [(LOCK_X, 108.0, z - 9.0), (LOCK_X - 40.0, 200.0, z - 20.0), a(560.0), a(300.0), a(0.0), a(-380.0, 90.0),
             (-560.0, 470.0, H(700.0)), (C_KNOB[0] + 40.0, C_KNOB[1], C_KNOB[2])]
 
 

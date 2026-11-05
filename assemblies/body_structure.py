@@ -40,7 +40,7 @@ for k, (x, y) in enumerate([(-860.0, 545.0), (-1380.0, 545.0), (-860.0, -545.0),
     add("floor-bung", Location((x, y, U.FLOOR_Z)), n=k + 1, label=k == 0, explode=ex(DOWN, 1, 60))
 for p in ("bulkhead", "column-toe-mount", "clutch-hose-support", "scuttle-inner", "wiper-motor-bracket",
           "column-top-bracket", "front-leg-l", "front-leg-r", "inner-wing-l", "inner-wing-r", "front-apron",
-          "lock-platform"):
+          "lock-platform", "bulkhead-upper", "bulkhead-brackets", "inner-wing-brackets", "front-pan", "slam-stays"):
     add(p, groups=["front"])
 for p in ("outer-sill-l", "outer-sill-r", "inner-sill-l", "castle-l", "jack-socket-l", "hinge-pillar-l", "shut-pillar-l",
           "inner-sill-r", "castle-r", "jack-socket-r", "hinge-pillar-r", "shut-pillar-r"):

@@ -399,9 +399,9 @@ def bonnet_stay(spec):
     from the front of the inner wing up to the bonnet's front corner): a 5/16 in rod with its end cranked into the
     pivot bracket on the right inner wing's top near the front, the other end hooked for the bonnet's stay bracket;
     shown stowed back along the inner wing in its spring clip."""
-    y = -(St.IW_Y - 14.0)
     x0, x1 = 470.0, -120.0
-    z0, z1 = St.inner_wing_top(x0) - 2.0, St.inner_wing_top(x1) - 2.0
+    y = -St.iw_along(0.5 * (x0 + x1), 60.0, 12.0)[0]          # along the right inner wing's upper wall
+    z0, z1 = St.iw_along(x0, 60.0)[1], St.iw_along(x1, 60.0)[1]
     zr = lambda x: z0 + (z1 - z0) * (x0 - x) / (x0 - x1) + 14.0
     rod_ = swept_rod([(x0, y - 14.0, z0 + 6.0), (x0 - 6.0, y - 6.0, zr(x0) - 2.0), (x0 - 40.0, y, zr(x0 - 40.0)),
                       (x1 + 30.0, y, zr(x1 + 30.0)), (x1, y, zr(x1) + 10.0), (x1 - 8.0, y, zr(x1) + 16.0)], 4.0)

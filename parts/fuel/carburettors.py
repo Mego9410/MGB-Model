@@ -321,6 +321,10 @@ def cleaner_case(x):
         d, depth = spec.nom("diameter"), spec.nom("depth")
         c = _ycyl(d / 2, 0, 0, depth - 7.0, depth)
         c = _tf(c, c.edges().group_by(Axis.Y)[-1], 5.0)
+        dome = _ycyl(d / 2 - 22.0, 0, 0, depth - 1.0, depth + 7.0)          # the lid's pressed centre (scan, photos)
+        c = c + _tf(dome, dome.edges().group_by(Axis.Y)[-1], 6.0)
+        c = c + _ycyl(9.0, 0, 0, depth + 6.0, depth + 14.0)                  # centre wing nut on the through stud
+        c = c + Location((0, depth + 12.0, 0)) * Box(34.0, 4.0, 7.0)
         c = c + (_ycyl(d / 2, 0, 0, 0, 9.0) - _ycyl(d / 2 - 1.5, 0, 0, -1, 10.0))
         if x > 0:
             bx, by = K.BREATHER_SPIGOT

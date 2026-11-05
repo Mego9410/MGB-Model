@@ -207,14 +207,18 @@ def bulkhead(spec):
     x0 = BH_X - T
     pts = bulkhead_outline()
     p = xprism(pts, x0, BH_X)
+    # the panel steps back at the shelf between the inner wings (Oliver's scan): above it only the ends outboard of the
+    # wings stay (bulkhead_upper carries the shelf and the upper face; bulkhead_brackets the fittings P10 put up there)
+    p = p - box(x0 - 5.0, BH_X + 5.0, -BH_STEP_Y, BH_STEP_Y, Z_SHELF + T, 2000.0)
     # stiffening swages (pressed toward the engine)
-    for z in (-160.0, 60.0):
+    for z in (-160.0,):
         p = p + (xprism([(-BH_W + 60.0, z - 9.0), (BH_W - 60.0, z - 9.0), (BH_W - 60.0, z + 9.0), (-BH_W + 60.0, z + 9.0)],
                         BH_X, BH_X + 3.0) - box(BH_X - 1, BH_X + 4, -250.0, 250.0, z - 12, z + 12))
     # top flange turned back into the cabin under the scuttle inner panel
     top = [(y, bulkhead_top_z(y)) for y in [-BH_W + k * (2 * BH_W) / 16 for k in range(17)]]
     for a, b in zip(top, top[1:]):
-        p = p + xprism([(a[0], a[1] - T), (b[0], b[1] - T), (b[0], b[1]), (a[0], a[1])], BH_X - 40.0, BH_X)
+        if min(abs(a[0]), abs(b[0])) >= BH_STEP_Y - 1.0:
+            p = p + xprism([(a[0], a[1] - T), (b[0], b[1] - T), (b[0], b[1]), (a[0], a[1])], BH_X - 40.0, BH_X)
     # pedal box aperture and bolts (P8)
     from parts.brakes import master as MS
     ap = G.rounded_rect(-328.0, -188.0, -98.0, 14.0, 10.0)
@@ -223,8 +227,6 @@ def bulkhead(spec):
         p = p - xprism(G.rounded_rect(yp - 17.0, yp + 17.0, -185.0, -96.0, 12.0), x0 - 5, BH_X + 5)
     for y, z in MS.box_bolts():
         p = p - xcyl(4.2, x0 - 5, BH_X + 5, y, z)
-    # heater air opening and its four screw holes (early heater, Fig 12.27, on the bulkhead shelf)
-    p = p - xprism(G.rounded_rect(-150.0, 70.0, 150.0, 225.0, 14.0), x0 - 5, BH_X + 5)
     # grommets: main harness (P10), speedometer / oil gauge / temperature capillary on the right
     hx, hy, hz = BL.HARNESS_GROMMET
     for y, z, r in ((hy, hz, 15.0), (-250.0, 105.0, 11.0), (-210.0, 105.0, 8.0), (-170.0, 105.0, 8.0)):
@@ -247,6 +249,70 @@ def bulkhead(spec):
         if abs(pt[0] - BH_X) < 30.0:
             p = p - xcyl(2.4, x0 - 5, BH_X + 5, pt[1], pt[2])
     return _l(p, spec)
+
+
+BH_STEP_Y = 600.0                          # the step runs between the inner wings
+
+
+def _upper_top_z(y):
+    return H(S.top_h(BH2_X - 20.0, abs(y))) - 70.0
+
+
+def bulkhead_upper(spec):
+    """Bulkhead shelf and upper face (Oliver's engine-bay scan; Haynes Fig 12.27 puts the early heater on this shelf):
+    the horizontal shelf 625 above the road from the lower bulkhead back to the upper face 155 mm behind it, the upper
+    face up under the scuttle with its flange turned back under the scuttle inner panel, a stiffening swage, the
+    heater's air opening and four screw holes on the centre line, the scuttle drain tubes down through the shelf
+    either side, and a clearance hole for P10's wiper motor."""
+    ys = [-BH_STEP_Y + 2 * BH_STEP_Y * k / 16 for k in range(17)]
+    shelf = box(BH2_X - T, BH_X, -BH_STEP_Y, BH_STEP_Y, Z_SHELF, Z_SHELF + T)
+    face = xprism([(BH_STEP_Y, Z_SHELF)] + [(y, _upper_top_z(y)) for y in reversed(ys)] + [(-BH_STEP_Y, Z_SHELF)],
+                  BH2_X - T, BH2_X)
+    p = shelf + face
+    top = [(y, _upper_top_z(y)) for y in ys]
+    for a, b in zip(top, top[1:]):
+        p = p + xprism([(a[0], a[1] - T), (b[0], b[1] - T), (b[0], b[1]), (a[0], a[1])], BH2_X - 40.0, BH2_X)
+    zs = Z_SHELF + 75.0
+    p = p + (xprism([(-480.0, zs - 9.0), (480.0, zs - 9.0), (480.0, zs + 9.0), (-480.0, zs + 9.0)], BH2_X, BH2_X + 3.0)
+             - box(BH2_X - 1, BH2_X + 4, -230.0, 150.0, zs - 12, zs + 12))
+    zh = Z_SHELF + 60.0
+    p = p - xprism(G.rounded_rect(-150.0, 70.0, zh, zh + 75.0, 14.0), BH2_X - 5, BH2_X + 5)
+    for yy, zz in ((-165.0, zh - 10.0), (85.0, zh - 10.0), (-165.0, zh + 85.0), (85.0, zh + 85.0)):
+        p = p - xcyl(2.6, BH2_X - 5, BH2_X + 5, yy, zz)
+    for yy in (-430.0, 430.0):
+        tube = zcyl(9.0, Z_SHELF - 60.0, Z_SHELF + T, BH2_X + 40.0, yy) - zcyl(7.5, Z_SHELF - 61.0, Z_SHELF + T + 1, BH2_X + 40.0, yy)
+        p = p - zcyl(7.5, Z_SHELF - 2, Z_SHELF + 3, BH2_X + 40.0, yy) + tube
+    mx, my, mz = BL.WIPER_MOTOR
+    p = p - xprism(G.rounded_rect(my - 70.0, my + 70.0, mz - 60.0, mz + 60.0, 20.0), BH2_X - 5, BH2_X + 5)
+    p = p - xcyl(6.0, BH2_X - 5, BH2_X + 5, 470.0, H(700.0))              # bonnet release cable grommet
+    return _l(p, spec)
+
+
+def bulkhead_brackets(spec):
+    """Plates standing on the shelf in the lower bulkhead's plane for the fittings P10, P11a and P3b placed there above
+    the shelf's height: the main harness grommet and the speedometer, oil gauge and capillary grommets (right), the
+    choke cable grommet and the overdrive vacuum switch's two screws (left); each a 1.6 mm plate with a foot welded
+    to the shelf; and the plate for P11a's fuel pipe clip. On Oliver's car these pass through the upper face (PLAN:
+    Differences seen in Oliver's scans)."""
+    from mgb import throttle_layout as TL
+    out = []
+    hx, hy, hz = BL.HARNESS_GROMMET
+    groups = [((hy - 30.0, -150.0), max(hz, 105.0) + 30.0, [(hy, hz, 15.0), (-250.0, 105.0, 11.0), (-210.0, 105.0, 8.0),
+                                                            (-170.0, 105.0, 8.0)])]
+    cx, cy, cz = TL.CHOKE_GROMMET
+    groups.append(((cy - 26.0, cy + 26.0), cz + 22.0, [(cy, cz, 5.8)]))
+    vx, vy, vz = BL.OD_VACUUM_SWITCH
+    groups.append(((vy - 42.0, vy + 42.0), vz + 24.0, [(vy - 26.0, vz, 2.2), (vy + 26.0, vz, 2.2)]))
+    for (pt, n) in FL.CLIPS["main"]:                         # P11a's fuel pipe clip across the bulkhead "by the heater"
+        if abs(pt[0] - BH_X) < 30.0 and pt[2] > Z_SHELF + T + 5.0:
+            groups.append(((pt[1] - 22.0, pt[1] + 22.0), pt[2] + 20.0, [(pt[1], pt[2], 2.4)]))
+    for (y0, y1), zt, holes in groups:
+        plate = box(BH_X - 1.6, BH_X, y0, y1, Z_SHELF + T - 0.05, zt)
+        plate = plate + box(BH_X - 30.0, BH_X, y0, y1, Z_SHELF + T - 0.05, Z_SHELF + T + 1.6)
+        for y, z, r in holes:
+            plate = plate - xcyl(r, BH_X - 5, BH_X + 5, y, z)
+        out.append(plate)
+    return _c(out, spec)
 
 
 def _column_z_at(x):
@@ -423,58 +489,214 @@ def _inset_xz(prof, d):
 
 IW_Y = S.INNER_WING_Y
 IW_X0, IW_X1 = BH_X, 590.0
+# ---- engine bay (Oliver's engine-bay scan, registered on the outer wings and headlamps to his body scan: transverse
+# sections every 25 mm, the innermost body-red point per 15 mm height band, both sides; mgb/scan_layout.py) ----------
+# The inner wings are not vertical: from the chassis leg they slope out and up as the inside of the wheel arch dome to
+# about |y| 520 at 640 above the road, then rise nearly vertical to the bolting flange under the outer wing's top
+# (|y| 560-580). The bulkhead steps back at a shelf about 625 above the road to an upper face 155 mm further back, under
+# the scuttle's front edge, where the heater sits (scan: shelf 600-650 across the bay between x -400 and -555).
+Z_SHELF = H(625.0)                         # bulkhead shelf (D: Oliver's scan, 600-650 above the road)
+BH2_X = BH_X - 155.0                       # upper bulkhead face (D: scan, the shelf's back at x -540..-560)
+IW_REAR_X = BH2_X + T                      # the inner wings run back to the upper face above the shelf
+# Wall section (|y|, h above the road) away from the leg: the dome's slope, then the near-vertical upper wall.
+IW_PROFILE = [(400.0, 465.0), (440.0, 500.0), (472.0, 540.0), (495.0, 580.0), (510.0, 620.0), (518.0, 660.0),
+              (526.0, 700.0)]
+IW_FRONT_IN = 26.0                         # the wall stands this much further inboard at the front (scan, x 300-600)
+
+
+def _leg_inner_y(x):
+    """|y| of the front leg's inner face at x (LEG_PLAN, linear between stations)."""
+    pts = [(xx, y - w / 2) for xx, y, w in LEG_PLAN]
+    if x <= pts[0][0]:
+        return pts[0][1]
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        if x0 <= x <= x1:
+            return y0 + (y1 - y0) * (x - x0) / (x1 - x0)
+    return pts[-1][1]
+
+
+def iw_top_h(x):
+    """Height of the inner wing's bolting flange at x: just under the outer wing's top over it."""
+    return S.top_h(x, 575.0) - 22.0
+
+
+def iw_section(x):
+    """The inner wing's section at x as (|y|, h) points from the leg's top to the flange's outer edge."""
+    xl = min(max(x, IW_X0), IW_X1)
+    yb = _leg_inner_y(xl) + 6.0
+    hb = LEG_TOP - S.z_of(0.0) + 2.0
+    shift = -IW_FRONT_IN * min(1.0, max(0.0, (x - 250.0) / 300.0))
+    top = iw_top_h(x)
+    pts = [(yb, hb), (max(yb, min(yb + 22.0, 395.0)), hb + 24.0)]
+    pts += [(y + shift, h) for y, h in IW_PROFILE if h < top - 60.0 and y + shift > pts[-1][0] + 4.0]
+    pts += [(545.0 + shift * 0.5, top - 32.0), (560.0, top - 12.0), (568.0, top - 3.0), (582.0, top), (604.0, top)]
+    return pts
 
 
 def inner_wing_top(x):
-    """Top edge (wing bolting flange) of the inner wing at x: under the outer wing's top, inside the bonnet gap."""
-    return H(S.top_h(x, IW_Y + 40.0)) - 50.0
+    """Car z of the inner wing's bolting flange at x (the stay, the bonnet cable and the clips follow it)."""
+    return H(iw_top_h(x))
+
+
+def iw_along(x, below=55.0, off=12.0):
+    """(|y|, car z) of a point on the inner wing's engine-side face at x, `below` mm under the flange, `off` mm in."""
+    h = iw_top_h(x) - below
+    return iw_wall_y(x, h) - off, H(h)
+
+
+def iw_wall_y(x, h):
+    """|y| of the inner wing's engine-side face at x and height h (h above the road)."""
+    sec = iw_section(x)
+    if h <= sec[0][1]:
+        return sec[0][0]
+    for (y0, h0), (y1, h1) in zip(sec, sec[1:]):
+        if h0 <= h <= h1 and h1 > h0:
+            return y0 + (y1 - y0) * (h - h0) / (h1 - h0)
+    return sec[-1][0]
+
+
+def _resample(pts, n):
+    """n points evenly spaced along the polyline pts."""
+    import numpy as np
+    a = np.array(pts, float)
+    d = np.concatenate([[0.0], np.cumsum(np.hypot(*np.diff(a, axis=0).T))])
+    t = np.linspace(0.0, d[-1], n)
+    return list(zip(np.interp(t, d, a[:, 0]), np.interp(t, d, a[:, 1])))
 
 
 def inner_wing(side):
     def build(spec):
-        """Inner wing (engine-bay valance) and wheel house: the vertical panel at body_layout INNER_WING_Y from the
-        bulkhead forward to the front apron, from the chassis leg up to a flange the outer wing bolts to; the wheel
-        house arched over the tyre (420 mm radius about the front axle, clearing the tyre at bump and lock) out to
-        the outer wing; an opening over the damper arm (P9: the arm sweeps over the leg between |y| 305 and 499) and
-        the hose bracket hole (P9 HOSE_BRACKET); the 1/4 in screw holes for P10's control box, fuse block, flasher
-        and solenoid on the right, the overdrive relay on the left."""
-        y0 = IW_Y
-        xs = [IW_X0 + (IW_X1 - IW_X0) * k / 20 for k in range(21)]
-        top = [(x, inner_wing_top(x)) for x in xs]
-        pts = [(IW_X0, LEG_TOP), (IW_X1, LEG_TOP)] + list(reversed(top))
-        panel = yprism(pts, y0, y0 + T)
-        # damper arm opening (P9) and the wheel's swept space under the leg top
-        fx = FS.FX
-        panel = panel - yprism(G.rounded_rect(fx - 150.0, fx + 150.0, LEG_TOP - 5.0, -95.0, 30.0), y0 - 5, y0 + 5)
-        # the tyre's shoulder at full lock sweeps under the valance ahead of and behind the wheel (envelope check):
-        # the valance's lower edge is raised there, the wheel house curving in above it
-        for xa, xb in ((-255.0, -15.0), (315.0, 505.0)):
-            panel = panel - yprism(G.rounded_rect(xa, xb, LEG_TOP - 5.0, -30.0, 40.0), y0 - 5, y0 + 5)
-        # wheel house: an arched band over the tyre from the valance to the wing
+        """Inner wing (engine-bay valance) and wheel arch dome, as Oliver's engine-bay scan shows it: from the chassis
+        leg's top it slopes out and up as the inside of the wheel arch dome, rises nearly vertical to a flange turned
+        outward under the outer wing's top (the outer wing bolts down through it: the bolt heads along the flange), a
+        stiffening swage pressed along the wall, from the upper bulkhead face above the shelf to the front apron. The
+        openings P9's geometry needs are kept: the damper arm's sweep over the leg and the tyre's shoulder at full lock
+        ahead of and behind the wheel (envelope check in PLAN); the wheel house closes over the tyre out to the outer
+        wing. Two drain holes in the front of the dome."""
+        from build123d import Solid, Vector, Wire
+        wires = []
+        for k in range(25):                       # thin sections lofted (ruled) along the bay, 45 mm apart
+            x = IW_REAR_X + (IW_X1 - IW_REAR_X) * k / 24
+            sec = G.band([(y, H(h)) for y, h in _resample(iw_section(x), 18)], T)
+            wires.append(Wire.make_polygon([Vector(x, y, z) for y, z in sec], close=True))
+        p = Solid.make_loft(wires, ruled=True)
+        # behind the lower bulkhead (x < BH_X) only the part above the shelf (in the recess under the scuttle)
+        p = p - box(IW_REAR_X - 50.0, BH_X - 0.6, 0.0, 900.0, -2000.0, Z_SHELF + T)
+        # the dome is closed down to the leg as on the car (P9's damper arm and the tyre at full lock reach into it in
+        # the model: PLAN, Differences seen in Oliver's scans)
+        # wheel house: an arched band over the tyre from the wall's top out to the outer wing
         r = 420.0
         cx, cz = CL.FRONT_AXLE_X, CL.WHEEL_Z
-        wh = ycyl(r + T, y0, 716.0, cx, cz) - ycyl(r, y0 - 1, 717.0, cx, cz)
-        wh = wh & box(cx - 520.0, cx + 520.0, y0, 717.0, cz + 60.0, 2000.0)
-        p = panel + wh
-        # flange along the top, turned outward to the outer wing
-        for a, b in zip(top, top[1:]):
-            p = p + yprism([(a[0], a[1] - T), (b[0], b[1] - T), (b[0], b[1]), (a[0], a[1])], y0, y0 + 28.0)
-        # hose bracket hole (P9 HOSE_BRACKET is on the valance at |y| 470: through the wheel house)
-        hx, hy, hz = FS.HOSE_BRACKET
-        p = p - zcyl(8.0, hz - 200, hz + 200, hx, hy)
-        # electrical units' screws (P10)
-        units = [BL.CONTROL_BOX, BL.FUSE_BOX, BL.FLASHER, BL.SOLENOID] if side < 0 else [BL.OD_RELAY]
-        for ux, uy, uz in units:
-            for dx in (-30.0, 30.0):
-                p = p - ycyl(2.4, y0 - 5, y0 + 5, ux + dx, uz)
+        wh = ycyl(r + T, 548.0, 716.0, cx, cz) - ycyl(r, 547.0, 717.0, cx, cz)
+        wh = wh & box(cx - 520.0, cx + 520.0, 548.0, 717.0, cz + 60.0, 2000.0)
+        p = p + wh
+        # stiffening swage along the wall, 650 above the road
+        sw = []
+        for k in range(21):
+            x = IW_REAR_X + 30.0 + (IW_X1 - 40.0 - IW_REAR_X - 30.0) * k / 20
+            hh = min(650.0, iw_top_h(x) - 55.0)
+            sw.append((x, iw_wall_y(x, hh) - 1.0, H(hh)))
+        p = p + swept_rod(sw, 4.5)
+        # the outer wing's bolts down through the flange (heads on top, under the wing: Sec 4, the wing bolts)
+        for k in range(10):
+            x = IW_REAR_X + 40.0 + (IW_X1 - 60.0 - IW_REAR_X - 40.0) * k / 9
+            zt = H(iw_top_h(x)) + T
+            p = p + zcyl(6.5, zt - 0.1, zt + 4.0, x, 592.0) - zcyl(2.8, zt - 6.0, zt + 5.0, x, 592.0)
+        # drain holes low in the dome ahead of the wheel
+        for x in (530.0, 570.0):
+            p = p - ycyl(14.0, 300.0, 600.0, x, H(470.0))
         return _l(_side(p, side), spec)
     return build
 
 
+def inner_wing_brackets(spec):
+    """Brackets that carry P10's units and P9's hose bracket off the sloping inner wings: for each unit a plate in
+    its mounting plane (|y| 430, body_layout CONTROL_BOX, FUSE_BOX, FLASHER, SOLENOID on the right, OD_RELAY on the
+    left) with the unit's two screw holes, its top and bottom edges turned out to the wall and spot-welded on; a
+    gusset from the leg's top to the brake hose bracket (FS.HOSE_BRACKET)."""
+    out = []
+    for side, units in ((-1, [BL.CONTROL_BOX, BL.FUSE_BOX, BL.FLASHER, BL.SOLENOID]), (1, [BL.OD_RELAY])):
+        for ux, uy, uz in units:
+            h = uz - S.z_of(0.0)
+            y0 = abs(uy)
+            plate = box(ux - 48.0, ux + 48.0, y0, y0 + 1.6, uz - 42.0, uz + 42.0)
+            for dz in (-42.0, 42.0 - 1.6):
+                yw = max(iw_wall_y(ux - 48.0, h + dz), iw_wall_y(ux + 48.0, h + dz), iw_wall_y(ux, h + dz)) + 3.0
+                if yw > y0 + 3.0:
+                    plate = plate + box(ux - 48.0, ux + 48.0, y0, yw, uz + dz, uz + dz + 1.6)
+            for dx in (-30.0, 30.0):
+                plate = plate - ycyl(2.4, y0 - 5, y0 + 5, ux + dx, uz)
+            out.append(_side(plate, side))
+    hx, hy, hz = FS.HOSE_BRACKET
+    g = box(hx - 18.0, hx + 18.0, hy + 2.0, hy + 3.6, LEG_TOP - 0.1, hz - 6.0)
+    out += [_side(g, s) for s in (1, -1)]
+    # stand-offs for P10b's harness P-clips (HARNESS_CLIPS on the inner wings, |y| 430): a tab out to the wall
+    for x, y, z, n, a in HARNESS_CLIPS:
+        if abs(abs(y) - BL.INNER_WING_Y) > 1.0:
+            continue
+        s_ = 1 if y > 0 else -1
+        h = z - S.z_of(0.0)
+        yw = iw_wall_y(x, h + 18.0) + 3.0
+        tab = box(x - 16.0, x + 16.0, abs(y), abs(y) + 1.6, z - 20.0, z + 20.0)
+        tab = tab + box(x - 16.0, x + 16.0, abs(y), yw, z + 18.4, z + 20.0)
+        out.append(_side(tab, s_))
+    return _c(out, spec)
+
+
+def front_pan(spec):
+    """Front pan under the radiator (Oliver's engine-bay scan: a floor between the legs' feet from ahead of the
+    radiator to the front apron, 330-350 above the road, its sides turned up to the inner wings): a pressed floor
+    on the legs' bottom flanges with two swages across, its sides rising to the inner wings' feet, and the
+    radiator's two mounting brackets standing on it (side plates at the radiator's channels, P2 cooling_layout RAD_Y,
+    with the channels' two bolt holes each) and the duct side panels from them out to the inner wings."""
+    from mgb import cooling_layout as CO
+    x0, x1 = 330.0, BL.HORN_PANEL_X
+    yi = LEG_STEP_Y - LEG_STEP_W / 2
+    zf = LEG_BOT
+    floor = box(x0, x1, -yi - 0.5, yi + 0.5, zf, zf + T)
+    for xs in (420.0, 520.0):
+        floor = floor + (xprism([(-yi + 30.0, zf + T), (yi - 30.0, zf + T), (yi - 30.0, zf + T + 4.0), (-yi + 30.0, zf + T + 4.0)],
+                                xs - 9.0, xs + 9.0))
+    floor = floor - zcyl(15.0, zf - 5, zf + 5, 470.0, 0.0)                  # drain
+    out = [floor]
+    rx0, rx1 = CO.RAD_CORE
+    y1 = CO.RAD_Y[1] + 9.0 + 6.0
+    zt = CO.RAD_TOP_TANK[1] - 30.0
+    for s_ in (1, -1):
+        br = box(rx1 - 2.0, rx1 + 30.0, y1, y1 + 1.6, zf + T, zt)            # bracket beside the channel
+        br = br + box(rx1 + 28.4, rx1 + 30.0, y1, y1 + 40.0, zf + T, zt)       # flange turned out at its front
+        for zz in (CO.RAD_CORE_Z[0] + 40.0, CO.RAD_CORE_Z[1] - 40.0):
+            br = br - ycyl(4.2, y1 - 5, y1 + 5, rx1 + 8.0, zz)
+        # duct side panel from the bracket out to the inner wing, in the radiator's front plane
+        xd = rx1 + 30.0
+        pts = [(y1 + 40.0, zf + T)]
+        for hh in range(int(zf + T - S.z_of(0.0)) + 10, int(zt - S.z_of(0.0)), 30):
+            pts.append((iw_wall_y(xd, hh) - 2.0, H(hh)))
+        pts += [(iw_wall_y(xd, zt - S.z_of(0.0)) - 2.0, zt), (y1 + 40.0, zt)]
+        side_panel = xprism(pts, xd, xd + T)
+        out.append(_side(br + side_panel, s_))
+    return _c(out, spec)
+
+
+def slam_stays(spec):
+    """Bonnet slam panel braces: a pressed stay each side from the lock platform's rear corner up and back to the
+    inner wing's top flange (Oliver's photo 13 and scan: the two light diagonal stays in front of the radiator)."""
+    z = S.z_of(S.MOUTH_TOP_H) - 30.0
+    out = []
+    for s_ in (1, -1):
+        a = (625.0, 380.0, z + T)
+        xb = 455.0
+        b = (xb, iw_wall_y(xb, iw_top_h(xb) - 8.0) - 6.0, H(iw_top_h(xb) - 8.0))
+        st = swept_rod([a, b], 7.0)
+        foot = box(612.0, 640.0, 364.0, 396.0, z + T, z + T + 2.0)
+        out.append(_side(st + foot, s_))
+    return _c(out, spec)
+
+
 def front_apron(spec):
     """Front apron (cross panel under the grille): the vertical panel behind the bumper the horns bolt to (P10
-    HORN_PANEL_X, HORN_POS), between the chassis legs' front ends, with the radiator duct's lower panel running back
-    from its top edge to the radiator's front face, the duct's side panels, the grille's three bottom bolt holes
+    HORN_PANEL_X, HORN_POS), between the chassis legs' front ends, with the grille's bottom ledge behind the mouth
+    carrying the grille's three bottom bolt holes (the bay is open below it down to body.structure.front-pan)
     and the bumper spring bar slots."""
     xa = BL.HORN_PANEL_X
     zt = S.z_of(S.MOUTH_BOT_H) - 6.0
@@ -483,15 +705,13 @@ def front_apron(spec):
         panel = panel - xcyl(4.2, xa - 5, xa + 5, hy, hz)
     for yy in (-300.0, 0.0, 300.0):                                     # lightening / air holes
         panel = panel - xcyl(32.0, xa - 5, xa + 5, yy * 0.5, LEG_BOT - 10.0)
-    from mgb import cooling_layout as CO
-    rad_front = CO.RAD_CORE[1] + 8.0
-    duct_floor = box(rad_front, S.MOUTH_BACK_X - 2.0, -390.0, 390.0, zt - T, zt)
+    # the grille's bottom ledge behind the mouth (its three bolts); below and behind it the bay is open down to the
+    # front pan (Oliver's engine-bay scan: no duct floor at the grille's foot, the pan 330-350 above the road)
+    duct_floor = box(S.MOUTH_BACK_X - 70.0, S.MOUTH_BACK_X - 2.0, -390.0, 390.0, zt - T, zt)
+    duct_floor = duct_floor + box(S.MOUTH_BACK_X - 70.0, S.MOUTH_BACK_X - 70.0 + T, -390.0, 390.0, zt - 40.0, zt)
     for yy in (-160.0, 0.0, 160.0):
         duct_floor = duct_floor - zcyl(3.3, zt - 5, zt + 5, S.MOUTH_BACK_X - 20.0, yy)
-    ztop = S.z_of(S.MOUTH_TOP_H) - 30.0
-    sides = [box(rad_front, S.MOUTH_BACK_X - 2.0, s * 390.0 - (T if s > 0 else 0), s * 390.0 + (0 if s > 0 else T), zt, ztop)
-             for s in (1, -1)]
-    return _c([panel, duct_floor] + sides, spec)
+    return _c([panel, duct_floor], spec)
 
 
 def lock_platform(spec):
@@ -968,6 +1188,11 @@ def arch_lips(spec):
 
 PARTS = {
     "body.structure.arch-lips": {"build": arch_lips},
+    "body.structure.inner-wing-brackets": {"build": inner_wing_brackets},
+    "body.structure.bulkhead-upper": {"build": bulkhead_upper},
+    "body.structure.front-pan": {"build": front_pan},
+    "body.structure.slam-stays": {"build": slam_stays},
+    "body.structure.bulkhead-brackets": {"build": bulkhead_brackets},
     "body.structure.arch-liners": {"build": arch_liners},
     "body.structure.tunnel": {"build": tunnel},
     "body.structure.floor-l": {"build": floor_half(1)},

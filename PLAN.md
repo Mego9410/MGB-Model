@@ -381,10 +381,12 @@ round them and should check them against the car:
   the waist (a kink there broke its thickening).
 
 - Scan QA round 1 (5 Nov 2026; transverse sections every 50 mm and plan widths from the registered scan, robust upper
-  envelopes, both sides compared; scratchpad sw2/): Oliver's priority, the rear quarters. The rear deck and boot lid now
-  fall away from a broad, flat-topped dome into a gutter along the lid's edges inboard of each rear wing crown
-  (`VALLEY_D`, about 45 mm under the crown line over the lamps), so the wings stand proud of the lid right back to the lamp plinths; the lid's centre falls
-  to the rear panel in one long slope (`TAIL_C`), the plinths' top corners rise to 830 and the rear wings taper in plan
+  envelopes, both sides compared; scratchpad sw2/): Oliver's priority, the rear quarters. The rear wing crowns
+  are the highest points; from each crown the surface drops inboard into a dip and the rear deck and boot lid stay at
+  that level right across (8 mm camber; Oliver's correction: no bulge in the middle of the boot), falling gently from
+  the cockpit's rear and rounding off at the back along the dips' curve (`DECK_H`, `DECK_Y`: 803 above the road at
+  x -2400, 779 at -2600, 735 at -2800, 60-75 mm under the crowns; the scan's high lid centre is reflection lift); the
+  plinths' top corners rise to 830 and the rear wings taper in plan
   to the plinths (752 at x -2400, 731 at -2600, 697 at -2800: `W_M`, `TAIL_PLAN`), so the lamps sit at the body's
   outer corners as in photos 14, 24. Oliver's car sits about 22 mm lower at the back than the model's standard ride
   height (scan: the rear rims 20 mm higher in the body, its road 24 mm higher), so the rear fittings measured above his
@@ -401,6 +403,22 @@ round them and should check them against the car:
   Treated as reflection noise and not followed: the blobs and holes along both doors and sills, the bonnet's holes,
   the left side's deeper deck valley ahead of x -2600 (the right side has none; the model takes the mean), the red
   points under the rear bumper, the lamp lenses in the wing sections.
+
+- Engine bay structure (QA round 2, Oliver's second priority; his engine-bay scan re-registered on the outer wings
+  and headlamps, sections every 25 mm): the inner wings are now the wheel arch domes the scan shows - from the chassis
+  leg's top they slope out and up to about |y| 520 at 640 above the road, then rise nearly vertical to a bolting flange
+  under the outer wing's top with the wing bolts' heads along it, a swage along the wall, two drain holes; closed down
+  to the leg (`iw_section`, `iw_wall_y`). The bulkhead steps back at a shelf 625 above
+  the road to an upper face 155 mm behind it under the scuttle's front edge (the heater's place), with the heater
+  opening, a swage, the scuttle drains and grommet holes (body.structure.bulkhead-upper). A front pan between the legs'
+  feet under the radiator with the radiator's side brackets bolted through its channels and the duct side panels out
+  to the inner wings (body.structure.front-pan); slam panel stays from the lock platform to the inner wings
+  (body.structure.slam-stays). P10's units, P10b's harness clips and P9's hose brackets hang on brackets standing off
+  the sloping wall (body.structure.inner-wing-brackets); the fittings earlier phases put on the old flat bulkhead
+  above the shelf's height (harness and instrument grommets, choke grommet, vacuum switch, the fuel pipe clip) on
+  plates standing on the shelf (body.structure.bulkhead-brackets); the bonnet stay and release cable follow the new
+  wall. The bigger differences (engine 160 mm further back on the car, electric fan, heater, washer bottle, unit
+  positions) are listed under "Differences seen in Oliver's scans".
 
 ## P3b throttle and choke controls: what was built and assumed
 
@@ -522,6 +540,11 @@ round them and should check them against the car:
   three right-hand rear flange bolts go; the block keeps a wall round the recess).
 
 ## Questions for Oliver
+
+- Scans (5 Nov): which of the differences listed under "Differences seen in Oliver's scans" should be followed - above
+  all the engine's fore-and-aft position (the scan puts it about 160 mm further back) and the electric fan, heater and
+  washer bottle? Does the car sit low at the back (new springs due), and are the rear wheel arches' tops about 650 mm
+  above the road with the car on its wheels?
 
 - Bonnet release: which side of the facia is the pull knob on (modelled under the left end, the cable along the left
   inner wing, from the catch's lever in photo 13)? Is there a door check strap on your doors? (asked at the end of the overnight run)
@@ -694,6 +717,43 @@ round them and should check them against the car:
   lamps, fog/spot lamps, radio, electric fan, electronic ignition, a battery master switch)?
 - Wiring: where are your dip switch and the horn push lead (the model has the foot switch on the toe board left of
   the clutch pedal, and the horn push lead through the column switch)?
+
+## Differences seen in Oliver's scans (5 Nov 2026), for Oliver to decide
+
+The scans (his photogrammetry of the whole car and of the engine bay; registration in `mgb/scan_layout.py`) were used
+for the body's shape and the engine bay's panels. These bigger differences were seen and are not implemented, as he
+asked; each needs his word (or a tape measure) before parts move:
+- Engine and gearbox fore and aft: registered on the outer wings and headlamps, the scan's engine (its rocker cover)
+  sits about 160 mm further back in the body than the model's. This agrees with the open question about the front axle
+  line (the model's sump well over the axle, its crossmember dipping under the sump). Moving the engine, gearbox, propeller
+  shaft and everything hung on them is a large change across phases P1-P6, P9, P10.
+- Cooling: the radiator carries a black plastic shroud with an electric fan (scan, photos 13, 28); the model has the
+  engine-driven three-blade fan (now yellow, the colour of the scan's fan hub/pulley). An electric fan and shroud are
+  not modelled.
+- Heater: the Smiths heater box and its round blower stand on the bulkhead shelf in the middle (scan, photo 13). The
+  shelf and the heater's opening are now in the body (body.structure.bulkhead-upper); the heater is not modelled.
+- Screen washer bottle on the left of the shelf by the bulkhead (scan: about x -400, |y| 450, 650-820 above the road;
+  photo 13): not modelled.
+- Units on the right inner wing: the control box, fuse block, flasher and starter solenoid sit on the inner wing
+  itself, 70-90 mm further outboard than P10 put them (|y| 430); the overdrive relay likewise on the left. They now hang
+  on brackets standing off the sloping wall (body.structure.inner-wing-brackets); moving them out would move P10b's
+  wires. The harness P-clips along the inner wings are on stand-off tabs for the same reason.
+- Bulkhead fittings above the shelf: the main harness grommet, the speedometer, oil gauge and capillary grommets, the
+  choke cable grommet and the overdrive vacuum switch were placed by P10/P3b on a flat bulkhead; on the car they pass
+  through the stepped bulkhead's upper face. They are on plates standing on the shelf (body.structure.bulkhead-brackets)
+  until they are moved.
+- Front inner wings: on the car the wheel arch dome is closed down to the chassis leg, and so is the model's now; but
+  the model's tyre at full lock (its king pin 132 mm inboard of the wheel's centre plane, P9) sweeps into the dome's
+  lower part ahead of and behind the wheel, where the old flat valance had openings. P9's lock geometry (or the stop)
+  should be checked against the car. Likewise P9's front springs, lever-arm dampers and the top of the crossmember
+  stand up to 470 above the road at |y| 300-500, inboard of the real dome (the scan shows the dome covering them:
+  nothing of the suspension is seen from above in his bay), so in the model they show through the closed dome.
+- Radiator: in the scan it sits lower and further forward, right behind the grille with the fan shroud on it; the
+  model's (P2) stands taller (header tank 761 above the road) further back.
+- Ride height: his car sits 20-24 mm lower at the back than the model's standard height (scan: the rear rims 20 mm
+  higher in the body, its road 24 mm higher at the rear and 6 mm at the front): tired or lowered rear springs, or a
+  different tyre size. The model keeps the standard height and the body's rear fittings follow the body.
+- Tyres: 165/80R14 radials (photo 03; the scan's tyre is about 10 mm larger in radius than the model's 5.60-14).
 
 ## From Oliver's photos of his car (2 Nov 2026), mechanical items left for later
 

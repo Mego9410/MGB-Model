@@ -18,10 +18,14 @@ trusted red points to our panels 20 mm (the rest is reflection noise and real sh
 20 mm higher against the body than ours (Oliver's car rides lower at the back: see PLAN.md, Differences seen in
 Oliver's scans).
 
-Engine scan: registered on landmarks, the polished rocker cover's four top corners (the same footprint as ours) in the
-frame of the inner wing top flanges, which run level across the car and fall 0.165 toward the front as ours do;
-landmark residuals 5-6 mm, overall about +/-25 mm (the bay is cluttered and the bonnet is open, so it cannot be
-cross-checked against the body scan's closed bonnet). Used for appearance and layout only.
+Engine scan: first registered on landmarks (the polished rocker cover's four top corners onto our cover), which put the
+bay's body 160 mm too far forward: its headlamps came out at x 780-820 against 622-626 in the body scan, its grille
+at 1000 against 774. Re-registered (engine-bay QA, 5 Nov) by a similarity ICP of the engine scan's outer wings, wing
+tops and headlamp nacelles (|y| 560-820, body red, the bonnet and bay left out) onto the body scan: scale 0.985,
+rotations 1.5 deg roll and 1.6 deg pitch, shift -161 mm in x; median surface distance 22 mm (both scans' wing tops are
+glossy), headlamps then within 5 mm in x of the body scan's, the scuttle 21 mm closer than before. The engine itself
+(the rocker cover) then sits about 160 mm further back in the body than the model's engine (PLAN: Differences seen
+in Oliver's scans). Used for the body's engine-bay panels (sections) and for appearance; parts are not moved to it.
 """
 from __future__ import annotations
 
@@ -33,11 +37,11 @@ BODY_ROT = np.array([[0.918251, 0.018605, -0.395562],
                      [-0.012118, 0.999748, 0.018893]])
 BODY_TRANS = np.array([-1093.24, -64.49, -698.71])
 
-ENGINE_SCALE = 614.49                       # mm per scan unit
-ENGINE_ROT = np.array([[-0.955898, 0.0, 0.293697],
-                       [0.293697, 0.0, 0.955898],
-                       [0.0, 1.0, 0.0]])
-ENGINE_TRANS = np.array([242.0, 14.58, -357.68])
+ENGINE_SCALE = 605.122                      # mm per scan unit
+ENGINE_ROT = np.array([[-0.952188, 0.027029, 0.304312],
+                       [0.303641, -0.026275, 0.952423],
+                       [0.033739, 0.999289, 0.016812]])
+ENGINE_TRANS = np.array([72.64, 27.77, -352.95])
 
 # Checks measured in the body scan, car frame (mm)
 RIM_CENTRES = {"FL": (162.9, 696.2, -282.3), "FR": (165.5, -696.3, -277.5),
