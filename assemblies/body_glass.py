@@ -25,6 +25,6 @@ def add(part, loc=O, n=1, **o):
 add("mirror", explode=ex(BACK, 1, 120))
 add("centre-rod", explode=ex(BACK, 2, 150))
 add("windscreen", groups=["screen"], explode=ex(BACK, 4, 160))
-for p in ("top-rail", "bottom-rail", "pillar-l", "pillar-r"):
+for p in ("top-rail", "bottom-rail", "bottom-seal", "pillar-l", "pillar-r"):
     add(p, groups=["screen"])
 INSTANCES = I

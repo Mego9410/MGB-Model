@@ -49,7 +49,8 @@ def mirror(p, side):
 WAIST_H = S.DOOR_TOP_H - 6.0                             # door top inner edge (below the roll) where the glass slot is
 DOOR_IN = 72.0                               # inner panel this far inboard of the skin
 QL_POST_X = -1104.0                         # quarter-light's rear post (divider) at the waist
-GLASS_TOP_H = 1100.0                          # the glass runs 8 mm up into the hood's edge (P11b QA)
+GLASS_TOP_H = 1160.0                          # the glass runs 8 mm up into the hood's edge (P11b QA); the quarter-light's top
+                                              # rail 16 mm lower, at 1144 (Oliver's scan: 1150, with the taller, more upright screen)
 GLASS_T = 4.0
 
 
@@ -217,7 +218,7 @@ def ql_outline():
     """Quarter-light (ventilator) in side view: the front edge along the screen pillar's rake, the rear post at
     QL_POST_X, the bottom on the door top."""
     xb = QL_FRONT_X                              # at the screen pillar's foot (profile photo 29)
-    rake = math.tan(math.radians(S.SCREEN_RAKE_DEG))
+    rake = S.pillar_rake()
     xt = xb - (QL_TOP_H - WAIST_H) * rake
     return [(xb, WAIST_H + 8.0), (QL_POST_X + 8.0, WAIST_H + 8.0), (QL_POST_X + 8.0, QL_TOP_H + 3.0), (xt, QL_TOP_H)]
 
@@ -229,7 +230,7 @@ QL_FRONT_Y = S.SCREEN_HALF_W + 13.0              # the frame's front edge closes
 def ql_y(x, h):
     """|y| of the quarter-light's plane: on the door glass's line at the rear post, toed in at the front so its front
     edge closes on the windscreen pillar (Oliver's photos 09, 15, 27)."""
-    rake = math.tan(math.radians(S.SCREEN_RAKE_DEG))
+    rake = S.pillar_rake()
     xfront = QL_FRONT_X - (h - WAIST_H - 8.0) * rake
     s = (x - QL_POST_X) / (xfront - QL_POST_X)
     return _glass_ys(h) + (QL_FRONT_Y - _glass_ys(h)) * max(0.0, min(1.0, s))

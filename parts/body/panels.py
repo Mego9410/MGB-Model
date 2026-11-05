@@ -83,8 +83,7 @@ def rear_panel_sd(X, Y, Z):
 
 def arch_sd(X, Y, Z, which):
     """Inside the wheel arch opening (negative), on the outer sides only."""
-    x, z, r = S.FRONT_ARCH if which == "front" else S.REAR_ARCH
-    return AND(np.hypot(X - x, Z - z) - r, 380.0 - np.abs(Y))
+    return AND(S.arch_level(which, X, Z), 380.0 - np.abs(Y))
 
 
 def circle_yz(X, Y, Z, y, z, r, x_min):

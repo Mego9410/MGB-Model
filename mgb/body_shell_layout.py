@@ -108,10 +108,10 @@ H_WHEEL = ag(WZ)
 # Top centre line: bonnet (front edge on the grille surround's top, curving up over the radiator's header tank -
 # Oliver's photo 28 shows the radiator's top well above the slam panel - and on to the scuttle), scuttle to P10's screen
 # base, a nominal deck across the cockpit (cut away), the rear deck and the boot lid falling to the tail.
-TOP_C = [(800.0, 560.0), (745.0, 625.0), (720.0, 641.0), (680.0, 668.0), (600.0, 716.0), (500.0, 756.0),
+TOP_C = [(830.0, 560.0), (785.0, 628.0), (755.0, 655.0), (715.0, 673.0), (660.0, 690.0), (600.0, 716.0), (500.0, 756.0),
          (424.0, 778.0), (300.0, 795.0), (150.0, 808.0), (0.0, 823.0), (-100.0, 840.0), (-200.0, 856.0), (-392.0, 880.0), (-550.0, 896.0),
          (BL.WINDSCREEN_BASE_X, ag(BL.WINDSCREEN_BASE_Z)), (-900.0, 905.0), (-1300.0, 880.0), (-1650.0, 864.0),
-         (-1900.0, 886.0), (-2100.0, 896.0), (-2350.0, 882.0), (-2550.0, 878.0), (-2650.0, 868.0),   # QA: Oliver's scan
+         (-1900.0, 886.0), (-2100.0, 896.0), (-2350.0, 879.0), (-2550.0, 872.0), (-2650.0, 866.0),   # QA: Oliver's scan
          (-2750.0, 836.0), (-2850.0, 765.0), (-2950.0, 690.0), (-3050.0, 600.0)]
 # Wing crown / shoulder line (the side's top edge): the front wing crowns over the headlamps (photo 29 silhouette
 # X 567 h 729 at the hood front, 777 at X 372, 829 at X 48), the waist along the doors (h 849), the rear wings rising
@@ -119,24 +119,28 @@ TOP_C = [(800.0, 560.0), (745.0, 625.0), (720.0, 641.0), (680.0, 668.0), (600.0,
 CROWN_H = [(730.0, 680.0), (672.0, 730.0), (645.0, 739.0), (600.0, 745.0), (540.0, 752.0), (470.0, 760.0),
            (372.0, 776.0), (178.0, 806.0), (48.0, 824.0), (-82.0, 836.0), (-277.0, 846.0), (-500.0, 851.0),
            (-700.0, 852.0), (-1000.0, 860.0), (-1200.0, 863.0), (-1620.0, 866.0), (-1900.0, 878.0), (-2050.0, 884.0),
-           (-2200.0, 876.0), (-2450.0, 856.0),   # waist +11 and rear wing tops +16..24 (QA: Oliver's scan; profile 29 at the rear)
-           (-2600.0, 846.0), (-2700.0, 838.0), (-2780.0, 812.0), (-2860.0, 760.0), (-2950.0, 700.0)]
+           (-2200.0, 876.0), (-2450.0, 857.0),   # waist +11 and rear wing tops +16..24 (QA: Oliver's scan; profile 29 at the rear)
+           (-2600.0, 850.0), (-2700.0, 844.0), (-2780.0, 834.0), (-2860.0, 795.0), (-2950.0, 725.0)]   # the rear wings stand
+# proud of the boot lid right back to the lamp plinths' top corners (Oliver's scan, sections every 50 mm; photos 23, 24)
 CROWN_Y = [(700.0, BL.HEADLAMP_Y), (560.0, BL.HEADLAMP_Y + 2.0), (300.0, 610.0), (0.0, 628.0), (-400.0, 655.0),
            (-700.0, 690.0), (-1620.0, 692.0), (-2200.0, 682.0), (-2780.0, BL.REAR_LAMP_Y), (-2950.0, BL.REAR_LAMP_Y)]
 CROWN_S = mono([(700.0, 88.0), (300.0, 85.0), (-300.0, 95.0), (-700.0, 120.0), (-2200.0, 120.0), (-2780.0, 75.0)])
 # Plan: half-width at the strip line (the widest), the shoulder half-width, the lower edge tuck-under.
 W_M = mono([(831.0, 380.0), (790.0, 520.0), (760.0, 600.0), (720.0, 664.0), (660.0, 702.0), (613.0, 716.0),
-       (500.0, 738.0), (350.0, 754.0), (200.0, HALF_W), (-2300.0, HALF_W), (-2600.0, 746.0), (-2750.0, 737.0),
-       (-2850.0, 731.0), (-2930.0, 726.0), (-2990.0, 717.0), (-3060.0, 690.0)])   # QA: photos 14, 18 (729 at the lamps)
+       (500.0, 738.0), (350.0, 754.0), (200.0, HALF_W), (-2250.0, HALF_W), (-2400.0, 753.0), (-2500.0, 742.0),
+       (-2600.0, 731.0), (-2700.0, 716.0), (-2800.0, 697.0), (-2860.0, 688.0), (-2930.0, 680.0), (-2990.0, 668.0),
+       (-3060.0, 645.0)])   # the rear wings taper in plan to the lamp plinths, the lamps at the body's outer corners (Oliver's
+# scan at the strip height, both sides within 5-10 mm: 752 at x -2400, 730 at -2600, 695 at -2800; photos 14, 24)
 W_TUMBLE = mono([(700.0, 40.0), (500.0, 52.0), (0.0, 62.0), (-700.0, 70.0), (-2200.0, 72.0), (-2600.0, 58.0), (-2800.0, 42.0)])
 W_TUCK = mono([(800.0, 120.0), (600.0, 100.0), (300.0, 70.0), (0.0, 60.0), (-2300.0, 60.0), (-2600.0, 50.0), (-2900.0, 38.0)])
 H_M = ag(BL.SIDE_STRIP_Z)                   # widest point at the chrome strip
 SHOULDER_K = 105.0                          # blend radius where the side rolls into the top
 # Lower edge of the skin (trim line): front valance bottom, sills, rear valance (P11a REAR_PANEL_LOW_Z).
-Z_B = mono([(831.0, 250.0), (480.0, 245.0), (300.0, 246.0), (-260.0, 250.0), (-1000.0, 254.0), (-1700.0, 265.0),
-       (-1950.0, 278.0), (-2300.0, 298.0), (-2550.0, 312.0), (-2650.0, 304.0), (-2750.0, 300.0), (-2850.0, 300.0),
-       (-3060.0, 300.0)])         # the rear valance comes down under the bumper to the sill line (Oliver's photos 18, 24)
-BLOB_BOTTOM = 182.0                         # the implicit body continues under the trim line to here
+Z_B = mono([(831.0, 250.0), (480.0, 245.0), (300.0, 240.0), (-260.0, 228.0), (-1000.0, 228.0), (-1550.0, 233.0),
+       (-1750.0, 248.0), (-1950.0, 274.0), (-2300.0, 300.0), (-2550.0, 318.0), (-2650.0, 322.0), (-2750.0, 320.0), (-2850.0, 320.0),
+       (-3060.0, 320.0)])         # the rear valance comes down under the bumper to the sill line (Oliver's photos 18, 24); the sills' lower edge
+         # 75 mm under the front wheel centre (Oliver's photo 09 scaled on the 165/80R14 tyre; his scan is unreadable there)
+BLOB_BOTTOM = 160.0                         # the implicit body continues under the trim line to here
 # Bonnet swage: a low raised strip down the middle of the bonnet, continuing the grille badge's centre bar.
 RIB_A = mono([(760.0, 6.0), (600.0, 6.0), (100.0, 4.0), (-300.0, 0.0)])
 RIB_W = 34.0
@@ -146,8 +150,9 @@ BONNET_DROP = mono([(745.0, 0.0), (600.0, 14.0), (300.0, 12.0), (0.0, 6.0), (-30
 # ---- nose (front surface x as a function of |y| and height) --------------------------------------------------------
 # Centre: the grille surround's front (photo 29 X 758 corrected), the plate and valance below rolling back under,
 # the bonnet's front edge above rolling back over the grille.
-NOSE_C = [(120.0, 520.0), (200.0, 610.0), (250.0, 678.0), (300.0, 722.0), (340.0, 741.0), (380.0, 750.0),
-          (440.0, 756.0), (600.0, 757.0), (625.0, 748.0), (645.0, 725.0), (670.0, 680.0), (720.0, 560.0), (800.0, 380.0)]
+NOSE_C = mono([(120.0, 520.0), (200.0, 610.0), (250.0, 678.0), (300.0, 722.0), (340.0, 741.0), (380.0, 750.0),
+          (440.0, 756.0), (589.0, 760.0), (610.0, 776.0), (635.0, 776.0), (655.0, 765.0), (680.0, 735.0), (720.0, 640.0),
+          (800.0, 380.0)])   # the nose rolls over the grille in a fuller, blunter lip (Oliver's scan: 25-45 mm further forward at h 600-650)
 NOSE_PLAN_C = mono([(0.0, 0.0), (300.0, 4.0), (445.0, 30.0), (520.0, 78.0)])
 # Wing fronts at the headlamp line (|y| 585) before the lamp recess: the face below the lamp down to the flasher and
 # bumper (Oliver's photos 05, 20), the hood over the lamp (photo 29 hood front X 567-613, h 729-752).
@@ -158,7 +163,7 @@ NOSE_PLAN_W = mono([(470.0, -40.0), (585.0, 0.0), (650.0, 14.0), (700.0, 38.0), 
                      (800.0, 290.0)])
 NOSE_ZONE = (440.0, 540.0)                  # |y| over which the centre profile gives way to the wing profile
 NOSE_K = 150.0                             # blend of the nose into the sides
-NOSE_TOP_K = 120.0                          # and into the top (the bonnet's front roll)
+NOSE_TOP_K = 80.0                          # and into the top (the bonnet's front roll)
 LAMP_Y, LAMP_H = BL.HEADLAMP_Y, ag(BL.HEADLAMP_Z)
 NACELLE_X = BL.HEADLAMP_RIM_X - 14.0        # recess floor round the rim: P10's bowl flange plane
 NACELLE_R = (100.0, 140.0)                  # recess flat to this radius, back to the wing front by the second
@@ -167,16 +172,18 @@ HOOD_LIP = 0.0                              # the wing's hood stands this far ah
 # ---- tail (rear surface x as a function of |y| and height) ---------------------------------------------------------
 TAIL_PANEL_X = U.REAR_PANEL_X               # rear panel face behind the number plate (P11a, moved by P11b)
 TAIL_C = [(150.0, TAIL_PANEL_X + 75.0), (250.0, TAIL_PANEL_X + 16.0), (330.0, TAIL_PANEL_X + 3.0),
-          (420.0, TAIL_PANEL_X), (600.0, TAIL_PANEL_X - 2.0), (640.0, TAIL_PANEL_X + 16.0),
-          (690.0, TAIL_PANEL_X + 72.0), (740.0, TAIL_PANEL_X + 124.0), (800.0, TAIL_PANEL_X + 186.0), (880.0, TAIL_PANEL_X + 305.0)]
+          (420.0, TAIL_PANEL_X), (600.0, TAIL_PANEL_X - 2.0), (640.0, TAIL_PANEL_X + 12.0),
+          (690.0, TAIL_PANEL_X + 55.0), (740.0, TAIL_PANEL_X + 100.0), (790.0, TAIL_PANEL_X + 150.0), (830.0, TAIL_PANEL_X + 212.0),
+          (880.0, TAIL_PANEL_X + 305.0)]   # the boot lid's long, gradual fall to the rear panel (Oliver's scan, centre profile)
 # (the boot lid's rear falls with the lamp plinths' rake: nothing stands behind the lamps above the bumper in the side
 #  view, profile photo 29)
 # Wing ends (photo 29: the lamp plinth raked about 31 deg, top corner X -2774 h 803, foot X -2930 h 570, the wing end
 # under it X -2943 at h 511); the wing ends stand forward of the rear panel above the bumper ("wing kick").
 TAIL_W = [(150.0, TAIL_PANEL_X + 85.0), (300.0, TAIL_PANEL_X + 14.0), (420.0, TAIL_PANEL_X + 8.0),
-          (511.0, -2950.0), (548.0, -2947.0), (580.0, -2928.0), (690.0, -2858.0), (803.0, -2774.0), (880.0, -2700.0)]
-TAIL_PLAN = mono([(0.0, 0.0), (500.0, 2.0), (660.0, 5.0), (710.0, 12.0), (735.0, 26.0), (755.0, 55.0),
-                   (780.0, 130.0)])   # square wing ends in plan, crisp outer edge (Oliver's photos 18, 23)
+          (511.0, -2950.0), (548.0, -2947.0), (580.0, -2940.0), (691.0, -2869.0), (760.0, -2824.0), (830.0, -2779.0),
+          (870.0, -2735.0), (910.0, -2680.0)]   # plinth raked 33 deg through the lamp, its top corner at h 830 (Oliver's scan)
+TAIL_PLAN = mono([(0.0, 0.0), (500.0, 2.0), (650.0, 4.0), (685.0, 9.0), (705.0, 20.0), (725.0, 48.0),
+                   (750.0, 125.0)])   # square wing ends in plan, crisp outer edge (Oliver's photos 18, 23)
 TAIL_K = 28.0
 PLINTH_Y = (BL.REAR_LAMP_Y - 95.0, BL.REAR_LAMP_Y - 60.0)   # wing-end zone (inner and outer edge of the blend)
 
@@ -198,7 +205,15 @@ def z_b(x):
 
 
 BONNET_CAMBER = mono([(745.0, 26.0), (300.0, 30.0), (-392.0, 32.0), (-700.0, 20.0), (-1650.0, 20.0), (-2100.0, 30.0),
-                 (-2900.0, 30.0)])          # the top's fall from the centre to the crown line where no crown stands proud
+                 (-2400.0, 36.0), (-2900.0, 40.0)])          # the top's fall from the centre to the crown line where no crown stands proud
+# Rear deck valleys (Oliver's scan, transverse sections every 50 mm from the cockpit's rear to the tail, robust upper
+# envelope; photos 23, 24): the boot lid is a broad, flat-topped dome falling to a gutter along its edges inboard of each
+# rear wing crown, so the wings stand proud of the lid and the lid sits below the lamp tops; deepest (about 45 mm under
+# the crown line) over the lamps' tops. (The scan's left side reads deeper and its right side shallower ahead of x -2650;
+# the reflections differ side to side, so the depth is taken between them.)
+VALLEY_D = mono([(-2250.0, 0.0), (-2350.0, 14.0), (-2450.0, 24.0), (-2550.0, 33.0), (-2650.0, 41.0), (-2750.0, 46.0),
+                 (-2800.0, 47.0), (-2850.0, 41.0), (-2900.0, 25.0), (-2960.0, 6.0)])
+VALLEY_Y, VALLEY_W = 465.0, 115.0
 CROWN_KOUT = mono([(700.0, 0.0034), (300.0, 0.0032), (-700.0, 0.0030), (-1700.0, 0.0032), (-2200.0, 0.0040), (-2900.0, 0.0046)])
 
 
@@ -221,7 +236,8 @@ def _top(X, Y):
     top = np.where(Y <= cy, inner, outer)
     drop = _interp(BONNET_DROP, X) * np.exp(-((Y - (cy - 120.0)) / 60.0) ** 2)
     rib = _interp(RIB_A, X) / (1.0 + (Y / RIB_W) ** 8)
-    return top - drop + rib
+    valley = _interp(VALLEY_D, X) * np.exp(-((Y - VALLEY_Y) / VALLEY_W) ** 2)
+    return top - drop + rib - valley
 
 
 def _side_w(X, Hh):
@@ -441,7 +457,7 @@ DOOR_REAR_LEAN = 8.0                        # rear shut line leans forward this 
 # Bonnet (Sec 6; Oliver's photos 05, 20, 27): front edge on the grille surround's top, rear edge ahead of the scuttle
 # vent, sides along the valley inboard of the wing crowns.
 BONNET_REAR_X = -392.0
-BONNET_FRONT_X = 752.0                      # at the centre; the edge curves back toward the sides
+BONNET_FRONT_X = 768.0                      # at the centre, on the nose lip over the grille (Oliver's scan); the edge curves back toward the sides
 BONNET_W = [(760.0, 448.0), (600.0, 462.0), (200.0, 474.0), (-392.0, 478.0)]
 BONNET_CORNER_R = (60.0, 22.0)              # front, rear plan corner radii
 # Scuttle / front wing seam (bolted wings) along the top of the scuttle side, and the cockpit opening.
@@ -473,7 +489,40 @@ MOUTH_BACK_X = 735.0                        # grille opening's back edge (the gr
 # Wheel arch openings (profile photo 29): round, the front centred 8 mm behind the hub at hub height, the rear 16 mm
 # behind and 32 mm below its hub; both about 370 mm radius.
 FRONT_ARCH = (FAX - 8.0, WZ, 371.0)         # (x, z centre, radius)
-REAR_ARCH = (RAX - 22.0, WZ - 30.0, 378.0)
+REAR_ARCH = (RAX - 22.0, WZ - 30.0, 378.0)    # the circle the rear opening replaced (inner structure stations use it)
+# The rear opening is a flattened arch, not a circle (Oliver's scan, both sides within 10 mm: 650 above the road over
+# the hub, 634 at 150 either side, 587 at 250, 513 at 300, then straight down): half an ellipse 320 x 180 on a line
+# 470 above the road, its sides vertical below that, centred over the hub.
+REAR_ARCH_E = (RAX + 1.0, z_of(470.0), 320.0, 180.0)   # (x, z of the springing line, half-width, rise)
+
+
+def arch_level(which, X, Z):
+    """Inside the wheel arch opening (negative), in side view (x, car z), roughly in mm near the edge."""
+    if which == "front":
+        x, z, r = FRONT_ARCH
+        return np.hypot(np.asarray(X) - x, np.asarray(Z) - z) - r
+    xc, zc, a, b = REAR_ARCH_E
+    dx, dz = np.abs(np.asarray(X, float) - xc), np.asarray(Z, float) - zc
+    up = (np.sqrt((dx / a) ** 2 + (np.maximum(dz, 0.0) / b) ** 2) - 1.0) * b
+    return np.where(dz >= 0.0, up, (dx / a - 1.0) * b)
+
+
+def arch_outline(which, grow=0.0, z_low=None, n=36):
+    """The opening's edge in side view [(x, car z)], grown outward by grow, from the rear foot over the top to the
+    front foot, down to z_low (default the springing line / circle centre)."""
+    if which == "front":
+        x, z, r = FRONT_ARCH
+        pts = [(x + (r + grow) * math.cos(math.radians(180.0 - 180.0 * k / n)),
+                z + (r + grow) * math.sin(math.radians(180.0 - 180.0 * k / n))) for k in range(n + 1)]
+        lo = z
+    else:
+        xc, zc, a, b = REAR_ARCH_E
+        pts = [(xc + (a + grow) * math.cos(math.radians(180.0 - 180.0 * k / n)),
+                zc + (b + grow) * math.sin(math.radians(180.0 - 180.0 * k / n))) for k in range(n + 1)]
+        lo = zc
+    if z_low is not None and z_low < lo:
+        pts = [(pts[0][0], z_low)] + pts + [(pts[-1][0], z_low)]
+    return pts
 ARCH_LIP = 16.0                             # turned-in lip round each opening
 
 # ---- inner structure stations ---------------------------------------------------------------------------------------
@@ -508,9 +557,10 @@ def mouth_outline(grow=0.0, n=8):
 # (photo 29 at the pillar, Oliver's photo 15 at the centre); pillars 575 mm either side (Oliver's photo 15).
 SCREEN_HALF_W = 575.0                       # pillar centre lines at the feet
 SCREEN_BASE_SWEEP = 57.0                    # base line further back at the sides than at the centre
-SCREEN_TOP_H = 1118.0                       # top rail centre above the road
-SCREEN_RAKE_DEG = 45.0                      # from vertical
-SCREEN_TOP_SWEEP = 100.0
+SCREEN_TOP_H = 1180.0                       # top rail centre above the road (Oliver's scan: rail 1170-1200 at the centre)
+SCREEN_RAKE_DEG = 33.0                      # from vertical (scan: top rail at x -850..-900; profile photo 29 about 33)
+SCREEN_TOP_SWEEP = 60.0                     # the top's corners further back (scan: pillar tops at x -925..-940)
+SCREEN_TOP_DROP = 30.0                      # and lower (scan: 1150 at the pillars)
 
 
 def screen_base(y):
@@ -523,7 +573,13 @@ def screen_top(y):
     t = (abs(y) / SCREEN_HALF_W) ** 2
     xb, hb = screen_base(0.0)
     rise = SCREEN_TOP_H - hb
-    return (xb - rise * math.tan(math.radians(SCREEN_RAKE_DEG)) - SCREEN_TOP_SWEEP * t, SCREEN_TOP_H - 6.0 * t)
+    return (xb - rise * math.tan(math.radians(SCREEN_RAKE_DEG)) - SCREEN_TOP_SWEEP * t, SCREEN_TOP_H - SCREEN_TOP_DROP * t)
+
+
+def pillar_rake():
+    """Tangent of the screen pillar's lean (its glass edge from the foot to the top at the side)."""
+    (xb, hb), (xt, ht) = screen_base(SCREEN_HALF_W), screen_top(SCREEN_HALF_W)
+    return (xb - xt) / (ht - hb)
 
 
 def screen_pt(y, v):

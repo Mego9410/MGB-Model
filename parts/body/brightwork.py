@@ -39,7 +39,9 @@ def _c(parts, spec):
 # 10, 18): the front blade's face stands 48 mm off the valance at the centre, the rear 70 mm off the rear panel; both
 # wrap round the corners and run back along the sides to the wheel arches (photo 29: front ends X 518, rear X -2742).
 FRONT_BAR_H = (356.0, 404.0)
-REAR_BAR_H = (416.0, 481.0)                  # Oliver's photos 14, 18, 25 (QA, scaled on the plate)
+REAR_BAR_H = (438.0, 503.0)                  # Oliver's photos 14, 18, 25 (QA, scaled on the plate: 416-481 above his road)
+# + 22 mm: his car sits about 22 mm lower at the back than the model's standard ride height, so on the body the rear
+# fittings stand 22 mm higher (Oliver's scan, registered on the body: blade 446-493, overrider tops 605-609, plate 531-642)
 BAR_DEPTH = 44.0
 FRONT_GAP, REAR_GAP = 54.0, 34.0
 # the blades bow out at the middle (Oliver's scan: front blade face 830-850 at the centre and 770-780 at |y| 500, rear
@@ -48,7 +50,7 @@ FRONT_GAP, REAR_GAP = 54.0, 34.0
 FRONT_BOW, REAR_BOW = 25.0, 36.0
 FRONT_END_X, REAR_END_X = 528.0, -2745.0
 OVR_FRONT_Y = 330.0                          # front overriders (Oliver's photos 10, 15)
-OVR_H = {"front": (292.0, 519.0), "rear": (395.0, 572.0)}   # tops: photos 15 and 14, 18 (QA)
+OVR_H = {"front": (292.0, 519.0), "rear": (417.0, 600.0)}   # tops: photos 15 and 14, 18 (QA)
 
 
 def _plan_outline(h, front, gap, n=121):
@@ -401,7 +403,7 @@ def strip(which, side):
 # ---- number plates ------------------------------------------------------------------------------------------------
 PLATE_W, PLATE_H = 520.0, 111.0
 FRONT_PLATE_H0 = FRONT_BAR_H[0] - PLATE_H + 4.0      # just under the blade (Oliver's photos 10, 15)
-REAR_PLATE_H0 = 507.0                                # on the rear panel above the blade (photos 14, 18, 24)
+REAR_PLATE_H0 = 529.0                                # on the rear panel above the blade (photos 14, 18, 24)
 
 
 def _front_plate_x():
@@ -448,7 +450,7 @@ def rear_reflector(side):
     def build(spec):
         """Small round red reflector on the wing end below the rear lamp, in a chrome-edged plinth (Oliver's photos
         18, 24)."""
-        y, h = side * BL.REAR_LAMP_Y, 518.0                       # under the lamp (its foot at 548)
+        y, h = side * BL.REAR_LAMP_Y, 540.0                       # under the lamp (its foot at 570)
         x = S.tail_x(BL.REAR_LAMP_Y, h)
         from mgb.chassis_geom import xrev
         r = xrev([(0.0, 0.0), (20.0, 0.0), (20.0, -3.0), (18.0, -7.0), (0.0, -8.0)]).moved(Location((x + 1.0, y, H(h))))

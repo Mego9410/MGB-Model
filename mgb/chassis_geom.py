@@ -104,6 +104,12 @@ def swept_rod(points, r):
     """A round rod swept along a polyline with rounded corners (solid sweep)."""
     from build123d import FilletPolyline
     pts = [Vector(*p) for p in points]
+    keep = [pts[0]]                       # drop interior points in line with their neighbours (a zero fillet breaks the sweep)
+    for a, b in zip(pts[1:-1], pts[2:]):
+        u, v = a - keep[-1], b - a
+        if u.length > 1e-6 and v.length > 1e-6 and u.normalized().cross(v.normalized()).length > 2e-3:
+            keep.append(a)
+    pts = keep + pts[-1:] if len(pts) > 1 else pts
     try:
         path = Wire(FilletPolyline(*pts, radius=r * 2.5).edges()) if len(pts) > 2 else Wire([Edge.make_line(*pts)])
     except Exception:

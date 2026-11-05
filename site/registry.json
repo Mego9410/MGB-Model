@@ -385,7 +385,7 @@
     "body.brightwork.grille-badge"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 381363
+   "bytes": 316915
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -405,7 +405,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 629474
+   "bytes": 596697
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -444,7 +444,7 @@
     "body.door-mechanisms.door-seal-r"
    ],
    "file": "models/body.door-mechanisms.json",
-   "bytes": 795261
+   "bytes": 780977
   },
   "body.doors": {
    "id": "body.doors",
@@ -481,7 +481,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 413405
+   "bytes": 367175
   },
   "body.front": {
    "id": "body.front",
@@ -505,7 +505,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1072988
+   "bytes": 1117302
   },
   "body.glass": {
    "id": "body.glass",
@@ -521,11 +521,12 @@
     "body.glass.windscreen",
     "body.glass.top-rail",
     "body.glass.bottom-rail",
+    "body.glass.bottom-seal",
     "body.glass.pillar-l",
     "body.glass.pillar-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 85353
+   "bytes": 85361
   },
   "body.hood": {
    "id": "body.hood",
@@ -546,7 +547,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 901842
+   "bytes": 1177251
   },
   "body.interior": {
    "id": "body.interior",
@@ -596,7 +597,7 @@
     "body.interior.speaker-grille"
    ],
    "file": "models/body.interior.json",
-   "bytes": 1110355
+   "bytes": 1105035
   },
   "body.rear": {
    "id": "body.rear",
@@ -626,7 +627,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 2768494
+   "bytes": 2765791
   },
   "body.structure": {
    "id": "body.structure",
@@ -687,7 +688,7 @@
     "body.structure.arch-lips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 917227
+   "bytes": 973645
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -793,7 +794,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468578
+   "bytes": 468658
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -835,7 +836,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592545
+   "bytes": 592625
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1290,7 +1291,7 @@
     "clutch.hydraulics.mc-spring"
    ],
    "file": "models/clutch.hydraulics.json",
-   "bytes": 591225
+   "bytes": 591341
   },
   "clutch.pedal": {
    "id": "clutch.pedal",
@@ -1579,7 +1580,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 333571
+   "bytes": 333479
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1614,7 +1615,7 @@
     "electrical.lamps.plate-lamp"
    ],
    "file": "models/electrical.lamps.json",
-   "bytes": 243092
+   "bytes": 243035
   },
   "electrical.loom": {
    "id": "electrical.loom",
@@ -1637,7 +1638,7 @@
     "electrical.loom.bulkhead-grommet"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 94630
+   "bytes": 94614
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1793,7 +1794,7 @@
     "electrical.wiring-indicators.gp-joint-rear"
    ],
    "file": "models/electrical.wiring-indicators.json",
-   "bytes": 594142
+   "bytes": 591990
   },
   "electrical.wiring-instruments": {
    "id": "electrical.wiring-instruments",
@@ -1877,7 +1878,7 @@
     "electrical.wiring-lighting.map-connector"
    ],
    "file": "models/electrical.wiring-lighting.json",
-   "bytes": 1013173
+   "bytes": 1010196
   },
   "electrical.wiring-overdrive": {
    "id": "electrical.wiring-overdrive",
@@ -2232,7 +2233,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170408
+   "bytes": 170484
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2451,7 +2452,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 232525
+   "bytes": 234124
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2473,7 +2474,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139354
+   "bytes": 139258
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2566,7 +2567,7 @@
     "fuel.tank.strap-nut"
    ],
    "file": "models/fuel.tank.json",
-   "bytes": 185141
+   "bytes": 185284
   },
   "fuel.throttle": {
    "id": "fuel.throttle",
@@ -3123,7 +3124,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494198
+   "bytes": 494226
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -9707,7 +9708,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "chrome",
-   "notes": "Rail along the glass's lower edge on the scuttle, its seal (18).",
+   "notes": "Rail along the glass's lower edge on the scuttle.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -9722,6 +9723,47 @@
      "source": "D",
      "sourceName": "Derived",
      "ref": "Rail depth",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
+  "body.glass.bottom-seal": {
+   "id": "body.glass.bottom-seal",
+   "kind": "part",
+   "name": "Screen bottom seal",
+   "parent": "body.glass",
+   "haynes": {
+    "section": 18,
+    "spec_page": 224,
+    "figures": [
+     {
+      "figure": "12.7",
+      "legend": 18
+     }
+    ]
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "rubber",
+   "notes": "Black rubber seal between the bottom rail and the scuttle, a black band below the chrome along the screen's foot (Oliver's photos 09, 15, 27; scan).",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "section",
+     "label": "Section",
+     "value": "18.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's photo 09: the black band under the rail, scaled on the tyre",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -83150,6 +83192,25 @@
    "label": true,
    "fitted": null
   },
+  "body.glass.bottom-seal#1": {
+   "part": "body.glass.bottom-seal",
+   "assembly": "body.glass",
+   "node": "body--glass--bottom-seal__1",
+   "stages": [
+    {
+     "axis": [
+      0,
+      0,
+      1
+     ],
+     "order": 3,
+     "distance_mm": 300,
+     "group": "screen"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
   "body.glass.pillar-l#1": {
    "part": "body.glass.pillar-l",
    "assembly": "body.glass",
@@ -140446,7 +140507,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-05T14:38:46+00:00",
+ "built": "2026-11-05T15:18:10+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,

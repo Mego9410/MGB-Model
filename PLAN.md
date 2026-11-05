@@ -380,6 +380,28 @@ round them and should check them against the car:
   rocker cover, chrome pancake air filters and the yellow fan (engine scan). The door glass's bow now starts tangent at
   the waist (a kink there broke its thickening).
 
+- Scan QA round 1 (5 Nov 2026; transverse sections every 50 mm and plan widths from the registered scan, robust upper
+  envelopes, both sides compared; scratchpad sw2/): Oliver's priority, the rear quarters. The rear deck and boot lid now
+  fall away from a broad, flat-topped dome into a gutter along the lid's edges inboard of each rear wing crown
+  (`VALLEY_D`, about 45 mm under the crown line over the lamps), so the wings stand proud of the lid right back to the lamp plinths; the lid's centre falls
+  to the rear panel in one long slope (`TAIL_C`), the plinths' top corners rise to 830 and the rear wings taper in plan
+  to the plinths (752 at x -2400, 731 at -2600, 697 at -2800: `W_M`, `TAIL_PLAN`), so the lamps sit at the body's
+  outer corners as in photos 14, 24. Oliver's car sits about 22 mm lower at the back than the model's standard ride
+  height (scan: the rear rims 20 mm higher in the body, its road 24 mm higher), so the rear fittings measured above his
+  road in the photo QA are 22 mm higher on the body: rear lamps (centre 695), bumper blade 438-503, overriders to 600,
+  plate 529-640, filler cap, number plate lamps, reflectors, tail pipe; the lamps' amber now covers the top 36 %. The
+  sills' lower edge is 22-26 mm lower under the doors (228 above the road, 75 mm under the front wheel centre in photo
+  09; the scan is reflection noise there). The rear wheel arch opening is a flattened arch (half an ellipse 320 x 180 on a
+  line 470 above the road, vertical below; `REAR_ARCH_E`), as the scan shows on both sides within 10 mm; it was a circle. The nose rolls over the grille in a fuller lip (25-45 mm further forward at
+  h 600-650; `NOSE_C`, `TOP_C`, `NOSE_TOP_K`), the bonnet's front edge on it. The windscreen is taller and more
+  upright (top rail 1180 at the centre, 1150 at the pillars, 33 deg; it was 1118 and 45 deg), the quarter-lights and
+  door glasses 60 mm taller to meet it (scan: quarter-light top 1150). The screen's bottom seal is now its own black
+  rubber part, a bead on the scuttle along the rail's foot. The door glasses hide with the hood in the viewer (hood
+  down, they are wound down out of sight), which removes the clear panel that stood behind the seats.
+  Treated as reflection noise and not followed: the blobs and holes along both doors and sills, the bonnet's holes,
+  the left side's deeper deck valley ahead of x -2600 (the right side has none; the model takes the mean), the red
+  points under the rear bumper, the lamp lenses in the wing sections.
+
 ## P3b throttle and choke controls: what was built and assumed
 
 - Assemblies: `fuel.throttle` (accelerator pedal, pad, welded pivot bracket, distance tube, pivot bolt, washer and nyloc

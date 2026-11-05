@@ -702,7 +702,8 @@ def rear_wheelhouse(side):
         arc = [(ax + r * math.cos(math.radians(a)), az + r * math.sin(math.radians(a))) for a in range(160, 19, -10)]
         wall = yprism([(ax + 470.0, zw), (ax - 470.0, zw)] + arc, y0, y0 + T)
         band = ycyl(r + T, y0, 714.0, ax, az) - ycyl(r, y0 - 1, 715.0, ax, az)
-        band = band & box(ax - 520.0, ax + 520.0, y0, 700.0, H(S.z_b(ax) + 40.0), 2000.0)   # behind the outer skin
+        band = band & (box(ax - 300.0, ax + 520.0, y0, 700.0, H(S.z_b(ax) + 40.0), 2000.0)   # behind the outer skin,
+                       + box(ax - 520.0, ax - 300.0, y0, 664.0, H(S.z_b(ax) + 40.0), 2000.0))   # which narrows aft
         return _l(_side(wall + band, side), spec)
     return build
 
@@ -940,10 +941,11 @@ def arch_liners(spec):
     """Wheel arch returns (D: Oliver's photos 02, 09, 23 show the arches dark inside): a band just inside each wing's
     arch opening, from the skin in toward the wheel house, finished in underseal like the wheel houses behind."""
     out = []
-    for (ax, az, r) in (S.FRONT_ARCH, S.REAR_ARCH):
+    for which, (ax, az, r) in (("front", S.FRONT_ARCH), ("rear", S.REAR_ARCH)):
+        zl = H(S.z_b(ax)) - 40.0
+        ring = yprism(S.arch_outline(which, 4.0, zl), 470.0, 752.0) - yprism(S.arch_outline(which, 2.8, zl - 5.0), 460.0, 760.0)
+        band = ring & box(ax - 500.0, ax + 500.0, 470.0, 752.0, H(S.z_b(ax) + 6.0), az + r + 300.0)
         for s in (1, -1):
-            band = ycyl(r + 4.0, 470.0, 752.0, ax, az) - ycyl(r + 2.8, 460.0, 760.0, ax, az)
-            band = band & box(ax - r - 10.0, ax + r + 10.0, 470.0, 752.0, H(S.z_b(ax) + 6.0), az + r + 10.0)
             out.append(_side(band, s))
     return _c(out, spec)
 
@@ -952,12 +954,10 @@ def arch_lips(spec):
     """Wheel arch lips: the skin's edge rolled under round each arch opening (Oliver's photos 02, 09, 23), a bead just
     inside the opening's edge where the wing turns in to the return."""
     out = []
-    for (ax, az, r) in (S.FRONT_ARCH, S.REAR_ARCH):
+    for which, (ax, az, r) in (("front", S.FRONT_ARCH), ("rear", S.REAR_ARCH)):
         zb = H(S.z_b(ax)) + 8.0
         pts = []
-        for k in range(19):
-            a = math.radians(180.0 - 180.0 * k / 18)
-            x, z = ax + (r + 3.0) * math.cos(a), az + (r + 3.0) * math.sin(a)
+        for x, z in S.arch_outline(which, 3.0, zb, n=18):
             if z < zb:
                 continue
             pts.append((x, S.side_y(x, z - S.z_of(0.0)) - 4.0, z))

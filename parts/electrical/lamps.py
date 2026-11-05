@@ -150,7 +150,7 @@ def side_rim(spec) -> Part:
 
 # ---- rear lamp (stop/tail and flasher) -----------------------------------------------------------
 REAR_LEN, REAR_W = 292.0, 84.0                # Oliver's photos 14, 18: 250 mm tall seen from behind (on the 33 deg plinth) and
-REAR_AMBER = 0.42 * REAR_LEN                  # 97 wide over the rim, a pointed arch at the top; amber over the top 42 %,
+REAR_AMBER = 0.36 * REAR_LEN                  # 97 wide over the rim, a pointed arch at the top; amber over the top 36 %,
 REAR_BAR = 0.69 * REAR_LEN                    # a chrome bar across 69 % down, the stop/tail section below it
 REAR_ARCH = 0.37 * REAR_LEN                   # the top's arch takes the upper 37 %
 
@@ -199,7 +199,7 @@ def rear_lens(colour):
         draws the early lamp the other way up); one moulding held by the screw at the bottom (Sec 36 paras 1, 3)."""
         lens = X.poly_xy(_rear_outline(1.0), 0.05, 9.0)
         lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 4.5)
-        cut = REAR_LEN / 2 - REAR_AMBER                             # amber over the flasher, the top 42 %
+        cut = REAR_LEN / 2 - REAR_AMBER                             # amber over the flasher, the top 36 % (Oliver's photos 23, 24 and scan)
         half = box(cut, 180.0, -80, 80, -6, 9) if colour == "amber" else box(-180.0, cut, -80, 80, -6, 9)
         lens = lens & half
         for k in range(-17, 18):                                    # horizontal prism ribs

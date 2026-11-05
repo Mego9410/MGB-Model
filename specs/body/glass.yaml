@@ -31,9 +31,17 @@ parts:
     name: Screen bottom rail
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 5 }] }
     quantity: 1
-    notes: "Rail along the glass's lower edge on the scuttle, its seal (18)."
+    notes: "Rail along the glass's lower edge on the scuttle."
     specs:
       section: { mm: 18.0, source: { label: D, method: "Rail depth" } }
+  - id: body.glass.bottom-seal
+    name: Screen bottom seal
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 18 }] }
+    quantity: 1
+    finish: rubber
+    notes: "Black rubber seal between the bottom rail and the scuttle, a black band below the chrome along the screen's foot (Oliver's photos 09, 15, 27; scan)."
+    specs:
+      section: { mm: 18.0, display_only: true, source: { label: D, method: "Oliver's photo 09: the black band under the rail, scaled on the tyre" } }
   - id: body.glass.pillar-l
     name: Screen pillar, left
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 3 }] }

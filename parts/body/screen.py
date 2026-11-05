@@ -83,8 +83,18 @@ def bottom_rail(spec):
     """Bottom rail (Fig 12.7 item 5) on the scuttle under the glass, its seal (18) closing it to the scuttle."""
     ys = [-S.SCREEN_HALF_W + 2 * S.SCREEN_HALF_W * k / 16 for k in range(17)]
     rail = _channel(_edge(0.0, ys), lambda p: tuple(-c for c in _up(p[1])), 12.0, 10.0, 12.0)
-    seal = swept_rod(_edge(0.0, ys, -8.0), 7.0)
-    return _c([rail, seal], spec)
+    return _c([rail], spec)
+
+
+def bottom_seal(spec):
+    """Bottom rail's seal (Fig 12.7 item 18): the black rubber strip closing the rail to the scuttle, standing out
+    below the chrome all along the screen's foot (Oliver's photos 09, 15, 27 and scan)."""
+    ys = [-S.SCREEN_HALF_W + 2 * S.SCREEN_HALF_W * k / 16 for k in range(17)]
+    pts = []
+    for (x, y, z) in _edge(0.0, ys):                 # a bead on the scuttle along the rail's front foot
+        xs = x + 13.0
+        pts.append((xs, y, S.z_of(S.top_h(xs, y)) + 3.0))
+    return _c([swept_rod(pts, 9.0)], spec)
 
 
 def pillar(side):
@@ -128,6 +138,7 @@ PARTS = {
     "body.glass.windscreen": {"build": glass},
     "body.glass.top-rail": {"build": top_rail},
     "body.glass.bottom-rail": {"build": bottom_rail},
+    "body.glass.bottom-seal": {"build": bottom_seal},
     "body.glass.pillar-l": {"build": pillar(1)},
     "body.glass.pillar-r": {"build": pillar(-1)},
     "body.glass.centre-rod": {"build": centre_rod},
