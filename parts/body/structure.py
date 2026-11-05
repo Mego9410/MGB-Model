@@ -283,7 +283,7 @@ def bulkhead_upper(spec):
         tube = zcyl(9.0, Z_SHELF - 60.0, Z_SHELF + T, BH2_X + 40.0, yy) - zcyl(7.5, Z_SHELF - 61.0, Z_SHELF + T + 1, BH2_X + 40.0, yy)
         p = p - zcyl(7.5, Z_SHELF - 2, Z_SHELF + 3, BH2_X + 40.0, yy) + tube
     mx, my, mz = BL.WIPER_MOTOR
-    p = p - xprism(G.rounded_rect(my - 80.0, my + 110.0, mz - 80.0, mz + 70.0, 20.0), BH2_X - 5, BH2_X + 5)
+    p = p - xprism(G.rounded_rect(my - 80.0, BH_STEP_Y + 30.0, Z_SHELF + T + 2.0, mz + 80.0, 20.0), BH2_X - 5, BH2_X + 5)
     p = p - xcyl(6.0, BH2_X - 5, BH2_X + 5, 470.0, H(700.0))              # bonnet release cable grommet
     return _l(p, spec)
 
