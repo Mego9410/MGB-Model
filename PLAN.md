@@ -766,6 +766,10 @@ asked; each needs his word (or a tape measure) before parts move:
 
 ## Engine set-back: open conflict (P12, 5 Nov 2026)
 
+**Parked by Oliver (5 Nov): leave the engine where it is for now; must be resolved before the project is finalised.**
+Needs his tape measurements: rocker cover rear edge to the bulkhead (or fan to radiator core), and the propshaft flange
+to flange. The groundwork (car_layout bx/BODY_DX) makes the move a datum change once the numbers are in.
+
 Oliver chose to move the engine, gearbox and everything on them back to match his engine-bay scan. P12 measured how far
 and stopped on a conflict with the drivetrain (sheets cmp-engine-position-1755.png, cmp-propshaft-conflict-1733.png).
 - Position (body side). The scan's polished rocker cover top runs x -325..+100 against our cover's -200..+195 (height
