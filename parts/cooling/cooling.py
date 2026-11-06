@@ -178,9 +178,15 @@ def radiator(spec) -> Part:
             ch = ch - Cylinder(4.2, 30, rotation=(90, 0, 0)).moved(Location((x1 + 8, sgn * (y1 + 9), zz)))
         r = r + ch
     fx, fy, fz = C.FILLER
-    neck = Location((fx, fy, fz)) * Cylinder(22, 22, align=BASE)
-    neck = neck + Location((fx, fy, fz + 20)) * Cylinder(26, 3, align=BASE)
-    overflow = Cylinder(3.5, 50, rotation=(90, 0, 0)).moved(Location((fx, fy + 30, fz + 12)))
+    nt = C.FILLER_NECK_TOP                                    # QA fix round 1: clear of the bonnet (cooling_layout)
+    base = min(fz, nt - 12.0)
+    if nt < fz + 10.0:                                        # the neck stands in a well pressed into the tank top
+        r = r - Location((fx, fy, base)) * Cylinder(29, fz + 1.0 - base, align=BASE)
+        r = r + Location((fx, fy, base - 1.5)) * Cylinder(30.5, 1.5, align=BASE)
+    neck = Location((fx, fy, base)) * Cylinder(22, nt - 3.0 - base, align=BASE)
+    neck = neck + Location((fx, fy, nt - 3.0)) * Cylinder(26, 3, align=BASE)
+    oz = max(nt - 8.0, base + 3.0)
+    overflow = Cylinder(3.5, 50, rotation=(90, 0, 0)).moved(Location((fx, fy + 30, oz)))
     r = r + neck + overflow
     ix, iy, iz = C.TOP_INLET
     r = r + _xdisc(spec.nom("inlet_diameter") / 2, ix - 34, ix + 2, iy, iz) + _xdisc(spec.nom("inlet_diameter") / 2 + 1.5, ix - 30, ix - 27, iy, iz)
@@ -188,15 +194,20 @@ def radiator(spec) -> Part:
     r = r + _xdisc(spec.nom("outlet_diameter") / 2, ox - 34, ox + 2, oy, oz) + _xdisc(spec.nom("outlet_diameter") / 2 + 1.5, ox - 30, ox - 27, oy, oz)
     r = r + Cylinder(9, 16, rotation=(90, 0, 0)).moved(Location(((x0 + x1) / 2, y1 + 8, C.RAD_BOTTOM_TANK[0] + 16)))
     r = r - Cylinder(5.2, 30, rotation=(90, 0, 0)).moved(Location(((x0 + x1) / 2, y1 + 8, C.RAD_BOTTOM_TANK[0] + 16)))
-    r = r - Location((fx, fy, fz + 2)) * Cylinder(17, 30, align=BASE)
+    r = r - Location((fx, fy, base + 2.0)) * Cylinder(17, nt + 5.0 - base, align=BASE)
     return _l(r, spec)
 
 
 def pressure_cap(spec) -> Part:
+    """Pressure cap: a low domed cap with a knurled skirt and two finger ears, its spring and seal body down in the
+    neck (QA fix round 1: 13 mm over the neck so it clears the bonnet, C.FILLER_CAP_H)."""
     d = spec.nom("diameter")
-    c = Sh.revolved([(0, 0), (d / 2 - 2, 0), (d / 2, 3), (d / 2, 12), (d / 2 - 3, 16), (0, 16)])
-    for k in range(2):                                          # finger grips
-        c = c + Location((0, 0, 14)) * Rot(0, 0, 90 * k) * Box(d * 0.9, 5, 6, align=BASE)
+    h = C.FILLER_CAP_H
+    c = Sh.revolved([(0, 0), (d / 2 - 2, 0), (d / 2, 2), (d / 2, 6), (d / 2 - 4, h - 2), (d / 2 - 10, h), (0, h)])
+    for k in range(24):                                         # knurled skirt
+        c = c - Rot(0, 0, 15 * k) * Location((d / 2, 0, 1.0)) * Box(1.6, 1.6, 4.5, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    for s_ in (-1, 1):                                          # finger ears
+        c = c + Location((s_ * (d / 2 + 4), 0, 0)) * Box(12, 14, 4.5, align=(Align.CENTER, Align.CENTER, Align.MIN))
     c = c + Sh.cyl(28, 10, z0=-10)
     return _l(c, spec)
 

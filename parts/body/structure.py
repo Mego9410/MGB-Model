@@ -1183,6 +1183,25 @@ def harness_clips(spec):
     return _c(out, spec)
 
 
+def _outside_skin(bb, step=(20.0, 30.0)):
+    """Boxes covering the space outside the body's side skin (y > side_y less 1.5 mm) over a bounding box, cell by
+    cell. QA fix round 1 (front finding 24): the arch returns ran out to y 752 everywhere, so ahead of the front
+    arch, where the nose draws in, they stood outside the wing and showed as dark slabs under the bumper's ends."""
+    from build123d import Compound
+    cuts = []
+    x = bb.min.X
+    while x < bb.max.X:
+        z = bb.min.Z
+        while z < bb.max.Z:
+            x1, z1 = min(x + step[0], bb.max.X), min(z + step[1], bb.max.Z)
+            ylim = min(S.side_y(xx, zz - S.z_of(0.0)) for xx in (x, x1) for zz in (z, z1)) - 1.5
+            if ylim < bb.max.Y:
+                cuts.append(box(x - 0.01, x1 + 0.01, ylim, bb.max.Y + 5.0, z - 0.01, z1 + 0.01))
+            z = z1
+        x = x + step[0]
+    return Compound(cuts)
+
+
 def arch_liners(spec):
     """Wheel arch returns (D: Oliver's photos 02, 09, 23 show the arches dark inside): a band just inside each wing's
     arch opening, from the skin in toward the wheel house, finished in underseal like the wheel houses behind."""
@@ -1192,6 +1211,7 @@ def arch_liners(spec):
         y0 = 550.0 if which == "front" else 470.0          # the front one outboard of the sloping inner wing
         ring = yprism(S.arch_outline(which, 4.0, zl), y0, 752.0) - yprism(S.arch_outline(which, 2.8, zl - 5.0), y0 - 10.0, 760.0)
         band = ring & box(ax - 500.0, ax + 500.0, y0, 752.0, H(S.z_b(ax) + 6.0), az + r + 300.0)
+        band = band - _outside_skin(band.bounding_box())     # QA fix round 1 (front finding 24)
         for s in (1, -1):
             out.append(_side(band, s))
     return _c(out, spec)

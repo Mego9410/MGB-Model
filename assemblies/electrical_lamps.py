@@ -39,10 +39,12 @@ for s in (-1, 1):
     add("headlamp-rim", hl, explode=ex(FWD, 1, 120))
     add("dust-excluder", hl, explode=ex(FWD, 2, 80))
     add("light-unit", hl, explode=ex(FWD, 3, 60))
+    add("reflector", hl, explode=ex(FWD, 3, 60))
     for a in (0.0, 90.0, -90.0):
         add("adjusting-screw", hl * Rot(0, 0, a), explode=ex(FWD, 4, 30))
     add("headlamp-bowl", hl)
-    sl = Location((BL.SIDELAMP_X, s * BL.SIDELAMP_Y, BL.SIDELAMP_Z)) * FRONT * (Rot(0, 0, 180) if s < 0 else Rot(0, 0, 0))
+    sl = Location((BL.SIDELAMP_X, s * BL.SIDELAMP_Y, BL.SIDELAMP_Z)) * Rot(0, 0, s * BL.SIDELAMP_TURN) * FRONT * \
+        (Rot(0, 0, 180) if s < 0 else Rot(0, 0, 0))
     add("side-rim", sl, explode=ex(FWD, 5, 70))
     add("side-lens-clear", sl, explode=ex(FWD, 5.5, 50))
     add("side-lens-amber", sl, explode=ex(FWD, 5.5, 50))

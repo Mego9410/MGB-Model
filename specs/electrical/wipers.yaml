@@ -72,25 +72,51 @@ parts:
     name: Wheelbox spindle and gear, nut, washer and tube
     haynes: { figures: [{ figure: "10.17", legend: 17 }] }
     quantity: 2
-    finish: machined_steel
-    notes: "Items 17-20: spindle and gear, rubber tube, wheelbox nut and rubber washer on the scuttle (Sec 54 para 2: 'remove the nut, bush and washer from the base of the splines')."
+    finish: chrome
+    notes: >
+      Items 17-20: spindle and gear, rubber tube, wheelbox nut and rubber washer on the scuttle (Sec 54 para 2:
+      'remove the nut, bush and washer from the base of the splines'). QA fix round 1: only a low chrome boss (washer,
+      nut and bush, 8 mm) shows on the scuttle under the arm head (Oliver's keyframes kf195-202); P10 had a 34 mm black
+      post. Spindles at x -545, y +/-290 on the skin (kf076+kf088+kf092 triangulated; mgb/body_layout WIPER_SPINDLE_XY),
+      heights from the skin surface.
     specs:
       spline_diameter: { mm: 9.2, source: { label: D, method: "Fig 10.17 proportion" } }
+      boss_height: { mm: 8.0, source: { label: D, method: "Oliver's keyframes kf199, kf202: the bush under the arm head, about half the head's height" } }
 
   - id: electrical.wipers.arm
     name: Wiper arm
     haynes: { figures: [{ figure: "10.17", legend: 22 }] }
     quantity: 2
     finish: chrome
-    notes: "Early push-on type held on the splines by its clip (Sec 52 para 3), parked along the base of the screen."
+    notes: >
+      Early push-on type held on the splines by its clip (Sec 52 para 3), parked along the base of the screen toward
+      the off side. QA fix round 1 (Oliver's keyframes kf195, kf199-202): all chrome - a chunky head with a cross-head
+      clamp screw on top and a rounded pivot end, the spring channel, then the flat rod rising onto the glass to the
+      blade's centre clip; built for each side in the car frame because the glass sweeps back at the sides.
     specs:
-      length: { mm: 200.0, source: { label: D, method: "Reaches across half the screen from the spindle" } }
+      length: { mm: 212.0, source: { label: D, method: "Oliver's keyframe kf201: the left blade's centre about 65 mm left of the screen's centre rod, 290 mm from its spindle less the rod's lean (blade 254 mm for scale)" } }
 
   - id: electrical.wipers.blade
     name: Wiper blade and rubber
     haynes: { figures: [{ figure: "10.17", legend: 23 }] }
     quantity: 2
     finish: chrome
-    notes: "Items 23 and 24; the arm's end slides into the slotted spring fastening at the blade centre (Sec 52 para 2)."
+    notes: >
+      Items 23 and 24; the arm's end slides into the slotted spring fastening at the blade centre (Sec 52 para 2).
+      QA fix round 1: lies on the glass just above the screen's bottom rail (kf195, kf201), placed on the screen's
+      surface (mgb/body_shell_layout screen_pt) so it follows the screen.
     specs:
       length: { in: 10.0, mm: 254.0, source: { label: D, method: "10 in blade: the screen height less the scuttle margin" } }
+
+  - id: electrical.wipers.washer-jet
+    name: Windscreen washer jet
+    quantity: 2
+    finish: chrome
+    notes: >
+      QA fix round 1 (finding 7): a small chrome dome jet just outboard of each spindle, its nozzle aimed at the
+      screen, on a stem through the scuttle with the washer tube's spigot under it. Oliver's keyframes kf195, kf199,
+      kf202 (form) and kf076+kf088+kf092 (one jet triangulated at x -535, y +355, h 898; the other mirrored).
+      Position mgb/body_layout WASHER_JET_XY, height and axis from the skin. Not in Haynes Fig 10.17 (the washer is an
+      accessory on the early cars).
+    specs:
+      diameter: { mm: 14.0, source: { label: D, method: "Oliver's keyframes kf195, kf202: about 1.5 times the arm head's width" } }

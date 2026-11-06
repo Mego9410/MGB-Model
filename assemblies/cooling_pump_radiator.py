@@ -39,7 +39,7 @@ y, z = C.PUMP_AXIS
 # radiator, cap, drain tap
 add("radiator", O, groups=["radiator"])
 fx, fy, fz = C.FILLER
-add("pressure-cap", Location((fx, fy, fz + 23)), groups=["radiator"], explode=ex(1, 60, [0, 0, 1]))
+add("pressure-cap", Location((fx, fy, C.FILLER_NECK_TOP)), groups=["radiator"], explode=ex(1, 60, [0, 0, 1]))
 add("drain-tap", Location(((C.RAD_CORE[0] + C.RAD_CORE[1]) / 2, C.RAD_Y[1] + 16, C.RAD_BOTTOM_TANK[0] + 16)) * Rot(-90, 0, 0),
     groups=["radiator"], explode=ex(1, 40, [0, 1, 0]))
 # hoses and clips

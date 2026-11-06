@@ -29,6 +29,24 @@ def test_bonnet_clears_the_radiator_and_head():
     assert S.top_h(CO.RAD_CORE[1], 0.0) - 2.0 > S.ag(CO.RAD_TOP_TANK[1]) + 5.0
 
 
+def test_radiator_cap_clears_the_bonnet():
+    # QA fix round 1: the pressure cap's top stays under the bonnet's inner face over it, with clearance
+    from mgb import cooling_layout as CO
+    top = CO.FILLER_NECK_TOP + CO.FILLER_CAP_H
+    assert top <= CO.BONNET_INNER_AT_FILLER - CO.BONNET_CLEARANCE + 0.01
+    assert CO.FILLER_NECK_TOP > CO.RAD_TOP_TANK[0] + 20.0          # the neck's well stays in the top tank
+
+
+def test_scuttle_fittings_sit_on_the_skin():
+    # QA fix round 1: spindle seats and washer jets on the scuttle's outer skin, at Oliver's measured plan positions
+    for (x, y, z), (mx, my) in zip(BL.WIPER_SPINDLES, BL.WIPER_SPINDLE_XY):
+        assert (x, y) == (mx, my) and abs(z - S.z_of(S.top_h(x, y))) < 0.5
+    for x, y, z in BL.WASHER_JETS:
+        assert abs(z - S.z_of(S.top_h(x, y))) < 0.5
+    assert abs(BL.SCUTTLE_VENT_X - CL.bx(-480.0)) < 15.0                  # triangulated -470..-480
+    assert BL.SCUTTLE_VENT_X + BL.SCUTTLE_VENT_DEPTH / 2 < S.BONNET_REAR_X - S.GAP - 4.0   # clear behind the bonnet
+
+
 def test_headlamps_sit_in_the_nacelles():
     # the nacelle face is at P10's bowl flange and the lamp centre is under the wing's crown; the rim stands proud of
     # the wing round its top (QA fix 1: Oliver's scan has the wing about 580 just above the rim, 65 mm behind its face)

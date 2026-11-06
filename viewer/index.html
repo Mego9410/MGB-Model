@@ -276,8 +276,8 @@ const FINISH = {
   graphite:       { color: 0x2e2f31, metalness: 0.35, roughness: 0.55 },
   glass:          { color: 0xdfe8ec, metalness: 0.1, roughness: 0.05, transparent: true, opacity: 0.35 },
   lens_clear:     { color: 0xf1f3f2, metalness: 0.05, roughness: 0.15, transparent: true, opacity: 0.55 },
-  lens_amber:     { color: 0xf09a1a, metalness: 0.05, roughness: 0.2, transparent: true, opacity: 0.8 },
-  lens_red:       { color: 0xb3121a, metalness: 0.05, roughness: 0.2, transparent: true, opacity: 0.85 },
+  lens_amber:     { color: 0xe2560a, metalness: 0.05, roughness: 0.12, transparent: true, opacity: 0.9, emissive: 0x3a1000 },   // deep orange (kf176, kf178, kf210-213)
+  lens_red:       { color: 0x7a0610, metalness: 0.1, roughness: 0.1, transparent: true, opacity: 0.92, emissive: 0x200004 },    // deep ruby (kf176, kf178)
   lens_blue:      { color: 0x2a4fc0, metalness: 0.05, roughness: 0.2, transparent: true, opacity: 0.85 },
   lens_green:     { color: 0x22a046, metalness: 0.05, roughness: 0.2, transparent: true, opacity: 0.85 },
   instrument_face:{ color: 0x141516, metalness: 0.0, roughness: 0.75 },
@@ -297,6 +297,11 @@ const FINISH = {
   piping_red:     { color: 0xa8161a, metalness: 0.0, roughness: 0.5 },
   underseal:      { color: 0x1d1c1b, metalness: 0.0, roughness: 0.9 },
   glass_screen:   { color: 0xc9d9d3, metalness: 0.1, roughness: 0.03, transparent: true, opacity: 0.2 },
+  lens_headlamp:  { color: 0xf4f7f8, metalness: 0.0, roughness: 0.04, transparent: true, opacity: 0.28 },
+  enamel_red:     { color: 0xb5141c, metalness: 0.0, roughness: 0.18 },
+  enamel_black:   { color: 0x111214, metalness: 0.0, roughness: 0.18 },
+  enamel_green:   { color: 0x1f5a2c, metalness: 0.0, roughness: 0.2 },
+  enamel_yellow:  { color: 0xf0a010, metalness: 0.0, roughness: 0.2 },
   default:        { color: 0x8a8e93, metalness: 0.6, roughness: 0.45, envMapIntensity: 0.75 },
 };
 // Lucas cable colours (code letters as printed on the wiring diagram). A wire's finish is wire_<main>[_<tracer>],

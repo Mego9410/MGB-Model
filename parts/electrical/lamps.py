@@ -44,30 +44,56 @@ def headlamp_bowl(spec) -> Part:
 
 
 def light_unit(spec) -> Part:
-    """7 in light unit on its seating rim (Fig 10.8 items 2 and 4): domed lens with its
-    moulded flutes, the reflector behind, the bulb holder or sealed beam plug at the back and
-    the seating rim with the three slotted lugs over the adjusting screws."""
-    lens = X.lens_dome(LENS_R, 9.0, -4.0)
-    for k in range(-6, 7):                                          # vertical flutes (lens prisms)
-        lens = lens - box(-LENS_R, LENS_R, k * 12.0 - 0.6, k * 12.0 + 0.6, 4.2, 6.0)
+    """7 in light unit's glass (Fig 10.8 item 4; QA fix round 1: Oliver's keyframes kf210, kf212, kf028 show a clear
+    Lucas lens with the reflector and bulb plainly visible through it): a domed lens moulded on its face with bands of
+    fine vertical flutes (the beam-spreading prisms), divided by three horizontal steps, the lower bands' flutes
+    finer. The reflector, bulb and seating rim behind are the reflector part."""
+    lens = X.lens_dome(LENS_R, 10.0, -4.0) - X.lens_dome(LENS_R - 2.5, 7.5, -4.5)
+    bands = [(-LENS_R, -38.0, 4.4), (-38.0, 4.0, 5.2), (4.0, 42.0, 6.0), (42.0, LENS_R, 8.0)]   # local x is down
+    cuts = []
+    for x0, x1, pitch in bands:
+        k = -int(LENS_R / pitch)
+        while k * pitch < LENS_R:
+            yk = k * pitch
+            cuts.append(box(x0 + 0.6, x1 - 0.6, yk - 0.45, yk + 0.45, -6.0, 8.0))
+            k += 1
+    for xs in (-38.0, 4.0, 42.0):                                  # steps between the bands
+        cuts.append(box(xs - 0.5, xs + 0.5, -LENS_R, LENS_R, -6.0, 8.0))
+    from build123d import Compound
+    skin = X.lens_dome(LENS_R, 10.0, -4.0) - X.lens_dome(LENS_R, 10.0, -4.9)    # the outer 0.9 mm of the face
+    lens = lens - (Compound(cuts) & skin)
+    return label(lens, spec)
+
+
+def reflector(spec) -> Part:
+    """The light unit's silvered reflector, bulb and seating rim (Fig 10.8 items 2 and 4; QA fix round 1): a deep
+    parabolic bowl, the bulb with its shield cap in the middle (kf210, kf212), the bulb holder or plug at the back,
+    and the seating rim with the three slotted lugs over the adjusting screws."""
     refl = rev([(14.0, -70.0), (40.0, -60.0), (68.0, -38.0), (LENS_R - 1.0, -10.0), (LENS_R - 1.0, -4.0), (LENS_R - 3.0, -4.0),
                 (LENS_R - 3.0, -9.0), (66.0, -36.0), (38.0, -58.0), (14.0, -67.0)])
+    bulb = rev([(0, -66.0), (6.0, -66.0), (6.0, -52.0), (9.5, -44.0), (10.0, -36.0), (8.0, -30.0), (0, -28.0)])
+    shield = rev([(0, -31.0), (8.5, -31.0), (9.5, -27.0), (0, -25.5)])                   # the shield cap over the bulb
     plug = zc(14.0, -84.0, -66.0) + zc(18.0, -72.0, -68.0)
     seat = Sh.tube(2 * (LENS_R + 3.0), 2 * (LENS_R - 3.0), 2.0, -12.0)
     for a in ADJ.values():                                          # slotted lugs on the seating rim
         x, y = polar(ADJ_R, a)
         lug = Rot(0, 0, a) * box(LENS_R - 6.0, LENS_R + 8.0, -8.0, 8.0, -12.0, -10.0)
         seat = seat + lug - (Rot(0, 0, a) * box(ADJ_R - 2.6, ADJ_R + 2.6, -2.4, 7.0, -13.0, -9.0))
-    return label(lens + refl + plug + seat, spec)
+    return label(refl + bulb + shield + plug + seat, spec)
 
 
 def headlamp_rim(spec) -> Part:
     """Outer chrome rim: hooked over the lugs at the top of the lamp and snapped down, with
-    the cut-out at the bottom for a screwdriver (Sec 34 paras 1 and 5)."""
+    the cut-out at the bottom for a screwdriver (Sec 34 paras 1 and 5) and the fixing screw
+    at the bottom into the wing (QA fix round 1, kf210, kf212)."""
     p = rev([(LENS_R - 2.0, 2.0), (LENS_R + 1.0, 6.0), (RIM_OUT - 5.0, 6.5), (RIM_OUT - 1.0, 3.0), (RIM_OUT, -2.0),
              (RIM_OUT, BOWL_FRONT), (RIM_OUT - 1.4, BOWL_FRONT), (RIM_OUT - 1.4, -2.0), (RIM_OUT - 4.0, 3.5),
              (LENS_R + 1.0, 4.0), (LENS_R - 2.0, 0.6)])
     p = p - box(RIM_OUT - 6.0, RIM_OUT + 2.0, -8.0, 8.0, BOWL_FRONT - 1, -6.0)        # cut-out at the bottom (local +x)
+    p = p + box(RIM_OUT - 1.4, RIM_OUT + 0.6, 9.0, 17.0, BOWL_FRONT, -4.0)            # the screw's lug beside it
+    scr = xc(3.0, RIM_OUT + 0.6, RIM_OUT + 2.8, 13.0, BOWL_FRONT / 2 - 2.0) + xc(1.6, RIM_OUT - 6.0, RIM_OUT + 0.6, 13.0, BOWL_FRONT / 2 - 2.0)
+    scr = scr - box(RIM_OUT + 1.8, RIM_OUT + 3.0, 12.6, 13.4, BOWL_FRONT, 0.0)
+    p = p - xc(1.7, RIM_OUT - 2.0, RIM_OUT + 1.0, 13.0, BOWL_FRONT / 2 - 2.0) + scr
     return label(p, spec)
 
 
@@ -103,48 +129,71 @@ def _rect(w, h, r=6.0, n=4):
     return pts
 
 
+SIDE_TURN = 30.0                             # deg: the lamp's face turned outboard with the wing corner (QA finding 20)
+
+
 def side_body(spec) -> Part:
-    """Side and flasher lamp body (photo 35.1; Oliver's photos 10, 20): a rectangular chrome plinth with the two bulb
-    holders side by side, held by two nuts on studs behind the wing (Sec 35 para 2). Local +y is outboard (the
-    assembly turns the right-hand lamp over)."""
+    """Side and flasher lamp body (photo 35.1; QA fix round 1, Oliver's keyframes kf210-213): the chrome body under the
+    bezel with the two bulb holders side by side, held by two nuts on studs behind the wing (Sec 35 para 2), on a
+    deep back that meets the wing: the wing there turns less than the lamp's face, so the back is a wedge. Local +y is
+    outboard (the assembly turns the right-hand lamp over)."""
     w, h = spec.nom("width"), spec.nom("height")
-    p = X.poly_xy(_rect(w, h, 5.0), -10.0, 0.0)
-    p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 2.5)
-    p = p - X.poly_xy(_rect(w - 8.0, h - 8.0, 3.0), -4.0, 1.0)
+    p = X.poly_xy(_rect(w, h, 7.0), -26.0, 0.0)
+    p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 2.0)
+    p = p - X.poly_xy(_rect(w - 8.0, h - 8.0, 4.0), -4.0, 1.0)
     for dx in (-18.0, 18.0):                                        # bulb holders and studs
         p = p + zc(9.0, -9.0, -2.0, 0.0, dx) - zc(6.0, -8.0, -1.0, 0.0, dx)
-        p = p + zc(2.4, -26.0, -10.0, 0.0, dx * 1.25)
+        p = p + zc(2.4, -42.0, -26.0, 0.0, dx * 1.25)
     return label(p, spec)
 
 
-SIDE_SPLIT = 0.36                            # the clear (side lamp) part takes the outboard third (Oliver's photo 10)
+SIDE_SPLIT = 0.33                            # the clear (side lamp) part takes the outboard third (kf210-213, scan)
+
+
+def _side_cut(w):
+    return (w - 12.0) * (0.5 - SIDE_SPLIT)
 
 
 def side_lens(colour):
     def build(spec) -> Part:
-        """Lens: amber over the flasher (inboard two thirds), clear over the side lamp (outboard third), divided by
-        the rim's bar; moulded ribs across."""
+        """Lens (QA fix round 1, kf210-213): clear over the side lamp (outboard third), moulded with fine horizontal
+        ribs; amber over the flasher (inboard two thirds), a faceted hip-roofed prism - a ridge along its middle, the
+        inboard end drawn to a point - divided by the bezel's bar."""
         w, h = spec.nom("width"), spec.nom("height")
-        lens = X.poly_xy(_rect(w - 12.0, h - 8.0, 3.0), 0.05, 7.0)
-        lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 3.0)
-        cut = (w - 12.0) * (0.5 - SIDE_SPLIT)
-        half = box(-h, h, cut + 1.5, w, -6, 8) if colour == "clear" else box(-h, h, -w, cut - 1.5, -6, 8)
-        lens = lens & half
-        for k in range(-6, 7):                                      # moulded ribs
-            lens = lens - box(-h, h, k * 9.0 - 0.5, k * 9.0 + 0.5, 5.5, 8.0)
+        cut = _side_cut(w)
+        if colour == "clear":
+            lens = X.poly_xy(_rect(w - 12.0, h - 8.0, 3.0), 0.05, 6.0) & box(-h, h, cut + 1.5, w, -6, 8)
+            for k in range(-9, 10):                                     # horizontal ribs (local x is down)
+                lens = lens - box(k * 2.6 - 0.45, k * 2.6 + 0.45, -w, w, 4.6, 7.0)
+            return label(lens, spec)
+        from build123d import Solid, Wire, Vector
+        y0, y1 = -(w - 12.0) / 2 + 1.0, cut - 1.5
+        hx = (h - 8.0) / 2 - 0.5
+        base = [Vector(-hx, y0 + 6.0, 0.05), Vector(-hx, y1, 0.05), Vector(hx, y1, 0.05), Vector(hx, y0 + 6.0, 0.05),
+                Vector(0.0, y0 - 2.0, 0.05)]
+        mid = [Vector(-hx + 2.0, y0 + 8.0, 4.0), Vector(-hx + 2.0, y1, 4.0), Vector(hx - 2.0, y1, 4.0), Vector(hx - 2.0, y0 + 8.0, 4.0),
+               Vector(0.0, y0 + 1.0, 4.0)]
+        top = [Vector(-1.0, y0 + 26.0, 11.0), Vector(-1.0, y1, 11.0), Vector(1.0, y1, 11.0), Vector(1.0, y0 + 26.0, 11.0),
+               Vector(0.0, y0 + 24.0, 11.0)]
+        lens = Solid.make_loft([Wire.make_polygon(base, close=True), Wire.make_polygon(mid, close=True),
+                                Wire.make_polygon(top, close=True)], ruled=True)
+        if not lens.is_valid:
+            lens = lens.fix()
         return label(lens, spec)
     return build
 
 
 def side_rim(spec) -> Part:
-    """Chrome surround round the lens with the dividing bar between the amber and clear parts, held by two screws
-    (Sec 35 para 1; Oliver's photo 10)."""
+    """Chrome bezel round the lens (QA fix round 1, kf210-213): a rounded-rectangle frame with a sloping face, the
+    dividing bar between the amber and clear parts, and its two screws at the ends (Sec 35 para 1)."""
     w, h = spec.nom("width"), spec.nom("height")
-    r = X.poly_xy(_rect(w + 1.0, h + 1.0, 6.0), 0.05, 5.0) - X.poly_xy(_rect(w - 11.0, h - 7.0, 3.0), -1.0, 6.0)
-    cut = (w - 12.0) * (0.5 - SIDE_SPLIT)
-    r = r + box(-h / 2 + 3.0, h / 2 - 3.0, cut - 1.5, cut + 1.5, 0.05, 6.0)
-    for dy in (-(w / 2 - 2.5), w / 2 - 2.5):
-        r = r + zc(2.6, 4.0, 6.0, 0.0, dy) - zc(1.4, -2, 7, 0.0, dy)
+    outer = X.poly_xy(_rect(w + 1.0, h + 1.0, 8.0), 0.05, 6.0)
+    outer = tryfillet(outer, outer.edges().group_by(Axis.Z)[-1], 3.0)
+    r = outer - X.poly_xy(_rect(w - 11.0, h - 7.0, 4.0), -1.0, 7.0)
+    cut = _side_cut(w)
+    r = r + box(-h / 2 + 3.0, h / 2 - 3.0, cut - 1.5, cut + 1.5, 0.05, 7.0)
+    for dy in (-(w / 2 - 2.8), w / 2 - 2.8):
+        r = r + zc(2.6, 5.0, 7.0, 0.0, dy) - zc(1.4, -2, 8, 0.0, dy) - box(-0.3, 0.3, dy - 2.2, dy + 2.2, 6.4, 8.0)
     return label(r, spec)
 
 
@@ -275,6 +324,7 @@ def plate_lens(spec) -> Part:
 PARTS = {
     "electrical.lamps.headlamp-bowl": {"build": headlamp_bowl},
     "electrical.lamps.light-unit": {"build": light_unit},
+    "electrical.lamps.reflector": {"build": reflector},
     "electrical.lamps.headlamp-rim": {"build": headlamp_rim},
     "electrical.lamps.dust-excluder": {"build": dust_excluder},
     "electrical.lamps.adjusting-screw": {"build": adjusting_screw},

@@ -44,9 +44,16 @@ add("boot-badge", explode=ex(UP, 1, 100))
 add("boot-badge-field", explode=ex(UP, 1, 90))
 add("boot-script", explode=ex(UP, 1, 100))
 add("scuttle-vent", explode=ex(UP, 1, 80))
-for k, y in enumerate((B.OVR_FRONT_Y, -B.OVR_FRONT_Y)):
-    add("overrider-rubber-front", Location((0, y, 0)), n=k + 1, groups=["front"], explode=ex(FWD, 0.5, 60), label=k == 0)
-for p in ("grille-surround", "grille-slats", "grille-bar", "grille-rail"):
+# QA fix round 1 (front fittings): the front overriders are plain chrome (no rubber strips), there is no separate
+# lower grille rail, and the grille carries its club badges; the scuttle vent has its mesh and intake under it.
+for k, side in enumerate((1, -1)):
+    add("front-bar-bolt", n=k + 1, groups=["front"], explode=ex(FWD, 0.5, 50), label=k == 0, build={"side": side})
+for p in ("grille-surround", "grille-surround-flange", "grille-slats", "grille-bar"):
     add(p, groups=["grille"])
-add("grille-badge", groups=["grille"], explode=ex(FWD, 1, 60))
+for p in ("grille-badge", "grille-badge-field", "grille-badge-octagon"):
+    add(p, groups=["grille"], explode=ex(FWD, 1, 60))
+for p in ("club-badge-hmc", "club-badge-hmc-ring", "club-badge-hmc-centre", "club-badge-hmc-mg", "aa-badge", "aa-badge-enamel"):
+    add(p, groups=["grille"], explode=ex(FWD, 1, 90))
+add("scuttle-vent-mesh", explode=ex(UP, 1.5, 50))
+add("scuttle-vent-intake", explode=ex(UP, 2, 30))
 INSTANCES = I

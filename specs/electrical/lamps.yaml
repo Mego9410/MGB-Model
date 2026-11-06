@@ -29,16 +29,33 @@ parts:
     name: Headlamp light unit, 7 in
     haynes: { figures: [{ figure: "10.8", legend: 4 }] }
     quantity: 2
-    finish: aluminium
-    notes: "Sealed beam or bulb-type light unit (Sec 34 para 1); the lugs on a sealed beam allow one position only (para 10). Lens fluting simplified to vertical prisms."
+    finish: lens_headlamp
+    notes: >
+      Sealed beam or bulb-type light unit (Sec 34 para 1); the lugs on a sealed beam allow one position only (para 10).
+      QA fix round 1 (front finding 18): the clear glass only - a domed Lucas lens moulded with bands of fine vertical
+      flutes divided by three horizontal steps - so the reflector and bulb show through it as on Oliver's car (keyframes
+      kf210, kf212, kf028); before, a flat grey disc. The reflector, bulb and seating rim are electrical.lamps.reflector.
     specs:
       diameter: { in: 7.0, mm: 177.8, source: { label: D, method: "Standard 7 in British headlamp unit (Lucas F700 class)" } }
+      flute_pitch: { mm: 5.2, source: { label: D, method: "Oliver's keyframes kf210, kf212: about 34 flutes across the lens's middle band" } }
+
+  - id: electrical.lamps.reflector
+    name: Headlamp reflector, bulb and seating rim
+    haynes: { figures: [{ figure: "10.8", legend: 4 }] }
+    quantity: 2
+    finish: chrome
+    notes: >
+      QA fix round 1: split from the light unit so the lens can be glass. The silvered parabolic reflector, the bulb with
+      its shield cap (seen through the lens in kf210, kf212), the bulb holder or plug at the back and the seating rim with
+      the three slotted lugs over the beam setting screws (Fig 10.8 items 2 and 4).
+    specs:
+      depth: { mm: 66.0, source: { label: D, method: "Fig 10.8 proportion, inside the 118 mm bowl" } }
 
   - id: electrical.lamps.headlamp-rim
     name: Headlamp chrome rim
     haynes: { section: 34 }
     quantity: 2
-    notes: "Hooked on the lugs at the top and snapped down, with the cut-out at the bottom (Sec 34 paras 1 and 5). Profile derived."
+    notes: "Hooked on the lugs at the top and snapped down, with the cut-out at the bottom (Sec 34 paras 1 and 5). Profile derived. QA fix round 1 (front finding 19, the rim's part): the fixing screw at the bottom beside the cut-out (Oliver's keyframes kf210, kf212)."
     specs:
       outside_diameter: { mm: 197.8, source: { label: D, method: "7 in unit plus the rim's lip" } }
 
@@ -62,39 +79,39 @@ parts:
     name: Side and flasher lamp body
     haynes: { section: 35 }
     quantity: 2
-    notes: "Wing-mounted type: the body held by two nuts behind the wing (Sec 35 para 2); photo 35.1. Rectangular on Oliver's car (photos 10, 20; P11b changed it from P10's lozenge): amber flasher inboard, clear side lamp outboard, chrome surround."
+    notes: "Wing-mounted type: the body held by two nuts behind the wing (Sec 35 para 2); photo 35.1. Rectangular on Oliver's car (photos 10, 20; P11b changed it from P10's lozenge): amber flasher inboard, clear side lamp outboard, chrome surround. QA fix round 1 (front finding 20): centred |y| 555, h 465 on the wing (scan) and turned 30 deg outboard with the wing corner (kf210-213; body_layout SIDELAMP_*); the wing there turns about 19 deg, so the chrome body's back is deep enough to meet it."
     specs:
-      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
-      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
+      width: { mm: 140.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, the lamp y 490-623 (133 seen from ahead) with its face turned 30 deg" } }
+      height: { mm: 56.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, h 436-495 over the bezel" } }
 
   - id: electrical.lamps.side-lens-clear
     name: Side lamp lens (clear)
     haynes: { section: 35 }
     quantity: 2
     finish: lens_clear
-    notes: "Outboard third of the lens, over the side (parking) lamp (Fig 10.26 items 11, 12; Oliver's photo 10)."
+    notes: "Outboard third of the lens, over the side (parking) lamp (Fig 10.26 items 11, 12; Oliver's photo 10). QA fix round 1: moulded with fine horizontal ribs (kf210, kf212)."
     specs:
-      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
-      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
+      width: { mm: 140.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, the lamp y 490-623 (133 seen from ahead) with its face turned 30 deg" } }
+      height: { mm: 56.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, h 436-495 over the bezel" } }
 
   - id: electrical.lamps.side-lens-amber
     name: Front flasher lens (amber)
     haynes: { section: 35 }
     quantity: 2
     finish: lens_amber
-    notes: "Inboard two thirds of the lens, over the front flasher (Fig 10.26 items 28, 29; Oliver's photo 10)."
+    notes: "Inboard two thirds of the lens, over the front flasher (Fig 10.26 items 28, 29; Oliver's photo 10). QA fix round 1: a faceted hip-roofed prism, its ridge along the middle and the inboard end drawn to a point (kf210-213); before, flat with a stepped edge."
     specs:
-      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
-      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
+      width: { mm: 140.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, the lamp y 490-623 (133 seen from ahead) with its face turned 30 deg" } }
+      height: { mm: 56.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, h 436-495 over the bezel" } }
 
   - id: electrical.lamps.side-rim
     name: Side lamp lens rim
     haynes: { section: 35 }
     quantity: 2
-    notes: "Lens and sealing rubber held by the screws (Sec 35 para 1)."
+    notes: "Lens and sealing rubber held by the screws (Sec 35 para 1). QA fix round 1: a chrome bezel with a sloping face, the dividing bar and the two end screws (kf210-213)."
     specs:
-      width: { mm: 136.0, source: { label: D, method: "Oliver's photos 10, 15, 20: rectangular unit, scaled on the headlamp rim" } }
-      height: { mm: 52.0, source: { label: D, method: "Oliver's photos 10, 20" } }
+      width: { mm: 140.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, the lamp y 490-623 (133 seen from ahead) with its face turned 30 deg" } }
+      height: { mm: 56.0, source: { label: D, method: "QA fix round 1: Oliver's scan front elevation, h 436-495 over the bezel" } }
 
   - id: electrical.lamps.rear-body
     name: Rear lamp body and plinth

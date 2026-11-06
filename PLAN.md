@@ -903,3 +903,41 @@ body only for now; these are to do later:
 
 Question for Oliver: the slam panel sticker says positive earth. Is the car still positive earth (and is it really
 an 18ACR alternator, or a dynamo?), or was the sticker left on after a negative-earth conversion?
+
+## QA fix round 1, front fittings (5 Nov 2026)
+
+From the front QA audit against Oliver's car (findings 4-7, 9, 11-18, 19 rim screw, 20, 24). Fittings only; the body
+shell (wings, bonnet outline, scuttle length, screen base, nacelle, ripples, seams) is the body-shell fixer's.
+- Scuttle vent (`body.brightwork.scuttle-vent`, `-mesh`, `-intake`): moved to x -492 on the centre line (triangulated
+  -470..-480, taken back so it clears the bonnet's new rear edge at -453 as in the photos; `body_layout.SCUTTLE_VENT_*`),
+  383 x 56, a trapezoid with rounded ends, eight cells between seven fanned bars (kf198
+  shows the whole vent: the audit's "seven openings" was one short), perforated mesh over a dark backing. Height, tilt
+  and crown come from the skin (`body_layout.skin_point`), not from the bonnet edge or screen base. The skin is not cut
+  under it, so the cells are shallow; a vent opening in `panels.scuttle_sd` would let the mesh sink to its real depth.
+- Wipers: spindles at x -545, y +/-290 on the skin (`body_layout.WIPER_SPINDLE_XY`; `WIPER_SPINDLES`/`WIPER_AXIS`
+  are worked out lazily from the skin because body_shell_layout imports body_layout); a low chrome boss; chrome arm
+  heads with the clamp screw; arms built per side in the car frame up onto the glass, the blades lying on the glass
+  (`screen_pt`) so they follow the screen when it moves forward. The motor casing re-routes in an S-bend to the new
+  left wheelbox. Washer jets added (`electrical.wipers.washer-jet`, x -535, y +/-355).
+- Radiator cap: the neck's top now comes from the bonnet's inner face less 6 mm and the 13 mm cap
+  (`cooling_layout.FILLER_NECK_TOP`); on today's bonnet the neck stands in a 6 mm well in the tank top. If the
+  body-shell fix raises the bonnet over the radiator the neck grows back toward its 23 mm.
+- Grille (`mgb/grille_layout.py`): rolled 22 mm chrome surround with the arched top (566 -> 593) and big corner
+  radii, no ears; 36 slats at 22 mm pitch, 6 mm, rounded; the lower rail removed (it is the grille reflected in the
+  bumper's top face); the MG badge proud of the bonnet lip with black field, red octagon and chrome MG; the HMC Gaydon
+  and AA club badges on straps from the bottom bar. The body's opening (`mouth_outline`) is still bigger than the
+  surround at the top corners and bottom: a black mounting flange fills the gap until the body follows
+  `grille_layout.surround_outline`.
+- Front bumper: tall flat face with the sloping top face; domed corner bolts. Overriders: plain chrome, bulbous,
+  h 336-522, |y| 345; the front rubber strips are gone.
+- Headlamps: the light unit is now clear fluted glass (`lens_headlamp` finish) with the reflector, bulb and seating
+  rim as `electrical.lamps.reflector`; the rim has its bottom fixing screw. Side lamps: |y| 555, h 465, turned 30 deg
+  outboard; chrome bezel, ribbed clear third, hip-roofed amber.
+- Viewer: new finishes `lens_headlamp`, `enamel_red/black/green/yellow`; `lens_amber` deepened to the photos' orange
+  and `lens_red` to a deep translucent ruby with a little emissive depth (kf176, kf178, kf210-213; finishes only, the
+  rear lamp geometry is the rear fixer's).
+- Arch returns (`body.structure.arch-liners`, finding 24): they ran out to y 752 everywhere, so ahead of the front
+  arch, where the nose draws in, they stood outside the wing and showed as the dark slabs under the bumper ends; now
+  cut back inside the side skin cell by cell.
+- Still open: the number plate characters (Oliver's privacy call); the vent cells' depth (needs the scuttle cut);
+  the wing turns about 19 deg at the side lamp against the lamp's 30 deg.

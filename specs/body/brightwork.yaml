@@ -4,8 +4,8 @@
 # the number plate lamps, P10), the wing chrome strip 14.25 in above the hub (mgexp.com ride height survey, 1963
 # roadster). Forms from Fig 12.1 and the intro photographs; sizes derived. The boot lid's badges carry their raised
 # lettering as chrome forms (QA fix round 1: the MG octagon and the M-G-B letter badge, from Oliver's photo 06); the
-# grille's shield is still plain. The number plates are blank: whether to model Oliver's registration characters is
-# his call (PLAN, open question).
+# grille's MG badge and the club badges likewise (QA fix round 1, front fittings: keyframes and registered scan). The
+# number plates are blank: whether to model Oliver's registration characters is his call (PLAN, open question).
 defaults:
   system: body
   assembly: body.brightwork
@@ -27,19 +27,46 @@ parts:
     - figure: '12.1'
       legend: 1
   quantity: 1
-  notes: Chrome blade following the nose 48 mm off it at 350-405 mm above the road, wrapping round the corners back to the
-    wheel arches (ends X 528); holes for the overriders and spring bars. Oliver's photos 05, 10, 15, 20; profile photo 29.
+  notes: 'Chrome blade following the nose, wrapping round the corners back to the wheel arches (ends X 528); holes for the
+    overriders, spring bars and corner bolts. Oliver''s photos 05, 10, 15, 20; profile photo 29. QA fix round 1 (front
+    finding 16; keyframes kf210, kf212, kf218, kf219): the section is a tall, nearly flat face (352-406, bulging 2.5 mm)
+    with rolled edges and a wide top face sloping back 35 mm and rising to 415, its edge turned down behind; before, a
+    48 mm tightly rounded face that read as a tube. Position and plan wrap unchanged (they matched the overlays).'
   specs:
     height:
-      mm: 55.0
+      mm: 54.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: blade 350-405 above the road'
+        method: 'QA fix round 1: Oliver''s keyframes kf212, kf219 and the scan front elevation, the face about 55-60 tall
+          under its sloping top face (profile photo 29 had the blade 350-405)'
+    top_face_depth:
+      mm: 35.0
+      source:
+        label: D
+        method: 'QA front finding 16: the top face sloping back about 35 mm (kf210, kf212, kf218)'
     end_x:
       mm: 528.0
       source:
         label: D
         method: 'profile photo 29 scaled on the wheelbase: blade ends X 518-528 at the front arch'
+- id: body.brightwork.front-bar-bolt
+  name: Front bumper corner bolt
+  haynes:
+    section: 10
+  quantity: 2
+  notes: 'QA fix round 1 (front finding 16): the domed chrome bolt head on the blade''s face near each corner, below the
+    flasher''s inboard end (Oliver''s keyframes kf212, kf222, kf224), square to the face, its shank through the blade.'
+  specs:
+    head_diameter:
+      mm: 15.0
+      source:
+        label: D
+        method: Oliver's keyframes kf212, kf222 against the blade's 54 mm face
+    position_y:
+      mm: 500.0
+      source:
+        label: D
+        method: 'Oliver''s keyframes kf212, kf222: under the flasher''s inboard end (scan: lamp y 490-623)'
 - id: body.brightwork.rear-bar
   name: Rear bumper bar
   haynes:
@@ -64,19 +91,28 @@ parts:
     - figure: '12.1'
       legend: 11
   quantity: 1
-  notes: 'Tall chrome overrider, rubber-faced (the strip is overrider-rubber-front), on the blade 330 mm either side of the
-    centre, its face at car_layout FRONT_X (Oliver''s photos 10, 15; profile photo 29: 282-520 mm above the road).'
+  notes: 'QA fix round 1 (front finding 17): plain chrome with no rubber face strip (Oliver''s keyframes kf213, kf214,
+    kf218-220, kf028): a tall bullet on the blade, its full rounded foot below the blade at h 336, swelling to about 71 mm
+    across at the blade''s top, then narrowing to a round top at h 536, 2.4 blade heights above the blade, the top drawn
+    back toward the blade; centres 345 mm either side (scan +/-350, kf029 within 10 mm of 330). Before: narrow (52),
+    grooved for a black rubber strip, foot at h 292.'
   specs:
     height:
-      mm: 238.0
+      mm: 200.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: overrider 282-520 above the road'
+        method: 'QA fix round 1: Oliver''s scan front elevation, overrider h 336-522; keyframes kf213, kf220 against the
+          grille slats put the top about 15 mm higher (the scan''s chrome is reflection-noisy): 336-536'
+    width:
+      mm: 70.0
+      source:
+        label: D
+        method: 'QA front finding 17: about 70 mm wide at its widest (scan front elevation, kf214, kf220)'
     centre_y:
-      mm: 330.0
+      mm: 345.0
       source:
         label: D
-        method: Oliver's photo 15 scaled on the headlamp rims
+        method: 'QA front finding 17: scan +/-350, kf029 within 10 of the model''s 330'
 - id: body.brightwork.front-overrider-r
   name: Front overrider, right
   haynes:
@@ -85,19 +121,28 @@ parts:
     - figure: '12.1'
       legend: 11
   quantity: 1
-  notes: 'Tall chrome overrider, rubber-faced (the strip is overrider-rubber-front), on the blade 330 mm either side of the
-    centre, its face at car_layout FRONT_X (Oliver''s photos 10, 15; profile photo 29: 282-520 mm above the road).'
+  notes: 'QA fix round 1 (front finding 17): plain chrome with no rubber face strip (Oliver''s keyframes kf213, kf214,
+    kf218-220, kf028): a tall bullet on the blade, its full rounded foot below the blade at h 336, swelling to about 71 mm
+    across at the blade''s top, then narrowing to a round top at h 536, 2.4 blade heights above the blade, the top drawn
+    back toward the blade; centres 345 mm either side (scan +/-350, kf029 within 10 mm of 330). Before: narrow (52),
+    grooved for a black rubber strip, foot at h 292.'
   specs:
     height:
-      mm: 238.0
+      mm: 200.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: overrider 282-520 above the road'
+        method: 'QA fix round 1: Oliver''s scan front elevation, overrider h 336-522; keyframes kf213, kf220 against the
+          grille slats put the top about 15 mm higher (the scan''s chrome is reflection-noisy): 336-536'
+    width:
+      mm: 70.0
+      source:
+        label: D
+        method: 'QA front finding 17: about 70 mm wide at its widest (scan front elevation, kf214, kf220)'
     centre_y:
-      mm: 330.0
+      mm: 345.0
       source:
         label: D
-        method: Oliver's photo 15 scaled on the headlamp rims
+        method: 'QA front finding 17: scan +/-350, kf029 within 10 of the model''s 330'
 - id: body.brightwork.rear-overrider-l
   name: Rear overrider, left
   haynes:
@@ -229,57 +274,217 @@ parts:
     figures:
     - figure: photo 7.1
   quantity: 1
-  notes: 'Chrome frame round the grille opening (Sec 7; Oliver''s photos 10, 15, 27): a wide shallow rounded rectangle, 890
-    mm across, its top arching with the bonnet''s front edge, corners about 50 mm radius; three steady bracket tabs behind
-    the top.'
+  notes: 'QA fix round 1 (front finding 11): a heavy rolled chrome bar (22 mm round section) swept round the opening along
+    the nose''s curve in plan; outer edge 435 mm either side, bottom at h 435, the top arching from h 566 at the ends to
+    593 at the centre under the bonnet''s lip, corner radii about 45 (bottom) and 70 (top); no flanges at the top
+    corners. Three steady bracket tabs behind the top (Sec 7). Shape: Oliver''s scan front elevation and keyframes kf027,
+    kf216, kf220. Before: a flat-topped frame 404-603, half-width 445, with flat ears at the top corners.'
   specs:
     width:
-      mm: 890.0
+      mm: 870.0
       source:
         label: D
-        method: Oliver's photo 27 scaled on the headlamp rims
+        method: 'Oliver''s scan, orthographic front elevation on its mm grid: outer edges y -435/+435'
+    top_h_centre:
+      mm: 593.0
+      source:
+        label: D
+        method: Oliver's scan front elevation (the bar's top at the centre line)
+    top_h_ends:
+      mm: 566.0
+      source:
+        label: D
+        method: Oliver's scan front elevation (QA finding 11 ~565 at the ends)
+    bottom_h:
+      mm: 435.0
+      source:
+        label: D
+        method: Oliver's scan front elevation
+    bar_diameter:
+      mm: 22.0
+      source:
+        label: D
+        method: Oliver's keyframes kf216, kf220 against the 22 mm slat pitch
+- id: body.brightwork.grille-surround-flange
+  name: Grille surround mounting panel
+  haynes:
+    section: 7
+  quantity: 1
+  finish: paint_body_red
+  notes: 'QA fix round 1: a body-coloured ring behind the surround, set back 26 mm, out to the body''s grille opening
+    (body_shell_layout mouth_outline), which is still larger than the car''s surround at the top corners and the bottom;
+    it stands in for the nose panel round the surround (red on the car, kf216, kf220) until the body opening follows
+    grille_layout.surround_outline, when it can go.'
+  specs:
+    thickness:
+      mm: 14.0
+      source:
+        label: D
+        method: Fills the gap behind the bar
 - id: body.brightwork.grille-slats
   name: Grille slats
   haynes:
     section: 7
   quantity: 1
-  notes: 'Fine vertical slats set back in the surround on two rails (Oliver''s photos 10, 15: about 60 slats).'
+  notes: 'QA fix round 1 (front findings 14, 15): 36 chrome slats on a 22 mm pitch either side of the centre bar (38 across
+    with the bar), 6 mm across with half-round fronts and rounded tops, 18 mm deep, standing on the surround''s bottom bar
+    and running up behind its top; no separate lower rail (kf216, kf217: what looks like one under the slats is the grille
+    reflected in the bumper''s sloping top face, as the QA reviewer suspected). Before: 58 slats, 14.5 pitch, 2.2 mm.'
   specs:
     pitch:
-      mm: 14.5
+      mm: 22.0
       source:
         label: D
-        method: Oliver's photo 10, slats counted across the opening
+        method: 'Oliver''s keyframe kf029 intensity profile across the grille (QA finding 14), kf218, kf220; scan front
+          elevation'
+    slat_width:
+      mm: 6.0
+      source:
+        label: D
+        method: QA finding 14, kf218, kf220
 - id: body.brightwork.grille-bar
   name: Grille centre bar
   haynes:
     section: 7
   quantity: 1
-  notes: Vertical centre bar under the badge (Oliver's photo 10).
+  notes: Vertical chrome centre bar from the bottom bar up under the badge, a little ahead of the slats, rounded front
+    (Oliver's photo 10; QA fix round 1, keyframes kf216, kf218).
   specs:
     width:
-      mm: 26.0
+      mm: 12.0
       source:
         label: D
-        method: Bar face
+        method: Oliver's keyframe kf216, about twice a slat
 - id: body.brightwork.grille-badge
-  name: Grille badge (shield)
+  name: Grille badge, MG
   haynes:
     section: 7
   quantity: 1
-  notes: Shield-shaped badge at the top centre of the surround, standing above it (Oliver's photos 10, 15); a plain shield,
-    no lettering or logo.
+  notes: 'QA fix round 1 (front finding 12; Oliver''s keyframes kf216, kf218, kf219 and the scan front elevation): the MG
+    badge on the centre bar, standing proud of the bonnet''s lip (its face 14 mm ahead of it; before, it sat behind the lip
+    and could not be seen): a chrome shield with clipped top corners and a pointed foot, the octagon''s chrome border and
+    the raised chrome M G; the black field and red octagon are separate enamel parts. h 546-623, 70 wide.'
   specs:
     width:
-      mm: 58.0
+      mm: 70.0
       source:
         label: D
-        method: Oliver's photo 10 against the surround
+        method: Oliver's scan front elevation (about 70 across), kf216 proportions
     height:
-      mm: 76.0
+      mm: 77.0
       source:
         label: D
-        method: Oliver's photo 10
+        method: 'Oliver''s scan front elevation: h 546-623'
+- id: body.brightwork.grille-badge-field
+  name: Grille badge field (black enamel)
+  haynes:
+    section: 7
+  quantity: 1
+  finish: enamel_black
+  notes: The badge's black enamel round the octagon (Oliver's keyframes kf216, kf218).
+  specs:
+    thickness:
+      mm: 1.0
+      source:
+        label: D
+        method: Enamel layer
+- id: body.brightwork.grille-badge-octagon
+  name: Grille badge octagon (red enamel)
+  haynes:
+    section: 7
+  quantity: 1
+  finish: enamel_red
+  notes: The red enamel octagon under the chrome MG (Oliver's keyframes kf216, kf218, kf219).
+  specs:
+    across_corners:
+      mm: 44.0
+      source:
+        label: D
+        method: Oliver's keyframe kf216, the octagon filling the badge's upper part
+- id: body.brightwork.club-badge-hmc
+  name: Club badge, Heritage Motor Centre Gaydon
+  haynes:
+    section: 7
+  quantity: 1
+  notes: 'QA fix round 1 (front finding 13): Oliver''s Heritage Motor Centre Gaydon 1924-1999 enamel badge on the off
+    side of the grille (Oliver''s keyframes kf216, kf218, kf214; scan centre y -215, h ~505, drawn at 512): a round badge
+    in a chrome rim, a green enamel ring, a bright inner ring round the yellow octagon with its red border and red MG, the
+    GAYDON tab below, on a chrome strap with a two-screw clamp on the surround''s bottom bar. The lettering round the
+    ring is not modelled. Enamel parts: club-badge-hmc-ring (green), -centre (yellow), -mg (red).'
+  specs:
+    diameter:
+      mm: 70.0
+      source:
+        label: D
+        method: Oliver's scan front elevation (about 65 across); kf218 about 3.3 slat pitches (72)
+- id: body.brightwork.club-badge-hmc-ring
+  name: Club badge ring, HMC (green enamel)
+  haynes:
+    section: 7
+  quantity: 1
+  finish: enamel_green
+  notes: The green enamel ring of the HMC badge (Oliver's keyframes kf216, kf218).
+  specs:
+    diameter:
+      mm: 62.0
+      source:
+        label: D
+        method: Inside the chrome rim
+- id: body.brightwork.club-badge-hmc-centre
+  name: Club badge centre, HMC (yellow enamel)
+  haynes:
+    section: 7
+  quantity: 1
+  finish: enamel_yellow
+  notes: The yellow enamel octagon (and the disc under the bright inner ring) behind the red MG in the HMC badge (Oliver's
+    keyframes kf216, kf218).
+  specs:
+    across_corners:
+      mm: 28.0
+      source:
+        label: D
+        method: Oliver's keyframe kf216
+- id: body.brightwork.club-badge-hmc-mg
+  name: Club badge MG, HMC (red enamel)
+  haynes:
+    section: 7
+  quantity: 1
+  finish: enamel_red
+  notes: The HMC badge's red enamel - the octagon's border and the M G on the yellow (Oliver's keyframe kf218).
+  specs:
+    letter_height:
+      mm: 15.0
+      source:
+        label: D
+        method: Oliver's keyframe kf218, about half the octagon
+- id: body.brightwork.aa-badge
+  name: Club badge, AA
+  haynes:
+    section: 7
+  quantity: 1
+  notes: 'QA fix round 1 (front finding 13): the AA badge on the near side of the grille (Oliver''s keyframes kf218-220;
+    scan centre y +190, h ~505, drawn at 512): the winged chrome badge, the two chrome A''s (wide strokes, kf220 close-up)
+    over the yellow enamel fields, the maker''s tab
+    below, on a chrome strap with a two-screw clamp on the bottom bar. The yellow is aa-badge-enamel.'
+  specs:
+    diameter:
+      mm: 70.0
+      source:
+        label: D
+        method: Oliver's scan front elevation (about 70 across)
+- id: body.brightwork.aa-badge-enamel
+  name: Club badge enamel, AA (yellow)
+  haynes:
+    section: 7
+  quantity: 1
+  finish: enamel_yellow
+  notes: The yellow enamel behind the AA badge's letters (Oliver's keyframes kf219, kf220).
+  specs:
+    diameter:
+      mm: 59.0
+      source:
+        label: D
+        method: Inside the badge's chrome body
 - id: body.brightwork.boot-badge
   name: Boot lid badge (MG octagon)
   haynes:
@@ -505,47 +710,63 @@ parts:
       source:
         label: D
         method: kf178 (the tapered end against the lamp rim)
-- id: body.brightwork.overrider-rubber-front
-  name: Front overrider rubber face
-  haynes:
-    section: 10
-    figures:
-    - figure: '12.1'
-      legend: 11
-  quantity: 2
-  finish: rubber
-  notes: Black rubber strip in the groove down each front overrider's face (Oliver's photo 10).
-  specs:
-    width:
-      mm: 11.0
-      source:
-        label: D
-        method: Oliver's photo 10
-- id: body.brightwork.grille-rail
-  name: Grille lower rail
-  haynes:
-    section: 7
-  quantity: 1
-  notes: Horizontal chrome rail across the grille opening's foot, just above the bumper blade (Oliver's photo 10).
-  specs:
-    height:
-      mm: 18.0
-      source:
-        label: D
-        method: Oliver's photo 10
 - id: body.brightwork.scuttle-vent
   name: Scuttle air intake grille
   haynes:
     section: 1
   quantity: 1
-  notes: 'Chrome slatted intake on the scuttle top at the windscreen base, over the heater''s air inlet (Oliver''s photos
-    15, 27): a frame and 13 slats.'
+  notes: 'QA fix round 1 (front finding 4): the chrome frame on the scuttle top 20-30 mm behind the bonnet''s rear edge,
+    centred on the car at x -492 (kf076+kf088+kf092 triangulated -470..-480, moved back clear of the bonnet; mgb/body_layout
+    SCUTTLE_VENT_*), its height and tilt from the skin (body_layout.skin_point), bent to the scuttle''s crown. Form from
+    Oliver''s close-ups kf195-202: a long trapezoid with rounded ends (the front edge longer, the ends leaning inboard
+    toward the screen: tight corners in front, wide sweeps behind), a 9 mm rim, eight cells between seven bars that fan
+    with the ends (kf198 shows the whole vent: eight openings, the end ones D-shaped; the QA note said seven), the frame
+    6 mm proud. Mesh and intake are separate parts. Before: x -664..-601 on the screen seal, 300 long, 13 square slats.'
   specs:
-    width:
-      mm: 300.0
+    length:
+      mm: 383.0
       source:
         label: D
-        method: Oliver's photo 27 against the bonnet width
+        method: 'kf076+kf088+kf092 triangulation: tips y -191/+192'
+    depth:
+      mm: 56.0
+      source:
+        label: D
+        method: Oliver's scan plan (QA finding 4, about 60 fore-aft); kf199 cells about square
+    centre_x:
+      mm: -492.0
+      source:
+        label: D
+        method: 'kf076+kf088+kf092 triangulation: centre x -470..-480; taken 12 mm further back so the frame stands
+          clear behind the bonnet''s rear edge (x -453) as in kf195-199'
+- id: body.brightwork.scuttle-vent-mesh
+  name: Scuttle vent mesh
+  haynes:
+    section: 1
+  quantity: 1
+  finish: filter_mesh
+  notes: 'QA fix round 1: the perforated mesh in the vent''s cells (Oliver''s keyframes kf198, kf201: round holes on a close
+    hexagonal pitch), 5 mm under the frame''s top. The scuttle skin is not cut for the vent (body shell), so the cells
+    are shallow; the pressed pocket form of the real tray is not modelled.'
+  specs:
+    hole_diameter:
+      mm: 3.0
+      source:
+        label: D
+        method: Oliver's keyframes kf198, kf201, about 9 holes across a cell
+- id: body.brightwork.scuttle-vent-intake
+  name: Scuttle vent intake (dark)
+  haynes:
+    section: 1
+  quantity: 1
+  finish: plastic_black
+  notes: The dark heater intake seen through the vent's mesh, drawn as a thin black backing in the cells (QA fix round 1).
+  specs:
+    thickness:
+      mm: 0.5
+      source:
+        label: D
+        method: Backing
 - id: body.brightwork.hood-peg-l
   name: Hood peg, left
   haynes:

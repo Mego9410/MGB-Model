@@ -68,20 +68,24 @@ def bracket(spec) -> Part:
 
 def rack_casing(which):
     """Items 13, 14 and 15: the outer casings the rack runs in, from the motor to the left
-    wheelbox, between the wheelboxes, and the extension beyond the right one."""
+    wheelbox, between the wheelboxes, and the extension beyond the right one. QA fix round 1: re-routed to the
+    spindles' measured positions (BL.WIPER_SPINDLE_XY): from the motor's outlet the casing runs inboard, climbs in an
+    S-bend and enters the left wheelbox from outboard, square to it."""
     def build(spec) -> Part:
         d = spec.nom("outside_diameter")
         a, b = _wb_centre(0), _wb_centre(1)
         if which == "motor":
             ox, oy, oz = OUTLET
-            pts = [(ox, oy - 12.0, oz), (ox, oy - 60.0, oz), (a[0] - 20.0, a[1] + 120.0, a[2] - 40.0), (a[0], a[1] + 40.0, a[2]),
-                   (a[0], a[1] + 14.0, a[2])]
+            ym = (oy - 12.0 + a[1] + 14.0) / 2
+            pts = [(ox, oy - 12.0, oz), (ox, ym, oz), ((ox + a[0]) / 2, ym, a[2]), (a[0], a[1] + 14.0, a[2])]
+            c = X.cable(pts, d, 28.0, hollow=1.0)
         elif which == "between":
             pts = [(a[0], a[1] - 14.0, a[2]), (a[0], a[1] - 40.0, a[2]), (a[0], a[1] - 90.0, a[2] - 6.0), (b[0], b[1] + 90.0, b[2] - 6.0),
                    (b[0], b[1] + 40.0, b[2]), (b[0], b[1] + 14.0, b[2])]
+            c = X.cable(pts, d, 60.0, hollow=1.0)
         else:
             pts = [(b[0], b[1] - 14.0, b[2]), (b[0], b[1] - 40.0, b[2]), (b[0] + 10.0, b[1] - 170.0, b[2] - 20.0)]
-        c = X.cable(pts, d, 60.0, hollow=1.0)
+            c = X.cable(pts, d, 60.0, hollow=1.0)
         return label(c, spec)
     return build
 
@@ -106,36 +110,87 @@ def _wb_loc(k):
     return Plane(origin=c, x_dir=(AX[2], 0, -AX[0]), z_dir=AX).location
 
 
+# QA fix round 1 (Oliver's keyframes kf195-202, kf076): the spindle shows only as a low boss on the scuttle - the rubber
+# washer, a chrome bush and nut - with the chrome arm head pushed down over its splines; P10 had a 34 mm post.
+SEAT = WB_DROP                                      # the skin, along the spindle axis from the wheelbox centre
+HEAD = (SEAT + 8.0, SEAT + 21.0)                    # arm head's underside and top (kf202: a low chunky head)
+
+
 def spindle(spec) -> Part:
     """Item 17: spindle and gear; the gear meshing the rack in the wheelbox, the splined top
     for the arm, with the rubber tube (18), the rubber washer (20) and the nut (19) on the
-    scuttle."""
-    s = zc(11.0, -4.0, 4.0) + zc(4.0, 0.0, WB_DROP + 30.0)
+    scuttle, then the chrome bush; the splines stop inside the arm head."""
+    s = zc(11.0, -4.0, 4.0) + zc(4.0, 0.0, SEAT + 19.0)
     for k in range(20):
         s = s + (Rot(0, 0, 18.0 * k) * box(10.5, 13.0, -1.0, 1.0, -4.0, 4.0))
-    s = s + zc(4.6, WB_DROP + 18.0, WB_DROP + 28.0)                   # splines
-    s = s + zc(9.5, WB_DROP - 2.0, WB_DROP + 0.5)                     # rubber washer seat
-    s = s + Location((0, 0, WB_DROP + 0.5)) * extrude(RegularPolygon(9.5, 6), 6.0)   # wheelbox nut
-    s = s + zc(7.5, WB_DROP + 6.5, WB_DROP + 16.0)                    # bush
+    s = s + zc(4.6, SEAT + 9.0, SEAT + 18.0)                       # splines (inside the arm head)
+    s = s + zc(10.0, SEAT - 1.0, SEAT + 1.0)                       # rubber washer on the scuttle
+    s = s + Location((0, 0, SEAT + 1.0)) * extrude(RegularPolygon(9.0, 6), 3.5)   # wheelbox nut
+    s = s + rev([(0, SEAT + 4.5), (8.0, SEAT + 4.5), (8.0, SEAT + 6.5), (6.5, SEAT + 8.0), (0, SEAT + 8.0)])   # bush
     return label(_wb_loc(0) * s, spec)
 
 
-def arm(spec) -> Part:
-    """Item 22: arm, a spring-loaded pressed steel arm on the splined spindle (pull-off early
-    type, Sec 52 para 3), lying along the base of the screen in the parked position."""
-    L = spec.nom("length")
-    head = zc(9.0, 0.0, 16.0) + Location((0, 0, 8.0)) * Box(22.0, 18.0, 14.0) - zc(4.6, -1, 10.0)
-    head = tryfillet(head, head.edges().filter_by(Axis.Z), 3.0)
-    channel = box(-6.0, 6.0, 0.0, 70.0, 10.0, 16.0) - box(-4.6, 4.6, 6.0, 72.0, 9.0, 14.6)
-    rod = X.cable([(0, 68.0, 13.0), (0, 120.0, 11.0), (0, L, 8.0)], 5.0, 20.0)
-    end = X.cable([(0, L - 1.0, 8.0), (0, L + 6.0, 6.0), (0, L + 6.0, 1.0)], 4.0, 3.0)
-    a = head + channel + rod + end
-    return label(Location((0, 0, WB_DROP + 28.0)) * a, spec)
+ARM_REACH = 212.0                                   # spindle to the blade's centre across the car (kf201: the left
+                                                    # blade's centre ~65 mm left of the screen's centre rod)
+BLADE_UP = 0.12                                     # blade rubber's line up the glass (kf195, kf201: just above the rail)
+
+
+def blade_frame(k):
+    """(origin on the glass at the blade's centre, unit y along the blade, unit outward glass normal) for spindle k;
+    the blade follows the glass (mgb.body_shell_layout.screen_pt) wherever the screen sits."""
+    from mgb import body_shell_layout as SL
+    import numpy as np
+    y = SP[k][1] + BL.WIPER_PARK_SIDE * ARM_REACH
+    p = np.array(SL.screen_pt(y, BLADE_UP))
+    dy = np.array(SL.screen_pt(y + 5.0, BLADE_UP)) - np.array(SL.screen_pt(y - 5.0, BLADE_UP))
+    dv = np.array(SL.screen_pt(y, BLADE_UP + 0.02)) - np.array(SL.screen_pt(y, BLADE_UP - 0.02))
+    n = np.cross(dy, dv)
+    n = n / np.linalg.norm(n) * (1.0 if n[0] > 0 else -1.0)
+    ty = dy / np.linalg.norm(dy)
+    return p, ty, n
+
+
+def blade_loc(k):
+    """Location of blade k: rubber's edge on the glass, frame square to it."""
+    import numpy as np
+    p, ty, n = blade_frame(k)
+    return Plane(origin=tuple(p + n * 8.0), x_dir=tuple(np.cross(ty, n)), z_dir=tuple(n)).location
+
+
+def arm(spec, side=1) -> Part:
+    """Item 22: arm, the early push-on type (Sec 52 para 3) in chrome (kf195-202): a chunky head over the spindle's
+    splines with its cross-head clamp screw on top and the rounded pivot end, the spring channel running from the
+    head, then the flat stainless rod up onto the glass to the blade's centre clip. Built for the left (side 1) or
+    right (side -1) spindle in the car frame, parked toward the off side."""
+    import numpy as np
+    k = 0 if side > 0 else 1
+    wb = _wb_loc(0) if k == 0 else Location((0, SP[1][1] - SP[0][1], 0)) * _wb_loc(0)
+    park = BL.WIPER_PARK_SIDE
+    head = box(-9.0, 9.0, -10.0, 22.0, HEAD[0], HEAD[1])
+    head = tryfillet(head, head.edges().filter_by(Axis.Z), 6.0)
+    head = tryfillet(head, head.edges().group_by(Axis.Z)[-1], 2.5)
+    head = head - zc(1.6, HEAD[1] - 1.0, HEAD[1] + 1.0) - box(-0.5, 0.5, -3.0, 3.0, HEAD[1] - 0.8, HEAD[1] + 1) \
+        - box(-3.0, 3.0, -0.5, 0.5, HEAD[1] - 0.8, HEAD[1] + 1)                 # cross-head clamp screw
+    head = head + Location((0, -10.0, (HEAD[0] + HEAD[1]) / 2)) * Rot(90, 0, 0) * zc(5.5, -1.0, 2.5)   # pivot end
+    if park < 0:
+        head = Rot(0, 0, 180) * head
+    head = wb * head
+    p, ty, n = blade_frame(k)
+    clip = p + n * 22.0                                        # over the blade's centre clip
+    rp = (wb * Location((0, park * 20.0, (HEAD[0] + HEAD[1]) / 2))).position
+    root = np.array((rp.X, rp.Y, rp.Z))
+    d = clip - root
+    L = float(np.linalg.norm(d))
+    u = d / L
+    mid = root + u * min(70.0, 0.35 * L)
+    chan = X.cable([tuple(root), tuple(mid)], 8.0, 10.0)
+    rod = X.cable([tuple(mid - u * 4.0), tuple(clip - u * 6.0), tuple(clip - n * 6.0)], 4.6, 6.0)
+    return label(head + chan + rod, spec)
 
 
 def blade(spec) -> Part:
     """Item 23 and rubber 24: the blade's frame of bridges and claws holding the rubber, with
-    the centre clip the arm's end engages (Sec 52 para 2). Lies along the arm."""
+    the centre clip the arm's end engages (Sec 52 para 2). Lies on the glass along the screen."""
     L = spec.nom("length")
     rub = box(-1.5, 1.5, -L / 2, L / 2, -8.0, 0.0) + box(-3.0, 3.0, -L / 2, L / 2, -1.0, 1.5)
     main = box(-5.0, 5.0, -L / 4, L / 4, 7.0, 10.0) + box(-5.0, -3.8, -L / 4, L / 4, 2.0, 10.0) + box(3.8, 5.0, -L / 4, L / 4, 2.0, 10.0)
@@ -151,6 +206,24 @@ def blade(spec) -> Part:
     return label(rub + main + sub + clip, spec)
 
 
+def washer_jet(spec) -> Part:
+    """Windscreen washer jet (QA fix round 1; kf195, kf199, kf202, triangulated at x -535, y +355): a small chrome
+    dome with its nozzle turned toward the screen, on a threaded stem through the scuttle with the tube's spigot under
+    it. Built about its own axis; jet_loc places it square to the skin at BL.WASHER_JETS."""
+    d = spec.nom("diameter")
+    j = rev([(0, -0.5), (d / 2, -0.5), (d / 2, 1.5), (d / 2 - 1.5, 4.5), (d / 4, 7.0), (0, 7.5)])
+    j = j + Location((-1.5, 0, 5.0)) * Rot(0, -60, 0) * zc(2.0, 0.0, 4.5)     # nozzle toward the screen (-x)
+    j = j - Location((-1.5, 0, 5.0)) * Rot(0, -60, 0) * zc(0.6, 1.0, 5.0)
+    j = j + zc(3.0, -16.0, -0.5) + zc(1.8, -30.0, -16.0)                      # stem and tube spigot
+    return label(j, spec)
+
+
+def jet_loc(k):
+    x, y, z = BL.WASHER_JETS[k]
+    _, nrm = BL.skin_point(x, y)
+    return Plane(origin=(x, y, z), x_dir=(nrm[2], 0.0, -nrm[0]), z_dir=nrm).location
+
+
 PARTS = {
     "electrical.wipers.motor": {"build": motor},
     "electrical.wipers.bracket": {"build": bracket},
@@ -161,4 +234,5 @@ PARTS = {
     "electrical.wipers.spindle": {"build": spindle},
     "electrical.wipers.arm": {"build": arm},
     "electrical.wipers.blade": {"build": blade, "probes": {"length": lambda p: p.bounding_box().size.Y}},
+    "electrical.wipers.washer-jet": {"build": washer_jet},
 }

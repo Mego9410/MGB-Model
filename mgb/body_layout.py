@@ -55,9 +55,15 @@ HEADLAMP_BOWL_DEPTH = 118.0                            # the nacelle must take t
 # Side and flasher lamps (Oliver's photos 10, 15, 20): rectangular units with chrome surrounds below each headlamp,
 # just above the bumper beside the grille surround; centres |y| 569, 461 mm above the road, the face on the wing front
 # (P10 had a lozenge lamp at FRONT_X - 70, 545 high).
-SIDELAMP_X = FRONT_X - 136.0
-SIDELAMP_Y = 569.0
-SIDELAMP_Z = above_ground(461.0)                       # Oliver's photos 15, 20 (QA): 28 mm above the bumper blade
+# QA fix round 1 (front finding 20): Oliver's scan in front elevation puts the lamp at y 490-623, h 436-495 (centre
+# |y| 555, h 465), its face turned about 30 deg outboard with the wing corner (keyframes kf210-213). The wing there
+# turns only about 19 deg (mgb.body_shell_layout nose_x(555, 465) = 693.7), so the lamp's base stands 14 mm off the skin
+# along its axis, its outboard end on the wing and its inboard end on the deep chrome body (kf212 shows it standing
+# proud inboard). Before: |y| 569, h 461, facing ahead.
+SIDELAMP_X = FRONT_X - 125.0
+SIDELAMP_Y = 560.0
+SIDELAMP_Z = above_ground(465.0)
+SIDELAMP_TURN = 30.0                                   # deg about z, the face turned outboard
 # Horns: two on the front cross panel behind the grille, either side of the radiator (D).
 HORN_POS = [(CL.bx(600.0), s * 300.0, -205.0) for s in (1, -1)]   # (x, y, z) of the horn bracket bolt on the panel face
 HORN_PANEL_X = CL.bx(590.0)                                  # rear face of the panel the brackets bolt to
@@ -125,10 +131,51 @@ HEATER_KNOB_Y, HEATER_KNOB_Z = 196.0, (IP_Z + 26.0, IP_Z - 44.0)
 # Wipers: two wheelboxes under the scuttle, spindles through it just ahead of the screen base,
 # axis square to the scuttle top; the DR3A motor under the passenger (left) side of the facia
 # (Haynes Ch 10 Sec 54 para 1).
-WIPER_SPINDLES = [(WINDSCREEN_BASE_X + 22.0, y, WINDSCREEN_BASE_Z - 4.0) for y in (240.0, -240.0)]   # left, right
-WIPER_AXIS = (math.sin(math.radians(SCUTTLE_TILT_DEG)), 0.0, math.cos(math.radians(SCUTTLE_TILT_DEG)))
+# QA fix round 1 (front fittings): the scuttle fittings' plan positions measured on Oliver's car (keyframes kf076,
+# kf088, kf092 triangulated, 0-19 mm residuals, agreeing with his registered scan's plan to ~10 mm). They stand on the
+# scuttle skin, so their heights come from the outer surface (mgb.body_shell_layout.top_h, resolved lazily below because
+# that module imports this one) and they follow it when the scuttle is reshaped; they do not hang off the bonnet's rear
+# edge or the screen base. P10 had the spindles 22 mm ahead of the screen base at |y| 240 (138 mm too far back, 50 mm
+# too close together); the car's triangulated spindle tops are at h 913, the vent at h 908.
+WIPER_SPINDLE_XY = [(CL.bx(-545.0), y) for y in (290.0, -290.0)]   # left, right: spindle centres on the scuttle
+WASHER_JET_XY = [(CL.bx(-535.0), y) for y in (355.0, -355.0)]      # chrome jets just outboard of the spindles (one
+                                                       # triangulated at y +355; the other mirrored, kf195, kf199, kf202)
+# Vent: tips y -191/+192 (383 long), triangulated centre x -470..-480 and about 60 fore-aft from the scan plan; but the
+# photos (kf195-199) show it standing clear behind the bonnet's rear edge (x -453 from the same triangulation, the
+# corners -433/-474) by about a rim's width or two, so the centre is taken 12 mm further back and the depth 56 (the
+# cells about square, kf199): front edge x -464, 11 mm behind the bonnet edge.
+SCUTTLE_VENT_X = CL.bx(-492.0)
+SCUTTLE_VENT_LEN, SCUTTLE_VENT_DEPTH = 383.0, 56.0
 WIPER_MOTOR = (CL.bx(-560.0), 470.0, 150.0)                   # motor bracket bolts to the scuttle side, left
 WIPER_PARK_SIDE = -1                                   # arms park toward the right (-y), along the screen base
+
+
+def skin_point(x, y):
+    """(z, unit outward normal) of the outer skin's top at plan point (x, y) (mgb.body_shell_layout)."""
+    from mgb import body_shell_layout as S
+    h = S.top_h(x, y)
+    dhx = (S.top_h(x + 10.0, y) - S.top_h(x - 10.0, y)) / 20.0
+    dhy = (S.top_h(x, abs(y) + 10.0) - S.top_h(x, abs(y) - 10.0)) / 20.0 * (1.0 if y >= 0 else -1.0)
+    n = (-float(dhx), -float(dhy), 1.0)
+    L = math.sqrt(sum(c * c for c in n))
+    return float(S.z_of(h)), tuple(c / L for c in n)
+
+
+_LAZY = {}
+
+
+def __getattr__(name):
+    """WIPER_SPINDLES, WIPER_AXIS and WASHER_JETS: positions on the skin, worked out on first use."""
+    if name not in ("WIPER_SPINDLES", "WIPER_AXIS", "WASHER_JETS"):
+        raise AttributeError(name)
+    if not _LAZY:
+        sp = [(x, y, skin_point(x, y)[0]) for x, y in WIPER_SPINDLE_XY]
+        nx, _, nz = skin_point(*WIPER_SPINDLE_XY[0])[1]
+        L = math.hypot(nx, nz)
+        _LAZY["WIPER_SPINDLES"] = sp                   # left, right: (x, y, z of the spindle's seat on the skin)
+        _LAZY["WIPER_AXIS"] = (nx / L, 0.0, nz / L)    # square to the scuttle in side view (both sides alike)
+        _LAZY["WASHER_JETS"] = [(x, y, skin_point(x, y)[0]) for x, y in WASHER_JET_XY]
+    return _LAZY[name]
 
 # ---- wiring harness fittings (P10b, D) ------------------------------------------------------------------
 # Headlamp dip switch (Fig 10.26 item 7): on the toe board, mgb.wiring_layout DIP_SWITCH (from mgb.underbody_layout).

@@ -120,9 +120,14 @@ parts:
     haynes: { section: 4 }
     quantity: 1
     finish: chrome
-    notes: Rated at 7 lbf/in2 on early models (Haynes p55).
+    notes: >
+      Rated at 7 lbf/in2 on early models (Haynes p55). QA fix round 1 (front finding 9): the cap stood 23 mm through the
+      bonnet. Now a low domed cap with a knurled skirt and two finger ears, 13 mm over the neck, on a neck whose height
+      comes from the bonnet's inner face over it less 6 mm clearance (mgb/cooling_layout FILLER_NECK_TOP); on the present
+      bonnet the neck stands in a shallow well in the tank top.
     specs:
       diameter: { mm: 52.0, source: { label: D, method: "Not published" } }
+      height: { mm: 13.0, source: { label: D, method: "Low domed pressure cap; set by the bonnet clearance (QA fix round 1)" } }
       rating: { count: 7, source: { label: H, page: 55, note: "7 lbf/in2 (0.492 kgf/cm2), early models" }, display_only: true }
 
   - id: cooling.drain-tap

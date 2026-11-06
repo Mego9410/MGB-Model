@@ -345,9 +345,10 @@ def terminals():
         for name, (dx, dy) in (("main", (-3.0, -3.0)), ("dip", (-3.0, 3.0)), ("earth", (3.0, 0.0))):
             t(f"hl.{side}.{name}", "electrical.lamps.headlamp-bowl", name, _xf(hl, (dx, dy, -14.0 - hd - 6.0)), _xd(hl, (0, 0, -1)),
               "plug", f"{'Right' if s < 0 else 'Left'}-hand headlamp")
-        sl_ = Location((BL.SIDELAMP_X, s * BL.SIDELAMP_Y, BL.SIDELAMP_Z)) * FRONT * (Rot(0, 0, 180) if s < 0 else Rot(0, 0, 0))
+        sl_ = Location((BL.SIDELAMP_X, s * BL.SIDELAMP_Y, BL.SIDELAMP_Z)) * Rot(0, 0, s * BL.SIDELAMP_TURN) * FRONT * \
+            (Rot(0, 0, 180) if s < 0 else Rot(0, 0, 0))
         for name, dy in (("side", 18.0), ("flasher", -18.0)):          # clear side lamp outboard (local +y), flasher inboard
-            t(f"side.{side}.{name}", "electrical.lamps.side-body", name, _xf(sl_, (0.0, dy, -9.0)), _xd(sl_, (0, 0, -1)), "plug",
+            t(f"side.{side}.{name}", "electrical.lamps.side-body", name, _xf(sl_, (0.0, dy, -26.0)), _xd(sl_, (0, 0, -1)), "plug",
               f"{'Right' if s < 0 else 'Left'}-hand side and flasher lamp")
         rl_ = Location((BL.REAR_LAMP_X, s * BL.REAR_LAMP_Y, BL.REAR_LAMP_Z)) * Rot(0, BL.REAR_LAMP_RAKE, 0) * REAR
         for name, (dx, dy) in (("tail", (-40.0, -3.0)), ("stop", (-40.0, 3.0)), ("flasher", (40.0, 0.0))):   # flasher on top

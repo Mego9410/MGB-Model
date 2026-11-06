@@ -16,11 +16,11 @@ from __future__ import annotations
 import math
 
 import numpy as np
-from build123d import Compound, Location, Rot, Solid, Vector, Wire
+from build123d import Compound, Location, Plane, Rot, Solid, Vector, Wire
 
-from mgb import body_geom as G, body_layout as BL, body_shell_layout as S, car_layout as CL
+from mgb import body_geom as G, body_layout as BL, body_shell_layout as S, car_layout as CL, grille_layout as GL
 from mgb import rear_fittings_layout as RF
-from mgb.chassis_geom import box, rod, swept_rod, xcyl, xprism, ycyl, zcyl, zprism
+from mgb.chassis_geom import box, rod, swept_rod, xcyl, xprism, ycyl, zcyl, zprism, zrev
 from parts.body import structure as St
 
 H = S.z_of
@@ -41,7 +41,7 @@ def _c(parts, spec):
 # Blade centre heights and depths (profile photo 29: front blade 350-405 above the road, rear 430-495; Oliver's photos
 # 10, 18): the front blade's face stands 48 mm off the valance at the centre, the rear 70 mm off the rear panel; both
 # wrap round the corners and run back along the sides to the wheel arches (photo 29: front ends X 518, rear X -2742).
-FRONT_BAR_H = (356.0, 404.0)
+FRONT_BAR_H = (352.0, 406.0)                 # QA fix round 1: the face 54 tall, the sloping top face rising to 415
 REAR_BAR_H = (438.0, 503.0)                  # Oliver's photos 14, 18, 25 (QA, scaled on the plate: 416-481 above his road)
 # + 22 mm: his car sits about 22 mm lower at the back than the model's standard ride height, so on the body the rear
 # fittings stand 22 mm higher (Oliver's scan, registered on the body: blade 446-493, overrider tops 605-609, plate 531-642)
@@ -52,7 +52,10 @@ FRONT_GAP, REAR_GAP = 54.0, 34.0
 # overall length 153.2 in over them)
 FRONT_BOW, REAR_BOW = 25.0, 36.0
 FRONT_END_X, REAR_END_X = 528.0, CL.bx(-2785.0)   # rear ends: Oliver's scan (right-hand end about x -2785; QA fix round 1)
-OVR_FRONT_Y = 330.0                          # front overriders (Oliver's photos 10, 15)
+OVR_FRONT_Y = 345.0                          # front overriders (QA fix round 1: scan +/-350, kf029 within 10 of 330)
+OVR_FRONT_H = (336.0, 536.0)                 # front overrider bottom and top (QA fix round 1: scan front elevation 336-522;
+#                                              kf213, kf220 against the slats put the top about 15 mm higher)
+FRONT_BAR_BOLT = (500.0, 384.0)              # |y|, h of the domed bolt heads near the blade's corners (kf212, kf222, kf224)
 OVR_H = {"front": (292.0, 519.0), "rear": (417.0, 600.0)}   # tops: photos 15 and 14, 18 (QA)
 
 
@@ -112,9 +115,24 @@ def _bar_section(h0, h1):
     return pts
 
 
+def _front_bar_section(h0, h1):
+    """Front blade section (QA fix round 1; Oliver's keyframes kf210, kf212, kf218, kf219): a tall, nearly flat face
+    with a slight forward bulge and rolled top and bottom edges, then a wide top face sloping back 35 mm and rising a
+    little, its edge turned down behind; the flange returns inside."""
+    hm, hh = (h0 + h1) / 2, (h1 - h0) / 2
+    pts = [(16.0, h0 + 6.0), (8.0, h0 - 1.5), (3.0, h0 - 0.5), (0.8, h0 + 2.0)]
+    for k in range(9):                                   # the face, bulging 2.5 mm at its middle
+        hf = h0 + 5.0 + (h1 - h0 - 10.0) * k / 8
+        sgm = (hf - hm) / hh
+        pts.append((-2.5 * (1 - sgm * sgm), hf))
+    pts += [(0.8, h1 - 2.0), (3.0, h1 + 1.5), (7.0, h1 + 4.0), (38.0, h1 + 16.0), (40.5, h1 + 14.0), (39.5, h1 + 9.0),
+            (14.0, h1 - 6.0), (14.0, h0 + 12.0)]
+    return pts
+
+
 def _bar(front):
     hs = FRONT_BAR_H if front else REAR_BAR_H
-    sec = _bar_section(*hs)
+    sec = _front_bar_section(*hs) if front else _bar_section(*hs)
     path = _bar_path(front)
     idx = np.linspace(0, len(path) - 1, 41).round().astype(int)
     wires = []
@@ -139,7 +157,33 @@ def front_bar(spec):
     for y in (-OVR_FRONT_Y, OVR_FRONT_Y, -St.LEG_STEP_Y, St.LEG_STEP_Y):
         x = bar_face_x(y)
         b = b - xcyl(4.4, x - 60.0, x - 6.0, y, zc)
+    for side in (1, -1):                                 # the corner bolts' holes, square to the face
+        p, n = _bar_face_frame(side * FRONT_BAR_BOLT[0])
+        b = b - (Location(Plane(origin=(p[0], p[1], H(FRONT_BAR_BOLT[1])), z_dir=(n[0], n[1], 0.0))) * zcyl(4.2, -20.0, 5.0))
     return _l(b, spec)
+
+
+def _bar_face_frame(y):
+    """(point on the front blade's face path nearest y, outward unit normal in plan)."""
+    path = _bar_path(True)
+    k = min(range(len(path)), key=lambda i: abs(path[i][1] - y))
+    a, c = path[max(k - 1, 0)], path[min(k + 1, len(path) - 1)]
+    tx, ty = c[0] - a[0], c[1] - a[1]
+    L = math.hypot(tx, ty)
+    n = (ty / L, -tx / L)
+    if n[0] < 0:
+        n = (-n[0], -n[1])
+    return path[k], n
+
+
+def front_bar_bolt(spec, side=1):
+    """Domed bolt head on the front blade's face near each corner (QA fix round 1, Oliver's keyframes kf212, kf222,
+    kf224): a chrome dome head, square to the face, its shank through the blade to the bracket behind."""
+    p, n = _bar_face_frame(side * FRONT_BAR_BOLT[0])
+    d = spec.nom("head_diameter")
+    head = zrev([(0.0, -1.0), (d / 2, -1.0), (d / 2, 0.5), (d / 2 - 1.5, 2.6), (d / 4, 4.2), (0.0, 4.6)]) + zcyl(3.9, -24.0, -1.0)
+    loc = Location(Plane(origin=(p[0], p[1], H(FRONT_BAR_BOLT[1])), z_dir=(n[0], n[1], 0.0)))
+    return _l(loc * head, spec)
 
 
 def rear_bar(spec):
@@ -196,12 +240,41 @@ def _ovr_face(which, side):
     return CL.REAR_X + 4.0, y               # the raked top at REAR_X + 18 (Oliver's scan -3042..-3048)
 
 
+# front overrider profile (QA fix round 1; Oliver's keyframes kf213, kf214, kf220, kf028 and the scan's front elevation):
+# plain chrome, no rubber - a tall bullet standing on the blade: a full rounded foot below the blade, swelling widest
+# about the blade's top, then narrowing up to a round top 2-2.5 blade heights above the blade, the top drawn back
+# toward the blade. (t up the overrider, half-width, front ahead of the blade's face, back behind it)
+OVR_FRONT_PROFILE = [(0.0, 6.0, 6.0, -4.0), (0.04, 20.0, 18.0, -10.0), (0.1, 29.0, 30.0, -16.0), (0.2, 34.0, 38.0, -20.0),
+                     (0.3, 35.5, 42.0, -22.0), (0.42, 35.0, 43.0, -22.0), (0.55, 32.0, 41.0, -22.0), (0.68, 28.0, 36.0, -20.0),
+                     (0.8, 23.0, 29.0, -17.0), (0.9, 17.0, 21.0, -12.0), (0.96, 11.0, 13.0, -7.0), (1.0, 3.0, 4.0, -2.0)]
+
+
+def _front_overrider(y):
+    x0 = bar_face_x(y)
+    h0, h1 = OVR_FRONT_H
+    wires = []
+    for t, hw, fwd, back in OVR_FRONT_PROFILE:
+        h = h0 + (h1 - h0) * t
+        pts = []
+        for j in range(40):
+            a = 2 * math.pi * j / 40
+            c, sn = math.cos(a), math.sin(a)
+            u = (fwd if c > 0 else -back) * (abs(c) ** 0.85) * (1 if c > 0 else -1)
+            pts.append(Vector(x0 + u, y + hw * (abs(sn) ** 0.9) * (1 if sn >= 0 else -1), H(h)))
+        wires.append(Wire.make_polygon(pts, close=True))
+    o = Solid.make_loft(wires, ruled=False)
+    if not o.is_valid:
+        o = o.fix()
+    return o
+
+
 def front_overrider(side):
     def build(spec):
-        x, y = _ovr_face("front", side)
-        h0, h1 = OVR_H["front"]
-        o = _overrider(x, y, h0, h1, True)
-        o = o - xcyl(4.4, x - 90.0, x - 40.0, y, H(sum(FRONT_BAR_H) / 2))
+        """Front overrider (Fig 12.1 item 11; QA fix round 1): plain chrome, bulbous, on its stud through the blade."""
+        y = side * OVR_FRONT_Y
+        o = _front_overrider(y)
+        x = bar_face_x(y)
+        o = o - xcyl(4.4, x - 30.0, x - 12.0, y, H(sum(FRONT_BAR_H) / 2))
         return _l(o, spec)
     return build
 
@@ -314,103 +387,391 @@ def rear_bracket(side):
     return build
 
 
-# ---- grille -----------------------------------------------------------------------------------------------------------
-GRILLE_FACE_X = S.MOUTH_BACK_X + 22.0         # front of the surround (Oliver's photos 05, 10: the surround stands at the nose)
-SURROUND_W = 26.0                            # the surround's chrome frame
+# ---- grille (QA fix round 1: mgb.grille_layout) ------------------------------------------------------------------------
+# Oliver's car (scan front elevation, keyframes kf216, kf218-220): a heavy rolled chrome surround with an arched top
+# and big corner radii (no flanges at the top corners), the slats on a 22 mm pitch with rounded fronts and tops standing
+# on its bottom bar (no separate lower rail: what looks like one is the grille reflected in the bumper's top face), the
+# centre bar carrying the MG badge proud of the bonnet's lip, and the two club badges on brackets from the bottom bar.
+GRILLE_FACE_X = S.MOUTH_BACK_X + 22.0         # the nose skin's x round the opening at the centre (kept for the plinth)
 
 
-def _mouth_prism(grow, x0, x1):
-    return xprism(S.mouth_outline(grow=grow), x0, x1)
+def _nose(y, h):
+    """x of the nose skin at (|y|, h) within the grille's span (the implicit outer surface, opening ignored)."""
+    return S.nose_x(min(abs(y), GL.SURR_HW - 6.0), h)
+
+
+def _surround_path():
+    """3D centre line of the rolled bar: the outline inset by its radius, following the nose in plan."""
+    pts = GL.resample(GL.surround_outline(-GL.SURR_BAR_R), 18.0)
+    xs = np.array([_nose(y, h) for y, h in pts])
+    for _ in range(6):                                   # the bar is smoother than the implicit nose's small ripples
+        xs = (np.roll(xs, 1) + 2 * xs + np.roll(xs, -1)) / 4
+    return [(float(x) + GL.SURR_PROUD - GL.SURR_BAR_R, y, H(h)) for x, (y, h) in zip(xs, pts)]
 
 
 def grille_surround(spec):
-    """Grille surround (Sec 7; Oliver's photo 10): the chrome frame round the opening, its face rolled (a half-round
-    lip on a flat), set into the nose; the three top steady brackets' tabs behind it."""
-    xf = GRILLE_FACE_X
-    outer = _mouth_prism(SURROUND_W - 13.0, xf - 30.0, xf - 6.0)
-    lip = _mouth_prism(SURROUND_W - 15.0, xf - 6.0, xf)
-    inner = _mouth_prism(-13.0, xf - 40.0, xf + 2.0)
-    ring = (outer + lip) - inner
-    tabs = [box(xf - 70.0, xf - 30.0, y - 10.0, y + 10.0, H(S.MOUTH_TOP_H) - 10.0, H(S.MOUTH_TOP_H) - 7.0)
-            for y in (-250.0, 0.0, 250.0)]
-    return _c([ring] + tabs, spec)
+    """Grille surround (Sec 7; QA fix round 1, mgb.grille_layout): the rolled chrome bar swept round the opening along
+    the nose's curve in plan, its arched top under the bonnet's lip, with the three top steady brackets' tabs."""
+    from build123d import Edge
+    pts = _surround_path()
+    n = len(pts)
+    loop = Edge.make_spline([Vector(*p) for p in pts], periodic=True)
+    lo = min(range(n), key=lambda k: abs(pts[k][1]) + (0.0 if pts[k][2] < H(500.0) else 1e6))   # mid bottom
+    hi = min(range(n), key=lambda k: abs(pts[k][1]) + (0.0 if pts[k][2] > H(500.0) else 1e6))   # mid top
+    ring = []
+    for a, b in ((lo, hi), (hi, lo)):                    # two halves lofted through round sections square to the loop
+        wires = []                                       # (OCC's pipe sweep fails on this path)
+        for k in range(a, b + 1 if b > a else b + n + 1):
+            p = Vector(*pts[k % n])
+            t = loop.tangent_at(loop.param_at_point(p))
+            xd = (Vector(1, 0, 0) - t * t.X).normalized()
+            wires.append(Wire.make_circle(GL.SURR_BAR_R, Plane(origin=p, x_dir=xd, z_dir=t)))
+        half = Solid.make_loft(wires, ruled=False)
+        ring.append(half if half.is_valid else half.fix())
+    tabs = [box(_nose(y, 560.0) - 50.0, _nose(y, 560.0) - 12.0, y - 10.0, y + 10.0, H(GL.top_h(y, -GL.SURR_BAR_R)) - 2.0,
+                H(GL.top_h(y, -GL.SURR_BAR_R)) + 1.0) for y in (-250.0, 0.0, 250.0)]
+    return _c(ring + tabs, spec)
+
+
+def grille_surround_flange(spec):
+    """Grille surround mounting panel (QA fix round 1): a body-coloured ring set back behind the bar, out to the body's
+    grille opening (mouth_outline), which is still larger than the car's surround at the top corners and the bottom;
+    it stands in for the nose panel round the surround until the body opening follows grille_layout.surround_outline."""
+    outer = xprism(S.mouth_outline(grow=10.0), GRILLE_FACE_X - 40.0, GRILLE_FACE_X - 26.0)
+    inner = xprism([(y, H(h)) for y, h in GL.surround_outline(-GL.SURR_BAR_R)], GRILLE_FACE_X - 45.0, GRILLE_FACE_X - 21.0)
+    return _l(outer - inner, spec)
+
+
+def _slat(y, h0, h1, w, depth, set_back):
+    """One slat: a strip with a half-round front, its top end rounded, standing at y."""
+    xf = _nose(y, 510.0) - set_back
+    r = w / 2
+    sec = [(xf - depth, y - r), (xf - r, y - r)] + \
+        [(xf - r + r * math.cos(a), y + r * math.sin(a)) for a in np.linspace(-math.pi / 2, math.pi / 2, 9)[1:-1]] + \
+        [(xf - r, y + r), (xf - depth, y + r)]
+    s = zprism(sec, H(h0), H(h1) - r)
+    from build123d import Sphere
+    s = s + xcyl(r, xf - depth, xf - r, y, H(h1) - r) + Sphere(r).moved(Location((xf - r, y, H(h1) - r)))
+    return s
 
 
 def grille_slats(spec):
-    """The early grille's fine vertical slats (Sec 7; Oliver's photos 10, 15), set back in the surround on a top and
-    a bottom rail."""
-    xf = GRILLE_FACE_X - 22.0
-    clip = _mouth_prism(-12.0, xf - 14.0, xf + 2.0)
+    """The early grille's vertical slats (Sec 7; QA fix round 1): 36 chrome strips on a 22 mm pitch either side of
+    the centre bar, 6 mm across with half-round fronts and rounded tops, 18 mm deep (from an angle they close up as on
+    the car), standing on the surround's bottom bar and running up behind its top."""
+    inner = GL.surround_outline(-2 * GL.SURR_BAR_R + 3.0)
     slats = []
-    y = -S.MOUTH_Y + 8.0
-    while y <= S.MOUTH_Y - 8.0:
-        if abs(y) > 16.0:
-            slats.append(box(xf - 12.0, xf, y - 1.1, y + 1.1, H(S.MOUTH_BOT_H), H(S.MOUTH_TOP_H + 20.0)))
-        y += 14.5
-    rails = [box(xf - 14.0, xf - 9.0, -S.MOUTH_Y, S.MOUTH_Y, h - 3.0, h + 3.0)
-             for h in (H(S.MOUTH_BOT_H) + 14.0, H(S.MOUTH_TOP_H) - 10.0)]
-    g = G.fuse(slats + rails) & clip
-    return _l(g, spec)
+    for k in range(1, 40):
+        for sgn in (1, -1):
+            y = sgn * k * GL.SLAT_PITCH
+            if abs(y) > GL.SURR_HW - 2 * GL.SURR_BAR_R - 6.0:
+                continue
+            h0 = GL.SURR_BOT_H + GL.SURR_BAR_R - 4.0
+            h1 = GL.top_h(y, -GL.SURR_BAR_R) + 2.0
+            # inside the rounded corners the slat stops at the inner edge of the bar
+            ins = _inner_span(inner, y)
+            if ins is None:
+                continue
+            h0, h1 = max(h0, ins[0] - 6.0), min(h1, ins[1] + 8.0)
+            if h1 - h0 < 20.0:
+                continue
+            slats.append(_slat(y, h0, h1, GL.SLAT_W, GL.SLAT_DEPTH, GL.SLAT_SET_BACK))
+    return _c(slats, spec)
 
 
-def grille_rail(spec):
-    """The grille's lower chrome rail across the opening just above the bumper (Oliver's photo 10)."""
-    xf = GRILLE_FACE_X - 8.0
-    h = S.MOUTH_BOT_H + 18.0
-    pts = [(-S.MOUTH_Y + 30.0, H(h - 9.0)), (S.MOUTH_Y - 30.0, H(h - 9.0)), (S.MOUTH_Y - 30.0, H(h + 9.0)),
-           (-S.MOUTH_Y + 30.0, H(h + 9.0))]
-    r = xprism(pts, xf - 18.0, xf)
-    from mgb.elec_shapes import tryfillet
-    r = tryfillet(r, r.edges().filter_by_position(__import__("build123d").Axis.X, xf - 1, xf + 1), 5.0)
-    return _l(r & _mouth_prism(-5.0, xf - 30.0, xf + 2.0), spec)
+def _inner_span(outline, y):
+    """(lowest, highest) h of a closed outline at y, or None."""
+    hs = []
+    m = len(outline)
+    for i in range(m):
+        (y0, h0), (y1, h1) = outline[i], outline[(i + 1) % m]
+        if (y0 - y) * (y1 - y) <= 0 and y0 != y1:
+            hs.append(h0 + (h1 - h0) * (y - y0) / (y1 - y0))
+    return (min(hs), max(hs)) if len(hs) >= 2 else None
 
 
 def grille_bar(spec):
-    """Centre bar of the grille under the badge."""
-    xf = GRILLE_FACE_X - 4.0
-    b = box(xf - 26.0, xf, -11.0, 11.0, H(S.MOUTH_BOT_H), H(S.MOUTH_TOP_H))
-    from mgb.elec_shapes import tryfillet
-    b = tryfillet(b, b.edges().filter_by_position(__import__("build123d").Axis.X, xf - 1, xf + 1), 4.0)
-    return _l(b & _mouth_prism(-6.0, xf - 30.0, xf + 2.0), spec)
+    """Centre bar of the grille (kf216, kf218): a wider chrome bar with a rounded front from the bottom bar up under the
+    badge, standing a little ahead of the slats."""
+    h0 = GL.SURR_BOT_H + GL.SURR_BAR_R - 4.0
+    h1 = GL.BADGE_H[0] + 30.0
+    return _l(_slat(0.0, h0, h1, 12.0, 16.0, GL.SLAT_SET_BACK - 5.0), spec)
 
 
-def _shield(w, h, n=10):
-    """Shield outline in (y, z) about its top centre: flat top, straight sides, curving to a point below."""
-    pts = [(-w / 2, 0.0), (w / 2, 0.0), (w / 2, -h * 0.45)]
-    for k in range(1, n):
-        t = k / n
-        pts.append((w / 2 * (1 - t) ** 1.3, -h * 0.45 - h * 0.55 * math.sin(t * math.pi / 2)))
-    pts.append((0.0, -h))
-    for k in range(n - 1, 0, -1):
-        t = k / n
-        pts.append((-w / 2 * (1 - t) ** 1.3, -h * 0.45 - h * 0.55 * math.sin(t * math.pi / 2)))
-    pts.append((-w / 2, -h * 0.45))
+def _badge_outline(inset=0.0):
+    """MG grille badge outline (y, h) (kf216, kf218: a shield with a flat top, clipped top corners, near-vertical sides
+    and a pointed foot), inset by inset."""
+    w, (hb, ht) = GL.BADGE_W / 2 - inset, (GL.BADGE_H[0] + inset * 1.6, GL.BADGE_H[1] - inset)
+    c = 6.0
+    side = ht - (ht - hb) * 0.42
+    pts = [(-w + c, ht), (w - c, ht), (w, ht - c), (w - 3.0, side)]
+    for k in range(1, 8):
+        t = k / 8
+        pts.append(((w - 3.0) * (1 - t) ** 1.25, side - (side - hb) * math.sin(t * math.pi / 2)))
+    pts.append((0.0, hb))
+    for k in range(7, 0, -1):
+        t = k / 8
+        pts.append((-(w - 3.0) * (1 - t) ** 1.25, side - (side - hb) * math.sin(t * math.pi / 2)))
+    pts += [(-w + 3.0, side), (-w, ht - c)]
     return pts
 
 
+def _badge_face_x():
+    return _nose(0.0, 610.0) + GL.BADGE_PROUD - 12.0
+
+
+def _oct_yz(cy, ch, r, rot=22.5):
+    return [(cy + r * math.cos(math.radians(rot + 45 * k)), ch + r * math.sin(math.radians(rot + 45 * k))) for k in range(8)]
+
+
+BADGE_OCT = (GL.BADGE_H[1] - 31.0, 22.0)        # octagon centre h and radius (kf216: it fills the badge's upper part)
+
+
+def _stroke(a, b, w):
+    """A letter stroke (y, h) from a to b, w wide, as a quad."""
+    dy, dh = b[0] - a[0], b[1] - a[1]
+    L = math.hypot(dy, dh)
+    ny, nh = -dh / L * w / 2, dy / L * w / 2
+    return [(a[0] + ny, a[1] + nh), (b[0] + ny, b[1] + nh), (b[0] - ny, b[1] - nh), (a[0] - ny, a[1] - nh)]
+
+
+def _mg_letters(cy, ch, s, x0, x1):
+    """Raised chrome M and G of the octagon badge, scaled by s (letter height 2 s), centred at (cy, ch)."""
+    w = 0.32 * s
+    my = cy - 0.55 * s
+    M = [((my - 0.42 * s, ch - s), (my - 0.42 * s, ch + s)), ((my - 0.42 * s, ch + s), (my, ch - 0.15 * s)),
+         ((my, ch - 0.15 * s), (my + 0.42 * s, ch + s)), ((my + 0.42 * s, ch + s), (my + 0.42 * s, ch - s))]
+    gy = cy + 0.55 * s
+    arc = []
+    for k in range(10):
+        a = math.radians(40 + 280 * k / 9)
+        arc.append((gy + 0.48 * s * math.cos(a), ch + s * math.sin(a)))
+    G_ = [(arc[i], arc[i + 1]) for i in range(len(arc) - 1)] + [((gy + 0.48 * s * math.cos(math.radians(320)), ch - 0.7 * s),
+                                                                (gy + 0.48 * s * math.cos(math.radians(320)), ch)),
+                                                               ((gy + 0.05 * s, ch), (gy + 0.5 * s, ch))]
+    out = []
+    for a, b in M + G_:
+        out.append(xprism(_stroke(a, b, w), x0, x1))
+    return out
+
+
 def grille_badge(spec):
-    """Shield badge at the top centre of the surround (Oliver's photo 10; a plain shield, no lettering): a chrome
-    rim round a raised field."""
-    xf = GRILLE_FACE_X + 2.0
-    top = H(S.MOUTH_TOP_H + 40.0)
-    out = [(y, top + z) for y, z in _shield(58.0, 76.0)]
-    fld = [(y, top - 4.0 + z) for y, z in _shield(46.0, 64.0)]
-    b = xprism(out, xf - 10.0, xf) + xprism(fld, xf, xf + 2.5)
-    return _l(b, spec)
+    """MG badge on the grille's centre bar (Sec 7; QA fix round 1, kf216, kf218, kf219): a chrome shield frame with
+    clipped top corners standing proud of the bonnet's lip, the octagon's chrome border and the raised chrome MG,
+    on a stem down to the centre bar. The enamel is in grille-badge-field (black) and grille-badge-octagon (red)."""
+    xf = _badge_face_x()
+    sh = [(y, H(h)) for y, h in _badge_outline()]
+    body = xprism(sh, xf - 7.0, xf - 1.5) + (xprism(sh, xf - 1.5, xf) - xprism([(y, H(h)) for y, h in _badge_outline(3.0)],
+                                                                               xf - 2.0, xf + 1.0))
+    oh, orr = BADGE_OCT
+    ring = xprism([(y, H(h)) for y, h in _oct_yz(0.0, oh, orr + 1.8)], xf - 2.0, xf - 0.2) - \
+        xprism([(y, H(h)) for y, h in _oct_yz(0.0, oh, orr)], xf - 3.0, xf + 1.0)
+    letters = _mg_letters(0.0, H(oh), 10.5, xf - 1.5, xf + 0.4)
+    stem = box(_nose(0.0, 560.0) - 10.0, xf - 6.0, -6.0, 6.0, H(GL.BADGE_H[0] + 12.0), H(GL.BADGE_H[0] + 40.0))
+    return _c([body, ring, stem] + letters, spec)
+
+
+def grille_badge_field(spec):
+    """The badge's black enamel field round the octagon."""
+    xf = _badge_face_x()
+    oh, orr = BADGE_OCT
+    f = xprism([(y, H(h)) for y, h in _badge_outline(2.6)], xf - 2.2, xf - 1.2) - \
+        xprism([(y, H(h)) for y, h in _oct_yz(0.0, oh, orr + 1.6)], xf - 3.0, xf)
+    return _l(f, spec)
+
+
+def grille_badge_octagon(spec):
+    """The badge's red enamel octagon under the chrome MG."""
+    xf = _badge_face_x()
+    oh, orr = BADGE_OCT
+    return _l(xprism([(y, H(h)) for y, h in _oct_yz(0.0, oh, orr + 0.2)], xf - 2.2, xf - 1.0), spec)
+
+
+# ---- club badges on the grille (QA fix round 1) -------------------------------------------------------------------------
+def _club_x(name):
+    y, h, d = GL.CLUB_BADGES[name]
+    return _nose(y, h) + 8.0
+
+
+def _club_bracket(name):
+    """Flat chrome strap from the badge's foot down to a clamp on the surround's bottom bar (kf216: two screws)."""
+    y, h, d = GL.CLUB_BADGES[name]
+    xf = _club_x(name)
+    hb = GL.SURR_BOT_H + GL.SURR_BAR_R
+    strap = box(xf - 6.0, xf - 3.0, y - 8.0, y + 8.0, H(hb - 4.0), H(h - d / 2 + 10.0))
+    clamp = box(xf - 8.0, xf - 2.5, y - 13.0, y + 13.0, H(hb - 8.0), H(hb + 12.0))
+    out = [strap, clamp]
+    for dy in (-7.0, 7.0):
+        out.append(xcyl(2.4, xf - 2.5, xf - 1.0, y + dy, H(hb + 4.0)))
+    return out
+
+
+def club_badge_hmc(spec):
+    """Heritage Motor Centre Gaydon 1924-1999 club badge (off side; Oliver's keyframes kf216, kf218): a round badge in a
+    chrome rim - the green enamel ring (lettered on the car), a bright inner ring round the yellow octagon with its red
+    border and red M G - and the GAYDON tab below, on a chrome strap with a two-screw clamp on the bottom bar. Chrome
+    here; the enamels are club-badge-hmc-ring (green), -centre (yellow) and -mg (red)."""
+    y, h, d = GL.CLUB_BADGES["hmc"]
+    xf = _club_x("hmc")
+    rim = xcyl(d / 2, xf - 4.0, xf, y, H(h)) - xcyl(d / 2 - 2.5, xf - 4.5, xf + 1.0, y, H(h))
+    back = xcyl(d / 2 - 0.5, xf - 5.5, xf - 4.0, y, H(h))
+    inner = xcyl(20.5, xf - 4.0, xf - 0.6, y, H(h)) - xcyl(18.0, xf - 4.5, xf + 1.0, y, H(h))
+    tab = box(xf - 4.0, xf - 1.2, y - 17.0, y + 17.0, H(h - d / 2 - 9.0), H(h - d / 2 + 4.0))
+    return _c([rim, back, inner, tab] + _club_bracket("hmc"), spec)
+
+
+def club_badge_hmc_ring(spec):
+    """The HMC badge's green enamel ring (its lettering is not modelled)."""
+    y, h, d = GL.CLUB_BADGES["hmc"]
+    xf = _club_x("hmc")
+    return _l(xcyl(d / 2 - 2.0, xf - 4.0, xf - 1.3, y, H(h)) - xcyl(20.0, xf - 5.0, xf, y, H(h)), spec)
+
+
+def club_badge_hmc_centre(spec):
+    """The HMC badge's yellow enamel octagon behind the red MG."""
+    y, h, d = GL.CLUB_BADGES["hmc"]
+    xf = _club_x("hmc")
+    return _l(xprism([(yy, H(hh)) for yy, hh in _oct_yz(y, h, 15.5)], xf - 4.0, xf - 1.6) +
+              xcyl(18.2, xf - 4.0, xf - 2.6, y, H(h)), spec)
+
+
+def club_badge_hmc_mg(spec):
+    """The HMC badge's red enamel: the octagon's border and the M G on the yellow (kf218)."""
+    y, h, d = GL.CLUB_BADGES["hmc"]
+    xf = _club_x("hmc")
+    border = xprism([(yy, H(hh)) for yy, hh in _oct_yz(y, h, 17.0)], xf - 2.0, xf - 1.0) - \
+        xprism([(yy, H(hh)) for yy, hh in _oct_yz(y, h, 15.0)], xf - 3.0, xf)
+    return _c([border] + _mg_letters(y, H(h), 7.5, xf - 1.8, xf - 0.9), spec)
+
+
+def aa_badge(spec):
+    """AA badge (near side; kf218-220): the winged chrome badge - wings across the top, a round body with the two
+    open chrome A's over yellow enamel, the maker's tab below - on its strap and clamp from the bottom bar."""
+    y, h, d = GL.CLUB_BADGES["aa"]
+    xf = _club_x("aa")
+    r = d / 2 - 6.0
+    body = xcyl(r + 3.0, xf - 4.0, xf - 0.5, y, H(h)) - xcyl(r, xf - 4.5, xf + 1.0, y, H(h))
+    back = xcyl(r + 2.5, xf - 5.5, xf - 4.0, y, H(h))
+    out = [body, back]
+    for s_ in (-1.0, 1.0):                                   # the two A's, side by side, sharing a foot
+        ay = y + s_ * 0.36 * r
+        top, foot = (ay, h + 0.78 * r), h - 0.82 * r
+        out.append(xprism([(yy, H(hh)) for yy, hh in _stroke(top, (ay - 0.42 * r, foot), 6.5)], xf - 2.0, xf + 0.6))
+        out.append(xprism([(yy, H(hh)) for yy, hh in _stroke(top, (ay + 0.42 * r, foot), 6.5)], xf - 2.0, xf + 0.6))
+        out.append(xprism([(yy, H(hh)) for yy, hh in _stroke((ay - 0.24 * r, h - 0.2 * r), (ay + 0.24 * r, h - 0.2 * r), 4.0)],
+                          xf - 2.0, xf + 0.6))
+    wing = []
+    for k in range(9):                                       # wings spreading from a central boss over the body
+        t = k / 8
+        wing.append((y - d / 2 + 4.0 + (d - 8.0) * t, h + r + 6.0 + 7.0 * math.sin(math.pi * t) ** 0.6))
+    wing += [(y + d / 2 - 10.0, h + r - 1.0), (y - d / 2 + 10.0, h + r - 1.0)]
+    out.append(xprism([(yy, H(hh)) for yy, hh in wing], xf - 4.0, xf - 1.0))
+    out.append(xcyl(5.0, xf - 4.0, xf + 0.5, y, H(h + r + 9.0)))
+    out.append(box(xf - 4.0, xf - 1.0, y - 9.0, y + 9.0, H(h - r - 14.0), H(h - r + 1.0)))          # maker's tab
+    return _c(out + _club_bracket("aa"), spec)
+
+
+def aa_badge_enamel(spec):
+    """The AA badge's yellow enamel behind the letters."""
+    y, h, d = GL.CLUB_BADGES["aa"]
+    xf = _club_x("aa")
+    return _l(xcyl(d / 2 - 5.5, xf - 4.0, xf - 1.6, y, H(h)), spec)
+
+
+# ---- scuttle vent (QA fix round 1) --------------------------------------------------------------------------------
+# Oliver's keyframes kf195-202 (close-ups) and the kf076+kf088+kf092 triangulation (BL.SCUTTLE_VENT_*): a chrome
+# frame on the scuttle top 20-30 mm behind the bonnet's rear edge, its outline a long trapezoid with rounded ends (the
+# front edge longer, the ends leaning inboard toward the screen: tight corners at the front, wide sweeps at the back),
+# eight openings between seven bars that fan with the ends (the outer ones leaning most), a pressed perforated mesh in
+# each cell. Built in the skin's tangent frame at the vent centre (u forward, v = car y, w along the skin normal); the
+# top is bent about a long axis to follow the scuttle's crown, so the frame stands the same height along its length.
+VENT_HALF = (BL.SCUTTLE_VENT_LEN / 2 + 4.0, BL.SCUTTLE_VENT_LEN / 2 - 14.5)   # front, rear corner half-lengths (the ends
+#                                                lean ~17 deg; the rounding takes 4 off the tips)
+VENT_RIM = 9.0                                   # chrome rim width front and back (kf198, kf199: about a quarter of a cell)
+VENT_BARS, VENT_BAR_W = 7, 6.5
+VENT_TOP = 6.0                                   # frame top above the skin (kf199, kf202: a low bezel)
+
+
+def _vent_frame():
+    """(Location of the vent's tangent frame, crown radius of the skin across it)."""
+    x = BL.SCUTTLE_VENT_X
+    z0, n = BL.skin_point(x, 0.0)
+    zt, _ = BL.skin_point(x, VENT_HALF[0])
+    sag = max((z0 - zt) * n[2], 0.3)
+    R = VENT_HALF[0] ** 2 / (2.0 * sag)
+    t = (n[2], 0.0, -n[0])
+    return Location(Plane(origin=(x, 0.0, z0), x_dir=t, z_dir=(n[0], 0.0, n[2]))), R
+
+
+def _vent_outline(grow=0.0):
+    """Plan outline (u, v) of the vent's frame, grown by grow (negative: the inner edge of the rim)."""
+    d = BL.SCUTTLE_VENT_DEPTH / 2 + grow
+    af, ar = VENT_HALF[0] + grow * 1.05, VENT_HALF[1] + grow * 0.95
+    lean = (VENT_HALF[0] - VENT_HALF[1]) / BL.SCUTTLE_VENT_DEPTH
+    af, ar = af - (BL.SCUTTLE_VENT_DEPTH / 2 - d) * lean, ar + (BL.SCUTTLE_VENT_DEPTH / 2 - d) * lean
+    from mgb.body_shell import fillet_poly
+    rf, rr = max(12.0 + grow * 0.6, 3.0), max(30.0 + grow * 0.6, 6.0)
+    pts = [(d, -af), (d, af), (-d, ar), (-d, -ar)]
+    return fillet_poly(pts, [rf, rf, rr, rr], 8)
+
+
+def _vent_bar(k, w0, w1):
+    """Bar k (0..VENT_BARS-1) as a prism: centre line v = vk + u * s, leaning with the ends in proportion to vk."""
+    half_in = (VENT_HALF[0] + VENT_HALF[1]) / 2 - VENT_RIM - 5.0
+    pitch = 2 * half_in / (VENT_BARS + 1)
+    vk = (k - (VENT_BARS - 1) / 2) * pitch
+    s = (VENT_HALF[0] - VENT_HALF[1]) / BL.SCUTTLE_VENT_DEPTH * vk / half_in
+    d = BL.SCUTTLE_VENT_DEPTH / 2 + 2.0
+    hw = VENT_BAR_W / 2
+    pts = [(d, vk + d * s - hw), (d, vk + d * s + hw), (-d, vk - d * s + hw), (-d, vk - d * s - hw)]
+    return zprism(pts, w0, w1)
+
+
+def _crown(R, w_top, u0=-60.0, u1=60.0):
+    """Solid under a long cylinder about the u axis whose top is w_top on the centre line (follows the crown)."""
+    return xcyl(R, u0, u1, 0.0, w_top - R)
+
+
+def _openings(w0, w1):
+    out = zprism(_vent_outline(-VENT_RIM), w0, w1)
+    for k in range(VENT_BARS):
+        out = out - _vent_bar(k, w0 - 1.0, w1 + 1.0)
+    return out
 
 
 def scuttle_vent(spec):
-    """Scuttle air intake (Oliver's photos 15, 27): a chrome slatted grille on the scuttle top at the windscreen
-    base, ahead of the wiper spindles, over the heater intake."""
-    xb, hb = S.screen_base(0.0)
-    x0, x1 = xb + 40.0, xb + 95.0
-    parts = []
-    for k in range(-6, 7):
-        y = k * 22.0
-        parts.append(box(x0, x1, y - 2.0, y + 2.0, H(S.top_h(x0, y)) - 2.0, H(S.top_h(x0, y)) + 3.0))
-    frame = box(x0 - 4.0, x1 + 4.0, -150.0, 150.0, H(S.top_h(x0, 0.0)) - 2.0, H(S.top_h(x0, 0.0)) + 1.5) - \
-        box(x0, x1, -142.0, 142.0, H(S.top_h(x0, 0.0)) - 5.0, H(S.top_h(x0, 0.0)) + 5.0)
-    return _c(parts + [frame], spec)
+    """Scuttle air intake grille (QA fix round 1, Oliver's keyframes kf195-202 and the triangulated position): the
+    chrome frame with its rim and seven fanned bars round eight cells, standing 6 mm proud of the scuttle."""
+    loc, R = _vent_frame()
+    frame = zprism(_vent_outline(), -8.0, VENT_TOP + 2.0) & _crown(R, VENT_TOP)
+    frame = frame - _openings(-9.0, VENT_TOP + 3.0)
+    from mgb.elec_shapes import tryfillet
+    top = [e for e in frame.edges() if e.center().Z > VENT_TOP - 1.2]
+    frame = tryfillet(frame, top, 1.6)
+    return _l(loc * frame, spec)
+
+
+def scuttle_vent_mesh(spec):
+    """The perforated mesh in the vent's cells (kf198, kf201: round holes on a close hexagonal pitch, dark grey), 5 mm
+    under the frame's top; the scuttle skin is not cut (body shell), so the cells are shallow."""
+    loc, R = _vent_frame()
+    plate = _openings(-9.0, 3.0) & _crown(R, 1.4) - _crown(R, 0.9)
+    holes = []
+    pitch, r = 5.2, 1.5
+    for i in range(-40, 41):
+        for j in range(-8, 9):
+            v = i * pitch + (pitch / 2 if j % 2 else 0.0)
+            u = j * pitch * 0.866
+            if abs(u) < BL.SCUTTLE_VENT_DEPTH / 2 - VENT_RIM - 2.0 and abs(v) < VENT_HALF[0] - VENT_RIM - 4.0:
+                holes.append(zcyl(r, -3.0, 4.0, u, v))
+    plate = plate - Compound(holes)
+    return _l(loc * plate, spec)
+
+
+def scuttle_vent_intake(spec):
+    """The dark heater air intake seen through the mesh (drawn as a thin black backing in the cells)."""
+    loc, R = _vent_frame()
+    return _l(loc * (_openings(-9.0, 3.0) & _crown(R, 0.8) - _crown(R, 0.3)), spec)
 
 
 # ---- boot lid badges (QA fix round 1) ------------------------------------------------------------------------------
@@ -686,14 +1047,24 @@ def rear_plate_trim(spec):
 
 PARTS = {
     "body.brightwork.front-bar": {"build": front_bar},
+    "body.brightwork.front-bar-bolt": {"build": front_bar_bolt},
     "body.brightwork.rear-bar": {"build": rear_bar},
-    "body.brightwork.overrider-rubber-front": {"build": overrider_rubber("front")},
     "body.brightwork.grille-surround": {"build": grille_surround},
     "body.brightwork.grille-slats": {"build": grille_slats},
-    "body.brightwork.grille-rail": {"build": grille_rail},
+    "body.brightwork.grille-surround-flange": {"build": grille_surround_flange},
     "body.brightwork.grille-bar": {"build": grille_bar},
     "body.brightwork.grille-badge": {"build": grille_badge},
+    "body.brightwork.grille-badge-field": {"build": grille_badge_field},
+    "body.brightwork.grille-badge-octagon": {"build": grille_badge_octagon},
+    "body.brightwork.club-badge-hmc": {"build": club_badge_hmc},
+    "body.brightwork.club-badge-hmc-ring": {"build": club_badge_hmc_ring},
+    "body.brightwork.club-badge-hmc-centre": {"build": club_badge_hmc_centre},
+    "body.brightwork.club-badge-hmc-mg": {"build": club_badge_hmc_mg},
+    "body.brightwork.aa-badge": {"build": aa_badge},
+    "body.brightwork.aa-badge-enamel": {"build": aa_badge_enamel},
     "body.brightwork.scuttle-vent": {"build": scuttle_vent},
+    "body.brightwork.scuttle-vent-mesh": {"build": scuttle_vent_mesh},
+    "body.brightwork.scuttle-vent-intake": {"build": scuttle_vent_intake},
     "body.brightwork.boot-badge": {"build": boot_badge},
     "body.brightwork.boot-badge-field": {"build": boot_badge_field},
     "body.brightwork.boot-script": {"build": boot_script},
