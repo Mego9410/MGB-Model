@@ -966,12 +966,13 @@ From FINDINGS-sides-glass (items 2, 4-8, 10, 14-17), measured on Oliver's keyfra
 
 From FINDINGS-cockpit-wheels.md items 1-28 and 30-35, against Oliver's keyframes (kf041, kf069-075, kf113-160,
 kf181-185, kf226-230) and his body scan:
-- Steering wheel placed on the scan: a circle fitted to the rim (678 points) gives the rim centre at x -981, y -294,
-  830 mm above the road, radius 198.8, axis 20 deg (steering_layout RIM_CENTRE). The hub face sits DISH ahead of it on
-  the single pinion/column axis, which now rises at about 24 deg; the column clamp, toe mount and the column switch
-  follow. The wheel is 56 mm inboard of DRIVER_Y (test relaxed to 70 mm). Spokes at 105/180/255 deg with 3/3/2
-  polished wires; black cast hub arms and rim clamp blocks; the horn push as a black moulding, a broad chrome ring
-  and a red enamel MG octagon with chrome letters.
+- Steering wheel: a circle fitted to the rim in the scan (678 points) puts the rim centre at x -981, y -294, 830 mm
+  above the road, radius 198.8, axis 20 deg (steering_layout RIM_CENTRE_SCAN). Not reachable yet: a straight column
+  from the model's pinion to there passes through P8's master cylinder, pedal box and brake pedal arm (checked by
+  boolean at hub heights 563-805 and y -293 to -390). Only the fore-aft position is applied (hub at x -921, 69 mm
+  forward); the hub stays at z 10 (593 above the road), y -345, the highest the column clears. Spokes at
+  118/180/242 deg with 3/3/2 polished wires; black cast hub arms and rim clamp blocks; the horn push as a black
+  moulding, a broad chrome ring and a red enamel MG octagon with chrome letters.
 - Dials: white print (graduations, figures, MPH/RPM legends, HIGH BEAM/IGNITION), the tachometer's amber/red wedge,
   the dual gauge's OIL/WATER scales, the fuel gauge's E 1/4 1/2 3/4 F with the needle hanging from a pivot above the
   centre; needles at rest. Toggle levers with black tips.
@@ -993,4 +994,9 @@ kf181-185, kf226-230) and his body scan:
   tread, sidewall lettering; spinners with a domed face, swept tapered ears and edge lettering; rim nipple dimples; a
   smooth hub barrel. Front calipers red.
 - Left open: ride height (36). The gear knob sits higher than in the photos (gearbox remote geometry, not changed).
+
+Question for Oliver (QA fix round 1): your steering wheel's rim centre is about 830 mm above the road (scan), 220 mm
+higher than the model can put it. Either the pedal box and master cylinder sit lower/further outboard on your car, or
+the rack and pinion sit higher, or the column is not straight to the pinion. A photo down the right-hand side of the
+engine bay showing the column, the pedal box and the master cylinder would settle which.
 

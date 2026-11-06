@@ -43,7 +43,8 @@ TONNEAU_Z = BL.TONNEAU_FLOOR_Z           # tonneau floor (the shelf behind the s
 # to a step over the rear springs' front hangers (rear_suspension_layout FRONT_EYE, z -299) that the squabs' feet lean
 # back over; the upper riser at SHELF_FRONT_X (scan: the shelf's front edge at x -1680 to -1690) rises from the step
 # to the shelf. The tunnel carries on through the step to the upper riser over the propeller shaft.
-HEEL_STEP_Z = -245.0                     # the step's underside (338 above the road; 46 mm over the spring eyes)
+HEEL_STEP_Z = -222.0                     # the step's top (361 above the road): over the spring eyes and the fuel
+                                         # pump's hose (fuel_supply_layout HOSE_Z -235)
 SHELF_FRONT_X = CL.bx(-1682.0)           # rear (axle side) face of the upper riser
 ARCH_Z = CL.WHEEL_Z + A.TUBE_R + 26.0 + 44.0 + 52.0   # body underside over the axle (D, P9 bump strike) = -122.5
 ARCH_X = (CL.REAR_AXLE_X + 180.0, CL.REAR_AXLE_X - 150.0)   # front and rear ends of the arch's flat roof (D)

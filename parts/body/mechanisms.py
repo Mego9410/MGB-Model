@@ -87,7 +87,7 @@ def regulator(side):
         the inner panel), the coiled balance spring round the pivot (Fig 12.17: the spring at the plate)."""
         xq, hq = QUAD_PIVOT
         xs, hs = SPINDLE
-        y0 = inner_y(xq, hq)
+        y0 = max(inner_y(xq, h) for h in (hq - 40.0, hq, hs, hs + 45.0))     # outboard of the curved panel all over
         # mounting plate: a rounded pressing round the spindle and the pivot, a raised rib, four bolt holes
         outline = G.rounded_rect(xq - 45.0, xs + 40.0, H(hq - 40.0), H(hs + 45.0), 14.0)
         plate = yprism(outline, y0, y0 + 1.6)
@@ -237,8 +237,10 @@ def remote_control(side):
             bracket = bracket - ycyl(2.6, y0 - 1, y0 + 3, xi, H(hi + dh))     # elongated holes (Sec 35 para 3)
         spindle = ycyl(5.0, y0 - 14.0, y0 + 8.0, xi, H(hi))
         xl = C._door_x(LOCK_H, True) + 50.0
-        bar = swept_rod([(xi, y0 + 8.0, H(hi)), (xi - 60.0, y0 + 12.0, H(hi - 30.0)),
-                         (xl, S.side_y(xl, LOCK_H) - 35.0, H(LOCK_H + 35.0))], 3.5)
+        hb = LOCK_H + 35.0                                       # along the inner panel's cavity face, out to the lock
+        run = [(xi - 60.0, hi - 30.0), (xi - 160.0, hi - 70.0), (xl + 140.0, hb), (xl + 60.0, hb)]
+        bar = swept_rod([(xi, y0 + 8.0, H(hi))] + [(x, inner_y(x, h) + 5.0, H(h)) for x, h in run] +
+                        [(xl, S.side_y(xl, LOCK_H) - 35.0, H(hb))], 3.5)
         sleeve = swept_rod([(xi - 30.0, y0 + 10.0, H(hi - 15.0)), (xi - 70.0, y0 + 13.0, H(hi - 34.0))], 5.0)
         return _c([_side(p, side) for p in (bracket, spindle, bar, sleeve)], spec)
     return build

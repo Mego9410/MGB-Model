@@ -874,6 +874,18 @@ def _tunnel_above(z0):
     return [(y, z) for y, z in tun if z > z0 + 0.5]
 
 
+def tunnel_hump(z0, grow):
+    """The tunnel's section above z0 at the heelboard station grown by `grow` (closed (y, z) outline down to z0, and
+    its half-width at z0): the tunnel carried on through the heelboard's step."""
+    above = _tunnel_above(z0)
+    w0 = max(abs(y) for y, _ in above)
+    h = max(z for _, z in above) - z0
+    ky, kz = (w0 + grow) / w0, (h + grow) / h
+    pts = [(y * ky, z0 + (z - z0) * kz) for y, z in above]
+    base = z0 - (1.0 if grow < 0 else 0.0)
+    return pts + [(-(w0 + grow), base), (w0 + grow, base)], w0
+
+
 def heelboard(spec):
     """Heelboard (QA fix round 1, cockpit: two risers and a step, Oliver's body scan and kf134, kf156): the lower
     riser behind the seats' front feet from the floor up to the step (rear face at underbody_layout HEELBOARD_X), sill
@@ -895,10 +907,11 @@ def heelboard(spec):
     p = p - xcyl(6.0, x0 - 5, x0 + 5, my, mz)
     p = _pass_cut(p, "heelboard")
     above = _tunnel_above(STEP_Z)
-    step_prof = [(yo, STEP_Z)] + [(y, z) for y, z in above] + [(-yo, STEP_Z)]
-    step = G.sheet_x(step_prof, T, SF_X, x0 + T, 3.0)
+    w0 = tunnel_hump(STEP_Z, 0.0)[1]
+    step = [box(SF_X, x0 + T, s_ * w0 - (0.0 if s_ > 0 else yo - w0), s_ * yo if s_ > 0 else -w0, STEP_Z - T, STEP_Z) for s_ in (1, -1)]
+    hump = xprism(tunnel_hump(STEP_Z, 0.0)[0], SF_X, x0 + T) - xprism(tunnel_hump(STEP_Z, -T)[0], SF_X - 1.0, x0 + T + 1.0)
     riser = xprism([(yo, STEP_Z)] + above + [(-yo, STEP_Z), (-yo, TON_Z + T), (yo, TON_Z + T)], SF_X, SF_X + T)
-    return _c([p, step, riser], spec)
+    return _c([p, hump, riser] + step, spec)
 
 
 def tonneau_floor(spec):

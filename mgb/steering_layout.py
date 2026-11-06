@@ -46,16 +46,16 @@ PINION_TEETH = 7
 PINION_Y = -278.0
 PINION_MESH = (RACK_X, PINION_Y, RACK_Z + RACK_R + PINION_PITCH_R + 4.0)   # where the pinion axis passes over the rack
 from mgb import body_layout as BL  # noqa: E402  (P10: facia, instruments over the column)
-# The wheel is placed on Oliver's car (QA fix round 1, cockpit): a circle fitted to 678 points of the rim in his body
-# scan (mgb.scan_layout registration) has its centre at x -981, y -294, 830 mm above the road, radius 198.8 (the
-# 16 1/2 in rim's centre line) and its axis 20 deg to the horizontal. The rim centre is held; the hub face lies
-# DISH mm ahead of it on the one pinion/column axis (Sec 20), which then rises at about 24 deg. The wheel sits
-# 56 mm inboard of P10's driver line (the binnacle's centre), as in the scan.
-RIM_CENTRE = (-981.0, -294.0, CL.GROUND_Z + 830.0)       # D: Oliver's body scan, rim circle fit
+# QA fix round 1, cockpit: a circle fitted to 678 points of the rim in Oliver's body scan (mgb.scan_layout) has its
+# centre at x -981, y -294, 830 mm above the road, radius 198.8 (the 16 1/2 in rim's centre line), axis 20 deg to the
+# horizontal (RIM_CENTRE_SCAN). A straight column from the model's pinion (Sec 20: one axis) to there passes through
+# P8's master cylinder, pedal box and brake pedal, so the wheel cannot go there without moving the pedal box or
+# raising the rack (a question for Oliver, PLAN). Held for now: the rim centre at the scan's x (the hub 69 mm further
+# forward than before), and the hub as high (z 10) and as near the scan's y (-345) as the column clears the pedal box
+# and the brake pedal's arm.
+RIM_CENTRE_SCAN = (-981.0, -294.0, CL.GROUND_Z + 830.0)  # D: Oliver's body scan, rim circle fit (not reachable yet)
 DISH = 62.0                                              # rim plane above (toward the driver) the hub face
-_r = [RIM_CENTRE[i] - PINION_MESH[i] for i in range(3)]
-_rl = math.sqrt(sum(v * v for v in _r))
-WHEEL_CENTRE = tuple(RIM_CENTRE[i] - DISH * _r[i] / _rl for i in range(3))   # steering wheel centre (hub face plane)
+WHEEL_CENTRE = (-921.0, -345.0, 10.0)                    # steering wheel centre (hub face plane), RHD
 _d = [WHEEL_CENTRE[i] - PINION_MESH[i] for i in range(3)]
 _L = math.sqrt(sum(v * v for v in _d))
 COLUMN_DIR = tuple(v / _L for v in _d)               # up the column, rearward

@@ -359,14 +359,18 @@ def console_toggle(spec):
     return _l((b + lever).moved(Location((xt - 4.0, y, z))), spec)
 
 
+DASH_TOP_W = 500.0                             # inside the doors' top corners
+
+
 def dash_top(spec):
     """Padded black top of the scuttle from the crash roll forward to the screen's foot (Oliver's kf121, kf143; his
     scan, 900-930 above the road from x -800 to -600): a thin vinyl pad over the scuttle's top surface."""
     from build123d import Solid, Vector, Wire
     n = 14
-    ys = [-ROLL_W + 2 * ROLL_W * k / n for k in range(n + 1)]
+    W = DASH_TOP_W
+    ys = [-W + 2 * W * k / n for k in range(n + 1)]
     xr = FX - 24.0
-    xf = max(S.screen_base(0.0)[0], S.screen_base(ROLL_W)[0]) - 12.0
+    xf = max(S.screen_base(0.0)[0], S.screen_base(W)[0]) - 35.0
     wires = []
     for k in range(7):
         x = xr + (xf - xr) * k / 6
@@ -374,7 +378,7 @@ def dash_top(spec):
         bot = [(y, H(S.top_h(x, y)) + 0.4) for y in reversed(ys)]
         wires.append(Wire.make_polygon([Vector(x, a, b) for a, b in top + bot], close=True))
     pad = Solid.make_loft(wires, ruled=True)
-    plan = [(xr, -ROLL_W), (xr, ROLL_W)] + [(S.screen_base(y)[0] - 12.0, y) for y in reversed(ys)]
+    plan = [(xr, -W), (xr, W)] + [(S.screen_base(y)[0] - 35.0, y) for y in reversed(ys)]
     pad = pad & zprism(plan, H(800.0), H(1000.0))
     return _l(pad, spec)
 
@@ -386,15 +390,15 @@ def dash_top(spec):
 # squab raked back 24 deg (its front face from about x -1440 at the cushion to -1640 at the top, 885 above the road),
 # its top rounded to a large radius, a piped centre panel of six vertical pleats in its lower two-thirds under a plain
 # upper panel, piping round the face and a top roll piped on both edges.
-SEAT_Y = 385.0                               # between the floor's runner captive nuts (y 300 and 470)
-SEAT_W = 430.0
+SEAT_Y = 380.0                               # between the floor's runner captive nuts (y 300 and 470)
+SEAT_W = 400.0                               # inside the sill carpet and the rear loom along the sill
 CUSH_X = (-1000.0, -1432.0)                  # front edge, rear edge
 CUSH_TOP = [(-1432.0, 405.0), (-1300.0, 432.0), (-1150.0, 468.0), (-1075.0, 497.0), (-1035.0, 510.0), (-1000.0, 505.0)]
 CUSH_BOT = ((-1000.0, 352.0), (-1432.0, 300.0))
 CUSH_PANEL = (130.0, -1408.0, -1140.0)       # centre panel half-width and fore/aft extent (the front roll ahead of it, kf140)
 SQUAB_RAKE = 24.0
-SQUAB_BASE = (-1440.0, 392.0)                # front face's foot (x, height above the road)
-SQUAB_LEN = 540.0
+SQUAB_BASE = (-1440.0, 410.0)                # front face's foot (x, height above the road), over the heelboard's step
+SQUAB_LEN = 520.0
 SQUAB_T = (96.0, 78.0)                       # thickness at the foot and under the top roll
 SQUAB_TOP_R = 150.0
 SQUAB_PANEL = (125.0, 40.0, 335.0)           # centre panel half-width, foot and head (up the squab)
@@ -588,8 +592,19 @@ def bulkhead_felt(spec):
         id = spec.id
     b = St.bulkhead(_Id())
     f = b.moved(Location((-3.0, 0.0, 0.0)))
-    f = f & box(St.BH_X - 7.0, St.BH_X - St.T - 0.2, -S.SILL_INNER_Y + 7.5, S.SILL_INNER_Y - 7.5, U.TOE_TOP[1] + 2.0, H(FACIA_H[0]))
+    f = f & box(St.BH_X - 7.0, St.BH_X - St.T - 0.2, -S.SILL_INNER_Y + 7.5, S.SILL_INNER_Y - 7.5, U.TOE_TOP[1] + 2.0, FELT_TOP)
+    # cut round the fittings bolted to the bulkhead's cabin face: the column's toe mount and the accelerator's bracket
+    from pathlib import Path
+    from mgb import spec as SP
+    from parts.fuel import throttle as TH
+    br = TH.pedal_bracket(SP.load_all(Path(__file__).resolve().parents[2] / "specs")["fuel.throttle.pedal-bracket"])
+    for q in (St.column_toe_mount(_Id()), br):
+        bb = q.bounding_box()
+        f = f - box(bb.min.X - 3.0, bb.max.X + 3.0, bb.min.Y - 3.0, bb.max.Y + 3.0, bb.min.Z - 3.0, bb.max.Z + 3.0)
     return _l(f, spec)
+
+
+FELT_TOP = -20.0                               # under the bulkhead's upper panel (structure.bulkhead_upper, z -18)
 
 
 def heel_mat(spec):
@@ -683,7 +698,7 @@ def rear_carpet(spec):
     the step under the squabs' feet and the tunnel's carry-on through it, up the upper riser and over the shelf
     (tonneau floor, lifted to reach the battery access covers, Haynes photo 2.1) out to the side trim, ahead of the
     wheel house humps."""
-    yo = S.SILL_INNER_Y - 4.0
+    yo = CARPET_Y
     hb, sf = U.HEELBOARD_X + St.T, U.SHELF_FRONT_X + St.T
     tun = _dedupe(St.tunnel_profile(St.TUNNEL[-1], flange=0.0))
     tun_poly = xprism(tun, sf - 20.0, hb + 40.0)
@@ -691,16 +706,16 @@ def rear_carpet(spec):
     lower = box(hb + 0.3, hb + 0.3 + CT, -yo, yo, U.FLOOR_Z + St.T + 7.2, STEP_TOP + CT) - \
         xprism(G.band(tun, -CT - 0.5), hb - 1.0, hb + 20.0) - xprism(tun, hb - 1.0, hb + 20.0)
     parts.append(lower)
-    step = box(sf + 0.3, hb + 0.3, -yo, yo, STEP_TOP + 0.3, STEP_TOP + 0.3 + CT) - tun_poly
+    step = box(sf + 0.3, hb + 0.3, -yo, yo, STEP_TOP + 0.3, STEP_TOP + 0.3 + CT) - xprism(St.tunnel_hump(STEP_TOP, 0.4)[0], sf, hb + 1.0)
     parts.append(step)
     above = _dedupe(St._tunnel_above(STEP_TOP))
-    hump = xprism(G.band([(y, z + 0.3) for y, z in above], -CT), sf + 0.3, hb + 0.3)     # the tunnel's carry-on
-    parts.append(hump)
+    hump = xprism(St.tunnel_hump(STEP_TOP, CT + 0.4)[0], sf + 0.3, hb + 0.3) - xprism(St.tunnel_hump(STEP_TOP, 0.4)[0], sf, hb + 1.0)
+    parts.append(hump)                                                        # the tunnel's carry-on
     riser = box(sf + 0.3, sf + 0.3 + CT, -yo, yo, STEP_TOP, SHELF_TOP + CT) - xprism(G.band(above, -CT - 0.5), sf - 1, sf + 20)
     riser = riser - xprism(above + [(-130.0, STEP_TOP - 5.0), (130.0, STEP_TOP - 5.0)], sf - 1, sf + 20)
     parts.append(riser)
     xh = _hump_x()
-    parts.append(box(REAR_WALL_X + 3.5, sf + 0.3, -St.RWH_Y + 2.0, St.RWH_Y - 2.0, SHELF_TOP, SHELF_TOP + CT))   # the shelf
+    parts.append(box(REAR_WALL_X + 3.5, sf + 0.3, -St.RWH_Y + CT + 0.6, St.RWH_Y - CT - 0.6, SHELF_TOP, SHELF_TOP + CT))   # the shelf
     qy = min(_quarter_y(x) for x in (sf, xh)) - 1.0
     for s_ in (1, -1):                                        # out to the side trim ahead of the humps
         parts.append(St._side(box(xh, sf + 0.3, St.RWH_Y + 2.0, qy, SHELF_TOP, SHELF_TOP + CT), s_))
@@ -734,7 +749,7 @@ def kick_panel(side):
         xf = S.DOOR_FRONT_X - S.GAP / 2
         zf = U.FLOOR_Z + St.T + 7.2
         zs = H(St.TREAD_H) + CT + 0.6                                 # above the sill carpet's tread
-        board = box(xf + 2.0, St.BH_X - 4.0, y0 - 3.0, y0, zs, H(780.0))      # under the scuttle
+        board = box(xf + 2.0, St.BH_X - 4.0, y0 - 3.0, y0, zs, FELT_TOP)      # under the bulkhead's upper panel
         return _l(St._side(board, side), spec)
     return build
 
@@ -747,7 +762,8 @@ def sill_cover(side):
         yi = S.SILL_INNER_Y
         x0, x1 = U.SHELF_FRONT_X + St.T + CT + 0.5, St.BH_X - 4.0
         zt = H(St.TREAD_H)
-        zf = U.FLOOR_Z + St.T + 0.2 + 7.2 + CT                       # on the floor carpet's edge
+        from mgb import wiring_layout as WL
+        zf = WL.SILL_Z + 14.0                                       # over the rear loom run along the sill's foot
         face = box(x0, x1, yi - 4.0 - CT, yi - 4.0, zf, zt + CT + 0.3)
         xa, xb = S.DOOR_REAR_X + 6.0, S.DOOR_FRONT_X - 6.0
         top = box(xa, xb, yi - 4.0 - CT, St.SILL_OUT_Y - 3.0, zt + 0.3, zt + 0.3 + CT)
@@ -821,7 +837,7 @@ def rear_wall_trim(spec):
 # parts/body/mechanisms.py) and follows the tumblehome above and below.
 CARD_T = 3.0
 CARD_TOP_H = C.WAIST_H - 10.0                 # tucked up into the capping roll
-CARD_BOT_H = S.DOOR_BOTTOM_H + 3.0
+CARD_BOT_H = S.DOOR_BOTTOM_H + 8.0
 
 
 def _card_flat_y():
@@ -834,7 +850,7 @@ def card_face_y(h):
     xs = [S.DOOR_FRONT_X - 20.0 - k * (S.DOOR_FRONT_X - S.DOOR_REAR_X - 40.0) / 6 for k in range(7)]
     yo = min(min(S.side_y(x, h) for x in xs) - C.DOOR_IN - 1.4, _card_flat_y())
     ycap = min(S.side_y(x, C.WAIST_H - 30.0) for x in xs) - C.DOOR_IN + 6.0      # the capping roll's centre line
-    return max(yo, ycap - 4.0) - CARD_T
+    return max(yo, ycap - 8.0) - CARD_T
 
 
 def _card_yz():
@@ -850,7 +866,7 @@ def door_card(side):
     def build(spec):
         """Door trim pad (Sec 29, early Sports Tourer; Oliver's kf128, kf131): the black vinyl-covered hardboard over
         the inner panel's whole face, the seam's groove across it, held by clips round its edge."""
-        out = [(x, H(h)) for x, h in B.door_outline_xz(-5.0)]
+        out = [(x, H(h)) for x, h in B.door_outline_xz(-10.0)]
         card = xprism(_card_yz(), S.DOOR_REAR_X - 200.0, S.DOOR_FRONT_X + 50.0) & yprism(out, 400.0, 800.0)
         card = card & box(S.DOOR_REAR_X - 200.0, S.DOOR_FRONT_X + 50.0, 400.0, 800.0, H(CARD_BOT_H) - 1, H(CARD_TOP_H) + 1)
         return _l(St._side(card, side), spec)
@@ -1107,15 +1123,15 @@ BELT_T = 1.6
 
 def _belt_pts(side):
     """Reel centre, upper anchor, lower anchor and buckle base (car frame) for the seat on `side`."""
-    xr = S.REAR_BULKHEAD_X + 70.0
-    yr = side * (St.RWH_Y + 52.0)
-    zr = _hump_top(xr) + CT + 44.0 if _hump_top(xr) is not None else SHELF_TOP + CT + 44.0
+    xr = _hump_x() - 85.0                                    # on the hump's front slope, clear of the corner trim
+    yr = side * (St.RWH_Y + 50.0)
+    zr = max(_hump_top(x) for x in (xr - 50.0, xr + 50.0)) + CT + 47.0
     xa = S.DOOR_REAR_X - 44.0
     ya = side * (_quarter_y(xa) - 8.0)
     za = H(S.top_h(xa, abs(ya)) - 78.0)
-    xl = SQUAB_BASE[0] - 20.0
-    yl = side * (S.SILL_INNER_Y - 26.0)
-    zl = H(St.TREAD_H) + CT + 6.0
+    xl = S.DOOR_REAR_X - 40.0                                # stowed: hanging down the side trim to the sill's tread
+    yl = side * (S.SILL_INNER_Y + 22.0)
+    zl = H(St.TREAD_H) + 6.0
     xb = SQUAB_BASE[0] - 30.0
     yb = side * (St.TUNNEL[-1][1] + 28.0)
     zb = STEP_TOP + 0.3 + CT
@@ -1163,7 +1179,7 @@ def belt_webbing(side):
         top = (xr, yr, zr + 34.0 + BELT_T)
         a1 = (xa - 6.0, ya - side * 8.0, za + 10.0)
         s1 = _strap(top, a1, (0.0, 1.0, 0.0))
-        s2 = _strap((xa, ya - side * 10.0, za - 10.0), (xl, yl, zl + 8.0), (1.0, 0.0, 0.0))
+        s2 = _strap((xa, ya - side * 10.0, za - 10.0), (xl, yl, zl + 8.0), (1.0, 0.0, 0.0), w=40.0)
         return _c([s1, s2], spec)
     return build
 

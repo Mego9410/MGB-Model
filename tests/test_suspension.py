@@ -57,5 +57,5 @@ def test_pinion_and_column_share_one_axis():
     assert all(abs(d[i] / n - S.COLUMN_DIR[i]) < 1e-9 for i in range(3))
     assert S.WHEEL_CENTRE[1] < 0                                       # right-hand drive
     from mgb import body_layout as BL
-    assert abs(S.WHEEL_CENTRE[1] - BL.DRIVER_Y) < 70.0                # under P10's instruments (Oliver's scan: 56 mm inboard)
+    assert abs(S.WHEEL_CENTRE[1] - BL.DRIVER_Y) < 70.0                # under P10's instruments
     assert S.WHEEL_CENTRE[0] < BL.FACIA_X < S.COLUMN_TOP_CLAMP[0] + 20.0
