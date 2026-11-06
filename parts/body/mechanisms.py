@@ -3,7 +3,7 @@
 extension arm with their studs in the glass's lower channel, balance spring, arm stop and buffer, the extension's
 pivot plate), the door lock with its operating link and remote control (Fig 12.13 items 1-22: lock 15, operating
 link 16, remote control lock 12 with its anti-rattle sleeve 13, tension spring 18, spring clips 17), the lock housing
-and barrel at the pull handle (items 3-6), the striker's packing and tapping plate (items 10, 11), the door check
+and barrel below the side strip (items 3-6), the chrome finisher on the door top's rear end, the striker's packing and tapping plate (items 10, 11), the door check
 strap, the interior door pull (item 8) and the trim pad's clips, the door aperture seals; the bonnet's lock (Sec 6:
 lock plate with its spring catch and control cable to the pull knob under the facia, the safety catch on the bonnet)
 and its prop stay in its clip (photos 13, 28); the boot lid's stay in its clip, lock and striker (Sec 25, Fig 12.12)
@@ -184,7 +184,7 @@ def lower_channel(side):
     def build(spec):
         """Door glass lower channel (Fig 12.17 item 3) on the glass's bottom edge with its glazing channel (2): the
         arms' studs run in its turned-over lips."""
-        x0, x1 = C.GLASS_REAR_X + 40.0, C.QL_POST_X - 20.0
+        x0, x1 = C.GLASS_REAR_X + 40.0, C.SG.ql_post_x(GLASS_BOTTOM_H) - 24.0     # the glass's bottom edge, its front on the leaning post
         parts = []
         n = 6
         for k in range(n):
@@ -216,7 +216,7 @@ def door_lock_mech(side):
             flange = flange - xcyl(2.8, x - 1, x + 3, yc + (16.0 if dz else -16.0), z + dz)
         latch = xcyl(9.0, x - 7.0, x + 1.0, yc, z) + ybox(x - 7.0, x + 1.0, yc - 3.0, yc + 3.0, z - 14.0, z + 14.0)
         lever = ybox(x + 8.0, x + 60.0, yc - 1.5, yc + 1.5, z + 30.0, z + 40.0)
-        xh = C.HANDLE_X + 65.0                                   # outside handle's rear boss
+        xh = C.HANDLE_PIVOT_X                                    # outside handle lever's pivot in its escutcheon
         yh = S.side_y(xh, C.HANDLE_H) - 18.0
         link = swept_rod([(xh, yh, H(C.HANDLE_H)), (xh - 30.0, yh - 6.0, H(C.HANDLE_H) - 40.0),
                           (x + 58.0, yc, z + 38.0)], 3.0)
@@ -244,19 +244,64 @@ def remote_control(side):
     return build
 
 
+LOCK_BARREL_X, LOCK_BARREL_H = -1579.0, 688.0      # kf048 ray-cast: the key lock below the side strip, both doors
+
+
+def _skin_loc(x, h):
+    """Location on the left door skin at (x, h), local z along the skin's outward normal, local x near car x."""
+    from mgb.chassis_geom import frame_to
+    e = 2.0
+    y = S.side_y(x, h)
+    fx = (S.side_y(x + e, h) - S.side_y(x - e, h)) / (2 * e)
+    fz = (S.side_y(x, h + e) - S.side_y(x, h - e)) / (2 * e)
+    return frame_to((x, y, H(h)), (-fx, 1.0, -fz), xhint=(1.0, 0.0, 0.0))
+
+
 def lock_barrel(side):
     def build(spec):
-        """Lock housing and barrel (Fig 12.13 items 3, 4) through the skin in the pull handle's front boss, the
-        retaining clip (5) and the self-centring spring (6) inside, the coupling link to the lock (Sec 35 para 2)."""
-        x = C.HANDLE_X + 65.0
-        h = C.HANDLE_H
-        ys = S.side_y(x, h)
-        housing = rod((x, ys + 2.0, H(h)), (x, ys - 30.0, H(h)), 8.0)
-        barrel = rod((x, ys + 19.0, H(h)), (x, ys - 34.0, H(h)), 5.5)
-        clip = ybox(x - 12.0, x + 12.0, ys - 14.0, ys - 12.0, H(h) - 12.0, H(h) + 12.0)
-        spring = Location((x, ys - 26.0, H(h))) * Rot(90, 0, 0) * coil_spring(0.7, 7.0, 8.0, 3.0)
-        cam = ybox(x - 3.0, x + 22.0, ys - 38.0, ys - 34.0, H(h) - 3.0, H(h) + 3.0)
-        return _c([_side(p, side) for p in (housing, barrel, clip, spring, cam)], spec)
+        """Door key lock (Fig 12.13 items 3-6) as on Oliver's car: separate from the handle, a round chrome escutcheon
+        about 30 mm across, domed, on the skin below the side strip near the door's rear edge (kf048 ray-cast x -1579,
+        h 688, both doors; kf189, kf190 close-ups), the barrel's face with its keyway; inside the door the housing,
+        the retaining clip (5), the self-centring spring (6) and the coupling cam to the lock (Sec 35 para 2)."""
+        from build123d import Axis, Cylinder, Align
+        from mgb.shapes import revolved
+        from mgb.elec_shapes import tryfillet
+        loc = _skin_loc(LOCK_BARREL_X, LOCK_BARREL_H)
+        esc = revolved([(8.6, -0.6), (15.0, -0.6), (15.0, 1.2), (13.2, 3.4), (10.6, 4.4), (8.6, 4.4)])
+        barrel = Cylinder(8.4, 34.0, align=(Align.CENTER, Align.CENTER, Align.MAX)).moved(Location((0, 0, 3.6)))
+        barrel = tryfillet(barrel, barrel.edges().filter_by_position(Axis.Z, 3.5, 3.7), 1.2)
+        keyway = box(-0.9, 0.9, -5.5, 3.5, 1.8, 4.0) + box(-2.2, 2.2, 1.8, 3.5, 1.8, 4.0)
+        barrel = barrel - keyway
+        housing = revolved([(8.5, -30.0), (10.5, -30.0), (10.5, -1.0), (8.5, -1.0)])
+        clip = box(-12.0, 12.0, -12.0, 12.0, -14.0, -12.0) - Cylinder(8.6, 6.0)
+        spring = Location((0, 0, -27.0)) * coil_spring(0.7, 7.0, 8.0, 3.0)
+        cam = box(-3.0, 22.0, -3.0, 3.0, -38.0, -34.0)
+        return _c([_side(loc * p, side) for p in (esc, barrel, housing, clip, spring, cam)], spec)
+    return build
+
+
+def door_top_finisher(side):
+    def build(spec):
+        """Chrome end finisher at the rear of the door top (Oliver's kf187, kf188 zoomed): a pressed cap over the
+        rear ends of the black capping roll and the felt glass strip, its top rounded over to the inside and its rear
+        end rounded in plan, clipped on just ahead of the door's rear edge."""
+        from build123d import Axis
+        from mgb.elec_shapes import tryfillet
+        lean = S.DOOR_REAR_LEAN * (S.DOOR_TOP_H - S.DOOR_BOTTOM_H) / (1100.0 - S.DOOR_BOTTOM_H)
+        xr = S.DOOR_REAR_X + S.GAP / 2 + lean + 2.0
+        xf = xr + 58.0
+        xm = 0.5 * (xr + xf)
+        yo = S.side_y(xm, S.DOOR_TOP_H - 16.0) + 1.4            # outside the skin just under the top's roll
+        yi = S.side_y(xm, C.WAIST_H - 30.0) - C.DOOR_IN + 6.0 - 14.5
+        ht = S.DOOR_TOP_H + 5.0
+        out = B.fillet_poly([(yo, H(S.DOOR_TOP_H - 18.0)), (yo, H(ht)), (yi, H(ht)), (yi, H(C.WAIST_H - 16.0))],
+                            [0.0, 7.0, 11.0, 0.0])
+        inn = B.fillet_poly([(yo - 1.5, H(S.DOOR_TOP_H - 19.0)), (yo - 1.5, H(ht - 1.5)), (yi + 1.5, H(ht - 1.5)),
+                             (yi + 1.5, H(C.WAIST_H - 17.0))], [0.0, 5.5, 9.5, 0.0])
+        cap = xprism(out, xr, xf)
+        cap = cap - xprism(inn, xr + 1.6, xf + 1.0)
+        cap = tryfillet(cap, cap.edges().filter_by_position(Axis.X, xr - 0.1, xr + 0.1), 1.2)
+        return _l(_side(cap, side), spec)
     return build
 
 
@@ -474,6 +519,7 @@ for _s, _n in ((1, "l"), (-1, "r")):
         f"body.door-mechanisms.lock-{_n}": {"build": door_lock_mech(_s)},
         f"body.door-mechanisms.remote-control-{_n}": {"build": remote_control(_s)},
         f"body.door-mechanisms.lock-barrel-{_n}": {"build": lock_barrel(_s)},
+        f"body.door-mechanisms.door-top-finisher-{_n}": {"build": door_top_finisher(_s)},
         f"body.door-mechanisms.striker-backing-{_n}": {"build": striker_backing(_s)},
         f"body.door-mechanisms.check-strap-{_n}": {"build": check_strap(_s)},
         f"body.door-mechanisms.door-pull-{_n}": {"build": door_pull(_s)},

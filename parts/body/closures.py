@@ -13,7 +13,7 @@ import math
 import numpy as np
 from build123d import Compound, Face, Location, Rot, thicken
 
-from mgb import body_geom as G, body_layout as BL, body_shell as B, body_shell_layout as S
+from mgb import body_geom as G, body_layout as BL, body_shell as B, body_shell_layout as S, side_glass_layout as SG
 from mgb.chassis_geom import box, rod, swept_rod, xcyl, xprism, ycyl, yprism, zcyl, zprism
 from parts.body import panels as Pn
 from parts.body import structure as St
@@ -46,11 +46,12 @@ def mirror(p, side):
 # =====================================================================================================================
 # doors
 # =====================================================================================================================
-WAIST_H = S.DOOR_TOP_H - 6.0                             # door top inner edge (below the roll) where the glass slot is
+WAIST_H = SG.WAIST_H                         # door top inner edge (below the roll) where the glass slot is
 DOOR_IN = 72.0                               # inner panel this far inboard of the skin
-QL_POST_X = -1104.0                         # quarter-light's rear post (divider) at the waist
-GLASS_TOP_H = 1160.0                          # the glass runs 8 mm up into the hood's edge (P11b QA); the quarter-light's top
-                                              # rail 16 mm lower, at 1144 (Oliver's scan: 1150, with the taller, more upright screen)
+GLASS_TOP_H = SG.GLASS_TOP_H                 # the glass runs 8 mm up into the hood's edge (P11b QA); the quarter-light's top
+QL_TOP_H = SG.QL_TOP_H                       # rail 16 mm lower, at 1144 (Oliver's scan: 1150)
+QL_POST_X = SG.ql_post_x(QL_TOP_H)          # quarter-light's rear post (divider) centre line at the top; it leans back
+                                             # 15 deg, its foot 70 mm further forward (mgb.side_glass_layout)
 GLASS_T = 4.0
 
 
@@ -137,13 +138,13 @@ GLASS_REAR_RAKE = 36.0                          # the rear edge leans forward th
 
 
 def glass_outline():
-    """Door glass in side view (x, height): front edge in the quarter-light post's channel, the top along the hood's
-    side edge, the rear edge at the door's rear shut line raked forward slightly and rounded into the top (Oliver's
-    photos 08, 09, 23; the glass runs the whole length of the door); it runs down inside the door to the regulator
-    channel."""
-    xf = QL_POST_X - 4.0
-    return [(xf, 520.0), (GLASS_REAR_X, 520.0), (GLASS_REAR_X, WAIST_H + 20.0),
-            (GLASS_REAR_X + GLASS_REAR_RAKE, GLASS_TOP_H - 14.0), (xf - 10.0, GLASS_TOP_H)]
+    """Door glass in side view (x, height): front edge in the quarter-light's rear post channel, leaning back 15 deg
+    with the post (Oliver's scan and kf048, kf015, kf016; Haynes Fig 12.15), the top along the hood's side edge, the
+    rear edge at the door's rear shut line raked forward slightly and rounded into the top (Oliver's photos 08, 09, 23;
+    the glass runs the whole length of the door); it runs down inside the door to the regulator channel."""
+    xf = lambda h: SG.ql_post_x(h) - 4.0
+    return [(xf(520.0), 520.0), (GLASS_REAR_X, 520.0), (GLASS_REAR_X, WAIST_H + 20.0),
+            (GLASS_REAR_X + GLASS_REAR_RAKE, GLASS_TOP_H - 14.0), (xf(GLASS_TOP_H), GLASS_TOP_H)]
 
 
 GLASS_RADII = [0, 0, 0, 75.0, 6.0]
@@ -154,7 +155,7 @@ def glass_top_h(x):
     follows it."""
     pts = B.fillet_poly(glass_outline(), GLASS_RADII)
     xr = GLASS_REAR_X
-    xtop = QL_POST_X - 14.0                       # the top front corner (the front edge leans back 10 mm)
+    xtop = SG.ql_post_x(GLASS_TOP_H) - 10.0      # the top front corner
     x = min(max(x, xr), xtop)
     best = None
     for (x0, h0), (x1, h1) in zip(pts, pts[1:] + pts[:1]):       # upper envelope of the outline at x
@@ -189,7 +190,8 @@ def door_glass(side):
         g = None
         rows = []
         hs = [500.0 + (GLASS_TOP_H + 20.0 - 500.0) * k / 12 for k in range(13)]
-        xs = [QL_POST_X + 6.0 - k * (QL_POST_X + 6.0 - GLASS_REAR_X + 10.0) / 10 for k in range(11)]
+        xa = SG.ql_post_x(500.0) + 6.0
+        xs = [xa - k * (xa - GLASS_REAR_X + 10.0) / 12 for k in range(13)]
         for x in xs:
             rows.append([(x, side * _glass_ys(h), H(h)) for h in hs])
         f = Face.make_surface_from_array_of_points(rows, tol=0.05, min_deg=1, max_deg=3)
@@ -197,7 +199,7 @@ def door_glass(side):
         clip = side_prism_xz(pts, -2000.0, 2000.0)
         g = slab & clip
         yc = side * _glass_ys(540.0)
-        chan = box(GLASS_REAR_X + 60.0, QL_POST_X - 30.0, yc - 6.0, yc + 6.0, H(520.0) - 10.0, H(540.0))
+        chan = box(GLASS_REAR_X + 60.0, SG.ql_post_x(520.0) - 30.0, yc - 6.0, yc + 6.0, H(520.0) - 10.0, H(540.0))
         return _c([g, chan], spec)
     return build
 
@@ -223,132 +225,343 @@ def side_prism_xz(pts_ag, y0, y1):
     return yprism([(x, H(h)) for x, h in pts_ag], y0, y1)
 
 
-QL_FRONT_X = -778.0                         # frame's front edge at the door top: just clear of the pillar, the seal between
+QL_FRONT_Y = S.SCREEN_HALF_W + 13.0              # the frame's front edge closes on the screen pillar's rear (photos 09, 27)
+QL_FRAME_INSET = (16.0, SG.QL_FRAME_W, 18.0, SG.QL_FRAME_W)   # outer frame band: bottom, rear post, top, front post
+QL_SEAL_W = 5.0                                  # black rubber between the outer frame and the pivoting vent frame
+QL_VENT_W = 6.0                                  # the vent's slim chrome frame
+QL_GLAZING_W = 3.0                               # its black glazing rubber showing round the glass
+QL_VENT_R = 72.0                                 # the vent's big lower-front corner (kf048 full res, kf231, kf232: about R70)
 
 
 def ql_outline():
-    """Quarter-light (ventilator) in side view: the front edge along the screen pillar's rake, the rear post at
-    QL_POST_X, the bottom on the door top."""
-    xb = QL_FRONT_X                              # at the screen pillar's foot (profile photo 29)
-    rake = S.pillar_rake()
-    xt = xb - (QL_TOP_H - WAIST_H) * rake
-    return [(xb, WAIST_H + 8.0), (QL_POST_X + 8.0, WAIST_H + 8.0), (QL_POST_X + 8.0, QL_TOP_H + 3.0), (xt, QL_TOP_H)]
+    """Quarter-light's outer chrome frame in side view (x, height): bottom front, bottom rear, top rear, top front.
+    The front edge stands behind the screen pillar's rear edge with the two rubber strips between, the rear post leans
+    back 15 deg, the bottom rail sits on the door top's capping (mgb.side_glass_layout; Oliver's scan and kf048)."""
+    hb, ht = SG.QL_BOTTOM_H, SG.QL_OUTER_TOP_H
+    return [(SG.ql_front_x(hb), hb), (SG.ql_rear_x(hb), hb), (SG.ql_rear_x(ht), ht), (SG.ql_front_x(ht), ht)]
 
 
-QL_TOP_H = GLASS_TOP_H - 16.0                    # the frame's top under the hood's edge
-QL_FRONT_Y = S.SCREEN_HALF_W + 13.0              # the frame's front edge closes on the screen pillar's rear (photos 09, 27)
+QL_FRONT_X = ql_outline()[0][0]
 
 
-def ql_y(x, h):
+def _inset(pts, d):
+    """Polygon (x, h) with edge i (pts[i] to pts[i+1]) moved inward by d[i] (a list, or one value for all)."""
+    n = len(pts)
+    d = d if isinstance(d, (list, tuple)) else [d] * n
+    area = sum(pts[i][0] * pts[(i + 1) % n][1] - pts[(i + 1) % n][0] * pts[i][1] for i in range(n))
+    sg = 1.0 if area > 0 else -1.0
+    lines = []
+    for i in range(n):
+        (x0, h0), (x1, h1) = pts[i], pts[(i + 1) % n]
+        ln = math.hypot(x1 - x0, h1 - h0)
+        ux, uh = (x1 - x0) / ln, (h1 - h0) / ln
+        lines.append(((x0 - uh * sg * d[i], h0 + ux * sg * d[i]), (ux, uh)))
+    out = []
+    for i in range(n):
+        (p, u), (q, v) = lines[i - 1], lines[i]
+        det = -u[0] * v[1] + u[1] * v[0]
+        a = (-(q[0] - p[0]) * v[1] + (q[1] - p[1]) * v[0]) / det
+        out.append((p[0] + a * u[0], p[1] + a * u[1]))
+    return out
+
+
+def ql_frame_inner():
+    return _inset(ql_outline(), list(QL_FRAME_INSET))
+
+
+def ql_vent_outline():
+    return _inset(ql_frame_inner(), QL_SEAL_W)
+
+
+def ql_vent_inner():
+    return _inset(ql_vent_outline(), QL_VENT_W)
+
+
+def ql_glass_outline():
+    return _inset(ql_vent_inner(), QL_GLAZING_W)
+
+
+R_OUT = [6.0, 6.0, 10.0, 6.0]                       # outer frame corners: bottom front, bottom rear, top rear, top front
+R_FRAME_IN = [QL_VENT_R + QL_SEAL_W, 5.0, 5.0, 6.0]
+R_VENT = [QL_VENT_R, 4.0, 4.0, 5.0]
+R_VENT_IN = [QL_VENT_R - QL_VENT_W, 3.0, 3.0, 3.0]
+R_GLASS = [QL_VENT_R - QL_VENT_W - QL_GLAZING_W, 2.0, 2.0, 2.0]
+
+
+def _ql_s(x, h):
+    """Fraction across the quarter-light at (x, h): 0 on the rear post's centre line, 1 on the front edge."""
+    xp, xf = SG.ql_post_x(h), SG.ql_front_x(h)
+    return (x - xp) / (xf - xp)
+
+
+def ql_y(x, h, clamp=True):
     """|y| of the quarter-light's plane: on the door glass's line at the rear post, toed in at the front so its front
     edge closes on the windscreen pillar (Oliver's photos 09, 15, 27)."""
-    rake = S.pillar_rake()
-    xfront = QL_FRONT_X - (h - WAIST_H - 8.0) * rake
-    s = (x - QL_POST_X) / (xfront - QL_POST_X)
-    return _glass_ys(h) + (QL_FRONT_Y - _glass_ys(h)) * max(0.0, min(1.0, s))
+    s = _ql_s(x, h)
+    if clamp:
+        s = max(0.0, min(1.0, s))
+    return _glass_ys(h) + (QL_FRONT_Y - _glass_ys(h)) * s
 
 
 def _qp(x, h, side, dy=0.0):
     return (x, side * (ql_y(x, h) + dy), H(h))
 
 
+def _ql_slab(side, dy0, dy1, s0=-0.12, s1=1.25):
+    """A sheet following the quarter-light's plane, dy0..dy1 outboard of it, over the frame's whole area."""
+    rows = []
+    hs = [SG.QL_BOTTOM_H - 40.0 + (SG.QL_OUTER_TOP_H + 30.0 - SG.QL_BOTTOM_H + 40.0) * k / 8 for k in range(9)]
+    for j in range(9):
+        s = s0 + (s1 - s0) * j / 8
+        row = []
+        for h in hs:
+            xp, xf = SG.ql_post_x(h), SG.ql_front_x(h)
+            x = xp + s * (xf - xp)
+            row.append((x, side * (ql_y(x, h, clamp=False) + dy0), H(h)))
+        rows.append(row)
+    f = Face.make_surface_from_array_of_points(rows, tol=0.05, min_deg=1, max_deg=3)
+    return thicken(f, dy1 - dy0, normal_override=(0.0, side, 0.0))
+
+
+def _band(side, outer, r_out, inner, r_in, dy0, dy1):
+    """Flat band between two side-view outlines on the quarter-light's plane."""
+    reg = side_prism_xz(B.fillet_poly(outer, r_out), -2000.0, 2000.0)
+    if inner is not None:
+        reg = reg - side_prism_xz(B.fillet_poly(inner, r_in), -2000.0, 2000.0)
+    return _ql_slab(side, dy0, dy1) & reg
+
+
+def _edge_x(poly, i, h):
+    """x on edge i of a side-view polygon at height h."""
+    (x0, h0), (x1, h1) = poly[i], poly[(i + 1) % len(poly)]
+    return x0 + (x1 - x0) * (h - h0) / (h1 - h0)
+
+
+def _ybox(side, x0, x1, y0, y1, z0, z1):
+    ya, yb = side * y0, side * y1
+    return box(min(x0, x1), max(x0, x1), min(ya, yb), max(ya, yb), z0, z1)
+
+
 def quarter_light_frame(side):
     def build(spec):
-        """Quarter-light frame (Sec 21; Fig 12.15 item 1 'ventilator securing nuts'): chrome channel round the
-        pivoting ventilator glass, the divider post down into the door to its two securing nuts, the pivot and catch;
-        toed in at the front to close on the windscreen pillar, its rubber seal along the front edge."""
-        pts = ql_outline()
-        loop = pts + [pts[0]]
-        yq = side * _glass_y(WAIST_H + 150.0)
-        segs = []
-        for a, b in zip(loop, loop[1:]):
-            n = 4
-            line = [_qp(a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n, side) for k in range(n + 1)]
-            segs.append(swept_rod(line, 6.5))
-        post = rod((QL_POST_X, yq, H(WAIST_H - 160.0)), (QL_POST_X, side * _glass_y(QL_TOP_H), H(QL_TOP_H + 3.0)), 6.0)
-        pivot = zcyl(4.0, H(WAIST_H + 8.0), H(WAIST_H + 30.0), QL_POST_X - 40.0, side * ql_y(QL_POST_X - 40.0, WAIST_H + 20.0))
-        catch = box(QL_POST_X + 4.0, QL_POST_X + 22.0, yq - side * 14.0 - 4, yq - side * 14.0 + 4, H(WAIST_H + 150.0), H(WAIST_H + 170.0))
-        return _c(segs + [post, pivot, catch], spec)
+        """Quarter-light outer frame (Sec 21; Fig 12.15 item 1 'ventilator securing nuts'): a flat chrome channel
+        about 24 mm wide with rounded corners (kf048 full res, kf231, kf232), its front edge behind the screen pillar
+        with the rubber strips between, the rear post leaning back 15 deg (Oliver's scan) and running on down into the
+        door as the door glass's front channel to the securing nuts; the frame's opening has the vent's big rounded
+        lower-front corner, filled with chrome below it. Toed in at the front to close on the pillar."""
+        out, inn = ql_outline(), ql_frame_inner()
+        main = _band(side, out, R_OUT, inn, R_FRAME_IN, -6.0, 5.0)
+        face = _band(side, _inset(out, 1.6), [max(r - 1.6, 0.0) for r in R_OUT], _inset(inn, -1.6),
+                     [r + 1.6 for r in R_FRAME_IN], 5.0, 6.6)              # the raised flat face, edges stepped back
+        # the door glass's front edge runs in a slot along the rear post
+        hs = [WAIST_H - 170.0, SG.QL_OUTER_TOP_H - 26.0]
+        slot = side_prism_xz([(SG.ql_post_x(h) + d, h) for h, d in ((hs[0], -14.0), (hs[0], -2.5))] +
+                             [(SG.ql_post_x(h) + d, h) for h, d in ((hs[1], -2.5), (hs[1], -14.0))], -2000.0, 2000.0)
+        yg0, yg1 = _glass_ys(WAIST_H + 140.0) - 5.0, _glass_ys(WAIST_H + 140.0) + 5.0
+        slot = slot & _ybox(side, -2000.0, 0.0, yg0 - 3.0, yg1 + 3.0, 0.0, H(2000.0))
+        # the divider post's leg down inside the door: a channel on the post's lean to the securing bracket
+        h0, h1 = WAIST_H - 160.0, SG.QL_BOTTOM_H + 3.0
+        yl = _glass_ys(WAIST_H - 80.0)
+        # its outer face kept 2 mm inside the door skin, which rolls in over the top (the leg passes the door top
+        # through the glass slot)
+        hs_ = [h0 + (h1 - h0) * k / 16 for k in range(17)]
+        yo = [min(yl + 7.0, S.side_y(SG.ql_post_x(h), h) - 2.0) for h in hs_]
+        keep = [(h, y) for h, y in zip(hs_, yo) if y > yl - 5.0]
+        sec = [(yl - 7.0, H(keep[0][0]))] + [(y, H(h)) for h, y in keep] + [(yl - 7.0, H(keep[-1][0]))]
+        if side < 0:
+            sec = [(-y, z) for y, z in sec]
+        leg = side_prism_xz([(SG.ql_post_x(h0) - 9.0, h0), (SG.ql_post_x(h0) + 9.0, h0), (SG.ql_post_x(h1) + 9.0, h1),
+                             (SG.ql_post_x(h1) - 9.0, h1)], -2000.0, 2000.0) & xprism(sec, -2000.0, 0.0)
+        bx = SG.ql_post_x(h0)
+        bracket = _ybox(side, bx - 16.0, bx + 16.0, yl - 7.0, yl - 5.4, H(h0) - 18.0, H(h0) + 4.0)
+        studs = [_ybox(side, bx + dx - 4.0, bx + dx + 4.0, yl - 13.0, yl - 5.4, H(h0) - 11.0, H(h0) - 3.0) for dx in (-9.0, 9.0)]
+        # the front leg: a tongue down from the lower front corner to the ventilator's front securing nut
+        xf0 = QL_FRONT_X - 30.0
+        yf = ql_y(xf0, SG.QL_BOTTOM_H)
+        tongue = _ybox(side, xf0 - 14.0, xf0 + 14.0, yf - 5.0, yf + 1.0, H(WAIST_H - 70.0), H(SG.QL_BOTTOM_H + 2.0))
+        nut = _ybox(side, xf0 - 6.0, xf0 + 6.0, yf - 12.0, yf - 5.0, H(WAIST_H - 62.0), H(WAIST_H - 50.0))
+        frame = G.fuse([main, face, leg]) - slot
+        return _c([frame, bracket, tongue, nut] + studs, spec)
+    return build
+
+
+def _knurl_plate(side, xc, hb, w, ht, dy0, t):
+    """Triangular pivot base plate, apex up, its face diamond-knurled (two sets of shallow crossing grooves)."""
+    tri = [(xc - w / 2, hb), (xc + w / 2, hb), (xc + 6.0, hb + ht), (xc - 6.0, hb + ht)]
+    y0 = ql_y(xc, hb + ht / 2) + dy0
+    plate = side_prism_xz(B.fillet_poly(tri, [3.0, 3.0, 4.0, 4.0]), *sorted((side * y0, side * (y0 - t))))
+    cuts = []
+    for k in range(-5, 6):
+        for sgn in (-1.0, 1.0):
+            c = xc + k * 6.0
+            g = [(c - 0.7 - sgn * 20.0, hb - 20.0), (c + 0.7 - sgn * 20.0, hb - 20.0), (c + 0.7 + sgn * 20.0, hb + 20.0),
+                 (c - 0.7 + sgn * 20.0, hb + 20.0)]
+            g = [(x, h) for x, h in g]
+            cuts.append(side_prism_xz(g, *sorted((side * (y0 - t - 1.0), side * (y0 - t + 0.6)))))
+    return plate - G.fuse(cuts)
+
+
+def quarter_light_vent(side):
+    def build(spec):
+        """Quarter-light vent (Sec 21): the pivoting inner frame round the glass, a narrow chrome channel with the
+        big rounded lower-front corner (about R70), on its pivots top and bottom; the chrome catch on its front post at
+        mid-height (a lever with a round knob, locking onto a keeper on the outer frame); the diamond-knurled
+        triangular pivot base plate on its bottom rail (Oliver's kf048 full res, kf231, kf232, kf186; Haynes Fig
+        12.15)."""
+        vent = _band(side, ql_vent_outline(), R_VENT, ql_vent_inner(), R_VENT_IN, -4.0, 3.5)
+        vi = ql_vent_inner()
+        # catch on the front post at mid-height, inboard
+        hc = SG.QL_BOTTOM_H + 0.47 * (SG.QL_OUTER_TOP_H - SG.QL_BOTTOM_H)
+        xc = _edge_x(ql_vent_outline(), 3, hc)
+        yc = ql_y(xc, hc)
+        keeper = _ybox(side, xc - 2.0, xc + 16.0, yc - 6.0, yc - 15.0, H(hc) - 13.0, H(hc) + 13.0)
+        base = _ybox(side, xc - 22.0, xc + 1.0, yc - 4.0, yc - 9.0, H(hc) - 10.0, H(hc) + 10.0)
+        lever = _ybox(side, xc - 52.0, xc - 4.0, yc - 15.0, yc - 18.0, H(hc) - 4.5, H(hc) + 4.5)
+        pivot = ycyl(4.5, *sorted((side * (yc - 9.0), side * (yc - 19.0))), x=xc - 8.0, z=H(hc))
+        knob = ycyl(6.0, *sorted((side * (yc - 18.0), side * (yc - 29.0))), x=xc - 48.0, z=H(hc))
+        from mgb.elec_shapes import tryfillet
+        from build123d import Axis
+        knob = tryfillet(knob, knob.edges().filter_by_position(Axis.Y, *sorted((side * (yc - 29.5), side * (yc - 28.5)))), 4.0)
+        # pivot base plate on the bottom rail and the pivot pins
+        hb = vi[0][1]
+        xb = SG.ql_post_x(hb) + 0.44 * (SG.ql_front_x(hb) - SG.ql_post_x(hb))
+        plate = _knurl_plate(side, xb, hb - 3.0, 36.0, 15.0, -4.0, 2.4)
+        ht = vi[2][1]
+        xt = SG.ql_post_x(ht) + 0.44 * (SG.ql_front_x(ht) - SG.ql_post_x(ht))
+        yb, yt = ql_y(xb, hb), ql_y(xt, ht)
+        pins = [zcyl(3.5, H(SG.QL_BOTTOM_H + 2.0), H(hb + 4.0), xb, side * (yb - 6.5)),
+                zcyl(3.0, H(ht - 4.0), H(SG.QL_OUTER_TOP_H - 4.0), xt, side * yt)]
+        return _c([vent, keeper, base, lever, pivot, knob, plate] + pins, spec)
     return build
 
 
 def quarter_light_glass(side):
     def build(spec):
-        pts = ql_outline()
-        inset = [(pts[0][0] - 12, pts[0][1] + 8), (pts[1][0] + 8, pts[1][1] + 8), (pts[2][0] + 8, pts[2][1] - 10),
-                 (pts[3][0] - 2, pts[3][1] - 10)]
-        a, b, c, d = inset                      # bottom front, bottom rear, top rear, top front
-        rows = []
-        for i in range(5):
-            t = i / 4
-            lo = (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
-            hi = (d[0] + (c[0] - d[0]) * t, d[1] + (c[1] - d[1]) * t)
-            rows.append([_qp(lo[0] + (hi[0] - lo[0]) * k / 4, lo[1] + (hi[1] - lo[1]) * k / 4, side, -2.0)
-                         for k in range(5)])
-        f = Face.make_surface_from_array_of_points(rows, tol=0.05, min_deg=1, max_deg=3)
-        return _l(thicken(f, 4.0), spec)
+        """Vent glass in the pivoting frame's glazing rubber, the big rounded lower-front corner."""
+        return _l(_band(side, ql_glass_outline(), R_GLASS, None, None, -2.0, 2.0), spec)
     return build
 
 
 def ql_seal(side):
     def build(spec):
-        """Rubber seal along the quarter-light frame's front edge against the windscreen pillar."""
-        pts = ql_outline()
-        a, d = pts[0], pts[3]
-        line = [(a[0] + (d[0] - a[0]) * k / 4 + 10.0, side * (QL_FRONT_Y - 3.0), H(a[1] + (d[1] - a[1]) * k / 4))
-                for k in range(5)]
-        return _l(swept_rod(line, 6.0), spec)                  # touching both: no light between them
+        """Quarter-light rubbers (Oliver's kf048 full res, kf231, kf232): the black strip on the frame's front edge
+        (the pillar's own seal, Fig 12.7 items 21-23, is body.glass.pillar-seal), the seal between the outer frame and
+        the vent all round, and the vent's glazing rubber round the glass."""
+        hb, ht = SG.QL_BOTTOM_H + 1.0, SG.QL_OUTER_TOP_H - 2.0
+        parts = []
+        for d0, d1 in ((1.0, 10.0),):
+            poly = [(SG.ql_front_x(hb) + d0, hb), (SG.ql_front_x(hb) + d1, hb), (SG.ql_front_x(ht) + d1, ht),
+                    (SG.ql_front_x(ht) + d0, ht)]
+            parts.append(_ql_slab(side, -7.0, 4.0) & side_prism_xz(B.fillet_poly(poly, [0.0, 0.0, 3.0, 3.0]), -2000.0, 2000.0))
+        parts.append(_band(side, ql_frame_inner(), R_FRAME_IN, ql_vent_outline(), R_VENT, -5.0, 2.5))
+        parts.append(_band(side, ql_vent_inner(), R_VENT_IN, ql_glass_outline(), R_GLASS, -3.0, 3.0))
+        return _c(parts, spec)
     return build
 
 
-def door_mirror(spec):
-    """Door mirror (Oliver's photos 08, 15, 23): a rectangular chrome head with rounded corners on a flat arm from a
-    clamp on the right-hand quarter-light's rear post (the driver's side)."""
+MIRROR_H = S.DOOR_TOP_H + 90.0                  # clamp and head centre (kf015 ray-cast: head centre h about 950)
+MIRROR_HEAD_X = -1065.0                         # head centre (kf015)
+
+
+def _mirror_geo():
     side = -1
-    yq = side * _glass_y(WAIST_H + 150.0)
-    zc = H(WAIST_H + 190.0)
-    x = QL_POST_X - 2.0
-    clamp = box(x - 14.0, x + 14.0, yq - 9.0, yq + 9.0, zc - 22.0, zc + 22.0)
-    ya = yq + side * 75.0
-    arm = box(x - 9.0, x + 9.0, min(yq, ya), max(yq, ya), zc - 5.0, zc + 5.0)
-    yh = yq + side * 95.0
-    head = xprism(G.rounded_rect(yh - 38.0, yh + 38.0, zc - 58.0, zc + 58.0, 14.0), x - 6.0, x + 18.0)
+    h = MIRROR_H
+    xp = SG.ql_post_x(h)
+    yq = ql_y(xp, h)
+    xh = MIRROR_HEAD_X
+    yh = yq + 64.0
+    return side, h, xp, yq, xh, yh
+
+
+def door_mirror(spec):
+    """Door mirror (Oliver's kf191-kf194, kf015, photos 08, 15, 23): a split clamp round the right-hand
+    quarter-light's leaning rear post about 90 mm above the door top, its two screws on the outboard face, a short arm
+    out to a ball joint and the rectangular chrome head with rounded corners and a domed back (the driver's side)."""
+    side, h, xp, yq, xh, yh = _mirror_geo()
+    z = H(h)
+    clamp = _ybox(side, xp - 17.0, xp + 17.0, yq - 10.0, yq + 11.0, z - 20.0, z + 20.0)
+    screws = [ycyl(4.0, *sorted((side * (yq + 11.0), side * (yq + 14.0))), x=xp + dx, z=z) for dx in (-9.0, 9.0)]
+    arm = rod((xp, side * (yq + 10.0), z), (xh + 22.0, side * (yh - 22.0), z), 5.5)
+    from build123d import Sphere
+    ball = Location((xh + 22.0, side * (yh - 22.0), z)) * Sphere(8.0)
+    stem = rod((xh + 22.0, side * (yh - 22.0), z), (xh + 10.0, side * yh, z), 5.0)
+    head = xprism(G.rounded_rect(side * yh - 38.0, side * yh + 38.0, z - 58.0, z + 58.0, 14.0), xh - 6.0, xh + 12.0)
     from mgb.elec_shapes import tryfillet
     from build123d import Axis
-    head = tryfillet(head, head.edges().filter_by_position(Axis.X, x + 17.0, x + 19.0), 5.0)
-    glass = xprism(G.rounded_rect(yh - 33.0, yh + 33.0, zc - 53.0, zc + 53.0, 11.0), x - 7.0, x - 5.5)
-    pivot = rod((x, ya, zc), (x, yh - side * 30.0, zc), 6.0)
-    return _c([clamp, arm, head, pivot], spec)
+    head = tryfillet(head, head.edges().filter_by_position(Axis.X, xh + 11.0, xh + 13.0), 6.0)
+    back = Location((xh + 4.0, side * yh, z)) * Rot(0, 90, 0) * __import__("build123d").Cylinder(26.0, 16.0)
+    return _c([clamp, arm, ball, stem, head, back] + screws, spec)
 
 
 def door_mirror_glass(spec):
-    side = -1
-    yq = side * _glass_y(WAIST_H + 150.0)
-    zc = H(WAIST_H + 190.0)
-    x = QL_POST_X - 2.0
-    yh = yq + side * 95.0
-    return _l(xprism(G.rounded_rect(yh - 33.0, yh + 33.0, zc - 53.0, zc + 53.0, 11.0), x - 7.5, x - 6.0), spec)
+    side, h, xp, yq, xh, yh = _mirror_geo()
+    z = H(h)
+    return _l(xprism(G.rounded_rect(side * yh - 33.0, side * yh + 33.0, z - 53.0, z + 53.0, 11.0), xh - 7.5, xh - 6.0), spec)
 
 
-HANDLE_X = -1518.0                           # profile photo 29: the handle at X -1428 to -1607
+HANDLE_REAR_X, HANDLE_FRONT_X = -1608.0, -1434.0   # kf048 ray-cast: escutcheon's rear end and the buffer's front
 HANDLE_H = 790.0
+HANDLE_X = 0.5 * (HANDLE_REAR_X + HANDLE_FRONT_X)
+HANDLE_PIVOT_X = HANDLE_REAR_X + 20.0             # the lever's pivot inside the escutcheon (the lock's link)
+
+
+def _skin_y(x, h):
+    return S.side_y(x, h)
+
+
+def _handle_lever_pts():
+    """Lever sections (x, height centre, height, depth, standoff of its centre from the skin), rear to front."""
+    out = []
+    x0, x1 = HANDLE_REAR_X + 14.0, HANDLE_FRONT_X - 12.0
+    for k in range(9):
+        t = k / 8
+        x = x0 + (x1 - x0) * t
+        # thick at the escutcheon, tapering to the buffer, the top line arched and the tip curving down (kf188, kf189)
+        out.append((x, HANDLE_H + 1.0 + 3.0 * math.sin(math.pi * t) * (1 - t) - 7.0 * t ** 3, 22.0 - 12.0 * t ** 0.8,
+                    12.0 - 4.0 * t, 13.0 - 6.0 * t))
+    return out
 
 
 def pull_handle(side):
     def build(spec):
-        """Early exterior pull handle (Fig 12.13 item 1, 'outer door handle' of the early Sports Tourer, with the lock
-        barrel 3 in its front boss): a chrome bar standing off the skin on two bosses, held by the spring clip (2)
-        from inside."""
-        x0, x1 = HANDLE_X - 55.0, HANDLE_X + 65.0
+        """Exterior pull handle (Fig 12.13 item 1, early Sports Tourer; Oliver's kf048, kf187-kf189 zoomed): a
+        chrome escutcheon screwed to the skin at the rear with a lower lip running forward, the lever hinged inside it
+        and sweeping forward over the pressed finger recess, tapering and curving down to the rubber buffer at its
+        front tip (buffer: handle-buffer)."""
+        from build123d import Solid, Wire, Axis
+        from mgb.elec_shapes import tryfillet
         h = HANDLE_H
-        ys = lambda x: S.side_y(x, h)
-        a = (x0, side * (ys(x0) + 1.0), H(h))
-        b = (x1, side * (ys(x1) + 1.0), H(h))
-        bar = swept_rod([(x0 - 4.0, side * (ys(x0) + 14.0), H(h)), (x0 + 20.0, side * (ys(x0) + 22.0), H(h)),
-                         (x1 - 20.0, side * (ys(x1) + 22.0), H(h)), (x1 + 4.0, side * (ys(x1) + 14.0), H(h))], 6.0)
-        bosses = [rod(a, (a[0], side * (ys(x0) + 16.0), a[2]), 9.0), rod(b, (b[0], side * (ys(x1) + 16.0), b[2]), 9.0)]
-        barrel = rod((x1, side * (ys(x1) + 14.0), H(h)), (x1, side * (ys(x1) + 19.0), H(h)), 6.0)
-        return _c([bar] + bosses + [barrel], spec)
+        xr = HANDLE_REAR_X
+        ys = _skin_y(xr + 25.0, h)
+        esc = _ybox(side, xr, xr + 34.0, ys - 2.0, ys + 21.0, H(h - 13.0), H(h + 15.0))
+        esc = tryfillet(esc, esc.edges().filter_by_position(Axis.Y, *sorted((side * (ys + 20.5), side * (ys + 21.5)))), 5.0)
+        esc = tryfillet(esc, esc.edges().filter_by_position(Axis.X, xr - 0.5, xr + 0.5), 6.0)
+        lip = _ybox(side, xr + 20.0, xr + 64.0, ys - 2.0, ys + 13.0, H(h - 14.0), H(h - 5.0))
+        lip = tryfillet(lip, lip.edges().filter_by_position(Axis.X, xr + 63.5, xr + 64.5), 4.0)
+        pocket = _ybox(side, xr + 18.0, xr + 40.0, ys + 4.0, ys + 18.0, H(h - 6.0), H(h + 11.0))
+        wires = []
+        for x, hc, ht, dp, so in _handle_lever_pts():
+            yc = side * (_skin_y(x, h) + so)
+            sec = G.rounded_rect(yc - dp / 2, yc + dp / 2, H(hc) - ht / 2, H(hc) + ht / 2, min(dp, ht) / 2 - 0.3, n=4)
+            wires.append(Wire.make_polygon([(x, a, b) for a, b in sec], close=True))
+        lever = Solid.make_loft(wires)
+        pivot = zcyl(3.0, H(h - 9.0), H(h + 12.0), xr + 22.0, side * (ys + 10.0))
+        screws = [ycyl(2.5, *sorted((side * (ys - 12.0), side * (ys - 1.0))), x=xr + 17.0, z=H(h + dh)) for dh in (-8.0, 8.0)]
+        return _c([G.fuse([esc, lip]) - pocket, lever, pivot] + screws, spec)
+    return build
+
+
+def handle_buffer(side):
+    def build(spec):
+        """Black rubber buffer ball on the pull handle lever's front tip, resting on the skin (kf188, kf189)."""
+        from build123d import Sphere
+        x, hc, ht, dp, so = _handle_lever_pts()[-1]
+        r = 7.0
+        xb = HANDLE_FRONT_X - r + 1.0
+        yb = _skin_y(xb, hc) + r + 0.3
+        ball = Location((xb, side * yb, H(hc - 1.0))) * Sphere(r)
+        neck = xcyl(3.0, x - 2.0, xb, side * (_skin_y(x, hc) + so), H(hc))
+        return _c([ball, neck], spec)
     return build
 
 
@@ -566,6 +779,8 @@ for s_, n in ((1, "l"), (-1, "r")):
     PARTS[f"body.doors.quarter-light-frame-{n}"] = {"build": quarter_light_frame(s_)}
     PARTS[f"body.doors.quarter-light-glass-{n}"] = {"build": quarter_light_glass(s_)}
     PARTS[f"body.doors.quarter-light-seal-{n}"] = {"build": ql_seal(s_)}
+    PARTS[f"body.doors.quarter-light-vent-{n}"] = {"build": quarter_light_vent(s_)}
+    PARTS[f"body.doors.handle-buffer-{n}"] = {"build": handle_buffer(s_)}
     PARTS[f"body.doors.glass-channel-{n}"] = {"build": glass_channel(s_)}
     PARTS[f"body.doors.pull-handle-{n}"] = {"build": pull_handle(s_)}
     PARTS[f"body.doors.striker-{n}"] = {"build": striker(s_)}

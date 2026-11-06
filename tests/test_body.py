@@ -81,3 +81,14 @@ def test_front_legs_clear_the_tyre_at_full_lock():
             yc = np.interp(x, xs, ys)
             w = np.interp(x, xs, ws)
             assert y > yc + w / 2, (x, y)
+
+
+def test_quarter_light_post_leans_and_pillar_holds_the_glass_edge():
+    # QA fix round 1 (sides-glass): the quarter-light's rear post leans back 15 deg (Oliver's scan); the screen pillar
+    # sits between the quarter-light's front edge and the glass's side edge, which it holds
+    from mgb import side_glass_layout as SG
+    lean = math.degrees(math.atan((SG.ql_rear_x(S.DOOR_TOP_H) - SG.ql_rear_x(1150.0)) / (1150.0 - S.DOOR_TOP_H)))
+    assert abs(lean - 15.0) < 0.5
+    for h in (900.0, 1000.0, 1100.0):
+        assert SG.pillar_rear_x(h) > SG.ql_front_x(h) + 10.0
+        assert SG.pillar_front_x(h) > SG.screen_edge_x(h) > SG.pillar_rear_x(h)

@@ -39,6 +39,7 @@ for n, inward, out in (("l", RIGHT, LEFT), ("r", LEFT, RIGHT)):
     add(f"remote-control-{n}", groups=g, explode=ex(inward, 3, 140))
     add(f"lock-{n}", groups=g, explode=ex(FWD, 3, 120))
     add(f"lock-barrel-{n}", groups=g, explode=ex(out, 4, 100))
+    add(f"door-top-finisher-{n}", groups=g, explode=ex(UP, 1, 80))
     add(f"check-strap-{n}", groups=g, explode=ex(BACK, 4, 100))
     add(f"striker-backing-{n}", groups=g, explode=ex(BACK, 4, 60))
     add(f"door-seal-{n}", groups=g, explode=ex(out, 4, 80))

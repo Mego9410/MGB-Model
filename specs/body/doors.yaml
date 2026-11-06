@@ -83,8 +83,8 @@ parts:
     quantity: 1
     finish: glass_screen
     notes: >
-      Wind-up toughened glass, shown raised: its front edge against the quarter-light's divider post, the rear edge
-      raked, the top under the hood, leaning in 7 deg with the tumblehome; the lower channel the regulator's arm studs
+      Wind-up toughened glass, shown raised: its front edge in the quarter-light's divider post channel, leaning back
+      15 deg with the post (QA fix round 1: Oliver's scan and kf048, kf015, kf016), the rear edge raked, the top under the hood, leaning in 7 deg with the tumblehome; the lower channel the regulator's arm studs
       engage (Sec 39) at its bottom edge inside the door.
     specs:
       thickness: { mm: 4.0, source: { label: D, method: "Toughened side glass" } }
@@ -102,9 +102,20 @@ parts:
     haynes: { section: 21, figures: [{ figure: "12.15", legend: 1 }] }
     quantity: 1
     finish: chrome
-    notes: "Chrome frame of the pivoting ventilator at the door's front top corner, its front edge along the screen pillar's rake and toed in to close on the pillar, the divider post down into the door to its securing nuts (Fig 12.15 item 1), the pivot and catch."
+    notes: >
+      Outer chrome frame of the ventilator at the door's front top corner (QA fix round 1): a slim flat chrome channel
+      about 18 mm wide with rounded corners, its opening following the pivoting vent's big rounded lower-front corner so the
+      corner below it is filled with chrome; the front edge behind the screen pillar with the two rubber strips between,
+      toed in to close on the pillar; the rear post leaning back 15 deg (foot x -1032 at the door top, top x -1105 at
+      h 1150) and running on down into the door as the door glass's front channel to its securing bracket and nuts
+      (Fig 12.15 item 1), with a front tongue to the front nut. Sources: Oliver's body scan (the chrome frame both sides:
+      lean 15.0 left, 15.5 right), the front edge from the black strips found row by row in kf046 and kf048 and
+      ray-cast with their SfM cameras (-806 at the door top, -991 at h 1150), keyframes kf015, kf016, close-ups
+      kf231, kf232 (shape only); Haynes Fig 12.15. Datums in mgb.side_glass_layout.
     specs:
-      post_x: { mm: -1104.0, display_only: true, source: { label: D, method: "Divider post behind the screen pillar's top (closures QL_POST_X)" } }
+      post_foot_x: { mm: -1032.0, display_only: true, source: { label: D, method: "Oliver's body scan, chrome frame's rear edge at the door top (side_glass_layout QL_REAR_FOOT_X)" } }
+      post_lean: { deg: 15.0, display_only: true, source: { label: D, method: "Oliver's body scan (15.0 L, 15.5 R) and kf014-kf016 (14-16)" } }
+      band_width: { mm: 18.0, display_only: true, source: { label: D, method: "kf048 at 4x: strip to inner rubber 17-20 mm, ray-cast" } }
   - id: body.doors.quarter-light-frame-r
     name: Quarter-light frame, right
     haynes: { section: 21, figures: [{ figure: "12.15", legend: 1 }] }
@@ -112,13 +123,14 @@ parts:
     finish: chrome
     notes: "Mirror of the left."
     specs:
-      post_x: { mm: -1104.0, display_only: true, source: { label: D, method: "As the left" } }
+      post_foot_x: { mm: -1032.0, display_only: true, source: { label: D, method: "As the left" } }
+      post_lean: { deg: 15.0, display_only: true, source: { label: D, method: "As the left" } }
   - id: body.doors.quarter-light-glass-l
     name: Quarter-light glass, left
     haynes: { section: 21 }
     quantity: 1
     finish: glass_screen
-    notes: "Ventilator glass in its frame."
+    notes: "Ventilator glass in the pivoting vent frame's glazing rubber, with the vent's big rounded lower-front corner (kf048 full res, kf231, kf232)."
     specs:
       thickness: { mm: 4.0, source: { label: D, method: "As the door glass" } }
   - id: body.doors.quarter-light-glass-r
@@ -129,6 +141,28 @@ parts:
     notes: "Mirror of the left."
     specs:
       thickness: { mm: 4.0, source: { label: D, method: "As the door glass" } }
+  - id: body.doors.quarter-light-vent-l
+    name: Quarter-light vent frame, left
+    haynes: { section: 21, figures: [{ figure: "12.15" }] }
+    quantity: 1
+    finish: chrome
+    notes: >
+      The pivoting ventilator's inner chrome frame round the glass (QA fix round 1), a narrow channel with the big
+      rounded lower-front corner (about R70), on its pivot pins top and bottom; the chrome catch on its front post at
+      mid-height (a lever with a round knob, pivoted on a base on the vent, locking on a keeper on the outer frame);
+      the triangular diamond-knurled pivot base plate on its bottom rail. Shapes from Oliver's kf048 (full res, zoomed),
+      kf231, kf232, kf233-kf235 (close-ups, shape only) and Haynes Fig 12.15 (the vent and its lower pivot).
+    specs:
+      corner_radius: { mm: 72.0, display_only: true, source: { label: D, method: "kf048 full res scaled on the frame's 242 mm foot" } }
+      catch_height: { mm: 1000.0, display_only: true, source: { label: D, method: "kf048, kf231: the catch at about mid-height of the front post" } }
+  - id: body.doors.quarter-light-vent-r
+    name: Quarter-light vent frame, right
+    haynes: { section: 21, figures: [{ figure: "12.15" }] }
+    quantity: 1
+    finish: chrome
+    notes: "Mirror of the left (kf186-kf194 close-ups of the right side)."
+    specs:
+      corner_radius: { mm: 72.0, display_only: true, source: { label: D, method: "As the left" } }
   - id: body.doors.glass-channel-l
     name: Door glass rear run channel, left
     haynes: { section: 39, figures: [{ figure: "12.15" }] }
@@ -146,13 +180,17 @@ parts:
     specs:
       length: { mm: 286.0, display_only: true, source: { label: D, method: "As the left" } }
   - id: body.doors.quarter-light-seal-l
-    name: Quarter-light front seal, left
+    name: Quarter-light rubbers, left
     haynes: { section: 21 }
     quantity: 1
     finish: rubber
-    notes: "Rubber seal along the quarter-light frame's front edge, closing on the windscreen pillar's rear (Oliver's photos 09, 27: no light between the pillar and the quarter-light)."
+    notes: >
+      The quarter-light's black rubbers (QA fix round 1): the two strips between the windscreen pillar and the frame,
+      one on the frame's front edge and one on the pillar's rear edge, closing the gap (no light between them); the
+      seal between the outer frame and the pivoting vent all round; and the vent's glazing rubber round the glass.
+      Oliver's kf048 (full res), kf231, kf232, photos 09, 27.
     specs:
-      diameter: { mm: 10.0, display_only: true, source: { label: D, method: "Oliver's photo 09: a dark line between the pillar and the frame" } }
+      strip_width: { mm: 9.0, display_only: true, source: { label: D, method: "kf048 full res: two dark strips in the 22 mm between the pillar and the frame" } }
   - id: body.doors.quarter-light-seal-r
     name: Quarter-light front seal, right
     haynes: { section: 21 }
@@ -160,16 +198,22 @@ parts:
     finish: rubber
     notes: "Mirror of the left."
     specs:
-      diameter: { mm: 10.0, display_only: true, source: { label: D, method: "As the left" } }
+      strip_width: { mm: 9.0, display_only: true, source: { label: D, method: "As the left" } }
 
   - id: body.doors.pull-handle-l
     name: Exterior pull handle, left
     haynes: { section: 34, figures: [{ figure: "12.13", legend: 1 }] }
     quantity: 1
     finish: chrome
-    notes: "The early fixed pull handle (Fig 12.13 item 1, early Sports Tourer) on two bosses near the door's rear top, the lock barrel (3) in its rear boss; held by the spring clip (2) from inside."
+    notes: >
+      The early pull handle (Fig 12.13 item 1, early Sports Tourer) as on Oliver's car (QA fix round 1): a chrome
+      escutcheon screwed to the skin at the rear with a lower lip running forward, the lever hinged inside it and
+      sweeping forward over the pressed finger recess, tapering and curving down to a black rubber buffer on its tip
+      (handle-buffer); 174 mm overall from x -1608 to -1434 at h 790. The key lock is separate, below the side strip
+      (door-mechanisms lock-barrel). Oliver's kf048 (full res, ray-cast on the door side), kf187-kf189 (close-ups,
+      shape only).
     specs:
-      length: { mm: 128.0, source: { label: D, method: "Grip between the bosses, scaled from Fig 12.13" } }
+      length: { mm: 174.0, display_only: true, source: { label: D, method: "kf048 ray-cast on the door side: escutcheon rear x -1608 to buffer front x -1434" } }
   - id: body.doors.pull-handle-r
     name: Exterior pull handle, right
     haynes: { section: 34, figures: [{ figure: "12.13", legend: 1 }] }
@@ -177,7 +221,23 @@ parts:
     finish: chrome
     notes: "Mirror of the left."
     specs:
-      length: { mm: 128.0, source: { label: D, method: "As the left" } }
+      length: { mm: 174.0, display_only: true, source: { label: D, method: "As the left" } }
+  - id: body.doors.handle-buffer-l
+    name: Pull handle buffer, left
+    haynes: { section: 34, figures: [{ figure: "12.13", legend: 1 }] }
+    quantity: 1
+    finish: rubber
+    notes: "Black rubber ball on the pull handle lever's front tip, resting on the skin (Oliver's kf188, kf189, kf048)."
+    specs:
+      diameter: { mm: 14.0, display_only: true, source: { label: D, method: "kf189 scaled on the lever" } }
+  - id: body.doors.handle-buffer-r
+    name: Pull handle buffer, right
+    haynes: { section: 34, figures: [{ figure: "12.13", legend: 1 }] }
+    quantity: 1
+    finish: rubber
+    notes: "Mirror of the left."
+    specs:
+      diameter: { mm: 14.0, display_only: true, source: { label: D, method: "As the left" } }
 
   - id: body.doors.striker-l
     name: Door striker, left
@@ -200,9 +260,14 @@ parts:
     haynes: { section: 21 }
     quantity: 1
     finish: chrome
-    notes: "Rectangular chrome mirror head with rounded corners on a flat arm from a clamp on the right-hand quarter-light's rear post (Oliver's photos 08, 15, 23)."
+    notes: >
+      Rectangular chrome mirror head with rounded corners and a domed back on a ball joint, a short arm out from a split
+      clamp with two screws round the right-hand quarter-light's leaning rear post, about 90 mm above the door top (QA
+      fix round 1: head centre h about 950, x about -1065 from the kf015 ray-cast; shape from kf191-kf194 close-ups;
+      Oliver's photos 08, 15, 23).
     specs:
       head_height: { mm: 116.0, source: { label: D, method: "Oliver's photo 08 against the quarter-light post" } }
+      head_centre_h: { mm: 952.0, display_only: true, source: { label: D, method: "kf015 ray-cast on the quarter-light's plane (head centre h about 950)" } }
       head_width: { mm: 76.0, source: { label: D, method: "Oliver's photo 08" } }
   - id: body.doors.mirror-glass
     name: Door mirror glass

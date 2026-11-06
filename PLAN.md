@@ -941,3 +941,22 @@ shell (wings, bonnet outline, scuttle length, screen base, nacelle, ripples, sea
   cut back inside the side skin cell by cell.
 - Still open: the number plate characters (Oliver's privacy call); the vent cells' depth (needs the scuttle cut);
   the wing turns about 19 deg at the side lamp against the lamp's 30 deg.
+
+## QA fix round 1, sides-glass (quarter-lights, screen pillars, door fittings, mirrors)
+
+From FINDINGS-sides-glass (items 2, 4-8, 10, 14-17), measured on Oliver's keyframes with their SfM cameras:
+- New shared datums in `mgb/side_glass_layout.py`: the quarter-light's rear post leans back 15 deg (scan; foot x -1032,
+  top -1109); its front edge and the screen pillar's rear edge were re-measured row by row from the black strips in
+  kf046 and kf048 (front edge -806 at the door top to -991 at h 1150, 32.7 deg; the scan's -935 at the top was the top
+  rail's end). The door glass's front edge, the lower channel, the hood's edge and the door mirror follow the post.
+- Quarter-light: slim flat 18 mm chrome outer frame on the toed-in plane, a separate pivoting 6 mm vent frame (R72 lower-front
+  corner, catch on its front post at mid-height, diamond-knurled pivot base plate, pivot pins), glazing and frame
+  rubbers, and the frame's legs down into the door to the Fig 12.15 securing nuts (they pass through the door top
+  where the real slot is: the door skin has no slot modelled).
+- Screen pillars: tapered castings with a crowned outer face, from the strips forward to the screen glass's edge (about
+  35-45 mm in side view, measured in kf046 at 4x), flaring at the foot to a nose at x -700 on a rubber grommet (Fig 12.7
+  items 8, 11), the R55 bend into the top rail, the pillar seals (items 21, 22); the glass's top corners rounded R55
+  and its ends and the rail's kept inside the castings.
+- Pull handles as on the car (escutcheon at the rear, lever to a rubber buffer at the front, 174 mm), separate round key
+  locks below the strip (x -1579, h 688), the door mirror's clamp 90 mm above the door top, the interior mirror on the
+  centre rod with a tan back (new finish `plastic_tan`), chrome end finishers on the door tops, door strip 20 mm short.

@@ -16,7 +16,7 @@ parts:
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 14 }] }
     quantity: 1
     finish: glass_screen
-    notes: "Curved in plan, raked 33 deg, in the glazing rubber (item 15); base on P10's WINDSCREEN_BASE, swept back 70 mm to the pillar feet."
+    notes: "Curved in plan, raked, in the glazing rubber (item 15), on mgb.body_shell_layout's screen_base / screen_top lines; its top corners rounded on about R55 (QA fix round 1: Oliver's kf046, kf231, kf080; Fig 12.7 item 15's rounded corners) and its side edges kept inside the pillar castings."
     specs:
       thickness: { mm: 6.0, source: { label: D, method: "Laminated screen" } }
       rake: { deg: 33.0, source: { label: D, method: "Screen top rail under the published hood-up height" } }
@@ -24,7 +24,7 @@ parts:
     name: Screen top rail
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 4 }] }
     quantity: 1
-    notes: "Chrome channel over the glass's top edge, the hood fastener brackets (item 6) underneath."
+    notes: "Chrome channel over the glass's top edge, the hood fastener brackets (item 6) underneath; its ends run into the pillar castings' R55 bends (QA fix round 1: kf046, kf231, kf080; Fig 12.7 items 2-4)."
     specs:
       height: { mm: 1232.0, source: { label: D, method: "Above the road at the centre" } }
   - id: body.glass.bottom-rail
@@ -46,16 +46,58 @@ parts:
     name: Screen pillar, left
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 3 }] }
     quantity: 1
-    notes: "Chrome side post along the glass edge, its foot through the scuttle side onto the reinforcement (17) and packing (13)."
+    notes: >
+      LH pillar (Fig 12.7 item 3) as on Oliver's car (QA fix round 1): a tapered polished chrome casting with a crowned
+      outer face, running in side view from the pillar seal forward to the screen glass's side edge (about 38 mm across
+      at the foot's top, 42 at mid-height, 47 at the top), its rear edge parallel to the quarter-light's front; the top rail
+      bends into it on about R55; at the foot a shoe flares forward along the wing top to a rounded nose at x about -690
+      on its rubber grommet (pillar-pad); the glass's edge in a channel inside; under the scuttle the foot's stud
+      through the scuttle side to the reinforcement (17) and packing (13). Sources: Haynes Fig 12.7 (the pillar castings
+      2, 3, deep and tapered with a flared foot); Oliver's kf046 gridded pair, kf048 full res, kf016, kf231, kf232 (shape);
+      body scan (chrome to x -680 at h 880). Side-view lines in mgb.side_glass_layout.
     specs:
-      foot_half_width: { mm: 600.0, source: { label: D, method: "body_shell_layout SCREEN_HALF_W" } }
+      foot_half_width: { mm: 575.0, display_only: true, source: { label: D, method: "body_shell_layout SCREEN_HALF_W (Oliver's photo 15)" } }
+      side_width_mid: { mm: 42.0, display_only: true, source: { label: D, method: "kf046 at 4x, ray-cast at |y| 590: glass edge to strip 31-36 mm at h 957-1035 (the reviewer read about 80 including the glass edge)" } }
+      shoe_nose_x: { mm: -700.0, display_only: true, source: { label: D, method: "Oliver's body scan side slab, chrome to -680 at h 880; kf046, kf016" } }
   - id: body.glass.pillar-r
     name: Screen pillar, right
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 2 }] }
     quantity: 1
     notes: "Mirror of the left (RH pillar, item 2)."
     specs:
-      foot_half_width: { mm: 600.0, source: { label: D, method: "body_shell_layout SCREEN_HALF_W" } }
+      foot_half_width: { mm: 575.0, display_only: true, source: { label: D, method: "As the left" } }
+  - id: body.glass.pillar-seal-l
+    name: Pillar seal, left
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 22 }] }
+    quantity: 1
+    finish: rubber
+    notes: "LH seal (Fig 12.7 item 22) in its retainer (23) down the pillar casting's rear edge, closing on the quarter-light frame's front strip (QA fix round 1: Oliver's kf048 full res, kf231, kf232)."
+    specs:
+      width: { mm: 10.5, display_only: true, source: { label: D, method: "kf048 full res: two dark strips in the 22 mm between the pillar and the frame" } }
+  - id: body.glass.pillar-seal-r
+    name: Pillar seal, right
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 21 }] }
+    quantity: 1
+    finish: rubber
+    notes: "RH seal (item 21), mirror of the left."
+    specs:
+      width: { mm: 10.5, display_only: true, source: { label: D, method: "As the left" } }
+  - id: body.glass.pillar-pad-l
+    name: Pillar grommet, left
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 11 }] }
+    quantity: 1
+    finish: rubber
+    notes: "LH grommet (Fig 12.7 item 11): the black rubber pad under the pillar's foot shoe on the wing top, a little proud of the shoe (QA fix round 1: Oliver's kf046, kf231)."
+    specs:
+      thickness: { mm: 3.0, display_only: true, source: { label: D, method: "kf231: a thin black line under the shoe" } }
+  - id: body.glass.pillar-pad-r
+    name: Pillar grommet, right
+    haynes: { section: 18, figures: [{ figure: "12.7", legend: 8 }] }
+    quantity: 1
+    finish: rubber
+    notes: "RH grommet (item 8), mirror of the left."
+    specs:
+      thickness: { mm: 3.0, display_only: true, source: { label: D, method: "As the left" } }
   - id: body.glass.centre-rod
     name: Screen centre rod
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 9 }] }
@@ -67,6 +109,28 @@ parts:
     name: Interior mirror
     haynes: { section: 18 }
     quantity: 1
-    notes: "Mirror on a stem from the top rail's centre."
+    finish: plastic_tan
+    notes: >
+      Interior mirror's head (QA fix round 1): a rounded-rectangle tan plastic back about 160 x 55 hung on the
+      windscreen's centre rod by its clamp (mirror-clamp) with the glass (mirror-glass) facing the driver; centre about
+      80 mm below the top rail's centre (Oliver's kf080 zoomed: tan back, clamp on the rod at the head's top middle;
+      scan: centre x about -855, h about 1100). It follows the centre rod (screen.centre_rod).
     specs:
-      width: { mm: 190.0, source: { label: D, method: "Period rectangular mirror" } }
+      width: { mm: 160.0, display_only: true, source: { label: D, method: "kf080 scaled on the centre rod and the screen" } }
+      height: { mm: 55.0, display_only: true, source: { label: D, method: "kf080 scaled on the width" } }
+  - id: body.glass.mirror-glass
+    name: Interior mirror glass
+    haynes: { section: 18 }
+    quantity: 1
+    finish: glass_screen
+    notes: "The interior mirror's glass in the back's rim, facing rearward."
+    specs:
+      thickness: { mm: 1.4, display_only: true, source: { label: D, method: "Period mirror glass" } }
+  - id: body.glass.mirror-clamp
+    name: Interior mirror clamp
+    haynes: { section: 18 }
+    quantity: 1
+    finish: chrome
+    notes: "Chrome split collar round the centre rod with its pinch screw and lug, a stem to the ball joint in the head's back (kf080)."
+    specs:
+      collar_length: { mm: 22.0, display_only: true, source: { label: D, method: "kf080 against the rod" } }

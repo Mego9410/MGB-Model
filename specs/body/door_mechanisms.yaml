@@ -70,9 +70,22 @@ parts:
     haynes: { section: 33, figures: [{ figure: "12.13" }] }
     quantity: 1
     finish: chrome
-    notes: "Fig 12.13 items 3-6: the lock housing and barrel in the pull handle's front boss (Oliver's photo 08), the retaining clip, the self-centring spring and the coupling cam inside."
+    notes: >
+      Fig 12.13 items 3-6 as on Oliver's car (QA fix round 1): a separate key lock, a domed round chrome escutcheon
+      about 30 mm across on the skin below the side strip near the door's rear edge (kf048 ray-cast x -1579, h 688,
+      both doors; kf013; kf189, kf190 close-ups), the barrel's face with its keyway; inside, the housing, the retaining
+      clip, the self-centring spring and the coupling cam.
     specs:
-      barrel_diameter: { mm: 11.0, display_only: true, source: { label: D, method: "Oliver's photo 08 scaled on the handle" } }
+      escutcheon_diameter: { mm: 30.0, display_only: true, source: { label: D, method: "kf048 ray-cast on the door side, kf189 against the strip" } }
+      barrel_diameter: { mm: 16.8, display_only: true, source: { label: D, method: "kf189 scaled on the escutcheon" } }
+  - id: body.door-mechanisms.door-top-finisher-l
+    name: Door top end finisher, left
+    haynes: { section: 29 }
+    quantity: 1
+    finish: chrome
+    notes: "Chrome end finisher at the rear of the door top (QA fix round 1): a pressed cap over the rear ends of the black capping roll and the felt glass strip, its top rounded over to the inside, just ahead of the door's rear edge (Oliver's kf187, kf188 zoomed)."
+    specs:
+      length: { mm: 58.0, display_only: true, source: { label: D, method: "kf188 scaled on the door top's width" } }
   - id: body.door-mechanisms.striker-backing-l
     name: Striker packing and tapping plate, left
     haynes: { section: 27, figures: [{ figure: "12.13" }] }
@@ -176,7 +189,15 @@ parts:
     finish: chrome
     notes: "Mirror of the left."
     specs:
-      barrel_diameter: { mm: 11.0, display_only: true, source: { label: D, method: "Oliver's photo 08 scaled on the handle" } }
+      escutcheon_diameter: { mm: 30.0, display_only: true, source: { label: D, method: "As the left" } }
+  - id: body.door-mechanisms.door-top-finisher-r
+    name: Door top end finisher, right
+    haynes: { section: 29 }
+    quantity: 1
+    finish: chrome
+    notes: "Mirror of the left."
+    specs:
+      length: { mm: 58.0, display_only: true, source: { label: D, method: "As the left" } }
   - id: body.door-mechanisms.striker-backing-r
     name: Striker packing and tapping plate, right
     haynes: { section: 27, figures: [{ figure: "12.13" }] }

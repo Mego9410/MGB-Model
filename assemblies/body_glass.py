@@ -1,5 +1,5 @@
-"""Windscreen (Haynes Ch 12 Sec 18, Figs 12.7-12.9). Explode follows Sec 18: the mirror and centre rod off, the screen
-assembly lifted off the scuttle, then the glass out of the frame."""
+"""Windscreen (Haynes Ch 12 Sec 18, Figs 12.7-12.9). Explode follows Sec 18: the mirror (on the centre rod) and the
+centre rod off, the screen assembly lifted off the scuttle, then the glass out of the frame."""
 from build123d import Location, Rot
 
 ID = "body.glass"
@@ -22,9 +22,11 @@ def add(part, loc=O, n=1, **o):
     I.append((f"{pid}#{n}", pid, loc, o))
 
 
-add("mirror", explode=ex(BACK, 1, 120))
+for p in ("mirror", "mirror-glass", "mirror-clamp"):
+    add(p, explode=ex(BACK, 1, 120))
 add("centre-rod", explode=ex(BACK, 2, 150))
 add("windscreen", groups=["screen"], explode=ex(BACK, 4, 160))
-for p in ("top-rail", "bottom-rail", "bottom-seal", "pillar-l", "pillar-r"):
+for p in ("top-rail", "bottom-rail", "bottom-seal", "pillar-l", "pillar-r", "pillar-seal-l", "pillar-seal-r", "pillar-pad-l",
+          "pillar-pad-r"):
     add(p, groups=["screen"])
 INSTANCES = I
