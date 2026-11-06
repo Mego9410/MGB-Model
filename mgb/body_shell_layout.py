@@ -192,7 +192,7 @@ NOSE_K_LAMP = 150.0                         # and at the headlamp's height (QA f
 NOSE_TOP_K = 80.0                          # and into the top (the bonnet's front roll)
 LAMP_Y, LAMP_H = BL.HEADLAMP_Y, ag(BL.HEADLAMP_Z)
 NACELLE_X = BL.HEADLAMP_RIM_X - 14.0        # recess floor round the rim: P10's bowl flange plane
-NACELLE_R = (101.0, 116.0)                  # recess flat to this radius, back to the wing front by the second
+NACELLE_R = (100.0, 128.0)                  # recess flat to this radius, back to the wing front by the second
 HOOD_LIP = 0.0                              # the wing's hood stands this far ahead of the rim at the top
 # QA fix 1 (front 19): no raised ring and no crease from the rim's top-inboard to the bonnet: Oliver's scan round the
 # rims (radii 100-210 every 30 deg, both sides alike) has the wing's face just above and above-inboard of the rim about
@@ -207,7 +207,7 @@ COWL_R = (100.0, 120.0, 170.0)              # full from the recess edge to the s
 TAIL_PANEL_X = U.REAR_PANEL_X               # rear panel face behind the number plate (P11a, moved by P11b)
 TAIL_C = [(150.0, TAIL_PANEL_X + 200.0), (250.0, TAIL_PANEL_X + 130.0), (295.0, TAIL_PANEL_X + 100.0), (320.0, TAIL_PANEL_X + 88.0),
           (345.0, TAIL_PANEL_X + 78.0), (385.0, TAIL_PANEL_X + 32.0), (420.0, TAIL_PANEL_X + 7.0), (460.0, TAIL_PANEL_X), (600.0, TAIL_PANEL_X - 2.0), (640.0, TAIL_PANEL_X + 3.0), (665.0, TAIL_PANEL_X + 9.0),
-          (690.0, TAIL_PANEL_X + 22.0), (720.0, TAIL_PANEL_X + 42.0), (745.0, TAIL_PANEL_X + 68.0), (770.0, TAIL_PANEL_X + 100.0),
+          (690.0, TAIL_PANEL_X + 36.0), (720.0, TAIL_PANEL_X + 62.0), (745.0, TAIL_PANEL_X + 84.0), (770.0, TAIL_PANEL_X + 100.0),
           (790.0, TAIL_PANEL_X + 130.0), (806.0, TAIL_PANEL_X + 168.0), (820.0, TAIL_PANEL_X + 230.0),
           (840.0, TAIL_PANEL_X + 330.0)]   # QA fix 1 (rear 2): the boot lid rounds off higher and further back, through
 # about (x -2853, h 770) (between the handle's evidence in photo 25 and kf062, x -2880, and Oliver's scan at h 760-780
