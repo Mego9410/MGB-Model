@@ -200,7 +200,8 @@ EDGES = [
     ("fa.speedo", "fa.speedo.n", [(FX, BL.INSTRUMENTS["speedometer"][0] - 36.0, BL.IP_Z - 10.0)], False),   # below and outboard of the speedometer cable
     # rear harness
     ("fa.R", "re.0", [(FX - 20.0, -610.0, 150.0)], True), ("re.0", "re.sill", [], True), ("re.sill", "re.pump", [], True),
-    ("re.pump", "re.heel", [], True), ("re.heel", "re.arch", [(HEEL_X - 40.0, SILL_Y + 40.0, TONNEAU_RUN_Z)], True),
+    ("re.pump", "re.heel", [], True), ("re.heel", "re.arch", [(HEEL_X - 40.0, SILL_Y + 40.0, TONNEAU_RUN_Z),
+                                                                           (U.SHELF_FRONT_X + 30.0, ARCH[0] - 20.0, TONNEAU_RUN_Z)], True),
     ("re.arch", "re.tank", [], True), ("re.tank", "re.boot", [], True), ("re.boot", "re.corner.R", [], True),
     ("re.corner.R", "re.M", [], True), ("re.M", "re.corner.L", [], True),
     ("re.pump", "pump.n", [(U.HEELBOARD_X + 10.0, -430.0, -345.0)], False), ("re.tank", "tank.n", [], False),

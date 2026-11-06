@@ -969,8 +969,9 @@ kf181-185, kf226-230) and his body scan:
 - Steering wheel: a circle fitted to the rim in the scan (678 points) puts the rim centre at x -981, y -294, 830 mm
   above the road, radius 198.8, axis 20 deg (steering_layout RIM_CENTRE_SCAN). Not reachable yet: a straight column
   from the model's pinion to there passes through P8's master cylinder, pedal box and brake pedal arm (checked by
-  boolean at hub heights 563-805 and y -293 to -390). Only the fore-aft position is applied (hub at x -921, 69 mm
-  forward); the hub stays at z 10 (593 above the road), y -345, the highest the column clears. Spokes at
+  boolean at hub heights 563-805 and y -293 to -390). Held at the highest the column clears (hub z -5, 578 above
+  the road, y -345) and 124 mm further forward than before (hub x -866), so the low rim clears the cushion's front
+  roll, which now has the scan's height. Spokes at
   118/180/242 deg with 3/3/2 polished wires; black cast hub arms and rim clamp blocks; the horn push as a black
   moulding, a broad chrome ring and a red enamel MG octagon with chrome letters.
 - Dials: white print (graduations, figures, MPH/RPM legends, HIGH BEAM/IGNITION), the tachometer's amber/red wedge,

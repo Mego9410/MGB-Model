@@ -50,12 +50,12 @@ from mgb import body_layout as BL  # noqa: E402  (P10: facia, instruments over t
 # centre at x -981, y -294, 830 mm above the road, radius 198.8 (the 16 1/2 in rim's centre line), axis 20 deg to the
 # horizontal (RIM_CENTRE_SCAN). A straight column from the model's pinion (Sec 20: one axis) to there passes through
 # P8's master cylinder, pedal box and brake pedal, so the wheel cannot go there without moving the pedal box or
-# raising the rack (a question for Oliver, PLAN). Held for now: the rim centre at the scan's x (the hub 69 mm further
-# forward than before), and the hub as high (z 10) and as near the scan's y (-345) as the column clears the pedal box
-# and the brake pedal's arm.
+# raising the rack (a question for Oliver, PLAN). Held for now: the hub as high (z -5) and as near the scan's y
+# (-345) as the column clears the pedal box and the brake pedal's arm, and 55 mm ahead of the scan's x so the low rim
+# clears the seat cushion's front roll (at the scan's height).
 RIM_CENTRE_SCAN = (-981.0, -294.0, CL.GROUND_Z + 830.0)  # D: Oliver's body scan, rim circle fit (not reachable yet)
 DISH = 62.0                                              # rim plane above (toward the driver) the hub face
-WHEEL_CENTRE = (-921.0, -345.0, 10.0)                    # steering wheel centre (hub face plane), RHD
+WHEEL_CENTRE = (-866.0, -345.0, -5.0)                    # steering wheel centre (hub face plane), RHD
 _d = [WHEEL_CENTRE[i] - PINION_MESH[i] for i in range(3)]
 _L = math.sqrt(sum(v * v for v in _d))
 COLUMN_DIR = tuple(v / _L for v in _d)               # up the column, rearward

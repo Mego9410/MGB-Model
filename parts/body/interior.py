@@ -397,7 +397,7 @@ CUSH_TOP = [(-1432.0, 405.0), (-1300.0, 432.0), (-1150.0, 468.0), (-1075.0, 497.
 CUSH_BOT = ((-1000.0, 352.0), (-1432.0, 300.0))
 CUSH_PANEL = (130.0, -1408.0, -1140.0)       # centre panel half-width and fore/aft extent (the front roll ahead of it, kf140)
 SQUAB_RAKE = 24.0
-SQUAB_BASE = (-1440.0, 410.0)                # front face's foot (x, height above the road), over the heelboard's step
+SQUAB_BASE = (-1440.0, 420.0)                # front face's foot (x, height above the road), over the heelboard's step
 SQUAB_LEN = 520.0
 SQUAB_T = (96.0, 78.0)                       # thickness at the foot and under the top roll
 SQUAB_TOP_R = 150.0
@@ -625,7 +625,7 @@ def floor_binding(side):
         zf = U.FLOOR_Z + St.T + 0.2 + 7.2 + CT
         yi = St.tunnel_halfwidth(-1000.0, zf) + 2.0
         (xf, _), (xt, zt) = U.TOE_FOOT, U.TOE_TOP
-        rear = ycyl(3.5, yi + 10.0, CARPET_Y - 2.0, U.HEELBOARD_X + 6.0, zf - 2.0)
+        rear = ycyl(3.5, yi + 10.0, CARPET_Y - 2.0, U.HEELBOARD_X + St.T + CT + 4.5, zf - 2.0)
         top = ycyl(3.5, 160.0, CARPET_Y - 2.0, xt - 5.0, zt + 1.0)
         return _c([St._side(rear, side), St._side(top, side)], spec)
     return build
@@ -767,8 +767,8 @@ def sill_cover(side):
         face = box(x0, x1, yi - 4.0 - CT, yi - 4.0, zf, zt + CT + 0.3)
         face = face - box(WL.HEEL_X - 12.0, WL.HEEL_X + 12.0, yi - 5.0 - CT, yi - 3.0, zf - 1.0, zt + CT + 1.0)   # the loom's climb
         xa, xb = S.DOOR_REAR_X + 6.0, S.DOOR_FRONT_X - 6.0
-        top = box(xa, xb, yi - 4.0 - CT, St.SILL_OUT_Y - 3.0, zt + 0.3, zt + 0.3 + CT)
-        edge = xcyl(4.0, xa, xb, St.SILL_OUT_Y - 4.0, zt + 0.3 + CT / 2)
+        top = box(xa, xb, yi - 4.0 - CT, St.SILL_OUT_Y - 3.0, zt + St.T + 0.3, zt + St.T + 0.3 + CT)
+        edge = xcyl(4.0, xa, xb, St.SILL_OUT_Y - 4.0, zt + St.T + 0.3 + CT / 2)
         return _l(St._side(G.fuse([face, top, edge]), side), spec)
     return build
 
