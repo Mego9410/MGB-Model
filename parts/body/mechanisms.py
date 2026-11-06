@@ -342,16 +342,20 @@ def check_strap(side):
 
 def door_pull(side):
     def build(spec):
-        """Interior door pull (Fig 12.13 item 8, early Sports Tourer): a chrome bar on two screwed bosses on the trim
-        pad under the waist, ahead of the inner handle."""
-        x0, x1 = -1360.0, -1250.0
-        h = 760.0
-        yc = lambda x: S.side_y(x, h) - C.DOOR_IN - 5.4
-        a, b = (x0, yc(x0), H(h)), (x1, yc(x1), H(h))
-        bar = swept_rod([(x0 + 4.0, a[1] - 20.0, a[2]), (x0 + 22.0, a[1] - 28.0, a[2]), (x1 - 22.0, b[1] - 28.0, b[2]),
-                         (x1 - 4.0, b[1] - 20.0, b[2])], 6.0)
-        bosses = [rod(a, (a[0], a[1] - 22.0, a[2]), 8.0), rod(b, (b[0], b[1] - 22.0, b[2]), 8.0)]
-        return _c([_side(p, side) for p in [bar] + bosses], spec)
+        """Interior door pull (Fig 12.13 item 8, early Sports Tourer): the two chrome end bosses screwed through the
+        trim pad, mid-door below the seam (mgb.cockpit_layout PULL_HANDLE, Oliver's kf128, kf131; QA fix round 1,
+        cockpit); the black grip between them is body.interior.pull-handle."""
+        xc, h = CK.PULL_HANDLE
+        L = CK.PULL_HANDLE_L
+        from parts.body import interior as IN
+        y = IN.card_face_y(h)
+        out = []
+        for s_ in (1, -1):
+            xe = xc + s_ * L / 2
+            out.append(ycyl(11.0, y - 4.0, y + 0.3, xe, H(h)))
+            out.append(rod((xe, y - 4.0, H(h)), (xe - s_ * 6.0, y - 24.0, H(h)), 8.0))
+            out.append(Location((xe - s_ * 6.0, y - 24.0, H(h))) * __import__("build123d").Sphere(10.0))
+        return _c([_side(p, side) for p in out], spec)
     return build
 
 

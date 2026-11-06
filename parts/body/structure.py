@@ -911,6 +911,7 @@ def heelboard(spec):
     step = [box(SF_X, x0 + T, s_ * w0 - (0.0 if s_ > 0 else yo - w0), s_ * yo if s_ > 0 else -w0, STEP_Z - T, STEP_Z) for s_ in (1, -1)]
     hump = xprism(tunnel_hump(STEP_Z, 0.0)[0], SF_X, x0 + T) - xprism(tunnel_hump(STEP_Z, -T)[0], SF_X - 1.0, x0 + T + 1.0)
     riser = xprism([(yo, STEP_Z)] + above + [(-yo, STEP_Z), (-yo, TON_Z + T), (yo, TON_Z + T)], SF_X, SF_X + T)
+    riser = _pass_cut(riser, "heelboard-shelf")
     return _c([p, hump, riser] + step, spec)
 
 
@@ -1145,6 +1146,7 @@ def harness_passes():
     tx, ty, _ = W.NODES["tank.n"]
     return [("rear-bulkhead", (RB_X - T / 2, rb_y, W.NODES["re.arch"][2]), "x"),
             ("heelboard-pump", (HB_X + T / 2, -428.0, -344.0), "x"),
+            ("heelboard-shelf", (SF_X + T / 2, rb_y, W.NODES["re.arch"][2]), "x"),
             ("boot-floor-tank", (tx - 4.0, ty - 6.0, U.BOOT_FLOOR_Z + T / 2), "z"),
             ("tunnel-overdrive", (-430.0, tunnel_halfwidth(-430.0, -120.0) + T / 2, -120.0), "y"),
             ("toe-dip", (-445.0, -165.0, U.toe_z(-445.0) + T / 2), "z")]

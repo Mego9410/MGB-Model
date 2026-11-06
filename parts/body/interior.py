@@ -765,6 +765,7 @@ def sill_cover(side):
         from mgb import wiring_layout as WL
         zf = WL.SILL_Z + 14.0                                       # over the rear loom run along the sill's foot
         face = box(x0, x1, yi - 4.0 - CT, yi - 4.0, zf, zt + CT + 0.3)
+        face = face - box(WL.HEEL_X - 12.0, WL.HEEL_X + 12.0, yi - 5.0 - CT, yi - 3.0, zf - 1.0, zt + CT + 1.0)   # the loom's climb
         xa, xb = S.DOOR_REAR_X + 6.0, S.DOOR_FRONT_X - 6.0
         top = box(xa, xb, yi - 4.0 - CT, St.SILL_OUT_Y - 3.0, zt + 0.3, zt + 0.3 + CT)
         edge = xcyl(4.0, xa, xb, St.SILL_OUT_Y - 4.0, zt + 0.3 + CT / 2)
@@ -936,22 +937,6 @@ def pull_handle(side):
     return build
 
 
-def pull_handle_ends(side):
-    def build(spec):
-        """The pull handle's chrome end bosses and their stand-offs to the card."""
-        x, h = CK.PULL_HANDLE
-        L = CK.PULL_HANDLE_L
-        y = abs(_card_y(side, x, h))
-        parts = []
-        for s_ in (1, -1):
-            xe = x + s_ * L / 2
-            parts.append(ycyl(11.0, y - 4.0, y + 0.3, xe, H(h)))
-            parts.append(rod((xe, y - 4.0, H(h)), (xe - s_ * 6.0, y - 24.0, H(h)), 8.0))
-            parts.append(Location((xe - s_ * 6.0, y - 24.0, H(h))) * __import__("build123d").Sphere(10.0))
-        return _c([St._side(p, side) for p in parts], spec)
-    return build
-
-
 RIM_W, RIM_H = 30.0, 13.0                      # the rim roll's section: flat, flush with the deck's edge (kf070, kf134)
 
 
@@ -983,7 +968,7 @@ def cockpit_rim(spec):
     return _l(r, spec)
 
 
-CAP_H = C.WAIST_H - 12.0                      # capping roll's centre height
+CAP_H = C.WAIST_H - 6.0                       # capping roll's centre height
 CAP_R = 13.0
 
 
@@ -1102,7 +1087,6 @@ for s_, n in ((1, "l"), (-1, "r")):
     PARTS[f"body.interior.door-card-piping-{n}"] = {"build": door_card_piping(s_)}
     PARTS[f"body.interior.door-card-stitch-{n}"] = {"build": door_card_stitch(s_)}
     PARTS[f"body.interior.pull-handle-{n}"] = {"build": pull_handle(s_)}
-    PARTS[f"body.interior.pull-handle-ends-{n}"] = {"build": pull_handle_ends(s_)}
 PARTS["body.interior.cockpit-rim"] = {"build": cockpit_rim}
 PARTS["body.interior.rear-wall-trim"] = {"build": rear_wall_trim}
 for s_, n in ((1, "l"), (-1, "r")):

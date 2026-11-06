@@ -107,9 +107,9 @@ parts:
     haynes: { section: 29, figures: [{ figure: "12.13" }] }
     quantity: 1
     finish: chrome
-    notes: "Fig 12.13 item 8: chrome pull on two screwed bosses on the trim pad under the waist (Sec 29)."
+    notes: "Fig 12.13 item 8: the pull's two chrome end bosses screwed through the trim pad, mid-door below the seam as on Oliver's car (kf128, kf131; mgb/cockpit_layout PULL_HANDLE; QA fix round 1, cockpit); the black grip is body.interior.pull-handle."
     specs:
-      length: { mm: 110.0, display_only: true, source: { label: D, method: "Fig 12.13 proportions" } }
+      length: { mm: 150.0, display_only: true, source: { label: D, method: "Oliver's kf131 scaled on the door's length" } }
   - id: body.door-mechanisms.card-clips-l
     name: Trim pad clips, left
     haynes: { section: 29 }

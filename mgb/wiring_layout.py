@@ -94,7 +94,8 @@ RLX = BL.REAR_LAMP_X + 30.0
 PUMP_X = FS.PUMP_X
 TANK_X = FS.SENDER[0]
 HEEL_X = U.HEELBOARD_X + 30.0                       # up the cockpit face of the heelboard to the tonneau floor
-TONNEAU_RUN_Z = U.TONNEAU_Z + 30.0                  # along the tonneau floor top behind the seats
+TONNEAU_RUN_Z = U.HEEL_STEP_Z + 10.0                # back over the heelboard's step under the squabs' feet (QA fix round 1,
+                                                     # cockpit: the shelf rose; through a grommet in its riser)
 
 # direction indicator switch: clamped on P9's outer column tube just below the wheel
 COL_AXIS = SL.COLUMN_DIR                                       # up the column, toward the wheel

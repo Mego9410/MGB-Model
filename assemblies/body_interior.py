@@ -32,7 +32,6 @@ for n, out in (("l", LEFT), ("r", RIGHT)):
     add(f"door-card-piping-{n}", explode=ex(out, 2, -150))
     add(f"door-card-stitch-{n}", explode=ex(out, 2, -150))
     add(f"pull-handle-{n}", explode=ex(out, 1, -70))
-    add(f"pull-handle-ends-{n}", explode=ex(out, 1, -70))
     add(f"kick-panel-{n}", explode=ex(out, 2, -120))
     add(f"sill-cover-{n}", explode=ex(UP, 3, 260))
     add(f"quarter-trim-{n}", explode=ex(out, 2, -160))

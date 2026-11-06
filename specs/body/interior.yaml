@@ -645,15 +645,6 @@ parts:
   notes: "Black grip of the door pull handle mid-door below the seam (Oliver's kf128, kf131; mgb/cockpit_layout PULL_HANDLE)."
   specs:
     length: { mm: 150.0, display_only: true, source: { label: D, method: "Oliver's kf131 scaled on the door's length" } }
-- id: body.interior.pull-handle-ends-l
-  name: Door pull handle end bosses (left)
-  haynes:
-    section: 29
-  quantity: 1
-  finish: chrome
-  notes: "The pull handle's two chrome end bosses and stand-offs to the card (Oliver's kf128, kf131)."
-  specs:
-    boss_diameter: { mm: 22.0, display_only: true, source: { label: D, method: "Oliver's kf128 scaled on the door" } }
 - id: body.interior.door-capping-piping-l
   name: Door capping piping (left)
   haynes:
@@ -718,15 +709,6 @@ parts:
   notes: "Black grip of the door pull handle mid-door below the seam (Oliver's kf128, kf131; mgb/cockpit_layout PULL_HANDLE)."
   specs:
     length: { mm: 150.0, display_only: true, source: { label: D, method: "Oliver's kf131 scaled on the door's length" } }
-- id: body.interior.pull-handle-ends-r
-  name: Door pull handle end bosses (right)
-  haynes:
-    section: 29
-  quantity: 1
-  finish: chrome
-  notes: "The pull handle's two chrome end bosses and stand-offs to the card (Oliver's kf128, kf131)."
-  specs:
-    boss_diameter: { mm: 22.0, display_only: true, source: { label: D, method: "Oliver's kf128 scaled on the door" } }
 - id: body.interior.door-capping-piping-r
   name: Door capping piping (right)
   haynes:
