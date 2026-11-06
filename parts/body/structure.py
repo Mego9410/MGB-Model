@@ -797,20 +797,34 @@ def jack_socket(side):
     return build
 
 
+def shut_face(x_of_h, y_in, y_out, hs, t):
+    """A thin panel square to the car following a shut line that curves in side view: its horizontal sections at the
+    heights hs (above the road) are strips x_of_h(h) - t .. x_of_h(h) across from y_in(h) to y_out(h) (y >= 0),
+    lofted (ruled) between them."""
+    from build123d import Solid, Vector, Wire
+    wires = []
+    for h in hs:
+        x, a, b, z = x_of_h(h), y_in(h), y_out(h), H(h)
+        wires.append(Wire.make_polygon([Vector(x, a, z), Vector(x, b, z), Vector(x - t, b, z), Vector(x - t, a, z)],
+                                       close=True))
+    return Solid.make_loft(wires, ruled=True)
+
+
 def hinge_pillar(side):
     def build(spec):
-        """Hinge (A) pillar: the box at the door's front shut line from the sill to the scuttle side, its shut face with
-        the two hinges' three bolt holes each (Sec 32 para 1: the hinges bolt to the pillar), the kick panel inboard."""
+        """Hinge (A) pillar: the box at the door's front shut line from the sill to the scuttle side, following the
+        shut line's curve under the screen pillar foot (QA fix 1), its shut face with the two hinges' three bolt holes
+        each (Sec 32 para 1: the hinges bolt to the pillar), the kick panel inboard."""
         xf = S.DOOR_FRONT_X - S.GAP / 2
-        hs = [TREAD_H] + [TREAD_H + (850.0 - TREAD_H) * k / 8 for k in range(1, 9)]
-        outer = [(S.side_y(xf, h) - 2.0, H(h)) for h in hs]
-        pts = [(S.SILL_INNER_Y, H(TREAD_H))] + outer + [(S.SILL_INNER_Y, H(850.0))]
-        face = xprism(pts, xf - T, xf)
+        xh = lambda h: S.door_front_x(h) - S.GAP / 2                         # noqa: E731
+        hs = [TREAD_H] + [TREAD_H + (850.0 - TREAD_H) * k / 12 for k in range(1, 13)]
+        face = shut_face(xh, lambda h: S.SILL_INNER_Y, lambda h: S.side_y(xh(h), h) - 2.0, hs, T)
         kick = box(xf - 120.0, xf, S.SILL_INNER_Y, S.SILL_INNER_Y + T, H(TREAD_H), H(850.0))
         p = face + kick
         for hh in HINGE_H:
+            xx = xh(hh)
             for dz in (-18.0, 0.0, 18.0):
-                p = p - xcyl(3.4, xf - 5, xf + 5, S.side_y(xf, hh) - 30.0, H(hh) + dz)
+                p = p - xcyl(3.4, xx - 5, xx + 5, S.side_y(xx, hh) - 30.0, H(hh) + dz)
         return _l(_side(p, side), spec)
     return build
 
@@ -841,6 +855,8 @@ def shut_pillar(side):
 HB_X = U.HEELBOARD_X
 TON_Z = U.TONNEAU_Z
 RB_X = S.REAR_BULKHEAD_X
+SHELF_STEP_X = CL.bx(-1880.0)              # the tonneau floor steps up here (ahead of the fuel pipe's climb to the arch)
+SHELF_Z = U.ARCH_Z + 22.0                  # to a shelf over the axle (above its bump stop line) back to the rear wall
 RWH_Y = 498.0                              # rear wheel house inner walls
 RAIL_Y = (RS.DAMPER_FACE_Y, 500.0)         # rear rails: inner face (P9 damper face) to outer face
 
@@ -873,7 +889,10 @@ def tonneau_floor(spec):
     each, the damper access grommet holes beside them (Haynes photo 2.4) and the rear spring hanger reinforcement
     plates."""
     z = TON_Z
-    p = box(RB_X, HB_X, -RWH_Y, RWH_Y, z, z + T)
+    p = box(SHELF_STEP_X, HB_X, -RWH_Y, RWH_Y, z, z + T)
+    # QA fix 1: with the rear wall moved back to Oliver's scan (REAR_BULKHEAD_X) the floor steps up over the axle
+    # and the fuel pipe's climb (fuel_supply_layout MAIN) to a shelf at SHELF_Z back to the wall
+    p = p + box(SHELF_STEP_X - T, SHELF_STEP_X, -RWH_Y, RWH_Y, z, SHELF_Z + T) + box(RB_X, SHELF_STEP_X, -RWH_Y, RWH_Y, SHELF_Z, SHELF_Z + T)
     ix, iy, idp = BL.BATTERY_BOX_INNER
     fl = BL.BATTERY_BOX_FLANGE
     for s in (1, -1):
@@ -882,7 +901,8 @@ def tonneau_floor(spec):
         for sx in (-1, 1):
             for sy in (-1, 1):
                 p = p - zcyl(3.3, z - 5, z + 5, cx + sx * (ix / 2 + fl / 2), cy + sy * (iy / 2 - 20.0))
-        p = p - zcyl(14.0, z - 5, z + 5, RS.DAMPER_SHAFT[0], s * 400.0)
+        zd = z if RS.DAMPER_SHAFT[0] > SHELF_STEP_X else SHELF_Z
+        p = p - zcyl(14.0, zd - 5, zd + 5, RS.DAMPER_SHAFT[0], s * 400.0)
     # pressed stiffening ribs fore and aft between the apertures
     for yy in (-60.0, 60.0):
         p = p + G.sheet_y([(HB_X - 30.0, z + T), (HB_X - 40.0, z + T + 6.0), (RB_X + 40.0, z + T + 6.0),
@@ -910,8 +930,8 @@ def rear_bulkhead(spec):
     """Rear bulkhead: the boot's front wall behind the hood stowage well, from the tonneau floor up under the rear
     deck, between the wheel houses, with a stiffening swage."""
     ztop = H(S.top_h(RB_X, 0.0)) - 40.0
-    p = box(RB_X - T, RB_X, -RWH_Y, RWH_Y, TON_Z, ztop)
-    p = p + (box(RB_X - T - 3.0, RB_X - T, -RWH_Y + 50.0, RWH_Y - 50.0, (TON_Z + ztop) / 2 - 10.0, (TON_Z + ztop) / 2 + 10.0))
+    p = box(RB_X - T, RB_X, -RWH_Y, RWH_Y, SHELF_Z, ztop)
+    p = p + (box(RB_X - T - 3.0, RB_X - T, -RWH_Y + 50.0, RWH_Y - 50.0, (SHELF_Z + ztop) / 2 - 10.0, (SHELF_Z + ztop) / 2 + 10.0))
     p = _pass_cut(p, "rear-bulkhead")
     return _l(p, spec)
 

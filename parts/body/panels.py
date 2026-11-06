@@ -14,12 +14,14 @@ from __future__ import annotations
 import math
 
 import numpy as np
+from build123d import Compound
 
 from mgb import body_layout as BL, body_shell as B, body_shell_layout as S
 
 H = S.z_of
 G2 = S.GAP / 2
 SM = S.SEAM / 2
+LEAD = -1.0         # leaded seams (rear wings to the rear deck and rear panel): the panels lap 1 mm each way so no line shows (QA fix 1, rear 16)
 
 
 def _l(p, spec):
@@ -44,7 +46,7 @@ def bonnet_sd(X, Y, Z):
 
 
 def scuttle_sd(X, Y, Z):
-    return AND(X - S.BONNET_REAR_X, (S.COCKPIT_FRONT_X - 40.0) - X, np.abs(Y) - S.WING_SEAM_Y, H(700.0) - Z)
+    return AND(X - S.BONNET_REAR_X, (S.COCKPIT_FRONT_X - 40.0) - X, np.abs(Y) - S.wing_seam_y(X), H(700.0) - Z)
 
 
 def cockpit_sd(X, Y, Z):
@@ -59,8 +61,16 @@ def valance_sd(X, Y, Z):
     return AND(640.0 - X, Z - H(S.FRONT_VALANCE_H))
 
 
+DOOR_XZ = [(x, H(h)) for x, h in B.door_outline_xz(0.0)]
+
+
+def door_xz_sd(X, Z):
+    """The door's outline in side view (negative inside), either side."""
+    return B.sd_poly(X, Z, DOOR_XZ)
+
+
 def door_sd(X, Y, Z, side):
-    return AND(B.sd_poly(X, Z, [(x, H(h)) for x, h in B.door_outline_xz(0.0)]), side_sd(Y, side, 300.0))
+    return AND(door_xz_sd(X, Z), side_sd(Y, side, 300.0))
 
 
 def sill_sd(X, Y, Z, side):
@@ -68,8 +78,15 @@ def sill_sd(X, Y, Z, side):
     # wings come down to the bottom ahead of and behind the door (Oliver's photo 09, profile 29)
 
 
+BOOT_YZ = [(y, H(h)) for y, h in B.fillet_poly([(S.BOOT_W[-1][1], S.BOOT_REAR_H), (S.BOOT_W[-1][1], 1300.0),
+                                                   (-S.BOOT_W[-1][1], 1300.0), (-S.BOOT_W[-1][1], S.BOOT_REAR_H)],
+                                                  [S.BOOT_REAR_R, 0, 0, S.BOOT_REAR_R], 12)]
+
+
 def boot_sd(X, Y, Z):
-    return AND(B.sd_poly(X, Y, B.boot_outline(0.0)), H(S.BOOT_REAR_H) - Z)
+    """The boot lid: its plan outline (rounded front corners) and, seen from behind, the lower edge with its rounded
+    corners (QA fix 1, rear 1: the car's lid is a soft rounded rectangle, photo 25, kf058, kf062)."""
+    return AND(B.sd_poly(X, Y, B.boot_outline(0.0)), B.sd_poly(Y, Z, BOOT_YZ))
 
 
 def rear_deck_sd(X, Y, Z):
@@ -78,7 +95,8 @@ def rear_deck_sd(X, Y, Z):
 
 
 def rear_panel_sd(X, Y, Z):
-    return AND(X - (-2700.0), np.abs(Y) - S.REAR_PANEL_Y, Z - H(S.BOOT_REAR_H))
+    """The rear panel: under the boot lid and round its rounded lower corners."""
+    return AND(X - (-2700.0), np.abs(Y) - S.REAR_PANEL_Y, Z - H(S.BOOT_REAR_H + S.BOOT_REAR_R + 40.0), -(boot_sd(X, Y, Z) - G2))
 
 
 def arch_sd(X, Y, Z, which):
@@ -130,7 +148,8 @@ def wiper_sd(X, Y, Z):
 # ---- panels ---------------------------------------------------------------------------------------------------------
 def wing_sd(side):
     def f(X, Y, Z):
-        keep = AND(side_sd(Y, side), (S.DOOR_FRONT_X + G2) - X)
+        keep = AND(side_sd(Y, side), (S.DOOR_FRONT_X - 160.0) - X, -(door_xz_sd(X, Z) - G2))   # round the door's
+        # curved front shut line and its rounded lower front corner
         others = OR(bonnet_sd(X, Y, Z) - G2, scuttle_sd(X, Y, Z) - SM, grille_panel_sd(X, Y, Z) - SM,
                     valance_sd(X, Y, Z) - SM, sill_sd(X, Y, Z, side) - SM, cockpit_sd(X, Y, Z),
                     arch_sd(X, Y, Z, "front"), headlamp_sd(X, Y, Z), sidelamp_sd(X, Y, Z))
@@ -140,18 +159,45 @@ def wing_sd(side):
 
 def rear_wing_sd(side):
     def f(X, Y, Z):
-        lean = S.DOOR_REAR_LEAN * (Z - H(S.DOOR_BOTTOM_H)) / (H(1100.0) - H(S.DOOR_BOTTOM_H))
-        keep = AND(side_sd(Y, side), X - (S.DOOR_REAR_X + lean - G2))
-        others = OR(rear_deck_sd(X, Y, Z) - SM, boot_sd(X, Y, Z) - G2, rear_panel_sd(X, Y, Z) - SM,
+        keep = AND(side_sd(Y, side), X - (S.DOOR_REAR_X + 160.0), -(door_xz_sd(X, Z) - G2))   # round the door's rear
+        # shut line and its rounded lower rear corner
+        others = OR(rear_deck_sd(X, Y, Z) - LEAD, boot_sd(X, Y, Z) - G2, rear_panel_sd(X, Y, Z) - LEAD,
                     sill_sd(X, Y, Z, side) - SM, cockpit_sd(X, Y, Z), arch_sd(X, Y, Z, "rear"), rear_lamp_sd(X, Y, Z))
         return AND(keep, -others)
     return f
 
 
+def recess_sd(X, Y, Z, grow=0.0):
+    """The door's finger recess opening in side view (an ellipse), negative inside."""
+    xc, hc, L, Hh, _ = S.DOOR_RECESS
+    a, b = L / 2 + grow, Hh / 2 + grow
+    return (np.sqrt(((X - xc) / a) ** 2 + ((Z - H(hc)) / b) ** 2) - 1.0) * b
+
+
 def door_skin_sd(side):
     def f(X, Y, Z):
-        return AND(door_sd(X, Y, Z, side) + G2, -cockpit_sd(X, Y, Z))
+        return AND(door_sd(X, Y, Z, side) + G2, -cockpit_sd(X, Y, Z), -recess_sd(X, Y, Z, -1.0))
     return f
+
+
+def door_recess(side):
+    """The pressed oval finger recess under the handle: a shallow dish (half an ellipsoid shell 1 mm thick) set into
+    the skin's opening square to the skin, its lip lapping 1-2 mm behind the opening's edge."""
+    import build123d as bd
+    xc, hc, L, Hh, dep = S.DOOR_RECESS
+    y0 = S.side_y(xc, hc)
+    gx = (S.side_y(xc + 5.0, hc) - S.side_y(xc - 5.0, hc)) / 10.0
+    gz = (S.side_y(xc, hc + 5.0) - S.side_y(xc, hc - 5.0)) / 10.0
+    n = np.array([-gx, 1.0, -gz])
+    n /= np.linalg.norm(n)
+    outer = bd.scale(bd.Solid.make_sphere(1.0), (L / 2 + 2.0, Hh / 2 + 2.0, dep))
+    inner = bd.scale(bd.Solid.make_sphere(1.0), (L / 2 + 1.0, Hh / 2 + 1.0, dep - 1.0))
+    top = bd.Box(L + 20.0, Hh + 20.0, dep + 10.0, align=(bd.Align.CENTER, bd.Align.CENTER, bd.Align.MIN))
+    dish = (outer - inner) - top                       # the inward half (local z < 0), its lip on local z 0
+    xd = np.array([1.0, 0.0, 0.0]) - n * n[0]
+    pl = bd.Plane(origin=(xc, y0 - 0.8, H(hc)), x_dir=tuple(map(float, xd)), z_dir=tuple(map(float, n)))
+    dish = bd.Location(pl) * dish
+    return dish if side > 0 else dish.mirror(bd.Plane.XZ)
 
 
 def sill_skin_sd(side):
@@ -177,7 +223,7 @@ def valance_skin_sd(X, Y, Z):
 
 
 def rear_deck_skin_sd(X, Y, Z):
-    return AND(rear_deck_sd(X, Y, Z) + SM, -cockpit_sd(X, Y, Z))
+    return AND(rear_deck_sd(X, Y, Z) + LEAD, -cockpit_sd(X, Y, Z))
 
 
 def boot_skin_sd(X, Y, Z):
@@ -191,7 +237,7 @@ def filler_sd(X, Y, Z):
 
 
 def rear_panel_skin_sd(X, Y, Z):
-    return AND(rear_panel_sd(X, Y, Z) + SM, -filler_sd(X, Y, Z))
+    return AND(rear_panel_sd(X, Y, Z) + LEAD, -filler_sd(X, Y, Z))
 
 
 def _panel(name, sdf):
@@ -202,7 +248,14 @@ def _panel(name, sdf):
 
 front_wing = lambda side: _panel(f"front-wing-{side}", wing_sd(side))         # noqa: E731
 rear_wing = lambda side: _panel(f"rear-wing-{side}", rear_wing_sd(side))       # noqa: E731
-door_skin = lambda side: _panel(f"door-skin-{side}", door_skin_sd(side))       # noqa: E731
+def door_skin(side):
+    def build(spec):
+        skin = _cached(f"door-skin-{side}", lambda: B.skin_sdf(door_skin_sd(side)))
+        return _l(Compound(list(skin.solids()) + [door_recess(side)]), spec)
+    return build
+
+
+
 sill = lambda side: _panel(f"sill-{side}", sill_skin_sd(side))                 # noqa: E731
 bonnet_skin = _panel("bonnet-skin", bonnet_skin_sd)
 scuttle = _panel("scuttle", scuttle_skin_sd)

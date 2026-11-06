@@ -30,9 +30,10 @@ def test_bonnet_clears_the_radiator_and_head():
 
 
 def test_headlamps_sit_in_the_nacelles():
-    # the nacelle face is at P10's bowl flange and the lamp centre is under the wing's crown
+    # the nacelle face is at P10's bowl flange and the lamp centre is under the wing's crown; the rim stands proud of
+    # the wing round its top (QA fix 1: Oliver's scan has the wing about 580 just above the rim, 65 mm behind its face)
     assert abs(S.nose_x(BL.HEADLAMP_Y, S.ag(BL.HEADLAMP_Z)) - (BL.HEADLAMP_RIM_X - 14.0)) < 1.0
-    assert S.top_h(S.NACELLE_X - 20.0, BL.HEADLAMP_Y) > S.ag(BL.HEADLAMP_Z) + 99.0
+    assert S.top_h(S.NACELLE_X - 40.0, BL.HEADLAMP_Y) > S.ag(BL.HEADLAMP_Z) + 99.0
 
 
 def _tyre_envelope(front_in=28.0, rear_in=37.0):

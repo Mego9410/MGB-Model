@@ -30,8 +30,8 @@ def _c(parts, spec):
 def glass(spec):
     """Windscreen glass (Fig 12.7 item 14): curved in plan, raked, its corners rounded, in the glazing rubber (15)."""
     rows = []
-    for k in range(13):
-        y = -W + 2 * W * k / 12
+    for k in range(25):                             # QA fix 1 (shell): rows close enough to follow the base's sweep
+        y = -W + 2 * W * k / 24
         rows.append([S.screen_pt(y, 0.006 + 0.988 * j / 8) for j in range(9)])
     f = Face.make_surface_from_array_of_points(rows, tol=0.05, min_deg=1, max_deg=3)
     g = thicken(f, GLASS_T)

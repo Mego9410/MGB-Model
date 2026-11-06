@@ -34,8 +34,14 @@ def above_ground(h):
 
 
 # ---- side reference (S) ------------------------------------------------------------------------
-SIDE_STRIP_Z = above_ground(690.0)                    # wing chrome strip height (D: profile photo 29 and Oliver's photo
-                                                       # 09; the mgexp survey's 14.25 in above the hub would be 663)
+BODY_WIDEST_H = 690.0                                  # the body's widest line above the road (the shell's H_M; D: profile
+                                                       # photo 29 and Oliver's photo 09), no longer tied to the strip
+# Chrome side strip line, (x, height above the road) along the car (QA fix 1, sides-glass 11 / rear 20: Oliver's
+# keyframes kf048, kf016, kf015, kf046 on the SfM cameras and his scan; 679 at x 400, 711 at -600, 713-718 on the
+# doors, 718-724 on the rear wings). The mgexp survey's 14.25 in above the hub would be 663.
+SIDE_STRIP_H = [(560.0, 676.0), (400.0, 679.0), (100.0, 694.0), (-300.0, 705.0), (-600.0, 711.0), (-900.0, 714.0),
+                (-1300.0, 716.0), (-1620.0, 717.0), (-2000.0, 719.0), (-2400.0, 721.0), (-2800.0, 723.0)]
+SIDE_STRIP_Z = above_ground(716.0)                    # the strip on the doors
 
 # ---- front lamps (D) -------------------------------------------------------------------------------
 # Headlamps in the wing nacelles (P11b moved these from P10's first estimates to Oliver's car): rim face 186 mm
@@ -74,8 +80,8 @@ CABLE_GROMMET = (BULKHEAD_X - 40.0, -355.0, -330.0)    # battery cable up throug
 # Scuttle top at the windscreen base 915 mm above the road; facia rear face 375 mm behind the
 # bulkhead, ahead of the gear lever knob (gearbox_layout.KNOB x -889, 114 mm behind it; 271 mm with the engine moved
 # back to Oliver's scan, P12); driver on the right. Fore-aft positions here are body stations (car_layout.bx).
-WINDSCREEN_BASE_X = CL.bx(-700.0)
-WINDSCREEN_BASE_Z = above_ground(915.0)
+WINDSCREEN_BASE_X = CL.bx(-605.0)                          # QA fix 1: the glass's lower edge at the centre (Oliver's scan
+WINDSCREEN_BASE_Z = above_ground(921.0)                     # and keyframes; body_shell_layout.SCREEN_BASE has the whole line)
 SCUTTLE_TILT_DEG = 14.0                                # scuttle top falls toward the front at this angle
 FACIA_X = CL.bx(-775.0)                                      # rear (cockpit) face of the facia panel
 FACIA_T = 1.2

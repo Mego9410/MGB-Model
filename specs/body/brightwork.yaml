@@ -392,91 +392,119 @@ parts:
   haynes:
     section: 1
   quantity: 1
-  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  notes: >
+    Chrome side strip on clips along the strip line (mgb.body_layout SIDE_STRIP_H), a flat-faced moulding about 14 mm
+    tall with rolled edges (QA fix 1, sides-glass 11: not a round rod; kf048, kf016). Heights measured on Oliver's car
+    (keyframes on the SfM cameras and his scan) 679 above the road at x 400, 711 at -600, 713-718 on the doors, 718-724
+    on the rear wings. The front strip starts behind the headlamp with a tapered end; the door strip ends 20 mm short
+    of the rear shut line with a square cap (kf048); the rear strip runs to the rear lamp's rim with a tapered end
+    (rear 12). The mgexp survey's 14.25 in above the hub (663) is a lower car.
   specs:
     height:
       mm: 690.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+        method: "Oliver's keyframes kf016, kf044 and scan: 679 at x 400 rising to 705 at the door (body_layout SIDE_STRIP_H)"
 - id: body.brightwork.strip-door-l
   name: Chrome side strip, door left
   haynes:
     section: 1
   quantity: 1
-  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  notes: >
+    Chrome side strip on clips along the strip line (mgb.body_layout SIDE_STRIP_H), a flat-faced moulding about 14 mm
+    tall with rolled edges (QA fix 1, sides-glass 11: not a round rod; kf048, kf016). Heights measured on Oliver's car
+    (keyframes on the SfM cameras and his scan) 679 above the road at x 400, 711 at -600, 713-718 on the doors, 718-724
+    on the rear wings. The front strip starts behind the headlamp with a tapered end; the door strip ends 20 mm short
+    of the rear shut line with a square cap (kf048); the rear strip runs to the rear lamp's rim with a tapered end
+    (rear 12). The mgexp survey's 14.25 in above the hub (663) is a lower car.
   specs:
     height:
-      mm: 690.0
+      mm: 716.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+        method: "Oliver's keyframes kf048, kf016, kf015, kf046 on the SfM cameras: 713-718 on the doors"
 - id: body.brightwork.strip-rear-l
   name: Chrome side strip, rear left
   haynes:
     section: 1
   quantity: 1
-  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car. The rear strip runs
-    on to the rear lamp's chrome rim and ends in a tapered cap (QA fix round 1; kf176, kf178, photo 25).
+  notes: >
+    Chrome side strip on clips along the strip line (mgb.body_layout SIDE_STRIP_H), a flat-faced moulding about 14 mm
+    tall with rolled edges (QA fix 1, sides-glass 11: not a round rod; kf048, kf016). Heights measured on Oliver's car
+    (keyframes on the SfM cameras and his scan) 679 above the road at x 400, 711 at -600, 713-718 on the doors, 718-724
+    on the rear wings. The front strip starts behind the headlamp with a tapered end; the door strip ends 20 mm short
+    of the rear shut line with a square cap (kf048); the rear strip runs on to the rear lamp's chrome rim with a
+    tapered end (rear 12; kf176, kf178, photo 25). The mgexp survey's 14.25 in above the hub (663) is a lower car.
   specs:
     height:
-      mm: 690.0
+      mm: 721.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+        method: "Oliver's scan 718-724 on the rear wings, kf048"
     end_cap:
       mm: 21.0
       source:
         label: D
-        method: kf178 (the tapered cap against the lamp rim)
+        method: kf178 (the tapered end against the lamp rim)
 - id: body.brightwork.strip-front-r
   name: Chrome side strip, front right
   haynes:
     section: 1
   quantity: 1
-  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  notes: >
+    Chrome side strip on clips along the strip line (mgb.body_layout SIDE_STRIP_H), a flat-faced moulding about 14 mm
+    tall with rolled edges (QA fix 1, sides-glass 11: not a round rod; kf048, kf016). Heights measured on Oliver's car
+    (keyframes on the SfM cameras and his scan) 679 above the road at x 400, 711 at -600, 713-718 on the doors, 718-724
+    on the rear wings. The front strip starts behind the headlamp with a tapered end; the door strip ends 20 mm short
+    of the rear shut line with a square cap (kf048); the rear strip runs to the rear lamp's rim with a tapered end
+    (rear 12). The mgexp survey's 14.25 in above the hub (663) is a lower car.
   specs:
     height:
       mm: 690.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+        method: "Oliver's keyframes kf016, kf044 and scan: 679 at x 400 rising to 705 at the door (body_layout SIDE_STRIP_H)"
 - id: body.brightwork.strip-door-r
   name: Chrome side strip, door right
   haynes:
     section: 1
   quantity: 1
-  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+  notes: >
+    Chrome side strip on clips along the strip line (mgb.body_layout SIDE_STRIP_H), a flat-faced moulding about 14 mm
+    tall with rolled edges (QA fix 1, sides-glass 11: not a round rod; kf048, kf016). Heights measured on Oliver's car
+    (keyframes on the SfM cameras and his scan) 679 above the road at x 400, 711 at -600, 713-718 on the doors, 718-724
+    on the rear wings. The front strip starts behind the headlamp with a tapered end; the door strip ends 20 mm short
+    of the rear shut line with a square cap (kf048); the rear strip runs to the rear lamp's rim with a tapered end
+    (rear 12). The mgexp survey's 14.25 in above the hub (663) is a lower car.
   specs:
     height:
-      mm: 690.0
+      mm: 716.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+        method: "Oliver's keyframes kf048, kf016, kf015, kf046 on the SfM cameras: 713-718 on the doors"
 - id: body.brightwork.strip-rear-r
   name: Chrome side strip, rear right
   haynes:
     section: 1
   quantity: 1
-  notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car. The rear strip runs
-    on to the rear lamp's chrome rim and ends in a tapered cap (QA fix round 1; kf176, kf178, photo 25).
+  notes: >
+    Chrome side strip on clips along the strip line (mgb.body_layout SIDE_STRIP_H), a flat-faced moulding about 14 mm
+    tall with rolled edges (QA fix 1, sides-glass 11: not a round rod; kf048, kf016). Heights measured on Oliver's car
+    (keyframes on the SfM cameras and his scan) 679 above the road at x 400, 711 at -600, 713-718 on the doors, 718-724
+    on the rear wings. The front strip starts behind the headlamp with a tapered end; the door strip ends 20 mm short
+    of the rear shut line with a square cap (kf048); the rear strip runs on to the rear lamp's chrome rim with a
+    tapered end (rear 12; kf176, kf178, photo 25). The mgexp survey's 14.25 in above the hub (663) is a lower car.
   specs:
     height:
-      mm: 690.0
+      mm: 721.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+        method: "Oliver's scan 718-724 on the rear wings, kf048"
     end_cap:
       mm: 21.0
       source:
         label: D
-        method: kf178 (the tapered cap against the lamp rim)
+        method: kf178 (the tapered end against the lamp rim)
 - id: body.brightwork.overrider-rubber-front
   name: Front overrider rubber face
   haynes:

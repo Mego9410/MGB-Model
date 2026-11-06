@@ -14,10 +14,10 @@ parts:
     name: Door outer skin, left
     haynes: { section: 32 }
     quantity: 1
-    notes: "The door's outer panel inside the shut lines (4 mm gaps), its top rolling over to the waist; the pull handle's and lock's holes are in the door frame part."
+    notes: "The door's outer panel inside the shut lines (4 mm gaps), its top rolling over to the waist; the pull handle's and lock's holes are in the door frame part. QA fix 1: the front shut line is straight at x -701 up to h 690, then curves rearward to a pointed top front corner on the waist at x -803 (Oliver's keyframes kf044, kf046, kf016 traced and back-projected on the SfM cameras); the lower corners about R110 (kf048, kf047); the pressed oval finger recess under the handle, about 130 x 55 and 13 deep, centred x -1490, h 780 (kf048, kf187, kf188)."
     specs:
       half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in at the doors" } }
-      length: { mm: 928.0, source: { label: D, method: "profile photo 29 scaled on the wheelbase: shut lines X -695 and -1623 (body_shell_layout DOOR_*)" } }
+      length: { mm: 922.0, source: { label: D, method: "Shut lines at the bottom: x -701 (Oliver's keyframes kf044, kf046, kf016 on the SfM cameras) and -1623 (profile photo 29; body_shell_layout DOOR_*)" } }
 
   - id: body.doors.skin-r
     name: Door outer skin, right

@@ -32,23 +32,23 @@ parts:
     name: Rear deck (shroud)
     haynes: { section: 1 }
     quantity: 1
-    notes: "The panel behind the cockpit over the hood stowage well, between the rear wings, to the boot lid's front gap."
+    notes: "The panel behind the cockpit over the hood stowage well, between the rear wings, to the boot lid's front gap: a narrow strip from the cockpit's rear rim (x -2055) to the lid's front edge (x -2246), about 900 above the road at the centre (QA fix 1: Oliver's scan, sections from inside the cockpit at y -350, 0, 385 and the plan; kf104, kf105). Its seams to the rear wings are leaded, flush."
     specs:
-      cockpit_rear_x: { mm: -1905.0, source: { label: D, method: "Behind the hood stowage well over the dampers" } }
+      cockpit_rear_x: { mm: -2055.0, source: { label: D, method: "Oliver's body scan: the cockpit's rear rim and rear wall at x -2050..-2080 in the sections at y -350, 0 and 385" } }
 
   - id: body.rear.boot-skin
     name: Boot lid (outer skin)
     haynes: { section: 26 }
     quantity: 1
-    notes: "Crowned boot lid between the rear wings, its front edge behind the rear deck, falling to its rear edge over the number plate; 4 mm gaps."
+    notes: "Boot lid between the rear wings, flat across (8 mm camber) in the dip below the wing crowns, its front edge behind the rear deck (x -2246, Oliver's scan), rounding off at the back higher and further back than before (QA fix 1: through about x -2853 at h 770, between the handle evidence and the scan, about 804 at the centre over the lamp tops, Oliver's photo 25 and kf062; his own words: the lid a bit lower than the lights), to its rear edge over the number plate; a soft rounded rectangle, front corners R150 in plan, lower corners R90 seen from behind (photo 25, kf058, kf062, kf071, kf105); 4 mm gaps."
     specs:
-      rear_edge_height: { mm: 640.0, source: { label: D, method: "Above the road, over the number plate (Oliver's photos 18, 24)" } }
+      rear_edge_height: { mm: 665.0, source: { label: D, method: "Above the road, 25-34 mm above the number plate's top (Oliver's photo 25 scaled on the plate, kf062)" } }
 
   - id: body.rear.rear-panel
     name: Rear panel
     haynes: { section: 14 }
     quantity: 1
-    notes: "The tail panel below the boot lid between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21)."
+    notes: "The tail panel below the boot lid and round its rounded lower corners, between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21). QA fix 1: outboard of the overriders it rounds forward into the wing ends (Oliver's scan at |y| 450-550: x -2893..-2924); under the bumper the valance turns forward and under, showing to about 385 above the road from behind (photo 25) and ending 345 above the road at x -2880 (scan); its seams to the wings are leaded, flush."
     specs:
       face_x: { mm: -2955.3, source: { label: D, method: "underbody_layout REAR_PANEL_X (moved by P11b: profile photo 29)" } }
 

@@ -328,7 +328,8 @@ def door_seal(side):
         xf, xr = S.DOOR_FRONT_X - S.GAP / 2 - 3.0, S.DOOR_REAR_X + S.GAP / 2 + 3.0
         hb, ht = S.DOOR_BOTTOM_H + 6.0, C.WAIST_H - 30.0
         d = 30.0
-        front = [(xf, S.side_y(xf, h) - d, H(h)) for h in (ht, (ht + hb) / 2, hb + 30.0)]
+        xfh = lambda h: S.door_front_x(h) - S.GAP / 2 - 3.0                       # noqa: E731 - the curved shut line
+        front = [(xfh(h), S.side_y(xfh(h), h) - d, H(h)) for h in (ht, ht - 40.0, ht - 90.0, ht - 150.0, (ht + hb) / 2, hb + 30.0)]
         xs = [xf - 30.0 - k * (xf - xr - 60.0) / 6 for k in range(7)]
         bottom = [(x, S.side_y(x, hb) - d, H(hb - 8.0)) for x in xs]
         rear = [(xr, S.side_y(xr, h) - d, H(h)) for h in (hb + 30.0, (ht + hb) / 2, ht)]
@@ -430,17 +431,34 @@ def boot_stay_guide(spec):
 def boot_seal(spec):
     """Boot aperture seal: the rubber on the opening's flange under the lid's edge, along its front, down its sides
     and across the tail under the lid's lower edge."""
-    w = lambda x: S._interp(S.BOOT_W, x) - 14.0
+    # (QA fix 1: follows the lid's new outline, its rounded front corners in plan and lower corners seen from behind)
+    import math as _m
+    w = lambda x: S._interp(S.BOOT_W, x) - 14.0                                   # noqa: E731
     xf = S.BOOT_FRONT_X - 14.0
     hr = S.BOOT_REAR_H + 14.0
-    xr = S.tail_x(0.0, hr) + 18.0
-    zs = lambda x, y: H(S.top_h(x, abs(y))) - 24.0
-    xs = [xf - k * (xf - xr + 40.0) / 10 for k in range(11)]
-    left = [(x, w(x), zs(x, w(x))) for x in xs]
-    rear = [(S.tail_x(y, hr) + 18.0, y, H(hr)) for y in (w(xr) - 20.0, 300.0, 0.0, -300.0, -(w(xr) - 20.0))]
+    R = S.BOOT_REAR_R - 14.0
+    zs = lambda x, y: H(S.top_h(x, abs(y))) - 24.0                                # noqa: E731
+    wr = w(-2950.0)
+    xs, x = [], xf - 60.0
+    while S.top_h(x, wr) > hr + R + 30.0 and x > -3100.0:
+        xs.append(x)
+        x -= 60.0
+    side_top = [(x, w(x), zs(x, w(x))) for x in xs]
+    h_top = S.top_h(xs[-1], wr) - 40.0
+    hs = [h_top - (h_top - (hr + R)) * k / 4 for k in range(1, 5)]
+    side_down = [(S.tail_x(wr, h) + 18.0, wr, H(h)) for h in hs if h_top - (hr + R) > 60.0]
+    corner = [(wr - R + R * _m.cos(a), hr + R - R * _m.sin(a)) for a in (_m.radians(30.0), _m.radians(60.0))]
+    corner = [(S.tail_x(y, h) + 18.0, y, H(h)) for y, h in corner]
+    rear = [(S.tail_x(y, hr) + 18.0, y, H(hr)) for y in (wr - R, 250.0, 0.0, -250.0, -(wr - R))]
+    left = [(xf, 150.0, zs(xf, 150.0)), (xf - 30.0, w(xf) - 40.0, zs(xf - 30.0, w(xf) - 40.0))] + side_top + side_down + corner
     right = [(x, -y, z) for x, y, z in reversed(left)]
-    front = [(xf, y, zs(xf, y)) for y in (-200.0, 0.0, 200.0)]
-    path = left + rear + right + front + [left[0]]
+    path = [(xf, 6.0, zs(xf, 6.0))] + left + rear + right[:-1] + [(xf, -150.0, zs(xf, -150.0)), (xf, -6.0, zs(xf, -6.0))]   # its
+    # joint at the front centre (a closed sweep would overlap itself)
+    clean = [path[0]]
+    for q in path[1:-1]:
+        if _m.dist(q, clean[-1]) > 30.0:
+            clean.append(q)
+    path = clean + [path[-1]]
     return _l(swept_rod(path, 5.0), spec)
 
 

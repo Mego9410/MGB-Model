@@ -481,11 +481,13 @@ def boot_outline(grow=0.0):
 
 
 def door_outline_xz(grow=0.0):
-    """Door in side view as (x, height above the road), grown by `grow`."""
-    xf = S.DOOR_FRONT_X + grow
+    """Door in side view as (x, height above the road), grown by `grow`: the front shut line straight up to h 690 and
+    curving rearward to the pointed top front corner on the waist, the lower corners rounded (S.DOOR_LOWER_R)."""
     xr = S.DOOR_REAR_X - grow
     hb = S.DOOR_BOTTOM_H - grow
-    pts = [(xf, hb), (xr, hb), (xr + S.DOOR_REAR_LEAN, 1100.0), (xf, 1100.0)]
-    return fillet_poly(pts, [35.0, 35.0, 0, 0])
-
-
+    curve = [(S.door_front_x(h) + grow, h) for h in
+             (861.0, 852.0, 842.0, 830.0, 818.0, 806.0, 794.0, 782.0, 770.0, 758.0, 746.0, 734.0, 722.0, 710.0, 698.0)]
+    pts = [(S.DOOR_FRONT_X + grow, hb), (xr, hb), (xr + S.DOOR_REAR_LEAN, 1100.0), (S.DOOR_TOP_FRONT_X + grow, 1100.0)]
+    pts += curve + [(S.DOOR_FRONT_X + grow, S.DOOR_FRONT_CURVE[0][0])]
+    r = S.DOOR_LOWER_R + min(grow, 0.0)
+    return fillet_poly(pts, [r, r] + [0] * (len(pts) - 2), 10)

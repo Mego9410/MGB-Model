@@ -558,38 +558,56 @@ def tonneau_studs(side):
 
 
 # ---- side strips ------------------------------------------------------------------------------------------------------
-# Strip line (profile photo 29): 690 above the road behind the headlamp, rising to 712 at the rear lamp plinth.
-STRIP_RISE = [(560.0, 0.0), (-700.0, 4.0), (-1600.0, 10.0), (-2300.0, 17.0), (-2780.0, 22.0)]
+# Strip line: mgb.body_layout SIDE_STRIP_H (QA fix 1: 679 above the road at x 400, 711 at -600, 713-718 on the doors,
+# 718-724 on the rear wings; Oliver's keyframes and scan). The strip is a flat-faced chrome moulding about 14 mm tall
+# (kf048, kf016: not a round rod), its face a little crowned, its top and bottom edges rolled.
+STRIP_SEC = [(0.0, -7.0), (2.2, -7.0), (3.8, -6.1), (4.6, -4.4), (4.9, -2.0), (5.0, 0.0), (4.9, 2.0), (4.6, 4.4),
+             (3.8, 6.1), (2.2, 7.0), (0.0, 7.0)]          # (out from the skin, up) mm
+STRIP_SEAT = 0.6                                          # the back sits this far into the skin
 
 
 def strip_h(x):
-    return S.H_M + S._interp(STRIP_RISE, x)
+    return S._interp(BL.SIDE_STRIP_H, x)
 
 
-def _strip(x0, x1, side):
-    n = max(3, int(abs(x1 - x0) / 120.0))
+def _strip(x0, x1, side, taper=(False, False)):
+    """The strip from x0 to x1 along the strip line on one side: the section lofted along the skin, its ends square
+    (door strips: square-cut caps) or tapered over the last 30 mm (the front end behind the headlamp, the rear end at
+    the lamp's rim)."""
+    n = max(4, int(abs(x1 - x0) / 60.0))
     xs = [x0 + (x1 - x0) * k / n for k in range(n + 1)]
-    pts = [(x, side * (S.side_y(x, strip_h(x)) - 0.6), H(strip_h(x))) for x in xs]
-    return swept_rod(pts, 3.4)
+    L = abs(x1 - x0)
+    for e, x in ((0, x0), (1, x1)):
+        if taper[e]:
+            d = 1.0 if x1 < x0 else -1.0
+            xs += [x + (d if e else -d) * t for t in (6.0, 14.0, 22.0)]
+    xs = sorted(set(round(v, 3) for v in xs), reverse=x1 < x0)
+    wires = []
+    for x in xs:
+        h = strip_h(x)
+        y = S.side_y(x, h)
+        dy = (S.side_y(x - 2.0, h) - S.side_y(x + 2.0, h)) / 4.0          # dy/dx along the car (toward the rear)
+        nx, ny = dy, 1.0
+        k = math.hypot(nx, ny)
+        nx, ny = nx / k, ny / k
+        f = 1.0
+        for e, xe in ((0, x0), (1, x1)):
+            if taper[e]:
+                f = min(f, 0.35 + 0.65 * min(abs(x - xe) / 30.0, 1.0))
+        pts = []
+        for o, u in STRIP_SEC:
+            oo = (o * f) - STRIP_SEAT
+            pts.append(Vector(x + nx * oo, side * (y + ny * oo), H(h) + u * (0.55 + 0.45 * f)))
+        wires.append(Wire.make_polygon(pts, close=True))
+    return Solid.make_loft(wires, ruled=False)
 
 
-STRIP_SPANS = {"front": (555.0, S.DOOR_FRONT_X + 3.0), "door": (S.DOOR_FRONT_X - 4.0, S.DOOR_REAR_X + 4.0),
-               "rear": (S.DOOR_REAR_X - 4.0, CL.bx(-2820.0))}
-STRIP_CAP = 21.0                              # the rear strip's tapered end cap runs on to the lamp's chrome rim (QA fix
+STRIP_CAP = 21.0                              # the rear strip's tapered end runs on to the lamp's chrome rim (QA fix
                                               # round 1: kf176, kf178, photo 25; the rim at x -2836..-2840 at the strip line)
-
-
-def _strip_end_cap(x1, side):
-    """Tapered chrome end cap: from the strip's section at x1 back along the side, narrowing to a rounded point
-    against the rear lamp's rim (kf178)."""
-    from build123d import Plane, Solid as So
-    xe = x1 - STRIP_CAP
-    p0 = Vector(x1, side * (S.side_y(x1, strip_h(x1)) - 0.6), H(strip_h(x1)))
-    ye = max(S.side_y(xe, strip_h(xe)), S.side_y(x1, strip_h(x1)) - 8.0)
-    p1 = Vector(xe, side * (ye - 0.6), H(strip_h(xe)))
-    d = p1 - p0
-    cone = So.make_cone(3.4, 1.4, d.length, Plane(origin=p0, z_dir=d))
-    return cone + So.make_sphere(1.4).moved(Location(p1))
+STRIP_SPANS = {"front": (555.0, S.door_front_x(strip_h(-700.0)) + 3.0),
+               "door": (S.door_front_x(strip_h(-700.0)) - 4.0, S.DOOR_REAR_X + 20.0),     # sides-glass 17: ends 20 short
+               "rear": (S.DOOR_REAR_X - 4.0, CL.bx(-2820.0) - 0.6 * STRIP_CAP)}           # rear 12: to the lamp's rim
+STRIP_TAPER = {"front": (True, False), "door": (False, False), "rear": (False, True)}
 
 
 def strip(which, side):
@@ -598,10 +616,7 @@ def strip(which, side):
         headlamp to the rear lamp's rim, where the rear strip ends in a tapered cap (profile photo 29; Oliver's photos
         09, 23, 25; kf176, kf178)."""
         x0, x1 = STRIP_SPANS[which]
-        st = _strip(x0, x1, side)
-        if which == "rear":
-            st = st + _strip_end_cap(x1, side)
-        return _l(st, spec)
+        return _l(_strip(x0, x1, side, STRIP_TAPER[which]), spec)
     return build
 
 

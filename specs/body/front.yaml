@@ -21,7 +21,12 @@ parts:
       wrapping round the headlamp nacelle (P10's 7 in lamp: opening for the bowl, the rim over it) and down the front
       to the side lamp (its two stud holes and lead hole) and the valance seam; the wheel arch opening (356 mm about
       the hub, its top just under the chrome strip line as the intro photograph shows); the crown rising into the
-      nacelle ahead of the bonnet's edge (the scalloped bonnet sits between the wings).
+      nacelle ahead of the bonnet's edge (the scalloped bonnet sits between the wings). QA fix 1: its top rear runs
+      back in a curved tongue round the door's curved front shut line to the pointed corner under the screen pillar
+      foot (traced on Oliver's keyframes kf044, kf046 and kf016, back-projected on the SfM cameras: x -701 up to h 690,
+      then -706 at 720, -713 at 750, -731 at 786, -744 at 808, -765 at 830, -785 at 850, -803 at the waist); its seam
+      to the scuttle runs from the bonnet's rear corner back to the pillar foot (kf076); its lower edge between the arch
+      and the door 270-275 above the road (kf044, kf016), rounded round the door's lower front corner.
     specs:
       half_width: { in: [29.925, 29.975], mm: [760.10, 761.37], source: { label: S, ref: "https://www.mgexp.com/article/mgb-specification.72", note: "Overall width 59.9 in over the body sides" } }
       arch_radius: { mm: 371.0, source: { label: D, method: "profile photo 29 scaled on the wheelbase: a circle fitted to the arch edge, centre 8 mm behind the hub" } }
@@ -56,19 +61,22 @@ parts:
     quantity: 1
     notes: >
       The bonnet's outer panel between the wing crowns from the grille opening back to the scuttle, the 4 mm gaps all
-      round, crowned across with the low centre rib running back from the grille's centre bar (body_shell_layout
-      RIB_A), clearing the radiator header tank and the rocker cover (P2/P3 heights).
+      round, crowned across, smooth (QA fix 1: no centre rib; Oliver's kf027 and kf083 show a smooth bonnet and a
+      smooth lip over the grille), clearing the radiator header tank and the rocker cover (P2/P3 heights). QA fix 1:
+      rear edge at x -453 and the plan taper measured on Oliver's car (rear corners triangulated at x -433/-474, |y|
+      542, h 872 from kf076+kf081 and kf088+kf092 on the SfM cameras; half-width about 418 at x 700, 445 at 350 and 480
+      at 0 from the shut lines on his scan in plan).
     specs:
-      rear_edge_x: { mm: -392.0, source: { label: D, method: "Ahead of the scuttle, 8 mm ahead of the bulkhead's top" } }
+      rear_edge_x: { mm: -453.0, source: { label: D, method: "Oliver's keyframes kf076+kf081 and kf088+kf092, the rear corners triangulated on the SfM cameras (x -433 and -474)" } }
       gap: { mm: 4.0, source: { label: D, method: "Panel gap" } }
 
   - id: body.front.scuttle
     name: Scuttle top
     haynes: { section: 18 }
     quantity: 1
-    notes: "Scuttle top panel from the bonnet's rear gap to the cockpit's front edge over the facia, between the wing seams, rising to P10's screen base; the two wiper spindle holes (P10 WIPER_SPINDLES)."
+    notes: "Scuttle top panel from the bonnet's rear gap (x -453) to the cockpit's front edge over the facia, between the wing seams (from the bonnet's rear corners back to the screen pillar feet, Oliver's kf076), rising to the screen base, which curves forward to x -605 at the centre (QA fix 1: Oliver's scan and kf092, kf046, kf088, kf080 on the SfM cameras; the scuttle vent's top 908 above the road at x -475); the two wiper spindle holes (P10 WIPER_SPINDLES)."
     specs:
-      screen_base_height: { mm: 915.0, source: { label: D, method: "body_layout WINDSCREEN_BASE_Z (P10), above the road" } }
+      screen_base_height: { mm: 921.0, source: { label: D, method: "body_layout WINDSCREEN_BASE_Z, above the road: the glass's lower edge at the centre (Oliver's scan and keyframes kf092, kf046 on the SfM cameras)" } }
 
   - id: body.front.bonnet-frame
     name: Bonnet inner frame

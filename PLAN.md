@@ -25,6 +25,50 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P11a Exhaust system; fuel tank, pump and pipes | Ch 3 | done |
 | P11b Body shell, panels, trim, fittings | Ch 12 | done |
 
+## QA fix round 1, shell (5 Nov 2026)
+
+Body shell surface and outlines matched to Oliver's car (findings FINDINGS-front / -sides-glass / -rear and the cockpit
+reviewer's rear-rim answer; his keyframes on the SfM cameras and his scan). In mgb/body_shell_layout.py unless named:
+- Windscreen line: SCREEN_BASE table (|y| -> x), the base curving forward to x -605 at the centre (-615 at |y| 300,
+  -658 at 450, -724 at 540, -764 at the pillar foot), standing 12 mm on the scuttle (screen_base() follows the
+  scuttle's surface); top SCREEN_TOP_X -850, h 1195 at the centre, -930 / 1157 at the pillars. Centre rake 42.5 deg,
+  pillars 31 deg. body_layout WINDSCREEN_BASE_X -605, WINDSCREEN_BASE_Z 921.
+- Scuttle and bonnet: bonnet rear edge x -453, plan taper (410 at x 760, 418 at 700, 445 at 350, 480 at 0, 542 at the
+  rear corners); the scuttle rising from it to the screen base (TOP_C); the wing / scuttle seam from the bonnet's rear
+  corner to the screen pillar foot (WING_SEAM, wing_seam_y()). Bonnet smooth: no centre rib, its centre line rising at
+  an even slope (the old flat zone read as a wavy band), the edge valley on the shut lines.
+- Door front shut line / front wing top: DOOR_FRONT_X -701, DOOR_FRONT_CURVE (h, x) to the pointed corner at x -803
+  on the waist, door_front_x(h); the door outline, the wings (keep = outside the door outline), the door frame's front
+  shut face (closures, St.shut_face), the hinges, the hinge pillar and the door seal follow it. Door lower corners
+  R110 (DOOR_LOWER_R). Finger recess under the handle (DOOR_RECESS; panels.door_recess). The right door frame's shut
+  faces, bottom and waist piece had been built on the left side: now mirrored.
+- Headlamp nacelle (front 19): fitted to Oliver's scan round the rims (radii 100-210 every 30 deg, both sides): the
+  face pulled back round the top of the rim (COWL_*, a negative swell; it made the raised ring and the crease to the
+  bonnet), the recess ring tightened (NACELLE_R). A forward cowl, as the front reviewer read the photos, made the
+  scan error round the rims much worse (31.7 mm median against about 18 now).
+- Lower edges: front wing 270-275 between the arch and the door; under the door the sill rolls under (SILL_ROLL) so
+  only about 60 mm shows below the door; behind the rear arch 360-375 (Z_B); the rear valance turns forward and under
+  (TAIL_C low) to end 345 above the road at x -2880 (scan), so it shows to about 385 from behind and closes the view
+  of the tank under the bumper.
+- Side strip: body_layout BODY_WIDEST_H (the shell's H_M) decoupled from the strip; SIDE_STRIP_H table (679 at x 400,
+  711 at -600, 716 on the doors, 718-724 on the rear wings); brightwork strips a flat-faced 14 mm moulding, door
+  strip ending 20 mm short of the rear shut line, rear strip to the lamp rim, tapered front and rear ends.
+- Rear: cockpit rear rim COCKPIT_REAR_X -2055 (COCKPIT_W widened at the back, corners R150), REAR_BULKHEAD_X -2080,
+  boot lid front BOOT_FRONT_X -2246; deck strip about 900 at the centre (DECK_H); lid flat across in the dip, rounding
+  off higher and further back (804 at x -2780, through x -2854 at h 770; DECK_H a C2 spline so no ridge shows across
+  the lid), rear edge BOOT_REAR_H 665; lid corners R150
+  in plan at the front, R90 seen from behind (panels.boot_sd); the rear panel rounds forward into the wing ends
+  outboard of the overriders (TAIL_CPLAN) through a wider blend (PLINTH_Y), which takes out the fold from the lamp top
+  to the lid corner; the leaded seams (rear wings to deck and rear panel) lap 1 mm each way so no line shows
+  (panels LEAD).
+
+For the other fixers: WIPER_SPINDLES still follow WINDSCREEN_BASE_X (+22, now x -583); the scuttle vent still sits on
+screen_base(0) (now x -565..-510); the cockpit fixer derives the rim trim and rear wall from COCKPIT_REAR_X /
+REAR_BULKHEAD_X and cockpit_outline(); the tonneau floor now steps up at x -1880 (structure SHELF_STEP_X) to a shelf
+over the axle at ARCH_Z + 22 back to the wall, clear of the fuel pipe's climb, until the cockpit fixer moves the floor
+(underbody TONNEAU_Z, HEELBOARD_X); the interior's rear carpet still lies at the old floor level there. The windscreen
+glass is fitted through 25 rows (screen.py) so it follows the base's sweep.
+
 ## Carried over
 
 - Front brake hose (P8/P9): P9 built the hub, swivel axle and its caliper flange and dust cover pads to P8's datums;

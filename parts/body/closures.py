@@ -66,7 +66,7 @@ def door_inner_sd(side):
 
 def _door_x(h, rear):
     lean = S.DOOR_REAR_LEAN * (h - S.DOOR_BOTTOM_H) / (1100.0 - S.DOOR_BOTTOM_H)
-    return (S.DOOR_REAR_X + G2 + 8.0 + lean) if rear else (S.DOOR_FRONT_X - G2 - 8.0)
+    return (S.DOOR_REAR_X + G2 + 8.0 + lean) if rear else (S.door_front_x(h) - G2 - 8.0)   # front: the curved shut line
 
 
 def door_frame(side):
@@ -80,11 +80,17 @@ def door_frame(side):
             parts = list(inner.solids())
             hs = [S.DOOR_BOTTOM_H + 10.0 + k * (WAIST_H - 22.0 - S.DOOR_BOTTOM_H) / 10 for k in range(11)]
             for rear in (False, True):
-                pts = [(S.side_y(_door_x(h, rear), h) - 1.5 - DOOR_IN, H(h)) for h in hs]
-                pts += [(S.side_y(_door_x(h, rear), h) - 1.5, H(h)) for h in reversed(hs)]
-                x = _door_x(S.DOOR_BOTTOM_H, rear)
-                face = xprism(pts, x - 0.6, x + 0.6)
+                if rear:
+                    pts = [(S.side_y(_door_x(h, rear), h) - 1.5 - DOOR_IN, H(h)) for h in hs]
+                    pts += [(S.side_y(_door_x(h, rear), h) - 1.5, H(h)) for h in reversed(hs)]
+                    x = _door_x(S.DOOR_BOTTOM_H, rear)
+                    face = xprism(pts, x - 0.6, x + 0.6)
+                else:                                   # follows the front shut line's curve (QA fix 1)
+                    xh = lambda h: _door_x(h, False) + 0.6                                     # noqa: E731
+                    face = St.shut_face(xh, lambda h: S.side_y(xh(h), h) - 1.5 - DOOR_IN,
+                                        lambda h: S.side_y(xh(h), h) - 1.5, hs, 1.2)
                 for hh in (St.HINGE_H if not rear else (St.STRIKER_H,)):
+                    x = _door_x(hh, rear)
                     for dz in (-18.0, 0.0, 18.0):
                         face = face - xcyl(3.4, x - 5, x + 5, S.side_y(x, hh) - 30.0, H(hh) + dz)
                 parts.append(face)
@@ -96,6 +102,12 @@ def door_frame(side):
             wx0, wx1 = _door_x(WAIST_H, False), _door_x(WAIST_H, True)
             yw = S.side_y(-1200.0, WAIST_H - 30.0) - 1.5 - DOOR_IN
             parts.append(box(wx1, wx0, yw, yw + 1.2, H(WAIST_H - 60.0), H(WAIST_H - 14.0)))
+            n_in = len(inner.solids())
+            clip = yprism([(x, H(h)) for x, h in B.door_outline_xz(-(G2 + 5.0))], 0.0, 1000.0)   # round the lower corners
+            parts = parts[:n_in] + [p & clip for p in parts[n_in:]]
+            # the shut faces, bottom and waist piece are drawn on the left:
+            if side < 0:                                # mirror them for the right door (QA fix 1: they were left)
+                parts = parts[:n_in] + [St._side(p, side) for p in parts[n_in:]]
             return Compound(G.solids(parts))
         c = Compound(G.solids([_cached(f"door-frame-{side}", make)]))
         c.label = spec.id
@@ -108,7 +120,7 @@ def hinge(side, which):
         """Door hinge (Sec 32): a body leaf on the hinge pillar and a door leaf on the door's front shut face, three
         screws each, knuckled on a pin along the hinge line."""
         hh = St.HINGE_H[which]
-        xp = S.DOOR_FRONT_X - G2
+        xp = S.door_front_x(hh) - G2
         y = side * (S.side_y(xp, hh) - 30.0)
         z = H(hh)
         body = box(xp - 3.0 - 30.0, xp - 3.0, y - 14.0, y + 14.0, z - 30.0, z + 30.0)
