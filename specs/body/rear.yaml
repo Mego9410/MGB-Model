@@ -32,7 +32,7 @@ parts:
     name: Rear deck (shroud)
     haynes: { section: 1 }
     quantity: 1
-    notes: "The panel behind the cockpit over the hood stowage well, between the rear wings, to the boot lid's front gap: a narrow strip from the cockpit's rear rim (x -2055) to the lid's front edge (x -2246), about 900 above the road at the centre (QA fix 1: Oliver's scan, sections from inside the cockpit at y -350, 0, 385 and the plan; kf104, kf105). Its seams to the rear wings are leaded, flush."
+    notes: "The panel behind the cockpit over the hood stowage well, between the rear wings, to the boot lid's front gap: a narrow strip from the cockpit's rear rim (x -2055) to the lid's front edge (x -2246), about 888 above the road at the centre at the rim (the scan reads 900-925; QA fix 1: Oliver's scan, sections from inside the cockpit at y -350, 0, 385 and the plan; kf104, kf105). Its seams to the rear wings are leaded, flush."
     specs:
       cockpit_rear_x: { mm: -2055.0, source: { label: D, method: "Oliver's body scan: the cockpit's rear rim and rear wall at x -2050..-2080 in the sections at y -350, 0 and 385" } }
 
@@ -48,7 +48,7 @@ parts:
     name: Rear panel
     haynes: { section: 14 }
     quantity: 1
-    notes: "The tail panel below the boot lid and round its rounded lower corners, between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21). QA fix 1: outboard of the overriders it rounds forward into the wing ends (Oliver's scan at |y| 450-550: x -2893..-2924); under the bumper the valance turns forward and under, showing to about 385 above the road from behind (photo 25) and ending 345 above the road at x -2880 (scan); its seams to the wings are leaded, flush."
+    notes: "The tail panel below the boot lid and round its rounded lower corners, between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21). QA fix 1: outboard of the overriders it rounds forward into the wing ends (Oliver's scan at |y| 450-550: x -2893..-2924); under the bumper the valance turns forward and under, showing below the bumper's blade as on the car (kf062, photo 25), through the scan's (x -2880, h 345) to its edge 295 above the road at x -2855, clear of the tank and the exhaust mounting, with a notch for the tail pipe; its seams to the wings are leaded, flush."
     specs:
       face_x: { mm: -2955.3, source: { label: D, method: "underbody_layout REAR_PANEL_X (moved by P11b: profile photo 29)" } }
 

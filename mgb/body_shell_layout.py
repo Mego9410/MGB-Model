@@ -205,7 +205,7 @@ COWL_R = (100.0, 120.0, 170.0)              # full from the recess edge to the s
 
 # ---- tail (rear surface x as a function of |y| and height) ---------------------------------------------------------
 TAIL_PANEL_X = U.REAR_PANEL_X               # rear panel face behind the number plate (P11a, moved by P11b)
-TAIL_C = [(150.0, TAIL_PANEL_X + 250.0), (250.0, TAIL_PANEL_X + 170.0), (330.0, TAIL_PANEL_X + 95.0),
+TAIL_C = [(150.0, TAIL_PANEL_X + 200.0), (250.0, TAIL_PANEL_X + 130.0), (295.0, TAIL_PANEL_X + 100.0), (320.0, TAIL_PANEL_X + 88.0),
           (345.0, TAIL_PANEL_X + 78.0), (385.0, TAIL_PANEL_X + 32.0), (420.0, TAIL_PANEL_X + 7.0), (460.0, TAIL_PANEL_X), (600.0, TAIL_PANEL_X - 2.0), (640.0, TAIL_PANEL_X + 3.0), (665.0, TAIL_PANEL_X + 9.0),
           (690.0, TAIL_PANEL_X + 22.0), (720.0, TAIL_PANEL_X + 42.0), (745.0, TAIL_PANEL_X + 68.0), (770.0, TAIL_PANEL_X + 100.0),
           (790.0, TAIL_PANEL_X + 130.0), (806.0, TAIL_PANEL_X + 168.0), (820.0, TAIL_PANEL_X + 230.0),
@@ -246,6 +246,19 @@ def z_b(x):
     return _interp(Z_B, x)
 
 
+TAIL_Z_B = (295.0, bx(-2830.0), 560.0)       # the rear valance's lower edge between the wing ends (h, behind x, inside |y|):
+# it comes down below the bumper's silhouette (kf062: a thin red strip under the blade, no tank in view), past the
+# scan's last point (x -2880, h 345), its return clear of the tank and the exhaust's rear mounting (x -2788..-2829)
+
+
+def z_b_xy(X, Y):
+    """The skin's lower edge at (x, y): Z_B, lowered between the wing ends at the tail to TAIL_Z_B."""
+    h, x0, w = TAIL_Z_B
+    zb = _interp(Z_B, X)
+    t = _step((x0 - np.asarray(X, float)) / 40.0) * _step((w - np.abs(np.asarray(Y, float))) / 60.0)
+    return zb + (np.minimum(zb, h) - zb) * t
+
+
 BONNET_CAMBER = mono(bxt([(745.0, 26.0), (300.0, 30.0), (-392.0, 32.0), (-700.0, 20.0), (-1650.0, 20.0), (-2100.0, 30.0),
                  (-2400.0, 36.0), (-2900.0, 40.0)]))          # the top's fall from the centre to the crown line where no crown stands proud
 # Rear deck and boot lid (Oliver's scan and photos 11, 14, 18, 23, 24, 25; his correction of 5 Nov): the rear wing
@@ -253,9 +266,12 @@ BONNET_CAMBER = mono(bxt([(745.0, 26.0), (300.0, 30.0), (-392.0, 32.0), (-700.0,
 # at that level right across between the dips (a camber of only 8 mm), falling gently from the cockpit's rear and
 # rounding off at the back to the rear panel along the dips' own curve. The scan's dip heights (its deeper left side;
 # the high centre points on the glossy lid are reflection lift) set DECK_H.
-DECK_H = bxt([(-2055.0, 897.0), (-2150.0, 885.0), (-2246.0, 869.0), (-2350.0, 850.0), (-2450.0, 833.0), (-2550.0, 821.0),
-               (-2650.0, 811.0), (-2720.0, 805.0), (-2780.0, 798.0), (-2850.0, 782.0), (-2900.0, 759.0), (-2960.0, 707.0),
-               (-3000.0, 662.0)])     # C2 spline (not PCHIP): no transverse ridge across the lid (QA fix 1 review)
+DECK_H = bxt([(-2055.0, 880.0), (-2120.0, 876.7), (-2200.0, 870.8), (-2300.0, 860.4), (-2450.0, 842.4), (-2550.0, 830.4),
+               (-2650.0, 818.4), (-2700.0, 812.4), (-2740.0, 807.0), (-2780.0, 800.0), (-2850.0, 782.0), (-2900.0, 759.0),
+               (-2960.0, 707.0), (-3000.0, 662.0)])
+# (QA fix 1 review: a C2 spline with no inflection - the deck strip rounding over from the rim, the lid straight in the
+# dip below the crowns, then rounding off at the back - so no transverse ridge shows across the lid; the deck's centre
+# 888 at the rim, between the earlier model and the scan's 900-925)
 # QA fix 1 (rear 2, cockpit 29): the deck strip behind the cockpit's rear rim (x -2055) stands about 900 above the road
 # at the centre (Oliver's scan, both sides alike at |y| 300: 900-920 at x -2050..-2150), falling to the lid's front
 # edge; the lid stays flat across and in the dip below the wing crowns, but rounds off higher and further back: about

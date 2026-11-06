@@ -252,9 +252,9 @@ def rear_panel_skin_sd(X, Y, Z):
     return AND(rear_panel_sd(X, Y, Z) + LEAD, -filler_sd(X, Y, Z), -tailpipe_notch_sd(X, Y, Z))
 
 
-def _panel(name, sdf):
+def _panel(name, sdf, shift=None):
     def build(spec):
-        return _l(_cached(name, lambda: B.skin_sdf(sdf)), spec)
+        return _l(_cached(name, lambda: B.skin_sdf(sdf, shift=shift)), spec)
     return build
 
 
@@ -273,9 +273,11 @@ bonnet_skin = _panel("bonnet-skin", bonnet_skin_sd)
 scuttle = _panel("scuttle", scuttle_skin_sd)
 grille_panel = _panel("grille-panel", grille_panel_skin_sd)
 front_valance = _panel("front-valance", valance_skin_sd)
-rear_deck = _panel("rear-deck", rear_deck_skin_sd)
+# At the leaded seams the rear deck and the rear panel run 1 mm on under the wings' edges, set 0.4 mm below the skin
+# (down for the deck, forward for the tail panel) so the lap neither leaves a line nor flickers (QA fix 1 review).
+rear_deck = _panel("rear-deck", rear_deck_skin_sd, shift=(0.0, 0.0, -0.4))
 boot_skin = _panel("boot-skin", boot_skin_sd)
-rear_panel = _panel("rear-panel", rear_panel_skin_sd)
+rear_panel = _panel("rear-panel", rear_panel_skin_sd, shift=(0.4, 0.0, 0.0))
 
 PANELS = {
     "front-wing-l": front_wing(1), "front-wing-r": front_wing(-1), "grille-panel": grille_panel,

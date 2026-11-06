@@ -48,19 +48,19 @@ reviewer's rear-rim answer; his keyframes on the SfM cameras and his scan). In m
   scan error round the rims much worse (31.7 mm median against about 18 now).
 - Lower edges: front wing 270-275 between the arch and the door; under the door the sill rolls under (SILL_ROLL) so
   only about 60 mm shows below the door; behind the rear arch 360-375 (Z_B); the rear valance turns forward and under
-  (TAIL_C low) to end 345 above the road at x -2880 (scan), so it shows to about 385 from behind and closes the view
-  of the tank under the bumper.
+  (TAIL_C low) through the scan's (x -2880, h 345) to its edge 295 above the road at x -2855 between the wing ends
+  (TAIL_Z_B, z_b_xy), so it shows below the bumper as in kf062 and hides the tank.
 - Side strip: body_layout BODY_WIDEST_H (the shell's H_M) decoupled from the strip; SIDE_STRIP_H table (679 at x 400,
   711 at -600, 716 on the doors, 718-724 on the rear wings); brightwork strips a flat-faced 14 mm moulding, door
   strip ending 20 mm short of the rear shut line, rear strip to the lamp rim, tapered front and rear ends.
 - Rear: cockpit rear rim COCKPIT_REAR_X -2055 (COCKPIT_W widened at the back, corners R150), REAR_BULKHEAD_X -2080,
-  boot lid front BOOT_FRONT_X -2246; deck strip about 900 at the centre (DECK_H); lid flat across in the dip, rounding
+  boot lid front BOOT_FRONT_X -2246; deck strip 888 at the centre at the rim (DECK_H; scan 900-925); lid flat across in the dip, rounding
   off higher and further back (804 at x -2780, through x -2854 at h 770; DECK_H a C2 spline so no ridge shows across
   the lid), rear edge BOOT_REAR_H 665; lid corners R150
   in plan at the front, R90 seen from behind (panels.boot_sd); the rear panel rounds forward into the wing ends
   outboard of the overriders (TAIL_CPLAN) through a wider blend (PLINTH_Y), which takes out the fold from the lamp top
-  to the lid corner; the leaded seams (rear wings to deck and rear panel) lap 1 mm each way so no line shows
-  (panels LEAD).
+  to the lid corner; at the leaded seams (rear wings to deck and rear panel) the deck and the panel run 1 mm on under
+  the wings' edges, sunk 0.4 mm, so no line shows and nothing flickers (panels LEAD, shift).
 
 Hand-offs from the rear fittings fixer, done here: REAR_LAMP_Y 620 (photo 25: 617-624), which moves the wing-end
 blend (PLINTH_Y) and the crown line's end with it; a notch in the valance's lower edge for the tail pipe

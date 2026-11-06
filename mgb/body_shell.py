@@ -170,7 +170,7 @@ def uv_grid(name):
 
 def _region_on(name, X, Y, Z):
     """Where the outer face is skin: above the skin's lower edge (the implicit body continues under it)."""
-    return S.z_of(S.z_b(X)) - Z
+    return S.z_of(S.z_b_xy(X, Y)) - Z
 
 
 def _march(F):
