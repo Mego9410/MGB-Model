@@ -577,7 +577,19 @@ def floor_carpet(side):
     return build
 
 
-HEEL_MAT = (-705.0, -505.0, -565.0, -250.0)     # (x0, x1, y0, y1): the driver's heel mat under the pedals (kf151), outboard of the tunnel
+HEEL_MAT = (-700.0, -530.0, -475.0, -245.0)     # (x0, x1, y0, y1): the driver's heel mat under the pedals (kf151), outboard of the tunnel
+
+
+def bulkhead_felt(spec):
+    """Black felt over the bulkhead's cabin face in both footwells (Oliver's kf145, kf151: black behind the pedals,
+    where the body colour would show): a copy of the bulkhead panel 3 mm into the cabin, with all its holes for the
+    pedal box, pedal arms, column, harness and pipes, from the toe boards up under the scuttle."""
+    class _Id:
+        id = spec.id
+    b = St.bulkhead(_Id())
+    f = b.moved(Location((-3.0, 0.0, 0.0)))
+    f = f & box(St.BH_X - 7.0, St.BH_X - St.T - 0.2, -S.SILL_INNER_Y + 7.5, S.SILL_INNER_Y - 7.5, U.TOE_TOP[1] + 2.0, H(FACIA_H[0]))
+    return _l(f, spec)
 
 
 def heel_mat(spec):
@@ -803,8 +815,8 @@ def rear_wall_trim(spec):
 # flat board where the door's inner panel is upright (inboard of the regulator and remote control plates behind it,
 # parts/body/mechanisms.py) and follows the tumblehome above and below.
 CARD_T = 3.0
-CARD_TOP_H = C.WAIST_H - 28.0
-CARD_BOT_H = S.DOOR_BOTTOM_H + 10.0
+CARD_TOP_H = C.WAIST_H - 10.0                 # tucked up into the capping roll
+CARD_BOT_H = S.DOOR_BOTTOM_H + 3.0
 
 
 def _card_flat_y():
@@ -816,7 +828,8 @@ def card_face_y(h):
     """|y| of the door card's cockpit face at height h (the most inboard of the door's length)."""
     xs = [S.DOOR_FRONT_X - 20.0 - k * (S.DOOR_FRONT_X - S.DOOR_REAR_X - 40.0) / 6 for k in range(7)]
     yo = min(min(S.side_y(x, h) for x in xs) - C.DOOR_IN - 1.4, _card_flat_y())
-    return yo - CARD_T
+    ycap = min(S.side_y(x, C.WAIST_H - 30.0) for x in xs) - C.DOOR_IN + 6.0      # the capping roll's centre line
+    return max(yo, ycap - 4.0) - CARD_T
 
 
 def _card_yz():
@@ -832,7 +845,7 @@ def door_card(side):
     def build(spec):
         """Door trim pad (Sec 29, early Sports Tourer; Oliver's kf128, kf131): the black vinyl-covered hardboard over
         the inner panel's whole face, the seam's groove across it, held by clips round its edge."""
-        out = [(x, H(h)) for x, h in B.door_outline_xz(-12.0)]
+        out = [(x, H(h)) for x, h in B.door_outline_xz(-5.0)]
         card = xprism(_card_yz(), S.DOOR_REAR_X - 200.0, S.DOOR_FRONT_X + 50.0) & yprism(out, 400.0, 800.0)
         card = card & box(S.DOOR_REAR_X - 200.0, S.DOOR_FRONT_X + 50.0, 400.0, 800.0, H(CARD_BOT_H) - 1, H(CARD_TOP_H) + 1)
         return _l(St._side(card, side), spec)
@@ -1038,6 +1051,7 @@ PARTS = {
     "body.interior.console-toggle": {"build": console_toggle},
     "body.interior.dash-top": {"build": dash_top},
     "body.interior.heel-mat": {"build": heel_mat},
+    "body.interior.bulkhead-felt": {"build": bulkhead_felt},
     "body.interior.glovebox-lock": {"build": glovebox_lock},
     "body.interior.facia-end-dome": {"build": facia_end_dome},
     "body.interior.facia-end-knob": {"build": facia_end_knob},

@@ -359,8 +359,8 @@ parts:
       with three flat arms in a Y (the wire sockets at their ends) and black clamp blocks gripping the wires inside the
       rim (Oliver's kf121, kf148 zoomed; MGOC: three-spoke banjo wheel, black rim and hub). The polished wires are
       chassis.steering.wheel-spokes. Placed on Oliver's car: rim centre, size and tilt from a circle fitted to the rim
-      in his body scan (mgb.steering_layout RIM_CENTRE); spokes two 15 deg below the horizontal and one straight down
-      (kf121). Dish, arm and clamp sizes derived from kf121 scaled on the rim.
+      in his body scan (mgb.steering_layout RIM_CENTRE); spokes two 28 deg below the horizontal and one straight down
+      (kf121, matched in its triptych). Dish, arm and clamp sizes derived from kf121 scaled on the rim.
     specs:
       diameter: { in: 16.5, mm: 419.1, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/interior/steering-wheels/oe-steering-wheel", note: "16 1/2 in three-spoke banjo wheel, 1962-69" } }
       rim_centre_height: { mm: 830.0, display_only: true, source: { label: D, method: "Oliver's body scan: circle fitted to 678 rim points, centre 830 mm above the road, radius 198.8, axis 20 deg to the horizontal" } }

@@ -894,8 +894,9 @@ body only for now; these are to do later:
 - Rocker cover: polished, finned cast-alloy cover with a raised octagon emblem (photos 07, 12, 13, 28), not the
   pressed steel cover in `engine.head`.
 - Cooling: an electric radiator fan in a plastic shroud on the radiator (photos 13, 28), not the engine-driven fan.
-- Tyres: 165/80 R14 radials (photo 03: 165/80R14 85T), not 5.60-14 crossplies.
-- Steering wheel: black rim, three spokes of three chrome wires each, octagon horn push (photos 01, 04, 17).
+- Tyres: 165/80 R14 radials (photo 03: 165/80R14 85T), not 5.60-14 crossplies. Done in QA fix round 1, cockpit.
+- Steering wheel: black rim, three spokes of three chrome wires each, octagon horn push (photos 01, 04, 17). Done in
+  QA fix round 1, cockpit (3/3/2 wires).
 - Engine bay: Smiths heater blower on the bulkhead, separate screen washer bottle on the left inner wing, black
   box-type air cleaners on the carbs (photos 13, 28).
 - Earth polarity: a sticker on the front slam panel reads "...wired POSITIVE EARTH" (photo 13). The wiring model
@@ -960,3 +961,36 @@ From FINDINGS-sides-glass (items 2, 4-8, 10, 14-17), measured on Oliver's keyfra
 - Pull handles as on the car (escutcheon at the rear, lever to a rubber buffer at the front, 174 mm), separate round key
   locks below the strip (x -1579, h 688), the door mirror's clamp 90 mm above the door top, the interior mirror on the
   centre rod with a tan back (new finish `plastic_tan`), chrome end finishers on the door tops, door strip 20 mm short.
+
+## QA fix round 1, cockpit and wheels (6 Nov 2026)
+
+From FINDINGS-cockpit-wheels.md items 1-28 and 30-35, against Oliver's keyframes (kf041, kf069-075, kf113-160,
+kf181-185, kf226-230) and his body scan:
+- Steering wheel placed on the scan: a circle fitted to the rim (678 points) gives the rim centre at x -981, y -294,
+  830 mm above the road, radius 198.8, axis 20 deg (steering_layout RIM_CENTRE). The hub face sits DISH ahead of it on
+  the single pinion/column axis, which now rises at about 24 deg; the column clamp, toe mount and the column switch
+  follow. The wheel is 56 mm inboard of DRIVER_Y (test relaxed to 70 mm). Spokes at 105/180/255 deg with 3/3/2
+  polished wires; black cast hub arms and rim clamp blocks; the horn push as a black moulding, a broad chrome ring
+  and a red enamel MG octagon with chrome letters.
+- Dials: white print (graduations, figures, MPH/RPM legends, HIGH BEAM/IGNITION), the tachometer's amber/red wedge,
+  the dual gauge's OIL/WATER scales, the fuel gauge's E 1/4 1/2 3/4 F with the needle hanging from a pivot above the
+  centre; needles at rest. Toggle levers with black tips.
+- Trim: kick panels, sill carpets, rear quarter trims, rear wall trim, hump carpets, a flat flush cockpit rim roll,
+  padded dash top; door card over the whole inner face with the piped seam, stitch lines, pull handle, the release
+  lever at the front top and the winder at the front below the seam. The regulator (parts/body/mechanisms.py SPINDLE,
+  QUAD_PIVOT) and the remote control follow mgb/cockpit_layout. The hinge pillar's kick plate moved ahead of the door's
+  shut line (it hid the card's front).
+- Seats: leather finish, the scan's deep cushion and 24 deg squab, shield outline, pleated piped panels.
+- Rear cockpit: the heelboard is now a lower riser (pump face, HEELBOARD_X), a step over the rear springs' front
+  hangers (HEEL_STEP_Z, 338 above the road) and an upper riser at the shelf's front (SHELF_FRONT_X, x -1682); the shelf
+  (TONNEAU_FLOOR_Z) rises from 443 to 555 above the road, the battery boxes move back to x -1800 behind the upper riser,
+  and the tank-to-pump pipe drops down behind the upper riser. Inertia-reel belts on the humps with red-button buckles.
+- Facia: plaque badge with speed lines, champagne vertical-rib speaker mesh, console knobs and toggle, glovebox strip
+  and lock moved, left-end dome and knob, heater knob lettering (WARM legible; the other words assumed).
+- Handbrake chrome; gear lever bellows gaiter and white-filled knob pattern; tapered vertical-rib pedal pads; the
+  accelerator as Oliver's round stub; heel mat and carpet binding.
+- Wheels: 165/80R14 radials (car_layout TYRE_D 619.6; ROLLING_R holds the wheel centres where they were), four-groove
+  tread, sidewall lettering; spinners with a domed face, swept tapered ears and edge lettering; rim nipple dimples; a
+  smooth hub barrel. Front calipers red.
+- Left open: ride height (36). The gear knob sits higher than in the photos (gearbox remote geometry, not changed).
+

@@ -88,8 +88,8 @@ CROSSMEMBER_TUBE_R = 36.0                            # tube through the RHD cros
 WHEEL_D = 16.5 * IN
 RIM_SECTION = (22.0, 26.0)                           # rim grip section: across, along the axis
 SPOKES = 3
-SPOKE_ANGLES = [105.0, 180.0, 255.0]                 # from the wheel's "up" toward the driver's left, wheels straight
-                                                     # ahead (D: Oliver's kf121, kf148 - two side spokes 15 deg below
+SPOKE_ANGLES = [118.0, 180.0, 242.0]                 # from the wheel's "up" toward the driver's left, wheels straight
+                                                     # ahead (D: Oliver's kf121, kf148 - two side spokes 28 deg below
                                                      # the horizontal and one straight down)
 SPOKE_WIRES = [3, 2, 3]                              # polished spring steel wires per spoke (D: kf121, kf148)
 WIRE_R = 2.0                                         # wire radius (D: kf121 scaled on the rim)

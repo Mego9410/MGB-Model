@@ -939,3 +939,10 @@ parts:
   notes: "Black vinyl binding along the floor carpet's rear edge at the heelboard and the toe carpet's top edge (Oliver's kf151, kf153)."
   specs:
     diameter: { mm: 7.0, display_only: true, source: { label: D, method: "kf151 against the carpet" } }
+- id: body.interior.bulkhead-felt
+  name: Bulkhead felt
+  quantity: 1
+  finish: carpet
+  notes: "Black felt over the bulkhead's cabin face in both footwells, from the toe boards up under the scuttle, with the bulkhead's holes for the pedal box, pedal arms, column, harness and pipes (Oliver's kf145, kf151: black behind the pedals). QA fix round 1, cockpit."
+  specs:
+    thickness: { mm: 1.2, display_only: true, source: { label: D, method: "Drawn as a skin 3 mm off the panel" } }

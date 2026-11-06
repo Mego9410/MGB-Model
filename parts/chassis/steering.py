@@ -512,24 +512,11 @@ def _octagon(af, z0, z1):
 
 
 def _mg_letters(h, z0, t):
-    """Block 'M' and 'G' (the MG octagon badge lettering) as raised strokes h mm tall, t thick, on z0."""
-    s = h / 10.0
-    st = 1.6 * s
-    pieces = []
-    mx = -4.6 * s                                                            # M: two uprights and the V
-    for x in (mx - 3.4 * s, mx + 3.4 * s):
-        pieces.append(box(x - st / 2, x + st / 2, -5 * s, 5 * s, 0, t))
-    for sgn in (-1, 1):
-        pieces.append(Location((mx + sgn * 1.7 * s, 1.0 * s, 0)) * Rot(0, 0, sgn * 28) * box(-st / 2, st / 2, -4.6 * s, 4.6 * s, 0, t))
-    gx = 4.6 * s                                                             # G: a C with the bar
-    ring = zcyl(4.6 * s, 0, t, gx, 0) - zcyl(4.6 * s - st, -1, t + 1, gx, 0) - box(gx, gx + 6 * s, 0.4 * s, 2.6 * s, -1, t + 1)
-    pieces += [ring, box(gx + 0.6 * s, gx + 4.6 * s, -0.4 * s, 0.4 * s + st * 0.5, 0, t)]
-    # letters in the frame: local x up, y the driver's left - the strokes above are drawn with x across, so turn them
-    out = None
-    for p in pieces:
-        q = Location((0, 0, z0)) * Rot(0, 0, -90) * p
-        out = q if out is None else out + q
-    return out
+    """The badge's block 'MG', h mm tall and t thick on z0, readable from the driver (local x up, y the driver's left,
+    z toward the driver)."""
+    from build123d import Align, FontStyle, Text, extrude
+    txt = extrude(Text("MG", font_size=h * 1.3, font_style=FontStyle.BOLD, align=(Align.CENTER, Align.CENTER)), t, dir=(0, 0, 1))
+    return Location((0, 0, z0)) * Rot(0, 0, -90) * txt
 
 
 def horn_push(spec) -> Part:

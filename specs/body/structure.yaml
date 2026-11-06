@@ -311,6 +311,7 @@ parts:
   - id: body.structure.heelboard
     name: Heelboard
     haynes: { section: 5 }
+    finish: underseal
     quantity: 1
     notes: >
       Heelboard behind the seats in two risers and a step (QA fix round 1, cockpit; Oliver's body scan sections y -300
@@ -325,6 +326,7 @@ parts:
   - id: body.structure.tonneau-floor
     name: Tonneau (rear) floor
     haynes: { section: 2, figures: [{ figure: "photo 2.1" }] }
+    finish: underseal
     quantity: 1
     notes: >
       Tonneau floor (the shelf behind the seats) from the heelboard's upper riser back to the rear bulkhead between
