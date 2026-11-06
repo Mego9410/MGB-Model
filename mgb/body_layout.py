@@ -150,14 +150,19 @@ EARTH_POINTS = {
 # On the rear wing ends' raked plinths (profile photo 29: the plinth raked about 31 deg from vertical, its top corner
 # X -2774 h 803 and foot X -2930 h 570; Oliver's photos 18, 24: centres |y| 645). P11b moved the lamp back onto the
 # plinth and tilted it (P10 had it upright at REAR_X + 75, 640 high).
-REAR_LAMP_X = REAR_X + 191.0                           # lens face centre on the plinth
+REAR_LAMP_X = REAR_X + 203.5                           # lens face centre on the plinth (moved 12.7 forward up the 33 deg plinth
+                                                       # with the 18 mm rise below: QA fix round 1)
 REAR_LAMP_Y = HALF_W - 127.0                           # Oliver's photos 14, 18 (QA, scaled on the plate): centre 634 off the centre line
-REAR_LAMP_Z = above_ground(695.0)                      # photos 14, 18: 548 to 798 above Oliver's road; his car sits 18-24 mm
+REAR_LAMP_Z = above_ground(713.0)                      # QA fix round 1: the chrome runs 595 to 836 on the car (Oliver's photo 25 scaled on
+# the plate, his scan), 18 mm higher than the 695 first set from photos 14, 18 (548 to 798 above Oliver's road; his car sits 18-24 mm
 # lower at the back than the model (scan: rear rims 20 mm higher in the body), so on the body 22 mm higher (Oliver's scan:
 # lamp top 819 against the body, the plinth's top corner 830)
 REAR_LAMP_RAKE = 33.0                                  # deg: the lamp's top leans forward with the plinth
 OVERRIDER_Y = 333.0                                    # rear overrider centre lines (QA: photos 14, 25 scaled on the plate)
-NUMBER_LAMP = (REAR_X + 2.0, OVERRIDER_Y - 26.0, above_ground(452.0))   # lamp base on the overrider's inner face, moved back with the overriders (Oliver's scan)
+# Number plate lamps (QA fix round 1): the chrome "ear" on the inboard face of each rear overrider near its top, centred
+# 551 above the road (Oliver's photo 25 scaled on the plate; keyframes kf165, kf168, kf171, kf173), not at the overrider's
+# foot. (x, |y|, z) of the lamp base on the overrider's inner face (parts.body.brightwork rear overrider).
+NUMBER_LAMP = (REAR_X + 62.0, OVERRIDER_Y - 24.0, above_ground(551.0))
 
 # ---- battery carriers (D) ------------------------------------------------------------------------------
 # Two boxes hang under the tonneau floor behind the seats, either side of the tunnel, ahead

@@ -199,9 +199,19 @@ parts:
     haynes: { section: 15, figures: [{ figure: "3.9", legend: 29 }] }
     quantity: 1
     finish: chrome
-    notes: "Lift-off cap with a fluted rim and a vent hole (earlier roadsters, MGOC Spares MGB fuel caps); a blocked vent starves the pump (Sec 9 para 3b)."
+    notes: "Oliver's car has a chrome locking cap (QA fix round 1; his photo 21, kf173, kf176): a shallow dome with a raised flip lever lying from the centre to the rim at the upper right, its end turned down to lift, and the lock barrel and keyhole below the centre, seated in the rubber ring (filler-ring). MGOC Spares list the lift-off fluted cap as the original for earlier roadsters; a blocked vent starves the pump (Sec 9 para 3b)."
     specs:
-      diameter: { mm: 72.0, source: { label: D, method: "Over the 2 in neck" } }
+      diameter: { mm: 64.0, source: { label: D, method: "kf173 against the 80 mm rubber ring; QA rear finding 14" } }
+
+  - id: fuel.tank.filler-ring
+    name: Filler cap rubber ring
+    haynes: { section: 15 }
+    quantity: 1
+    finish: rubber
+    notes: "Black rubber ring round the filler cap on the rear panel, standing proud of the panel (QA fix round 1; Oliver's photo 21, kf173, kf176)."
+    specs:
+      diameter: { mm: 80.0, source: { label: D, method: "kf173 scaled on the plate's 111 mm height; QA rear finding 14" } }
+      width: { mm: 12.0, source: { label: D, method: "kf173" } }
 
   - id: fuel.tank.gauge-unit
     name: Fuel gauge tank unit (early)

@@ -82,16 +82,17 @@ parts:
     haynes: { section: 25, figures: [{ figure: "12.12" }] }
     quantity: 1
     finish: chrome
-    notes: "Chrome handle with the push button lock (Fig 12.12) on the lid's rear face over the number plate."
+    notes: "Chrome pear-shaped escutcheon with the push-button lock barrel and keyhole in its round head (Fig 12.12 items 3-5: the pushbutton assembly, its pear-shaped seal and retaining ring), domed off the lid, pointed at the bottom with a grip ridge down to the point. On the lid's rear fall at x -2905, square to the skin (mgb.rear_fittings_layout); Oliver's photo 25 puts its centre about 770 above the road, which it reaches when the lid's fall is refitted (QA rear finding 2). QA fix round 1 (was a 150 mm bar at 680): photo 25 zoomed, kf062, kf105, kf173."
     specs:
-      width: { mm: 150.0, source: { label: D, method: "Between the handle's feet, scaled from Fig 12.12" } }
+      width: { mm: 45.0, source: { label: D, method: "Oliver's photo 25 scaled on the plate (44 mm)" } }
+      height: { mm: 60.0, source: { label: D, method: "Oliver's photo 25 scaled on the plate (61 mm)" } }
 
   - id: body.rear.boot-lock
     name: Boot lock and striker
     haynes: { section: 25, figures: [{ figure: "12.12" }] }
     quantity: 1
     finish: zinc_steel
-    notes: "Lock inside the lid's rear panel; the striker on the rear panel's top edge."
+    notes: "Lock inside the lid behind the handle, square to the skin and 3 mm under it (QA fix round 1: its flange no longer shows through the sloping lid), on its two securing screws (Fig 12.12 items 1, 2), the operating lever (item 7) and claw reaching down to the striker on the rear panel's top edge (Sec 25)."
     specs:
       body_width: { mm: 60.0, source: { label: D, method: "Lock body" } }
 

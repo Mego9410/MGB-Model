@@ -468,44 +468,81 @@ def boot_hinge(side):
     return build
 
 
-BOOT_HANDLE_X = -2905.0
+# Boot handle and lock (QA fix round 1): placed by mgb.rear_fittings_layout on the lid's rear fall, square to the skin.
+def _handle_frame():
+    from build123d import Plane
+    from mgb import rear_fittings_layout as RF
+    org, xd, yd, zd = RF.skin_frame(RF.BOOT_HANDLE_X, 0.0, up=(0.0, 0.0, 1.0))
+    return Location(Plane(origin=org, x_dir=xd, z_dir=zd)), org, yd, zd
 
 
-def _tail_pt(y, h, off=0.0):
-    return (S.tail_x(y, h) - off, y, H(h))
+def _pear(scale=1.0, n=40):
+    """The handle's pear outline in its frame (u right, v up the lid): a round head 45 wide over a taper to a blunt
+    point 60 mm below its top (Oliver's photo 25: 44 x 61; Fig 12.12 item 4)."""
+    from mgb import rear_fittings_layout as RF
+    r = RF.BOOT_HANDLE_W / 2 * scale
+    top = RF.BOOT_HANDLE_H * 0.5
+    cv = top - r / scale                                   # the head's centre stays put as the outline shrinks
+    tip_v, tip_r = top - RF.BOOT_HANDLE_H + 4.0 * (1.0 - scale) + 3.5, 3.5 * scale
+    d = cv - tip_v
+    a_t = math.asin(min(0.999, (r - tip_r) / d))           # the tangent from the tip circle to the head circle
+    pts = []
+    for k in range(n + 1):                                 # the head, from the right tangent point over the top
+        a = -a_t + (math.pi + 2 * a_t) * k / n
+        pts.append((r * math.cos(a), cv + r * math.sin(a)))
+    for k in range(9):                                     # the tip, round from the left tangent point
+        a = math.pi + a_t + (math.pi - 2 * a_t) * k / 8
+        pts.append((tip_r * math.cos(a), tip_v + tip_r * math.sin(a)))
+    return pts
 
 
 def boot_handle(spec):
-    """Boot lid handle with the lock barrel (Fig 12.12 items 1, 2: handle and lock with its push button), chrome, on
-    the lid's rear face above the number plate."""
-    h = S.BOOT_REAR_H + 40.0
-    pts = [_tail_pt(y, h, 14.0) for y in (-75.0, -55.0, 55.0, 75.0)]
-    pts[0] = _tail_pt(-75.0, h, 2.0)
-    pts[3] = _tail_pt(75.0, h, 2.0)
-    bar = swept_rod(pts, 7.0)
-    boss = rod(_tail_pt(0.0, h, 0.0), _tail_pt(0.0, h, 22.0), 11.0)
-    button = rod(_tail_pt(0.0, h, 22.0), _tail_pt(0.0, h, 26.0), 6.0)
-    return _c([bar, boss, button], spec)
+    """Boot lid handle and lock barrel (Fig 12.12 items 3, 4, 5; Oliver's photo 25, kf062, kf105, kf173): a chrome
+    pear-shaped escutcheon domed off the lid, 45 wide and 60 tall, pointed at the bottom, the push-button lock barrel
+    with its keyhole in the round head and a rounded grip ridge running down to the point."""
+    from build123d import Solid as So, Wire, Vector
+    loc, org, yd, zd = _handle_frame()
+    wires = []
+    for w, sc in ((-3.0, 1.0), (0.0, 1.0), (4.0, 0.93), (7.5, 0.78), (9.5, 0.6)):
+        wires.append(Wire.make_polygon([Vector(u, v, w) for u, v in _pear(sc)], close=True))
+    body = So.make_loft(wires, ruled=False)
+    if not body.is_valid:
+        body = body.fix()
+    from mgb import rear_fittings_layout as RF
+    cv = RF.BOOT_HANDLE_H * 0.5 - RF.BOOT_HANDLE_W / 2
+    barrel = zcyl(10.0, 5.0, 15.0, 0.0, cv) + zcyl(8.6, 15.0, 17.0, 0.0, cv)            # the push button and its rim
+    barrel = barrel - box(-1.1, 1.1, cv - 4.5, cv + 1.0, 14.0, 18.0) - zcyl(2.0, 14.0, 18.0, 0.0, cv + 1.5)   # keyhole
+    grip = So.make_loft([Wire.make_polygon([Vector(u * s_, v, w) for u, v in ((-5.0, cv - 4.0), (5.0, cv - 4.0),
+                                                                           (3.0, -24.0), (-3.0, -24.0))], close=True)
+                         for s_, w in ((1.0, 6.0), (0.55, 12.0))], ruled=True)
+    h = body + barrel + grip
+    return _l(loc * h, spec)
 
 
 def boot_lock(spec):
-    """Boot lock body inside the lid's rear panel and the striker on the rear panel's top edge (Sec 25)."""
-    h = S.BOOT_REAR_H + 40.0
-    x = S.tail_x(0.0, h) + 30.0
-    case = box(x, x + 26.0, -34.0, 34.0, H(h) - 40.0, H(h) + 22.0) - box(x + 3.0, x + 27.0, -31.0, 31.0, H(h) - 37.0, H(h) + 19.0)
-    flange = box(x - 1.6, x, -44.0, 44.0, H(h) - 50.0, H(h) + 30.0)
-    for dy in (-36.0, 36.0):                                         # the lock's two securing screws (Fig 12.12 item 1)
-        flange = flange - xcyl(2.8, x - 3, x + 1, dy, H(h) + 18.0)
-    lever = box(x + 6.0, x + 10.0, -6.0, 6.0, H(h) - 70.0, H(h) - 20.0)            # operating lever (item 7)
-    claw = box(x + 2.0, x + 18.0, -10.0, 10.0, H(h) - 78.0, H(h) - 66.0) - box(x + 6.0, x + 19.0, -4.0, 4.0, H(h) - 79.0, H(h) - 70.0)
+    """Boot lock body inside the lid behind the handle, square to the skin (Fig 12.12 item 2: the lock on its two
+    securing screws, item 7 the operating lever), its claw reaching down to the striker on the rear panel's top edge
+    (Sec 25)."""
+    loc, org, yd, zd = _handle_frame()
+    t = S.T + 2.0                                                    # under the skin (the lid curves away at the flange's edges)
+    case = box(-30.0, 30.0, -22.0, 18.0, -t - 26.0, -t - 1.6) - box(-27.0, 27.0, -19.0, 15.0, -t - 23.0, -t - 1.0)
+    flange = box(-40.0, 40.0, -26.0, 24.0, -t - 1.6, -t)
+    for du in (-34.0, 34.0):                                         # the lock's two securing screws (Fig 12.12 item 1)
+        flange = flange - zcyl(2.8, -t - 3.0, 0.0, du, 14.0)
+    # the striker's point in the handle frame: the claw reaches down to it
     hs = S.BOOT_REAR_H - 12.0
     xs = S.tail_x(0.0, hs) + 6.0
+    ps = np.array([xs + 15.0, 0.0, H(hs) + 12.0]) - np.array(org)
+    vs = float(ps.dot(np.array(yd)))
+    ws = min(float(ps.dot(np.array(zd))), -t - 8.0)
+    lever = box(-5.0, 5.0, vs + 8.0, -20.0, ws - 2.0, ws + 2.0) + box(-5.0, 5.0, -24.0, -20.0, ws - 2.0, -t - 6.0)   # item 7
+    claw = box(-10.0, 10.0, vs - 6.0, vs + 8.0, ws - 8.0, ws + 6.0) - box(-4.0, 4.0, vs - 7.0, vs + 2.0, ws - 9.0, ws + 7.0)
     base = box(xs, xs + 30.0, -24.0, 24.0, H(hs) - 2.0, H(hs) + 0.2)
     for dy in (-16.0, 16.0):
         base = base - zcyl(2.8, H(hs) - 3, H(hs) + 1, xs + 15.0, dy)
     loop = swept_rod([(xs + 15.0, -9.0, H(hs)), (xs + 15.0, -9.0, H(hs) + 12.0), (xs + 15.0, 0.0, H(hs) + 18.0),
                       (xs + 15.0, 9.0, H(hs) + 12.0), (xs + 15.0, 9.0, H(hs))], 3.0)       # striker loop
-    return _c([case, flange, lever, claw, base, loop], spec)
+    return _c([loc * case, loc * flange, loc * lever, loc * claw, base, loop], spec)
 
 
 PARTS = {"body.doors.mirror": {"build": door_mirror}, "body.doors.mirror-glass": {"build": door_mirror_glass}}

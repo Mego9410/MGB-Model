@@ -70,10 +70,14 @@ parts:
     haynes: { section: 46 }
     quantity: 1
     notes: >
-      From the rear silencer to the bumper line on the left (MGOC Spares: the tail pipe exits on the left-hand
-      side; originally cut at 45 degrees). The rear mounting's pinch clamp grips it (Sec 46 para 3).
+      From the rear silencer out under the left of the bumper (MGOC Spares: the tail pipe exits on the left-hand
+      side). The rear mounting's pinch clamp grips it on the level run behind the silencer (Sec 46 para 3); it then
+      rises to 365 above the road and runs straight out through a notch in the rear valance's lower edge, its top
+      tight to the valance, ending about 50 mm behind it (QA fix round 1: Oliver's photo 25 scaled on the plate, kf062,
+      kf165, kf166). MGOC Spares say the tail pipe was originally cut at 45 degrees; Oliver's is cut square.
     specs:
-      cut_angle: { deg: 45.0, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems", note: "Tailpipe originally cut at a 45 degree angle" }, display_only: true }
+      cut_angle: { deg: 0.0, source: { label: D, method: "Oliver's kf165, kf166: a square-cut end (MGOC Spares: originally 45 degrees)" }, display_only: true }
+      height: { mm: 365.0, source: { label: D, method: "Oliver's photo 25 scaled on the plate: the pipe's centre above the road" } }
 
   - id: fuel.exhaust.sealing-ring
     name: Exhaust flange sealing ring
@@ -181,6 +185,18 @@ parts:
       - { number: GHF201, by: "MGOC Spares (nut, plain, 5/16 UNF)", source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems" } }
     specs:
       thread: { in: 0.3125, mm: 7.9375, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/exhaust/systems/oe-exhaust-systems", note: "5/16 UNF" }, display_only: true }
+
+  - id: fuel.exhaust.tail-bracket
+    name: Tail pipe bracket at the valance
+    haynes: { section: 46 }
+    quantity: 1
+    finish: exhaust_steel
+    notes: >
+      Flat clamp bracket on Oliver's car (QA fix round 1; kf165, kf166 zoomed): a band round the tail pipe just inside
+      the rear valance and a flat strap up to a foot screwed under the boot floor's rear edge. Not in Haynes; form
+      and size derived from the keyframes.
+    specs:
+      width: { mm: 16.0, source: { label: D, method: "kf166 against the 1 7/8 in pipe" } }
 
   - id: fuel.exhaust.rear-bracket
     name: Rear mounting bracket (body)

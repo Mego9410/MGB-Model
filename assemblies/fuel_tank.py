@@ -58,8 +58,9 @@ for k in range(6):
 
 # filler: seal in the boot floor, hose and clips, extension, cap
 fx, fy = L.FILLER
-add("filler-cap", Location(Plane(origin=(L.FILLER_CAP_X, L.FILLER_CAP_Y, L.FILLER_TUBE_TOP_Z), x_dir=(0, 1, 0), z_dir=(-1, 0, 0))),
-    explode=ex(RIGHT, 1, 80))
+CAP = Location(Plane(origin=(L.FILLER_CAP_X, L.FILLER_CAP_Y, L.FILLER_TUBE_TOP_Z), x_dir=(0, 1, 0), z_dir=(-1, 0, 0)))
+add("filler-cap", CAP, explode=ex(BACK, 1, 80))
+add("filler-ring", CAP, explode=ex(BACK, 1.5, 40))
 add("filler-tube", O, explode=ex(UP, 5, 120))
 add("filler-hose", O, explode=ex(UP, 5, 70))
 for z in (T.HOSE[0] + 8.0, T.HOSE[1] - 8.0):

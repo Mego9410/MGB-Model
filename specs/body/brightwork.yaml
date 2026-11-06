@@ -2,8 +2,10 @@
 # radiator duct panel; photo 7.1), Sec 10 and Fig 12.1 (printed p218: front bumper on two spring bars and a steady
 # bracket, overriders on nuts and distance pieces; the rear bar, its spring bar and mounting brackets, overriders with
 # the number plate lamps, P10), the wing chrome strip 14.25 in above the hub (mgexp.com ride height survey, 1963
-# roadster). Forms from Fig 12.1 and the intro photographs; sizes derived. Badges are plain shapes (no lettering) and
-# the number plates are blank.
+# roadster). Forms from Fig 12.1 and the intro photographs; sizes derived. The boot lid's badges carry their raised
+# lettering as chrome forms (QA fix round 1: the MG octagon and the M-G-B letter badge, from Oliver's photo 06); the
+# grille's shield is still plain. The number plates are blank: whether to model Oliver's registration characters is
+# his call (PLAN, open question).
 defaults:
   system: body
   assembly: body.brightwork
@@ -46,8 +48,8 @@ parts:
     - figure: '12.1'
       legend: 23
   quantity: 1
-  notes: As the front, 70 mm off the rear panel at 430-495 mm above the road, wrapping round to the rear arches (ends X -2745).
-    Oliver's photos 18, 23, 24; profile photo 29.
+  notes: As the front, 70 mm off the rear panel at 438-503 mm above the road, wrapping round to the rear arches; the ends
+    at X -2785 (QA fix round 1, Oliver's scan; X -2745 before). Oliver's photos 18, 23, 24, 25; profile photo 29.
   specs:
     height:
       mm: 65.0
@@ -104,19 +106,28 @@ parts:
     - figure: '12.1'
       legend: 27
   quantity: 1
-  notes: On body_layout OVERRIDER_Y either side of the plate (Oliver's photos 18, 24), its face at REAR_X; the number plate
-    lamp's two screw holes in its inner face (P10 NUMBER_LAMP).
+  notes: 'Plain chrome, no rubber face (QA fix round 1): narrow at the rounded top (about 40 mm) swelling to a bulbous
+    foot 88 mm wide below the blade; the rear face nearly upright (the foot at REAR_X + 4, the top at REAR_X + 18), the
+    top running forward to the rear panel as a deep narrow hood. On body_layout OVERRIDER_Y either side of the plate; the
+    number plate lamp''s two screw holes in its inner face near the top (body_layout NUMBER_LAMP; Haynes Ch 10 Sec 37
+    para 1). Sources: Oliver''s photo 25 (telephoto, scaled on the plate), keyframes kf165, kf168, kf171, kf173, kf176
+    and his scan; Fig 12.1 for the fixing.'
   specs:
     centre_y:
-      mm: 340.0
+      mm: 333.0
       source:
         label: D
-        method: body_layout OVERRIDER_Y from Oliver's photos 18, 24 (scaled on the 540 mm plate)
+        method: body_layout OVERRIDER_Y from Oliver's photos 14, 25 (scaled on the 520 mm plate)
     height:
-      mm: 210.0
+      mm: 183.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: overrider 395-605 above the road'
+        method: 'Oliver''s photo 25 and scan: overrider 417-600 above the road on the body'
+    width:
+      mm: 88.0
+      source:
+        label: D
+        method: 'Oliver''s photo 25 scaled on the plate: 85-90 mm over the foot, about 40 at the top'
 - id: body.brightwork.rear-overrider-r
   name: Rear overrider, right
   haynes:
@@ -125,19 +136,28 @@ parts:
     - figure: '12.1'
       legend: 26
   quantity: 1
-  notes: On body_layout OVERRIDER_Y either side of the plate (Oliver's photos 18, 24), its face at REAR_X; the number plate
-    lamp's two screw holes in its inner face (P10 NUMBER_LAMP).
+  notes: 'Plain chrome, no rubber face (QA fix round 1): narrow at the rounded top (about 40 mm) swelling to a bulbous
+    foot 88 mm wide below the blade; the rear face nearly upright (the foot at REAR_X + 4, the top at REAR_X + 18), the
+    top running forward to the rear panel as a deep narrow hood. On body_layout OVERRIDER_Y either side of the plate; the
+    number plate lamp''s two screw holes in its inner face near the top (body_layout NUMBER_LAMP; Haynes Ch 10 Sec 37
+    para 1). Sources: Oliver''s photo 25 (telephoto, scaled on the plate), keyframes kf165, kf168, kf171, kf173, kf176
+    and his scan; Fig 12.1 for the fixing.'
   specs:
     centre_y:
-      mm: 340.0
+      mm: 333.0
       source:
         label: D
-        method: body_layout OVERRIDER_Y from Oliver's photos 18, 24 (scaled on the 540 mm plate)
+        method: body_layout OVERRIDER_Y from Oliver's photos 14, 25 (scaled on the 520 mm plate)
     height:
-      mm: 210.0
+      mm: 183.0
       source:
         label: D
-        method: 'profile photo 29 scaled on the wheelbase: overrider 395-605 above the road'
+        method: 'Oliver''s photo 25 and scan: overrider 417-600 above the road on the body'
+    width:
+      mm: 88.0
+      source:
+        label: D
+        method: 'Oliver''s photo 25 scaled on the plate: 85-90 mm over the foot, about 40 at the top'
 - id: body.brightwork.front-spring-bar-l
   name: Front bumper spring bar, left
   haynes:
@@ -261,17 +281,52 @@ parts:
         label: D
         method: Oliver's photo 10
 - id: body.brightwork.boot-badge
-  name: Boot lid badge
+  name: Boot lid badge (MG octagon)
   haynes:
     section: 26
   quantity: 1
-  notes: Plain octagon on the boot lid above the handle (Oliver's photos 06, 24; no lettering).
+  notes: 'Chrome MG octagon on the boot lid (QA fix round 1): a 4.5 mm chrome frame round a red enamel field (the
+    boot-badge-field part) with the raised chrome M and G of the MG logo (the M''s left stem short, its right stem and the
+    G''s stem the full height), bent to the lid''s fall at x -2720 (mgb.rear_fittings_layout). Oliver''s photo 06 square
+    on (the letter strokes traced at 10 px/mm), photo 25, kf062, kf104, kf105 and the scan''s top view for the station.'
   specs:
     across:
-      mm: 52.0
+      mm: 100.0
       source:
         label: D
-        method: Octagon across flats, Oliver's photo 06
+        method: Octagon across flats, Oliver's photo 25 scaled on the plate (103) and photo 06
+- id: body.brightwork.boot-badge-field
+  name: Boot lid badge field (red)
+  haynes:
+    section: 26
+  quantity: 1
+  finish: paint_red
+  notes: The red enamel field inside the MG octagon's chrome frame, under the raised letters (Oliver's photo 06).
+  specs:
+    across:
+      mm: 91.4
+      source:
+        label: D
+        method: Inside the 4.5 mm frame of the 100 mm octagon, Oliver's photo 06
+- id: body.brightwork.boot-script
+  name: Boot lid M-G-B letter badge
+  haynes:
+    section: 26
+  quantity: 1
+  notes: 'Chrome M-G-B letters ahead of the octagon (QA fix round 1): seriffed capitals 12 mm tall on a thin bar through
+    their middles, 58 mm over all, centred x -2655 on the lid (mgb.rear_fittings_layout). Oliver''s photo 06 (letters
+    traced at 10 px/mm), kf104, kf105 and the scan''s top view.'
+  specs:
+    width:
+      mm: 58.0
+      source:
+        label: D
+        method: Oliver's photo 06 against the 100 mm octagon (QA rear finding 5 gives about 57)
+    letter_height:
+      mm: 12.0
+      source:
+        label: D
+        method: Oliver's photo 06
 - id: body.brightwork.front-plinth
   name: Front number plate plinth
   haynes:
@@ -300,26 +355,30 @@ parts:
         ref: UK number plate 520 x 111 mm (BS AU 145)
         note: Standard plate size
       display_only: true
-- id: body.brightwork.rear-plinth
-  name: Rear number plate plinth
+- id: body.brightwork.rear-plate-trim
+  name: Rear number plate border and screws
   haynes:
     section: 37
   quantity: 1
-  finish: paint_body_red
-  notes: Rear plate plinth on the rear panel above the blade, between the overriders (Oliver's photos 18, 24).
+  finish: aluminium
+  notes: 'The rear plate''s thin raised silver border, 3.5 mm in from its edge and 2.5 wide, and the two dome-headed
+    screws through the plate into the rear panel at mid-height, 54 mm in from each end (QA fix round 1; Oliver''s photo
+    25, kf062, kf165, kf168, kf171). There is no plinth behind the rear plate on his car.'
   specs:
-    width:
-      mm: 540.0
+    screw_spacing:
+      mm: 412.0
       source:
         label: D
-        method: Plate plus border
+        method: kf165 scaled on the 111 mm plate height (the screws 54 mm in from each end)
 - id: body.brightwork.rear-plate
   name: Rear number plate (blank)
   haynes:
     section: 37
   quantity: 1
   finish: paint_black
-  notes: Rear number plate, blank (no characters drawn), above the rear blade.
+  notes: 'Rear number plate, blank (no characters drawn: modelling the registration is Oliver''s call, PLAN), 520 x 111,
+    mounted straight on the rear panel above the blade with two screws (QA fix round 1: no plinth; Oliver''s photo 25,
+    kf062, kf165-173); the border and screws are rear-plate-trim.'
   specs:
     width:
       mm: 520.0
@@ -360,13 +419,19 @@ parts:
     section: 1
   quantity: 1
   notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car. The rear strip runs
+    on to the rear lamp's chrome rim and ends in a tapered cap (QA fix round 1; kf176, kf178, photo 25).
   specs:
     height:
       mm: 690.0
       source:
         label: D
         method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+    end_cap:
+      mm: 21.0
+      source:
+        label: D
+        method: kf178 (the tapered cap against the lamp rim)
 - id: body.brightwork.strip-front-r
   name: Chrome side strip, front right
   haynes:
@@ -399,13 +464,19 @@ parts:
     section: 1
   quantity: 1
   notes: Chrome side strip on clips, 690 mm above the road behind the headlamp rising to 712 at the rear lamp plinth (profile
-    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car.
+    photo 29; Oliver's photos 09, 23). The mgexp survey's 14.25 in above the hub (663) is a lower car. The rear strip runs
+    on to the rear lamp's chrome rim and ends in a tapered cap (QA fix round 1; kf176, kf178, photo 25).
   specs:
     height:
       mm: 690.0
       source:
         label: D
         method: 'profile photo 29 scaled on the wheelbase: the strip 690 above the road at the front wing'
+    end_cap:
+      mm: 21.0
+      source:
+        label: D
+        method: kf178 (the tapered cap against the lamp rim)
 - id: body.brightwork.overrider-rubber-front
   name: Front overrider rubber face
   haynes:
@@ -422,22 +493,6 @@ parts:
       source:
         label: D
         method: Oliver's photo 10
-- id: body.brightwork.overrider-rubber-rear
-  name: Rear overrider rubber face
-  haynes:
-    section: 14
-    figures:
-    - figure: '12.1'
-      legend: 27
-  quantity: 2
-  finish: rubber
-  notes: As the front (Oliver's photos 18, 25).
-  specs:
-    width:
-      mm: 11.0
-      source:
-        label: D
-        method: Oliver's photo 25
 - id: body.brightwork.grille-rail
   name: Grille lower rail
   haynes:
@@ -463,29 +518,56 @@ parts:
       source:
         label: D
         method: Oliver's photo 27 against the bonnet width
-- id: body.brightwork.rear-reflector-l
-  name: Rear reflector, left
+- id: body.brightwork.hood-peg-l
+  name: Hood peg, left
   haynes:
-    section: 14
+    section: 1
   quantity: 1
-  finish: lens_red
-  notes: Small round red reflector on the wing end below the rear lamp (Oliver's photos 18, 24).
+  notes: 'Chrome shell-shaped peg on the rear deck that the hood frame''s rear rail hooks under (QA fix round 1): a dome
+    34 x 22 mm and 12 high, its open lip forward, square to the deck. Station: the scan''s top view puts the pegs at
+    x -2156, y +308 and -321, 0.53 of the way from the cockpit''s rear rim to the lid''s front edge; the pegs keep that
+    fraction of the model''s deck (mgb.rear_fittings_layout). Form: kf071, kf105 (zoomed).'
   specs:
-    diameter:
-      mm: 40.0
+    length:
+      mm: 34.0
       source:
         label: D
-        method: Oliver's photo 24 against the lamp
-- id: body.brightwork.rear-reflector-r
-  name: Rear reflector, right
+        method: kf105 zoomed, against the deck
+- id: body.brightwork.hood-peg-r
+  name: Hood peg, right
   haynes:
-    section: 14
+    section: 1
   quantity: 1
-  finish: lens_red
-  notes: Mirror of the left.
+  notes: Mirror of the left (scan top view y -321).
   specs:
-    diameter:
-      mm: 40.0
+    length:
+      mm: 34.0
       source:
         label: D
-        method: Oliver's photo 24 against the lamp
+        method: kf105 zoomed, against the deck
+- id: body.brightwork.tonneau-studs-l
+  name: Tonneau studs, left
+  haynes:
+    section: 1
+  quantity: 3
+  notes: 'Three chrome tonneau studs on the left rear wing top round the cockpit''s rear corner (QA fix round 1): a
+    flanged collar, a waisted neck and a domed head, on the rim''s outline grown 45 mm (mgb.rear_fittings_layout).
+    kf071 (three on the right), kf105 (two showing on the left, zoomed).'
+  specs:
+    height:
+      mm: 12.6
+      source:
+        label: D
+        method: kf105 zoomed
+- id: body.brightwork.tonneau-studs-r
+  name: Tonneau studs, right
+  haynes:
+    section: 1
+  quantity: 3
+  notes: Mirror of the left (kf071).
+  specs:
+    height:
+      mm: 12.6
+      source:
+        label: D
+        method: kf071 zoomed

@@ -58,6 +58,7 @@ add("strap-nut", Location((cx, X.EAR_Y[1] + 2.0, X.STRAP_BOLT_Z)) * Rot(-90, 0, 
 # rear mounting: bracket under the boot floor, rubber block, pinch clamp halves and their bolt
 rx, ry = X.RX, X.RY
 add("rear-bracket", O, explode=ex(UP, 7, 80))
+add("tail-bracket", O, explode=ex(UP, 7, 60))
 for dx in (-14.0, 14.0):
     add("bracket-screw", Location((rx + dx, X.BR_TAB_Y + 26.0, E.REAR_BRACKET_Z[1] - X.BR_T)), explode=ex(DOWN, 6.5, 50))
 add("rear-mounting", O, explode=ex(DOWN, 6, 60))

@@ -52,7 +52,7 @@ for s in (-1, 1):
     add("rear-lens-amber", rl, explode=ex(BACK, 7, 70))
     add("rear-body", rl, explode=ex(BACK, 8, 30))
     nx, ny, nz = BL.NUMBER_LAMP
-    pl = Location((nx, s * ny, nz)) * (Rot(90, 0, 0) if s > 0 else Rot(-90, 0, 0))
+    pl = Location((nx, s * ny, nz)) * (Rot(90, 0, 0) if s > 0 else Rot(-90, 0, 0) * Rot(0, 0, 180))   # local y up both sides
     inward = [0, -s, 0]
     add("plate-lens", pl, explode=ex(inward, 9, 50))
     add("plate-lamp", pl, explode=ex(inward, 9.5, 30))

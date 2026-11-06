@@ -162,12 +162,13 @@ def inter_pipe(spec) -> Part:
 
 
 def tail_pipe(spec) -> Part:
-    """Tail pipe from the rear silencer to the bumper line, the end cut at 45 degrees, long side underneath."""
+    """Tail pipe from the rear silencer: level past the rear mounting, up to 365 above the road and straight out
+    through the valance, the end cut square on Oliver's car (E.TAIL_CUT_DEG; QA fix round 1)."""
     r = E.PIPE_OD / 2
     pts = list(E.TAIL_ROUTE)
     ex, ey, ez = pts[-1]
     pts[-1] = (ex - r - 6.0, ey, ez)
-    p = tube(pts, E.PIPE_OD, E.PIPE_T, radius=60.0)
+    p = tube(pts, E.PIPE_OD, E.PIPE_T, radius=45.0)
     k = math.tan(math.radians(E.TAIL_CUT_DEG))
     cut = Polygon((ex - 300.0, ez - 60.0), (ex - 60.0 * k, ez - 60.0), (ex + 60.0 * k, ez + 60.0), (ex - 300.0, ez + 60.0),
                   align=None)
@@ -339,7 +340,25 @@ def rear_bracket(spec) -> Part:
     return _l(b, spec)
 
 
+def tail_bracket(spec) -> Part:
+    """Flat clamp bracket at the rear valance on Oliver's car (QA fix round 1; kf165, kf166 zoomed): a band round the
+    tail pipe just inside the valance and a flat strap up from its top to a foot screwed under the boot floor's rear
+    edge."""
+    from mgb import underbody_layout as U
+    t, w = 2.5, 16.0
+    xb = U.REAR_PANEL_X + 7.0
+    ty, tz = E.TAIL_Y, E.TAIL_Z
+    band = Location(Plane(origin=(xb - w / 2, ty, tz), z_dir=(1, 0, 0))) * Sh.tube(2 * (PIPE_R + t), 2 * PIPE_R + 0.2, w)
+    zt = U.BOOT_FLOOR_Z
+    strap = Location((xb, ty, (tz + PIPE_R + zt) / 2)) * Box(w, t + 1.0, zt - tz - PIPE_R + 1.0)
+    foot = Location((xb + 2.0, ty, zt - 1.5)) * Box(w + 14.0, 26.0, 3.0)
+    b = band + strap + foot - Location((xb + 9.0, ty, zt - 4.0)) * Cylinder(3.4, 6.0, align=Sh.ALIGN_BASE)
+    b = b - Location(Plane(origin=(xb - w, ty, tz), z_dir=(1, 0, 0))) * Sh.cyl(2 * PIPE_R + 0.2, 2 * w)
+    return _l(b, spec)
+
+
 PARTS = {
+    "fuel.exhaust.tail-bracket": {"build": tail_bracket},
     "fuel.exhaust.front-pipe": {"build": front_pipe},
     "fuel.exhaust.centre-silencer": {"build": centre_silencer,
                                      "probes": {"length": lambda p: p.bounding_box().size.X - 2 * 22.0}},

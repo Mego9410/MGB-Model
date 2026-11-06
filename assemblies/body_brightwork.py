@@ -3,7 +3,6 @@ follows Sec 10: the overriders off the bars, the bars forward and back on their 
 the strips off their clips."""
 from build123d import Location, Rot
 
-from mgb import body_layout as BL
 from parts.body import brightwork as B
 
 ID = "body.brightwork"
@@ -31,19 +30,20 @@ for n, out in (("l", LEFT), ("r", RIGHT)):
     add(f"rear-overrider-{n}", groups=["rear"], explode=ex(BACK, 1, 120))
     add(f"front-spring-bar-{n}", explode=ex(FWD, 4, 150))
     add(f"rear-bracket-{n}", explode=ex(BACK, 4, 150))
-    add(f"rear-reflector-{n}", explode=ex(BACK, 1, 80))
+    add(f"hood-peg-{n}", explode=ex(UP, 1, 60))
+    add(f"tonneau-studs-{n}", explode=ex(UP, 1, 60))
     for w in ("front", "door", "rear"):
         add(f"strip-{w}-{n}", explode=ex(out, 1, 80))
 add("front-bar", groups=["front"])
 add("rear-bar", groups=["rear"])
 add("front-plinth", groups=["front"])
 add("front-plate", groups=["front"], explode=ex(FWD, 1, 60))
-add("rear-plinth", explode=ex(BACK, 1, 80))
-add("rear-plate", explode=ex(BACK, 0.5, 120))
-add("boot-badge", explode=ex(BACK, 1, 100))
+add("rear-plate-trim", explode=ex(BACK, 0.5, 140))
+add("rear-plate", explode=ex(BACK, 1, 100))
+add("boot-badge", explode=ex(UP, 1, 100))
+add("boot-badge-field", explode=ex(UP, 1, 90))
+add("boot-script", explode=ex(UP, 1, 100))
 add("scuttle-vent", explode=ex(UP, 1, 80))
-for k, (n, y) in enumerate((("l", BL.OVERRIDER_Y), ("r", -BL.OVERRIDER_Y))):
-    add("overrider-rubber-rear", Location((0, y, 0)), n=k + 1, groups=["rear"], explode=ex(BACK, 0.5, 60), label=k == 0)
 for k, y in enumerate((B.OVR_FRONT_Y, -B.OVR_FRONT_Y)):
     add("overrider-rubber-front", Location((0, y, 0)), n=k + 1, groups=["front"], explode=ex(FWD, 0.5, 60), label=k == 0)
 for p in ("grille-surround", "grille-slats", "grille-bar", "grille-rail"):

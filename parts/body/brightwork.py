@@ -2,7 +2,9 @@
 overriders (rubber-faced), spring bars and rear mounting brackets; the early grille: a chrome surround (a wide,
 shallow rounded rectangle whose top follows the bonnet's front edge) filled with fine vertical slats, the lower rail,
 the centre bar under a plain shield badge (no lettering); the scuttle's slatted air intake; the wing and door chrome
-strips; the number plates (blank) and their plinths; the boot lid badge (a plain octagon).
+strips; the number plates (blank: the characters are Oliver's call, PLAN) on the front plinth and straight on the rear
+panel; the boot lid's chrome MG octagon (raised letters on a red field) and M-G-B letter badge; the hood pegs on the rear
+deck and the tonneau studs on the rear wing tops (QA fix round 1, rear fittings: mgb.rear_fittings_layout).
 
 Forms and positions from Oliver's photos 05, 10, 15, 18, 20, 24, 27 and the profile photo 29 (scaled on the
 wheelbase); sizes derived (D). The bumpers follow the body's plan outline at their height (mgb.body_shell_layout),
@@ -17,6 +19,7 @@ import numpy as np
 from build123d import Compound, Location, Rot, Solid, Vector, Wire
 
 from mgb import body_geom as G, body_layout as BL, body_shell_layout as S, car_layout as CL
+from mgb import rear_fittings_layout as RF
 from mgb.chassis_geom import box, rod, swept_rod, xcyl, xprism, ycyl, zcyl, zprism
 from parts.body import structure as St
 
@@ -48,7 +51,7 @@ FRONT_GAP, REAR_GAP = 54.0, 34.0
 # -3025..-3031 at the centre and -2975..-2988 at |y| 500; the overriders at x 834-844 and -3042..-3048, the published
 # overall length 153.2 in over them)
 FRONT_BOW, REAR_BOW = 25.0, 36.0
-FRONT_END_X, REAR_END_X = 528.0, -2745.0
+FRONT_END_X, REAR_END_X = 528.0, CL.bx(-2785.0)   # rear ends: Oliver's scan (right-hand end about x -2785; QA fix round 1)
 OVR_FRONT_Y = 330.0                          # front overriders (Oliver's photos 10, 15)
 OVR_H = {"front": (292.0, 519.0), "rear": (417.0, 600.0)}   # tops: photos 15 and 14, 18 (QA)
 
@@ -203,16 +206,65 @@ def front_overrider(side):
     return build
 
 
+# Rear overrider (QA fix round 1; Oliver's photo 25 telephoto scaled on the plate, keyframes kf165, kf168, kf171, kf173,
+# kf176 and his scan): plain chrome, no rubber face. In elevation narrow at the rounded top (about 40 mm) swelling to a
+# bulbous foot (88 mm) below the blade; in side view the rear face stands nearly upright (the bulb at REAR_X + 4, the top
+# at REAR_X + 18 in the scan) and the top runs forward to the rear panel as a deep narrow hood that carries the plate lamp.
+# Tables against t, 0 at the foot (OVR_H rear h0) to 1 at the top: half-width, rear face and front face (x - REAR_X).
+R_OVR_HW = [(0.0, 16.0), (0.04, 31.0), (0.11, 40.5), (0.20, 41.0), (0.29, 39.5), (0.42, 35.0), (0.55, 29.5),
+            (0.68, 24.5), (0.82, 20.0), (0.92, 15.5), (0.97, 11.0), (1.0, 5.0)]   # photo 25 zoomed (2.9 px/mm)
+R_OVR_REAR = [(0.0, 34.0), (0.05, 15.0), (0.15, 6.0), (0.30, 4.0), (0.50, 7.0), (0.70, 11.0), (0.85, 15.0), (0.93, 21.0),
+              (0.98, 38.0), (1.0, 56.0)]
+R_OVR_FRONT = [(0.0, 44.0), (0.10, 70.0), (0.30, 86.0), (0.50, 95.0), (0.70, 101.0), (0.90, 102.0), (0.97, 98.0), (1.0, 90.0)]
+
+
+def _rear_overrider(y, h0, h1):
+    tt = np.concatenate([[0.004, 0.015, 0.035, 0.065], np.linspace(0.10, 0.90, 13), [0.935, 0.965, 0.985, 0.996]])
+    wires = []
+    for t in tt:
+        hw = float(np.interp(t, *zip(*R_OVR_HW)))
+        xr = CL.REAR_X + float(np.interp(t, *zip(*R_OVR_REAR)))
+        xf = CL.REAR_X + float(np.interp(t, *zip(*R_OVR_FRONT)))
+        xm, L = (xr + xf) / 2, (xf - xr) / 2
+        # round the foot and the top over in side view as well as in elevation (photo 25, kf168: no flat ends)
+        cap = 1.0
+        if t > 0.86:
+            cap = math.sqrt(max(0.0, 1.0 - ((t - 0.86) / 0.14) ** 2))
+        elif t < 0.12:
+            cap = math.sqrt(max(0.0, 1.0 - ((0.12 - t) / 0.12) ** 2))
+        cap = max(cap, 0.14)
+        L = L * cap
+        xm = xr + L if t < 0.5 else xm                     # the foot keeps its rear face, the top its centre
+        hw = hw * (cap ** 0.35 if t < 0.12 else 1.0)
+        z = H(h0 + (h1 - h0) * t)
+        pts = []
+        for j in range(24):
+            a = 2 * math.pi * j / 24
+            c, sn = math.cos(a), math.sin(a)
+            fx = math.copysign(abs(c) ** (0.8 if c > 0 else 0.4), c)       # c > 0: the rounded rear; c < 0: the squarer front
+            fy = math.copysign(abs(sn) ** (0.85 if c > 0 else 0.6), sn)
+            pts.append(Vector(xm - L * fx, y + hw * fy, z))
+        wires.append(Wire.make_polygon(pts, close=True))
+    o = Solid.make_loft(wires, ruled=False)
+    if not o.is_valid:
+        o = o.fix()
+    return o
+
+
 def rear_overrider(side):
     def build(spec):
-        """Rear overrider with the number plate lamp's two screw holes in its inner face (P10 NUMBER_LAMP)."""
-        x, y = _ovr_face("rear", side)
+        """Rear overrider (Fig 12.1 items 26, 27): plain chrome, narrow rounded top, bulbous foot, the top running
+        forward to the rear panel; the stud hole for the bar and the number plate lamp's two screw holes in its inner
+        face (Haynes Ch 10 Sec 37 para 1: two screws to nuts and distance pieces inside the overrider)."""
+        y = side * BL.OVERRIDER_Y
         h0, h1 = OVR_H["rear"]
-        o = _overrider(x, y, h0, h1, False)
+        o = _rear_overrider(y, h0, h1)
+        x = bar_face_x(BL.OVERRIDER_Y, False)
+        o = o - xcyl(4.4, x + 6.0, x + 60.0, y, H(sum(REAR_BAR_H) / 2))
         nx, ny, nz = BL.NUMBER_LAMP
-        for dx in (-14.0, 14.0):
-            o = o - ycyl(1.8, min(side * (ny - 6.0), side * (ny + 30.0)), max(side * (ny - 6.0), side * (ny + 30.0)),
-                         nx + dx, nz)
+        for dx in (-10.0, 10.0):
+            o = o - ycyl(1.8, min(side * (ny - 4.0), side * (ny + 30.0)), max(side * (ny - 4.0), side * (ny + 30.0)),
+                         nx + dx, nz + 10.0)
         return _l(o, spec)
     return build
 
@@ -361,14 +413,148 @@ def scuttle_vent(spec):
     return _c(parts + [frame], spec)
 
 
+# ---- boot lid badges (QA fix round 1) ------------------------------------------------------------------------------
+# Drawn in the badge's own frame (u to the right seen from behind, v forward up the lid, w out of the skin) and bent to
+# the lid's fall: each element is its outline extruded along w, cut to a slab between two cylinders about an axis
+# along u at the lid's radius of curvature (mgb.rear_fittings_layout), so the badge sits down on the curved lid.
+def _seg(a, b, w):
+    """Polygon of a straight stroke of width w from a to b (square ends)."""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    L = math.hypot(dx, dy)
+    nx, ny = -dy / L * w / 2, dx / L * w / 2
+    return [(a[0] + nx, a[1] + ny), (a[0] - nx, a[1] - ny), (b[0] - nx, b[1] - ny), (b[0] + nx, b[1] + ny)]
+
+
+def _rect(u0, u1, v0, v1):
+    return [(u0, v0), (u1, v0), (u1, v1), (u0, v1)]
+
+
+def _ell(cu, cv, ru, rv, a0=0.0, a1=360.0, n=24):
+    return [(cu + ru * math.cos(math.radians(a0 + (a1 - a0) * k / n)), cv + rv * math.sin(math.radians(a0 + (a1 - a0) * k / n)))
+            for k in range(n + (0 if a1 - a0 >= 360.0 else 1))]
+
+
+def _octagon(across):
+    r = across / 2 / math.cos(math.pi / 8)
+    return [(r * math.cos(math.pi / 8 + k * math.pi / 4), r * math.sin(math.pi / 8 + k * math.pi / 4)) for k in range(8)]
+
+
+def _uvw(polys, w0, w1, cut=()):
+    """Union of the outlines extruded from w0 to w1, less the `cut` outlines (badge frame, mm)."""
+    from mgb.elec_shapes import poly_xy
+    from mgb.poly2d import ccw
+    out = None
+    for p in polys:
+        e = poly_xy(ccw(p), w0, w1)
+        out = e if out is None else out + e
+    for p in cut:
+        out = out - poly_xy(ccw(p), w0 - 1.0, w1 + 1.0)
+    return out
+
+
+def _on_lid(x, solid_uvw, w_lo, w_hi):
+    """Bend a badge element drawn flat (w from w_lo to w_hi above the skin) onto the lid at station x, centre line."""
+    from build123d import Cylinder, Plane
+    org, xd, yd, zd = RF.skin_frame(x, 0.0)
+    R = RF.lid_curvature_r(x)
+    slab = Location((0.0, 0.0, -R)) * Rot(0, 90, 0) * Cylinder(R + w_hi, 300.0)
+    slab = slab - Location((0.0, 0.0, -R)) * Rot(0, 90, 0) * Cylinder(R + w_lo, 302.0)
+    tall = solid_uvw & slab
+    return Location(Plane(origin=org, x_dir=xd, z_dir=zd)) * tall
+
+
+# MG octagon (Oliver's photo 06 square on, 10 px/mm on the 100 mm octagon, its height foreshortened to 92 %: the frame
+# 4.5 mm wide; the M's left stem short, its right stem and the G's stem the full inner height; strokes 5.5 mm).
+MG_M = [_rect(-36.5, -31.0, -19.6, 19.6), _seg((-33.8, 19.0), (-21.5, -5.5), 5.6), _seg((-21.5, -5.5), (-8.5, 22.0), 5.6),
+        _rect(-10.5, -5.0, -36.4, 36.0)]
+MG_G = [_rect(5.5, 10.8, -36.4, 36.0), _rect(5.5, 19.5, 30.6, 36.0), _seg((17.6, 33.4), (33.4, 7.6), 5.6),
+        _rect(20.0, 36.0, -3.8, 1.6), _rect(30.8, 36.0, -18.0, 1.6), _seg((33.4, -16.6), (23.8, -33.8), 5.6),
+        _rect(5.5, 26.5, -36.4, -31.0)]
+BADGE_FRAME_W = 4.5
+
+
 def boot_badge(spec):
-    """Badge on the boot lid above the handle (Oliver's photos 06, 24: a plain octagon, no lettering)."""
-    h = S.BOOT_REAR_H + 115.0
-    x = S.tail_x(0.0, h)
-    pts = [(0.0 + 26.0 * math.cos(math.pi / 8 + k * math.pi / 4), H(h) + 26.0 * math.sin(math.pi / 8 + k * math.pi / 4))
-           for k in range(8)]
-    b = xprism(pts, x - 6.0, x + 3.0)
+    """MG octagon badge on the boot lid (Oliver's photos 06, 25; kf062, kf104, kf105): a chrome octagon frame round a
+    red enamel field with the raised chrome M and G, 100 mm across, on the lid's fall at x -2720 (the scan's top
+    view), its two pins through the lid. The field is the separate boot-badge-field part (its own finish)."""
+    a = RF.BADGE_ACROSS
+    frame = _uvw([_octagon(a)], -4.0, 3.0, cut=[_octagon(a - 2 * BADGE_FRAME_W)])
+    letters = _uvw(MG_M + MG_G, 0.0, 3.0)
+    b = _on_lid(RF.BADGE_X, frame, -4.0, 3.0) + _on_lid(RF.BADGE_X, letters, 0.6, 2.8)
     return _l(b, spec)
+
+
+def boot_badge_field(spec):
+    """The MG badge's red enamel field inside the chrome octagon (Oliver's photo 06)."""
+    a = RF.BADGE_ACROSS
+    f = _uvw([_octagon(a - 2 * BADGE_FRAME_W + 0.4)], -4.0, 1.0)
+    return _l(_on_lid(RF.BADGE_X, f, -4.0, 1.0), spec)
+
+
+def _script_letters():
+    """M-G-B letter badge outlines (photo 06: seriffed capitals 12 mm tall on a thin bar through their middles, 58 mm
+    over all): M centred u -21, G at 0, B at +21."""
+    m = [_rect(-28.6, -27.2, -6.0, 6.0), _seg((-27.9, 6.0), (-21.0, -6.0), 2.4), _seg((-21.0, -6.0), (-14.6, 6.0), 1.2),
+         _rect(-15.2, -13.2, -6.0, 6.0), _rect(-30.0, -25.8, -6.0, -5.2), _rect(-16.8, -11.6, -6.0, -5.2),
+         _rect(-30.0, -27.2, 5.2, 6.0), _rect(-15.2, -11.6, 5.2, 6.0)]
+    b = [_rect(15.2, 17.2, -6.0, 6.0), _rect(13.8, 21.0, 5.0, 6.0), _rect(13.8, 21.5, -0.6, 0.6), _rect(13.8, 22.0, -6.0, -5.0)]
+    return m, b
+
+
+def _script_rings():
+    """The G and the B's bowls: (outer, inner) outline pairs."""
+    g = (_ell(0.0, 0.0, 6.0, 6.0, n=32), _ell(0.0, 0.0, 4.2, 4.6, n=32))
+    b1 = (_ell(21.0, 2.9, 3.4, 3.1, -90.0, 90.0, 12) + [(17.0, 6.0), (17.0, -0.2)], _ell(21.0, 2.9, 1.8, 1.9, -90.0, 90.0, 12)
+          + [(17.0, 4.8), (17.0, 1.0)])
+    b2 = (_ell(21.6, -3.0, 3.9, 3.0, -90.0, 90.0, 12) + [(17.0, 0.0), (17.0, -6.0)], _ell(21.6, -3.0, 2.2, 1.9, -90.0, 90.0, 12)
+          + [(17.0, -1.1), (17.0, -4.9)])
+    return [g, b1, b2]
+
+
+def boot_script(spec):
+    """Chrome M-G-B letter badge on the lid ahead of the octagon (Oliver's photo 06; centred x -2655, the scan's top
+    view): seriffed capitals on a thin bar, pinned through the lid."""
+    m, bstem = _script_letters()
+    el = _uvw(m + bstem, 0.0, 2.2)
+    for outer, inner in _script_rings():
+        el = el + _uvw([outer], 0.0, 2.2, cut=[inner])
+    el = el - _uvw([_ell(3.6, 3.6, 4.2, 3.4, n=16)], -1.0, 3.0)                     # the G's mouth, upper right
+    el = el + _uvw([_rect(1.4, 5.8, -1.4, -0.2), _rect(4.6, 5.9, -5.0, -0.2)], 0.0, 2.2)    # the G's bar and spur
+    bar = _uvw([_rect(-13.5, 15.5, -0.7, 0.7)], 0.0, 1.4)                            # the bar through the middles
+    return _l(_on_lid(RF.SCRIPT_X, el + bar, -2.0, 2.2), spec)
+
+
+# ---- hood pegs and tonneau studs (QA fix round 1) ----------------------------------------------------------------------
+def _placed(x, y, solid):
+    from build123d import Plane
+    org, xd, yd, zd = RF.skin_frame(x, y)
+    return Location(Plane(origin=org, x_dir=xd, z_dir=zd)) * solid
+
+
+def hood_peg(side):
+    def build(spec):
+        """Hood peg on the rear deck (kf071, kf105; the scan's top view): a chrome shell-shaped dome, 34 x 22 mm and
+        12 high, its open lip facing forward for the hood frame's rear rail to hook under; two screws into the deck."""
+        from build123d import Solid as So, scale
+        from mgb.chassis_geom import box as bx_
+        d = scale(So.make_sphere(1.0), by=(11.0, 17.0, 12.0))           # frame: u across, v forward, w out
+        d = d & bx_(-20, 20, -20, 20, -3.0, 20)
+        d = d - (Location((0.0, 9.0, 0.0)) * scale(So.make_sphere(1.0), by=(7.5, 11.0, 6.5)))    # the hook's mouth
+        x, y = RF.hood_peg_points()[0 if side > 0 else 1]
+        return _l(_placed(x, y, d), spec)
+    return build
+
+
+def tonneau_studs(side):
+    def build(spec):
+        """Three tonneau studs on the rear wing top round the cockpit's rear corner (kf071, kf105): a flanged collar,
+        a waisted neck and a domed head, chrome."""
+        from mgb.chassis_geom import zcyl as zc_
+        from build123d import Solid as So
+        head = (Location((0, 0, 8.6)) * So.make_sphere(4.0)) & zc_(4.5, 8.6, 13.0)
+        stud = zc_(5.0, -2.0, 1.2) + zc_(3.6, 1.2, 4.5) + zc_(2.2, 4.5, 8.8) + head
+        return _c([_placed(x, y, stud) for x, y in RF.tonneau_stud_points(side)], spec)
+    return build
 
 
 # ---- side strips ------------------------------------------------------------------------------------------------------
@@ -388,15 +574,34 @@ def _strip(x0, x1, side):
 
 
 STRIP_SPANS = {"front": (555.0, S.DOOR_FRONT_X + 3.0), "door": (S.DOOR_FRONT_X - 4.0, S.DOOR_REAR_X + 4.0),
-               "rear": (S.DOOR_REAR_X - 4.0, -2790.0)}
+               "rear": (S.DOOR_REAR_X - 4.0, CL.bx(-2820.0))}
+STRIP_CAP = 21.0                              # the rear strip's tapered end cap runs on to the lamp's chrome rim (QA fix
+                                              # round 1: kf176, kf178, photo 25; the rim at x -2836..-2840 at the strip line)
+
+
+def _strip_end_cap(x1, side):
+    """Tapered chrome end cap: from the strip's section at x1 back along the side, narrowing to a rounded point
+    against the rear lamp's rim (kf178)."""
+    from build123d import Plane, Solid as So
+    xe = x1 - STRIP_CAP
+    p0 = Vector(x1, side * (S.side_y(x1, strip_h(x1)) - 0.6), H(strip_h(x1)))
+    ye = max(S.side_y(xe, strip_h(xe)), S.side_y(x1, strip_h(x1)) - 8.0)
+    p1 = Vector(xe, side * (ye - 0.6), H(strip_h(xe)))
+    d = p1 - p0
+    cone = So.make_cone(3.4, 1.4, d.length, Plane(origin=p0, z_dir=d))
+    return cone + So.make_sphere(1.4).moved(Location(p1))
 
 
 def strip(which, side):
     def build(spec):
         """Chrome side strip on the wing or door along the strip line, clipped on studs; continuous from behind the
-        headlamp to the rear lamp plinth (profile photo 29; Oliver's photos 09, 23)."""
+        headlamp to the rear lamp's rim, where the rear strip ends in a tapered cap (profile photo 29; Oliver's photos
+        09, 23, 25; kf176, kf178)."""
         x0, x1 = STRIP_SPANS[which]
-        return _l(_strip(x0, x1, side), spec)
+        st = _strip(x0, x1, side)
+        if which == "rear":
+            st = st + _strip_end_cap(x1, side)
+        return _l(st, spec)
     return build
 
 
@@ -427,42 +632,47 @@ def front_plate(spec):
     return _c([plate, rim], spec)
 
 
+REAR_PLATE_SCREW_Y = 206.0                           # two screws through the plate into the panel, mid-height, 54 mm in from
+                                                     # each end (kf165, kf168, kf171 scaled on the 111 mm plate)
+
+
 def _rear_plate_x():
-    return S.tail_x(0.0, REAR_PLATE_H0 + PLATE_H / 2) - 6.0
-
-
-def rear_plinth(spec):
-    """Rear number plate plinth on the rear panel between the overriders, under the plate lamps."""
-    x = _rear_plate_x()
-    p = box(x, x + 3.0, -PLATE_W / 2 - 10.0, PLATE_W / 2 + 10.0, H(REAR_PLATE_H0) - 8.0, H(REAR_PLATE_H0 + PLATE_H) + 8.0)
-    return _l(p, spec)
+    """Back face of the rear plate: straight on the rear panel (no plinth: Oliver's photo 25, kf062, kf165-173), at the
+    panel's most rearward point under it so the plate stands clear of the panel everywhere."""
+    xs = [S.tail_x(y, h) for y in (0.0, PLATE_W / 2 - 10.0) for h in (REAR_PLATE_H0 + 8.0, REAR_PLATE_H0 + PLATE_H / 2,
+                                                                       REAR_PLATE_H0 + PLATE_H - 8.0)]
+    return min(xs) - 0.3
 
 
 def rear_plate(spec):
+    """Rear number plate (blank: the characters are Oliver's call, PLAN), black, 2 mm, straight on the rear panel."""
     x = _rear_plate_x()
     plate = box(x - 2.0, x, -PLATE_W / 2, PLATE_W / 2, H(REAR_PLATE_H0), H(REAR_PLATE_H0 + PLATE_H))
-    rim = box(x - 3.0, x - 2.0, -PLATE_W / 2, PLATE_W / 2, H(REAR_PLATE_H0), H(REAR_PLATE_H0 + PLATE_H)) - \
-        box(x - 4.0, x - 1.0, -PLATE_W / 2 + 6.0, PLATE_W / 2 - 6.0, H(REAR_PLATE_H0) + 6.0, H(REAR_PLATE_H0 + PLATE_H) - 6.0)
-    return _c([plate, rim], spec)
+    for y in (-REAR_PLATE_SCREW_Y, REAR_PLATE_SCREW_Y):
+        plate = plate - xcyl(2.2, x - 3.0, x + 1.0, y, H(REAR_PLATE_H0 + PLATE_H / 2))
+    return _l(plate, spec)
 
 
-def rear_reflector(side):
-    def build(spec):
-        """Small round red reflector on the wing end below the rear lamp, in a chrome-edged plinth (Oliver's photos
-        18, 24)."""
-        y, h = side * BL.REAR_LAMP_Y, 540.0                       # under the lamp (its foot at 570)
-        x = S.tail_x(BL.REAR_LAMP_Y, h)
-        from mgb.chassis_geom import xrev
-        r = xrev([(0.0, 0.0), (20.0, 0.0), (20.0, -3.0), (18.0, -7.0), (0.0, -8.0)]).moved(Location((x + 1.0, y, H(h))))
-        return _l(r, spec)
-    return build
+def rear_plate_trim(spec):
+    """The rear plate's thin silver border, 3.5 mm in from its edge, and its two silver dome-headed screws (Oliver's
+    photo 25; kf062, kf165, kf168)."""
+    x = _rear_plate_x() - 2.0
+    z0, z1 = H(REAR_PLATE_H0), H(REAR_PLATE_H0 + PLATE_H)
+    rim = box(x - 0.6, x + 0.2, -PLATE_W / 2 + 3.5, PLATE_W / 2 - 3.5, z0 + 3.5, z1 - 3.5) - \
+        box(x - 1.0, x + 0.5, -PLATE_W / 2 + 6.0, PLATE_W / 2 - 6.0, z0 + 6.0, z1 - 6.0)
+    from build123d import Solid as So
+    heads = []
+    for y in (-REAR_PLATE_SCREW_Y, REAR_PLATE_SCREW_Y):
+        zc = H(REAR_PLATE_H0 + PLATE_H / 2)
+        dome = So.make_sphere(4.8).moved(Location((x + 2.6, y, zc))) & box(x - 3.0, x + 0.2, y - 6, y + 6, zc - 6, zc + 6)
+        heads.append(dome + xcyl(1.9, x, x + 12.0, y, zc))
+    return _c([rim] + heads, spec)
 
 
 PARTS = {
     "body.brightwork.front-bar": {"build": front_bar},
     "body.brightwork.rear-bar": {"build": rear_bar},
     "body.brightwork.overrider-rubber-front": {"build": overrider_rubber("front")},
-    "body.brightwork.overrider-rubber-rear": {"build": overrider_rubber("rear")},
     "body.brightwork.grille-surround": {"build": grille_surround},
     "body.brightwork.grille-slats": {"build": grille_slats},
     "body.brightwork.grille-rail": {"build": grille_rail},
@@ -470,9 +680,11 @@ PARTS = {
     "body.brightwork.grille-badge": {"build": grille_badge},
     "body.brightwork.scuttle-vent": {"build": scuttle_vent},
     "body.brightwork.boot-badge": {"build": boot_badge},
+    "body.brightwork.boot-badge-field": {"build": boot_badge_field},
+    "body.brightwork.boot-script": {"build": boot_script},
     "body.brightwork.front-plinth": {"build": front_plinth},
     "body.brightwork.front-plate": {"build": front_plate},
-    "body.brightwork.rear-plinth": {"build": rear_plinth},
+    "body.brightwork.rear-plate-trim": {"build": rear_plate_trim},
     "body.brightwork.rear-plate": {"build": rear_plate},
 }
 for s_, n in ((1, "l"), (-1, "r")):
@@ -480,6 +692,7 @@ for s_, n in ((1, "l"), (-1, "r")):
     PARTS[f"body.brightwork.rear-overrider-{n}"] = {"build": rear_overrider(s_)}
     PARTS[f"body.brightwork.front-spring-bar-{n}"] = {"build": front_spring_bar(s_)}
     PARTS[f"body.brightwork.rear-bracket-{n}"] = {"build": rear_bracket(s_)}
-    PARTS[f"body.brightwork.rear-reflector-{n}"] = {"build": rear_reflector(s_)}
+    PARTS[f"body.brightwork.hood-peg-{n}"] = {"build": hood_peg(s_)}
+    PARTS[f"body.brightwork.tonneau-studs-{n}"] = {"build": tonneau_studs(s_)}
     for w in ("front", "door", "rear"):
         PARTS[f"body.brightwork.strip-{w}-{n}"] = {"build": strip(w, s_)}

@@ -100,18 +100,19 @@ parts:
     name: Rear lamp body and plinth
     haynes: { section: 36 }
     quantity: 2
-    notes: "Earlier version (Sec 36 paras 1-3): the stop/tail and flasher bulbs one above the other (photo 36.1), body held by three screws, the lens hooked over the upper lip and held by one screw at the bottom. Outline from photo 36.1."
+    notes: "Earlier version (Sec 36 paras 1-3): the stop/tail and flasher bulbs one above the other (photo 36.1), body held by three screws, the lens hooked over the upper lip and held by one screw at the bottom. QA fix round 1 (Oliver's photo 25, kf058, kf176, kf178): no bar across the lens; a gothic-arch top on parallel sides; the rim ends at the bottom in a chrome foot that cups the lens's reflex block and carries the lens screw. Centre 713 above the road (body_layout REAR_LAMP_Z): the chrome 595-836 on the car."
     specs:
-      height: { mm: 304.0, source: { label: D, method: "Oliver's photos 14, 18 (scaled on the 520 mm plate): 250 mm tall seen from behind on the 33 deg plinth (292 mm on the rake), 97 mm wide over the 6 mm chrome rim, the top drawn in to a blunt point, a chrome bar 69 % down" } }
+      height: { mm: 304.0, source: { label: D, method: "Oliver's photos 14, 18, 25 (scaled on the 520 mm plate): 250 mm tall seen from behind on the 33 deg plinth (292 mm on the rake), 97 mm wide over the 6 mm chrome rim, a gothic arch over the top 37 %" } }
 
   - id: electrical.lamps.rear-lens-red
     name: Stop and tail lens (red)
     haynes: { section: 36 }
     quantity: 2
     finish: lens_red
-    notes: "Double filament bulb: tail, and the brighter stop light (Sec 36 para 1)."
+    notes: "Double filament bulb: tail, and the brighter stop light (Sec 36 para 1). One moulding with the integral rectangular reflex block across the bottom 22 % (QA fix round 1; Oliver's photo 25, kf176, kf178): the block stands 2 mm proud of the lens at its foot and 20 at its top (its face nearer upright than the plinth), with a prism grid on its face; the separate round reflectors under the lamps are gone."
     specs:
-      height: { mm: 171.0, source: { label: D, method: "Oliver's photos 14, 18: the lower 58 % of the lens" } }
+      height: { mm: 184.0, source: { label: D, method: "Oliver's photo 25, kf176, kf178: the lower 63 % of the lamp, the reflex block the bottom 22 %" } }
+      reflex_proud: { mm: 20.0, source: { label: D, method: "kf178: the block's ledge at its top against the 84 mm lens width" } }
 
   - id: electrical.lamps.rear-lens-amber
     name: Rear flasher lens (amber)
@@ -119,16 +120,16 @@ parts:
     quantity: 2
     finish: lens_amber
     specs:
-      height: { mm: 123.0, source: { label: D, method: "Oliver's photos 14, 18: the top 42 % of the lens, the pointed arch" } }
+      height: { mm: 108.0, source: { label: D, method: "Oliver's photo 25, kf176, kf178: the top 37 % of the lens, the gothic arch" } }
 
   - id: electrical.lamps.plate-lamp
     name: Number plate lamp (plinth and cover)
     haynes: { section: 37 }
     quantity: 2
-    notes: "Basic type: two lamps, one on each inside face of the rear overriders, cover, lens, washer and plinth held by two screws to nuts and distance pieces in the overrider (Sec 37 paras 1-2; photo 37.1)."
+    notes: "Basic type: two lamps, one on each inside face of the rear overriders, cover, lens, washer and plinth held by two screws to nuts and distance pieces in the overrider (Sec 37 paras 1-2; photo 37.1). QA fix round 1: on Oliver's car the chrome 'ear' near the top of each overrider's inboard face, centred 551 above the road (body_layout NUMBER_LAMP), not at its foot: a chrome block on the overrider and a round-ended barrel reaching 40 mm in toward the plate, the lens under the barrel (Oliver's photo 25 zoomed, kf165, kf168, kf171, kf173)."
     specs:
-      width: { mm: 58.0, source: { label: D, method: "Photo 37.1 proportion" } }
-      height: { mm: 34.0, source: { label: D, method: "Photo 37.1 proportion" } }
+      width: { mm: 58.0, source: { label: D, method: "Oliver's photo 25 zoomed: the lamp reaches about 40 mm in from the overrider's face (58 with its 18 mm base)" } }
+      height: { mm: 34.0, source: { label: D, method: "Oliver's photo 25 zoomed (about 34 mm tall)" } }
 
   - id: electrical.lamps.plate-lens
     name: Number plate lamp lens
@@ -136,4 +137,5 @@ parts:
     quantity: 2
     finish: lens_clear
     specs:
-      width: { mm: 58.0, source: { label: D, method: "Photo 37.1 proportion" } }
+      width: { mm: 58.0, source: { label: D, method: "As the lamp (Oliver's photo 25 zoomed)" } }
+      height: { mm: 34.0, source: { label: D, method: "As the lamp (Oliver's photo 25 zoomed)" } }

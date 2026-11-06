@@ -547,7 +547,43 @@ round them and should check them against the car:
 - Sump, sump gasket and block skirt: a recess round the starter yoke at the right rear (the sump's
   three right-hand rear flange bolts go; the block keeps a wall round the recess).
 
+## QA fix round 1, rear fittings (5 Nov 2026)
+
+From the rear QA audit against Oliver's car (findings 3-8, 10-14, 18, 19; matched keyframes kf058-kf071, kf101-kf112,
+kf165-kf178 and his telephoto photo 25 scaled on the plate). Fittings that sit on the skin are placed by station from the
+new `mgb/rear_fittings_layout.py` and take their height and square from the shell (`skin_frame`), so they follow the
+body-shell fixes (lid fall, deck) without being moved again.
+- Boot handle: the chrome pear-shaped escutcheon (45 x 60) with the push-button lock barrel and keyhole and a grip
+  ridge (Fig 12.12 items 3-5), on the lid's fall at x -2905 square to the skin. It reaches photo 25's 770 above the
+  road when the shell's lid fall is refitted (QA finding 2); on today's shell the lid passes x -2905 at about 680.
+- Boot lock: inside the lid square to the skin, 3 mm under it (no longer showing through), the claw reaching the striker.
+- Badges: the chrome MG octagon (100 across, a 4.5 mm frame, raised M and G traced from photo 06) on a red enamel field
+  (`boot-badge-field`), at x -2720; the chrome M-G-B letter badge (58 wide) at x -2655. Both bent to the lid's curve. The
+  spec policy now models badge lettering as raised chrome forms.
+- Rear overriders: plain chrome (the rubber face strips are gone), narrow rounded top swelling to an 88 mm foot, the
+  top running forward to the panel. Number plate lamps moved from the overriders' feet (452) to the chrome "ear" on their
+  inboard faces near the top (551): a block and a round-ended barrel reaching 40 mm toward the plate.
+- Rear lamps: no cross bar; an integral red reflex block across the bottom 22 % standing up to 20 mm proud; a chrome foot
+  with the lens screw; a gothic-arch top on parallel sides; amber over the top 37 %. The separate round reflectors under
+  the lamps are removed. Lamp centre 713 above the road (was 695), moved up its plinth.
+- Number plate: no red plinth; the plate sits on the panel with two dome-headed screws and a thin silver border
+  (`rear-plate-trim`). The plate stays blank (question below).
+- Exhaust: the tail pipe level past the rear mounting (moved to x -2803), then up to 365 above the road and straight out
+  through the valance, square cut, ending about 50 mm behind it; a flat clamp bracket at the valance (`tail-bracket`).
+  Until the shell's valance comes up to about 385 (QA finding 9) the pipe passes through the skirt.
+- Side strip: the rear strip runs on to the lamp rim (x -2841) ending in a 21 mm tapered cap.
+- Hood pegs (two shell-shaped chrome pegs on the rear deck, at 0.53 of the deck from the cockpit rim, as the scan) and
+  three tonneau studs a side round the cockpit's rear corners.
+- Filler cap: chrome locking cap (64) with a raised flip lever and keyhole in an 80 mm black rubber ring (`filler-ring`).
+- Rear bumper ends: X -2785 (was -2745).
+- Left for the shell: the rear lamps are still at |y| 634 against photo 25's 617-624. `body_layout.REAR_LAMP_Y` also
+  sets the shell's crown line and lamp plinth zone (`body_shell_layout CROWN_Y`, `PLINTH_Y`), so it moves with the
+  tail's plan fix (QA findings 15, 17), not here.
+
 ## Questions for Oliver
+
+- Number plate characters: the rear plate (and the front) are modelled blank. Should the model carry your registration
+  in raised silver characters, as on the car (QA fix round 1, rear)?
 
 - Scans (5 Nov): which of the differences listed under "Differences seen in Oliver's scans" should be followed - above
   all the engine's fore-and-aft position (the scan puts it about 160 mm further back) and the electric fan, heater and

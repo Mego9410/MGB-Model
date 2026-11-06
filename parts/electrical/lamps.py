@@ -148,87 +148,128 @@ def side_rim(spec) -> Part:
     return label(r, spec)
 
 
-# ---- rear lamp (stop/tail and flasher) -----------------------------------------------------------
-REAR_LEN, REAR_W = 292.0, 84.0                # Oliver's photos 14, 18: 250 mm tall seen from behind (on the 33 deg plinth) and
-REAR_AMBER = 0.36 * REAR_LEN                  # 97 wide over the rim, a pointed arch at the top; amber over the top 36 %,
-REAR_BAR = 0.69 * REAR_LEN                    # a chrome bar across 69 % down, the stop/tail section below it
+# ---- rear lamp (stop/tail and flasher) -----------------------------------------------------------------------------
+# QA fix round 1 (Oliver's photo 25 telephoto, kf058, kf176, kf178): no chrome bar across the lens; the lens is one
+# moulding, amber over the top 37 %, red below, and across the bottom 22 % an integral rectangular red reflex block that
+# stands proud (its rear face nearer upright than the 33 deg plinth, so it shows a ledge at its top); under it the rim
+# ends in a chrome foot carrying the one lens screw. The outline is a gothic arch on parallel sides.
+REAR_LEN, REAR_W = 292.0, 84.0                # Oliver's photos 14, 18, 25: 250 mm tall seen from behind on the 33 deg plinth
+REAR_AMBER = 0.37 * REAR_LEN                  # (292 on the rake), 97 wide over the 6 mm rim; amber over the top 37 %
+REAR_REFLEX = 0.22 * REAR_LEN                 # the reflex block across the bottom 22 %
 REAR_ARCH = 0.37 * REAR_LEN                   # the top's arch takes the upper 37 %
+REFLEX_PROUD = (2.0, 20.0)                    # the block's face stands this far proud of the lens at its foot and its top
 
 
-def _rear_outline(grow=0.0, n=14):
-    """Lamp outline (local x up the plinth, y across), anticlockwise: straight sides, rounded bottom corners, the top
-    drawn in to a blunt point (Oliver's photos 11, 18)."""
+def _rear_outline(grow=0.0, n=16):
+    """Lamp outline (local x up the plinth, y across), anticlockwise: parallel sides, rounded bottom corners, a gothic
+    arch at the top (two arcs tangent to the sides meeting at the point; Oliver's photo 25, kf176, kf178)."""
     L, W = REAR_LEN + 2 * grow, REAR_W + 2 * grow
-    xs = L / 2 - REAR_ARCH
+    A = REAR_ARCH + grow
+    xs = L / 2 - A
+    R = (A * A + W * W / 4) / W                              # arc radius: tangent to the side at xs, through the point
     r = 12.0 + grow
-    pts = []
-    for k in range(6):                                       # bottom corner at (-L/2, -W/2)
-        a = math.radians(180.0 + 90.0 * k / 5)
-        pts.append((-L / 2 + r + r * math.cos(a), -W / 2 + r + r * math.sin(a)))
-    pts = [(x, y) for x, y in pts]
     pts = [(-L / 2 + r - r * math.cos(math.radians(90.0 * k / 5)), -W / 2 + r - r * math.sin(math.radians(90.0 * k / 5)))
            for k in range(6)][::-1]
     pts += [(-L / 2 + r - r * math.cos(math.radians(90.0 * k / 5)), W / 2 - r + r * math.sin(math.radians(90.0 * k / 5)))
             for k in range(6)]
     pts = [pts[5 - i] for i in range(6)][::-1] + pts[6:]
-    up = [(xs + (L / 2 - xs) * (k / n), (W / 2) * (1 - (k / n) ** 1.6) ** 0.7) for k in range(n + 1)]
+    up = [(xs + A * k / n, W / 2 - R + math.sqrt(max(R * R - (A * k / n) ** 2, 0.0))) for k in range(n + 1)]
+    up[-1] = (L / 2, 0.0)
     down = [(x, -y) for x, y in reversed(up[:-1])]
     return pts + up + down
 
 
+def _reflex_cut():
+    """Local x of the reflex block's top (the lens's red part ends here)."""
+    return -REAR_LEN / 2 + REAR_REFLEX
+
+
+def _foot(grow=0.0):
+    """The rim's chrome foot under the reflex block (kf176, kf178): x range and its depth."""
+    return -REAR_LEN / 2 - 6.0 - grow, -REAR_LEN / 2 + 14.0 + grow
+
+
 def rear_body(spec) -> Part:
-    """Rear lamp body and chrome plinth (photo 36.1): two bulb holders one above the other,
-    fixed by three screws (Sec 36 para 2), the lens hooked over the upper lip."""
+    """Rear lamp body and chrome rim (Sec 36; photo 36.1): two bulb holders one above the other, fixed by three
+    screws (Sec 36 para 2), the lens hooked over the upper lip and held by one screw through the chrome foot at the
+    bottom (para 1), the foot wrapping the reflex block's lower end (Oliver's kf176, kf178)."""
     p = X.poly_xy(_rear_outline(6.0), -9.0, 0.0)
     p = p + (X.poly_xy(_rear_outline(6.0), -0.05, 4.0) - X.poly_xy(_rear_outline(1.5), -1.0, 5.0))   # chrome rim
     p = tryfillet(p, p.edges().group_by(Axis.Z)[-1], 1.2)
     p = p - X.poly_xy(_rear_outline(-3.0), -5.0, 1.0)
-    xb = REAR_LEN / 2 - REAR_BAR                                     # chrome bar over the stop/tail section
-    p = p + (box(xb - 2.5, xb + 2.5, -REAR_W / 2 - 2.0, REAR_W / 2 + 2.0, -1.0, 10.5) & X.poly_xy(_rear_outline(1.5), -2.0, 11.0))
+    f0, f1 = _foot()
+    foot = box(f0, f1, -REAR_W / 2 - 4.0, REAR_W / 2 + 4.0, -2.0, 13.0) & X.poly_xy(_rear_outline(6.0), -3.0, 14.0)
+    foot = foot - box(f0 + 5.0, f1 + 1.0, -REAR_W / 2 + 0.5, REAR_W / 2 - 0.5, 4.0, 14.0)     # the cup the block sits in
+    foot = tryfillet(foot, foot.edges().group_by(Axis.Z)[-1], 1.5)
+    p = p + foot
     for x in (40.0, -40.0):
         p = p + zc(11.0, -8.0, -1.0, x, 0.0) - zc(8.0, -7.0, 0.0, x, 0.0)
     for x, y in ((80.0, 0.0), (-10.0, 24.0), (-10.0, -24.0)):
         p = p - zc(1.8, -10, 1, x, y)
-    p = p - zc(1.8, -10, 1, -76.0, 0.0)                              # lens screw hole
+    p = p - xc(1.8, f0 - 1.0, f0 + 7.0, 0.0, 8.0)
+    p = p + (xc(4.0, f0 - 1.6, f0 + 0.05, 0.0, 8.0) - box(f0 - 2.0, f0 - 0.9, -0.5, 0.5, 4.0, 12.0))   # screw head and slot
     return label(p, spec)
 
 
 def rear_lens(colour):
     def build(spec) -> Part:
-        """Lens: amber over the flasher at the top, red over the stop/tail bulb below (Oliver's photos 18, 24; Haynes
+        """Lens: amber over the flasher at the top 37 %, red over the stop/tail bulb below, and the integral red reflex
+        block across the bottom 22 % standing proud with a fine prism grid (Oliver's photo 25, kf176, kf178; Haynes
         draws the early lamp the other way up); one moulding held by the screw at the bottom (Sec 36 paras 1, 3)."""
         lens = X.poly_xy(_rear_outline(1.0), 0.05, 9.0)
         lens = tryfillet(lens, lens.edges().group_by(Axis.Z)[-1], 4.5)
-        cut = REAR_LEN / 2 - REAR_AMBER                             # amber over the flasher, the top 36 % (Oliver's photos 23, 24 and scan)
-        half = box(cut, 180.0, -80, 80, -6, 9) if colour == "amber" else box(-180.0, cut, -80, 80, -6, 9)
+        cut = REAR_LEN / 2 - REAR_AMBER
+        xr = _reflex_cut()
+        half = box(cut, 180.0, -80, 80, -6, 9) if colour == "amber" else box(xr, cut, -80, 80, -6, 9)
         lens = lens & half
         for k in range(-17, 18):                                    # horizontal prism ribs
             lens = lens - box(k * 8.0 - 0.6, k * 8.0 + 0.6, -60, 60, 8.0, 10.0)
         if colour == "red":
-            lens = lens + zc(4.5, 7.0, 10.0, -76.0, 0.0) - zc(1.8, -6, 11, -76.0, 0.0)   # lens screw boss
+            from build123d import Plane, Polygon, extrude
+            f0, f1 = _foot()
+            x0, x1 = f0 + 5.5, xr + 0.5
+            t0, t1 = 9.0 + REFLEX_PROUD[0], 9.0 + REFLEX_PROUD[1]
+            blk = extrude(Plane.XZ * Polygon((x0, 0.05), (x1, 0.05), (x1, t1), (x0, t0), align=None), REAR_W / 2 - 1.5,
+                          both=True)
+            blk = blk & X.poly_xy(_rear_outline(-0.5), -1.0, 40.0)
+            blk = tryfillet(blk, blk.edges().filter_by(Axis.Y), 1.0)
+            face = (t1 - t0) / (x1 - x0)                            # the face's slope along x
+            for k in range(-4, 5):                                  # the reflex prism grid on the face
+                blk = blk - box(x0, x1, k * 8.0 - 0.5, k * 8.0 + 0.5, t0 - 1.2, t1 + 5.0)
+            for j in range(1, 8):
+                xg = x0 + (x1 - x0) * j / 8
+                blk = blk - box(xg - 0.5, xg + 0.5, -60, 60, t0 + face * (xg - x0) - 1.0, t1 + 5.0)
+            lens = lens + blk
         return label(lens, spec)
     return build
 
 
 # ---- number plate lamp ----------------------------------------------------------------------------
 def plate_lamp(spec) -> Part:
-    """Number plate lamp on the inside face of the overrider (Sec 37 para 1; photo 37.1):
-    plinth, cover, lens and washer, held by two screws to nuts and distance pieces inside the
-    overrider. Shines inward and down onto the plate."""
+    """Number plate lamp on the inside face of the overrider near its top (Sec 37 para 1; photo 37.1; Oliver's photo
+    25, kf165, kf168, kf171, kf173): a chrome plinth block on the overrider and a round-ended barrel reaching in
+    toward the plate, the lens under the barrel; held by two screws to nuts and distance pieces inside the overrider.
+    Local frame: z inboard (toward the plate), y up, x fore and aft."""
     w, h = spec.nom("width"), spec.nom("height")
-    plinth = X.poly_xy(_stadium(w, h), 0.0, 4.0)
-    cover = X.poly_xy(_stadium(w - 4.0, h - 4.0), 4.0, 20.0)
-    cover = tryfillet(cover, cover.edges().group_by(Axis.Z)[-1], 6.0)
-    cover = cover - (Location((h / 2 - 2.0, 0, 13.0)) * Rot(0, 40.0, 0) * Box(24.0, w - 14.0, 30.0))
-    for dy in (-(w / 2 - 7.0), w / 2 - 7.0):
-        cover = cover - zc(1.8, -1, 21, 0.0, dy) + zc(3.0, 19.0, 21.0, 0.0, dy)
-    return label(plinth + cover, spec)
+    plinth = box(-16.0, 16.0, -h / 2, h / 2, -6.0, 3.0)
+    plinth = tryfillet(plinth, plinth.edges().filter_by(Axis.Z), 4.0)
+    block = box(-15.0, 15.0, -h / 2 + 1.0, h / 2 - 1.0, 3.0, 26.0)
+    block = tryfillet(block, block.edges().group_by(Axis.Z)[-1], 4.0)
+    rb = 11.0                                                        # the barrel, its axis inboard, low on the block
+    yb = -h / 2 + rb
+    barrel = zc(rb, 14.0, w - rb - 18.0, 0.0, yb) + \
+        (Location((0.0, yb, w - rb - 18.0)) * __import__("build123d").Sphere(rb))
+    body = plinth + block + barrel
+    body = body - box(-8.0, 8.0, -h / 2 - 2.0, -h / 2 + 2.5, 12.0, w - 22.0)            # the lens window underneath
+    for dx in (-10.0, 10.0):
+        body = body - zc(1.8, -6.5, 27.0, dx, 10.0) + zc(3.0, 25.5, 27.0, dx, 10.0)    # the two screws, heads inboard
+    return label(body, spec)
 
 
 def plate_lens(spec) -> Part:
-    w = spec.nom("width")
-    lens = Location((14.0, 0, 12.0)) * Rot(0, 40.0, 0) * Box(2.5, w - 16.0, 18.0)
-    return label(lens, spec)
+    """Clear lens in the window under the lamp's barrel, shining in and down on the plate."""
+    h, w = spec.nom("height"), spec.nom("width")
+    return label(box(-7.6, 7.6, -h / 2 + 0.6, -h / 2 + 2.2, 12.4, w - 22.4), spec)
 
 
 PARTS = {

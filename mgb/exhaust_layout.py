@@ -87,11 +87,17 @@ RS_Y = 304.0                                      # between the tank (y <= 210) 
 RS_Z = -362.0
 INTER_ROUTE = [(CS_X[1] - 2.0, CS_Y, CS_Z), (CL.bx(-1410.0), CS_Y, CS_Z), (CL.bx(-1560.0), IP_Y, IP_Z), (CL.bx(-2040.0), IP_Y, IP_Z),
                UNDER_AXLE, UNDER_ROD, (CL.bx(-2330.0), RS_Y - 20.0, -385.0), (RS_X[0] + 2.0, RS_Y, RS_Z)]
-TAIL_END_X = CL.REAR_X + 95.0                      # the tail pipe ends under the bumper blade (P11b: profile photo 29)
-TAIL_Z = CL.GROUND_Z + 292.0                      # QA: the tail pipe's end just under the valance (Oliver's photos 11, 14, 23)
-TAIL_Y = 352.0                                      # and out to |y| 352 (photos 11, 14)
-TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (CL.bx(-2790.0), RS_Y, RS_Z), (CL.bx(-2880.0), TAIL_Y, TAIL_Z), (TAIL_END_X, TAIL_Y, TAIL_Z)]
-TAIL_CUT_DEG = 45.0                                # end cut, the long side underneath (S: MGOC)
+# Tail pipe (QA fix round 1, Oliver's photo 25 scaled on the plate and kf062, kf165, kf166): straight out on the left
+# 365 above the road (centre), the pipe's top tight to the rear valance's lower edge where it passes through a notch in
+# it, a square-cut end standing out about 50 mm behind the valance under the bumper; it rises from the rear silencer's
+# level just behind the rear mounting.
+TAIL_END_X = CL.REAR_X + 55.0
+TAIL_Z = CL.GROUND_Z + 365.0
+TAIL_Y = 352.0                                      # out to |y| 352 (photos 11, 14)
+TAIL_RISE_X = (CL.bx(-2845.0), CL.bx(-2915.0))     # the rise from the silencer's level to TAIL_Z
+TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (TAIL_RISE_X[0], RS_Y, RS_Z), (TAIL_RISE_X[1], TAIL_Y, TAIL_Z),
+              (TAIL_END_X, TAIL_Y, TAIL_Z)]
+TAIL_CUT_DEG = 0.0                                 # square cut on Oliver's car (kf165, kf166); MGOC: originally 45 degrees
 
 # ---- gearbox clip (front support) ---------------------------------------------------------------------------------
 BRACKET_T = 4.0                                    # flat bar bracket under the two side cover bolts
@@ -100,9 +106,11 @@ CLIP_X = -523.0                                    # strap round the system pipe
 STRAP_W, STRAP_T = 22.0, 2.5
 
 # ---- rear mounting (pinch clamp on a rubber block from a bracket under the boot floor) --------------------------
-REAR_MOUNT_X = CL.bx(-2885.0)
-REAR_CLAMP = (REAR_MOUNT_X, TAIL_Y, TAIL_Z)        # pinch clamp round the tail pipe
-REAR_RUBBER_Z = (TAIL_Z + 52.0, TAIL_Z + 82.0)     # bonded rubber block, bottom and top plate faces
+# on the level run between the silencer and the rise (QA fix round 1: with the tail pipe up at the valance there is no
+# room for the block over it further back)
+REAR_MOUNT_X = CL.bx(-2803.0)                  # clear of the silencer's outlet spigot (to -2790)
+REAR_CLAMP = (REAR_MOUNT_X, RS_Y, RS_Z)            # pinch clamp round the tail pipe
+REAR_RUBBER_Z = (RS_Z + 52.0, RS_Z + 82.0)         # bonded rubber block, bottom and top plate faces
 REAR_BRACKET_Z = (REAR_RUBBER_Z[1], U.BOOT_FLOOR_Z)   # bracket from the block up to the boot floor
 
 

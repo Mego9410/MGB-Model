@@ -280,17 +280,36 @@ def filler_tube(spec) -> Part:
 
 
 def filler_cap(spec) -> Part:
-    """Fig 3.9 item 29: lift-off filler cap (early roadsters: MGOC) with a fluted rim and a vent hole."""
+    """Fig 3.9 item 29: Oliver's car has a chrome locking cap (his photo 21; kf173, kf176; QA fix round 1): a shallow
+    dome 64 mm across seated in the black rubber ring (filler-ring), a raised flip lever lying from the centre out to
+    the rim at the upper right (seen from behind), its end turned down over the rim to lift, and the lock barrel with
+    its keyhole below the centre. Local frame (the assembly's): z out of the panel (rearward), x to the car's left,
+    y down."""
     d = spec.nom("diameter")
-    c = Sh.revolved([(0, 0), (d / 2 - 2, 0), (d / 2, 2.0), (d / 2, 12.0), (d / 2 - 4, 16.0), (14.0, 20.0), (0, 21.0)])
-    for k in range(24):
-        a = 360.0 * k / 24
-        c = c - Location((0, 0, 6.0)) * Rot(0, 0, a) * Location((d / 2 + 0.6, 0, 0)) * Box(2.2, 2.4, 9.0)
-    c = c + Location((0, 0, -10.0)) * Sh.tube(L.FILLER_OD - 4.0, L.FILLER_OD - 9.0, 10.0)               # spigot
-    c = c - Location((9.0, 0, 15.0)) * Cylinder(1.0, 20.0)
-    # locking barrel in the centre (Oliver's photo 21: a chrome locking cap)
-    c = c + Location((0, 0, 21.0)) * Sh.cyl(16.0, 4.0) - Location((0, 0, 23.0)) * Box(2.0, 9.0, 6.0)
+    r = d / 2
+    c = Sh.revolved([(0, 2.0), (r - 2.0, 2.0), (r, 4.0), (r, 8.0), (r - 2.5, 12.0), (r - 10.0, 15.5), (0, 17.0)])
+    c = c + Location((0, 0, -10.0)) * Sh.tube(L.FILLER_OD - 4.0, L.FILLER_OD - 9.0, 12.0)               # spigot
+    a = math.radians(225.0)                                   # up and to the right seen from behind: local -x, -y
+    ux, uy = math.cos(a), math.sin(a)
+    lever = Box(30.0, 10.0, 6.0)
+    lever = Location((ux * 13.0, uy * 13.0, 18.0)) * Rot(0, 0, math.degrees(a)) * fillet(lever.edges().filter_by(Axis.X), 2.8)
+    tab = Box(5.0, 10.0, 12.0)
+    tab = Location((ux * (r - 1.0), uy * (r - 1.0), 13.0)) * Rot(0, 0, math.degrees(a)) * fillet(tab.edges().filter_by(Axis.Z), 2.0)
+    pivot = Location((0, 0, 17.0)) * Rot(0, 0, math.degrees(a) + 90.0) * Rot(0, 90, 0) * Cylinder(4.0, 14.0)
+    c = c + lever + tab + pivot
+    bx_, by_ = -ux * 13.0, -uy * 13.0                        # the lock barrel, opposite the lever
+    c = c + Location((bx_, by_, 14.0)) * Cylinder(7.0, 6.0, align=Sh.ALIGN_BASE)
+    c = c - Location((bx_, by_ + 1.0, 18.5)) * Box(1.6, 6.0, 4.0) - Location((bx_, by_ - 1.8, 18.5)) * Cylinder(1.6, 4.0)
     return _l(c, spec)
+
+
+def filler_ring(spec) -> Part:
+    """Black rubber ring round the filler cap on the rear panel (Oliver's photo 21; kf173, kf176: about 12 mm wide,
+    80 mm over all, standing proud of the panel), its back following the panel's curve into the lid gap above."""
+    od, w = spec.nom("diameter"), spec.nom("width")
+    ring = Sh.revolved([(od / 2 - w, -30.0), (od / 2, -30.0), (od / 2, 2.0), (od / 2 - 2.5, 5.0), (od / 2 - w + 2.0, 5.0),
+                        (od / 2 - w, 3.0)])
+    return _l(ring, spec)
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -354,6 +373,7 @@ PARTS = {
     "fuel.tank.hose-clip": {"build": hose_clip},
     "fuel.tank.filler-tube": {"build": filler_tube},
     "fuel.tank.filler-cap": {"build": filler_cap},
+    "fuel.tank.filler-ring": {"build": filler_ring},
     "fuel.tank.gauge-unit": {"build": gauge_unit},
     "fuel.tank.gauge-gasket": {"build": gauge_gasket},
     "fuel.tank.gauge-screw": {"build": gauge_screw},
