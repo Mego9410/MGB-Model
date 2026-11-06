@@ -758,37 +758,42 @@ def sill_cover(side):
 
 def quarter_trim(side):
     def build(spec):
-        """Rear quarter trim (Oliver's kf069, kf075, kf134): black vinyl boards lining the cockpit's sides from the shut
-        pillar back to the rear corner, from the sill (ahead of the shelf) or the shelf and wheel house hump up under
-        the rim roll, and a finisher down the shut pillar's inboard edge."""
+        """Rear quarter trim (Oliver's kf069, kf075, kf134): black vinyl boards lining the cockpit's side from the shut
+        pillar back round the rear corner, QUARTER_IN inside the opening's edge (body_shell cockpit_outline), from the
+        sill (ahead of the shelf) or the shelf and wheel house hump up under the rim roll, and a finisher down the shut
+        pillar's inboard edge."""
         x0 = S.DOOR_REAR_X - 8.0
-        x1 = S.COCKPIT_REAR_X + S.COCKPIT_CORNER_R[1] * 0.6
-        n = 24
-        xs = [x0 + (x1 - x0) * k / n for k in range(n + 1)]
-        top = [(x, H(S.top_h(x, _quarter_y(x)) - 16.0)) for x in xs]
+        pts = [(x, y) for x, y in B.cockpit_outline(-QUARTER_IN) if x < x0 and y * side > St.RWH_Y + 8.0]
+        pts.sort(key=lambda p: -p[0])
+        pts = [(x0, side * _quarter_y(x0))] + pts
+        dense = []
+        for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
+            n = max(1, int(math.dist((xa, ya), (xb, yb)) / 25.0))
+            dense += [(xa + (xb - xa) * k / n, ya + (yb - ya) * k / n) for k in range(n)]
+        dense.append(pts[-1])
         sf = U.SHELF_FRONT_X + St.T + CT
-        bot = []
-        for x in reversed(xs):
-            zb = H(St.TREAD_H) if x > sf else SHELF_TOP + CT
+
+        def zb(x):
+            z = H(St.TREAD_H) if x > sf else SHELF_TOP + CT
             ht = _hump_top(x)
-            if ht is not None and x <= sf:
-                zb = max(zb, ht + 0.3 + CT)
-            bot.append((x, zb))
-        out = []
+            return max(z, ht + 0.3 + CT) if ht is not None and x <= sf else z
+
+        def zt(x, y):
+            return H(S.top_h(x, abs(y) + QUARTER_IN - 2.0) - 16.0)
         boards = []
-        for k in range(n):
-            xa, xb = xs[k], xs[k + 1]
-            ya, yb = _quarter_y(xa), _quarter_y(xb)
-            poly = [(xa, bot[n - k][1]), (xb, bot[n - k - 1][1]), (xb, top[k + 1][1]), (xa, top[k][1])]
-            if poly[0][1] >= poly[3][1] - 5.0:
+        for (xa, ya), (xb, yb) in zip(dense, dense[1:]):
+            L = math.dist((xa, ya), (xb, yb))
+            if L < 0.5:
                 continue
-            from build123d import Vector
-            seg = yprism(poly, 0.0, 3.0)
+            za0, zb0, za1, zb1 = zb(xa), zb(xb), zt(xa, ya), zt(xb, yb)
+            if min(za1 - za0, zb1 - zb0) < 5.0:
+                continue
             ang = math.degrees(math.atan2(yb - ya, xb - xa))
-            seg = Location((0.0, ya, 0.0)) * Location((xa, 0, 0)) * Rot(0, 0, ang) * Location((-xa, 0, 0)) * seg
-            boards.append(seg)
+            # the board's face in its own (u along it, v up) plane, 3 mm thick toward the cockpit's outside
+            seg = yprism([(0.0, za0), (L, zb0), (L, zb1), (0.0, za1)], 0.0, 3.0)
+            boards.append(Location((xa, ya, 0.0)) * Rot(0, 0, ang) * seg)
         fin = box(x0 - 2.0, x0 + 6.0, S.SILL_INNER_Y - 4.0, _quarter_y(x0) + 3.0, H(St.TREAD_H), H(S.top_h(x0, _quarter_y(x0)) - 16.0))
-        return _l(St._side(G.fuse(boards + [fin]), side), spec)
+        return _c(boards + [St._side(fin, side)], spec)
     return build
 
 
