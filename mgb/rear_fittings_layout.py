@@ -16,7 +16,9 @@ from mgb import body_shell_layout as S, car_layout as CL
 # ---- boot lid ------------------------------------------------------------------------------------------------------
 # Handle and lock (Fig 12.12 items 2, 4): on the lid's rear fall over the plate, centred on the car. Photo 25 and kf062
 # put its centre about 770 above the road at x -2905 (QA rear finding 3); it is placed by x so it rides the lid's fall.
-BOOT_HANDLE_X = CL.bx(-2905.0)
+BOOT_HANDLE_AG = 770.0                            # its centre above the road (photo 25 scaled on the plate)
+BOOT_HANDLE_X = S.tail_x(0.0, BOOT_HANDLE_AG)     # where the lid's fall passes that height (QA fix 1, shell: placed by
+# height, which photo 25 measures well; the lid's fall there is x -2854, inside the scan's -2840..-2900 at h 760)
 BOOT_HANDLE_W, BOOT_HANDLE_H = 45.0, 60.0         # the pear-shaped escutcheon (photo 25: 44 x 61 mm)
 # Badges (photo 06 square on; photo 25 and the scan's top view for the stations): the chrome MG octagon, 100 mm across
 # its flats (photo 25: 103), centred x -2720; the chrome M-G-B letter badge ahead of it, centred x -2655, 58 wide.
@@ -35,7 +37,8 @@ HOOD_PEG_Y = 315.0
 # two showing on the left): beside the side rim just ahead of the corner, on the corner, and behind it, each snapped
 # onto the rim's outline grown 45 mm (so they follow the cockpit opening if it moves).
 TONNEAU_STUD_OFFSET = 45.0
-TONNEAU_STUD_AIM = ((CL.bx(-1760.0), 700.0), (CL.bx(-1880.0), 660.0), (CL.bx(-1950.0), 560.0))
+TONNEAU_STUD_AIM = ((S.COCKPIT_REAR_X + 145.0, 700.0), (S.COCKPIT_REAR_X + 25.0, 660.0), (S.COCKPIT_REAR_X - 45.0, 560.0))
+# (relative to the cockpit's rear rim, so they stay round its corners: QA fix 1, shell, moved the rim to -2055)
 
 def _unit(v):
     v = np.asarray(v, float)
@@ -87,6 +90,8 @@ def tonneau_stud_points(side):
     """(x, y) of the three tonneau studs on one side (side +1 left, -1 right)."""
     from mgb import body_shell as B
     ring = np.array(B.cockpit_outline(TONNEAU_STUD_OFFSET))
+    seg = [ring[i] + (ring[(i + 1) % len(ring)] - ring[i]) * t for i in range(len(ring)) for t in np.linspace(0.0, 1.0, 12, endpoint=False)]
+    ring = np.array(seg)                                              # densified, so each aim snaps to its own point
     pts = []
     for ax, ay in TONNEAU_STUD_AIM:
         k = int(np.argmin((ring[:, 0] - ax) ** 2 + (ring[:, 1] - ay) ** 2))

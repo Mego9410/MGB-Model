@@ -136,7 +136,8 @@ def rear_lamp_sd(X, Y, Z):
     out = []
     for s in (1, -1):
         for dz, dy, r in ((40.0, 0.0, 8.5), (-40.0, 0.0, 8.5), (80.0, 0.0, 2.6), (-10.0, 24.0, 2.6), (-10.0, -24.0, 2.6)):
-            out.append(circle_yz(X, Y, Z, s * (BL.REAR_LAMP_Y + dy), BL.REAR_LAMP_Z + dz, r, -9999.0)
+            zz = BL.REAR_LAMP_Z + dz * math.cos(math.radians(BL.REAR_LAMP_RAKE))   # up the raked plinth (QA fix 1)
+            out.append(circle_yz(X, Y, Z, s * (BL.REAR_LAMP_Y + dy), zz, r, -9999.0)
                        + np.maximum(X - (BL.REAR_LAMP_X + 80.0), 0.0))
     return OR(*out)
 
@@ -236,8 +237,19 @@ def filler_sd(X, Y, Z):
     return circle_yz(X, Y, Z, FL.FILLER_CAP_Y, FL.FILLER_TUBE_TOP_Z, FL.FILLER_OD / 2 + 6.0, -9999.0)
 
 
+def tailpipe_notch_sd(X, Y, Z):
+    """The notch in the rear valance's lower edge the tail pipe passes through (QA fix 1 hand-off from the rear
+    fittings: the pipe 365 above the road with its top tight to the valance, exhaust_layout TAIL_*): a slot up from the
+    edge with a round head 6 mm clear of the pipe."""
+    from mgb import exhaust_layout as E
+    r = E.PIPE_OD / 2 + 6.0
+    head = np.hypot(Y - E.TAIL_Y, Z - E.TAIL_Z) - r
+    slot = AND(np.abs(Y - E.TAIL_Y) - r, Z - E.TAIL_Z)
+    return AND(OR(head, slot), X - (E.TAIL_ROUTE[1][0] - 20.0))
+
+
 def rear_panel_skin_sd(X, Y, Z):
-    return AND(rear_panel_sd(X, Y, Z) + LEAD, -filler_sd(X, Y, Z))
+    return AND(rear_panel_sd(X, Y, Z) + LEAD, -filler_sd(X, Y, Z), -tailpipe_notch_sd(X, Y, Z))
 
 
 def _panel(name, sdf):

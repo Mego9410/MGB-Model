@@ -388,7 +388,8 @@ def _side_y(x, h):
 
 @functools.lru_cache(maxsize=200000)
 def _top_h(x, y):
-    return _root(lambda h: F(np.full_like(h, x), np.full_like(h, y), h), 300.0, 1400.0)
+    return _root(lambda h: F(np.full_like(h, x), np.full_like(h, y), h), 460.0, 1400.0)   # from inside the tail (QA fix 1:
+    # the rear valance now turns under above 300)
 
 
 @functools.lru_cache(maxsize=200000)

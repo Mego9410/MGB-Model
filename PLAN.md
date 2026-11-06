@@ -62,6 +62,13 @@ reviewer's rear-rim answer; his keyframes on the SfM cameras and his scan). In m
   to the lid corner; the leaded seams (rear wings to deck and rear panel) lap 1 mm each way so no line shows
   (panels LEAD).
 
+Hand-offs from the rear fittings fixer, done here: REAR_LAMP_Y 620 (photo 25: 617-624), which moves the wing-end
+blend (PLINTH_Y) and the crown line's end with it; a notch in the valance's lower edge for the tail pipe
+(panels.tailpipe_notch_sd); the lamp fixing holes in the wing ends now follow the raked plinth (they were offset up to
+13 mm); the boot handle is placed by its height (770, rear_fittings_layout BOOT_HANDLE_AG) where the lid's fall passes
+it (x -2854); top_h() searches from 460 up, inside the tail now the valance turns under; the tonneau studs' aims follow
+the cockpit's rear rim and snap to a densified outline.
+
 For the other fixers: WIPER_SPINDLES still follow WINDSCREEN_BASE_X (+22, now x -583); the scuttle vent still sits on
 screen_base(0) (now x -565..-510); the cockpit fixer derives the rim trim and rear wall from COCKPIT_REAR_X /
 REAR_BULKHEAD_X and cockpit_outline(); the tonneau floor now steps up at x -1880 (structure SHELF_STEP_X) to a shelf

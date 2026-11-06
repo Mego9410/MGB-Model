@@ -158,7 +158,7 @@ EARTH_POINTS = {
 # plinth and tilted it (P10 had it upright at REAR_X + 75, 640 high).
 REAR_LAMP_X = REAR_X + 203.5                           # lens face centre on the plinth (moved 12.7 forward up the 33 deg plinth
                                                        # with the 18 mm rise below: QA fix round 1)
-REAR_LAMP_Y = HALF_W - 127.0                           # Oliver's photos 14, 18 (QA, scaled on the plate): centre 634 off the centre line
+REAR_LAMP_Y = 620.0                                    # QA fix round 1 (rear 19): Oliver's photo 25 scaled on the plate, 617-624 off the centre line (was 634)
 REAR_LAMP_Z = above_ground(713.0)                      # QA fix round 1: the chrome runs 595 to 836 on the car (Oliver's photo 25 scaled on
 # the plate, his scan), 18 mm higher than the 695 first set from photos 14, 18 (548 to 798 above Oliver's road; his car sits 18-24 mm
 # lower at the back than the model (scan: rear rims 20 mm higher in the body), so on the body 22 mm higher (Oliver's scan:
