@@ -385,6 +385,7 @@
     "body.brightwork.grille-surround-flange",
     "body.brightwork.grille-slats",
     "body.brightwork.grille-bar",
+    "body.brightwork.grille-backing",
     "body.brightwork.grille-badge",
     "body.brightwork.grille-badge-field",
     "body.brightwork.grille-badge-octagon",
@@ -398,7 +399,7 @@
     "body.brightwork.scuttle-vent-intake"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 2218796
+   "bytes": 2228266
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -418,7 +419,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 209138
+   "bytes": 209254
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -459,7 +460,7 @@
     "body.door-mechanisms.door-seal-r"
    ],
    "file": "models/body.door-mechanisms.json",
-   "bytes": 847991
+   "bytes": 848115
   },
   "body.doors": {
    "id": "body.doors",
@@ -500,7 +501,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 476586
+   "bytes": 503293
   },
   "body.front": {
    "id": "body.front",
@@ -524,7 +525,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1102975
+   "bytes": 1102019
   },
   "body.glass": {
    "id": "body.glass",
@@ -551,7 +552,7 @@
     "body.glass.pillar-pad-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 218082
+   "bytes": 217616
   },
   "body.hood": {
    "id": "body.hood",
@@ -572,7 +573,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 865701
+   "bytes": 864705
   },
   "body.interior": {
    "id": "body.interior",
@@ -664,7 +665,7 @@
     "body.interior.heater-knob-print"
    ],
    "file": "models/body.interior.json",
-   "bytes": 3356451
+   "bytes": 3453766
   },
   "body.rear": {
    "id": "body.rear",
@@ -694,7 +695,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 4489465
+   "bytes": 3493102
   },
   "body.structure": {
    "id": "body.structure",
@@ -760,7 +761,7 @@
     "body.structure.arch-lips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 1285024
+   "bytes": 1292558
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -866,7 +867,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468050
+   "bytes": 468318
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -908,7 +909,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592489
+   "bytes": 592765
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1366,7 +1367,7 @@
     "clutch.hydraulics.mc-spring"
    ],
    "file": "models/clutch.hydraulics.json",
-   "bytes": 591341
+   "bytes": 591225
   },
   "clutch.pedal": {
    "id": "clutch.pedal",
@@ -1492,7 +1493,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 159803
+   "bytes": 159851
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -1662,7 +1663,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 650097
+   "bytes": 650225
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -2317,7 +2318,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170456
+   "bytes": 170452
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2500,7 +2501,7 @@
     "fuel.choke.jet-lever-rear"
    ],
    "file": "models/fuel.choke.json",
-   "bytes": 266257
+   "bytes": 266213
   },
   "fuel.exhaust": {
    "id": "fuel.exhaust",
@@ -2537,7 +2538,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 241244
+   "bytes": 243484
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2614,7 +2615,7 @@
     "fuel.supply.clip-screw"
    ],
    "file": "models/fuel.supply.json",
-   "bytes": 256107
+   "bytes": 256183
   },
   "fuel.tank": {
    "id": "fuel.tank",
@@ -2717,7 +2718,7 @@
     "fuel.throttle.pedal-stop"
    ],
    "file": "models/fuel.throttle.json",
-   "bytes": 892401
+   "bytes": 892441
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -3211,7 +3212,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494322
+   "bytes": 494118
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -6571,6 +6572,41 @@
    ],
    "derivedShare": 1.0
   },
+  "body.brightwork.grille-backing": {
+   "id": "body.brightwork.grille-backing",
+   "kind": "part",
+   "name": "Grille backing (duct face behind the slats)",
+   "parent": "body.brightwork",
+   "haynes": {
+    "section": 7,
+    "spec_page": 218
+   },
+   "quantity": 1,
+   "partNumbers": [],
+   "material": null,
+   "finish": "grille_backing",
+   "notes": "QA fix round 2: between the chrome slats Oliver's car shows a dark red ground (kf027, kf218), the body-coloured duct behind the grille in shadow; the model showed daylight there, so the slats read flat white. A 2 mm sheet following the nose's curve 6 mm behind the slats' backs, filling the surround's opening to the bar's centre line, in a dark red finish standing in for the shadowed paint.",
+   "variant": {
+    "factory_1963": true,
+    "as_fitted": true,
+    "body": "roadster"
+   },
+   "explode": null,
+   "specs": [
+    {
+     "key": "gap_behind_slats",
+     "label": "Gap behind slats",
+     "value": "6.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Placed just behind the slats so it reads as the ground between them (kf027, kf218)",
+     "note": "",
+     "erratum": false,
+     "printed_mm": null
+    }
+   ],
+   "derivedShare": 1.0
+  },
   "body.brightwork.grille-bar": {
    "id": "body.brightwork.grille-bar",
    "kind": "part",
@@ -7096,7 +7132,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Front number plate, blank (no characters drawn), 520 x 111, just under the blade on the valance.",
+   "notes": "Front number plate, blank (no characters drawn), just under the blade on the valance. QA fix round 2 (kf028): 460 x 98, about 12% smaller than the 520 x 111 standard plate the model had, its bottom 13 mm higher.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -7107,16 +7143,16 @@
     {
      "key": "width",
      "label": "Width",
-     "value": "520.0 mm (20.472 in)",
-     "source": "S",
-     "sourceName": "Supplier",
-     "ref": "UK number plate 520 x 111 mm (BS AU 145)",
-     "note": "Standard plate size",
+     "value": "460.0 mm",
+     "source": "D",
+     "sourceName": "Derived",
+     "ref": "Oliver's kf028 matched render, the plate 10-15% narrower than the 520 mm standard plate",
+     "note": "",
      "erratum": false,
      "printed_mm": null
     }
    ],
-   "derivedShare": 0.0
+   "derivedShare": 1.0
   },
   "body.brightwork.rear-plate-trim": {
    "id": "body.brightwork.rear-plate-trim",
@@ -9793,7 +9829,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "rubber",
-   "notes": "The quarter-light's black rubbers (QA fix round 1): the two strips between the windscreen pillar and the frame, one on the frame's front edge and one on the pillar's rear edge, closing the gap (no light between them); the seal between the outer frame and the pivoting vent all round; and the vent's glazing rubber round the glass. Oliver's kf048 (full res), kf231, kf232, photos 09, 27.",
+   "notes": "QA fix round 2 (kf044, kf048): the frame-to-vent seal 2.5 mm and the glazing rubber 1.5 mm wide (were 5 and 3), thin black lines as on the car. The quarter-light's black rubbers (QA fix round 1): the two strips between the windscreen pillar and the frame, one on the frame's front edge and one on the pillar's rear edge, closing the gap (no light between them); the seal between the outer frame and the pivoting vent all round; and the vent's glazing rubber round the glass. Oliver's kf048 (full res), kf231, kf232, photos 09, 27.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -9804,10 +9840,10 @@
     {
      "key": "strip_width",
      "label": "Strip width",
-     "value": "9.0 mm",
+     "value": "4.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "kf048 full res: two dark strips in the 22 mm between the pillar and the frame",
+     "ref": "QA fix round 2: kf015, kf048 matched renders, thin black lines (9 mm read as a heavy band); kf048 full res shows two dark strips in the 22 mm between the pillar and the frame",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -9869,7 +9905,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "chrome",
-   "notes": "The early pull handle (Fig 12.13 item 1, early Sports Tourer) as on Oliver's car (QA fix round 1): a chrome escutcheon screwed to the skin at the rear with a lower lip running forward, the lever hinged inside it and sweeping forward over the pressed finger recess, tapering and curving down to a black rubber buffer on its tip (handle-buffer); 174 mm overall from x -1608 to -1434 at h 790. The key lock is separate, below the side strip (door-mechanisms lock-barrel). Oliver's kf048 (full res, ray-cast on the door side), kf187-kf189 (close-ups, shape only).",
+   "notes": "QA fix round 2 (kf048): the escutcheon's rear end is a half round in side view, not a square block. The early pull handle (Fig 12.13 item 1, early Sports Tourer) as on Oliver's car (QA fix round 1): a chrome escutcheon screwed to the skin at the rear with a lower lip running forward, the lever hinged inside it and sweeping forward over the pressed finger recess, tapering and curving down to a black rubber buffer on its tip (handle-buffer); 174 mm overall from x -1608 to -1434 at h 790. The key lock is separate, below the side strip (door-mechanisms lock-barrel). Oliver's kf048 (full res, ray-cast on the door side), kf187-kf189 (close-ups, shape only).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -10165,8 +10201,8 @@
    "quantity": 1,
    "partNumbers": [],
    "material": null,
-   "finish": "glass_screen",
-   "notes": "The mirror's glass, facing rearward.",
+   "finish": "mirror_glass",
+   "notes": "The mirror's glass, facing rearward (QA fix round 2: silvered).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -10898,7 +10934,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "rubber",
-   "notes": "LH seal (Fig 12.7 item 22) in its retainer (23) down the pillar casting's rear edge, closing on the quarter-light frame's front strip (QA fix round 1: Oliver's kf048 full res, kf231, kf232).",
+   "notes": "LH seal (Fig 12.7 item 22) in its retainer (23) down the pillar casting's rear edge, closing on the quarter-light frame's front strip (QA fix round 1: Oliver's kf048 full res, kf231, kf232). QA fix round 2 (kf015, kf048): 4.5 mm, a thin black line; 10.5 read as a heavy black band.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -10909,10 +10945,10 @@
     {
      "key": "width",
      "label": "Width",
-     "value": "10.5 mm",
+     "value": "4.5 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "kf048 full res: two dark strips in the 22 mm between the pillar and the frame",
+     "ref": "QA fix round 2, kf015 and kf048 matched renders; round 1 from kf048 full res: two dark strips in the 22 mm between the pillar and the frame",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -10950,7 +10986,7 @@
     {
      "key": "width",
      "label": "Width",
-     "value": "10.5 mm",
+     "value": "4.5 mm",
      "source": "D",
      "sourceName": "Derived",
      "ref": "As the left",
@@ -11142,8 +11178,8 @@
    "quantity": 1,
    "partNumbers": [],
    "material": null,
-   "finish": "glass_screen",
-   "notes": "The interior mirror's glass in the back's rim, facing rearward.",
+   "finish": "mirror_glass",
+   "notes": "The interior mirror's glass in the back's rim, facing rearward (QA fix round 2: a silvered mirror, not clear glass, so the tan back no longer shows through it from the seats; kf121).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -14362,7 +14398,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "carpet",
-   "notes": "Black felt over the bulkhead's cabin face in both footwells, from the toe boards up under the scuttle, with the bulkhead's holes for the pedal box, pedal arms, column, harness and pipes (Oliver's kf145, kf151: black behind the pedals). QA fix round 1, cockpit.",
+   "notes": "Black felt over the bulkhead's cabin face in both footwells, from the toe boards up under the scuttle, with the bulkhead's holes for the pedal box, pedal arms, column, harness and pipes (Oliver's kf145, kf151: black behind the pedals). QA fix round 1, cockpit. QA fix round 2 (kf151): carried on up to the shelf, under it and over the upper face's cabin side to the scuttle, so no body colour shows above the pedals.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -14548,7 +14584,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_body_red",
-   "notes": "The tail panel below the boot lid and round its rounded lower corners, between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21). QA fix 1: outboard of the overriders it rounds forward into the wing ends (Oliver's scan at |y| 450-550: x -2893..-2924); under the bumper the valance turns forward and under, showing below the bumper's blade as on the car (kf062, photo 25), through the scan's (x -2880, h 345) to its edge 295 above the road at x -2855, clear of the tank and the exhaust mounting, with a notch for the tail pipe; its seams to the wings are leaded, flush.",
+   "notes": "The tail panel below the boot lid and round its rounded lower corners, between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21). QA fix 1: outboard of the overriders it rounds forward into the wing ends (Oliver's scan at |y| 450-550: x -2893..-2924); under the bumper the valance turns forward and under, showing below the bumper's blade as on the car (kf062, photo 25), through the scan's (x -2880, h 345) to its edge 295 above the road at x -2855, clear of the tank and the exhaust mounting, with a notch for the tail pipe; its seams to the wings are leaded, flush. QA fix round 2 (kf058, kf062, kf165): the valance ends cleanly 380 above the road at its turn-under (panels.valance_trim_sd, also on the rear wings behind x -2830); the turned-under strip below showed as bright red wedges under the bumper.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -14693,7 +14729,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "chrome",
-   "notes": "Chrome pear-shaped escutcheon with the push-button lock barrel and keyhole in its round head (Fig 12.12 items 3-5: the pushbutton assembly, its pear-shaped seal and retaining ring), domed off the lid, pointed at the bottom with a grip ridge down to the point. On the lid's rear fall at x -2905, square to the skin (mgb.rear_fittings_layout); Oliver's photo 25 puts its centre about 770 above the road, which it reaches when the lid's fall is refitted (QA rear finding 2). QA fix round 1 (was a 150 mm bar at 680): photo 25 zoomed, kf062, kf105, kf173.",
+   "notes": "Chrome pear-shaped escutcheon with the push-button lock barrel and keyhole in its round head (Fig 12.12 items 3-5: the pushbutton assembly, its pear-shaped seal and retaining ring), domed off the lid, pointed at the bottom with a grip ridge down to the point. On the lid's rear fall at x -2905, square to the skin (mgb.rear_fittings_layout); Oliver's photo 25 puts its centre about 770 above the road, which it reaches when the lid's fall is refitted (QA rear finding 2). QA fix round 1 (was a 150 mm bar at 680): photo 25 zoomed, kf062, kf105, kf173. QA fix round 2 (kf062, kf104): a rounded teardrop (9 mm end radius, no separate grip ridge); the lock's flange sunk 5 mm further under the lid so it no longer shows through as a bar under the handle.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -15712,7 +15748,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "underseal",
-   "notes": "The sill's middle member (three-member boxed sills, 'case of the bends'): a vertical web with flanged castellations top and bottom.",
+   "notes": "The sill's middle member (three-member boxed sills, 'case of the bends'): a vertical web with flanged castellations top and bottom. QA fix round 2 (kf044, kf048): its bottom flange now inside the sill box, 8 mm above the skin's lower edge (it showed as a black strip below the door).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -15782,7 +15818,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "underseal",
-   "notes": "Square tube through the sill box a third of the way along the door ('jacking apertures', case of the bends).",
+   "notes": "Square tube through the sill box a third of the way along the door ('jacking apertures', case of the bends). QA fix round 2 (kf044, kf048): raised into the sill box, 34 mm above the skin's lower edge (at 230 above the road it hung below the sill as a stub).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -61861,8 +61897,8 @@
    "quantity": 1,
    "partNumbers": [],
    "material": null,
-   "finish": "exhaust_steel",
-   "notes": "From the rear silencer out under the left of the bumper (MGOC Spares: the tail pipe exits on the left-hand side). The rear mounting's pinch clamp grips it on the level run behind the silencer (Sec 46 para 3); it then rises to 365 above the road and runs straight out through a notch in the rear valance's lower edge, its top tight to the valance, ending about 50 mm behind it (QA fix round 1: Oliver's photo 25 scaled on the plate, kf062, kf165, kf166). MGOC Spares say the tail pipe was originally cut at 45 degrees; Oliver's is cut square.",
+   "finish": "exhaust_tail",
+   "notes": "QA fix round 2 (kf058, kf062, kf165): dull steel, not the rusty brown of the rest of the system; the rise is short and steep behind the valance so only the straight run shows, and the square end stands out under the bumper blade, about 20 mm inside the overriders' rear faces. From the rear silencer out under the left of the bumper (MGOC Spares: the tail pipe exits on the left-hand side). The rear mounting's pinch clamp grips it on the level run behind the silencer (Sec 46 para 3); it then rises to 365 above the road and runs straight out through a notch in the rear valance's lower edge, its top tight to the valance, ending about 50 mm behind it (QA fix round 1: Oliver's photo 25 scaled on the plate, kf062, kf165, kf166). MGOC Spares say the tail pipe was originally cut at 45 degrees; Oliver's is cut square.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -84992,6 +85028,25 @@
    "part": "body.brightwork.grille-bar",
    "assembly": "body.brightwork",
    "node": "body--brightwork--grille-bar__1",
+   "stages": [
+    {
+     "axis": [
+      1,
+      0,
+      0
+     ],
+     "order": 3,
+     "distance_mm": 400,
+     "group": "grille"
+    }
+   ],
+   "label": true,
+   "fitted": null
+  },
+  "body.brightwork.grille-backing#1": {
+   "part": "body.brightwork.grille-backing",
+   "assembly": "body.brightwork",
+   "node": "body--brightwork--grille-backing__1",
    "stages": [
     {
      "axis": [
@@ -145944,7 +145999,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-06T21:38:49+00:00",
+ "built": "2026-11-07T00:17:22+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,
