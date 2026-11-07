@@ -118,14 +118,20 @@ BOX_REAR_X = CL.BULKHEAD_X                          # rear flange on the bulkhea
 BOX_WALL_X = K.PEDAL_BOX_FACE_X                     # mounting wall: its front face carries the cylinder flanges
 BOX_FRONT_X = K.PEDAL_BOX_FACE_X + 172.0            # front wall, clear of the clutch cylinder's banjo bolt
 BOX_Y = (-332.0, -184.0)                            # outer faces of the side walls
-BOX_Z = (-114.0, 16.0)                              # underside of the floor (front section), top rim
+BOX_Z = (-114.0 + K.PEDAL_BOX_RAISE, 16.0 + K.PEDAL_BOX_RAISE)   # underside of the floor (front section), top rim
 BOX_T = 1.6
 BOX_FRONT_T = 2.0                                   # mounting wall (clutch_hydraulics BOX_WALL)
 BOX_FLANGE = 18.0                                   # rear flange and top rim widths
-COVER_TOP_Z = 58.0                                  # top of the protecting cover, over the brake cylinder's cap
+COVER_TOP_Z = 58.0 + K.PEDAL_BOX_RAISE                                  # top of the protecting cover, over the brake cylinder's cap
 PIVOT_BOLT_Y = (BOX_Y[1], BOX_Y[0])                 # head on the inboard wall (Sec 24 para 3: head against the clutch pedal end)
 SPRING_ANCHOR_X = K.PEDAL_PIVOT[0] - 26.0           # pull-off spring anchor tabs just ahead of the rear flange (as parts/clutch/pedal.py)
 PEDAL_T = 8.0                                       # pedal plate thickness (as the clutch pedal)
+# QA fix round 1, steering: the column (steering_layout) passes under the box at y -287, right under the brake pedal's
+# line, so the brake pedal's arm joggles outboard below the clevis eye, runs down past the column on ARM_Y and
+# joggles back to the pad's line below it (D: Haynes Fig 9.16 item 1, the RHD brake pedal is a cranked pressing; the
+# arm clears the column's outer tube by 8 mm).
+ARM_Y = -318.0
+ARM_JOG_Z = (K.PEDAL_PIVOT[2] - 57.0, K.PEDAL_PIVOT[2] - 67.0)   # joggle out, from below the clevis eye
 
 # =================================================================================================
 # handbrake (car frame, D): lever on the right of the tunnel between the seats, cable back to the axle

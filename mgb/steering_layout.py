@@ -16,9 +16,8 @@ central horn push with the MG badge.
 Derived (D), not published: every station below. The rack lies ahead of the crossmember on its bosses with
 the pinion on the right (RHD); the column runs back from the pinion, beside the engine, through a tube in
 the right-hand tower of the (RHD) crossmember and the toe board, to the wheel in front of the driver. The
-driver's centre line is P10's (body_layout.DRIVER_Y, under the instruments); the wheel centre is about 590 mm
-above the road (a low seat; the rim top under the instruments) so that the column passes under P8's pedal box
-and master cylinder pipe at the bulkhead.
+driver's centre line is P10's (body_layout.DRIVER_Y, under the instruments); the rim centre is where Oliver's body
+scan puts it (830 mm above the road) and the column passes under P8's pedal box, through the toe board.
 """
 from __future__ import annotations
 
@@ -48,14 +47,18 @@ PINION_MESH = (RACK_X, PINION_Y, RACK_Z + RACK_R + PINION_PITCH_R + 4.0)   # whe
 from mgb import body_layout as BL  # noqa: E402  (P10: facia, instruments over the column)
 # QA fix round 1, cockpit: a circle fitted to 678 points of the rim in Oliver's body scan (mgb.scan_layout) has its
 # centre at x -981, y -294, 830 mm above the road, radius 198.8 (the 16 1/2 in rim's centre line), axis 20 deg to the
-# horizontal (RIM_CENTRE_SCAN). A straight column from the model's pinion (Sec 20: one axis) to there passes through
-# P8's master cylinder, pedal box and brake pedal, so the wheel cannot go there without moving the pedal box or
-# raising the rack (a question for Oliver, PLAN). Held for now: the hub as high (z -5) and as near the scan's y
-# (-345) as the column clears the pedal box and the brake pedal's arm, and 55 mm ahead of the scan's x so the low rim
-# clears the seat cushion's front roll (at the scan's height).
-RIM_CENTRE_SCAN = (-981.0, -294.0, CL.GROUND_Z + 830.0)  # D: Oliver's body scan, rim circle fit (not reachable yet)
+# horizontal (RIM_CENTRE_SCAN).
+# QA fix round 1, steering: the column is the straight line from the pinion (Sec 20: one axis) to that rim centre. It
+# rises at 23.7 deg, which agrees with the scan's 20 deg rim axis, and its upper end lines up with the black column
+# tube in Oliver's kf151 (SfM camera projection). On that line it passes through the toe board (x -440, z +9) under
+# the pedal box, which now stands higher (clutch_layout PEDAL_BOX_RAISE; Haynes Ch 9 Sec 17 para 6: the box is bolted
+# to the toe plate as well as the bulkhead); the brake pedal's arm steps outboard round it (parts/brakes/pedal.py).
+# D: Oliver's body scan, rim circle fit, and the pinion datum; the hub face is DISH below the rim plane on the axis.
+RIM_CENTRE_SCAN = (-981.0, -294.0, CL.GROUND_Z + 830.0)  # D: Oliver's body scan, rim circle fit
 DISH = 62.0                                              # rim plane above (toward the driver) the hub face
-WHEEL_CENTRE = (-866.0, -345.0, -5.0)                    # steering wheel centre (hub face plane), RHD
+_r = [RIM_CENTRE_SCAN[i] - PINION_MESH[i] for i in range(3)]
+_rl = math.sqrt(sum(v * v for v in _r))
+WHEEL_CENTRE = tuple(RIM_CENTRE_SCAN[i] - DISH * _r[i] / _rl for i in range(3))   # hub face plane centre, RHD
 _d = [WHEEL_CENTRE[i] - PINION_MESH[i] for i in range(3)]
 _L = math.sqrt(sum(v * v for v in _d))
 COLUMN_DIR = tuple(v / _L for v in _d)               # up the column, rearward
@@ -70,6 +73,14 @@ def t_at_x(x):
     return (x - PINION_MESH[0]) / COLUMN_DIR[0]
 
 
+def clearance(r, x0, x1):
+    """Solid round the column axis between stations x0 and x1 (for cutting the panels it passes, radius r)."""
+    from build123d import Cylinder, Location
+    from mgb.chassis_geom import frame_to
+    t0, t1 = t_at_x(x0), t_at_x(x1)
+    return frame_to(col((t0 + t1) / 2), COLUMN_DIR) * Cylinder(r, abs(t1 - t0))
+
+
 PINION_T = (-34.0, 70.0)                             # pinion from its lower end (end cover) to its splined top
 PINION_TEETH_T = (-14.0, 14.0)
 PINION_HOUSING_T = (-44.0, 46.0)
@@ -77,7 +88,7 @@ UJ_T = PINION_T[1] + 18.0                            # universal joint centre
 COLUMN_T0 = UJ_T + 18.0                              # inner column's lower splined end
 OUTER_TUBE_T = (t_at_x(150.0), t_at_x(WHEEL_CENTRE[0] + 70.0))
 TOE_BOARD_T = t_at_x(CL.BULKHEAD_X - 40.0)           # bottom bracket (65) and draught excluder (69)
-UPPER_CLAMP_T = t_at_x(-780.0)                       # column clamp (59) under the dash
+UPPER_CLAMP_T = t_at_x(-735.0)                       # column clamp (59) under the dash, 40 mm ahead of the facia
 WHEEL_T = _L
 COLUMN_TOP_T = WHEEL_T + 22.0                        # threaded top for the wheel nut
 OUTER_TUBE_R = 0.75 * IN                             # 1 1/2 in outer tube (D)

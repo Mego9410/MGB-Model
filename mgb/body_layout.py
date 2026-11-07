@@ -79,7 +79,8 @@ SOLENOID = (CL.bx(-60.0), -INNER_WING_Y, -70.0)               # starter solenoid
 FLASHER = (CL.bx(-365.0), -INNER_WING_Y, 10.0)
 OD_RELAY = (CL.bx(-240.0), INNER_WING_Y, 30.0)                # overdrive relay on the left-hand valance
 OD_VACUUM_SWITCH = (BULKHEAD_X, 300.0, 60.0)           # on the left of the bulkhead (MGOC: P5b note)
-HARNESS_GROMMET = (BULKHEAD_X, -330.0, 120.0)          # main harness through the bulkhead, right side, high
+HARNESS_GROMMET = (BULKHEAD_X, -330.0, 190.0)          # main harness through the bulkhead, right side, high (above P8's
+                                                       # pedal box, raised in QA fix round 1, steering)
 CABLE_GROMMET = (BULKHEAD_X - 40.0, -355.0, -330.0)    # battery cable up through the toe board beside the footwell
 
 # ---- scuttle, windscreen and facia (D) ---------------------------------------------------------------

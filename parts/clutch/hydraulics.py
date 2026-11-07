@@ -297,7 +297,12 @@ PIPE_NUT_TOP = BR_Z + BRACKET_T + 23.0          # top of the pipe's union nut in
 
 def pipe_points():
     s = _stub_end()
-    return [s, (s[0], s[1] - 6.0, s[2] - 6.0), (s[0] - 4.0, s[1] - 14.0, s[2] - 16.0), (BR_X + 40.0, BR_Y + 4.0, s[2] - 20.0),
+    # QA fix round 1, steering: through the mounting wall into the box's rear section and down its open bottom
+    # inboard of the steering column (y -250; the column passes under the box at y -287), then out to the bracket
+    # below the column (D: clear of the column's outer tube by 15 mm).
+    yc = -250.0
+    return [s, (s[0], s[1] - 6.0, s[2] - 6.0), (s[0] - 4.0, s[1] - 14.0, s[2] - 16.0), (BR_X + 40.0, yc, s[2] - 16.0),
+            (K.PEDAL_BOX_FACE_X - 25.0, yc, s[2] - 24.0), (K.PEDAL_BOX_FACE_X - 25.0, yc, -80.0),
             (BR_X, BR_Y, PIPE_NUT_TOP + 16.0), (BR_X, BR_Y, PIPE_NUT_TOP - 2.0)]
 
 

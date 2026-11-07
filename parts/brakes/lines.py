@@ -135,13 +135,16 @@ def switch_washer(spec) -> Part:
 # pipes (car frame)
 # =================================================================================================
 def mc_pipe_points():
-    """Fig 9.1 item 1: master cylinder banjo down through the box floor, back under the box outboard of the brake
-    pedal, then down to the four-way connection's inlet."""
+    """Fig 9.1 item 1: master cylinder banjo down through the box floor, back under the box and outside its outer wall,
+    outboard of the steering column and the brake pedal's arm (steering_layout, under the box since QA fix round 1), down past it and in to the four-way connection's
+    inlet (D: route clear of the column's outer tube by 16 mm)."""
     s = M.stub_end()
     p, d = four_way_ports()["inlet"]
     zf = B.BOX_Z[0]
-    yo = B.MC_Y - 16.0
-    return [p, (p[0], p[1], p[2] + 22.0), (p[0] - 6.0, yo, zf - 36.0), (s[0] - 40.0, yo, zf - 30.0), (s[0], s[1], zf - 22.0), s]
+    yo = B.BOX_Y[0] - 6.0                          # outside the box's outer wall, clear of the brake arm
+    xb = CL.BULKHEAD_X + 15.0
+    return [p, (p[0], p[1], p[2] + 22.0), (p[0] - 4.0, p[1], -130.0), (xb, yo, -90.0), (xb, yo, zf - 20.0),
+            (s[0] - 40.0, yo, zf - 18.0), (s[0], s[1], zf - 14.0), s]
 
 
 def mc_pipe(spec) -> Part:

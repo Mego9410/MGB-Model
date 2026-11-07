@@ -74,7 +74,7 @@ parts:
     haynes: { section: 9, figures: [{ figure: "9.1", legend: 1 }] }
     quantity: 1
     finish: copper
-    notes: "Brazed into the banjo (parts/brakes/master.py), down through the grommet in the pedal box floor, back under the box outboard of the brake pedal and down to the connection; tube nut at the connection. Route derived."
+    notes: "Brazed into the banjo (parts/brakes/master.py), down through the grommet in the pedal box floor, back under the box along its outboard wall, down past the steering column (16 mm clear; QA fix round 1, steering) and in to the connection; tube nut at the connection. Route derived."
     specs:
       outside_diameter: { in: 0.1875, mm: 4.7625, source: { label: D, method: "3/16 in brake pipe, as the clutch pipe; not in Haynes" } }
 

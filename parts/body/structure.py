@@ -221,15 +221,18 @@ def bulkhead(spec):
             p = p + xprism([(a[0], a[1] - T), (b[0], b[1] - T), (b[0], b[1]), (a[0], a[1])], BH_X - 40.0, BH_X)
     # pedal box aperture and bolts (P8)
     from parts.brakes import master as MS
-    ap = G.rounded_rect(-328.0, -188.0, -98.0, 14.0, 10.0)
+    bz0, bz1 = BK.BOX_Z
+    ap = G.rounded_rect(-328.0, -188.0, bz0 + 16.0, bz1 - 2.0, 10.0)
     p = p - xprism(ap, x0 - 5, BH_X + 5)
-    for yp in (-215.0, -290.0):                  # the pedal arms' slots below the aperture (P8: arms cross at z -140)
-        p = p - xprism(G.rounded_rect(yp - 17.0, yp + 17.0, -185.0, -96.0, 12.0), x0 - 5, BH_X + 5)
+    # the pedal arms' slots below the aperture: they cross the panel about 105 below the pivot (the brake arm on its
+    # joggled line outboard of the steering column, P8 brake_layout ARM_Y; QA fix round 1, steering)
+    for yp in (CLU.MC_Y, BK.ARM_Y):
+        p = p - xprism(G.rounded_rect(yp - 17.0, yp + 17.0, CLU.PEDAL_PIVOT[2] - 150.0, bz0 + 20.0, 12.0), x0 - 5, BH_X + 5)
     for y, z in MS.box_bolts():
         p = p - xcyl(4.2, x0 - 5, BH_X + 5, y, z)
     # grommets: main harness (P10), speedometer / oil gauge / temperature capillary on the right
     hx, hy, hz = BL.HARNESS_GROMMET
-    for y, z, r in ((hy, hz, 15.0), (-250.0, 105.0, 11.0), (-210.0, 105.0, 8.0), (-170.0, 105.0, 8.0)):
+    for y, z, r in ((hy, hz, 18.0), (-250.0, GAUGE_Z, 11.0), (-210.0, GAUGE_Z, 8.0), (-170.0, GAUGE_Z, 8.0)):
         p = p - xcyl(r, x0 - 5, BH_X + 5, y, z)
     fx, fy, fz = BK.FOUR_WAY
     p = p - xcyl(4.2, x0 - 5, BH_X + 5, fy, fz + 0.0)
@@ -252,6 +255,7 @@ def bulkhead(spec):
 
 
 BH_STEP_Y = 600.0                          # the step runs between the inner wings
+GAUGE_Z = BK.BOX_Z[1] + BK.BOX_FLANGE + 18.0   # speedometer, oil gauge and capillary grommets, over P8's pedal box flange
 
 
 def _upper_top_z(y):
@@ -285,6 +289,9 @@ def bulkhead_upper(spec):
     mx, my, mz = BL.WIPER_MOTOR
     p = p - xprism(G.rounded_rect(my - 80.0, BH_STEP_Y + 30.0, Z_SHELF + T + 2.0, mz + 80.0, 20.0), BH2_X - 5, BH2_X + 5)
     p = p - xcyl(6.0, BH2_X - 5, BH2_X + 5, 470.0, H(700.0))              # bonnet release cable grommet
+    # QA fix round 1, steering: the column on its scan line rises through the shelf and the upper face over the
+    # driver's footwell (an open question: Oliver's engine-bay scan suggests the panel there is lower and sloped)
+    p = p - ST.clearance(26.0, BH_X - 20.0, BH2_X - 40.0) - ST.clearance(52.0, BH_X + 5.0, BH_X - 75.0)
     return _l(p, spec)
 
 
@@ -297,8 +304,8 @@ def bulkhead_brackets(spec):
     from mgb import throttle_layout as TL
     out = []
     hx, hy, hz = BL.HARNESS_GROMMET
-    groups = [((hy - 30.0, -150.0), max(hz, 105.0) + 30.0, [(hy, hz, 15.0), (-250.0, 105.0, 11.0), (-210.0, 105.0, 8.0),
-                                                            (-170.0, 105.0, 8.0)])]
+    groups = [((hy - 30.0, -150.0), max(hz, GAUGE_Z) + 30.0, [(hy, hz, 18.0), (-250.0, GAUGE_Z, 11.0), (-210.0, GAUGE_Z, 8.0),
+                                                              (-170.0, GAUGE_Z, 8.0)])]
     cx, cy, cz = TL.CHOKE_GROMMET
     groups.append(((cy - 26.0, cy + 26.0), cz + 22.0, [(cy, cz, 5.8)]))
     vx, vy, vz = BL.OD_VACUUM_SWITCH
@@ -307,10 +314,15 @@ def bulkhead_brackets(spec):
         if abs(pt[0] - BH_X) < 30.0 and pt[2] > Z_SHELF + T + 5.0:
             groups.append(((pt[1] - 22.0, pt[1] + 22.0), pt[2] + 20.0, [(pt[1], pt[2], 2.4)]))
     for (y0, y1), zt, holes in groups:
-        plate = box(BH_X - 1.6, BH_X, y0, y1, Z_SHELF + T - 0.05, zt)
+        plate = box(BH_X - T, BH_X, y0, y1, Z_SHELF + T - 0.05, zt)
         plate = plate + box(BH_X - 30.0, BH_X, y0, y1, Z_SHELF + T - 0.05, Z_SHELF + T + 1.6)
         for y, z, r in holes:
             plate = plate - xcyl(r, BH_X - 5, BH_X + 5, y, z)
+        from parts.brakes import master as MS
+        for y, z in MS.box_bolts():                          # P8's pedal box bolts above the shelf (box raised, QA round 1)
+            if y0 < y < y1 and z > Z_SHELF + T + 5.0:
+                plate = plate - xcyl(4.2, BH_X - 5, BH_X + 5, y, z)
+        plate = plate - ST.clearance(58.0, BH_X + 5.0, BH_X - 50.0)   # the column's toe mount and blanking plate below
         out.append(plate)
     return _c(out, spec)
 
@@ -405,17 +417,30 @@ def wiper_motor_bracket(spec):
 
 
 def column_top_bracket(spec):
-    """Steering column upper bracket under the facia (P9 COLUMN_TOP_CLAMP, Fig 11.6 item 59 clamps to it): a pressed
-    channel hung from the facia rail with the clamp's two bolt holes."""
+    """Steering column upper bracket under the facia (P9 COLUMN_TOP_CLAMP, Fig 11.6 item 59 clamps to it): a pad square
+    to the column under the clamp's top plate, with its two bolt holes, on a pressed arm run forward to a flange
+    welded to the bulkhead's upper face. QA fix round 1, steering: the column now rises to the scan's rim
+    (steering_layout), between the speedometer and the tachometer, so the bracket comes from the bulkhead instead of
+    hanging from the facia rail through the instruments; the arm runs inboard of the dip switch leads (D)."""
+    from mgb.chassis_geom import frame_to
+    from build123d import Vector
     cx, cy, cz = ST.COLUMN_TOP_CLAMP
-    rail_z = facia_rail_z()[0]
-    zt = cz + 22.0
-    x0 = FACIA_RAIL_X[1] - 6.0
-    web = box(cx - 24.0, x0, cy - 50.0, cy + 50.0, zt, zt + 2.0)
-    legs = [box(x0 - 2.0, x0, cy - 50.0, cy + 50.0, zt, rail_z), box(-762.0, -760.0, cy - 50.0, cy + 50.0, zt, rail_z)]
-    p = G.fuse([web] + legs)
-    for dy in (-38.0, 38.0):
-        p = p - zcyl(4.2, zt - 2, zt + 4, cx, cy + dy)
+    d = Vector(*ST.COLUMN_DIR)
+    loc = frame_to(ST.COLUMN_TOP_CLAMP, ST.COLUMN_DIR, (0.0, 0.0, 1.0))
+    r0 = ST.OUTER_TUBE_R + 0.2 + 26.0                    # the clamp's top plate face (parts/chassis/steering.py)
+    pad = loc * box(r0, r0 + 2.0, -42.0, 42.0, -26.0, 26.0)
+    for yy in (-30.0, 30.0):
+        pad = pad - loc * Location((r0 + 1.0, yy, 0.0)) * Rot(0, 90, 0) * zcyl(4.3, -3.0, 3.0)
+    u = loc.wrapped.Transformation()
+    up = Vector(u.Value(1, 1), u.Value(2, 1), u.Value(3, 1))
+    front = Vector(cx, cy, cz) + up * (r0 + 2.0) - d * 26.0           # the pad's front top edge
+    za, xa = front.Z, front.X
+    y0, y1 = cy - 6.0, cy + 34.0
+    xf = BH2_X - T
+    arm = box(xa - 0.5, xf, y0, y1, za - 2.0, za)
+    sides = [box(xa - 0.5, xf, y, y + 2.0, za, za + 16.0) for y in (y0, y1 - 2.0)]
+    foot = box(xf - 2.0, xf, y0, y1, za - 2.0, za + 36.0)
+    p = G.fuse([pad, arm, foot] + sides)
     return _l(p, spec)
 
 

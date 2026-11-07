@@ -84,7 +84,9 @@ def facia(spec):
     flange = box(x0, x0 + 22.0, -420.0, 420.0, H(FACIA_H[0] + 20.0), H(FACIA_H[0] + 21.2))
     plates = [box(_fx(s * FACIA_W) - 30.0, _fx(s * FACIA_W), s * FACIA_W - (1.2 if s > 0 else 0.0), s * FACIA_W + (0.0 if s > 0 else 1.2),
                   H(FACIA_H[0] + 30.0), H(FACIA_H[1] - 40.0)) for s in (1, -1)]
-    return _c([p, flange] + plates, spec)
+    from mgb import steering_layout as SLY
+    cut = SLY.clearance(48.0, FX + 60.0, FX - 120.0)      # QA fix round 1, steering: notch for the column and its switch
+    return _c([p - cut, flange - cut] + plates, spec)
 
 
 def centre_panel(spec):
@@ -218,7 +220,9 @@ def binnacle(spec):
     shell = xprism(outer, x0 - 45.0, x0) - xprism(inner, x0 - 46.0, x0 + 1.0)
     visor = xprism(outer, x0 - 63.0, x0 - 44.0) & box(x0 - 64.0, x0, yc - half - 1, yc + half + 1, z + 34.0, z + 61.0)
     visor = visor - xprism(inner, x0 - 64.0, x0)
-    return _c([shell, visor], spec)
+    from mgb import steering_layout as SLY
+    cut = SLY.clearance(48.0, FX + 60.0, FX - 120.0)      # QA fix round 1, steering: notch for the column and its switch
+    return _c([shell - cut, visor - cut], spec)
 
 
 ROLL_W = S.SCREEN_HALF_W - 12.0               # the roll's ends stop inside the screen pillars (not seen from outside)
@@ -601,6 +605,9 @@ def bulkhead_felt(spec):
     for q in (St.column_toe_mount(_Id()), br):
         bb = q.bounding_box()
         f = f - box(bb.min.X - 3.0, bb.max.X + 3.0, bb.min.Y - 3.0, bb.max.Y + 3.0, bb.min.Z - 3.0, bb.max.Z + 3.0)
+    from parts.brakes import master as MS                   # P8's pedal box bolts: nuts and washers on the cabin face
+    for y, z in MS.box_bolts():
+        f = f - xcyl(12.0, St.BH_X - 20.0, St.BH_X + 1.0, y, z)
     # QA fix 2 (kf151: the body colour still showed above the pedals): on up under the shelf and over the upper face's
     # cabin side to the scuttle, with the upper face's openings (heater, screws, wiper motor, bonnet cable) and the
     # shelf's drain tubes left clear

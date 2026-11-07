@@ -47,6 +47,50 @@ def _moved(fn):
     return build
 
 
+def _jog_path():
+    """Brake arm centre line (car frame): the clutch pedal's arm moved to the brake line, joggled outboard to
+    brake_layout ARM_Y below the clevis eye and back to the pad's line once below the steering column."""
+    pts = CP._arm_points()                      # (x, z) of the clutch arm: pivot, down, bend, above the pad, pad
+    zo, zi = B.ARM_JOG_Z
+    (x0, z0), (x1, z1), (x2, z2), prev, end = pts
+    back = (x2 + 0.35 * (prev[0] - x2), z2 + 0.35 * (prev[1] - z2))    # back on the pad's line below the column
+    return [(x0, B.MC_Y, z0), (x0, B.MC_Y, zo), (x0, B.ARM_Y, zi), (x1, B.ARM_Y, z1), (x2, B.ARM_Y, z2),
+            (back[0], B.MC_Y, back[1]), (prev[0], B.MC_Y, prev[1]), (end[0], B.MC_Y, end[1])]
+
+
+def brake_pedal(spec) -> Part:
+    """Item 1 (RHD): the clutch pedal's pressing, cranked outboard round the steering column (brake_layout ARM_Y)."""
+    from build123d import Box, FilletPolyline, Plane, Rectangle, sweep, Align
+    pts = _jog_path()
+    path = None
+    for rr in (14.0, 8.0, 4.0):
+        try:
+            path = FilletPolyline(*pts, radius=rr)
+            break
+        except ValueError:
+            continue
+    prof = Plane(origin=path.position_at(0), z_dir=path.tangent_at(0), x_dir=(0, 1, 0)) * Rectangle(CP.T, 24.0)
+    p = sweep(prof, path=path)
+    py, T = B.MC_Y, CP.T
+    cx, _, cz = B.PEDAL_CLEVIS
+    ax, _, az = B.PEDAL_PAD
+    p = p + ycyl(16.0, py - T / 2, py + T / 2, PX, PZ) + ycyl(13.0, py - 12.5, py + 12.5, PX, PZ)
+    p = p + ycyl(10.0, py - T / 2, py + T / 2, cx, cz)
+    pl = Plane(origin=(ax, py, az), x_dir=(0, 1, 0), z_dir=CP.PAD_N)
+    p = p + pl.location * Box(50.0, 62.0, 3.0, align=(Align.CENTER, Align.CENTER, Align.MAX))
+    p = p + pl.location * Box(20.0, 50.0, 3.0, align=(Align.CENTER, Align.CENTER, Align.MAX)).moved(Location((0, 0, -2.9)))
+    p = p - ycyl(spec.nom("bush_bore") / 2, py - 20, py + 20, PX, PZ)
+    p = p - ycyl(4.1, py - 10, py + 10, cx, cz)
+    sx, sz = CP.SPRING_PEDAL
+    p = p - ycyl(2.2, B.ARM_Y - 10, B.ARM_Y + 10, sx, sz)
+    return lab(p, spec)
+
+
+def return_spring(spec) -> Part:
+    """Pull-off spring (item 10) from the hole in the arm, on the arm's joggled part, to its tab on the box."""
+    return lab(Location((0, B.ARM_Y - K.PEDAL_PIVOT[1], 0)) * CP.return_spring(spec), spec)
+
+
 def spacer(which):
     def build(spec) -> Part:
         y0, y1 = stack()[which]
@@ -95,11 +139,11 @@ def clevis_split_pin(spec) -> Part:
 
 
 PARTS = {
-    "brakes.pedal.pedal": {"build": _moved(CP.pedal)},
+    "brakes.pedal.pedal": {"build": brake_pedal},
     "brakes.pedal.bush": {"build": _moved(CP.bush)},
     "brakes.pedal.distance-tube": {"build": _moved(CP.distance_tube)},
     "brakes.pedal.pad": {"build": _moved(CP.pad)},
-    "brakes.pedal.return-spring": {"build": _moved(CP.return_spring)},
+    "brakes.pedal.return-spring": {"build": return_spring},
     "brakes.pedal.clevis-pin": {"build": _moved(CP.clevis_pin)},
     "brakes.pedal.clevis-washer": {"build": clevis_washer},
     "brakes.pedal.clevis-split-pin": {"build": clevis_split_pin},

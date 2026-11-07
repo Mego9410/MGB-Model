@@ -365,7 +365,7 @@ def capillary(spec) -> Part:
     gy -= 8.0
     gz -= 6.0
     pts = [(tx, ty - 14.0, tz), (tx, ty - 40.0, tz + 4.0), (tx - 40.0, -170.0, -20.0), (-150.0, -175.0, -20.0),
-           (BL.BULKHEAD_X + 30.0, -152.0, -30.0), (BL.BULKHEAD_X - 40.0, -152.0, -25.0), (BL.BULKHEAD_X - 130.0, -412.0, 55.0),
+           (BL.BULKHEAD_X + 30.0, -152.0, -30.0), (BL.BULKHEAD_X - 40.0, -152.0, -25.0), (BL.BULKHEAD_X - 70.0, -300.0, -22.0), (BL.BULKHEAD_X - 130.0, -412.0, 55.0),
            (BL.BULKHEAD_X - 170.0, -575.0, 105.0), (gx + 150.0, gy - 35.0, gz - 80.0), (gx + 20.0, gy, gz), (gx, gy, gz)]
     c = X.cable(pts, spec.nom("diameter"), 50.0)
     return label(c, spec)

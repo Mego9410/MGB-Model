@@ -72,8 +72,16 @@ TRUNNION_R = 56.0                   # pins pass through the fork ends here (ends
 # pushrods back to the pedals, which hang from a common pivot in the box. RHD: the clutch is
 # the inboard cylinder and pedal.
 PEDAL_BOX_FACE_X = C.BULKHEAD_X + 75.0          # master cylinder flange face (front of the pedal box)
-MC_Y, MC_Z = -215.0, -70.0                      # clutch master cylinder axis
+# QA fix round 1, steering: the box (and with it both cylinders, the pivot and the clevises) stands PEDAL_BOX_RAISE
+# higher than first drawn, so that the steering column on its straight line from the pinion to the rim in Oliver's
+# body scan (steering_layout) passes under the box's floor and through the toe board below it (Haynes Ch 11 Fig 11.6
+# items 59/65/69: column bracket at the toe board; Ch 9 Sec 17 para 6: the box is bolted to the toe plate as well as
+# the bulkhead; Oliver's kf151: the pedals hang from high up under the facia with the column above them). D: the
+# least round-figure raise that clears the column's outer tube by 24 mm under the box floor and 10 mm under the
+# spring anchor bar. The pads stay where they were (PEDAL_PAD).
+PEDAL_BOX_RAISE = 120.0
+MC_Y, MC_Z = -215.0, -70.0 + PEDAL_BOX_RAISE    # clutch master cylinder axis
 PEDAL_PIVOT = (C.BULKHEAD_X + 30.0, MC_Y, MC_Z + 45.0)   # pedal pivot in the box, axis along Y
 PEDAL_CLEVIS = (C.BULKHEAD_X + 30.0, MC_Y, MC_Z)          # pushrod clevis pin on the pedal
-PEDAL_PAD = (C.BULKHEAD_X - 165.0, MC_Y, MC_Z - 215.0)    # centre of the pad face, in the footwell
+PEDAL_PAD = (C.BULKHEAD_X - 165.0, MC_Y, -285.0)          # centre of the pad face, in the footwell (unchanged by the raise)
 HOSE_BRACKET = (C.bx(-330.0), -268.0, -150.0)   # pipe-to-hose bracket on the right-hand chassis leg (body station)

@@ -218,7 +218,9 @@ parts:
     notes: >
       RHD pipe from the master cylinder banjo down the bulkhead to the hose at its bracket
       (Fig 5.3 inset), with its union nut. Run derived: Fig 5.3 shows it dropping from the
-      master cylinder to the bracket; the bracket position is in mgb/clutch_layout.py.
+      master cylinder to the bracket; the bracket position is in mgb/clutch_layout.py. QA fix round 1,
+      steering: through the mounting wall and down the box's open rear section inboard of the steering column
+      (15 mm clear), then out to the bracket below it (D).
     specs:
       outside_diameter: { in: 0.1875, mm: 4.76, source: { label: D, method: "3/16 in brake pipe, the usual size for these systems; not in Haynes" } }
 

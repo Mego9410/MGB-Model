@@ -209,7 +209,7 @@ def anchor_points():
     from parts.clutch import pedal as CP
     zc_ = K.PEDAL_PIVOT[2] - 58.0
     yc = K.PEDAL_PIVOT[1] + CP.T / 2 + 4.5
-    yb = B.MC_Y + B.PEDAL_T / 2 + 4.5
+    yb = B.ARM_Y + B.PEDAL_T / 2 + 4.5          # the brake arm's joggled part (brake_layout ARM_Y)
     return {"clutch": (B.SPRING_ANCHOR_X, yc, zc_), "brake": (B.SPRING_ANCHOR_X, yb, zc_)}
 
 

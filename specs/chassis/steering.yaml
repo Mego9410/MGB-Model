@@ -358,14 +358,14 @@ parts:
       Early wheel with an integral boss (Sec 18 para 2): black acetate rim with finger grips, the black cast hub boss
       with three flat arms in a Y (the wire sockets at their ends) and black clamp blocks gripping the wires inside the
       rim (Oliver's kf121, kf148 zoomed; MGOC: three-spoke banjo wheel, black rim and hub). The polished wires are
-      chassis.steering.wheel-spokes. Placed: near the circle fitted to the rim in Oliver's body
-      scan (mgb.steering_layout RIM_CENTRE_SCAN: x -981, y -294, 830 above the road, axis 20 deg); its height and y
-      cannot be reached yet (held 55 mm ahead of the scan's x so the low rim clears the cushion) - a straight column from the pinion to there passes through P8's master cylinder and pedal
-      box (question in PLAN). Spokes two 28 deg below the horizontal and one straight down (kf121). Dish, arm and
+      chassis.steering.wheel-spokes. Placed on the circle fitted to the rim in Oliver's body
+      scan (mgb.steering_layout RIM_CENTRE_SCAN: x -981, y -294, 830 above the road, axis 20 deg), on the straight
+      column from the pinion (23.7 deg; QA fix round 1, steering: the pedal box raised so the column passes under it
+      through the toe board). Spokes two 28 deg below the horizontal and one straight down (kf121). Dish, arm and
       clamp sizes derived from kf121 scaled on the rim.
     specs:
       diameter: { in: 16.5, mm: 419.1, source: { label: S, ref: "https://www.mgocspares.co.uk/parts/mg/mgb/interior/steering-wheels/oe-steering-wheel", note: "16 1/2 in three-spoke banjo wheel, 1962-69" } }
-      rim_centre_height_scan: { mm: 830.0, display_only: true, source: { label: D, method: "Oliver's body scan: circle fitted to 678 rim points, centre 830 mm above the road, radius 198.8, axis 20 deg to the horizontal (not yet reached, see notes)" } }
+      rim_centre_height_scan: { mm: 830.0, display_only: true, source: { label: D, method: "Oliver's body scan: circle fitted to 678 rim points, centre 830 mm above the road, radius 198.8, axis 20 deg to the horizontal ; the rim centre is placed there" } }
 
   - id: chassis.steering.wheel-spokes
     name: Steering wheel spoke wires

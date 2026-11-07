@@ -74,13 +74,15 @@ def _extend(pts, d):
 
 
 def grommet(spec) -> Part:
-    """Rubber grommet: a flanged ring each side of the bulkhead (1 mm panel) round the harness."""
+    """Rubber grommet: a flanged ring each side of the bulkhead round the harness, its groove on the panel (the
+    1.2 mm plate behind the face at HARNESS_GROMMET x, body.structure bulkhead-brackets)."""
     e = WL.layout()["edges"][("gr.bay", "gr.cab")]
     ri = e["radius"] + 0.4
     ro = spec.nom("flange_diameter") / 2
     x0 = BL.HARNESS_GROMMET[0]
-    prof = [(ri, -9.0), (ri + 2.0, -9.0), (ro, -3.0), (ro, -0.5), (ri + 5.0, -0.5), (ri + 5.0, 0.5), (ro, 0.5), (ro, 3.0),
+    prof = [(ri, -9.0), (ri + 2.0, -9.0), (ro, -3.0), (ro, -0.7), (ri + 5.0, -0.7), (ri + 5.0, 0.7), (ro, 0.7), (ro, 3.0),
             (ri + 2.0, 9.0), (ri, 9.0)]
+    x0 -= 0.6
     g = Plane(origin=(x0, BL.HARNESS_GROMMET[1], BL.HARNESS_GROMMET[2]), z_dir=(1, 0, 0)).location * rev(prof)
     return label(g, spec)
 

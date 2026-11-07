@@ -161,7 +161,7 @@ NODES = {
 
 # (a, b, intermediate points, sleeved) - sleeved paths are the braided main runs of the harness
 EDGES = [
-    ("gr.bay", "bay.flasher", [(GX + 40.0, RY + 8.0, RZ)], True),
+    ("gr.bay", "bay.flasher", [(GX + 24.0, -412.0, GZ - 4.0), (GX + 40.0, RY + 8.0, RZ)], True),   # over P11a's fuel pipe
     ("bay.flasher", "bay.fuse", [], True), ("bay.fuse", "bay.cb", [], True), ("bay.cb", "bay.sol", [], True),
     ("bay.sol", "bay.eng", [], True), ("bay.eng", "bay.fr", [], True),
     ("bay.fr", "bay.corner.R", [(400.0, RY + 20.0, 90.0)], True), ("bay.corner.R", "bay.front.R", [], True),

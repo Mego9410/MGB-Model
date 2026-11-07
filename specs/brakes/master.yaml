@@ -212,7 +212,11 @@ parts:
       the front section round the cylinders with a floor (grommet hole for the brake pipe), a front wall and a
       rim the protecting cover screws to; a flange round its rear edge on the bulkhead with six bolt holes (Sec 19
       para 7, later box); the anchor bar inside the rear flange with tabs for the two pedal pull-off springs.
-      Form from Fig 9.16 item 11 and photo 1.1; every size and position derived (mgb/brake_layout.py). P11 builds
+      Form from Fig 9.16 item 11 and photo 1.1; every size and position derived (mgb/brake_layout.py). Height
+      (QA fix round 1, steering): 120 mm higher than first drawn (clutch_layout PEDAL_BOX_RAISE), so the steering
+      column on its scan line (steering_layout) passes under the floor (24 mm clear) and through the toe board
+      below the box (Ch 9 Sec 17 para 6: the box also bolts to the toe plate; Oliver's kf151: pedals hung from high
+      under the facia). P11 builds
       the bulkhead it bolts to and the toe board slots the pedals pass through.
     specs:
       thickness: { mm: 1.6, source: { label: D, method: "Pressed steel" } }

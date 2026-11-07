@@ -101,11 +101,13 @@ MAIN_START = (U.HEELBOARD_X - 8.0, -352.0, -262.0)        # union on the heelboa
 HOSE_Z = OUTLET_TIP[2] + 26.0                    # the pump hose's run over the pump to the heelboard
 PUMP_HOSE = [(OUTLET_TIP[0], OUTLET_TIP[1], OUTLET_TIP[2] + 3.5), (OUTLET_TIP[0], OUTLET_TIP[1], HOSE_Z),
              (MAIN_START[0] - 8.0, MAIN_START[1] + 40.0, HOSE_Z), (MAIN_START[0], MAIN_START[1], MAIN_START[2] + 8.0)]
+from mgb.clutch_layout import PEDAL_BOX_RAISE as _PEDAL_BOX_RAISE  # noqa: E402
 FLOOR_Y = -370.0                                 # under the floor outboard of P10's battery cable (y -300 to -355)
                                                  # and P8's rear brake pipe (y -270)
 FLOOR_PIPE_Z = U.FLOOR_Z - 10.0
 UP_Y = -385.0                                    # up the bulkhead outboard of the pedal box flange (y -346) and P8's pipes
-CROSS_Z = 70.0                                   # across the bulkhead above the pedal box, by the heater (MGOC)
+CROSS_Z = 46.0 + _PEDAL_BOX_RAISE                # across the bulkhead above the pedal box, by the heater (MGOC): 8 mm over
+                                                 # the box's rear flange, raised with it (QA fix round 1, steering)
 BULK_X = CL.BULKHEAD_X + 9.0
 FEED_END_X = -70.0                               # P3's feed union nut on the hose end (parts/fuel/pipes FEED_END)
 FEED_Y, FEED_Z = 204.0, -82.0

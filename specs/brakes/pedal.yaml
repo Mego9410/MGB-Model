@@ -18,7 +18,10 @@ parts:
       Pressed-steel pedal on the common pivot in the pedal box, outboard of the clutch pedal (RHD), the pushrod
       clevis just below the pivot, the arm cranked back under the box and through the toe board to the pad
       (Fig 9.16 item 1). Drawn as the clutch pedal's form on the brake cylinder's line: the two pads side by side
-      at the same height. Lengths derived (mgb/clutch_layout.py).
+      at the same height. QA fix round 1, steering: the steering column passes under the raised box on the brake
+      line, so the arm joggles 28 mm outboard below the clevis eye (brake_layout ARM_Y), runs down past the column
+      8 mm clear and joggles back to the pad's line below it (D: Fig 9.16 item 1, the RHD pedal is cranked; the pull-off
+      spring hooks to the joggled part). Lengths derived (mgb/clutch_layout.py).
     specs:
       bush_bore: { mm: 19.2, source: { label: D, method: "Fits the bush, as the clutch pedal" } }
 

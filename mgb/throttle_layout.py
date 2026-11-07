@@ -25,6 +25,7 @@ cable shares the bracket and the run, then crosses the bulkhead through its grom
 from __future__ import annotations
 
 from mgb import body_layout as BL, car_layout as C, carb_layout as K, underbody_layout as U
+from mgb.clutch_layout import PEDAL_BOX_RAISE
 
 IN = 25.4
 PANEL_T = 1.2                                          # body panels (parts/body/structure.py T)
@@ -131,13 +132,14 @@ CHOKE_FERRULE = (CHOKE_LEVER_X + TRUNNION_DX, ROD[0], FLANGE_TOP)
 # outboard rear corner
 COVER_CLIP = (-300.0, -300.0)          # (x, y) on the cover top
 COVER_CLIP_SCREW_DX = 10.5             # the clip's screw, forward of the band
-COVER_CLIP_Z = 58.6                    # the cover's top face there (probed on parts/brakes/master.py cover)
+COVER_CLIP_Z = 58.6 + PEDAL_BOX_RAISE   # the cover's top face there (probed on parts/brakes/master.py cover; the box
+                                       # raised in QA fix round 1, steering: clutch_layout PEDAL_BOX_RAISE)
 FERRULE_L = 14.0                       # crimped ferrules on the outers
 THROTTLE_OUTER = [
     (THROTTLE_FERRULE[0], THROTTLE_FERRULE[1], FLANGE_TOP + FERRULE_L), (THROTTLE_FERRULE[0], ACCEL_PIN[0], 132.0),
     (-30.0, 182.0, 160.0), (-150.0, 160.0, 160.0),
-    (-246.0, 150.0, 156.0), (-270.0, 100.0, 140.0), (-280.0, -110.0, 118.0), (-292.0, -230.0, 82.0),
-    (COVER_CLIP[0], COVER_CLIP[1], COVER_CLIP_Z + 7.4), (-306.0, -342.0, 64.0), (-316.0, -366.0, 30.0), (-332.0, -368.0, -56.0), (-352.0, -404.0, -112.0),
+    (-246.0, 150.0, 158.0), (-270.0, 100.0, 162.0), (-280.0, -110.0, 172.0), (-292.0, -230.0, 186.0),
+    (COVER_CLIP[0], COVER_CLIP[1], COVER_CLIP_Z + 7.4), (-306.0, -342.0, 176.0), (-316.0, -366.0, 140.0), (-332.0, -368.0, -56.0), (-352.0, -404.0, -112.0),
     (-362.0, PEDAL_Y, GUIDE[2]), (BH + 1.0 + GUIDE_NOSE - 8.0 + FERRULE_L, PEDAL_Y, GUIDE[2]),
 ]
 CHOKE_GROMMET = (BH, 140.0, 132.0)     # choke cable through the bulkhead (grommet 14A7033), left of the heater opening

@@ -123,11 +123,11 @@ glass is fitted through 25 rows (screen.py) so it follows the base's sweep.
     between |y| 305 and 499 at z -113 to -175 (more on rebound): the inner wing valances need openings there. The
     column runs through a tube in the RHD crossmember's right tower (`steering_layout.CROSSMEMBER_TUBE_R`).
   - Steering column top: the clamp (Fig 11.6 item 59) on a body bracket under the facia at
-    `steering_layout.COLUMN_TOP_CLAMP` (x -780, y -338, z -42), just ahead of P10's facia (`body_layout.FACIA_X`; the
+    `steering_layout.COLUMN_TOP_CLAMP` (x -780, y -291, z 159), just ahead of P10's facia (`body_layout.FACIA_X`; the
     wheel is on `DRIVER_Y`), with packing washers; the bottom bracket, blanking plate
-    and draught excluder on the toe board at `COLUMN_TOE_PLATE` (x -440, y -319, z -127): the toe board needs a hole for
-    the 1 1/2 in tube there. The column passes under P8's pedal box and master cylinder pipe and outboard
-    of the brake pedal (the wheel centre about 590 mm above the road, on P10's `DRIVER_Y`); P4's clutch pipe and hose
+    and draught excluder on the toe board at `COLUMN_TOE_PLATE` (x -440, y -287, z 9): the toe board needs a hole for
+    the 1 1/2 in tube there. The column passes under P8's pedal box (raised 120 mm in QA fix round 1, steering), past the
+    brake pedal's joggled arm (the rim centre 830 mm above the road, from Oliver's body scan); P4's clutch pipe and hose
     bracket (`clutch_layout.HOSE_BRACKET`, set on a chassis leg at |y| 268) lie inboard of it, whereas the front
     chassis legs are at |y| 432 (P9's crossmember mountings): P11 should move that bracket onto the leg.
   - Rear springs: front hanger plates either side of the eye on the eyebolt axis `rear_suspension_layout.FRONT_HANGER`
@@ -977,11 +977,8 @@ From FINDINGS-sides-glass (items 2, 4-8, 10, 14-17), measured on Oliver's keyfra
 From FINDINGS-cockpit-wheels.md items 1-28 and 30-35, against Oliver's keyframes (kf041, kf069-075, kf113-160,
 kf181-185, kf226-230) and his body scan:
 - Steering wheel: a circle fitted to the rim in the scan (678 points) puts the rim centre at x -981, y -294, 830 mm
-  above the road, radius 198.8, axis 20 deg (steering_layout RIM_CENTRE_SCAN). Not reachable yet: a straight column
-  from the model's pinion to there passes through P8's master cylinder, pedal box and brake pedal arm (checked by
-  boolean at hub heights 563-805 and y -293 to -390). Held at the highest the column clears (hub z -5, 578 above
-  the road, y -345) and 124 mm further forward than before (hub x -866), so the low rim clears the cushion's front
-  roll, which now has the scan's height. Spokes at
+  above the road, radius 198.8, axis 20 deg (steering_layout RIM_CENTRE_SCAN). (Held low at first; reached in the
+  steering fix below.) Spokes at
   118/180/242 deg with 3/3/2 polished wires; black cast hub arms and rim clamp blocks; the horn push as a black
   moulding, a broad chrome ring and a red enamel MG octagon with chrome letters.
 - Dials: white print (graduations, figures, MPH/RPM legends, HIGH BEAM/IGNITION), the tachometer's amber/red wedge,
@@ -1006,8 +1003,32 @@ kf181-185, kf226-230) and his body scan:
   smooth hub barrel. Front calipers red.
 - Left open: ride height (36). The gear knob sits higher than in the photos (gearbox remote geometry, not changed).
 
-Question for Oliver (QA fix round 1): your steering wheel's rim centre is about 830 mm above the road (scan), 220 mm
-higher than the model can put it. Either the pedal box and master cylinder sit lower/further outboard on your car, or
-the rack and pinion sit higher, or the column is not straight to the pinion. A photo down the right-hand side of the
-engine bay showing the column, the pedal box and the master cylinder would settle which.
+Question for Oliver (QA fix round 1), closed in the steering fix below: the rim centre is now where the scan puts it.
+
+## QA fix round 1, steering (7 Nov 2026)
+
+- Column: the straight line from the pinion to the scan's rim centre (x -981, y -294, 830 above the road). It rises at
+  23.7 deg (the scan's rim axis: 20 deg) and its upper end lies on the black column tube in kf151 (SfM camera
+  projection). It passes through the bulkhead at z -8 and the toe board bracket at x -440, z 9, under the pedal box
+  (Haynes Ch 11 Fig 11.6 items 59/65/69; Ch 9 Sec 17 para 6: the box also bolts to the toe plate). The column switch
+  and its wiring follow the steering_layout datums. The upper clamp moved to x -735 (40 mm ahead of the facia), and
+  its body bracket is now a pad square to the column on an arm from the bulkhead's upper face. The old bracket hung
+  from the facia rail and would have passed through the speedometer. The facia and binnacle have a notch round the
+  column and its switch (r 48). The shelf and upper face have clearance holes where the column rises through them.
+- Pedal box: 120 mm higher (clutch_layout PEDAL_BOX_RAISE), with both master cylinders, the pivot, clevises, springs,
+  the cover and the throttle cable's P-clip on it. The column clears the box floor by 24 mm. The pads stay where they
+  were. The brake pedal's arm joggles 28 mm outboard below the clevis eye (brake_layout ARM_Y, Fig 9.16 item 1 is a
+  cranked pressing), passes the column 8 mm clear and joggles back to the pad. The bulkhead aperture and pedal slots
+  follow the box.
+- Rerouted round the column: the brake master cylinder pipe (outboard, down the box's outer wall), the clutch pipe
+  (inboard, down the box's open rear section), the throttle cable over the higher cover, and the fuel pipe across the
+  bulkhead (now 8 mm over the box's rear flange).
+- The main harness grommet moved up to z 190 and the gauge grommets to z 172, above the box's rear flange. The facia
+  loom now runs over the fuel pipe. The grommet hole is 18 mm, to match the grommet's groove.
+- Oliver's engine-bay scan, section at y -320..-255: parts stand up to about z 150 over x -330..-150 (the box and
+  cylinders, or a servo; the model's cover top is now z 178, against 58 before). The body surface over the driver's
+  footwell, between the bulkhead and the heater, is lower than the model's shelf (z about 10-35 against 42) and
+  slopes with the column. The column's holes in the shelf are a stand-in until that panel is modelled from the scan.
+- Not checked against a photo: the box's exact height. Nothing in Haynes or the keyframes fixes it. It is the least
+  round-figure raise that clears the column. A photo down the right-hand side of the engine bay would confirm it.
 
