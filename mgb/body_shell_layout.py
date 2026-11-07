@@ -666,13 +666,10 @@ SCUTTLE_X = (BONNET_REAR_X, COCKPIT_FRONT_X)
 def mouth_outline(grow=0.0, n=8):
     """Grille opening in front elevation as [(y, z)]: a rounded rectangle whose top edge arches a little with the
     bonnet's front edge."""
-    from mgb.body_shell import fillet_poly
-    w, h0, h1 = MOUTH_Y + grow, MOUTH_BOT_H - grow, MOUTH_TOP_H + grow
-    top = [(w * k / 6, h1 + 8.0 * (1 - (k / 6) ** 2)) for k in range(6, -7, -1)]
-    pts = [(w, h0)] + top[:1] + top[1:-1] + top[-1:] + [(-w, h0)]
-    radii = [MOUTH_END_R + grow] + [MOUTH_END_R + grow] + [0] * (len(top) - 2) + [MOUTH_END_R + grow, MOUTH_END_R + grow]
-    out = fillet_poly(pts, radii, n)
-    return [(yy, z_of(hh)) for yy, hh in out]
+    # QA fix round 3: the opening follows the chrome surround's outline (mgb.grille_layout, kf027/kf218), 13 mm inside
+    # its outer edge so the rolled bar laps the opening all round and no body colour shows between them.
+    from mgb import grille_layout as GL
+    return [(yy, z_of(hh)) for yy, hh in GL.surround_outline(grow - 13.0, n)]
 
 
 # ---- windscreen (Fig 12.7-12.9) and hood ------------------------------------------------------------------------------

@@ -399,7 +399,7 @@
     "body.brightwork.scuttle-vent-intake"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 2228266
+   "bytes": 2228410
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -419,7 +419,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 209254
+   "bytes": 209114
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -460,7 +460,7 @@
     "body.door-mechanisms.door-seal-r"
    ],
    "file": "models/body.door-mechanisms.json",
-   "bytes": 848115
+   "bytes": 847943
   },
   "body.doors": {
    "id": "body.doors",
@@ -501,7 +501,7 @@
     "body.doors.mirror-glass"
    ],
    "file": "models/body.doors.json",
-   "bytes": 503293
+   "bytes": 503057
   },
   "body.front": {
    "id": "body.front",
@@ -525,7 +525,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1102019
+   "bytes": 1115299
   },
   "body.glass": {
    "id": "body.glass",
@@ -552,7 +552,7 @@
     "body.glass.pillar-pad-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 217616
+   "bytes": 218012
   },
   "body.hood": {
    "id": "body.hood",
@@ -573,7 +573,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 864705
+   "bytes": 866437
   },
   "body.interior": {
    "id": "body.interior",
@@ -665,7 +665,7 @@
     "body.interior.heater-knob-print"
    ],
    "file": "models/body.interior.json",
-   "bytes": 3453766
+   "bytes": 3453314
   },
   "body.rear": {
    "id": "body.rear",
@@ -695,7 +695,7 @@
     "body.rear.hammer"
    ],
    "file": "models/body.rear.json",
-   "bytes": 3493102
+   "bytes": 3491614
   },
   "body.structure": {
    "id": "body.structure",
@@ -761,7 +761,7 @@
     "body.structure.arch-lips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 1292558
+   "bytes": 1292958
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -867,7 +867,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468318
+   "bytes": 468050
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -909,7 +909,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 592765
+   "bytes": 593169
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -1663,7 +1663,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 650225
+   "bytes": 650217
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1785,7 +1785,7 @@
     "electrical.wipers.bracket"
    ],
    "file": "models/electrical.wipers.json",
-   "bytes": 164532
+   "bytes": 164504
   },
   "electrical.wiring-charging": {
    "id": "electrical.wiring-charging",
@@ -2318,7 +2318,7 @@
     "engine.manifolds.washer-small"
    ],
    "file": "models/engine.manifolds.json",
-   "bytes": 170452
+   "bytes": 170504
   },
   "engine.mountings": {
    "id": "engine.mountings",
@@ -2538,7 +2538,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 243484
+   "bytes": 243444
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2560,7 +2560,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139354
+   "bytes": 139370
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2718,7 +2718,7 @@
     "fuel.throttle.pedal-stop"
    ],
    "file": "models/fuel.throttle.json",
-   "bytes": 892441
+   "bytes": 892465
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -3212,7 +3212,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494118
+   "bytes": 494378
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -145999,7 +145999,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-07T00:17:22+00:00",
+ "built": "2026-11-07T07:45:45+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,
