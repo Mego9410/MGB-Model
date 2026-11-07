@@ -71,9 +71,9 @@ parts:
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 22 }] }
     quantity: 1
     finish: rubber
-    notes: "LH seal (Fig 12.7 item 22) in its retainer (23) down the pillar casting's rear edge, closing on the quarter-light frame's front strip (QA fix round 1: Oliver's kf048 full res, kf231, kf232)."
+    notes: "LH seal (Fig 12.7 item 22) in its retainer (23) down the pillar casting's rear edge, closing on the quarter-light frame's front strip (QA fix round 1: Oliver's kf048 full res, kf231, kf232). QA fix round 2 (kf015, kf048): 4.5 mm, a thin black line; 10.5 read as a heavy black band."
     specs:
-      width: { mm: 10.5, display_only: true, source: { label: D, method: "kf048 full res: two dark strips in the 22 mm between the pillar and the frame" } }
+      width: { mm: 4.5, display_only: true, source: { label: D, method: "QA fix round 2, kf015 and kf048 matched renders; round 1 from kf048 full res: two dark strips in the 22 mm between the pillar and the frame" } }
   - id: body.glass.pillar-seal-r
     name: Pillar seal, right
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 21 }] }
@@ -81,7 +81,7 @@ parts:
     finish: rubber
     notes: "RH seal (item 21), mirror of the left."
     specs:
-      width: { mm: 10.5, display_only: true, source: { label: D, method: "As the left" } }
+      width: { mm: 4.5, display_only: true, source: { label: D, method: "As the left" } }
   - id: body.glass.pillar-pad-l
     name: Pillar grommet, left
     haynes: { section: 18, figures: [{ figure: "12.7", legend: 11 }] }
@@ -122,8 +122,8 @@ parts:
     name: Interior mirror glass
     haynes: { section: 18 }
     quantity: 1
-    finish: glass_screen
-    notes: "The interior mirror's glass in the back's rim, facing rearward."
+    finish: mirror_glass
+    notes: "The interior mirror's glass in the back's rim, facing rearward (QA fix round 2: a silvered mirror, not clear glass, so the tan back no longer shows through it from the seats; kf121)."
     specs:
       thickness: { mm: 1.4, display_only: true, source: { label: D, method: "Period mirror glass" } }
   - id: body.glass.mirror-clamp

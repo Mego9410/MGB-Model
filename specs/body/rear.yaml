@@ -48,7 +48,7 @@ parts:
     name: Rear panel
     haynes: { section: 14 }
     quantity: 1
-    notes: "The tail panel below the boot lid and round its rounded lower corners, between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21). QA fix 1: outboard of the overriders it rounds forward into the wing ends (Oliver's scan at |y| 450-550: x -2893..-2924); under the bumper the valance turns forward and under, showing below the bumper's blade as on the car (kf062, photo 25), through the scan's (x -2880, h 345) to its edge 295 above the road at x -2855, clear of the tank and the exhaust mounting, with a notch for the tail pipe; its seams to the wings are leaded, flush."
+    notes: "The tail panel below the boot lid and round its rounded lower corners, between the wing ends, behind the bumper (underbody_layout REAR_PANEL_X), carrying the number plate and, right of it, the filler cap's neck (Oliver's photos 11, 18, 21). QA fix 1: outboard of the overriders it rounds forward into the wing ends (Oliver's scan at |y| 450-550: x -2893..-2924); under the bumper the valance turns forward and under, showing below the bumper's blade as on the car (kf062, photo 25), through the scan's (x -2880, h 345) to its edge 295 above the road at x -2855, clear of the tank and the exhaust mounting, with a notch for the tail pipe; its seams to the wings are leaded, flush. QA fix round 2 (kf058, kf062, kf165): the valance ends cleanly 380 above the road at its turn-under (panels.valance_trim_sd, also on the rear wings behind x -2830); the turned-under strip below showed as bright red wedges under the bumper."
     specs:
       face_x: { mm: -2955.3, source: { label: D, method: "underbody_layout REAR_PANEL_X (moved by P11b: profile photo 29)" } }
 
@@ -82,7 +82,7 @@ parts:
     haynes: { section: 25, figures: [{ figure: "12.12" }] }
     quantity: 1
     finish: chrome
-    notes: "Chrome pear-shaped escutcheon with the push-button lock barrel and keyhole in its round head (Fig 12.12 items 3-5: the pushbutton assembly, its pear-shaped seal and retaining ring), domed off the lid, pointed at the bottom with a grip ridge down to the point. On the lid's rear fall at x -2905, square to the skin (mgb.rear_fittings_layout); Oliver's photo 25 puts its centre about 770 above the road, which it reaches when the lid's fall is refitted (QA rear finding 2). QA fix round 1 (was a 150 mm bar at 680): photo 25 zoomed, kf062, kf105, kf173."
+    notes: "Chrome pear-shaped escutcheon with the push-button lock barrel and keyhole in its round head (Fig 12.12 items 3-5: the pushbutton assembly, its pear-shaped seal and retaining ring), domed off the lid, pointed at the bottom with a grip ridge down to the point. On the lid's rear fall at x -2905, square to the skin (mgb.rear_fittings_layout); Oliver's photo 25 puts its centre about 770 above the road, which it reaches when the lid's fall is refitted (QA rear finding 2). QA fix round 1 (was a 150 mm bar at 680): photo 25 zoomed, kf062, kf105, kf173. QA fix round 2 (kf062, kf104): a rounded teardrop (9 mm end radius, no separate grip ridge); the lock's flange sunk 5 mm further under the lid so it no longer shows through as a bar under the handle."
     specs:
       width: { mm: 45.0, source: { label: D, method: "Oliver's photo 25 scaled on the plate (44 mm)" } }
       height: { mm: 60.0, source: { label: D, method: "Oliver's photo 25 scaled on the plate (61 mm)" } }

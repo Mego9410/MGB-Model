@@ -69,7 +69,11 @@ parts:
     name: Tail pipe
     haynes: { section: 46 }
     quantity: 1
+    finish: exhaust_tail
     notes: >
+      QA fix round 2 (kf058, kf062, kf165): dull steel, not the rusty brown of the rest of the system; the rise is
+      short and steep behind the valance so only the straight run shows, and the square end stands
+      out under the bumper blade, about 20 mm inside the overriders' rear faces.
       From the rear silencer out under the left of the bumper (MGOC Spares: the tail pipe exits on the left-hand
       side). The rear mounting's pinch clamp grips it on the level run behind the silencer (Sec 46 para 3); it then
       rises to 365 above the road and runs straight out through a notch in the rear valance's lower edge, its top

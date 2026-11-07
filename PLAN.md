@@ -25,6 +25,16 @@ ground, overhangs). Every assembly outside the engine is placed from it.
 | P11a Exhaust system; fuel tank, pump and pipes | Ch 3 | done |
 | P11b Body shell, panels, trim, fittings | Ch 12 | done |
 
+## QA fix round 2, finishes and fittings (6 Nov 2026)
+
+From the version-33 keyframe review (photo | render | overlay triptychs): the rear valance ends cleanly at its
+turn-under (350 above the road), the tail pipe is a short straight dull-steel stub with its rise hidden behind the
+valance, the seats are near-black semi-gloss leather with thin dark red piping, chrome brighter, glass clear with
+reflections, thinner quarter-light rubbers, a rounded boot handle (the lock flange no longer shows through), a dark
+red backing between the grille slats, no castle strip or jack socket below the sills, deeper crimson paint with
+crisper reflections, felt over the rest of the footwell bulkhead, duller wire wheels and calipers, a silvered
+interior/door mirror glass, a smaller front plate and a rounded door handle escutcheon.
+
 ## QA fix round 1, shell (5 Nov 2026)
 
 Body shell surface and outlines matched to Oliver's car (findings FINDINGS-front / -sides-glass / -rear and the cockpit

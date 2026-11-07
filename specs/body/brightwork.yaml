@@ -342,6 +342,23 @@ parts:
       source:
         label: D
         method: QA finding 14, kf218, kf220
+- id: body.brightwork.grille-backing
+  name: Grille backing (duct face behind the slats)
+  haynes:
+    section: 7
+  quantity: 1
+  finish: grille_backing
+  notes: 'QA fix round 2: between the chrome slats Oliver''s car shows a dark red ground (kf027, kf218), the body-coloured
+    duct behind the grille in shadow; the model showed daylight there, so the slats read flat white. A 2 mm sheet
+    following the nose''s curve 6 mm behind the slats'' backs, filling the surround''s opening to the bar''s centre line,
+    in a dark red finish standing in for the shadowed paint.'
+  specs:
+    gap_behind_slats:
+      mm: 6.0
+      display_only: true
+      source:
+        label: D
+        method: Placed just behind the slats so it reads as the ground between them (kf027, kf218)
 - id: body.brightwork.grille-bar
   name: Grille centre bar
   haynes:
@@ -551,14 +568,14 @@ parts:
     section: 10
   quantity: 1
   finish: paint_black
-  notes: Front number plate, blank (no characters drawn), 520 x 111, just under the blade on the valance.
+  notes: 'Front number plate, blank (no characters drawn), just under the blade on the valance. QA fix round 2 (kf028):
+    460 x 98, about 12% smaller than the 520 x 111 standard plate the model had, its bottom 13 mm higher.'
   specs:
     width:
-      mm: 520.0
+      mm: 460.0
       source:
-        label: S
-        ref: UK number plate 520 x 111 mm (BS AU 145)
-        note: Standard plate size
+        label: D
+        method: Oliver's kf028 matched render, the plate 10-15% narrower than the 520 mm standard plate
       display_only: true
 - id: body.brightwork.rear-plate-trim
   name: Rear number plate border and screws

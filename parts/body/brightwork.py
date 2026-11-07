@@ -479,6 +479,21 @@ def grille_slats(spec):
     return _c(slats, spec)
 
 
+def grille_backing(spec):
+    """Dark red backing behind the slats (QA fix round 2; Oliver's kf027, kf218: between the chrome slats the car shows
+    a dark red ground, the body-coloured duct behind the grille in shadow, never daylight): a 2 mm sheet following the
+    nose's curve in plan 6 mm behind the slats' backs, filling the surround's opening to the bar's centre line."""
+    back = GL.SLAT_SET_BACK + GL.SLAT_DEPTH + 6.0
+    ys = [-GL.SURR_HW + 2 * GL.SURR_HW * k / 40 for k in range(41)]
+    front = [(_nose(y, 510.0) - back, y) for y in ys]
+    plan = front + [(x - 2.0, y) for x, y in reversed(front)]
+    h0, h1 = GL.SURR_BOT_H - 10.0, max(GL.top_h(y, 0.0) for y in ys) + 10.0
+    sheet = zprism(plan, H(h0), H(h1))
+    xs = [x for x, _ in plan]
+    opening = xprism([(y, H(h)) for y, h in GL.surround_outline(-GL.SURR_BAR_R)], min(xs) - 5.0, max(xs) + 5.0)
+    return _l(sheet & opening, spec)
+
+
 def _inner_span(outline, y):
     """(lowest, highest) h of a closed outline at y, or None."""
     hs = []
@@ -983,7 +998,10 @@ def strip(which, side):
 
 # ---- number plates ------------------------------------------------------------------------------------------------
 PLATE_W, PLATE_H = 520.0, 111.0
-FRONT_PLATE_H0 = FRONT_BAR_H[0] - PLATE_H + 4.0      # just under the blade (Oliver's photos 10, 15)
+# QA fix round 2 (kf028): Oliver's front plate is about 12% smaller than the rear's 520 x 111 and sits higher, its
+# top tucked behind the blade's lower edge
+FRONT_PLATE_W, FRONT_PLATE_HT = 460.0, 98.0
+FRONT_PLATE_H0 = FRONT_BAR_H[0] - FRONT_PLATE_HT + 4.0      # just under the blade (Oliver's photos 10, 15)
 REAR_PLATE_H0 = 529.0                                # on the rear panel above the blade (photos 14, 18, 24)
 
 
@@ -994,7 +1012,7 @@ def _front_plate_x():
 def front_plinth(spec):
     """Front number plate plinth: a pressed bracket on the valance under the bumper's centre carrying the plate."""
     x = _front_plate_x()
-    p = box(x - 3.0, x, -PLATE_W / 2 - 6.0, PLATE_W / 2 + 6.0, H(FRONT_PLATE_H0) - 6.0, H(FRONT_PLATE_H0 + PLATE_H) + 6.0)
+    p = box(x - 3.0, x, -FRONT_PLATE_W / 2 - 6.0, FRONT_PLATE_W / 2 + 6.0, H(FRONT_PLATE_H0) - 6.0, H(FRONT_PLATE_H0 + FRONT_PLATE_HT) + 6.0)
     xv = S.nose_x(0.0, FRONT_PLATE_H0 + 50.0)
     legs = [box(xv - 6.0, x - 3.0, y - 12.0, y + 12.0, H(FRONT_PLATE_H0 + 40.0), H(FRONT_PLATE_H0 + 64.0)) for y in (-150.0, 150.0)]
     return _c([p] + legs, spec)
@@ -1002,9 +1020,9 @@ def front_plinth(spec):
 
 def front_plate(spec):
     x = _front_plate_x()
-    plate = box(x, x + 2.0, -PLATE_W / 2, PLATE_W / 2, H(FRONT_PLATE_H0), H(FRONT_PLATE_H0 + PLATE_H))
-    rim = box(x + 2.0, x + 3.0, -PLATE_W / 2, PLATE_W / 2, H(FRONT_PLATE_H0), H(FRONT_PLATE_H0 + PLATE_H)) - \
-        box(x + 1.0, x + 4.0, -PLATE_W / 2 + 6.0, PLATE_W / 2 - 6.0, H(FRONT_PLATE_H0) + 6.0, H(FRONT_PLATE_H0 + PLATE_H) - 6.0)
+    plate = box(x, x + 2.0, -FRONT_PLATE_W / 2, FRONT_PLATE_W / 2, H(FRONT_PLATE_H0), H(FRONT_PLATE_H0 + FRONT_PLATE_HT))
+    rim = box(x + 2.0, x + 3.0, -FRONT_PLATE_W / 2, FRONT_PLATE_W / 2, H(FRONT_PLATE_H0), H(FRONT_PLATE_H0 + FRONT_PLATE_HT)) - \
+        box(x + 1.0, x + 4.0, -FRONT_PLATE_W / 2 + 6.0, FRONT_PLATE_W / 2 - 6.0, H(FRONT_PLATE_H0) + 6.0, H(FRONT_PLATE_H0 + FRONT_PLATE_HT) - 6.0)
     return _c([plate, rim], spec)
 
 
@@ -1051,6 +1069,7 @@ PARTS = {
     "body.brightwork.rear-bar": {"build": rear_bar},
     "body.brightwork.grille-surround": {"build": grille_surround},
     "body.brightwork.grille-slats": {"build": grille_slats},
+    "body.brightwork.grille-backing": {"build": grille_backing},
     "body.brightwork.grille-surround-flange": {"build": grille_surround_flange},
     "body.brightwork.grille-bar": {"build": grille_bar},
     "body.brightwork.grille-badge": {"build": grille_badge},

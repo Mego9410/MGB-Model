@@ -164,7 +164,7 @@ def rear_wing_sd(side):
         # shut line and its rounded lower rear corner
         others = OR(rear_deck_sd(X, Y, Z) - LEAD, boot_sd(X, Y, Z) - G2, rear_panel_sd(X, Y, Z) - LEAD,
                     sill_sd(X, Y, Z, side) - SM, cockpit_sd(X, Y, Z), arch_sd(X, Y, Z, "rear"), rear_lamp_sd(X, Y, Z))
-        return AND(keep, -others)
+        return AND(keep, -others, valance_trim_sd(X, Y, Z))
     return f
 
 
@@ -248,8 +248,19 @@ def tailpipe_notch_sd(X, Y, Z):
     return AND(OR(head, slot), X - (E.TAIL_ROUTE[1][0] - 20.0))
 
 
+VALANCE_TRIM_H = 380.0
+
+
+def valance_trim_sd(X, Y, Z):
+    """QA fix round 2 (kf058, kf062, kf165): the rear valance ends cleanly at its turn-under, 380 above the road
+    behind the rear wheel arches (the scan's tuck from (x -2960, h 420) curving to (-2880, 345)); below that the
+    turned-under strip showed from behind as bright red wedges under the bumper, where the car is in shadow
+    (photo 25: the bottom about 385 at the centre)."""
+    return OR(H(VALANCE_TRIM_H) - Z, S.TAIL_Z_B[1] - X)
+
+
 def rear_panel_skin_sd(X, Y, Z):
-    return AND(rear_panel_sd(X, Y, Z) + LEAD, -filler_sd(X, Y, Z), -tailpipe_notch_sd(X, Y, Z))
+    return AND(rear_panel_sd(X, Y, Z) + LEAD, -filler_sd(X, Y, Z), -tailpipe_notch_sd(X, Y, Z), valance_trim_sd(X, Y, Z))
 
 
 def _panel(name, sdf, shift=None):

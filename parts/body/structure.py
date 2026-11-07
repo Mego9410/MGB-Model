@@ -763,7 +763,7 @@ def inner_sill(side):
 
 
 JACK_X = -1010.0
-JACK_Z = H(230.0)
+JACK_Z = H(S.z_b(JACK_X) + 34.0)      # QA fix 2: inside the sill box (at h 230 it hung below the sill, kf044, kf048)
 
 
 def castle(side):
@@ -772,8 +772,8 @@ def castle(side):
         top and bottom spot-welded to the sill's inner and outer skins."""
         xa, xb = SILL_X
         y = (S.SILL_INNER_Y + SILL_OUT_Y) / 2 + 10.0
-        zb = H(S.z_b(-1000.0)) - 14.0
-        zt = H(TREAD_H) - T
+        zb = H(S.z_b(-1000.0)) + 8.0          # QA fix 2: inside the sill box (its teeth showed as a black strip below
+        zt = H(TREAD_H) - T                     # the door, kf044, kf048)
         web = box(xb + 20.0, xa - 20.0, y, y + T, zb, zt)
         teeth = []
         n = 14
@@ -790,7 +790,7 @@ def castle(side):
 def jack_socket(side):
     def build(spec):
         """Jacking socket: a square tube through the sill box (outer sill to inner sill) the jack's arm enters."""
-        y0, y1 = S.SILL_INNER_Y, S.side_y(JACK_X, 230.0) - 0.5
+        y0, y1 = S.SILL_INNER_Y, S.side_y(JACK_X, S.z_b(JACK_X) + 19.0) - 0.5
         p = box(JACK_X - 15.0, JACK_X + 15.0, y0, y1, JACK_Z - 15.0, JACK_Z + 15.0)
         p = p - box(JACK_X - 12.5, JACK_X + 12.5, y0 - 1, y1 + 1, JACK_Z - 12.5, JACK_Z + 12.5)
         return _l(_side(p, side), spec)

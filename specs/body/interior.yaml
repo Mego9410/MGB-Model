@@ -925,6 +925,6 @@ parts:
   name: Bulkhead felt
   quantity: 1
   finish: carpet
-  notes: "Black felt over the bulkhead's cabin face in both footwells, from the toe boards up under the scuttle, with the bulkhead's holes for the pedal box, pedal arms, column, harness and pipes (Oliver's kf145, kf151: black behind the pedals). QA fix round 1, cockpit."
+  notes: "Black felt over the bulkhead's cabin face in both footwells, from the toe boards up under the scuttle, with the bulkhead's holes for the pedal box, pedal arms, column, harness and pipes (Oliver's kf145, kf151: black behind the pedals). QA fix round 1, cockpit. QA fix round 2 (kf151): carried on up to the shelf, under it and over the upper face's cabin side to the scuttle, so no body colour shows above the pedals."
   specs:
     thickness: { mm: 1.2, display_only: true, source: { label: D, method: "Drawn as a skin 3 mm off the panel" } }

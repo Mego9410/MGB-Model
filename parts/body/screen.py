@@ -213,9 +213,10 @@ def pillar_seal(side):
         pts, radii = pillar_outline()
         hb = pts[0][1] + 2.0
         ht = S.screen_top(S.SCREEN_HALF_W)[1] + 10.0
-        poly = [(SG.pillar_rear_x(hb) - 10.0, hb), (SG.pillar_rear_x(hb) + 0.5, hb), (SG.pillar_rear_x(ht) + 0.5, ht),
-                (SG.pillar_rear_x(ht) - 10.0, ht)]
-        seal = yprism([(x, H(h)) for x, h in B.fillet_poly(poly, [2.0, 0.0, 0.0, 4.0])], SG.PILLAR_Y_IN + 5.0, SG.PILLAR_Y_OUT - 1.0)
+        # QA fix 2 (kf015, kf048): a thin black line, 4.5 mm (was 10.5, which read as a heavy black band)
+        poly = [(SG.pillar_rear_x(hb) - 4.0, hb), (SG.pillar_rear_x(hb) + 0.5, hb), (SG.pillar_rear_x(ht) + 0.5, ht),
+                (SG.pillar_rear_x(ht) - 4.0, ht)]
+        seal = yprism([(x, H(h)) for x, h in B.fillet_poly(poly, [1.5, 0.0, 0.0, 2.0])], SG.PILLAR_Y_IN + 5.0, SG.PILLAR_Y_OUT - 1.0)
         zt = H(S.screen_top(S.SCREEN_HALF_W)[1] + 16.0)
         seal = seal & xprism(B.fillet_poly([(SG.PILLAR_Y_IN - 80.0, zt - 600.0), (SG.PILLAR_Y_OUT + 2.0, zt - 600.0),
                                             (SG.PILLAR_Y_OUT + 2.0, zt + 0.5), (SG.PILLAR_Y_IN - 80.0, zt + 0.5)],

@@ -48,7 +48,7 @@ add("scuttle-vent", explode=ex(UP, 1, 80))
 # lower grille rail, and the grille carries its club badges; the scuttle vent has its mesh and intake under it.
 for k, side in enumerate((1, -1)):
     add("front-bar-bolt", n=k + 1, groups=["front"], explode=ex(FWD, 0.5, 50), label=k == 0, build={"side": side})
-for p in ("grille-surround", "grille-surround-flange", "grille-slats", "grille-bar"):
+for p in ("grille-surround", "grille-surround-flange", "grille-slats", "grille-bar", "grille-backing"):
     add(p, groups=["grille"])
 for p in ("grille-badge", "grille-badge-field", "grille-badge-octagon"):
     add(p, groups=["grille"], explode=ex(FWD, 1, 60))

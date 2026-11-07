@@ -227,9 +227,10 @@ def side_prism_xz(pts_ag, y0, y1):
 
 QL_FRONT_Y = S.SCREEN_HALF_W + 13.0              # the frame's front edge closes on the screen pillar's rear (photos 09, 27)
 QL_FRAME_INSET = (16.0, SG.QL_FRAME_W, 18.0, SG.QL_FRAME_W)   # outer frame band: bottom, rear post, top, front post
-QL_SEAL_W = 5.0                                  # black rubber between the outer frame and the pivoting vent frame
+QL_SEAL_W = 2.5                                  # black rubber between the outer frame and the pivoting vent frame
+#                                                  (QA fix 2: 5 -> 2.5 and glazing 3 -> 1.5, thin lines as on the car, kf048, kf044)
 QL_VENT_W = 6.0                                  # the vent's slim chrome frame
-QL_GLAZING_W = 3.0                               # its black glazing rubber showing round the glass
+QL_GLAZING_W = 1.5                               # its black glazing rubber showing round the glass
 QL_VENT_R = 72.0                                 # the vent's big lower-front corner (kf048 full res, kf231, kf232: about R70)
 
 
@@ -449,10 +450,10 @@ def ql_seal(side):
         the vent all round, and the vent's glazing rubber round the glass."""
         hb, ht = SG.QL_BOTTOM_H + 1.0, SG.QL_OUTER_TOP_H - 2.0
         parts = []
-        for d0, d1 in ((1.0, 10.0),):
+        for d0, d1 in ((1.0, 5.0),):                          # QA fix 2: 4 mm (was 9, a heavy black band; kf015, kf048)
             poly = [(SG.ql_front_x(hb) + d0, hb), (SG.ql_front_x(hb) + d1, hb), (SG.ql_front_x(ht) + d1, ht),
                     (SG.ql_front_x(ht) + d0, ht)]
-            parts.append(_ql_slab(side, -7.0, 4.0) & side_prism_xz(B.fillet_poly(poly, [0.0, 0.0, 3.0, 3.0]), -2000.0, 2000.0))
+            parts.append(_ql_slab(side, -7.0, 4.0) & side_prism_xz(B.fillet_poly(poly, [0.0, 0.0, 1.5, 1.5]), -2000.0, 2000.0))
         parts.append(_band(side, ql_frame_inner(), R_FRAME_IN, ql_vent_outline(), R_VENT, -5.0, 2.5))
         parts.append(_band(side, ql_vent_inner(), R_VENT_IN, ql_glass_outline(), R_GLASS, -3.0, 3.0))
         return _c(parts, spec)
@@ -533,9 +534,11 @@ def pull_handle(side):
         h = HANDLE_H
         xr = HANDLE_REAR_X
         ys = _skin_y(xr + 25.0, h)
-        esc = _ybox(side, xr, xr + 34.0, ys - 2.0, ys + 21.0, H(h - 13.0), H(h + 15.0))
+        # QA fix 2 (kf048): the escutcheon's rear end is rounded in side view (a half round over its full height), not
+        # a square block
+        esc = G.fuse([ycyl(14.0, *sorted((side * (ys - 2.0), side * (ys + 21.0))), x=xr + 14.0, z=H(h + 1.0)),
+                      _ybox(side, xr + 14.0, xr + 34.0, ys - 2.0, ys + 21.0, H(h - 13.0), H(h + 15.0))])
         esc = tryfillet(esc, esc.edges().filter_by_position(Axis.Y, *sorted((side * (ys + 20.5), side * (ys + 21.5)))), 5.0)
-        esc = tryfillet(esc, esc.edges().filter_by_position(Axis.X, xr - 0.5, xr + 0.5), 6.0)
         lip = _ybox(side, xr + 20.0, xr + 64.0, ys - 2.0, ys + 13.0, H(h - 14.0), H(h - 5.0))
         lip = tryfillet(lip, lip.edges().filter_by_position(Axis.X, xr + 63.5, xr + 64.5), 4.0)
         pocket = _ybox(side, xr + 18.0, xr + 40.0, ys + 4.0, ys + 18.0, H(h - 6.0), H(h + 11.0))
@@ -708,7 +711,7 @@ def _pear(scale=1.0, n=40):
     r = RF.BOOT_HANDLE_W / 2 * scale
     top = RF.BOOT_HANDLE_H * 0.5
     cv = top - r / scale                                   # the head's centre stays put as the outline shrinks
-    tip_v, tip_r = top - RF.BOOT_HANDLE_H + 4.0 * (1.0 - scale) + 3.5, 3.5 * scale
+    tip_v, tip_r = top - RF.BOOT_HANDLE_H + 4.0 * (1.0 - scale) + 9.0, 9.0 * scale   # QA fix 2: a rounded teardrop end (kf062, kf104)
     d = cv - tip_v
     a_t = math.asin(min(0.999, (r - tip_r) / d))           # the tangent from the tip circle to the head circle
     pts = []
@@ -724,7 +727,7 @@ def _pear(scale=1.0, n=40):
 def boot_handle(spec):
     """Boot lid handle and lock barrel (Fig 12.12 items 3, 4, 5; Oliver's photo 25, kf062, kf105, kf173): a chrome
     pear-shaped escutcheon domed off the lid, 45 wide and 60 tall, pointed at the bottom, the push-button lock barrel
-    with its keyhole in the round head and a rounded grip ridge running down to the point."""
+    with its keyhole in the round head, tapering to a rounded end (QA fix 2: a teardrop, kf062, kf104)."""
     from build123d import Solid as So, Wire, Vector
     loc, org, yd, zd = _handle_frame()
     wires = []
@@ -737,10 +740,7 @@ def boot_handle(spec):
     cv = RF.BOOT_HANDLE_H * 0.5 - RF.BOOT_HANDLE_W / 2
     barrel = zcyl(10.0, 5.0, 15.0, 0.0, cv) + zcyl(8.6, 15.0, 17.0, 0.0, cv)            # the push button and its rim
     barrel = barrel - box(-1.1, 1.1, cv - 4.5, cv + 1.0, 14.0, 18.0) - zcyl(2.0, 14.0, 18.0, 0.0, cv + 1.5)   # keyhole
-    grip = So.make_loft([Wire.make_polygon([Vector(u * s_, v, w) for u, v in ((-5.0, cv - 4.0), (5.0, cv - 4.0),
-                                                                           (3.0, -24.0), (-3.0, -24.0))], close=True)
-                         for s_, w in ((1.0, 6.0), (0.55, 12.0))], ruled=True)
-    h = body + barrel + grip
+    h = body + barrel                     # QA fix 2: no separate grip ridge; the dome itself is the teardrop (kf062, kf104)
     return _l(loc * h, spec)
 
 
@@ -749,7 +749,8 @@ def boot_lock(spec):
     securing screws, item 7 the operating lever), its claw reaching down to the striker on the rear panel's top edge
     (Sec 25)."""
     loc, org, yd, zd = _handle_frame()
-    t = S.T + 2.0                                                    # under the skin (the lid curves away at the flange's edges)
+    t = S.T + 7.0                                                    # under the skin, clear of the lid's curve at the flange's ends
+    #                                                                  (QA fix 2: the flange showed through as a bar under the handle, kf062)
     case = box(-30.0, 30.0, -22.0, 18.0, -t - 26.0, -t - 1.6) - box(-27.0, 27.0, -19.0, 15.0, -t - 23.0, -t - 1.0)
     flange = box(-40.0, 40.0, -26.0, 24.0, -t - 1.6, -t)
     for du in (-34.0, 34.0):                                         # the lock's two securing screws (Fig 12.12 item 1)

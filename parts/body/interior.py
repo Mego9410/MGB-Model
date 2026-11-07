@@ -508,12 +508,12 @@ def seat_piping(side):
         edges of the top roll."""
         y = side * SEAT_Y
         w = SEAT_W / 2
-        rp = 3.0
+        rp = 2.0                          # QA fix 2: thinner piping (kf129, kf131)
         _, x0, x1 = CUSH_PANEL
         parts = []
         for yy in (y - CUSH_PANEL[0], y + CUSH_PANEL[0]):
             xs = [x0 + (x1 - x0) * k / 12 for k in range(13)]
-            parts.append(swept_rod([(x, yy, H(cush_top(x)) - 1.5) for x in xs], rp))
+            parts.append(swept_rod([(x, yy, H(cush_top(x)) - 0.8) for x in xs], rp))
         parts.append(rod((x1, y - w + 6.0, H(cush_top(x1)) - 5.0), (x1, y + w - 6.0, H(cush_top(x1)) - 5.0), rp))   # across
         xs = [CUSH_X[1] + 30.0 + (CUSH_X[0] - 60.0 - CUSH_X[1]) * k / 14 for k in range(15)]
         for yy in (y - w + 4.0, y + w - 4.0):                    # the welts along the top's side edges
@@ -601,10 +601,30 @@ def bulkhead_felt(spec):
     for q in (St.column_toe_mount(_Id()), br):
         bb = q.bounding_box()
         f = f - box(bb.min.X - 3.0, bb.max.X + 3.0, bb.min.Y - 3.0, bb.max.Y + 3.0, bb.min.Z - 3.0, bb.max.Z + 3.0)
-    return _l(f, spec)
+    # QA fix 2 (kf151: the body colour still showed above the pedals): on up under the shelf and over the upper face's
+    # cabin side to the scuttle, with the upper face's openings (heater, screws, wiper motor, bonnet cable) and the
+    # shelf's drain tubes left clear
+    yc = min(St.BH_STEP_Y, S.SILL_INNER_Y - 7.5)
+    zs = St.Z_SHELF
+    under = box(St.BH2_X - St.T - 3.0, St.BH_X - St.T - 0.2, -yc, yc, zs - 3.0, zs - 0.2)
+    for yy in (-430.0, 430.0):
+        under = under - zcyl(11.0, zs - 4.0, zs + 1.0, St.BH2_X + 40.0, yy)
+    ys = [-yc + 2 * yc * k / 16 for k in range(17)]
+    prof = [(yc, zs - 3.0)] + [(y, St._upper_top_z(y) - St.T - 3.0) for y in reversed(ys)] + [(-yc, zs - 3.0)]
+    face = xprism(prof, St.BH2_X - St.T - 3.0, St.BH2_X - St.T - 0.2)
+    top = [(y, St._upper_top_z(y)) for y in ys]               # and under the upper face's flange turned back at the top
+    face = G.fuse([face] + [xprism([(a[0], a[1] - St.T - 3.0), (b[0], b[1] - St.T - 3.0), (b[0], b[1] - St.T - 0.2),
+                                    (a[0], a[1] - St.T - 0.2)], St.BH2_X - 40.0, St.BH2_X - St.T - 2.9)
+                            for a, b in zip(top, top[1:])])
+    zh = zs + 60.0
+    face = face - box(St.BH2_X - 10.0, St.BH2_X + 5.0, -175.0, 110.0, zh - 25.0, zh + 110.0)       # heater opening, screws
+    mx, my, mz = BL.WIPER_MOTOR
+    face = face - box(St.BH2_X - 10.0, St.BH2_X + 5.0, my - 80.0, yc + 5.0, zs + St.T + 2.0, mz + 80.0)
+    face = face - xcyl(9.0, St.BH2_X - 10.0, St.BH2_X + 5.0, 470.0, H(700.0))
+    return _c([f, under, face], spec)
 
 
-FELT_TOP = -20.0                               # under the bulkhead's upper panel (structure.bulkhead_upper, z -18)
+FELT_TOP = St.Z_SHELF - 0.5                    # QA fix 2: up to the shelf (was -20, which left red showing, kf151)
 
 
 def heel_mat(spec):
@@ -884,7 +904,7 @@ def _card_line(side, h, d, x0=None, x1=None):
 def door_card_piping(side):
     def build(spec):
         """Red piping in the card's seam across the door (Oliver's kf128, kf131)."""
-        return _l(swept_rod(_card_line(side, CK.CARD_SEAM_H, 0.5), 2.6), spec)
+        return _l(swept_rod(_card_line(side, CK.CARD_SEAM_H, 0.0), 1.6), spec)          # QA fix 2: thin (kf129, kf131)
     return build
 
 
@@ -974,7 +994,8 @@ CAP_R = 13.0
 
 def _capping_pts(side, dy=0.0, dz=0.0):
     xs = [S.DOOR_FRONT_X - 8.0 - k * (S.DOOR_FRONT_X - S.DOOR_REAR_X - 16.0) / 8 for k in range(9)]
-    return [(x, side * (S.side_y(x, C.WAIST_H - 30.0) - C.DOOR_IN + 6.0 - dy), H(CAP_H) + dz) for x in xs]
+    # QA fix 2 (kf129, kf131): 10 mm further inboard, over the card's top edge, so no body colour shows between them
+    return [(x, side * (S.side_y(x, C.WAIST_H - 30.0) - C.DOOR_IN - 4.0 - dy), H(CAP_H) + dz) for x in xs]
 
 
 def door_capping(side):
@@ -987,7 +1008,7 @@ def door_capping(side):
 def door_capping_piping(side):
     def build(spec):
         """Red piping along the capping's inboard top edge (Oliver's kf128, kf131)."""
-        return _l(swept_rod(_capping_pts(side, 9.5, 9.5), 2.4), spec)
+        return _l(swept_rod(_capping_pts(side, 9.5, 9.5), 1.6), spec)                    # QA fix 2: thin (kf129, kf131)
     return build
 
 

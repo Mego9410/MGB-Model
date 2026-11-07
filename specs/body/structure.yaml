@@ -245,7 +245,7 @@ parts:
     haynes: { section: 1 }
     finish: underseal
     quantity: 1
-    notes: "The sill's middle member (three-member boxed sills, 'case of the bends'): a vertical web with flanged castellations top and bottom."
+    notes: "The sill's middle member (three-member boxed sills, 'case of the bends'): a vertical web with flanged castellations top and bottom. QA fix round 2 (kf044, kf048): its bottom flange now inside the sill box, 8 mm above the skin's lower edge (it showed as a black strip below the door)."
     specs:
       tabs: { count: 14, source: { label: D, method: "Castellations each side along the sill" } }
 
@@ -263,7 +263,7 @@ parts:
     haynes: { section: 1 }
     quantity: 1
     finish: underseal
-    notes: "Square tube through the sill box a third of the way along the door ('jacking apertures', case of the bends)."
+    notes: "Square tube through the sill box a third of the way along the door ('jacking apertures', case of the bends). QA fix round 2 (kf044, kf048): raised into the sill box, 34 mm above the skin's lower edge (at 230 above the road it hung below the sill as a stub)."
     specs:
       bore: { mm: 25.0, source: { label: D, method: "Takes the jack's arm" } }
 

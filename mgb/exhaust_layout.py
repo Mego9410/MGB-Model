@@ -91,10 +91,13 @@ INTER_ROUTE = [(CS_X[1] - 2.0, CS_Y, CS_Z), (CL.bx(-1410.0), CS_Y, CS_Z), (CL.bx
 # 365 above the road (centre), the pipe's top tight to the rear valance's lower edge where it passes through a notch in
 # it, a square-cut end standing out about 50 mm behind the valance under the bumper; it rises from the rear silencer's
 # level just behind the rear mounting.
-TAIL_END_X = CL.REAR_X + 55.0
+# QA fix round 2 (kf058, kf062, kf165): the rise is short and steep, tucked behind the valance's turned-under lower edge,
+# so only the straight run shows from behind; the end stands out under the bumper blade (about 20 mm inside the
+# overriders' rear faces).
+TAIL_END_X = CL.REAR_X + 20.0
 TAIL_Z = CL.GROUND_Z + 365.0
 TAIL_Y = 352.0                                      # out to |y| 352 (photos 11, 14)
-TAIL_RISE_X = (CL.bx(-2845.0), CL.bx(-2915.0))     # the rise from the silencer's level to TAIL_Z
+TAIL_RISE_X = (CL.bx(-2845.0), CL.bx(-2885.0))     # the rise from the silencer's level to TAIL_Z
 TAIL_ROUTE = [(RS_X[1] + 2.0, RS_Y, RS_Z), (TAIL_RISE_X[0], RS_Y, RS_Z), (TAIL_RISE_X[1], TAIL_Y, TAIL_Z),
               (TAIL_END_X, TAIL_Y, TAIL_Z)]
 TAIL_CUT_DEG = 0.0                                 # square cut on Oliver's car (kf165, kf166); MGOC: originally 45 degrees
