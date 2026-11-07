@@ -399,7 +399,7 @@
     "body.brightwork.scuttle-vent-intake"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 2228410
+   "bytes": 2228034
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -419,7 +419,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 209114
+   "bytes": 209074
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -460,7 +460,7 @@
     "body.door-mechanisms.door-seal-r"
    ],
    "file": "models/body.door-mechanisms.json",
-   "bytes": 847943
+   "bytes": 848095
   },
   "body.doors": {
    "id": "body.doors",
@@ -552,7 +552,7 @@
     "body.glass.pillar-pad-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 218012
+   "bytes": 217524
   },
   "body.hood": {
    "id": "body.hood",
@@ -573,7 +573,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 866437
+   "bytes": 865453
   },
   "body.interior": {
    "id": "body.interior",
@@ -665,7 +665,7 @@
     "body.interior.heater-knob-print"
    ],
    "file": "models/body.interior.json",
-   "bytes": 3453314
+   "bytes": 3452275
   },
   "body.rear": {
    "id": "body.rear",
@@ -761,7 +761,7 @@
     "body.structure.arch-lips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 1292958
+   "bytes": 1303448
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -867,7 +867,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468050
+   "bytes": 468318
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -909,7 +909,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 593169
+   "bytes": 606064
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -958,7 +958,7 @@
     "brakes.master.pedal-box"
    ],
    "file": "models/brakes.master.json",
-   "bytes": 378968
+   "bytes": 379562
   },
   "brakes.pedal": {
    "id": "brakes.pedal",
@@ -992,7 +992,7 @@
     "brakes.pedal.pad"
    ],
    "file": "models/brakes.pedal.json",
-   "bytes": 238697
+   "bytes": 237403
   },
   "brakes.rear": {
    "id": "brakes.rear",
@@ -1075,7 +1075,7 @@
     "chassis.crossmember.buffer-nut"
    ],
    "file": "models/chassis.crossmember.json",
-   "bytes": 209174
+   "bytes": 209206
   },
   "chassis.front": {
    "id": "chassis.front",
@@ -1308,7 +1308,7 @@
     "chassis.steering.horn-badge"
    ],
    "file": "models/chassis.steering.json",
-   "bytes": 833344
+   "bytes": 828489
   },
   "clutch.hydraulics": {
    "id": "clutch.hydraulics",
@@ -1367,7 +1367,7 @@
     "clutch.hydraulics.mc-spring"
    ],
    "file": "models/clutch.hydraulics.json",
-   "bytes": 591225
+   "bytes": 598104
   },
   "clutch.pedal": {
    "id": "clutch.pedal",
@@ -1391,7 +1391,7 @@
     "clutch.pedal.pad"
    ],
    "file": "models/clutch.pedal.json",
-   "bytes": 190338
+   "bytes": 187050
   },
   "clutch.release": {
    "id": "clutch.release",
@@ -1493,7 +1493,7 @@
     "cooling.pump-gasket"
    ],
    "file": "models/cooling.pump-radiator.json",
-   "bytes": 159851
+   "bytes": 159803
   },
   "electrical.battery": {
    "id": "electrical.battery",
@@ -1663,7 +1663,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 650217
+   "bytes": 652966
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1722,7 +1722,7 @@
     "electrical.loom.bulkhead-grommet"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 101235
+   "bytes": 108172
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1785,7 +1785,7 @@
     "electrical.wipers.bracket"
    ],
    "file": "models/electrical.wipers.json",
-   "bytes": 164504
+   "bytes": 164532
   },
   "electrical.wiring-charging": {
    "id": "electrical.wiring-charging",
@@ -1811,7 +1811,7 @@
     "electrical.wiring-charging.ind-connector"
    ],
    "file": "models/electrical.wiring-charging.json",
-   "bytes": 252772
+   "bytes": 256512
   },
   "electrical.wiring-earths": {
    "id": "electrical.wiring-earths",
@@ -1879,7 +1879,7 @@
     "electrical.wiring-indicators.gp-joint-rear"
    ],
    "file": "models/electrical.wiring-indicators.json",
-   "bytes": 621244
+   "bytes": 601065
   },
   "electrical.wiring-instruments": {
    "id": "electrical.wiring-instruments",
@@ -1963,7 +1963,7 @@
     "electrical.wiring-lighting.map-connector"
    ],
    "file": "models/electrical.wiring-lighting.json",
-   "bytes": 1029223
+   "bytes": 1071576
   },
   "electrical.wiring-overdrive": {
    "id": "electrical.wiring-overdrive",
@@ -1989,7 +1989,7 @@
     "electrical.wiring-overdrive.relay-earth"
    ],
    "file": "models/electrical.wiring-overdrive.json",
-   "bytes": 293182
+   "bytes": 295698
   },
   "electrical.wiring-starting": {
    "id": "electrical.wiring-starting",
@@ -2023,7 +2023,7 @@
     "electrical.wiring-starting.g-joint-facia"
    ],
    "file": "models/electrical.wiring-starting.json",
-   "bytes": 514020
+   "bytes": 509724
   },
   "electrical.wiring-wipers-horn": {
    "id": "electrical.wiring-wipers-horn",
@@ -2057,7 +2057,7 @@
     "electrical.wiring-wipers-horn.heater-connector"
    ],
    "file": "models/electrical.wiring-wipers-horn.json",
-   "bytes": 396148
+   "bytes": 400205
   },
   "engine.block": {
    "id": "engine.block",
@@ -2501,7 +2501,7 @@
     "fuel.choke.jet-lever-rear"
    ],
    "file": "models/fuel.choke.json",
-   "bytes": 266213
+   "bytes": 266257
   },
   "fuel.exhaust": {
    "id": "fuel.exhaust",
@@ -2538,7 +2538,7 @@
     "fuel.exhaust.clamp-bolt"
    ],
    "file": "models/fuel.exhaust.json",
-   "bytes": 243444
+   "bytes": 243556
   },
   "fuel.pipes": {
    "id": "fuel.pipes",
@@ -2560,7 +2560,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139370
+   "bytes": 139354
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2615,7 +2615,7 @@
     "fuel.supply.clip-screw"
    ],
    "file": "models/fuel.supply.json",
-   "bytes": 256183
+   "bytes": 255625
   },
   "fuel.tank": {
    "id": "fuel.tank",
@@ -2654,7 +2654,7 @@
     "fuel.tank.strap-nut"
    ],
    "file": "models/fuel.tank.json",
-   "bytes": 185629
+   "bytes": 185517
   },
   "fuel.throttle": {
    "id": "fuel.throttle",
@@ -2718,7 +2718,7 @@
     "fuel.throttle.pedal-stop"
    ],
    "file": "models/fuel.throttle.json",
-   "bytes": 892465
+   "bytes": 891713
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -3212,7 +3212,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494378
+   "bytes": 494346
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -20368,7 +20368,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "copper",
-   "notes": "Brazed into the banjo (parts/brakes/master.py), down through the grommet in the pedal box floor, back under the box outboard of the brake pedal and down to the connection; tube nut at the connection. Route derived.",
+   "notes": "Brazed into the banjo (parts/brakes/master.py), down through the grommet in the pedal box floor, back under the box along its outboard wall, down past the steering column (16 mm clear; QA fix round 1, steering) and in to the connection; tube nut at the connection. Route derived.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -21986,7 +21986,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Pressed steel box on the engine side of the bulkhead (photo 1.1): the rear section the clutch and brake pedals hang in, open underneath, the common pivot bolt through its side walls (Sec 24 para 3); the mounting wall carrying both master cylinders (spigot and bolt holes, and a hole the clutch pipe passes); the front section round the cylinders with a floor (grommet hole for the brake pipe), a front wall and a rim the protecting cover screws to; a flange round its rear edge on the bulkhead with six bolt holes (Sec 19 para 7, later box); the anchor bar inside the rear flange with tabs for the two pedal pull-off springs. Form from Fig 9.16 item 11 and photo 1.1; every size and position derived (mgb/brake_layout.py). P11 builds the bulkhead it bolts to and the toe board slots the pedals pass through.",
+   "notes": "Pressed steel box on the engine side of the bulkhead (photo 1.1): the rear section the clutch and brake pedals hang in, open underneath, the common pivot bolt through its side walls (Sec 24 para 3); the mounting wall carrying both master cylinders (spigot and bolt holes, and a hole the clutch pipe passes); the front section round the cylinders with a floor (grommet hole for the brake pipe), a front wall and a rim the protecting cover screws to; a flange round its rear edge on the bulkhead with six bolt holes (Sec 19 para 7, later box); the anchor bar inside the rear flange with tabs for the two pedal pull-off springs. Form from Fig 9.16 item 11 and photo 1.1; every size and position derived (mgb/brake_layout.py). Height (QA fix round 1, steering): 120 mm higher than first drawn (clutch_layout PEDAL_BOX_RAISE), so the steering column on its scan line (steering_layout) passes under the floor (24 mm clear) and through the toe board below the box (Ch 9 Sec 17 para 6: the box also bolts to the toe plate; Oliver's kf151: pedals hung from high under the facia). P11 builds the bulkhead it bolts to and the toe board slots the pedals pass through.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -22286,7 +22286,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Pressed-steel pedal on the common pivot in the pedal box, outboard of the clutch pedal (RHD), the pushrod clevis just below the pivot, the arm cranked back under the box and through the toe board to the pad (Fig 9.16 item 1). Drawn as the clutch pedal's form on the brake cylinder's line: the two pads side by side at the same height. Lengths derived (mgb/clutch_layout.py).",
+   "notes": "Pressed-steel pedal on the common pivot in the pedal box, outboard of the clutch pedal (RHD), the pushrod clevis just below the pivot, the arm cranked back under the box and through the toe board to the pad (Fig 9.16 item 1). Drawn as the clutch pedal's form on the brake cylinder's line: the two pads side by side at the same height. QA fix round 1, steering: the steering column passes under the raised box on the brake line, so the arm joggles 28 mm outboard below the clevis eye (brake_layout ARM_Y), runs down past the column 8 mm clear and joggles back to the pad's line below it (D: Fig 9.16 item 1, the RHD pedal is cranked; the pull-off spring hooks to the joggled part). Lengths derived (mgb/clutch_layout.py).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -30637,7 +30637,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "steering_wheel",
-   "notes": "Early wheel with an integral boss (Sec 18 para 2): black acetate rim with finger grips, the black cast hub boss with three flat arms in a Y (the wire sockets at their ends) and black clamp blocks gripping the wires inside the rim (Oliver's kf121, kf148 zoomed; MGOC: three-spoke banjo wheel, black rim and hub). The polished wires are chassis.steering.wheel-spokes. Placed: near the circle fitted to the rim in Oliver's body scan (mgb.steering_layout RIM_CENTRE_SCAN: x -981, y -294, 830 above the road, axis 20 deg); its height and y cannot be reached yet (held 55 mm ahead of the scan's x so the low rim clears the cushion) - a straight column from the pinion to there passes through P8's master cylinder and pedal box (question in PLAN). Spokes two 28 deg below the horizontal and one straight down (kf121). Dish, arm and clamp sizes derived from kf121 scaled on the rim.",
+   "notes": "Early wheel with an integral boss (Sec 18 para 2): black acetate rim with finger grips, the black cast hub boss with three flat arms in a Y (the wire sockets at their ends) and black clamp blocks gripping the wires inside the rim (Oliver's kf121, kf148 zoomed; MGOC: three-spoke banjo wheel, black rim and hub). The polished wires are chassis.steering.wheel-spokes. Placed on the circle fitted to the rim in Oliver's body scan (mgb.steering_layout RIM_CENTRE_SCAN: x -981, y -294, 830 above the road, axis 20 deg), on the straight column from the pinion (23.7 deg; QA fix round 1, steering: the pedal box raised so the column passes under it through the toe board). Spokes two 28 deg below the horizontal and one straight down (kf121). Dish, arm and clamp sizes derived from kf121 scaled on the rim.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -30663,7 +30663,7 @@
      "value": "830.0 mm",
      "source": "D",
      "sourceName": "Derived",
-     "ref": "Oliver's body scan: circle fitted to 678 rim points, centre 830 mm above the road, radius 198.8, axis 20 deg to the horizontal (not yet reached, see notes)",
+     "ref": "Oliver's body scan: circle fitted to 678 rim points, centre 830 mm above the road, radius 198.8, axis 20 deg to the horizontal ; the rim centre is placed there",
      "note": "",
      "erratum": false,
      "printed_mm": null
@@ -31757,7 +31757,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "copper",
-   "notes": "RHD pipe from the master cylinder banjo down the bulkhead to the hose at its bracket (Fig 5.3 inset), with its union nut. Run derived: Fig 5.3 shows it dropping from the master cylinder to the bracket; the bracket position is in mgb/clutch_layout.py.",
+   "notes": "RHD pipe from the master cylinder banjo down the bulkhead to the hose at its bracket (Fig 5.3 inset), with its union nut. Run derived: Fig 5.3 shows it dropping from the master cylinder to the bracket; the bracket position is in mgb/clutch_layout.py. QA fix round 1, steering: through the mounting wall and down the box's open rear section inboard of the steering column (15 mm clear), then out to the bracket below it (D).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -105208,9 +105208,9 @@
     },
     {
      "axis": [
-      0.9653737114347332,
-      0.05634149709592955,
-      -0.25471402194562776
+      0.9155284863330101,
+      0.011598143928209159,
+      -0.402085903471146
      ],
      "order": 73,
      "distance_mm": 160
@@ -105236,9 +105236,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 73,
      "distance_mm": 120
@@ -105264,9 +105264,9 @@
     },
     {
      "axis": [
-      0.9653737114347332,
-      0.05634149709592955,
-      -0.25471402194562776
+      0.9155284863330101,
+      0.011598143928209159,
+      -0.402085903471146
      ],
      "order": 72,
      "distance_mm": 80
@@ -105292,9 +105292,9 @@
     },
     {
      "axis": [
-      0.9653737114347332,
-      0.05634149709592955,
-      -0.25471402194562776
+      0.9155284863330101,
+      0.011598143928209159,
+      -0.402085903471146
      ],
      "order": 72,
      "distance_mm": 120
@@ -105320,9 +105320,9 @@
     },
     {
      "axis": [
-      0.9653737114347332,
-      0.05634149709592955,
-      -0.25471402194562776
+      0.9155284863330101,
+      0.011598143928209159,
+      -0.402085903471146
      ],
      "order": 72,
      "distance_mm": 150
@@ -105348,9 +105348,9 @@
     },
     {
      "axis": [
-      0.9653737114347332,
-      0.05634149709592955,
-      -0.25471402194562776
+      0.9155284863330101,
+      0.011598143928209159,
+      -0.402085903471146
      ],
      "order": 72,
      "distance_mm": 120
@@ -105376,9 +105376,9 @@
     },
     {
      "axis": [
-      0.9653737114347332,
-      0.05634149709592955,
-      -0.25471402194562776
+      0.9155284863330101,
+      0.011598143928209159,
+      -0.402085903471146
      ],
      "order": 72,
      "distance_mm": 150
@@ -106297,9 +106297,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106307,9 +106307,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 40
@@ -106325,9 +106325,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106344,9 +106344,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106354,9 +106354,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 80
@@ -106372,9 +106372,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 20
@@ -106390,9 +106390,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 30
@@ -106408,9 +106408,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 40
@@ -106426,9 +106426,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 20
@@ -106444,9 +106444,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 30
@@ -106462,9 +106462,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 63,
      "distance_mm": 40
@@ -106480,9 +106480,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106490,9 +106490,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 200
@@ -106508,9 +106508,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106527,9 +106527,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106537,9 +106537,9 @@
     },
     {
      "axis": [
-      0.9653737114347332,
-      0.05634149709592955,
-      -0.25471402194562776
+      0.9155284863330101,
+      0.011598143928209159,
+      -0.402085903471146
      ],
      "order": 65,
      "distance_mm": 40
@@ -106555,9 +106555,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106565,9 +106565,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 60
@@ -106583,9 +106583,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106665,9 +106665,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106675,9 +106675,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 64,
      "distance_mm": 120
@@ -106693,9 +106693,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106703,9 +106703,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 64,
      "distance_mm": 50
@@ -106721,9 +106721,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 65,
      "distance_mm": 420,
@@ -106731,9 +106731,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 64,
      "distance_mm": 70
@@ -106749,9 +106749,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 64,
      "distance_mm": 90
@@ -106767,9 +106767,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 64,
      "distance_mm": 90
@@ -106785,9 +106785,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 62,
      "distance_mm": 260,
@@ -106804,9 +106804,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 62,
      "distance_mm": 260,
@@ -106814,9 +106814,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 61,
      "distance_mm": 60
@@ -106832,9 +106832,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 62,
      "distance_mm": 260,
@@ -106851,9 +106851,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 62,
      "distance_mm": 260,
@@ -106861,9 +106861,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 60,
      "distance_mm": 120
@@ -106879,9 +106879,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 62,
      "distance_mm": 260,
@@ -106889,9 +106889,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 60,
      "distance_mm": 120
@@ -106907,9 +106907,9 @@
    "stages": [
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 62,
      "distance_mm": 260,
@@ -106917,9 +106917,9 @@
     },
     {
      "axis": [
-      -0.9653737114347332,
-      -0.05634149709592955,
-      0.25471402194562776
+      -0.9155284863330101,
+      -0.011598143928209159,
+      0.402085903471146
      ],
      "order": 60,
      "distance_mm": 120
@@ -145999,7 +145999,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-07T07:45:45+00:00",
+ "built": "2026-11-07T11:42:25+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,
