@@ -399,7 +399,7 @@
     "body.brightwork.scuttle-vent-intake"
    ],
    "file": "models/body.brightwork.json",
-   "bytes": 2228034
+   "bytes": 2228242
   },
   "body.closure-fittings": {
    "id": "body.closure-fittings",
@@ -419,7 +419,7 @@
     "body.closure-fittings.boot-seal"
    ],
    "file": "models/body.closure-fittings.json",
-   "bytes": 209074
+   "bytes": 209202
   },
   "body.door-mechanisms": {
    "id": "body.door-mechanisms",
@@ -460,7 +460,7 @@
     "body.door-mechanisms.door-seal-r"
    ],
    "file": "models/body.door-mechanisms.json",
-   "bytes": 848095
+   "bytes": 848035
   },
   "body.doors": {
    "id": "body.doors",
@@ -525,7 +525,7 @@
     "body.front.scuttle"
    ],
    "file": "models/body.front.json",
-   "bytes": 1115299
+   "bytes": 1115195
   },
   "body.glass": {
    "id": "body.glass",
@@ -552,7 +552,7 @@
     "body.glass.pillar-pad-r"
    ],
    "file": "models/body.glass.json",
-   "bytes": 217524
+   "bytes": 217708
   },
   "body.hood": {
    "id": "body.hood",
@@ -573,7 +573,7 @@
     "body.hood.side-rail-r"
    ],
    "file": "models/body.hood.json",
-   "bytes": 865453
+   "bytes": 866709
   },
   "body.interior": {
    "id": "body.interior",
@@ -665,7 +665,7 @@
     "body.interior.heater-knob-print"
    ],
    "file": "models/body.interior.json",
-   "bytes": 3452275
+   "bytes": 3450968
   },
   "body.rear": {
    "id": "body.rear",
@@ -761,7 +761,7 @@
     "body.structure.arch-lips"
    ],
    "file": "models/body.structure.json",
-   "bytes": 1303448
+   "bytes": 1295759
   },
   "brakes.front": {
    "id": "brakes.front",
@@ -867,7 +867,7 @@
     "brakes.handbrake.comp-washer-inner"
    ],
    "file": "models/brakes.handbrake.json",
-   "bytes": 468318
+   "bytes": 468338
   },
   "brakes.lines": {
    "id": "brakes.lines",
@@ -909,7 +909,7 @@
     "brakes.lines.four-way-spacer"
    ],
    "file": "models/brakes.lines.json",
-   "bytes": 606064
+   "bytes": 608880
   },
   "brakes.master": {
    "id": "brakes.master",
@@ -958,7 +958,7 @@
     "brakes.master.pedal-box"
    ],
    "file": "models/brakes.master.json",
-   "bytes": 379562
+   "bytes": 379324
   },
   "brakes.pedal": {
    "id": "brakes.pedal",
@@ -992,7 +992,7 @@
     "brakes.pedal.pad"
    ],
    "file": "models/brakes.pedal.json",
-   "bytes": 237403
+   "bytes": 235093
   },
   "brakes.rear": {
    "id": "brakes.rear",
@@ -1367,7 +1367,7 @@
     "clutch.hydraulics.mc-spring"
    ],
    "file": "models/clutch.hydraulics.json",
-   "bytes": 598104
+   "bytes": 599896
   },
   "clutch.pedal": {
    "id": "clutch.pedal",
@@ -1391,7 +1391,7 @@
     "clutch.pedal.pad"
    ],
    "file": "models/clutch.pedal.json",
-   "bytes": 187050
+   "bytes": 188228
   },
   "clutch.release": {
    "id": "clutch.release",
@@ -1663,7 +1663,7 @@
     "electrical.instruments.pull-switch"
    ],
    "file": "models/electrical.instruments.json",
-   "bytes": 652966
+   "bytes": 653915
   },
   "electrical.lamps": {
    "id": "electrical.lamps",
@@ -1722,7 +1722,7 @@
     "electrical.loom.bulkhead-grommet"
    ],
    "file": "models/electrical.loom.json",
-   "bytes": 108172
+   "bytes": 110552
   },
   "electrical.starting": {
    "id": "electrical.starting",
@@ -1811,7 +1811,7 @@
     "electrical.wiring-charging.ind-connector"
    ],
    "file": "models/electrical.wiring-charging.json",
-   "bytes": 256512
+   "bytes": 258738
   },
   "electrical.wiring-earths": {
    "id": "electrical.wiring-earths",
@@ -1879,7 +1879,7 @@
     "electrical.wiring-indicators.gp-joint-rear"
    ],
    "file": "models/electrical.wiring-indicators.json",
-   "bytes": 601065
+   "bytes": 623102
   },
   "electrical.wiring-instruments": {
    "id": "electrical.wiring-instruments",
@@ -1904,7 +1904,7 @@
     "electrical.wiring-instruments.stabiliser"
    ],
    "file": "models/electrical.wiring-instruments.json",
-   "bytes": 199879
+   "bytes": 204121
   },
   "electrical.wiring-lighting": {
    "id": "electrical.wiring-lighting",
@@ -1963,7 +1963,7 @@
     "electrical.wiring-lighting.map-connector"
    ],
    "file": "models/electrical.wiring-lighting.json",
-   "bytes": 1071576
+   "bytes": 1087760
   },
   "electrical.wiring-overdrive": {
    "id": "electrical.wiring-overdrive",
@@ -1989,7 +1989,7 @@
     "electrical.wiring-overdrive.relay-earth"
    ],
    "file": "models/electrical.wiring-overdrive.json",
-   "bytes": 295698
+   "bytes": 305409
   },
   "electrical.wiring-starting": {
    "id": "electrical.wiring-starting",
@@ -2023,7 +2023,7 @@
     "electrical.wiring-starting.g-joint-facia"
    ],
    "file": "models/electrical.wiring-starting.json",
-   "bytes": 509724
+   "bytes": 510653
   },
   "electrical.wiring-wipers-horn": {
    "id": "electrical.wiring-wipers-horn",
@@ -2057,7 +2057,7 @@
     "electrical.wiring-wipers-horn.heater-connector"
    ],
    "file": "models/electrical.wiring-wipers-horn.json",
-   "bytes": 400205
+   "bytes": 387438
   },
   "engine.block": {
    "id": "engine.block",
@@ -2501,7 +2501,7 @@
     "fuel.choke.jet-lever-rear"
    ],
    "file": "models/fuel.choke.json",
-   "bytes": 266257
+   "bytes": 266197
   },
   "fuel.exhaust": {
    "id": "fuel.exhaust",
@@ -2560,7 +2560,7 @@
     "fuel.pipes.feed-union"
    ],
    "file": "models/fuel.pipes.json",
-   "bytes": 139354
+   "bytes": 139370
   },
   "fuel.pump": {
    "id": "fuel.pump",
@@ -2615,7 +2615,7 @@
     "fuel.supply.clip-screw"
    ],
    "file": "models/fuel.supply.json",
-   "bytes": 255625
+   "bytes": 255641
   },
   "fuel.tank": {
    "id": "fuel.tank",
@@ -2718,7 +2718,7 @@
     "fuel.throttle.pedal-stop"
    ],
    "file": "models/fuel.throttle.json",
-   "bytes": 891713
+   "bytes": 887612
   },
   "gearbox.casing": {
    "id": "gearbox.casing",
@@ -3212,7 +3212,7 @@
     "ignition.distributor.plug-cap"
    ],
    "file": "models/ignition.distributor.json",
-   "bytes": 494346
+   "bytes": 494310
   },
   "propshaft.shaft": {
    "id": "propshaft.shaft",
@@ -11834,7 +11834,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "leather_black",
-   "notes": "Black leather cushion, semi-gloss and creased with use (Oliver's kf120, kf129), deep and rising from about 405 mm above the road at the squab to a rolled front edge at about 512 (his body scan, sections at y -350 and 385); a piped centre panel of six fore-and-aft pleats, plain bolsters, a plain front roll ahead of the panel (kf075, kf131, kf140). Haynes Sec 54. QA fix round 1, cockpit (was a short flat vinyl cushion).",
+   "notes": "Black leather cushion, semi-gloss and creased with use (Oliver's kf120, kf129), deep and rising from about 405 mm above the road at the squab to a rolled front edge at about 512 (his body scan, sections at y -350 and 385); a piped centre panel of six fore-and-aft pleats, plain bolsters, a plain front roll ahead of the panel (kf075, kf131, kf140). Haynes Sec 54. QA fix round 1, cockpit (was a short flat vinyl cushion). QA fix round 1, cockpit: seat centre line at y +340 (P11b: +380; the scan's centre is +303, the inboard side stopping at the model's tunnel carpet and handbrake), with the runners and the floor's captive nuts 85 mm either side. D: Oliver's body scan, sections: the squab's sides 850-900 above the road and the cushion top's edges at x -1300..-1150 (mgb/cockpit_layout.py SEAT_Y, SEAT_Y_SCAN); the belt buckles sit between the squab and the tunnel.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -11880,7 +11880,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "leather_black",
-   "notes": "Black leather squab, semi-gloss and creased (Oliver's kf120, kf129), shield-shaped with a large-radius rounded top, raked back 24 deg from the cushion's rear (his body scan: front face from about x -1450 at the cushion to -1640 at the top, 885 above the road); a piped centre panel of six vertical pleats in the lower two-thirds, a plain upper panel, piping round the face and a top roll piped on both edges (kf075, kf130, kf135). Its feet lean back over the heelboard's step (mgb/underbody_layout HEEL_STEP_Z). QA fix round 1, cockpit (was a 12 deg near-rectangular slab).",
+   "notes": "Black leather squab, semi-gloss and creased (Oliver's kf120, kf129), shield-shaped with a large-radius rounded top, raked back 24 deg from the cushion's rear (his body scan: front face from about x -1450 at the cushion to -1640 at the top, 885 above the road); a piped centre panel of six vertical pleats in the lower two-thirds, a plain upper panel, piping round the face and a top roll piped on both edges (kf075, kf130, kf135). Its feet lean back over the heelboard's step (mgb/underbody_layout HEEL_STEP_Z). QA fix round 1, cockpit (was a 12 deg near-rectangular slab). QA fix round 1, cockpit: seat centre line at y +340 (P11b: +380; the scan's centre is +303, the inboard side stopping at the model's tunnel carpet and handbrake), with the runners and the floor's captive nuts 85 mm either side. D: Oliver's body scan, sections: the squab's sides 850-900 above the road and the cushion top's edges at x -1300..-1150 (mgb/cockpit_layout.py SEAT_Y, SEAT_Y_SCAN); the belt buckles sit between the squab and the tunnel.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -11926,7 +11926,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Tubular pan frame, legs, the two runners on the floor's captive nuts, the adjuster bar.",
+   "notes": "Tubular pan frame, legs, the two runners on the floor's captive nuts, the adjuster bar. QA fix round 1, cockpit: seat centre line at y +340 (P11b: +380; the scan's centre is +303, the inboard side stopping at the model's tunnel carpet and handbrake), with the runners and the floor's captive nuts 85 mm either side. D: Oliver's body scan, sections: the squab's sides 850-900 above the road and the cushion top's edges at x -1300..-1150 (mgb/cockpit_layout.py SEAT_Y, SEAT_Y_SCAN); the belt buckles sit between the squab and the tunnel.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -12146,7 +12146,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "leather_black",
-   "notes": "Black leather cushion, semi-gloss and creased with use (Oliver's kf120, kf129), deep and rising from about 405 mm above the road at the squab to a rolled front edge at about 512 (his body scan, sections at y -350 and 385); a piped centre panel of six fore-and-aft pleats, plain bolsters, a plain front roll ahead of the panel (kf075, kf131, kf140). Haynes Sec 54. QA fix round 1, cockpit (was a short flat vinyl cushion).",
+   "notes": "Black leather cushion, semi-gloss and creased with use (Oliver's kf120, kf129), deep and rising from about 405 mm above the road at the squab to a rolled front edge at about 512 (his body scan, sections at y -350 and 385); a piped centre panel of six fore-and-aft pleats, plain bolsters, a plain front roll ahead of the panel (kf075, kf131, kf140). Haynes Sec 54. QA fix round 1, cockpit (was a short flat vinyl cushion). QA fix round 1, cockpit: seat centre line at y -345 (P11b: -380; the scan's centre is -330, the inboard side stopping at the model's tunnel carpet and handbrake), with the runners and the floor's captive nuts 85 mm either side. D: Oliver's body scan, sections: the squab's sides 850-900 above the road and the cushion top's edges at x -1300..-1150 (mgb/cockpit_layout.py SEAT_Y, SEAT_Y_SCAN); the belt buckles sit between the squab and the tunnel.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -12192,7 +12192,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "leather_black",
-   "notes": "Black leather squab, semi-gloss and creased (Oliver's kf120, kf129), shield-shaped with a large-radius rounded top, raked back 24 deg from the cushion's rear (his body scan: front face from about x -1450 at the cushion to -1640 at the top, 885 above the road); a piped centre panel of six vertical pleats in the lower two-thirds, a plain upper panel, piping round the face and a top roll piped on both edges (kf075, kf130, kf135). Its feet lean back over the heelboard's step (mgb/underbody_layout HEEL_STEP_Z). QA fix round 1, cockpit (was a 12 deg near-rectangular slab).",
+   "notes": "Black leather squab, semi-gloss and creased (Oliver's kf120, kf129), shield-shaped with a large-radius rounded top, raked back 24 deg from the cushion's rear (his body scan: front face from about x -1450 at the cushion to -1640 at the top, 885 above the road); a piped centre panel of six vertical pleats in the lower two-thirds, a plain upper panel, piping round the face and a top roll piped on both edges (kf075, kf130, kf135). Its feet lean back over the heelboard's step (mgb/underbody_layout HEEL_STEP_Z). QA fix round 1, cockpit (was a 12 deg near-rectangular slab). QA fix round 1, cockpit: seat centre line at y -345 (P11b: -380; the scan's centre is -330, the inboard side stopping at the model's tunnel carpet and handbrake), with the runners and the floor's captive nuts 85 mm either side. D: Oliver's body scan, sections: the squab's sides 850-900 above the road and the cushion top's edges at x -1300..-1150 (mgb/cockpit_layout.py SEAT_Y, SEAT_Y_SCAN); the belt buckles sit between the squab and the tunnel.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -12238,7 +12238,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Tubular pan frame, legs, the two runners on the floor's captive nuts, the adjuster bar.",
+   "notes": "Tubular pan frame, legs, the two runners on the floor's captive nuts, the adjuster bar. QA fix round 1, cockpit: seat centre line at y -345 (P11b: -380; the scan's centre is -330, the inboard side stopping at the model's tunnel carpet and handbrake), with the runners and the floor's captive nuts 85 mm either side. D: Oliver's body scan, sections: the squab's sides 850-900 above the road and the cushion top's edges at x -1300..-1150 (mgb/cockpit_layout.py SEAT_Y, SEAT_Y_SCAN); the belt buckles sit between the squab and the tunnel.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -12703,7 +12703,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "vinyl_black",
-   "notes": "Hooded cowl round the speedometer (left) and tachometer (right) over the steering column (Oliver's photos 01, 04, 17, 22).",
+   "notes": "Hooded cowl round the speedometer (left) and tachometer (right) over the steering column (Oliver's photos 01, 04, 17, 22). QA fix round 1, cockpit: moved 46 mm inboard with the dials onto the column (pod centre y -288, body_layout DRIVER_Y) and the dials lowered 38 mm in it (BINNACLE_Z, 792 above the road); the cowl runs 52 mm below and 66 above the dial centres. D: Oliver's keyframes kf121, kf122 and kf148, SfM camera triangulation of the bezel centres (1-3 mm ray residuals) and of the cowl's corners (silhouettes, 1-10 mm).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -21986,7 +21986,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Pressed steel box on the engine side of the bulkhead (photo 1.1): the rear section the clutch and brake pedals hang in, open underneath, the common pivot bolt through its side walls (Sec 24 para 3); the mounting wall carrying both master cylinders (spigot and bolt holes, and a hole the clutch pipe passes); the front section round the cylinders with a floor (grommet hole for the brake pipe), a front wall and a rim the protecting cover screws to; a flange round its rear edge on the bulkhead with six bolt holes (Sec 19 para 7, later box); the anchor bar inside the rear flange with tabs for the two pedal pull-off springs. Form from Fig 9.16 item 11 and photo 1.1; every size and position derived (mgb/brake_layout.py). Height (QA fix round 1, steering): 120 mm higher than first drawn (clutch_layout PEDAL_BOX_RAISE), so the steering column on its scan line (steering_layout) passes under the floor (24 mm clear) and through the toe board below the box (Ch 9 Sec 17 para 6: the box also bolts to the toe plate; Oliver's kf151: pedals hung from high under the facia). P11 builds the bulkhead it bolts to and the toe board slots the pedals pass through.",
+   "notes": "Pressed steel box on the engine side of the bulkhead (photo 1.1): the rear section the clutch and brake pedals hang in, open underneath, the common pivot bolt through its side walls (Sec 24 para 3); the mounting wall carrying both master cylinders (spigot and bolt holes, and a hole the clutch pipe passes); the front section round the cylinders with a floor (grommet hole for the brake pipe), a front wall and a rim the protecting cover screws to; a flange round its rear edge on the bulkhead with six bolt holes (Sec 19 para 7, later box); the anchor bar inside the rear flange with tabs for the two pedal pull-off springs. Form from Fig 9.16 item 11 and photo 1.1; every size and position derived (mgb/brake_layout.py). Height (QA fix round 1, steering): 120 mm higher than first drawn (clutch_layout PEDAL_BOX_RAISE), so the steering column on its scan line (steering_layout) passes under the floor (24 mm clear) and through the toe board below the box (Ch 9 Sec 17 para 6: the box also bolts to the toe plate; Oliver's kf151: pedals hung from high under the facia). P11 builds the bulkhead it bolts to and the toe board slots the pedals pass through. QA fix round 1, cockpit: the box, both cylinders and the pivot moved 42 mm outboard (clutch cylinder y -257, brake -332, walls -370/-226), which takes the clutch arm out of the transmission tunnel and keeps both arms clear of the column; the two outboard flange bolts moved up to the top flange, clear of the fuel pipe up the bulkhead. Further out is blocked by the valance's control box, fuse block and flasher. Oliver's photo 13 shows the cylinders in the bulkhead's corner beside the heater, so they probably sit further out still (open: the valance fittings would move with them).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -22286,7 +22286,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Pressed-steel pedal on the common pivot in the pedal box, outboard of the clutch pedal (RHD), the pushrod clevis just below the pivot, the arm cranked back under the box and through the toe board to the pad (Fig 9.16 item 1). Drawn as the clutch pedal's form on the brake cylinder's line: the two pads side by side at the same height. QA fix round 1, steering: the steering column passes under the raised box on the brake line, so the arm joggles 28 mm outboard below the clevis eye (brake_layout ARM_Y), runs down past the column 8 mm clear and joggles back to the pad's line below it (D: Fig 9.16 item 1, the RHD pedal is cranked; the pull-off spring hooks to the joggled part). Lengths derived (mgb/clutch_layout.py).",
+   "notes": "Pressed-steel pedal on the common pivot in the pedal box, outboard of the clutch pedal (RHD), the pushrod clevis just below the pivot, the arm cranked back under the box and through the toe board to the pad (Fig 9.16 item 1). Drawn as the clutch pedal's form on the brake cylinder's line: the two pads side by side at the same height. QA fix round 1, cockpit (replacing the steering fix's joggle round the column): the arm runs down on the brake cylinder's line (y -332, the box moved 42 mm out), 21 mm clear of the column, and steps outboard below the column to the pad at y -418 (D: Fig 9.16 item 1, the RHD pedal is cranked). Lengths derived (mgb/clutch_layout.py). QA fix round 1, cockpit: pads where Oliver's keyframes kf151 and kf152 show them (D: SfM camera projection; each pad's image x solved for y at the pad's fore-aft place and height, the two views within 14 mm; the cameras' horizontal checked on the tachometer and the column to about 5 px). Clutch pad y -316, brake -418 (P8: -215 and -290; the clutch pad ran 21 mm into the tunnel). The arms run down on the box's lines (clutch -257, brake -332) past the column and step outboard to the pads 45 % down their lower length (clutch_layout PAD_Y, JOG_F).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -32629,7 +32629,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Pressed-steel pedal hung from the pivot in the pedal box, the master cylinder pushrod clevis just below the pivot, the arm cranked back through the bulkhead to the foot plate (Fig 5.3). RHD: the clutch pedal is the inboard of the two. Shape from Fig 5.3; lengths and the pad position derived (mgb/clutch_layout.py).",
+   "notes": "Pressed-steel pedal hung from the pivot in the pedal box, the master cylinder pushrod clevis just below the pivot, the arm cranked back through the bulkhead to the foot plate (Fig 5.3). RHD: the clutch pedal is the inboard of the two. Shape from Fig 5.3; lengths and the pad position derived (mgb/clutch_layout.py). QA fix round 1, cockpit: pads where Oliver's keyframes kf151 and kf152 show them (D: SfM camera projection; each pad's image x solved for y at the pad's fore-aft place and height, the two views within 14 mm; the cameras' horizontal checked on the tachometer and the column to about 5 px). Clutch pad y -316, brake -418 (P8: -215 and -290; the clutch pad ran 21 mm into the tunnel). The arms run down on the box's lines (clutch -257, brake -332) past the column and step outboard to the pads 45 % down their lower length (clutch_layout PAD_Y, JOG_F).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -36897,7 +36897,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Smiths speedometer with odometer and trip, cable driven from the overdrive (Fig 10.26 item 45). Outboard of the tachometer for RHD (D: mirror of the LHD layout; question for Oliver). Held by the bracket, its two knurled nuts and the cable nut (Sec 46).",
+   "notes": "Smiths speedometer with odometer and trip, cable driven from the overdrive (Fig 10.26 item 45). Inboard (left) of the tachometer on Oliver's car (photos 01, 17; kf121). Held by the bracket, its two knurled nuts and the cable nut (Sec 46). QA fix round 1, cockpit: placed where Oliver's keyframes kf121, kf122 and kf148 show it (SfM camera triangulation of the bezel centre, 1-3 mm ray residuals; mgb/body_layout.py INSTRUMENTS): speedometer y -209, tachometer -364 (155 mm apart, P11b 190), both 792 above the road; fuel gauge y -495, 810.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -37044,7 +37044,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Impulse type (Sec 47): pulses from the coil's LT feed; the pulse lead forms a loop at the back of the instrument (Fig 10.14). 18G cars: see the questions for Oliver.",
+   "notes": "Impulse type (Sec 47): pulses from the coil's LT feed; the pulse lead forms a loop at the back of the instrument (Fig 10.14). 18G cars: see the questions for Oliver. QA fix round 1, cockpit: placed where Oliver's keyframes kf121, kf122 and kf148 show it (SfM camera triangulation of the bezel centre, 1-3 mm ray residuals; mgb/body_layout.py INSTRUMENTS): speedometer y -209, tachometer -364 (155 mm apart, P11b 190), both 792 above the road; fuel gauge y -495, 810.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -37338,7 +37338,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "Electric fuel gauge fed from the ignition circuit, with the tank unit (Fig 10.26 items 34, 35; tank P11).",
+   "notes": "Electric fuel gauge fed from the ignition circuit, with the tank unit (Fig 10.26 items 34, 35; tank P11). QA fix round 1, cockpit: placed where Oliver's keyframes kf121, kf122 and kf148 show it (SfM camera triangulation of the bezel centre, 1-3 mm ray residuals; mgb/body_layout.py INSTRUMENTS): speedometer y -209, tachometer -364 (155 mm apart, P11b 190), both 792 above the road; fuel gauge y -495, 810.",
    "variant": {
     "factory_1963": true,
     "as_fitted": true
@@ -65050,7 +65050,7 @@
    "partNumbers": [],
    "material": null,
    "finish": "paint_black",
-   "notes": "AHC135 (F plate 108-G2 item 2, RHD, chassis 101-138400). Pendant pressed-steel lever hung from its bracket on the bulkhead's cabin face outboard of the brake pedal and the steering column: a short top arm above the pivot carries the inner cable on a split pin (Haynes Sec 45 para 1, \"the split pin at the end of the pedal\"), the main arm runs down and back clear of the toe board to the foot plate that takes the rubber pad. Pressing the pad swings the top arm rearward and draws the inner out of the guide. Swaged rib down the arm, pressed boss round the pivot. Shape and lengths derived (mgb/throttle_layout.py).",
+   "notes": "AHC135 (F plate 108-G2 item 2, RHD, chassis 101-138400). Pendant pressed-steel lever hung from its bracket on the bulkhead's cabin face outboard of the brake pedal and the steering column: a short top arm above the pivot carries the inner cable on a split pin (Haynes Sec 45 para 1, \"the split pin at the end of the pedal\"), the main arm runs down and back clear of the toe board to the foot plate that takes the rubber pad. Pressing the pad swings the top arm rearward and draws the inner out of the guide. Swaged rib down the arm, pressed boss round the pivot. Shape and lengths derived (mgb/throttle_layout.py). QA fix round 1, cockpit: the foot stub where Oliver's kf151 and kf152 show it, just outboard of the brake pad (D: SfM camera projection, y -485 and -500 from the two views): the arm steps outboard from PEDAL_Y (-412, kept for the pivot, cable and guide) to y -490 at its lower bend, by a round crank across (throttle_layout PAD_Y).",
    "variant": {
     "factory_1963": true,
     "as_fitted": true,
@@ -145999,7 +145999,7 @@
    "fitted": null
   }
  },
- "built": "2026-11-07T11:42:25+00:00",
+ "built": "2026-11-08T10:47:38+00:00",
  "datums": {
   "ground_z": -583.21,
   "front_x": 831.0,
