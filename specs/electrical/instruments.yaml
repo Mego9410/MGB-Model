@@ -17,7 +17,13 @@ parts:
     haynes: { section: 46, figures: [{ figure: "45" }] }
     quantity: 1
     finish: paint_black
-    notes: "Smiths speedometer with odometer and trip, cable driven from the overdrive (Fig 10.26 item 45). Outboard of the tachometer for RHD (D: mirror of the LHD layout; question for Oliver). Held by the bracket, its two knurled nuts and the cable nut (Sec 46)."
+    notes: >
+      Smiths speedometer with odometer and trip, cable driven from the overdrive (Fig 10.26 item 45). Inboard (left)
+      of the tachometer on Oliver's car (photos 01, 17; kf121). Held by the bracket, its two
+      knurled nuts and the cable nut (Sec 46). QA fix round 1, cockpit: placed where Oliver's keyframes kf121, kf122
+      and kf148 show it (SfM camera triangulation of the bezel centre, 1-3 mm ray residuals; mgb/body_layout.py
+      INSTRUMENTS): speedometer y -209, tachometer -364 (155 mm apart, P11b 190), both 792 above the road; fuel
+      gauge y -495, 810.
     specs:
       diameter: { mm: 80.0, source: { label: S, ref: "Smiths Classic MGB speedometer, 80 mm diameter (pafclassic.com)" } }
 
@@ -53,7 +59,12 @@ parts:
     haynes: { section: 46, figures: [{ figure: "95" }] }
     quantity: 1
     finish: paint_black
-    notes: "Impulse type (Sec 47): pulses from the coil's LT feed; the pulse lead forms a loop at the back of the instrument (Fig 10.14). 18G cars: see the questions for Oliver."
+    notes: >
+      Impulse type (Sec 47): pulses from the coil's LT feed; the pulse lead forms a loop at the back of the
+      instrument (Fig 10.14). 18G cars: see the questions for Oliver. QA fix round 1, cockpit: placed where Oliver's
+      keyframes kf121, kf122 and kf148 show it (SfM camera triangulation of the bezel centre, 1-3 mm ray residuals;
+      mgb/body_layout.py INSTRUMENTS): speedometer y -209, tachometer -364 (155 mm apart, P11b 190), both 792 above
+      the road; fuel gauge y -495, 810.
     specs:
       diameter: { mm: 80.0, source: { label: S, ref: "Smiths Classic MGB speedometer, 80 mm diameter (pafclassic.com)" } }
 
@@ -125,7 +136,11 @@ parts:
     haynes: { section: 46, figures: [{ figure: "34" }] }
     quantity: 1
     finish: paint_black
-    notes: "Electric fuel gauge fed from the ignition circuit, with the tank unit (Fig 10.26 items 34, 35; tank P11)."
+    notes: >
+      Electric fuel gauge fed from the ignition circuit, with the tank unit (Fig 10.26 items 34, 35; tank P11). QA
+      fix round 1, cockpit: placed where Oliver's keyframes kf121, kf122 and kf148 show it (SfM camera triangulation
+      of the bezel centre, 1-3 mm ray residuals; mgb/body_layout.py INSTRUMENTS): speedometer y -209, tachometer
+      -364 (155 mm apart, P11b 190), both 792 above the road; fuel gauge y -495, 810.
     specs:
       diameter: { mm: 52.0, source: { label: D, method: "Smiths small gauge, 2 1/16 in case, half the large dial in Fig 10.9" } }
 

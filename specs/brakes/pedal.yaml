@@ -18,10 +18,15 @@ parts:
       Pressed-steel pedal on the common pivot in the pedal box, outboard of the clutch pedal (RHD), the pushrod
       clevis just below the pivot, the arm cranked back under the box and through the toe board to the pad
       (Fig 9.16 item 1). Drawn as the clutch pedal's form on the brake cylinder's line: the two pads side by side
-      at the same height. QA fix round 1, steering: the steering column passes under the raised box on the brake
-      line, so the arm joggles 28 mm outboard below the clevis eye (brake_layout ARM_Y), runs down past the column
-      8 mm clear and joggles back to the pad's line below it (D: Fig 9.16 item 1, the RHD pedal is cranked; the pull-off
-      spring hooks to the joggled part). Lengths derived (mgb/clutch_layout.py).
+      at the same height. QA fix round 1, cockpit (replacing the steering fix's joggle round the column): the arm
+      runs down on the brake cylinder's line (y -332, the box moved 42 mm out), 21 mm clear of the column, and steps
+      outboard below the column to the pad at y -418 (D: Fig 9.16 item 1, the RHD pedal is cranked). Lengths derived (mgb/clutch_layout.py).
+      QA fix round 1, cockpit: pads where Oliver's keyframes kf151 and kf152 show them (D: SfM camera projection;
+      each pad's image x solved for y at the pad's fore-aft place and height, the two views within 14 mm; the
+      cameras' horizontal checked on the tachometer and the column to about 5 px). Clutch pad y -316, brake -418
+      (P8: -215 and -290; the clutch pad ran 21 mm into the tunnel). The arms run down on the box's lines (clutch
+      -257, brake -332) past the column and step outboard to the pads 45 % down their lower length (clutch_layout
+      PAD_Y, JOG_F).
     specs:
       bush_bore: { mm: 19.2, source: { label: D, method: "Fits the bush, as the clutch pedal" } }
 

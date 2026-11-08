@@ -138,7 +138,7 @@ NODES = {
     "fa.R": (FX, -600.0, FZ), "fa.fuel": (FX, BL.INSTRUMENTS["fuel-gauge"][0] + 30.0, FZ),
     "fa.tach": (FX, BL.INSTRUMENTS["tachometer"][0], FZ), "fa.drv": (FX, BL.DRIVER_Y, FZ),
     "fa.speedo": (FX, BL.INSTRUMENTS["speedometer"][0] - 36.0, FZ),
-    "fa.speedo.n": (BL.FACIA_X + 107.0, BL.INSTRUMENTS["speedometer"][0] - 26.0, BL.IP_Z - 42.0),
+    "fa.speedo.n": (BL.FACIA_X + 107.0, BL.INSTRUMENTS["speedometer"][0] - 26.0, BL.BINNACLE_Z - 42.0),
     "fa.dual": (FX, BL.INSTRUMENTS["dual-gauge"][0] - 26.0, FZ), "fa.map": (FX, BL.SWITCHES["map-lamp"][0] + 14.0, FZ),
     "fa.panel": (FX, BL.SWITCHES["panel-lamp"][0], FZ), "fa.ign": (FX, BL.SWITCHES["ignition"][0], FZ),
     "fa.heat": (FX, BL.SWITCHES["heater"][0], FZ), "fa.light": (FX, BL.SWITCHES["lighting"][0], FZ),
@@ -174,7 +174,8 @@ EDGES = [
     ("bay.sol", "sol.n", [], False),
     ("bay.eng", "eng.up", [(-10.0, -360.0, 90.0)], False), ("eng.up", "eng.alt", [(20.0, -255.0, -20.0)], False),
     ("eng.up", "eng.coil", [(40.0, -228.0, 45.0)], False),
-    ("gr.bay", "stop.n", [(BL.BULKHEAD_X + 30.0, -362.0, 90.0), (BL.BULKHEAD_X + 30.0, -362.0, -150.0),
+    ("gr.bay", "stop.n", [(BL.BULKHEAD_X + 20.0, -385.0, 150.0), (BL.BULKHEAD_X + 30.0, -385.0, -40.0),   # between the
+                          (BL.BULKHEAD_X + 30.0, -362.0, -150.0),          # pedal box (moved out) and the valance fittings
                           (BL.BULKHEAD_X + 55.0, -362.0, -178.0), (BL.BULKHEAD_X + 55.0, -290.0, -178.0)], False),
     # down off the bulkhead face outboard of P11a's fuel pipe and the pedal box, under P9's column and P8's
     # master cylinder pipe, then up to the stop lamp switch from ahead of it
@@ -197,7 +198,7 @@ EDGES = [
     ("fa.drv", "col.n", [(FX - 20.0, BL.DRIVER_Y - 50.0, FZ - 150.0), (BL.FACIA_X - 20.0, BL.DRIVER_Y - 60.0, 40.0),
                          (BL.FACIA_X - 75.0, BL.DRIVER_Y - 60.0, -70.0)], True),   # down outboard of the column, under it
     ("fa.tach", "fa.earth.n", [(FX + 10.0, -250.0, BL.IP_Z - 60.0)], False),
-    ("fa.speedo", "fa.speedo.n", [(FX, BL.INSTRUMENTS["speedometer"][0] - 36.0, BL.IP_Z - 10.0)], False),   # below and outboard of the speedometer cable
+    ("fa.speedo", "fa.speedo.n", [(FX, BL.INSTRUMENTS["speedometer"][0] - 36.0, BL.BINNACLE_Z - 10.0)], False),   # below and outboard of the speedometer cable
     # rear harness
     ("fa.R", "re.0", [(FX - 20.0, -610.0, 150.0)], True), ("re.0", "re.sill", [], True), ("re.sill", "re.pump", [], True),
     ("re.pump", "re.heel", [], True), ("re.heel", "re.arch", [(HEEL_X - 40.0, SILL_Y + 40.0, TONNEAU_RUN_Z),

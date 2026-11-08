@@ -218,6 +218,12 @@ parts:
       below the box (Ch 9 Sec 17 para 6: the box also bolts to the toe plate; Oliver's kf151: pedals hung from high
       under the facia). P11 builds
       the bulkhead it bolts to and the toe board slots the pedals pass through.
+      QA fix round 1, cockpit: the box, both cylinders and the pivot moved 42 mm outboard (clutch cylinder y -257,
+      brake -332, walls -370/-226), which takes the clutch arm out of the transmission tunnel and keeps both arms
+      clear of the column; the two outboard flange bolts moved up to the top flange, clear of the fuel pipe up the
+      bulkhead. Further out is blocked by the valance's control box, fuse block and flasher. Oliver's photo 13 shows
+      the cylinders in the bulkhead's corner beside the heater, so they probably sit further out still (open: the
+      valance fittings would move with them).
     specs:
       thickness: { mm: 1.6, source: { label: D, method: "Pressed steel" } }
       length: { mm: 247.0, source: { label: D, method: "Bulkhead to clear of the clutch cylinder's banjo bolt" } }

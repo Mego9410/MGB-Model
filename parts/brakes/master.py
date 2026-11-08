@@ -259,9 +259,11 @@ def pedal_box(spec) -> Part:
 
 def box_bolts():
     """(y, z) of the six box-to-bulkhead bolts in the rear flange (Sec 19 para 7)."""
-    yo, yi = Y0 - B.BOX_FLANGE / 2 - 1.0, Y1 + B.BOX_FLANGE / 2 + 1.0
+    # QA fix round 1, cockpit: with the box moved out, the fuel pipe runs up the bulkhead over its outboard flange,
+    # so the two outboard bolts move up to the top flange (four along the top, two down the inboard side; D)
+    yi = Y1 + B.BOX_FLANGE / 2 + 1.0
     zt = Z1 + B.BOX_FLANGE / 2
-    return [(yo, Z0 + 12.0), (yo, (Z0 + Z1) / 2), (yi, Z0 + 12.0), (yi, (Z0 + Z1) / 2), (Y0 + 30.0, zt), (Y1 - 30.0, zt)]
+    return [(yi, Z0 + 12.0), (yi, (Z0 + Z1) / 2), (Y0 + 20.0, zt), (Y0 + 55.0, zt), (Y1 - 55.0, zt), (Y1 - 20.0, zt)]
 
 
 def cover_screws():

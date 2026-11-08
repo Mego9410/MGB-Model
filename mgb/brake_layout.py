@@ -110,14 +110,16 @@ SPRING_Y = WEB_Y[1] + 3.0
 # bolt through its side walls), an internal mounting wall the two master cylinders bolt to (clutch_layout
 # PEDAL_BOX_FACE_X), and a front section round the cylinders with a floor, closed by the protecting cover on four
 # screws. The box is bolted to the bulkhead through a flange round its rear edge (six bolts).
-MC_Y, MC_Z = -290.0, K.MC_Z                        # brake master cylinder axis
+MC_Y, MC_Z = K.MC_Y - 75.0, K.MC_Z                 # brake master cylinder axis (75 mm outboard of the clutch's)
+PAD_Y = -418.0                                      # brake pad (clutch_layout PAD_Y: Oliver's kf151, kf152)
 PEDAL_PIVOT = (K.PEDAL_PIVOT[0], MC_Y, K.PEDAL_PIVOT[2])
 PEDAL_CLEVIS = (K.PEDAL_CLEVIS[0], MC_Y, K.PEDAL_CLEVIS[2])
-PEDAL_PAD = (K.PEDAL_PAD[0], MC_Y, K.PEDAL_PAD[2])
+PEDAL_PAD = (K.PEDAL_PAD[0], PAD_Y, K.PEDAL_PAD[2])
 BOX_REAR_X = CL.BULKHEAD_X                          # rear flange on the bulkhead's engine-side face
 BOX_WALL_X = K.PEDAL_BOX_FACE_X                     # mounting wall: its front face carries the cylinder flanges
 BOX_FRONT_X = K.PEDAL_BOX_FACE_X + 172.0            # front wall, clear of the clutch cylinder's banjo bolt
-BOX_Y = (-332.0, -184.0)                            # outer faces of the side walls
+BOX_Y = (MC_Y - 38.0, K.MC_Y + 31.0)                # outer faces of the side walls (-370, -226; the outer one 4 mm in
+                                                    # from P8's margin, clear of the valance's control box)
 BOX_Z = (-114.0 + K.PEDAL_BOX_RAISE, 16.0 + K.PEDAL_BOX_RAISE)   # underside of the floor (front section), top rim
 BOX_T = 1.6
 BOX_FRONT_T = 2.0                                   # mounting wall (clutch_hydraulics BOX_WALL)
@@ -126,12 +128,10 @@ COVER_TOP_Z = 58.0 + K.PEDAL_BOX_RAISE                                  # top of
 PIVOT_BOLT_Y = (BOX_Y[1], BOX_Y[0])                 # head on the inboard wall (Sec 24 para 3: head against the clutch pedal end)
 SPRING_ANCHOR_X = K.PEDAL_PIVOT[0] - 26.0           # pull-off spring anchor tabs just ahead of the rear flange (as parts/clutch/pedal.py)
 PEDAL_T = 8.0                                       # pedal plate thickness (as the clutch pedal)
-# QA fix round 1, steering: the column (steering_layout) passes under the box at y -287, right under the brake pedal's
-# line, so the brake pedal's arm joggles outboard below the clevis eye, runs down past the column on ARM_Y and
-# joggles back to the pad's line below it (D: Haynes Fig 9.16 item 1, the RHD brake pedal is a cranked pressing; the
-# arm clears the column's outer tube by 8 mm).
-ARM_Y = -318.0
-ARM_JOG_Z = (K.PEDAL_PIVOT[2] - 57.0, K.PEDAL_PIVOT[2] - 67.0)   # joggle out, from below the clevis eye
+# QA fix round 1, steering, had the brake arm joggle outboard round the column; with the box moved out (cockpit) the
+# arm's line in the box (ARM_Y) is the cylinder's, 21 mm clear of the column's outer tube, and the arm steps outboard to
+# the pad below the column as the clutch arm does (D: Haynes Fig 9.16 item 1, the RHD pedals are cranked pressings).
+ARM_Y = MC_Y
 
 # =================================================================================================
 # handbrake (car frame, D): lever on the right of the tunnel between the seats, cable back to the axle

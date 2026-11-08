@@ -16,6 +16,7 @@ import math
 
 from build123d import Compound, Location, Rot
 
+from mgb import cockpit_layout as CK
 from mgb import (body_geom as G, body_layout as BL, body_shell as B, body_shell_layout as S, brake_layout as BK,
                  car_layout as CL, chassis_layout as CH, clutch_layout as CLU, front_suspension_layout as FS,
                  fuel_supply_layout as FL, rear_suspension_layout as RS, steering_layout as ST, underbody_layout as U)
@@ -132,8 +133,8 @@ def floor_half(side):
         for bx, by, bz in CH.REAR_XMEMBER_BOLTS:
             if by * side > 0:
                 out = out - zcyl(5.0, FLOOR_Z - 5, FLOOR_TOP + 5, bx, abs(by))
-        for xs in (-1060.0, -1290.0):                                               # seat runner captive nuts
-            for ys in (300.0, 470.0):
+        for xs in (-1060.0, -1290.0):                                               # seat runner captive nuts (cockpit_layout)
+            for ys in (CK.SEAT_Y[side] - CK.SEAT_RUNNER_DY, CK.SEAT_Y[side] + CK.SEAT_RUNNER_DY):
                 out = out - zcyl(4.2, FLOOR_Z - 5, FLOOR_TOP + 10, xs, ys)
         for xd in (-860.0, -1380.0):                                                # drain holes
             out = out - zcyl(10.0, FLOOR_Z - 5, FLOOR_TOP + 10, xd, 545.0)
@@ -350,11 +351,15 @@ def column_toe_mount(spec):
     loc = frame_to(ST.COLUMN_TOE_PLATE, (d.X, d.Y, d.Z), (0, 0, 1))
     from mgb.chassis_geom import zcyl as zc
     face = zc(46.0, -1.6, 0.0) - zc(22.0, -3.0, 2.0)
-    for yy in (-32.0, 32.0):
-        face = face - zc(3.3, -3.0, 2.0, 0.0, yy)
+    for xx in (-32.0, 32.0):                     # studs above and below the tube (the cup has flats at its sides)
+        face = face - zc(3.3, -3.0, 2.0, xx, 0.0)
     cup = (zc(46.0, -42.0, -1.6) - zc(44.4, -43.0, -1.5)) - zc(22.0, -50.0, 0.0)
     part = loc * (face + cup)
     part = part & box(BH_X - 90.0, BH_X - T + 0.01 + 40.0, -600, 0, -400, 200)
+    # QA fix round 1, cockpit: flats 24 mm either side of the column, so the clutch arm (inboard) and the brake arm
+    # (outboard) pass it where they cross the column's line at the toe plate (D)
+    cy = ST.COLUMN_TOE_PLATE[1]
+    part = part & box(BH_X - 120.0, BH_X + 60.0, cy - 24.0, cy + 24.0, -400, 200)
     part = part - box(BH_X - T, BH_X + 60.0, -600, 0, -400, 200)
     return _l(part, spec)
 

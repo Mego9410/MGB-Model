@@ -85,18 +85,23 @@ def pedal(spec) -> Part:
     px, _, pz = T.PIVOT
     cx, _, cz = T.CABLE_END
     pts = _arm_points()
-    p = _bar(pts, 20.0, "y", y0, y1)
+    # QA fix round 1, cockpit: the arm runs down from the pivot on PEDAL_Y, steps outboard at ARM[2] (a round crank
+    # across) and carries on down on PAD_Y to the stub (Oliver's kf151, kf152: the stub just outboard of the brake pad)
+    ya0, ya1 = T.PAD_Y - t / 2, T.PAD_Y + t / 2
+    kx, kz = pts[2]
+    p = _bar(pts[:3], 20.0, "y", y0, y1) + _bar(pts[2:], 20.0, "y", ya0, ya1)
+    p = p + ycyl(10.0, T.PAD_Y - t / 2, PY + t / 2, kx, kz)                      # the crank across
     p = p + _bar([(px, pz), (cx, cz - 12.0)], 16.0, "y", y0, y1)                # top arm above the pivot
     # cable tab: the top end turned forward square to the cable, the inner through it (split pin behind)
     tab = box(cx - 3.0, cx, PY - 9.0, y1, cz - 9.0, cz + 9.0)
     p = p + tab
     # swaged stiffening rib down the main arm, on its outboard face
-    p = p + _bar(pts[1:4], 6.0, "y", y0 - 1.4, y0 + 0.01)
+    p = p + _bar(pts[1:3], 6.0, "y", y0 - 1.4, y0 + 0.01) + _bar(pts[2:4], 6.0, "y", ya0 - 1.4, ya0 + 0.01)
     # pressed boss round the pivot (the distance tube runs in it)
     p = p + ycyl(10.0, PY - 7.0, PY + 2.5, px, pz)
     # foot plate under the pad
     n, up = _pad_frame()
-    pl = Plane(origin=(T.PAD[0] - n[0] * 7.0, PY, T.PAD[2] - n[2] * 7.0), x_dir=(0, 1, 0), z_dir=n)
+    pl = Plane(origin=(T.PAD[0] - n[0] * 7.0, T.PAD_Y, T.PAD[2] - n[2] * 7.0), x_dir=(0, 1, 0), z_dir=n)
     p = p + pl.location * zcyl(11.0, -9.0, 0.0)                   # boss for the stub (Oliver's kf151: no foot plate)
     p = p - ycyl(6.1, PY - 9.0, PY + 5.0, px, pz)                               # boss bore
     p = p - xcyl(1.2, cx - 4.0, cx + 1.0, PY, cz)                               # cable hole in the tab
@@ -107,7 +112,7 @@ def pad(spec) -> Part:
     """The accelerator's foot stub on Oliver's car (kf151): a short round chromed roller on the end of the pedal's
     arm, square to the foot, where the standard car has the GPR105 rubber pad on a plate."""
     n, up = _pad_frame()
-    pl = Plane(origin=(T.PAD[0] - n[0] * 7.0, PY, T.PAD[2] - n[2] * 7.0), x_dir=(0, 1, 0), z_dir=n)
+    pl = Plane(origin=(T.PAD[0] - n[0] * 7.0, T.PAD_Y, T.PAD[2] - n[2] * 7.0), x_dir=(0, 1, 0), z_dir=n)
     L = spec.nom("thickness")
     stub = zcyl(12.5, 0.0, L - 3.0) + zrev([(0.0, L - 3.0), (12.5, L - 3.0), (11.0, L - 0.5), (9.0, L), (0.0, L)])
     for k in range(3):                                            # knurled grooves round it

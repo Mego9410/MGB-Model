@@ -19,7 +19,7 @@ from mgb import clutch_layout as K, shapes as Sh
 
 PX, PY, PZ = K.PEDAL_PIVOT
 CX, _, CZ = K.PEDAL_CLEVIS
-AX, _, AZ = K.PEDAL_PAD
+AX, AY, AZ = K.PEDAL_PAD                  # AY: the pad's line, outboard of the arm's in the box (QA fix round 1, cockpit)
 T = 8.0                                   # pedal arm thickness (along Y)
 PAD_N = (-math.cos(math.radians(25)), 0.0, math.sin(math.radians(25)))   # foot plate faces back and a little up
 SPRING_PEDAL = (PX, PZ - 70.0)            # return spring hole in the arm (x, z)
@@ -43,12 +43,21 @@ def _arm_points():
     return [(PX, PZ), (PX, PZ - 85.0), (PX - 70.0, PZ - 160.0), prev, end]
 
 
+def stepped_path(py, ay):
+    """Arm centre line (car frame): down from the pivot on the box's line py, past the steering column, then stepped
+    outboard to the pad's line ay part way down the lower length (clutch_layout JOG_F; QA fix round 1, cockpit)."""
+    (x0, z0), (x1, z1), (x2, z2), prev, end = _arm_points()
+    f = K.JOG_F
+    j = (x2 + f * (prev[0] - x2), z2 + f * (prev[1] - z2))
+    return [(x0, py, z0), (x1, py, z1), (x2, py, z2), (j[0], ay, j[1]), (prev[0], ay, prev[1]), (end[0], ay, end[1])]
+
+
 def pedal(spec) -> Part:
     pts = _arm_points()
     path = None
     for rr in (30.0, 15.0, 6.0):
         try:
-            path = FilletPolyline(*[(x, PY, z) for x, z in pts], radius=rr)
+            path = FilletPolyline(*stepped_path(PY, AY), radius=rr)
             break
         except ValueError:
             continue
@@ -58,7 +67,7 @@ def pedal(spec) -> Part:
     p = p + ycyl(13.0, PY - 12.5, PY + 12.5, PX, PZ)                 # boss for the bush
     p = p + ycyl(10.0, PY - T / 2, PY + T / 2, CX, CZ)               # clevis eye
     # foot plate the pad fits over
-    pl = Plane(origin=(AX, PY, AZ), x_dir=(0, 1, 0), z_dir=PAD_N)
+    pl = Plane(origin=(AX, AY, AZ), x_dir=(0, 1, 0), z_dir=PAD_N)
     p = p + pl.location * Box(50.0, 62.0, 3.0, align=(Align.CENTER, Align.CENTER, Align.MAX))
     p = p + pl.location * Box(20.0, 50.0, 3.0, align=(Align.CENTER, Align.CENTER, Align.MAX)).moved(Location((0, 0, -2.9)))   # boss joining the arm
     p = p - ycyl(spec.nom("bush_bore") / 2, PY - 20, PY + 20, PX, PZ)
@@ -82,7 +91,7 @@ def pad(spec) -> Part:
     vertical ribs, a rounded foot)."""
     from build123d import Polygon, extrude
     t = spec.nom("thickness")
-    pl = Plane(origin=(AX, PY, AZ), x_dir=(0, 1, 0), z_dir=PAD_N)
+    pl = Plane(origin=(AX, AY, AZ), x_dir=(0, 1, 0), z_dir=PAD_N)
     wb, wt, h = 62.0, 50.0, 72.0
     outline = [(-wb / 2, -h / 2), (wb / 2, -h / 2), (wt / 2, h / 2), (-wt / 2, h / 2)]
     from mgb.body_shell import fillet_poly

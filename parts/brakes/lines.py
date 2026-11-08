@@ -167,7 +167,8 @@ def front_pipe_points(side):
     leg = side * B.CHASSIS_LEG_Y
     pts = [p, along(p, d, 14.0)]
     if side > 0:
-        y_up = B.BOX_Y[1] + B.BOX_FLANGE + 5.0
+        y_up = -161.0                              # inboard of the box's flange; kept where P8 had it when the box moved
+                                                   # out (QA fix round 1, cockpit), clear of the overdrive loom on the left
         pts += [(xb, y_up, FZ4), (xb, y_up, B.HEAT_CROSS_Z), (xb, -y_up, B.HEAT_CROSS_Z), (xb, -y_up, B.LEG_PIPE_Z),
                 (xb, leg, B.LEG_PIPE_Z)]
     else:

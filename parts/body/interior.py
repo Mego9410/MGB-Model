@@ -48,7 +48,7 @@ SW_R = {"panel-lamp": 5.5, "map-lamp": 5.5, "ignition": 10.0}
 GLOVE = (250.0, 575.0, 735.0, 868.0)        # (y0, y1, h0, h1) glovebox on the passenger side (left, RHD car)
 PLAQUE = (BL.PLAQUE_Y, BL.PLAQUE_Z, 214.0, 74.0)   # centre (y, z), width, height
 HEATER_KNOBS = [(BL.HEATER_KNOB_Y, z) for z in BL.HEATER_KNOB_Z]
-BINNACLE = (BL.INSTRUMENTS["speedometer"][0], BL.INSTRUMENTS["tachometer"][0], BL.IP_Z)
+BINNACLE = (BL.INSTRUMENTS["speedometer"][0], BL.INSTRUMENTS["tachometer"][0], BL.BINNACLE_Z)
 
 
 def _fx(y):
@@ -213,12 +213,15 @@ def binnacle(spec):
     ya, yb, z = BINNACLE
     yc, half = (ya + yb) / 2, abs(ya - yb) / 2 + 56.0
     x0 = FX - BL.FACIA_T
-    outer = B.fillet_poly([(yc - half, z - 56.0), (yc + half, z - 56.0), (yc + half, z + 60.0), (yc - half, z + 60.0)],
+    # QA fix round 1, cockpit: the cowl's corners triangulated on kf121, kf122, kf148 (silhouettes, 1-10 mm residuals):
+    # y -147..-422 at the top (h ~865 at the corners) and -153..-444 at the foot (h 742-794); so the dials sit lower in
+    # the cowl than P11b drew (52 below them to the foot, 66 above to the top, just under the crash roll).
+    outer = B.fillet_poly([(yc - half, z - 52.0), (yc + half, z - 52.0), (yc + half, z + 66.0), (yc - half, z + 66.0)],
                           [24.0, 24.0, 44.0, 44.0], 6)
-    inner = B.fillet_poly([(yc - half + 9.0, z - 47.0), (yc + half - 9.0, z - 47.0), (yc + half - 9.0, z + 51.0),
-                           (yc - half + 9.0, z + 51.0)], [18.0, 18.0, 36.0, 36.0], 6)
+    inner = B.fillet_poly([(yc - half + 9.0, z - 43.0), (yc + half - 9.0, z - 43.0), (yc + half - 9.0, z + 57.0),
+                           (yc - half + 9.0, z + 57.0)], [18.0, 18.0, 36.0, 36.0], 6)
     shell = xprism(outer, x0 - 45.0, x0) - xprism(inner, x0 - 46.0, x0 + 1.0)
-    visor = xprism(outer, x0 - 63.0, x0 - 44.0) & box(x0 - 64.0, x0, yc - half - 1, yc + half + 1, z + 34.0, z + 61.0)
+    visor = xprism(outer, x0 - 63.0, x0 - 44.0) & box(x0 - 64.0, x0, yc - half - 1, yc + half + 1, z + 40.0, z + 67.0)
     visor = visor - xprism(inner, x0 - 64.0, x0)
     from mgb import steering_layout as SLY
     cut = SLY.clearance(48.0, FX + 60.0, FX - 120.0)      # QA fix round 1, steering: notch for the column and its switch
@@ -394,7 +397,7 @@ def dash_top(spec):
 # squab raked back 24 deg (its front face from about x -1440 at the cushion to -1640 at the top, 885 above the road),
 # its top rounded to a large radius, a piped centre panel of six vertical pleats in its lower two-thirds under a plain
 # upper panel, piping round the face and a top roll piped on both edges.
-SEAT_Y = 380.0                               # between the floor's runner captive nuts (y 300 and 470)
+SEAT_Y = CK.SEAT_Y                            # per side, from Oliver's body scan (mgb/cockpit_layout.py)
 SEAT_W = 400.0                               # inside the sill carpet and the rear loom along the sill
 CUSH_X = (-1000.0, -1432.0)                  # front edge, rear edge
 CUSH_TOP = [(-1432.0, 405.0), (-1300.0, 432.0), (-1150.0, 468.0), (-1075.0, 497.0), (-1035.0, 510.0), (-1000.0, 505.0)]
@@ -425,7 +428,7 @@ def _squab_outline(d=0.0):
 
 
 def _cushion_solid(side):
-    y = side * SEAT_Y
+    y = side * SEAT_Y[side]
     w = SEAT_W / 2
     (xf, hf), (xr, hr) = CUSH_BOT
     prof = [(xr, H(hr)), (xf, H(hf)), (xf, H(470.0))] + [(x, H(h)) for x, h in reversed(CUSH_TOP)]
@@ -444,7 +447,7 @@ def _top_band(x0, x1, dz0, dz1, n=14):
 
 
 def _pleat_ys(side):
-    y = side * SEAT_Y
+    y = side * SEAT_Y[side]
     hw = CUSH_PANEL[0]
     return [y - hw + 2 * hw * k / PLEAT_N for k in range(1, PLEAT_N)]
 
@@ -458,18 +461,18 @@ def seat_cushion(side):
         _, x0, x1 = CUSH_PANEL
         for yy in _pleat_ys(side):                                # the pleats' sewn grooves
             c = c - yprism(_top_band(x0 + 6.0, x1 - 6.0, -3.0, 6.0), yy - 1.3, yy + 1.3)
-        for yy in (side * SEAT_Y - CUSH_PANEL[0], side * SEAT_Y + CUSH_PANEL[0]):   # panel seams (piped)
+        for yy in (side * SEAT_Y[side] - CUSH_PANEL[0], side * SEAT_Y[side] + CUSH_PANEL[0]):   # panel seams (piped)
             c = c - yprism(_top_band(x0, x1, -3.5, 6.0), yy - 2.2, yy + 2.2)
         w = SEAT_W / 2
-        c = c - xprism([(side * SEAT_Y - w - 1, H(cush_top(x1)) - 4.0), (side * SEAT_Y + w + 1, H(cush_top(x1)) - 4.0),
-                        (side * SEAT_Y + w + 1, H(cush_top(x1)) + 8.0), (side * SEAT_Y - w - 1, H(cush_top(x1)) + 8.0)],
+        c = c - xprism([(side * SEAT_Y[side] - w - 1, H(cush_top(x1)) - 4.0), (side * SEAT_Y[side] + w + 1, H(cush_top(x1)) - 4.0),
+                        (side * SEAT_Y[side] + w + 1, H(cush_top(x1)) + 8.0), (side * SEAT_Y[side] - w - 1, H(cush_top(x1)) + 8.0)],
                        x1 - 2.2, x1 + 2.2)                         # front roll seam, across the cushion (kf140)
         return _l(c, spec)
     return build
 
 
 def _squab_loc(side):
-    return Location((SQUAB_BASE[0], side * SEAT_Y, H(SQUAB_BASE[1]))) * Rot(0, -SQUAB_RAKE, 0)
+    return Location((SQUAB_BASE[0], side * SEAT_Y[side], H(SQUAB_BASE[1]))) * Rot(0, -SQUAB_RAKE, 0)
 
 
 def _squab_local():
@@ -510,7 +513,7 @@ def seat_piping(side):
         """Red piping (Oliver's kf075, kf131, kf140): on the cushion round its top edge, along both sides of the centre
         panel and across the front roll's seam; on the squab round the face, round the centre panel and along both
         edges of the top roll."""
-        y = side * SEAT_Y
+        y = side * SEAT_Y[side]
         w = SEAT_W / 2
         rp = 2.0                          # QA fix 2: thinner piping (kf129, kf131)
         _, x0, x1 = CUSH_PANEL
@@ -541,10 +544,10 @@ def seat_frame(side):
     def build(spec):
         """Seat frame and runners: the tubular cushion pan frame, the squab's side hinges, two runners on the floor's
         captive nuts (St.floor_half), the adjuster bar."""
-        y = side * SEAT_Y
+        y = side * SEAT_Y[side]
         zf = U.FLOOR_Z + St.T
         parts = []
-        for yy in (y - 85.0, y + 85.0):                          # runners on the nuts at |y| 300 and 470
+        for yy in (y - CK.SEAT_RUNNER_DY, y + CK.SEAT_RUNNER_DY):   # runners on the floor's captive nuts
             r = box(-1320.0, -1030.0, yy - 12.0, yy + 12.0, zf, zf + 22.0) - box(-1321.0, -1029.0, yy - 10.5, yy + 10.5, zf + 1.5, zf + 20.5)
             for xn in (-1060.0, -1290.0):
                 r = r - zcyl(4.4, zf - 1, zf + 3, xn, yy)
@@ -557,7 +560,7 @@ def seat_frame(side):
                 (CUSH_X[1] + 15.0, y + SEAT_W / 2 - 20.0), (CUSH_X[1] + 15.0, y - SEAT_W / 2 + 20.0)]
         loop = [(a, b, zp(a)) for a, b in loop + loop[:1]]
         parts.append(swept_rod(loop, 8.0))
-        for yy in (y - 85.0, y + 85.0):                          # legs from the runners to the pan
+        for yy in (y - CK.SEAT_RUNNER_DY, y + CK.SEAT_RUNNER_DY):   # legs from the runners to the pan
             for xx in (-1060.0, -1290.0):
                 parts.append(rod((xx, yy, zf + 20.0), (xx, yy, zp(xx) - 6.0), 7.0))
         parts.append(rod((-1030.0, y - 100.0, zf + 26.0), (-1010.0, y - 30.0, zf + 26.0), 4.0))   # adjuster bar
@@ -1145,8 +1148,8 @@ def _belt_pts(side):
     yl = side * (S.SILL_INNER_Y + 22.0)
     zl = H(St.TREAD_H) + 6.0
     xb = SQUAB_BASE[0] - 30.0
-    yb = side * (St.TUNNEL[-1][1] + 28.0)
-    zb = STEP_TOP + 0.3 + CT
+    yb = side * (SEAT_Y[side] - SEAT_W / 2 - 19.0)           # between the squab's inboard side and the tunnel (QA fix round 1, cockpit)
+    zb = STEP_TOP + 0.3 + CT + 9.0                         # on the carpet where it turns up the tunnel's side
     return (xr, yr, zr), (xa, ya, za), (xl, yl, zl), (xb, yb, zb)
 
 

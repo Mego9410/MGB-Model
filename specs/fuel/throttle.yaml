@@ -26,6 +26,10 @@ parts:
       down and back clear of the toe board to the foot plate that takes the rubber pad. Pressing the pad swings the top
       arm rearward and draws the inner out of the guide. Swaged rib down the arm, pressed boss round the pivot.
       Shape and lengths derived (mgb/throttle_layout.py).
+      QA fix round 1, cockpit: the foot stub where Oliver's kf151 and kf152 show it, just outboard of the brake pad
+      (D: SfM camera projection, y -485 and -500 from the two views): the arm steps outboard from PEDAL_Y (-412,
+      kept for the pivot, cable and guide) to y -490 at its lower bend, by a round crank across (throttle_layout
+      PAD_Y).
     specs:
       thickness: { mm: 6.0, source: { label: D, method: "Pressed arm, as the clutch and brake pedals' plates" } }
       pivot_to_pad: { mm: 213.0, source: { label: D, method: "Pivot to pad centre in the layout" }, display_only: true }

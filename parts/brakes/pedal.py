@@ -48,14 +48,9 @@ def _moved(fn):
 
 
 def _jog_path():
-    """Brake arm centre line (car frame): the clutch pedal's arm moved to the brake line, joggled outboard to
-    brake_layout ARM_Y below the clevis eye and back to the pad's line once below the steering column."""
-    pts = CP._arm_points()                      # (x, z) of the clutch arm: pivot, down, bend, above the pad, pad
-    zo, zi = B.ARM_JOG_Z
-    (x0, z0), (x1, z1), (x2, z2), prev, end = pts
-    back = (x2 + 0.35 * (prev[0] - x2), z2 + 0.35 * (prev[1] - z2))    # back on the pad's line below the column
-    return [(x0, B.MC_Y, z0), (x0, B.MC_Y, zo), (x0, B.ARM_Y, zi), (x1, B.ARM_Y, z1), (x2, B.ARM_Y, z2),
-            (back[0], B.MC_Y, back[1]), (prev[0], B.MC_Y, prev[1]), (end[0], B.MC_Y, end[1])]
+    """Brake arm centre line (car frame): the clutch pedal's arm on the brake cylinder's line (brake_layout ARM_Y), stepped
+    outboard to the pad's line (PAD_Y) below the steering column, as the clutch arm is (QA fix round 1, cockpit)."""
+    return CP.stepped_path(B.ARM_Y, B.PAD_Y)
 
 
 def brake_pedal(spec) -> Part:
@@ -76,7 +71,7 @@ def brake_pedal(spec) -> Part:
     ax, _, az = B.PEDAL_PAD
     p = p + ycyl(16.0, py - T / 2, py + T / 2, PX, PZ) + ycyl(13.0, py - 12.5, py + 12.5, PX, PZ)
     p = p + ycyl(10.0, py - T / 2, py + T / 2, cx, cz)
-    pl = Plane(origin=(ax, py, az), x_dir=(0, 1, 0), z_dir=CP.PAD_N)
+    pl = Plane(origin=(ax, B.PAD_Y, az), x_dir=(0, 1, 0), z_dir=CP.PAD_N)
     p = p + pl.location * Box(50.0, 62.0, 3.0, align=(Align.CENTER, Align.CENTER, Align.MAX))
     p = p + pl.location * Box(20.0, 50.0, 3.0, align=(Align.CENTER, Align.CENTER, Align.MAX)).moved(Location((0, 0, -2.9)))
     p = p - ycyl(spec.nom("bush_bore") / 2, py - 20, py + 20, PX, PZ)
@@ -142,7 +137,7 @@ PARTS = {
     "brakes.pedal.pedal": {"build": brake_pedal},
     "brakes.pedal.bush": {"build": _moved(CP.bush)},
     "brakes.pedal.distance-tube": {"build": _moved(CP.distance_tube)},
-    "brakes.pedal.pad": {"build": _moved(CP.pad)},
+    "brakes.pedal.pad": {"build": lambda spec: lab(Location((0, B.PAD_Y - K.PAD_Y, 0)) * CP.pad(spec), spec)},
     "brakes.pedal.return-spring": {"build": return_spring},
     "brakes.pedal.clevis-pin": {"build": _moved(CP.clevis_pin)},
     "brakes.pedal.clevis-washer": {"build": clevis_washer},

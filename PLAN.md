@@ -1032,3 +1032,34 @@ Question for Oliver (QA fix round 1), closed in the steering fix below: the rim 
 - Not checked against a photo: the box's exact height. Nothing in Haynes or the keyframes fixes it. It is the least
   round-figure raise that clears the column. A photo down the right-hand side of the engine bay would confirm it.
 
+
+## QA fix round 1, cockpit alignment (8 Nov 2026)
+
+Binnacle, seats and pedals placed from Oliver's keyframes and body scan (the steering wheel and column stay as the
+steering fix left them).
+- Binnacle and dials: triangulated on kf121, kf122 and kf148 (SfM cameras, bezel centres, 1-3 mm ray residuals). The
+  pod's centre is over the column (y -288; body_layout DRIVER_Y, was -350). Speedometer y -209, tachometer -364 (155 mm
+  apart, was 190), both 792 above the road (BINNACLE_Z; they were 830). The pull knob between them is at y -289, 819 high.
+  Fuel gauge y -495, 810 high; overdrive toggle y -556, 809 high. The cowl follows (52 mm below the dials, 66 above).
+  Warning lamps, the instrument wiring's speedometer node and the facia holes follow the datums. The dual gauge
+  (y -87, 811 high on the same views) and the rest of the facia were left alone.
+- Seats: the body scan puts the centre lines at y -330 (driver) and +303 (passenger), from the squab sides 850-900
+  above the road and the cushion-top edges. They were 380 both sides. The seats moved to -345 and +340: further in,
+  their cushions ran into the model's tunnel carpet (|y| 135 at the cushion's foot) and the handbrake (-142). Both
+  stand wider than the scan's tunnel, which is |y| 60-80 at the cushion tops. The runners and the floor's captive nuts
+  follow (cockpit_layout SEAT_Y). The belt buckles moved in between the squabs and the tunnel, 9 mm up onto the
+  carpet where it turns up the tunnel.
+- Pedals: the clutch pedal and pad ran 21 mm into the tunnel and its carpet (exact boolean). Oliver's report was "the
+  pedals are clipping into the centre column". kf151 and kf152 put the pads further out: clutch y -316, brake -418,
+  accelerator stub -490 (was -215, -290, -412; each pad's image x solved for y at its fore-aft place and height; the two
+  views agree within 14 mm). The pedal box, both cylinders and the pivot moved 42 mm outboard (clutch y -257, brake
+  -332). That is as far as the valance's control box, fuse block and flasher allow. The arms run down on those lines
+  past the column (8 and 21 mm clear) and step outboard to the pads below it. The accelerator arm has a crank at its
+  lower bend; its pivot, cable and guide stay on y -412. The brake arm no longer joggles round the column. Moved with
+  them: the clutch pipe (inboard of the arm), the throttle cable's P-clip and run outboard of the box, and the stop
+  lamp lead (between the box and the valance fittings). The box's two outboard flange bolts went to the top flange,
+  clear of the fuel pipe. The column's toe-plate cup has flats 24 mm either side of the column for the two arms.
+- Open: kf150-kf152's cameras are out vertically by 30-60 px (checked on the binnacle), so the pads' height and
+  fore-aft place are not measured. Oliver's photo 13 shows the master cylinders in the bulkhead's corner beside the
+  heater, further out than the model's box. Moving them there means moving the valance fittings and the harness run.
+  The photos also put the dip switch about 80 mm further out (y -248).

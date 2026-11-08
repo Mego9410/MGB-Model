@@ -80,8 +80,19 @@ PEDAL_BOX_FACE_X = C.BULKHEAD_X + 75.0          # master cylinder flange face (f
 # least round-figure raise that clears the column's outer tube by 24 mm under the box floor and 10 mm under the
 # spring anchor bar. The pads stay where they were (PEDAL_PAD).
 PEDAL_BOX_RAISE = 120.0
-MC_Y, MC_Z = -215.0, -70.0 + PEDAL_BOX_RAISE    # clutch master cylinder axis
+# QA fix round 1, cockpit: the box (and with it both cylinders and the pedals' upper arms) moves 42 mm outboard, so the
+# clutch arm clears the transmission tunnel (it ran 21 mm into it at y -215: Oliver, "the pedals are clipping into the
+# centre column") and the column (8 mm); 42 is as far as the right-hand valance's control box, fuse block and flasher
+# (body_layout CONTROL_BOX etc., inboard faces at y -377) let it go. Oliver's photo 13 and his engine-bay scan put the
+# cylinders further out still, in the bulkhead's corner beside the heater; that needs the valance fittings moved.
+MC_Y, MC_Z = -257.0, -70.0 + PEDAL_BOX_RAISE    # clutch master cylinder axis
+# The pads where Oliver's keyframes kf151 and kf152 show them (SfM cameras; the pads' image x solved for y at the
+# pads' x and z, the two views within 14 mm; the cameras' horizontal checked on the tachometer and the column to ~5 px,
+# their vertical is out by 30-60 px so the pads keep their fore-aft place and height): clutch y -316, brake -418,
+# accelerator -490. P8 had -215, -290 and -412. The arms step outboard to them below the column (parts/clutch/pedal.py).
+PAD_Y = -316.0
+JOG_F = 0.45                                       # the arms' outboard step: this far down their lower length
 PEDAL_PIVOT = (C.BULKHEAD_X + 30.0, MC_Y, MC_Z + 45.0)   # pedal pivot in the box, axis along Y
 PEDAL_CLEVIS = (C.BULKHEAD_X + 30.0, MC_Y, MC_Z)          # pushrod clevis pin on the pedal
-PEDAL_PAD = (C.BULKHEAD_X - 165.0, MC_Y, -285.0)          # centre of the pad face, in the footwell (unchanged by the raise)
+PEDAL_PAD = (C.BULKHEAD_X - 165.0, PAD_Y, -285.0)         # centre of the pad face, in the footwell (unchanged by the raise)
 HOSE_BRACKET = (C.bx(-330.0), -268.0, -150.0)   # pipe-to-hose bracket on the right-hand chassis leg (body station)

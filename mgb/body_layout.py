@@ -92,26 +92,32 @@ WINDSCREEN_BASE_Z = above_ground(921.0)                     # and keyframes; bod
 SCUTTLE_TILT_DEG = 14.0                                # scuttle top falls toward the front at this angle
 FACIA_X = CL.bx(-775.0)                                      # rear (cockpit) face of the facia panel
 FACIA_T = 1.2
-DRIVER_Y = -350.0                                      # steering column / driver centre line (RHD)
-IP_Z = above_ground(830.0)                             # centre height of the large instruments
+DRIVER_Y = -288.0                                      # steering column / driver centre line (RHD): the binnacle's centre
+IP_Z = above_ground(830.0)                             # centre height of the facia's own small instruments and switches
 # (name, y, z) on the facia rear face, as on Oliver's car (photos 01, 04, 17, 22; P11b moved them from P10's
 # Fig 10.9 layout): the speedometer on the left and the tachometer on the right in the binnacle over the column,
 # the fuel gauge further right, the dual oil/water gauge on the centre panel right of the plaque.
+# QA fix round 1, cockpit: the binnacle group triangulated on Oliver's keyframes kf121, kf122 and kf148 (SfM cameras,
+# bezel centres, 1-3 mm ray residuals): speedometer y -209 h 789, tachometer y -364 h 794 (155 mm apart; P11b had
+# 190), the pull knob between them y -289 h 819, fuel gauge y -495 h 810, overdrive toggle y -556 h 809. The pod's
+# centre (-287) is over the column (steering_layout, y -291 at the facia), so DRIVER_Y follows it (P10 had -350,
+# which put the pod 50-60 mm outboard). The dual gauge on the same views is at y -87 h 811 (model -84, 820): left as is.
+BINNACLE_Z = above_ground(792.0)                       # centre height of the speedometer and tachometer
 INSTRUMENTS = {
-    "speedometer": (DRIVER_Y + 112.0, IP_Z),
-    "tachometer": (DRIVER_Y - 78.0, IP_Z),
-    "fuel-gauge": (DRIVER_Y - 196.0, IP_Z - 14.0),
-    "dual-gauge": (DRIVER_Y + 266.0, IP_Z - 10.0),
+    "speedometer": (DRIVER_Y + 79.0, BINNACLE_Z),
+    "tachometer": (DRIVER_Y - 76.0, BINNACLE_Z),
+    "fuel-gauge": (DRIVER_Y - 207.0, above_ground(810.0)),
+    "dual-gauge": (-84.0, IP_Z - 10.0),
 }
 # Warning lamps (P10b): on the early cars they are inside the instruments (Haynes Fig 10.26, printed
 # p190: the ignition warning lamp 44 in the tachometer 95, the main beam warning lamp 10 in the
 # speedometer 45, and a green arrow (27) for each side, left in the tachometer, right in the
 # speedometer). (name, instrument, y, z) of each lens on its dial, lit from a bulb holder in the case.
 WARNING_LAMPS = {
-    "ignition": ("tachometer", INSTRUMENTS["tachometer"][0], IP_Z - 22.0),
-    "main-beam": ("speedometer", INSTRUMENTS["speedometer"][0], IP_Z - 22.0),
-    "indicator-left": ("tachometer", INSTRUMENTS["tachometer"][0] + 20.0, IP_Z - 12.0),
-    "indicator-right": ("speedometer", INSTRUMENTS["speedometer"][0] - 20.0, IP_Z - 12.0),
+    "ignition": ("tachometer", INSTRUMENTS["tachometer"][0], BINNACLE_Z - 22.0),
+    "main-beam": ("speedometer", INSTRUMENTS["speedometer"][0], BINNACLE_Z - 22.0),
+    "indicator-left": ("tachometer", INSTRUMENTS["tachometer"][0] + 20.0, BINNACLE_Z - 12.0),
+    "indicator-right": ("speedometer", INSTRUMENTS["speedometer"][0] - 20.0, BINNACLE_Z - 12.0),
 }
 # centre switch panel (Fig 10.9 items 1, 4, 5, 6/7, 8, 13; early cars), as on Oliver's car (photos 16, 22): three
 # toggles in a row under the plaque and the ignition (P11b moved them); the choke knob beside them (fuel.choke).
@@ -120,11 +126,11 @@ SWITCHES = {
     "wiper": (88.0, IP_Z - 50.0),
     "heater": (56.0, IP_Z - 50.0),
     "ignition": (8.0, IP_Z - 50.0),
-    "panel-lamp": (DRIVER_Y + 17.0, IP_Z + 8.0),          # pull knob in the binnacle between the speedometer and the
+    "panel-lamp": (DRIVER_Y - 1.0, BINNACLE_Z + 27.0),    # pull knob in the binnacle between the speedometer and the
                                                          # tachometer (photo 22); the knob right of the ignition is the
                                                          # choke (its "C", photo 16: mgb.throttle_layout CHOKE_KNOB)
     "map-lamp": (-84.0, IP_Z + 36.0),                    # small knob above the dual gauge
-    "overdrive": (DRIVER_Y - 262.0, IP_Z - 10.0),        # toggle outboard of the fuel gauge
+    "overdrive": (DRIVER_Y - 268.0, above_ground(809.0)),   # toggle outboard of the fuel gauge
 }
 # centre panel fittings (Oliver's photos 16, 22): the plaque above the switches, the two heater knobs left of it
 PLAQUE_Y, PLAQUE_Z = 62.0, IP_Z + 22.0

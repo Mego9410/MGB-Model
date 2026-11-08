@@ -38,7 +38,11 @@ PEDAL_Y = -412.0                       # pedal mid-plane: outboard of the column
 PEDAL_T = 6.0                          # pressed arm thickness (along y)
 PIVOT = (CAB - 27.0, PEDAL_Y, -156.0)  # pivot bolt axis (along y)
 CABLE_END = (CAB - 27.0, PEDAL_Y, -128.0)   # inner cable through the pedal's top end, split pin behind (Sec 45 para 1)
-PAD = (-540.0, PEDAL_Y, -318.0)        # centre of the pad face, 60 mm above the carpet
+# QA fix round 1, cockpit: the foot stub where Oliver's kf151 and kf152 show it, just outboard of the brake pad (SfM
+# cameras, solved for y at the stub's x and height: -485 and -500); the arm steps outboard to it below the pivot
+# (ARM[2]), so the pivot, the cable and its guide keep PEDAL_Y. P3b had the stub on PEDAL_Y.
+PAD_Y = -490.0
+PAD = (-540.0, PAD_Y, -318.0)          # centre of the pad face, 60 mm above the carpet
 PAD_TILT_DEG = 35.0                    # pad face normal: rearward, tipped up by this
 ARM = [PIVOT[::2], (-436.0, -205.0), (-468.0, -262.0)]   # (x, z) arm centre line from the pivot toward the foot plate
 BRACKET_Y = (PEDAL_Y + PEDAL_T / 2 + 1.0, PEDAL_Y + PEDAL_T / 2 + 3.0)   # pivot bracket cheek, inboard of the pedal
@@ -130,7 +134,7 @@ CHOKE_FERRULE = (CHOKE_LEVER_X + TRUNNION_DX, ROD[0], FLANGE_TOP)
 # ---- cable runs (car frame) -------------------------------------------------------------------------------------
 # pedal box cover P-clip (Rimmer: PCR307 "cable to pedal box cover", single-line cars) on a No 10 screw near its
 # outboard rear corner
-COVER_CLIP = (-300.0, -300.0)          # (x, y) on the cover top
+COVER_CLIP = (-300.0, -342.0)          # (x, y) on the cover top (moved out with the box, QA fix round 1, cockpit)
 COVER_CLIP_SCREW_DX = 10.5             # the clip's screw, forward of the band
 COVER_CLIP_Z = 58.6 + PEDAL_BOX_RAISE   # the cover's top face there (probed on parts/brakes/master.py cover; the box
                                        # raised in QA fix round 1, steering: clutch_layout PEDAL_BOX_RAISE)
@@ -139,7 +143,7 @@ THROTTLE_OUTER = [
     (THROTTLE_FERRULE[0], THROTTLE_FERRULE[1], FLANGE_TOP + FERRULE_L), (THROTTLE_FERRULE[0], ACCEL_PIN[0], 132.0),
     (-30.0, 182.0, 160.0), (-150.0, 160.0, 160.0),
     (-246.0, 150.0, 158.0), (-270.0, 100.0, 162.0), (-280.0, -110.0, 172.0), (-292.0, -230.0, 186.0),
-    (COVER_CLIP[0], COVER_CLIP[1], COVER_CLIP_Z + 7.4), (-306.0, -342.0, 176.0), (-316.0, -366.0, 140.0), (-332.0, -368.0, -56.0), (-352.0, -404.0, -112.0),
+    (COVER_CLIP[0], COVER_CLIP[1], COVER_CLIP_Z + 7.4), (-306.0, -384.0, 176.0), (-316.0, -388.0, 160.0), (-325.0, -391.0, -56.0), (-352.0, -404.0, -112.0),
     (-362.0, PEDAL_Y, GUIDE[2]), (BH + 1.0 + GUIDE_NOSE - 8.0 + FERRULE_L, PEDAL_Y, GUIDE[2]),
 ]
 CHOKE_GROMMET = (BH, 140.0, 132.0)     # choke cable through the bulkhead (grommet 14A7033), left of the heater opening
